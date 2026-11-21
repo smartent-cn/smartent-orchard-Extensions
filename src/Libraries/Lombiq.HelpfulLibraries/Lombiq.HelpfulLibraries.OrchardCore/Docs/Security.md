@@ -1,6 +1,6 @@
 # Lombiq Helpful Libraries - Orchard Core Libraries - Security
 
-There is a similar section for security extensions related to ASP.NET Core [here](../../Lombiq.HelpfulLibraries.AspNetCore/Docs/Security.md). All of the services mentioned in both documents are included in the `ConfigureSecurityDefaults()` and `ConfigureSecurityDefaultsWithStaticFiles()` extensions.
+There is a similar section for security extensions related to ASP.NET Core [here](../../../../../../Smartent-src/Platform/Core/Smartent.Core.AspNet/Docs/Security.md). All of the services mentioned in both documents are included in the `ConfigureSecurityDefaults()` and `ConfigureSecurityDefaultsWithStaticFiles()` extensions.
 
 These extensions provide additional security and can resolve issues reported by the [ZAP security scanner](https://github.com/Lombiq/UI-Testing-Toolbox/blob/dev/Lombiq.Tests.UI/Docs/SecurityScanning.md).
 

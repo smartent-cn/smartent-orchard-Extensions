@@ -1,4 +1,4 @@
-using Lombiq.HelpfulLibraries.AspNetCore.Security;
+using Smartent.Core.AspNet.Security;
 using Lombiq.HelpfulLibraries.OrchardCore.Security;
 using Lombiq.Hosting.Tenants.Management.Filters;
 using Microsoft.AspNetCore.Http;

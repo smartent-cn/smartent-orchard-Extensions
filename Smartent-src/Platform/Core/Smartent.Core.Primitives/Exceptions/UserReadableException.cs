@@ -8,7 +8,7 @@ namespace Smartent.Core.Primitives.Exceptions;
 /// An exception whose message is safe to display to the end user of a desktop or command line application.
 /// </summary>
 /// <remarks><para>
-/// In case of web application, use <c>Lombiq.HelpfulLibraries.AspNetCore</c>'s <c>FrontendException</c> instead.
+/// In case of web application, use <c>Smartent.Core.AspNet</c>'s <c>FrontendException</c> instead.
 /// </para></remarks>
 public class UserReadableException : Exception
 {

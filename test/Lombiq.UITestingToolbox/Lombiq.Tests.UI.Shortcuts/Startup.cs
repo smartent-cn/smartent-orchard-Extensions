@@ -1,4 +1,4 @@
-using Lombiq.HelpfulLibraries.AspNetCore.Extensions;
+using Smartent.Core.AspNet.Extensions;
 using Lombiq.Tests.UI.Shortcuts.Middlewares;
 using Lombiq.Tests.UI.Shortcuts.Services;
 using Microsoft.AspNetCore.Builder;

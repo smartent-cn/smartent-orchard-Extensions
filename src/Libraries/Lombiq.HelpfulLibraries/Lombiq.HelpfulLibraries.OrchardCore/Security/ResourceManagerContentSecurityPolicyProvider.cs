@@ -1,4 +1,4 @@
-using Lombiq.HelpfulLibraries.AspNetCore.Security;
+using Smartent.Core.AspNet.Security;
 using Microsoft.AspNetCore.Http;
 using OrchardCore.ResourceManagement;
 using System.Collections.Generic;

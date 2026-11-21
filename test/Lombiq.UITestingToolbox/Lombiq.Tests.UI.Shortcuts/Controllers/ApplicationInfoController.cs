@@ -1,4 +1,4 @@
-using Lombiq.HelpfulLibraries.AspNetCore.Mvc;
+using Smartent.Core.AspNet.Mvc;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using OrchardCore.Modules;

@@ -3,7 +3,7 @@
 迁入目标（M2 起）：
 
 - `Smartent.Core.Primitives` ← ~~`Lombiq.HelpfulLibraries.Common`~~ **已完成 M2**，见 [Smartent.Core.Primitives/Readme.md](Smartent.Core.Primitives/Readme.md)
-- `Smartent.Core.AspNet` ← `Lombiq.HelpfulLibraries.AspNetCore`
+- `Smartent.Core.AspNet` ← ~~`Lombiq.HelpfulLibraries.AspNetCore`~~ **已完成 M2**，见 [Smartent.Core.AspNet/Readme.md](Smartent.Core.AspNet/Readme.md)
 - `Smartent.Core.Cli` ← `Lombiq.HelpfulLibraries.Cli`
 - `Smartent.Core.CodeGen.Attributes` ← `Lombiq.HelpfulLibraries.Attributes`
 - `Smartent.Core.CodeGen.SourceGenerators` ← `Lombiq.HelpfulLibraries.SourceGenerators`

@@ -104,7 +104,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lombiq.DataTables.Tests.UI"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lombiq.VueJs.Tests.UI", "src\Modules\Lombiq.VueJs\Lombiq.VueJs.Tests.UI\Lombiq.VueJs.Tests.UI.csproj", "{3F55C053-430A-438A-BB1C-8D39E363B8AF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lombiq.HelpfulLibraries.AspNetCore", "src\Libraries\Lombiq.HelpfulLibraries\Lombiq.HelpfulLibraries.AspNetCore\Lombiq.HelpfulLibraries.AspNetCore.csproj", "{F8EF807E-85E5-4FA8-98C3-536ABBEF4276}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Core.AspNet", "Smartent-src\Platform\Core\Smartent.Core.AspNet\Smartent.Core.AspNet.csproj", "{F8EF807E-85E5-4FA8-98C3-536ABBEF4276}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Core.Primitives", "Smartent-src\Platform\Core\Smartent.Core.Primitives\Smartent.Core.Primitives.csproj", "{ACF4C334-D48B-46D2-B5A1-681115067748}"
 EndProject

@@ -1,4 +1,4 @@
-using Lombiq.HelpfulLibraries.AspNetCore.Extensions;
+using Smartent.Core.AspNet.Extensions;
 using Lombiq.Privacy.Activities;
 using Lombiq.Privacy.Constants;
 using Lombiq.Privacy.Drivers;

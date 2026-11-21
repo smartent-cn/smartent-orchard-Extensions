@@ -2,7 +2,7 @@ using Lombiq.DataTables.Liquid;
 using Lombiq.DataTables.Migrations;
 using Lombiq.DataTables.Services;
 using Lombiq.DataTables.TagHelpers;
-using Lombiq.HelpfulLibraries.AspNetCore.Middlewares;
+using Smartent.Core.AspNet.Middlewares;
 using Lombiq.HelpfulLibraries.OrchardCore.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Routing;

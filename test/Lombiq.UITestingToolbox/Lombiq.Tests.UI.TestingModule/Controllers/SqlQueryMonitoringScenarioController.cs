@@ -1,4 +1,4 @@
-using Lombiq.HelpfulLibraries.AspNetCore.Mvc;
+using Smartent.Core.AspNet.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OrchardCore.ContentManagement.Records;

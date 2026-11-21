@@ -1,8 +1,8 @@
-using Lombiq.HelpfulLibraries.AspNetCore.Security;
+using Smartent.Core.AspNet.Security;
 using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using static Lombiq.HelpfulLibraries.AspNetCore.Security.ContentSecurityPolicyDirectives;
+using static Smartent.Core.AspNet.Security.ContentSecurityPolicyDirectives;
 
 namespace Lombiq.Marketing.Pirsch.Services;
 

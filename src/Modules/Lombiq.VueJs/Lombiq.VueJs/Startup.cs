@@ -1,4 +1,4 @@
-using Lombiq.HelpfulLibraries.AspNetCore.Extensions;
+using Smartent.Core.AspNet.Extensions;
 using Lombiq.HelpfulLibraries.OrchardCore.ResourceManagement;
 using Lombiq.VueJs.Models;
 using Lombiq.VueJs.Services;

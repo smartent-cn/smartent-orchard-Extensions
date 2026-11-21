@@ -1,11 +1,11 @@
-using Lombiq.HelpfulLibraries.AspNetCore.Security;
+using Smartent.Core.AspNet.Security;
 using Lombiq.VueJs.Models;
 using Lombiq.VueJs.TagHelpers;
 using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using static Lombiq.HelpfulLibraries.AspNetCore.Security.ContentSecurityPolicyDirectives;
-using static Lombiq.HelpfulLibraries.AspNetCore.Security.ContentSecurityPolicyDirectives.CommonValues;
+using static Smartent.Core.AspNet.Security.ContentSecurityPolicyDirectives;
+using static Smartent.Core.AspNet.Security.ContentSecurityPolicyDirectives.CommonValues;
 
 namespace Lombiq.VueJs.Services;
 

@@ -1,4 +1,4 @@
-﻿using Lombiq.HelpfulLibraries.AspNetCore.Exceptions;
+using Smartent.Core.AspNet.Exceptions;
 using OrchardCore.DisplayManagement.Notify;
 using System.Threading.Tasks;
 

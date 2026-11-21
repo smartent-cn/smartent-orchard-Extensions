@@ -1,6 +1,6 @@
 using Lombiq.DataTables.Models;
 using Lombiq.DataTables.Services;
-using Lombiq.HelpfulLibraries.AspNetCore.Mvc;
+using Smartent.Core.AspNet.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;

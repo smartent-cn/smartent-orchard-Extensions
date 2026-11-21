@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using OrchardCore.ContentManagement;
 using System.Threading.Tasks;
-using static Lombiq.HelpfulLibraries.AspNetCore.Security.ContentSecurityPolicyDirectives;
-using static Lombiq.HelpfulLibraries.AspNetCore.Security.ContentSecurityPolicyDirectives.CommonValues;
+using static Smartent.Core.AspNet.Security.ContentSecurityPolicyDirectives;
+using static Smartent.Core.AspNet.Security.ContentSecurityPolicyDirectives.CommonValues;
 
 namespace Lombiq.VueJs.Samples.Controllers;
 

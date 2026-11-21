@@ -1,4 +1,4 @@
-﻿using Lombiq.HelpfulLibraries.AspNetCore.Security;
+using Smartent.Core.AspNet.Security;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using System;
@@ -7,8 +7,8 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
-using static Lombiq.HelpfulLibraries.AspNetCore.Security.ContentSecurityPolicyDirectives;
-using static Lombiq.HelpfulLibraries.AspNetCore.Security.ContentSecurityPolicyDirectives.CommonValues;
+using static Smartent.Core.AspNet.Security.ContentSecurityPolicyDirectives;
+using static Smartent.Core.AspNet.Security.ContentSecurityPolicyDirectives.CommonValues;
 
 namespace Microsoft.Extensions.DependencyInjection;
 

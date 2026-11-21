@@ -1,4 +1,4 @@
-using Lombiq.HelpfulLibraries.AspNetCore.Security;
+using Smartent.Core.AspNet.Security;
 using Lombiq.Hosting.Tenants.Admin.Login.Extensions;
 using Microsoft.AspNetCore.Http;
 using OrchardCore.DisplayManagement.Extensions;

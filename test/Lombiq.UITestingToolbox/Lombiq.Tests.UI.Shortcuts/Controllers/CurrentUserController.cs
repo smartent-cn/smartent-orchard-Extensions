@@ -1,4 +1,4 @@
-using Lombiq.HelpfulLibraries.AspNetCore.Mvc;
+using Smartent.Core.AspNet.Mvc;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Lombiq.Tests.UI.Shortcuts.Controllers;

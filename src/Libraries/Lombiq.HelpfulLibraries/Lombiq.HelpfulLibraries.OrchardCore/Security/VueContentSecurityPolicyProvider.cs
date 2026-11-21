@@ -1,6 +1,6 @@
 using System.Collections.Generic;
-using static Lombiq.HelpfulLibraries.AspNetCore.Security.ContentSecurityPolicyDirectives;
-using static Lombiq.HelpfulLibraries.AspNetCore.Security.ContentSecurityPolicyDirectives.CommonValues;
+using static Smartent.Core.AspNet.Security.ContentSecurityPolicyDirectives;
+using static Smartent.Core.AspNet.Security.ContentSecurityPolicyDirectives.CommonValues;
 using static Lombiq.HelpfulLibraries.OrchardCore.ResourceManagement.ResourceTypes;
 
 namespace Microsoft.Extensions.DependencyInjection;
