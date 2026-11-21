@@ -26,7 +26,8 @@
 ## 当前状态
 
 - 脚手架已建立（目录 + `build/` 全局属性）。  
-- **尚未**迁入具体 csproj；第一步见 `重构-重组-改名项目方案/第一步-计划.md`。
+- **M2 完成**：`Platform/Core/` 下五包已迁入（`Smartent.Core.*`）。  
+- **M3 进行中**：`Platform/Orchard/` 承接原 HelpfulLibraries 的 Orchard 向库；见 `重构-重组-改名项目方案/projects/M3-Platform-HelpfulLibraries.md`。
 
 ## 文档与规范
 
