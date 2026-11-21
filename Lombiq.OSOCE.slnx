@@ -40,7 +40,7 @@
     <Project Path="src/Libraries/Lombiq.EInvoiceValidator/Lombiq.EInvoiceValidator/Lombiq.EInvoiceValidator.csproj" />
     <Project Path="Smartent-src/Platform/Core/Smartent.Core.AspNet/Smartent.Core.AspNet.csproj" />
     <Project Path="src/Libraries/Lombiq.HelpfulLibraries/Lombiq.HelpfulLibraries.Attributes/Lombiq.HelpfulLibraries.Attributes.csproj" />
-    <Project Path="src/Libraries/Lombiq.HelpfulLibraries/Lombiq.HelpfulLibraries.Cli/Lombiq.HelpfulLibraries.Cli.csproj" />
+    <Project Path="Smartent-src/Platform/Core/Smartent.Core.Cli/Smartent.Core.Cli.csproj" />
     <Project Path="Smartent-src/Platform/Core/Smartent.Core.Primitives/Smartent.Core.Primitives.csproj" />
     <Project Path="src/Libraries/Lombiq.HelpfulLibraries/Lombiq.HelpfulLibraries.LinqToDb/Lombiq.HelpfulLibraries.LinqToDb.csproj" />
     <Project Path="src/Libraries/Lombiq.HelpfulLibraries/Lombiq.HelpfulLibraries.OrchardCore.Testing/Lombiq.HelpfulLibraries.OrchardCore.Testing.csproj" />

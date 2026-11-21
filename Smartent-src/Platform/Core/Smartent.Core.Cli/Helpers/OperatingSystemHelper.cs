@@ -1,6 +1,6 @@
 using System;
 
-namespace Lombiq.HelpfulLibraries.Cli.Helpers;
+namespace Smartent.Core.Cli.Helpers;
 
 /// <summary>
 /// Functions that have different implementations/results based on the current operating system.

@@ -26,7 +26,7 @@ Note that this project has an Orchard 1 version in the [dev-orchard-1 branch](ht
 Helpful Libraries consists of the following independent libraries (all in their own projects/packages). Use the one specific to your use-case, or most of them at once by depending on `Lombiq.HelpfulLibraries`.
 
 - [ASP.NET Core Libraries (Smartent.Core.AspNet)](../../../../Smartent-src/Platform/Core/Smartent.Core.AspNet/Readme.md)（原 AspNetCore，已迁出）
-- [Command Line Libraries](Lombiq.HelpfulLibraries.Cli/Readme.md)
+- [Command Line Libraries (Smartent.Core.Cli)](../../../../Smartent-src/Platform/Core/Smartent.Core.Cli/Readme.md)（原 Cli，已迁出）
 - [Core Primitives (Smartent.Core.Primitives)](../../../../Smartent-src/Platform/Core/Smartent.Core.Primitives/Readme.md)（原 Common，已迁出）
 - [LINQ to DB Libraries for Orchard Core](Lombiq.HelpfulLibraries.LinqToDb/Readme.md)
 - [Orchard Core Libraries](Lombiq.HelpfulLibraries.OrchardCore/Readme.md)

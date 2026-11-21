@@ -1,6 +1,6 @@
 using CliWrap;
 using CliWrap.Buffered;
-using Lombiq.HelpfulLibraries.Cli.Helpers;
+using Smartent.Core.Cli.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Lombiq.HelpfulLibraries.Cli;
+namespace Smartent.Core.Cli;
 
 public class CliProgram
 {

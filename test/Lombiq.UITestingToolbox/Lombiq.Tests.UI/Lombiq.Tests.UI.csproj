@@ -69,7 +69,7 @@
     <When Condition="'$(NuGetBuild)' == 'true'">
       <ItemGroup>
         <PackageReference Include="Lombiq.Tests" Version="$(PackageVersionLombiqTests)" />
-        <PackageReference Include="Lombiq.HelpfulLibraries.Cli" Version="$(PackageVersionLombiqHelpfulLibraries)" />
+        <PackageReference Include="Smartent.Core.Cli" Version="$(PackageVersionLombiqHelpfulLibraries)" />
         <PackageReference Include="Lombiq.HelpfulLibraries.OrchardCore" Version="$(PackageVersionLombiqHelpfulLibraries)" />
         <PackageReference Include="Lombiq.HelpfulLibraries.Refit" Version="$(PackageVersionLombiqHelpfulLibraries)" />
       </ItemGroup>
@@ -77,7 +77,7 @@
     <Otherwise>
       <ItemGroup>
         <ProjectReference Include="..\..\Lombiq.Tests\Lombiq.Tests.csproj" />
-        <ProjectReference Include="..\..\..\src\Libraries\Lombiq.HelpfulLibraries\Lombiq.HelpfulLibraries.Cli\Lombiq.HelpfulLibraries.Cli.csproj" />
+        <ProjectReference Include="..\..\..\Smartent-src\Platform\Core\Smartent.Core.Cli\Smartent.Core.Cli.csproj" />
         <ProjectReference Include="..\..\..\src\Libraries\Lombiq.HelpfulLibraries\Lombiq.HelpfulLibraries.OrchardCore\Lombiq.HelpfulLibraries.OrchardCore.csproj" />
         <ProjectReference Include="..\..\..\src\Libraries\Lombiq.HelpfulLibraries\Lombiq.HelpfulLibraries.Refit\Lombiq.HelpfulLibraries.Refit.csproj" />
       </ItemGroup>

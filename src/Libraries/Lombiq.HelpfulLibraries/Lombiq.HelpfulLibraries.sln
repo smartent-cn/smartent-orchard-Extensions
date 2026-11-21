@@ -21,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Core.Primitives", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lombiq.HelpfulLibraries.OrchardCore.Testing", "Lombiq.HelpfulLibraries.OrchardCore.Testing\Lombiq.HelpfulLibraries.OrchardCore.Testing.csproj", "{F87DC121-2ADD-458D-9E01-BC0032860188}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lombiq.HelpfulLibraries.Cli", "Lombiq.HelpfulLibraries.Cli\Lombiq.HelpfulLibraries.Cli.csproj", "{E4434D6F-7C4F-4CBD-AAA3-B57809DFF571}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Smartent.Core.Cli", "..\..\..\Smartent-src\Platform\Core\Smartent.Core.Cli\Smartent.Core.Cli.csproj", "{E4434D6F-7C4F-4CBD-AAA3-B57809DFF571}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lombiq.HelpfulLibraries.Refit", "Lombiq.HelpfulLibraries.Refit\Lombiq.HelpfulLibraries.Refit.csproj", "{5DC1A3D5-0626-4258-95C6-7E5CA5495A80}"
 EndProject

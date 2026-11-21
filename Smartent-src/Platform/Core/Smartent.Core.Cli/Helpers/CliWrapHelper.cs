@@ -7,7 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Lombiq.HelpfulLibraries.Cli.Helpers;
+namespace Smartent.Core.Cli.Helpers;
 
 public static class CliWrapHelper
 {

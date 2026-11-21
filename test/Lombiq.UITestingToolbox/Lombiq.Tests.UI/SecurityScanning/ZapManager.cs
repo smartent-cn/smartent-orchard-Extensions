@@ -1,5 +1,5 @@
 using CliWrap;
-using Lombiq.HelpfulLibraries.Cli;
+using Smartent.Core.Cli;
 using Lombiq.Tests.UI.Helpers;
 using Lombiq.Tests.UI.Services;
 using Lombiq.Tests.UI.Services.GitHub;

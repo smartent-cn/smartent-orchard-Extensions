@@ -1,4 +1,4 @@
-using Lombiq.HelpfulLibraries.Cli;
+using Smartent.Core.Cli;
 using Shouldly;
 using System;
 using System.Collections.Generic;

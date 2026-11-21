@@ -124,7 +124,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lombiq.BaseTheme.Tests.UI",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lombiq.NodeJs.Extensions.Samples", "src\Utilities\Lombiq.NodeJs.Extensions\Lombiq.NodeJs.Extensions.Samples\Lombiq.NodeJs.Extensions.Samples.csproj", "{D4D7F555-3AA2-43C8-8AD2-64136A6C8053}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lombiq.HelpfulLibraries.Cli", "src\Libraries\Lombiq.HelpfulLibraries\Lombiq.HelpfulLibraries.Cli\Lombiq.HelpfulLibraries.Cli.csproj", "{F4B0F77A-4EF0-40A9-B1C0-9294B397BA36}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Core.Cli", "Smartent-src\Platform\Core\Smartent.Core.Cli\Smartent.Core.Cli.csproj", "{F4B0F77A-4EF0-40A9-B1C0-9294B397BA36}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lombiq.ChartJs.Samples", "src\Modules\Lombiq.ChartJs\Lombiq.ChartJs.Samples\Lombiq.ChartJs.Samples.csproj", "{B22E25BC-36A8-450B-A67A-9BC0CFDD4F52}"
 EndProject

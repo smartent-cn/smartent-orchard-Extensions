@@ -1,5 +1,5 @@
 using CliWrap;
-using Lombiq.HelpfulLibraries.Cli;
+using Smartent.Core.Cli;
 using MailKit.Net.Imap;
 using MailKit.Net.Smtp;
 using System;

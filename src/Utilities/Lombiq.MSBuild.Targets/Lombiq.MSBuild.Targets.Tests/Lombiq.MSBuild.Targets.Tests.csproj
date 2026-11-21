@@ -15,7 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\test\Lombiq.Tests\Lombiq.Tests.csproj" />
-    <ProjectReference Include="..\..\..\Libraries\Lombiq.HelpfulLibraries\Lombiq.HelpfulLibraries.Cli\Lombiq.HelpfulLibraries.Cli.csproj" />
+    <ProjectReference Include="..\..\..\..\Smartent-src\Platform\Core\Smartent.Core.Cli\Smartent.Core.Cli.csproj" />
     <ProjectReference Include="..\Lombiq.MSBuild.Targets.Samples\Lombiq.MSBuild.Targets.Samples.csproj" />
   </ItemGroup>
 
