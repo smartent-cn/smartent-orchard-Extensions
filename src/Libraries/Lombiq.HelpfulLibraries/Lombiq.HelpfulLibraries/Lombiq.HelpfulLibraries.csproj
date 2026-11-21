@@ -21,7 +21,7 @@
     <ProjectReference Include="..\..\..\..\Smartent-src\Platform\Core\Smartent.Core.Cli\Smartent.Core.Cli.csproj" />
     <ProjectReference Include="..\..\..\..\Smartent-src\Platform\Core\Smartent.Core.Primitives\Smartent.Core.Primitives.csproj" PrivateAssets="none" />
     <ProjectReference Include="..\Lombiq.HelpfulLibraries.OrchardCore\Lombiq.HelpfulLibraries.OrchardCore.csproj" PrivateAssets="none" />
-    <ProjectReference Include="..\Lombiq.HelpfulLibraries.LinqToDb\Lombiq.HelpfulLibraries.LinqToDb.csproj" PrivateAssets="none" />
+    <ProjectReference Include="..\..\..\..\Smartent-src\Platform\Orchard\Smartent.Orchard.Platform.Data.LinqToYesSql\Smartent.Orchard.Platform.Data.LinqToYesSql.csproj" PrivateAssets="none" />
     <ProjectReference Include="..\Lombiq.HelpfulLibraries.Refit\Lombiq.HelpfulLibraries.Refit.csproj" />
   </ItemGroup>
 

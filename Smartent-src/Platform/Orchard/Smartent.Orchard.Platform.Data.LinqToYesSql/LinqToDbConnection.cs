@@ -3,7 +3,7 @@ using LinqToDB.Data;
 using LinqToDB.DataProvider;
 using System.Data.Common;
 
-namespace Lombiq.HelpfulLibraries.LinqToDb;
+namespace Smartent.Orchard.Platform.Data.LinqToYesSql;
 
 public class LinqToDbConnection : DataConnection, ITableAccessor
 {

@@ -1,6 +1,6 @@
 using LinqToDB;
 
-namespace Lombiq.HelpfulLibraries.LinqToDb;
+namespace Smartent.Orchard.Platform.Data.LinqToYesSql;
 
 /// <summary>
 /// Abstraction that retrieves a table for query building purposes.

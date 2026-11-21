@@ -22,11 +22,11 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(NuGetBuild)' != 'true'">
-    <ProjectReference Include="..\..\..\Libraries\Lombiq.HelpfulLibraries\Lombiq.HelpfulLibraries.LinqToDb\Lombiq.HelpfulLibraries.LinqToDb.csproj" />
+    <ProjectReference Include="..\..\..\..\Smartent-src\Platform\Orchard\Smartent.Orchard.Platform.Data.LinqToYesSql\Smartent.Orchard.Platform.Data.LinqToYesSql.csproj" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(NuGetBuild)' == 'true'">
-    <PackageReference Include="Lombiq.HelpfulLibraries.LinqToDb" Version="$(PackageVersionLombiqHelpfulLibraries)" />
+    <PackageReference Include="Smartent.Orchard.Platform.Data.LinqToYesSql" Version="$(PackageVersionLombiqHelpfulLibraries)" />
   </ItemGroup>
 
   <!-- Security Updates for Orchard Core - make sure to check if these are still necessary -->

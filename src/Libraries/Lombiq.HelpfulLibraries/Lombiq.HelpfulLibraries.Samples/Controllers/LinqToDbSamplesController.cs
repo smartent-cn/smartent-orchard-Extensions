@@ -1,6 +1,6 @@
 using LinqToDB;
 using LinqToDB.Async;
-using Lombiq.HelpfulLibraries.LinqToDb;
+using Smartent.Orchard.Platform.Data.LinqToYesSql;
 using Lombiq.HelpfulLibraries.Samples.Models;
 using Microsoft.AspNetCore.Mvc;
 using OrchardCore.Autoroute.Core.Indexes;
@@ -13,7 +13,7 @@ using YesSql;
 
 namespace Lombiq.HelpfulLibraries.Samples.Controllers;
 
-// Some examples of querying the database with Lombiq.HelpfulLibraries.LinqToDb.
+// Some examples of querying the database with Smartent.Orchard.Platform.Data.LinqToYesSql.
 public sealed class LinqToDbSamplesController : Controller
 {
     private readonly ISession _session;

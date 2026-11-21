@@ -7,7 +7,7 @@ using YesSql;
 using static LinqToDB.Common.Configuration;
 using Sql = LinqToDB.Common.Configuration.Sql;
 
-namespace Lombiq.HelpfulLibraries.LinqToDb;
+namespace Smartent.Orchard.Platform.Data.LinqToYesSql;
 
 public static class LinqToDbQueryExecutor
 {

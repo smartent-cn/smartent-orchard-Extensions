@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Smartent.Core.CodeGen.Sourc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lombiq.HelpfulLibraries", "Lombiq.HelpfulLibraries\Lombiq.HelpfulLibraries.csproj", "{5F3379C7-ED6B-46AA-B6C3-17CBC2284417}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lombiq.HelpfulLibraries.LinqToDb", "Lombiq.HelpfulLibraries.LinqToDb\Lombiq.HelpfulLibraries.LinqToDb.csproj", "{5F4C7938-BBC4-4A44-83E1-2F33B7717A76}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Orchard.Platform.Data.LinqToYesSql", "..\..\..\Smartent-src\Platform\Orchard\Smartent.Orchard.Platform.Data.LinqToYesSql\Smartent.Orchard.Platform.Data.LinqToYesSql.csproj", "{5F4C7938-BBC4-4A44-83E1-2F33B7717A76}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lombiq.HelpfulLibraries.RestEase", "Lombiq.HelpfulLibraries.RestEase\Lombiq.HelpfulLibraries.RestEase.csproj", "{2D7174D1-88E0-4063-8139-C7FCCC9B3326}"
 EndProject

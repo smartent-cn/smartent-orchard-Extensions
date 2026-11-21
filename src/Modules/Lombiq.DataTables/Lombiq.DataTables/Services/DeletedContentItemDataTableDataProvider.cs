@@ -3,7 +3,7 @@ using LinqToDB.Async;
 using Lombiq.DataTables.Constants;
 using Lombiq.DataTables.Controllers;
 using Lombiq.DataTables.Models;
-using Lombiq.HelpfulLibraries.LinqToDb;
+using Smartent.Orchard.Platform.Data.LinqToYesSql;
 using Lombiq.HelpfulLibraries.OrchardCore.DependencyInjection;
 using Microsoft.Extensions.Localization;
 using OrchardCore.ContentManagement;

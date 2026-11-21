@@ -28,7 +28,7 @@ Helpful Libraries consists of the following independent libraries (all in their 
 - [ASP.NET Core Libraries (Smartent.Core.AspNet)](../../../../Smartent-src/Platform/Core/Smartent.Core.AspNet/Readme.md)（原 AspNetCore，已迁出）
 - [Command Line Libraries (Smartent.Core.Cli)](../../../../Smartent-src/Platform/Core/Smartent.Core.Cli/Readme.md)（原 Cli，已迁出）
 - [Core Primitives (Smartent.Core.Primitives)](../../../../Smartent-src/Platform/Core/Smartent.Core.Primitives/Readme.md)（原 Common，已迁出）
-- [LINQ to DB Libraries for Orchard Core](Lombiq.HelpfulLibraries.LinqToDb/Readme.md)
+- [LINQ to YesSql / linq2db (Smartent.Orchard.Platform.Data.LinqToYesSql)](../../../../Smartent-src/Platform/Orchard/Smartent.Orchard.Platform.Data.LinqToYesSql/Readme.md)（已迁出）
 - [Orchard Core Libraries](Lombiq.HelpfulLibraries.OrchardCore/Readme.md)
 - [RestEase Libraries for Orchard Core](Lombiq.HelpfulLibraries.RestEase/Readme.md) (Not included in `Lombiq.HelpfulLibraries`, we suggest the Refit libraries instead.)
 - [Refit Libraries for Orchard Core](Lombiq.HelpfulLibraries.Refit/Readme.md)

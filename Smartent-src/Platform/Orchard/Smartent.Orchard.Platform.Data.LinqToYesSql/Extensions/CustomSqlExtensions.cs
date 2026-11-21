@@ -1,6 +1,6 @@
 using LinqToDB;
 
-namespace Lombiq.HelpfulLibraries.LinqToDb.Extensions;
+namespace Smartent.Orchard.Platform.Data.LinqToYesSql.Extensions;
 
 public static class CustomSqlExtensions
 {

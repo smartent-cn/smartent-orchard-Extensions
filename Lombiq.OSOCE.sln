@@ -58,7 +58,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lombiq.ChartJs", "src\Modul
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lombiq.AuditTrailExtensions", "src\Modules\Lombiq.AuditTrailExtensions\Lombiq.AuditTrailExtensions.csproj", "{A2CBA4B0-6B30-4183-B167-69A99F34FC72}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lombiq.HelpfulLibraries.LinqToDb", "src\Libraries\Lombiq.HelpfulLibraries\Lombiq.HelpfulLibraries.LinqToDb\Lombiq.HelpfulLibraries.LinqToDb.csproj", "{8BC42764-7D0C-4F18-8663-DB7C9F1734D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Orchard.Platform.Data.LinqToYesSql", "Smartent-src\Platform\Orchard\Smartent.Orchard.Platform.Data.LinqToYesSql\Smartent.Orchard.Platform.Data.LinqToYesSql.csproj", "{8BC42764-7D0C-4F18-8663-DB7C9F1734D5}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lombiq.HelpfulLibraries.RestEase", "src\Libraries\Lombiq.HelpfulLibraries\Lombiq.HelpfulLibraries.RestEase\Lombiq.HelpfulLibraries.RestEase.csproj", "{1800BAC6-F9A5-4C0E-9BB9-5B42A56B8852}"
 EndProject
