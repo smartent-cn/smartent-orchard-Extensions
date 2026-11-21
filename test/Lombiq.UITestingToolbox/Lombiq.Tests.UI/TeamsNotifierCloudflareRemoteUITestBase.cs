@@ -1,4 +1,6 @@
-﻿using Lombiq.Tests.UI.Helpers;
+#nullable enable
+
+using Lombiq.Tests.UI.Helpers;
 using Lombiq.Tests.UI.Services;
 using System;
 using System.Threading.Tasks;
@@ -11,22 +13,44 @@ public abstract class TeamsNotifierCloudflareRemoteUITestBase : CloudflareRemote
     protected static bool TeamsMessageWasSent { get; set; }
 
     protected abstract string SiteName { get; }
-    protected abstract Uri BaseUri { get; }
     protected abstract override string CloudflareAccountId { get; }
 
     protected virtual bool RunIsForProduction => RemoteTestHelper.RunIsForProduction;
     protected virtual string TestFailedTeamsWebhookUrl => TestConfigurationManager.GetConfiguration("TestFailedTeamsWebhookUrl");
 
     protected TeamsNotifierCloudflareRemoteUITestBase(ITestOutputHelper testOutputHelper)
-        : base(testOutputHelper)
+        : base(testOutputHelper) =>
+        AddConfiguration(configuration => configuration
+            .AccessibilityCheckingConfiguration
+            .RunAccessibilityCheckingAssertionOnAllPageChanges = true);
+
+    public override async Task RunAsync()
     {
+        try
+        {
+            await base.RunAsync();
+        }
+        catch (Exception) when (!TeamsMessageWasSent && RunIsForProduction && !string.IsNullOrEmpty(TestFailedTeamsWebhookUrl))
+        {
+            TeamsMessageWasSent = true;
+
+            var response = await TeamsHelper.SendFailedUITestTeamsMessageAsync(TestFailedTeamsWebhookUrl, SiteName);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                _testOutputHelper.WriteLine($"Failed to send message to Teams with the following response: {response}.");
+            }
+
+            throw;
+        }
     }
 
+    [Obsolete($"Use {nameof(BaseUri)}, {nameof(Browser)}, {nameof(AddAsyncConfiguration)} and {nameof(RunAsync)} instead.")]
     protected override async Task ExecuteTestAsync(
         Uri baseUri,
         Func<UITestContext, Task> testAsync,
         Browser browser,
-        Func<OrchardCoreUITestExecutorConfiguration, Task> changeConfigurationAsync)
+        Func<OrchardCoreUITestExecutorConfiguration, Task>? changeConfigurationAsync)
     {
         try
         {

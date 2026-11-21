@@ -27,23 +27,23 @@ on:
 jobs:
   preview:
     name: Preview X (Twitter) Post
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     if: github.event_name == 'pull_request'
     steps:
-      - uses: twitter-together/action@08857009da2aacd9bd08204550ec96e15d76b4da # v3.1.0
+      - uses: Lombiq/twitter-together-action@ba8d2c4ce069bbe9f4410942ecb2ed76f1a0f5e9
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   post-to-x:
     name: Post to X (Twitter)
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     if: github.event_name == 'push' && github.ref_name == github.event.repository.default_branch
     steps:
       - name: Checkout
         uses: Lombiq/GitHub-Actions/.github/actions/checkout@dev
 
       - name: Post
-        uses: twitter-together/action@08857009da2aacd9bd08204550ec96e15d76b4da # v3.1.0
+        uses: Lombiq/twitter-together-action@ba8d2c4ce069bbe9f4410942ecb2ed76f1a0f5e9
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TWITTER_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}

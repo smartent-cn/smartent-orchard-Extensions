@@ -1,5 +1,4 @@
 using Lombiq.DataTables.Tests.Helpers;
-using Lombiq.HelpfulLibraries.Common.Utilities;
 using Microsoft.AspNetCore.Mvc.Localization;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.Routing;
@@ -91,22 +90,19 @@ public class LiquidTests
                 .ToArray()
                 .ShouldBe(
                     pattern[rowIndex],
-                    StringHelper.CreateInvariant($"Row {rowIndex + 1} didn't match expectation."));
+                    string.Create(CultureInfo.InvariantCulture, $"Row {rowIndex + 1} didn't match expectation."));
         }
     }
 
     public static IEnumerable<DataTableShouldMatchExpectationInput> GenerateLiquidEvaluationMatchExpectationInputs()
     {
-        // Simplified collection initialization for the first two would leave the third one as it is. Keeping for
-        // consistency.
-#pragma warning disable IDE0300 // Simplify collection initialization
-        var dataset = new[]
+        var dataset = new object[][]
         {
-            new object[] { "now", "Foo Bar Baz" },
-            new object[] { "2020-12-31", "The quick brown fox" },
-            new object[] { "1970-01-01", "Lorem Ipsum Dolor Sit Amet" },
+            ["now", "Foo Bar Baz"],
+            ["2020-12-31", "The quick brown fox"],
+            ["1970-01-01", "Lorem Ipsum Dolor Sit Amet"],
         };
-#pragma warning restore IDE0300 // Simplify collection initialization
+
         var today = DateTime.Today.ToString("MM/dd/yyyy", CultureInfo.InvariantCulture);
 
         // By "built-in" we mean only those implemented in Fluid, not the ones added by OrchardCore.

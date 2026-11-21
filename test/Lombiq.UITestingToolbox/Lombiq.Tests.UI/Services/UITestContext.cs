@@ -1,4 +1,4 @@
-using Atata;
+using Lombiq.HelpfulLibraries.Common.Utilities;
 using Lombiq.Tests.UI.Constants;
 using Lombiq.Tests.UI.Exceptions;
 using Lombiq.Tests.UI.Extensions;
@@ -6,14 +6,14 @@ using Lombiq.Tests.UI.Models;
 using Lombiq.Tests.UI.SecurityScanning;
 using OpenQA.Selenium;
 using OpenQA.Selenium.BiDi;
-using OpenQA.Selenium.BiDi.Modules.Network;
+using OpenQA.Selenium.BiDi.Network;
 using OrchardCore.Environment.Shell;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.IO;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace Lombiq.Tests.UI.Services;
@@ -22,10 +22,10 @@ public sealed class UITestContext : IAsyncDisposable
 {
     // Multiple browser tabs being open can log at the same time, so we need thread-safe collections. Using a queue to
     // preserve the insertion order.
-    private readonly ConcurrentQueue<OpenQA.Selenium.BiDi.Modules.Log.LogEntry> _cumulativeBrowserLog = [];
+    private readonly ConcurrentQueue<BrowserLogEntry> _cumulativeBrowserLog = [];
     private readonly ConcurrentQueue<ResponseData> _cumulativeResponseLog = [];
 
-    private BiDi _biDirectionalDriver;
+    private IBiDi _biDirectionalDriver;
 
     /// <summary>
     /// Gets the globally unique ID of this context. You can use this ID to refer to the current text execution in
@@ -75,6 +75,11 @@ public sealed class UITestContext : IAsyncDisposable
     public IWebDriver Driver => Scope.Driver;
 
     /// <summary>
+    /// Gets the <see cref="Uri"/> used to resolve relative URLs during initialization.
+    /// </summary>
+    public Uri AppBaseUri { get; }
+
+    /// <summary>
     /// Gets the <see cref="Uri"/> where the test starts, i.e. the URL provided by the setup operation.
     /// </summary>
     public Uri TestStartUri { get; }
@@ -122,15 +127,15 @@ public sealed class UITestContext : IAsyncDisposable
     /// be used to assert on the browser log like failing the test on JavaScript exceptions. Note that since the log is
     /// updated asynchronously by the browser, entries might appear with some delay.
     /// </summary>
-    public IReadOnlyList<OpenQA.Selenium.BiDi.Modules.Log.LogEntry> CumulativeBrowserLog => _cumulativeBrowserLog.ToReadOnly();
+    public IReadOnlyList<BrowserLogEntry> CumulativeBrowserLog => _cumulativeBrowserLog.AsReadOnlyList();
 
     /// <summary>
     /// Gets a cumulative log of browser HTTP responses filtered by <see
-    /// cref="OrchardCoreUITestExecutorConfiguration.ResponseLogFilter"/>, containing all items since the start of the
+    /// cref="OrchardCoreUITestExecutorConfiguration.ResponseLogFilters"/>, containing all items since the start of the
     /// test. This can be used to assert on response details. Note that
     /// since the log is updated asynchronously by the browser, entries might appear with some delay.
     /// </summary>
-    public IReadOnlyList<ResponseData> CumulativeResponseLog => _cumulativeResponseLog.ToReadOnly();
+    public IReadOnlyList<ResponseData> CumulativeResponseLog => _cumulativeResponseLog.AsReadOnlyList();
 
     /// <summary>
     /// Gets a dictionary storing some custom contextual data.
@@ -152,7 +157,7 @@ public sealed class UITestContext : IAsyncDisposable
     /// Gets the current tenant name. When testing sites with multi-tenancy use
     /// <see cref="SwitchCurrentTenant(string, string)"/>.
     /// </summary>
-    public string TenantName { get; private set; } = "Default";
+    public string TenantName { get; private set; } = ShellSettings.DefaultShellName;
 
     /// <summary>
     /// Gets or sets the prefix used for all relative URLs. It should neither start nor end with a slash.
@@ -167,6 +172,12 @@ public sealed class UITestContext : IAsyncDisposable
     public string AdminUrlPrefix { get; set; } = "/Admin";
 
     /// <summary>
+    /// Gets the path of the <see cref="DirectoryPaths.Temp"/> directory where running instances are stored. If
+    /// the internal value is set to <see langword="null"/> (which is the default), then <c>./Temp/</c> is used.
+    /// </summary>
+    public string TempDirectoryPath { get; }
+
+    /// <summary>
     /// Gets the absolute path of the <see cref="DirectoryPaths.Screenshots"/> subdirectory inside the current test
     /// instance's <see cref="DirectoryPaths.Temp"/> directory.
     /// </summary>
@@ -178,34 +189,26 @@ public sealed class UITestContext : IAsyncDisposable
     /// </summary>
     public string DownloadsDirectoryPath => GetTempSubDirectoryPath(DirectoryPaths.Downloads);
 
-    [SuppressMessage(
-        "Major Code Smell",
-        "S107:Methods should not have too many parameters",
-        Justification = "This is a central context object, we need the data to be passed in the constructor.")]
-    private UITestContext(
-        string id,
-        UITestManifest testManifest,
-        OrchardCoreUITestExecutorConfiguration configuration,
-        IWebApplicationInstance application,
-        AtataScope scope,
-        Uri testStartUri,
-        RunningContextContainer runningContextContainer,
-        ZapManager zapManager)
+    private UITestContext(UITestContextData data, AtataScope newScope)
     {
-        Id = id;
-        TestManifest = testManifest;
-        Configuration = configuration;
-        Application = application;
-        Scope = scope;
-        TestStartUri = testStartUri;
-        ZapManager = zapManager;
-
         (
-            SqlServerRunningContext,
-            SmtpServiceRunningContext,
-            AzureBlobStorageRunningContext,
-            ElasticsearchRunningContext
-        ) = runningContextContainer;
+            Id,
+            TestManifest,
+            Configuration,
+            Application,
+            _,
+            AppBaseUri,
+            TestStartUri,
+            (
+                SqlServerRunningContext,
+                SmtpServiceRunningContext,
+                AzureBlobStorageRunningContext,
+                ElasticsearchRunningContext
+            ),
+            ZapManager) = data;
+
+        Scope = newScope;
+        TempDirectoryPath = Configuration.GetTempDirectoryPathWithFallback();
     }
 
     /// <summary>
@@ -221,10 +224,9 @@ public sealed class UITestContext : IAsyncDisposable
     /// <summary>
     /// Clears the application and cumulative browser logs.
     /// </summary>
-    /// <param name="cancellationToken">Optional cancellation token for reading the application logs.</param>
-    public async Task ClearLogsAsync(CancellationToken cancellationToken = default)
+    public async Task ClearLogsAsync()
     {
-        foreach (var log in await Application.GetLogsAsync(cancellationToken)) await log.RemoveAsync();
+        foreach (var log in await Application.GetLogsAsync(Configuration.TestCancellationToken)) await log.RemoveAsync();
         ClearCumulativeBrowserLog();
         ClearCumulativeResponseLog();
     }
@@ -301,78 +303,74 @@ public sealed class UITestContext : IAsyncDisposable
         Scope.BaseUri = baseUri;
     }
 
-    // This is a central context object, we need the data to be passed in the constructor.
-#pragma warning disable S107 // Methods should not have too many parameters
-    public static async Task<UITestContext> CreateAsync(
-        string id,
-        UITestManifest testManifest,
-        OrchardCoreUITestExecutorConfiguration configuration,
-        IWebApplicationInstance application,
-        AtataScope scope,
-        Uri testStartUri,
-        RunningContextContainer runningContextContainer,
-        ZapManager zapManager)
-#pragma warning restore S107 // Methods should not have too many parameters
+    public static async Task<UITestContext> CreateAsync(UITestContextData data)
     {
-        var context = new UITestContext(
-            id,
-            testManifest,
-            configuration,
-            application,
-            scope,
-            testStartUri,
-            runningContextContainer,
-            zapManager);
+        var context = new UITestContext(data, await AtataFactory.StartAtataScopeAsync(data));
+        var configuration = context.Configuration;
+        var token = configuration.TestCancellationToken;
+
+        FileSystemHelper.EnsureDirectoryExists(context.TempDirectoryPath);
 
         if (context.IsBrowserConfigured)
         {
-            context._biDirectionalDriver = await scope.Driver.AsBiDiAsync();
+            context._biDirectionalDriver = await context.Scope.Driver.AsBiDiAsync(cancellationToken: token);
 
             // We intentionally don't pass the UITestContext to these callbacks: The callbacks are called asynchronously
             // by the browser (and Selenium), and e.g. the current URL can change between when a JS exception was thrown
             // and the callback is called. Thus, BrowserLogFilter could e.g. ignore log entries for a URL that actually
             // originated from a different URL and shouldn't be ignored.
-            await context._biDirectionalDriver.Log.OnEntryAddedAsync(entry =>
-            {
-                if (configuration.BrowserLogFilters.Values.All(filter => filter(entry)))
-                {
-                    context._cumulativeBrowserLog.Enqueue(entry);
-                }
-            });
+            var browserLogHandler = CreateLoggingHandler(configuration.BrowserLogFilters, context._cumulativeBrowserLog);
+            await context._biDirectionalDriver.Log.EntryAdded.SubscribeAsync(
+                entry => browserLogHandler(new BrowserLogEntry(entry)),
+                cancellationToken: token);
 
             if (configuration.TestDumpConfiguration.CaptureResponseLog)
             {
-                await context._biDirectionalDriver.Network.OnResponseCompletedAsync(responseCompleted =>
-                {
-                    if (configuration.ResponseLogFilter(responseCompleted))
-                    {
-                        context._cumulativeResponseLog.Enqueue(responseCompleted.Response);
-                    }
-                });
+                var responseLogHandler = CreateLoggingHandler(
+                    configuration.ResponseLogFilters,
+                    context._cumulativeResponseLog,
+                    entry => entry.Response);
+                await context._biDirectionalDriver.Network.ResponseCompleted.SubscribeAsync(
+                    responseLogHandler,
+                    cancellationToken: token);
             }
         }
 
         return context;
     }
 
+    private static Action<TEntry> CreateLoggingHandler<TEntry, TLog>(
+        IDictionary<string, Func<TEntry, bool>> filters,
+        ConcurrentQueue<TLog> logs,
+        Func<TEntry, TLog> select = null)
+        where TLog : class =>
+        entry =>
+        {
+            if (filters.Values.All(filter => filter(entry)) &&
+                (select == null ? entry as TLog : select(entry)) is { } value)
+            {
+                logs.Enqueue(value);
+            }
+        };
+
     /// <summary>
-    /// Returns the subdirectory described by <paramref name="subDirectoryNames"/> inside the current test instance's
-    /// <see cref="DirectoryPaths.Temp"/> directory.
+    /// Returns the subdirectory described by the <paramref name="subDirectoryNames"/> sub-path inside the <see
+    /// cref="TempDirectoryPath"/>/<see cref="Id"/> directory.
     /// </summary>
     public string GetTempSubDirectoryPath(params string[] subDirectoryNames) =>
-        DirectoryPaths.GetTempDirectoryPath([Id, .. subDirectoryNames]);
+        Path.Combine([TempDirectoryPath, Id, .. subDirectoryNames]);
 
     /// <summary>
     /// Returns a path in the <see cref="DirectoryPaths.Downloads"/> subdirectory inside the current test instance's
     /// <see cref="DirectoryPaths.Temp"/> directory.
     /// </summary>
     public string GetDownloadFilePath(params string[] subDirectoryNames) =>
-        DirectoryPaths.GetTempDirectoryPath([Id, DirectoryPaths.Downloads, .. subDirectoryNames]);
+        Path.Combine([TempDirectoryPath, Id, DirectoryPaths.Downloads, .. subDirectoryNames]);
 
     private bool IsAlert()
     {
         // If there's an alert (which can happen mostly after a click but also after navigating) then all other driver
-        // operations, even retrieving the current URL, will throw an UnhandledAlertException. Thus we need to check if
+        // operations, even retrieving the current URL, will throw an UnhandledAlertException. Thus, we need to check if
         // an alert is present and that's only possible by catching exceptions.
         try
         {

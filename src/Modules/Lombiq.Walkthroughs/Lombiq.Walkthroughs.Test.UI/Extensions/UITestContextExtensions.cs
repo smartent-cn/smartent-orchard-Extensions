@@ -9,11 +9,12 @@ public static class UITestContextExtensions
     public static async Task RunSetupAndTestWalkthroughsBehaviorAsync(this UITestContext context)
     {
         await context.GoToSetupPageAndSetupOrchardCoreWithWalkthroughsRecipeAsync();
+        await context.EnableThemeDirectlyAsync(Lombiq.Tests.UI.AdminTheme.Constants.FeatureIds.Area, isAdmin: true);
         await context.TestWalkthroughsBehaviorAsync();
     }
 
     public static Task GoToSetupPageAndSetupOrchardCoreWithWalkthroughsRecipeAsync(this UITestContext context) =>
-        context.GoToSetupPageAndSetupOrchardCoreAsync("Lombiq.Walkthroughs.Setup");
+        context.GoToSetupAndSetupOrchardCoreAsync("Lombiq.Walkthroughs.Setup");
 
     public static Task EnableWalkthroughsFeatureAsync(this UITestContext context) =>
         context.EnableFeatureDirectlyAsync("Lombiq.Walkthroughs");

@@ -7,7 +7,6 @@ using Microsoft.ApplicationInsights.AspNetCore.Extensions;
 using Microsoft.ApplicationInsights.Channel;
 using Microsoft.ApplicationInsights.DependencyCollector;
 using Microsoft.ApplicationInsights.Extensibility;
-using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -127,15 +126,6 @@ public static class ApplicationInsightsInitializerExtensions
         services.ConfigureTelemetryModule<DependencyTrackingTelemetryModule>(
             (module, _) => module.EnableSqlCommandTextInstrumentation = applicationInsightsOptions.EnableSqlCommandTextInstrumentation);
 
-#pragma warning disable CS0618 // Type or member is obsolete
-        if (applicationInsightsOptions.EntraAuthenticationType == EntraAuthenticationType.None &&
-            !string.IsNullOrEmpty(applicationInsightsOptions.QuickPulseTelemetryModuleAuthenticationApiKey))
-        {
-            services.ConfigureTelemetryModule<QuickPulseTelemetryModule>(
-                (module, _) => module.AuthenticationApiKey = applicationInsightsOptions.QuickPulseTelemetryModuleAuthenticationApiKey);
-        }
-#pragma warning restore CS0618 // Type or member is obsolete
-
         services.AddSingleton<ITelemetryInitializer, UserContextPopulatingTelemetryInitializer>();
         services.AddSingleton<ITelemetryInitializer, ShellNamePopulatingTelemetryInitializer>();
         services.AddSingleton<ITelemetryInitializer, IgnoreFailureTelemetryInitializer>();
@@ -157,6 +147,8 @@ public static class ApplicationInsightsInitializerExtensions
                     options.EnableQuickPulseMetricStream = false;
                 });
         }
+
+        if (applicationInsightsOptions.EnableProfiler) services.AddServiceProfiler();
 
         builder.AddTenantFeatures(ApplicationInsightsFeatureIds.Default);
 

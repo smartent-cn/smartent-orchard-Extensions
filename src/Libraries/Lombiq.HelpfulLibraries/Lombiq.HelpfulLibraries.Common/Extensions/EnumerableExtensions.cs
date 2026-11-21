@@ -1,5 +1,3 @@
-#nullable enable
-
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading.Tasks;
@@ -43,7 +41,7 @@ public static class EnumerableExtensions
     /// <returns><see langword="true"/> if the <paramref name="source"/> had at least one item.</returns>
     public static bool ForEach<T>(this IEnumerable<T> source, Action<T> action, Action<T>? beforeFirst = null)
     {
-        bool any = false;
+        var any = false;
 
         foreach (var item in source)
         {
@@ -80,7 +78,7 @@ public static class EnumerableExtensions
         Func<TItem, int, Task<TResult>> asyncOperation)
     {
         var results = new List<TResult>();
-        int index = 0;
+        var index = 0;
         foreach (var item in source) results.Add(await asyncOperation(item, index++));
         return results;
     }
@@ -95,7 +93,7 @@ public static class EnumerableExtensions
     }
 
     /// <summary>
-    /// Awaits the tasks sequentially while the action returns <see langword="false"/>.
+    /// Awaits the tasks sequentially while the action returns <see langword="true"/>.
     /// </summary>
     /// <returns><see langword="true"/> if the <see langword="foreach"/> was never broken.</returns>
     public static async Task<bool> AwaitWhileAsync<TItem>(
@@ -166,6 +164,16 @@ public static class EnumerableExtensions
         collection is IList<T> list ? list : [.. collection];
 
     /// <summary>
+    /// Attempts to cast <paramref name="collection"/> into <see cref="IReadOnlyList{T}"/>. If that's not possible then
+    /// converts it into one. Not to be confused with <see cref="Enumerable.ToList{TSource}"/> that always creates a separate
+    /// <see cref="List{T}"/> regardless of source type. This extension is more suitable when the <paramref
+    /// name="collection"/> is expected to be <see cref="IReadOnlyList{T}"/> but has to be stored as <see
+    /// cref="IEnumerable{T}"/>.
+    /// </summary>
+    public static IReadOnlyList<T> AsReadOnlyList<T>(this IEnumerable<T> collection) =>
+        collection is IReadOnlyList<T> list ? list : [.. collection];
+
+    /// <summary>
     /// Transforms the specified <paramref name="collection"/> with the <paramref name="select"/> function and returns
     /// the items that return <see langword="true"/> when passed to the <paramref name="where"/> function.
     /// </summary>
@@ -186,7 +194,6 @@ public static class EnumerableExtensions
     /// the items that are not null.
     /// </summary>
     public static IEnumerable<TOut> SelectWhere<TIn, TOut>(this IEnumerable<TIn> collection, Func<TIn, TOut?> select)
-        where TOut : notnull
     {
         foreach (var item in collection)
         {
@@ -301,13 +308,21 @@ public static class EnumerableExtensions
         collection.Where(item => !negativePredicate(item));
 
     /// <summary>
+    /// Filters out the <see langword="null"/> or whitespace elements of the <paramref name="collection"/>. The
+    /// resulting collection's elements are marked not null.
+    /// </summary>
+    public static IEnumerable<string> WhereNotNullOrWhiteSpace(this IEnumerable<string?> collection) =>
+        collection.WhereNot(string.IsNullOrWhiteSpace).Cast<string>();
+
+    /// <summary>
     /// Filters the elements of the <paramref name="collection"/> if they return <see langword="false"/> when evaluated
     /// by the <paramref name="negativePredicate"/>.
     /// </summary>
     public static IAsyncEnumerable<T> WhereNotAsync<T>(
         this IAsyncEnumerable<T> collection,
         Func<T, Task<bool>> negativePredicate) =>
-        collection.WhereAwait(async value => !await negativePredicate(value));
+        collection.Where(
+            async (value, _) => !await negativePredicate(value));
 
     /// <summary>
     /// Returns <paramref name="collection"/> if it's not <see langword="null"/>, otherwise <see
@@ -387,10 +402,10 @@ public static class EnumerableExtensions
 
         if (!isSortedByStart) ranges.Sort((left, right) => left.Start.Value - right.Start.Value);
 
-        for (int currentIndex = 0; currentIndex < ranges.Count - 1; currentIndex++)
+        for (var currentIndex = 0; currentIndex < ranges.Count - 1; currentIndex++)
         {
             var current = ranges[currentIndex];
-            int followingIndex = currentIndex + 1;
+            var followingIndex = currentIndex + 1;
 
             while (followingIndex < ranges.Count && ranges[followingIndex].Start.Value < current.End.Value)
             {

@@ -146,14 +146,15 @@ The following configuration should be used to allow the maintenance to run:
       "ChangeUserSensitiveContent": {
         "IsEnabled": true,
         "TenantNames": "Default, Tenant1, Tenant2",
-        "EmailExcludePattern": ".+@(lombiq.com|example.com|foo.com)$"
+        "EmailExcludePattern": ".+@(lombiq.com|example.com|foo.com)$",
+        "TargetEmailDomainName": "foo.com"
       }
     }
   }
 }
 ```
 
-Any user accounts with an e-mail matching the `EmailExcludePattern` regex will not be depersonalized.
+Any user accounts with an e-mail matching the `EmailExcludePattern` regex will not be depersonalized. The rest will be altered to use the format `{FirstName}{LastName}@{TargetEmailDomainName}`. If you change either `TargetEmailDomainName` or `TargetEmailDomainName`, make sure that emails ending with `TargetEmailDomainName` are excluded by the `EmailExcludePattern`.
 
 ### `Lombiq.Hosting.Tenants.Maintenance.DeleteElasticsearchIndices`
 
@@ -199,7 +200,7 @@ The following configuration options are available to set the enabled features:
 
 ### `Lombiq.Hosting.Tenants.Maintenance.StaggeredTenantWakeUp`
 
-Adds a page to the admin under Multi-Tenancy/Staggered Tenant Wake Up that allows you to start all tenants shells in a staggered way. Waking up all the tenants this way ensures that migrations (and maintenance, should you have them) are all executed without having to start each tenant manually and also avoids saturating hardware resources (when configured correctly), such as the database access.
+Adds a page to the admin under Multi-Tenancy/Staggered Tenant Wake Up that allows you to start all tenants' shells in a staggered way. Waking up all the tenants this way ensures that migrations (and maintenance, should you have them) are all executed without having to start each tenant manually and also avoids saturating hardware resources (when configured correctly), such as the database access.
 
 You can edit the maintenance options directly on the Multi-Tenancy / Staggered Tenant Wake Up page if you click on the edit button.
 
@@ -231,3 +232,20 @@ You can initialize the configuration with the following app settings:
   }
 }
 ```
+
+### `Lombiq.Hosting.Tenants.Maintenance.PurgeMediaCache`
+
+A maintenance task that purges the local cache for remote Media files under the app's `wwwroot`, preventing it going stale during production-staging swaps.
+
+Enable it with:
+
+```json
+{
+  "OrchardCore": {
+    "Lombiq_Hosting_Tenants_Maintenance": {
+      "PurgeMediaCache": {
+        "IsEnabled": true
+      }
+    }
+  }
+}

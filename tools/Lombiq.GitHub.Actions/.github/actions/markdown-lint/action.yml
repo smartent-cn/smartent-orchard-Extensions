@@ -1,10 +1,9 @@
+# DEPRECATED! Use asset-lint instead. It lints Markdown files with markdownlint and textlint too.
 name: Markdown Linting
 description: >
   Lints markdown files by wrapping the markdownlint-cli2 action
   (https://github.com/DavidAnson/markdownlint-cli2-action).
 
-# When updating defaults here also update them in the `markdown-lint` workflow. These parameters are passed on directly
-# to the markdownlint-cli2 action, see: https://github.com/DavidAnson/markdownlint-cli2-action/blob/main/action.yml.
 inputs:
   config:
     description: Path to a file to use for the base configuration object (defaults to "lombiq.markdownlint.json").
@@ -16,7 +15,10 @@ inputs:
     required: false
   globs:
     description: Glob expression(s) of files to lint (newline-delimited).
-    default: '**/*.{md,markdown}'
+    default: >
+      **/*.{md,markdown}
+      !node_modules
+      !License.md
     required: false
   separator:
     description: String to use as a separator for the "globs" input (defaults to newline).
@@ -26,19 +28,24 @@ inputs:
 runs:
   using: composite
   steps:
+    - name: Setup
+      shell: pwsh
+      run: |
+        (Resolve-Path '${{ github.action_path }}/../../../Scripts').Path >> $Env:GITHUB_PATH
+
+        # Copy the default configuration file so it's accessible without path complications.
+        if (-not (Test-Path lombiq.markdownlint.json))
+        {
+          Copy-Item '${{ github.action_path }}/lombiq.markdownlint.json' .
+        }
+
     - name: Markdown Linting
-      # When upgrading, also update Lombiq.NodeJs.Extensions to use the corresponding version of the markdownlint
-      # package.
-      uses: DavidAnson/markdownlint-cli2-action@992badcdf24e3b8eb7e87ff9287fe931bcb00c6e # v20.0.0
+      uses: DavidAnson/markdownlint-cli2-action@696eb3f2509270d7b882d2aa68347bc676e7af34 # v25
       with:
         config: ${{ inputs.config }}
         fix: ${{ inputs.fix }}
         globs: ${{ inputs.globs }}
         separator: ${{ inputs.separator }}
-
-    - name: Setup Scripts
-      shell: pwsh
-      run: (Resolve-Path '${{ github.action_path }}/../../../Scripts').Path >> $Env:GITHUB_PATH
 
     - name: Copy files updated by markdown-lint automatic fixes
       if: inputs.fix == 'true'

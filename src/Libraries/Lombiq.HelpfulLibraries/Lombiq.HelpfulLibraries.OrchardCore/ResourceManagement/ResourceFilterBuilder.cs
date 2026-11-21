@@ -5,6 +5,7 @@ using OrchardCore.ContentManagement.Records;
 using OrchardCore.ResourceManagement;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using YesSql;
@@ -101,6 +102,16 @@ public class ResourceFilterBuilder
 
     /// <summary>
     /// Adds a filter that matches any of the provided <paramref name="contentTypes"/> to the list of
+    /// <see cref="ResourceFilters"/> when the content is being Previewed.
+    /// </summary>
+    /// <exception cref="ArgumentOutOfRangeException">
+    /// Thrown when <paramref name="contentTypes"/> has no provided items.
+    /// </exception>
+    public ResourceFilter WhenContentTypePreview(params string[] contentTypes) =>
+        WhenContentTypeInner("Preview", contentTypes);
+
+    /// <summary>
+    /// Adds a filter that matches any of the provided <paramref name="contentTypes"/> to the list of
     /// <see cref="ResourceFilters"/> and it is currently Create display mode.
     /// </summary>
     /// <exception cref="ArgumentOutOfRangeException">
@@ -129,7 +140,7 @@ public class ResourceFilterBuilder
     /// <summary>
     /// Adds an always matching filter to the list of <see cref="ResourceFilters"/>.
     /// </summary>
-    public ResourceFilter Always(Action<IResourceManager> execution = null)
+    public ResourceFilter Always(Action<IResourceManager>? execution = null)
     {
         var filter = When(_ => true);
         if (execution != null) filter.Executions.Add(execution);
@@ -147,27 +158,61 @@ public class ResourceFilterBuilder
 
         return When(async context =>
         {
-            var routeValues = context
-                .Request
-                .RouteValues
-                .ToDictionary(pair => pair.Key, pair => pair.Value?.ToString(), StringComparer.OrdinalIgnoreCase);
-
-            if (routeValues.GetMaybe("action") != displayType ||
-                routeValues.GetMaybe("contentItemId") is not { } contentItemId)
+            if (!GetContentItemId(displayType, context, out var contentItemId))
             {
                 return false;
             }
 
             var session = context.RequestServices.GetRequiredService<ISession>();
-            var query = displayType is "Edit" ?
-                // We check for both published and draft content items.
-                session.QueryIndex<ContentItemIndex>(index => index.Published || (index.Latest && !index.Published))
+
+            // In case of Edit, we check for both published and draft content items.
+            var query = string.Equals(displayType, "Edit", StringComparison.Ordinal)
+                ? session.QueryIndex<ContentItemIndex>(index => index.Published || (index.Latest && !index.Published))
                 : session.QueryContentItemIndex(PublicationStatus.Published);
-            var contentItemIndex = await query.Where(index => index.ContentItemId == contentItemId)
-                .FirstOrDefaultAsync();
+
+            var contentItemIndex = await query
+                .Where(index => index.ContentItemId == contentItemId)
+                .FirstOrDefaultAsync(context.RequestAborted);
             return contentItemIndex?.ContentType is { } contentType &&
                 contentTypes.Contains(contentType, StringComparer.OrdinalIgnoreCase);
         });
+    }
+
+    private static bool GetContentItemId(string displayType, HttpContext context, out string? contentItemId)
+    {
+        if (displayType == "Preview")
+        {
+            try
+            {
+                if (context.Request.GetFormValueMaybe("PreviewContentItemId") is { } previewContentItemId)
+                {
+                    contentItemId = previewContentItemId;
+
+                    return true;
+                }
+            }
+            catch (InvalidDataException)
+            {
+                // The form contained invalid data, which can only really happen by deliberately crafting it like that,
+                // what happens during security scans and cracking attempts. Nothing to do.
+            }
+        }
+        else
+        {
+            var routeValues = context
+                .Request
+                .RouteValues
+                .ToDictionary(pair => pair.Key, pair => pair.Value?.ToString(), StringComparer.OrdinalIgnoreCase);
+
+            if (routeValues.GetMaybe("action") == displayType
+                && routeValues.TryGetValue("contentItemId", out contentItemId))
+            {
+                return true;
+            }
+        }
+
+        contentItemId = null;
+        return false;
     }
 
     private static IEnumerable<string> TrimPaths(params string[] paths) =>

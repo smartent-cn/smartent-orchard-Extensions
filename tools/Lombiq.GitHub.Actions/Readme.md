@@ -9,13 +9,13 @@ Reusable workflows and actions for GitHub Actions shared between Lombiq projects
 - Publish packages to NuGet
 - Verify and validate pull requests
 - Check spelling
-- Perform static code analysis and linting
+- Perform linting on JS, CSS, and even Markdown and YAML files
 - Deploy to an Azure App Service, swap staging and production slots, and copy production data to the staging site
 - And more!
 
 These can be invoked from any other repository's build.
 
-[Check out a demo](https://www.youtube.com/watch?v=bhMnX0TsybM) on our YouTube channel, and the Orchard Harvest 2023 conference talk about automated QA in Orchard Core [here](https://youtu.be/CHdhwD2NHBU).
+[Check out the Orchard Harvest 2025 conference talk about the project](https://www.youtube.com/watch?v=kB6qjEDrpdk&list=PLpCsCyd254FodB6zUxTUj7g3hGIeEotvB&index=3) on the Orchard Core YouTube channel, and the [Orchard Harvest 2023 talk about automated QA in Orchard Core](https://youtu.be/CHdhwD2NHBU) that utilizes GitHub Actions as well.
 
 We at [Lombiq](https://lombiq.com/) also used these workflows for the following projects:
 
@@ -43,9 +43,17 @@ This project is developed by [Lombiq Technologies](https://lombiq.com/). Commerc
 
 ### Default .NET version
 
-For .NET workflows, the default .NET SDK version we should provide is a concrete patch version of the latest Long-Term Support (LTS) .NET major version (the even-numbered ones, like 8), the most recent one at the time of updating .NET support (e.g., to `8.0.301` when .NET 8 is the latest LTS version). We need to pin the .NET SDK to a specific version like this to avoid unexpected build changes that patch version updates bring (which happens if the version is specified as e.g. `8.0.x`). See [this issue](https://github.com/dotnet/roslyn/issues/73639) for more context.
+For .NET workflows, the default .NET SDK version we should provide is a concrete patch version of the latest Long-Term Support (LTS) .NET major version (the even-numbered ones, like 8), the most recent one at the time of upgrading .NET support (e.g., to `8.0.301` when .NET 8 is the latest LTS version). We need to pin the .NET SDK to a specific version like this to avoid unexpected build changes that patch version updates bring (which happens if the version is specified as e.g. `8.0.x`). See [this issue](https://github.com/dotnet/roslyn/issues/73639) for more context.
 
-We can still choose to update to a more recent patch version, but only deliberately.
+We can still choose to update to a more recent patch version, but only deliberately. This can happen if the newer version has critical fixes that we deem necessary for the vast majority of applications.
+
+### Default Node.js version
+
+.NET build workflows install the Active Long-Term Support (LTS) version of Node.js by default, the latest one at the time of upgrading the Node.js version. This version is configurable. This is then pinned to a concrete patch version to make builds repeatable. You can check out the [Node.js release schedule](https://nodejs.org/en/about/previous-releases) to see which version is the latest Active LTS at any given time.
+
+We can still choose to update to a more recent patch version, but only deliberately. This can happen if the newer version has critical fixes that we deem necessary for the vast majority of applications.
+
+Build workflows also enable [corepack](https://github.com/nodejs/corepack) to allow using Node.js package managers other than NPM. This behavior will be disabled when upgrading to Node.js v26 since that version [won't contain corepack anymore](https://github.com/nodejs/node/issues/50963#issuecomment-2746471823).
 
 ### Reference validation
 

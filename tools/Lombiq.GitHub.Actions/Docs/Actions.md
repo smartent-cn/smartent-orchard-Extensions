@@ -7,10 +7,12 @@ In addition to the below short explanations, check out the inline documentation 
 ## .NET Core and Orchard Core builds
 
 - `build-dotnet`: Builds all .NET solutions or projects in the given directory with optional static code analysis.
+- `free-up-space-for-dotnet`: Frees up storage space on the runner by deleting files unnecessary for .NET projects.
 - `install-dotnet-tool`: Installs a tool globally into the .NET CLI by its name and version number.
 - `setup-dotnet`: Sets up the .NET SDK.
 - `verify-dotnet-consolidation`: Verifies that the NuGet packages of a .NET solution are consolidated, i.e. the same version of a given package is used in all projects.
-- `test-dotnet`: Runs .NET unit and UI tests (with the [Lombiq UI Testing Toolbox for Orchard Core](https://github.com/Lombiq/UI-Testing-Toolbox)), generates a test report, and uploads UI testing failure dumps to artifacts.
+- `test-dotnet`: Runs .NET unit and UI tests (with the [Lombiq UI Testing Toolbox for Orchard Core](https://github.com/Lombiq/UI-Testing-Toolbox)), generates a test report, and uploads UI testing failure dumps to artifacts. See the [Microsoft Testing Platform migration guide](MicrosoftTestingPlatform.md) for runner setup and legacy VSTest support.
+- `verify-git-status-clean`: Fails if the current Git repository has pending changes, with an optional ignore list for exact repository-relative paths.
 
 ## .NET Framework and Orchard 1 builds
 
@@ -30,7 +32,9 @@ In addition to the below short explanations, check out the inline documentation 
 - `cancel-workflow`: Cancels the current workflow run, i.e. all jobs. Useful if you want to cancel the rest of the workflow when one job fails. Suitable workflows in this project expose this functionality via the `cancel-workflow-on-failure` parameter.
 - `check-merge-conflict`: Labels and comments on pull requests with merge conflicts.
 - `create-jira-issues-for-community-activities`: Creates Jira issues for community activities happening on GitHub, like issues, discussions, and pull requests being opened. Pull requests are only taken into account if they're not already related to a Jira issue (by starting their title with a Jira issue key).
-- `markdown-lint`: Checks for linting errors in markdown files, allowing for an optional configuration file to be used. Based on the [markdownlint-cli2](https://github.com/DavidAnson/markdownlint-cli2-action) action.
+- `get-branches`: Fetches information about all the branches in a repository from the GitHub API.
+- `notify-teams`: A wrapper for the [carriquiry-g/ms-teams-notification](https://github.com/carriquiry-g/ms-teams-notification) action to send a notification to a Microsoft Teams channel using a webhook.
+- `open-pull-request`: Opens a pull request from a source branch to a target branch in a repository. This can be used to automatically open pull requests e.g. in a fork to merge changes from a branch in the original repository to your branch.
 - `publish-nuget`: Publishes the content of the current directory as a NuGet package.
 - `update-github-issue-and-pull-request`: Adds the Jira issue key prefix and link to pull requests as well as a Fixes reference to a GitHub issue, if a suitable one is found.
 - `verify-submodule-pull-request`: Assuming that the current repository is a submodule in another repository, this action verifies that a pull request with a matching issue code has been opened there as well.

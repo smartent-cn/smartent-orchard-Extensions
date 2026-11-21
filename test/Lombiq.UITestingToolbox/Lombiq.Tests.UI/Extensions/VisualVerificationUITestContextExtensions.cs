@@ -1,5 +1,4 @@
 using Codeuctivity.ImageSharpCompare;
-using Lombiq.HelpfulLibraries.Common.Utilities;
 using Lombiq.Tests.UI.Attributes;
 using Lombiq.Tests.UI.Constants;
 using Lombiq.Tests.UI.Exceptions;
@@ -19,6 +18,9 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading.Tasks;
+
+using ConfigureVisualVerification = System.Action<Lombiq.Tests.UI.Models.VisualVerificationMatchApprovedConfiguration>;
 
 namespace Lombiq.Tests.UI.Extensions;
 
@@ -28,6 +30,18 @@ public static class VisualVerificationUITestContextExtensions
     private const string HintTestDumpItemAlreadyExists = $@"
 Hint: You can use the configurator callback of {nameof(AssertVisualVerificationApproved)} and {nameof(AssertVisualVerification)}
 to customize the name of the dump item.";
+
+    /// <summary>
+    /// Throws an exception if the <see cref="UITestContext.Driver"/> does not implement <see cref="ITakesScreenshot"/>.
+    /// </summary>
+    public static void ThrowIfCantTakeScreenshots(this UITestContext context)
+    {
+        if (context.Driver is not ITakesScreenshot)
+        {
+            throw new InvalidOperationException(
+                $"The current driver ({context.Driver.GetType().FullName}) does not support taking screenshots.");
+        }
+    }
 
     /// <summary>
     /// Compares the baseline image and screenshot of the selected element on multiple different resolutions.
@@ -48,19 +62,23 @@ to customize the name of the dump item.";
     /// </para>
     /// </remarks>
     [VisualVerificationApprovedMethod]
-    public static void AssertVisualVerificationOnAllResolutions(
+    public static async Task AssertVisualVerificationOnAllResolutionsAsync(
         this UITestContext context,
         IEnumerable<Size> sizes,
         Func<Size, By> getSelector,
         double pixelErrorPercentageThreshold = 0,
-        Action<VisualVerificationMatchApprovedConfiguration> configurator = null)
+        ConfigureVisualVerification configurator = null,
+        TimeSpan? resolutionChangeDelay = null)
     {
-        context.HideScrollbar();
-
         var exceptions = new List<Exception>();
         foreach (var size in sizes)
         {
+            // Waiting after viewport size change ensures that any animation (such as sticky mobile menu) has time to
+            // transition to its final state.
             context.SetViewportSize(size);
+            await Task.Delay(
+                resolutionChangeDelay ?? TimeSpan.FromSeconds(1),
+                context.Configuration.TestCancellationToken);
 
             try
             {
@@ -69,7 +87,7 @@ to customize the name of the dump item.";
                     pixelErrorPercentageThreshold: pixelErrorPercentageThreshold,
                     configurator: configuration =>
                     {
-                        configuration.WithFileNameSuffix(StringHelper.CreateInvariant($"{size.Width}x{size.Height}"));
+                        configuration.WithFileNameSuffix(string.Create(CultureInfo.InvariantCulture, $"{size.Width}x{size.Height}"));
                         configurator?.Invoke(configuration);
                     });
             }
@@ -115,21 +133,23 @@ to customize the name of the dump item.";
     /// </para>
     /// </remarks>
     [VisualVerificationApprovedMethod]
-    public static void AssertVisualVerificationApprovedOnAllResolutionsWithPlatformSuffix(
+    public static Task AssertVisualVerificationApprovedOnAllResolutionsWithPlatformSuffixAsync(
         this UITestContext context,
         IEnumerable<Size> sizes,
         Func<Size, By> getSelector,
         double pixelErrorPercentageThreshold = 0,
-        Action<VisualVerificationMatchApprovedConfiguration> configurator = null) =>
-        context.AssertVisualVerificationOnAllResolutions(
+        ConfigureVisualVerification configurator = null,
+        TimeSpan? resolutionChangeDelay = null) =>
+        context.AssertVisualVerificationOnAllResolutionsAsync(
             sizes,
             getSelector,
             pixelErrorPercentageThreshold,
-            configuration => configuration.WithUsePlatformAsSuffix());
+            configuration => configuration.WithUsePlatformAsSuffix(),
+            resolutionChangeDelay);
 
     /// <summary>
     /// Compares the baseline image and screenshot of the whole page.
-    /// <see cref="AssertVisualVerificationApproved(UITestContext, By, double, Rectangle?, Action{VisualVerificationMatchApprovedConfiguration})"/>.
+    /// <see cref="AssertVisualVerificationApproved(UITestContext, By, double, Rectangle?, ConfigureVisualVerification)"/>.
     /// </summary>
     /// <param name="context">The <see cref="UITestContext"/> in which the extension is executed on.</param>
     /// <param name="pixelErrorPercentageThreshold">Maximum acceptable pixel error in percentage.</param>
@@ -143,18 +163,12 @@ to customize the name of the dump item.";
         this UITestContext context,
         double pixelErrorPercentageThreshold,
         Rectangle? regionOfInterest = null,
-        Action<VisualVerificationMatchApprovedConfiguration> configurator = null) =>
-        context.AssertVisualVerificationApproved(
-            By.TagName("body"),
-            pixelErrorPercentageThreshold,
-            regionOfInterest,
-            configurator);
+        ConfigureVisualVerification configurator = null) =>
+        context.AssertVisualVerificationApproved(By.TagName("body"), pixelErrorPercentageThreshold, regionOfInterest, configurator);
 
-    // This is because of the long method signature.
-#pragma warning disable S103 // Lines should not be too long
     /// <summary>
     /// Compares the baseline image and screenshot of the element given by <paramref name="elementSelector"/>.
-    /// <see cref="AssertVisualVerificationApproved(UITestContext, IWebElement, double, Rectangle?, Action{VisualVerificationMatchApprovedConfiguration})"/>.
+    /// <see cref="AssertVisualVerificationApproved(UITestContext, IWebElement, double, Rectangle?, ConfigureVisualVerification)"/>.
     /// </summary>
     /// <param name="context">The <see cref="UITestContext"/> in which the extension is executed on.</param>
     /// <param name="elementSelector">
@@ -167,14 +181,13 @@ to customize the name of the dump item.";
     /// <exception cref="VisualVerificationBaselineImageNotFoundException">
     /// If no baseline image found under project path.
     /// </exception>
-#pragma warning restore S103 // Lines should not be too long
     [VisualVerificationApprovedMethod]
     public static void AssertVisualVerificationApproved(
         this UITestContext context,
         By elementSelector,
         double pixelErrorPercentageThreshold,
         Rectangle? regionOfInterest = null,
-        Action<VisualVerificationMatchApprovedConfiguration> configurator = null) =>
+        ConfigureVisualVerification configurator = null) =>
         context.AssertVisualVerificationApproved(
             elementSelector,
             (approvedContext, diff) =>
@@ -222,7 +235,7 @@ to customize the name of the dump item.";
         IWebElement element,
         double pixelErrorPercentageThreshold,
         Rectangle? regionOfInterest = null,
-        Action<VisualVerificationMatchApprovedConfiguration> configurator = null) =>
+        ConfigureVisualVerification configurator = null) =>
         context.AssertVisualVerificationApproved(
             element,
             (approvedContext, diff) =>
@@ -342,7 +355,10 @@ to customize the name of the dump item.";
         By elementSelector,
         Action<VisualVerificationMatchApprovedContext, ICompareResult> comparator,
         Rectangle? regionOfInterest = null,
-        Action<VisualVerificationMatchApprovedConfiguration> configurator = null) =>
+        ConfigureVisualVerification configurator = null)
+    {
+        context.ScrollTo(elementSelector);
+        context.HideScrollbar();
         context.AssertVisualVerificationApproved(
             elementSelector is null ? null : context.Get(elementSelector),
             comparator,
@@ -359,6 +375,8 @@ to customize the name of the dump item.";
                     .JoinNotNullOrEmpty("-")
                 );
             });
+        context.RestoreHiddenScrollbar();
+    }
 
     [VisualVerificationApprovedMethod]
     private static void AssertVisualVerificationApproved(
@@ -366,8 +384,10 @@ to customize the name of the dump item.";
         IWebElement element,
         Action<VisualVerificationMatchApprovedContext, ICompareResult> comparator,
         Rectangle? regionOfInterest = null,
-        Action<VisualVerificationMatchApprovedConfiguration> configurator = null)
+        ConfigureVisualVerification configurator = null)
     {
+        context.ThrowIfCantTakeScreenshots();
+
         var configuration = new VisualVerificationMatchApprovedConfiguration();
         configurator?.Invoke(configuration);
 
@@ -387,6 +407,8 @@ to customize the name of the dump item.";
                 .TakeLast(configuration.StackOffset)
                 .FirstOrDefault();
         }
+
+        testFrame ??= context.TestManifest?.StackFrame;
 
         if (testFrame == null)
         {
@@ -419,7 +441,7 @@ to customize the name of the dump item.";
                     messageIfExists: HintTestDumpItemAlreadyExists);
 
                 throw new VisualVerificationSourceInformationNotAvailableException(
-                    $"Source information not available, make sure you are compiling with full debug information."
+                    "Source information not available, make sure you are compiling with full debug information."
                     + $" Frame: {testFrame.MethodInfo.DeclaringType?.Name}.{testFrame.MethodInfo.Name}."
                     + $" The suggested baseline image was added to the test dump as {suggestedImageFileName}");
             }
@@ -499,6 +521,8 @@ to customize the name of the dump item.";
         Rectangle? regionOfInterest = null,
         Action<VisualMatchConfiguration> configurator = null)
     {
+        context.ThrowIfCantTakeScreenshots();
+
         var configuration = new VisualMatchConfiguration();
         configurator?.Invoke(configuration);
 

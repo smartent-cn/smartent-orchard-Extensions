@@ -1,4 +1,4 @@
-﻿using Atata;
+using Atata;
 using Lombiq.Tests.UI.Extensions;
 using Lombiq.Tests.UI.Services;
 using OpenQA.Selenium;
@@ -30,7 +30,7 @@ public static class TestCaseUITestContextExtensions
     {
         if (goToUrl)
         {
-            await context.SignInDirectlyAndGoToRelativeUrlAsync("UIKitShowcase");
+            await context.SignInDirectlyAndGoToAdminRelativeUrlAsync("UIKitShowcase");
         }
         else
         {
@@ -50,7 +50,7 @@ public static class TestCaseUITestContextExtensions
                 "document.querySelectorAll('.ta-navbar-top, #ta-left-sidebar').forEach((element) => element.remove());" +
                 "document.querySelector('.ta-content').style.margin = '0';" +
                 "document.body.style.width = '1500px';" +
-                "document.body.style.minHeight = '2800px';" +
+                "document.body.style.minHeight = '3100px';" +
                 "document.body.style.overflow = 'hidden';");
 
             // Add some delay to ensure that any admin theme animations have finished.
@@ -61,7 +61,7 @@ public static class TestCaseUITestContextExtensions
                 configurator: configuration => configuration
                     .WithUsePlatformAsSuffix()
                     .WithUseBrowserNameAsSuffix());
-            context.Refresh();
+            await context.RefreshAsync();
         }
 
         await context.TestAccordionAsync();

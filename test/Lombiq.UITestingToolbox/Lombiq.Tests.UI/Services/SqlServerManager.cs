@@ -113,7 +113,7 @@ public sealed class SqlServerManager : IAsyncDisposable
         string containerName = null,
         bool useCompressionIfAvailable = false)
     {
-        DebugHelper.WriteLineTimestamped($"Entering SqlServerManager semaphore in TakeSnapshotAsync().");
+        DebugHelper.WriteLineTimestamped("Entering SqlServerManager semaphore in TakeSnapshotAsync().");
 
         await _semaphore.WaitAsync(_cancellationTokenSource.Token);
         try
@@ -174,12 +174,12 @@ public sealed class SqlServerManager : IAsyncDisposable
                     ? new InvalidOperationException($"A file wasn't created at \"{filePathLocal}\".")
                     : new FileNotFoundException(
                         $"A file was created at \"{filePathRemote}\" but it doesn't appear at \"{filePathLocal}\". " +
-                        $"Are the two bound together? If you are using Docker, did you set up the local volume?");
+                        "Are the two bound together? If you are using Docker, did you set up the local volume?");
             }
         }
         finally
         {
-            DebugHelper.WriteLineTimestamped($"Exiting SqlServerManager semaphore in TakeSnapshotAsync().");
+            DebugHelper.WriteLineTimestamped("Exiting SqlServerManager semaphore in TakeSnapshotAsync().");
             _semaphore.Release();
         }
     }
@@ -190,7 +190,7 @@ public sealed class SqlServerManager : IAsyncDisposable
         string containerName,
         int maxRetries = 3)
     {
-        DebugHelper.WriteLineTimestamped($"Entering SqlServerManager semaphore in RestoreSnapshotAsync().");
+        DebugHelper.WriteLineTimestamped("Entering SqlServerManager semaphore in RestoreSnapshotAsync().");
 
         await _semaphore.WaitAsync(_cancellationTokenSource.Token);
         try
@@ -222,8 +222,6 @@ public sealed class SqlServerManager : IAsyncDisposable
                 await DockerExecuteAsync(containerName, "bash", "-c", $"chown mssql:root '{remote}'");
             }
 
-            KillDatabaseProcesses(server);
-
             var restore = new Restore();
             restore.Devices.AddDevice(GetSnapshotFilePath(snapshotDirectoryPathRemote), DeviceType.File);
             restore.Database = _databaseName;
@@ -246,12 +244,30 @@ public sealed class SqlServerManager : IAsyncDisposable
             restore.RelocateFiles.Add(dataFile);
             restore.RelocateFiles.Add(logFile);
 
-            // We're not using SqlRestoreAsync() due to the same reason we're not using SqlBackupAsync().
-            restore.SqlRestore(server);
+            // Killing connections alone leaves a window for pooled connections to reconnect before the restore, causing
+            // random "Exclusive access could not be obtained" errors.
+            // Keep this test database offline until the restore recovers it, preventing new connections as well.
+            var databaseIdentifier = "[" + _databaseName.Replace("]", "]]", StringComparison.Ordinal) + "]";
+            await server.ConnectionContext.ExecuteNonQueryAsync(
+                $"ALTER DATABASE {databaseIdentifier} SET OFFLINE WITH ROLLBACK IMMEDIATE",
+                _cancellationTokenSource.Token);
+
+            try
+            {
+                // We're not using SqlRestoreAsync() due to the same reason we're not using SqlBackupAsync().
+                restore.SqlRestore(server);
+            }
+            finally
+            {
+                // A failure before the restore starts must not leave the database offline.
+                var database = server.Databases[_databaseName];
+                await database.RefreshAsync(_cancellationTokenSource.Token);
+                if (database.Status.HasFlag(DatabaseStatus.Offline)) database.SetOnline();
+            }
         }
         finally
         {
-            DebugHelper.WriteLineTimestamped($"Exiting SqlServerManager semaphore in RestoreSnapshotAsync().");
+            DebugHelper.WriteLineTimestamped("Exiting SqlServerManager semaphore in RestoreSnapshotAsync().");
             _semaphore.Release();
         }
     }

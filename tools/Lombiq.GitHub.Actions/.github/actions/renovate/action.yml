@@ -16,12 +16,15 @@ runs:
   using: composite
   steps:
     - name: Run Renovate
-      uses: renovatebot/github-action@a4578d5584ac7a60d0f831537a481de7d00b9260 # v43.0.4
+      uses: renovatebot/github-action@acdd6bda8b035c99ce59d5675816af2aa65a1774 # v46.3.14
       env:
         RENOVATE_REPOSITORIES: ${{ github.repository }}
         LOG_LEVEL: ${{ inputs.log-level }}
         RENOVATE_ADDITIONAL_REVIEWERS: ${{ inputs.additional-reviewers }}
         # Do the dependency updates when the workflow runs, not when the Renovate config tells it.
         RENOVATE_FORCE: '{''schedule'':null,''prHourlyLimit'':0}'
+        # Since the caller can run anything on the runner anyway, no need to restrict commands.
+        # See: https://docs.renovatebot.com/self-hosted-configuration/#allowedcommands.
+        RENOVATE_ALLOWED_COMMANDS: '[".*"]'
       with:
         token: ${{ env.CHECKOUT_TOKEN }}

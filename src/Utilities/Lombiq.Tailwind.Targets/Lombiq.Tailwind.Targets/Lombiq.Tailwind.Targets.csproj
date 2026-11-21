@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <DefaultItemExcludes>$(DefaultItemExcludes);.git*;node_modules/**</DefaultItemExcludes>
+    <IsPublishable>false</IsPublishable>
+  </PropertyGroup>
+
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.Base.Sdk/Sdk/Import.props" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Lombiq.MSBuild.Base.Sdk" Version="2.1.1-alpha.9.osoe-344" />
+
+  <PropertyGroup>
+    <Title>Lombiq Tailwind MSBuild Targets</Title>
+    <Authors>Lombiq Technologies</Authors>
+    <CopyrightYear>2026</CopyrightYear>
+    <DescriptionBody>Automatically run Tailwind CSS during .NET builds without Node.js. See Readme.md for usage.</DescriptionBody>
+    <PackageTags>Lombiq;Tailwind;MSBuild;Orchard Core</PackageTags>
+    <RepositoryUrl>https://github.com/Lombiq/Tailwind-Targets</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/Lombiq/Tailwind-Targets/blob/dev/Lombiq.Tailwind.Targets/Readme.md</PackageProjectUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="build/**" Pack="true" PackagePath="build/" />
+    <None Include="*.props" Pack="true" PackagePath="" />
+    <None Include="*.targets" Pack="true" PackagePath="" />
+    <None Remove="node_modules/**" />
+  </ItemGroup>
+
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.Base.Sdk/Sdk/Import.targets" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.targets" Sdk="Lombiq.MSBuild.Base.Sdk" Version="2.1.1-alpha.9.osoe-344" />
+</Project>

@@ -7,6 +7,10 @@ global_level = 10
 # rename it to .editorconfig. This should eventually not be necessary, see https://github.com/dotnet/roslyn/issues/70326.
 
 
+# AsyncFixer rules
+# Flags too many instances of normal OC and ASP.NET Core API usage.
+dotnet_diagnostic.AsyncFixer06.severity = none
+
 # Microsoft.CodeAnalysis.CSharp rules
 dotnet_diagnostic.CS1591.severity = none
 
@@ -23,3 +27,8 @@ dotnet_diagnostic.CA1848.severity = none
 dotnet_diagnostic.CA2007.severity = silent
 dotnet_diagnostic.CA5391.severity = silent
 dotnet_diagnostic.CA5395.severity = silent
+
+# Disabling "CA1515: Because an application's API isn't typically referenced from outside the assembly, types can be 
+# made internal" because it often triggers on model types which need to be public for serialization or other
+# under-the-hood type usage.
+dotnet_diagnostic.CA1515.severity = none

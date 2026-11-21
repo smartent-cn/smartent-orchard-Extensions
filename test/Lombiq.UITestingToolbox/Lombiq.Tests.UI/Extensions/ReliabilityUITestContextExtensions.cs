@@ -5,6 +5,8 @@ using OpenQA.Selenium;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Formats.Png;
 using System;
+using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -79,7 +81,7 @@ public static class ReliabilityUITestContextExtensions
                 {
                     await processAsync();
                 }
-                catch (WebDriverException ex) when (ex.IsStateElementLikeException())
+                catch (WebDriverException ex) when (ex.IsStaleElementLikeException())
                 {
                     context.Configuration.TestOutputHelper.WriteLineTimestampedAndDebug(
                         "Stale element exception with the message \"{0}\". This is normal if the process navigated away.",
@@ -125,9 +127,11 @@ public static class ReliabilityUITestContextExtensions
                 {
                     await processAsync();
                 }
-                catch (WebDriverException ex) when (ex.IsStateElementLikeException())
+                catch (WebDriverException ex) when (ex.IsStaleElementLikeException())
                 {
-                    // If navigation happened while retrying the click, the element will become stale, but that's normal.
+                    context.Configuration.TestOutputHelper.WriteLineTimestampedAndDebug(
+                        "Stale element exception with the message \"{0}\". This is normal if the process navigated away to a different URL.",
+                        ex.Message);
                 }
 
                 return context.GetCurrentUri() != originalUri;
@@ -256,6 +260,10 @@ public static class ReliabilityUITestContextExtensions
     /// <exception cref="TimeoutException">
     /// Thrown if the operation didn't succeed even after retries within the allotted time.
     /// </exception>
+    [SuppressMessage(
+        "StyleCop.CSharp.ReadabilityRules",
+        "SA1134:Attributes should not share line",
+        Justification = "We use [StackTraceHidden] for lambdas to avoid polluting the stack trace.")]
     public static T RetrieveWithRetriesIfStaleOrFail<T>(
         this UITestContext context,
         Func<T> process,
@@ -264,13 +272,13 @@ public static class ReliabilityUITestContextExtensions
     {
         T result = default;
 
-        context.DoWithRetriesOrFail(() =>
+        context.DoWithRetriesOrFail([StackTraceHidden] () =>
         {
             try
             {
                 result = process();
             }
-            catch (WebDriverException ex) when (ex.IsStateElementLikeException())
+            catch (WebDriverException ex) when (ex.IsStaleElementLikeException())
             {
                 return false;
             }
@@ -312,7 +320,7 @@ public static class ReliabilityUITestContextExtensions
             {
                 process();
             }
-            catch (WebDriverException ex) when (ex.IsStateElementLikeException())
+            catch (WebDriverException ex) when (ex.IsStaleElementLikeException())
             {
                 return false;
             }
@@ -441,9 +449,9 @@ public static class ReliabilityUITestContextExtensions
             interval);
     }
 
+    // The timeout for this existence check needs to be significantly smaller than the timeout of the whole retry logic,
+    // so actually multiple tries can happen.
     private static TimeSpan GetExistsTimeout(UITestContext context, TimeSpan? timeout) =>
-        // The timeout for this existence check needs to be significantly smaller than the timeout of the whole retry
-        // logic so actually multiple tries can happen.
         (timeout ?? context.Configuration.TimeoutConfiguration.RetryTimeout) / 5;
 
     private static bool ExistsWithin(
@@ -466,6 +474,8 @@ public static class ReliabilityUITestContextExtensions
 
     private static string ComputeElementImageHash(this UITestContext context, IWebElement element)
     {
+        if (context.Driver is not ITakesScreenshot) return string.Empty;
+
         using var elementImage = context.TakeElementScreenshot(element);
         using var elementImageStream = new MemoryStream();
 

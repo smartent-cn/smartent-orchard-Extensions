@@ -1,4 +1,3 @@
-using Lombiq.HelpfulLibraries.Common.Utilities;
 using Lombiq.HelpfulLibraries.OrchardCore.Contents;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Filters;
@@ -17,7 +16,7 @@ namespace Lombiq.HelpfulLibraries.OrchardCore.Mvc;
 /// <typeparam name="TViewModel">The type of the view-model which is passed to the widget.</typeparam>
 public abstract class WidgetFilterBase<TViewModel> : IAsyncResultFilter
 {
-    private readonly Permission _requiredPermission;
+    private readonly Permission? _requiredPermission;
     private readonly IAuthorizationService _authorizationService;
     private readonly ILayoutAccessor _layoutAccessor;
     private readonly IShapeFactory _shapeFactory;
@@ -30,7 +29,7 @@ public abstract class WidgetFilterBase<TViewModel> : IAsyncResultFilter
     /// <summary>
     /// Gets the name of the view/shape that may be displayed.
     /// </summary>
-    protected abstract string ViewName { get; }
+    protected abstract string? ViewName { get; }
 
     /// <summary>
     /// Gets a value indicating whether the widget only shows up in routes with <see cref="AdminAttribute"/>.
@@ -68,9 +67,9 @@ public abstract class WidgetFilterBase<TViewModel> : IAsyncResultFilter
     protected virtual Task<TViewModel> GetViewModelAsync(ResultExecutingContext context) =>
         GetViewModelAsync();
 
-    public async Task OnResultExecutionAsync(ResultExecutingContext context, ResultExecutionDelegate next)
+    public async Task OnResultExecutionAsync(ResultExecutingContext? context, ResultExecutionDelegate next)
     {
-        if (context?.HttpContext == null || context.IsNotFullViewRendering())
+        if (context?.HttpContext is not { } httpContext || context.IsNotFullViewRendering())
         {
             await next();
             return;
@@ -78,12 +77,12 @@ public abstract class WidgetFilterBase<TViewModel> : IAsyncResultFilter
 
         if (AdminOnly && FrontEndOnly)
         {
-            throw new InvalidOperationException(StringHelper.CreateInvariant(
-                $"You must not set both {nameof(AdminOnly)} and {nameof(FrontEndOnly)} to true!"));
+            throw new InvalidOperationException(
+                $"You must not set both {nameof(AdminOnly)} and {nameof(FrontEndOnly)} to true!");
         }
 
-        var isAdmin = AdminAttribute.IsApplied(context.HttpContext);
-        var user = context.HttpContext?.User;
+        var isAdmin = AdminAttribute.IsApplied(httpContext);
+        var user = httpContext.User;
         if ((AdminOnly && !isAdmin) ||
             (FrontEndOnly && isAdmin) ||
             (_requiredPermission != null && !await _authorizationService.AuthorizeAsync(user, _requiredPermission)) ||

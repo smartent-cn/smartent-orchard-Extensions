@@ -1,8 +1,14 @@
+#nullable enable
+
 using Lombiq.Tests.UI.Services;
 using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
 using Xunit.Sdk;
+using Xunit.v3;
 
 namespace Lombiq.Tests.UI.Models;
 
@@ -11,9 +17,35 @@ namespace Lombiq.Tests.UI.Models;
 /// </summary>
 public class UITestManifest
 {
-    public ITest XunitTest => TestContext.Current.Test;
-    public string Name => XunitTest.TestDisplayName;
-    public Func<UITestContext, Task> TestAsync { get; private set; }
+    public ITest? XunitTest => TestContext.Current.Test;
+    public string? Name => XunitTest?.TestDisplayName;
 
-    public UITestManifest(Func<UITestContext, Task> testAsync) => TestAsync = testAsync;
+    public UITestBase Fixture { get; }
+
+    [Obsolete($"Access the {nameof(Tests)} property directly.")]
+    public Func<UITestContext, Task> TestAsync => Tests.Single();
+    public IReadOnlyList<Func<UITestContext, Task>> Tests { get; }
+
+    public EnhancedStackFrame? StackFrame { get; }
+
+    public UITestManifest(UITestBase fixture, params IReadOnlyList<Func<UITestContext, Task>> tests)
+    {
+        Fixture = fixture;
+        Tests = tests;
+        StackFrame = new EnhancedStackTrace(new StackTrace(fNeedFileInfo: true))
+            .First(frame => frame
+                .MethodInfo
+                .MethodBase?
+                .GetCustomAttributes(inherit: true)
+                .Any(attribute => attribute is IFactAttribute or ITheoryAttribute) == true);
+    }
+
+    public async Task RunTestsAsync(UITestContext context)
+    {
+        foreach (var test in Tests)
+        {
+            context.Configuration.TestCancellationToken.ThrowIfCancellationRequested();
+            await test(context);
+        }
+    }
 }

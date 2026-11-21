@@ -1,18 +1,4 @@
 <Project>
-  <!-- Node.js Extensions configuration -->
-  <PropertyGroup>
-    <!-- Use a single installation of Node.js Extensions for all projects in the solution. Currently, only works on
-         Windows. -->
-    <UseGlobalNodeJsExtensionsNpmPackage>true</UseGlobalNodeJsExtensionsNpmPackage>
-    <NodeJsExtensionsNpmPackageSourcePath>$(MSBuildThisFileDirectory)node_modules/.nx</NodeJsExtensionsNpmPackageSourcePath>
-
-    <!-- Instruct Node.js Extensions to create .eslintrc, .stylelintrc and .prettierrc files in the current directory, which is the
-         solution root directory. -->
-    <NodeJsExtensionsGlobalESLintConfigurationDirectory>$(MSBuildThisFileDirectory)</NodeJsExtensionsGlobalESLintConfigurationDirectory>
-    <NodeJsExtensionsGlobalStylelintConfigurationDirectory>$(MSBuildThisFileDirectory)</NodeJsExtensionsGlobalStylelintConfigurationDirectory>
-    <NodeJsExtensionsGlobalPrettierStyleConfigurationDirectory>$(MSBuildThisFileDirectory)</NodeJsExtensionsGlobalPrettierStyleConfigurationDirectory>
-  </PropertyGroup>
-
   <!-- Copying the Lombiq logo as an icon to all NuGet-published projects. -->
   <Target Name="Copy NuGet icon"
           AfterTargets="AfterResolveReferences"
@@ -28,7 +14,7 @@
     <NuGetBuild>true</NuGetBuild>
   </PropertyGroup>-->
 
-  <!-- Uncomment this to run .NET static code analyzers during rebuilds. -->
+  <!--Uncomment this to run .NET static code analyzers during rebuilds.-->
   <!--<PropertyGroup>
     <RunAnalyzersDuringBuild>true</RunAnalyzersDuringBuild>
   </PropertyGroup>-->
@@ -36,9 +22,21 @@
   <Import Project="tools/Lombiq.Analyzers/Lombiq.Analyzers.OrchardCore/Build.props" />
 
   <!-- This option hasn't improved the build time in this solution, but we'll keep it turned on regardless because it
-  might be the default one day, it can perhaps help in some cases, and it's not causing any issues.
-  See https://github.com/Lombiq/Open-Source-Orchard-Core-Extensions/issues/423. -->
+       might be the default one day, it can perhaps help in some cases, and it's not causing any issues.
+       See https://github.com/Lombiq/Open-Source-Orchard-Core-Extensions/issues/423. -->
   <PropertyGroup>
     <AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
+    <OrchardCoreVersion>3.0.1</OrchardCoreVersion>
   </PropertyGroup>
+
+  <!-- Security Updates for Orchard Core - make sure to check if these are still necessary. -->
+  <PropertyGroup>
+    <!-- Disable duplicate package warning, so we can include these in the individual submodules as needed. -->
+    <NoWarn>NU1504</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="HtmlSanitizer" NoWarn="NU1510">
+      <Version Condition="'$(ManagePackageVersionsCentrally)' != 'true'">9.2.1039</Version>
+    </PackageReference>
+  </ItemGroup>
 </Project>

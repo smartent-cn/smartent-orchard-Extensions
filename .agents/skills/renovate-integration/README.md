@@ -1,0 +1,92 @@
+# Renovate Integration Skill
+
+A project-level Copilot agent skill that automates safe, approval-gated integration of Renovate dependency updates across the OSOCE superproject and its Git submodules.
+
+## Purpose
+
+Renovate opens pull requests with dependency updates in this superproject and its submodules. Integrating these updates manually is tedious and error-prone. This skill provides a structured, phased workflow with safety gates at every step. It discovers work by listing **open Renovate PRs** in every repository and then checking out their head branches — stale `renovate/*` branches without an open PR are ignored.
+
+## Requirements
+
+- [GitHub CLI](https://cli.github.com/) (`gh`), authenticated — used to enumerate and merge Renovate PRs.
+- On Windows: Git Bash (`C:\Program Files\Git\bin\bash.exe`). A `bash` resolving to WSL can't see the Windows `gh`.
+
+## Quick Start
+
+Invoke the skill and it will prompt you for a Jira work item key (e.g. `OSOE-123`). All work is performed on an `issue/<WORK_ITEM_KEY>` branch — never directly on `dev` or `renovate/*`.
+
+## Workflow Phases
+
+| Phase | Name              | Description                                              |
+|-------|-------------------|----------------------------------------------------------|
+| 1     | Analysis          | List open Renovate PRs, review diffs, classify risk      |
+| 2     | Implementation    | Check out/merge PR branches into `issue/` branch, fix build issues |
+| 3     | GitHub Actions    | Update workflow references as needed                     |
+| 4     | PR Creation       | Open PRs in correct dependency order                     |
+| 5     | Finalization      | Revert temp references, merge to `dev` when approved     |
+
+Every phase transition requires **explicit user approval**. The skill will never proceed without it.
+
+## Safety Guarantees
+
+- **No push without permission** — `git push` is never executed unless explicitly instructed.
+- **Dependency-first pushes** — submodule commits are pushed before the containing repositories that reference them.
+- **Verified ref-revert exception** — after GitHub Actions refs return to `@dev`, an expected branch-ref validation failure doesn't require a GitHub review or another user approval if the ref-only revert and all other checks are verified.
+- **No commits to protected branches** — `renovate/*` and `dev` are never committed to directly.
+- **Approval-gated execution** — each phase waits for explicit user approval before proceeding.
+- **Minimal blast radius** — all work happens on `issue/<WORK_ITEM_KEY>` branches.
+
+## File Structure
+
+```
+.agents/skills/renovate-integration/
+├── README.md           ← This file (human-facing documentation)
+├── SKILL.md            ← Canonical Copilot instructions (authoritative)
+├── CHANGELOG.md        ← Skill evolution log (append-only)
+└── scripts/
+    ├── git/
+    │   ├── analyze-renovate-prs.sh
+    │   ├── checkout-latest-renovate-pr.sh
+    │   ├── update-gha-refs.sh
+    │   ├── push-issue-branches.sh
+    │   ├── verify-dev-sync.sh
+    │   └── update-submodule-pointers.sh
+    ├── gh/
+    │   └── wait-for-checks.sh
+    ├── dotnet/
+    │   └── build-with-analyzers.sh
+    └── tests/
+        ├── parse-check.sh
+        ├── gha-refs-test.sh
+        └── push-issue-branches-test.sh
+```
+
+## Scripts
+
+All are run from the superproject root, e.g. `bash .agents/skills/renovate-integration/scripts/git/analyze-renovate-prs.sh`.
+
+| Script | Phase | Purpose |
+|--------|-------|---------|
+| `git/analyze-renovate-prs.sh` | 1 | Read-only listing of open Renovate PRs (ELIGIBLE/SKIP) with diff stats and commit logs. |
+| `git/checkout-latest-renovate-pr.sh` | 2 | Checks out the newest applicable Renovate PR head branch per submodule; lists the rest. |
+| `dotnet/build-with-analyzers.sh` | 2 | Builds with analyzers on, printing only deduplicated diagnostics. |
+| `git/update-gha-refs.sh apply\|revert <KEY>` | 3, 5 | Rewrites only `Lombiq/GitHub-Actions/...` refs between `@dev` and `@issue/<KEY>`. |
+| `git/push-issue-branches.sh <KEY>` | 4 | Pushes `issue/<KEY>` in submodules before their containing repositories; skips everything else. |
+| `gh/wait-for-checks.sh <owner/repo> <pr>` | 4 | Polls PR checks with backoff, compact output, no TUI. |
+| `git/verify-dev-sync.sh` | 5 | Fails if any local `dev` has drifted from `origin/dev`. |
+| `git/update-submodule-pointers.sh` | 5 | Moves submodules to merged `origin/dev` and stages the pointers. |
+| `tests/parse-check.sh`, `tests/gha-refs-test.sh`, `tests/push-issue-branches-test.sh` | — | Self-tests for the scripts. |
+
+## Self-Updating
+
+This skill is self-maintaining. When you provide feedback that is general, reusable, and project-wide, the skill will offer to update itself. It will:
+
+1. Explain what will change and which files are affected.
+2. Ask for explicit confirmation (`CONFIRM SKILL UPDATE`).
+3. Update the relevant files and append an entry to `CHANGELOG.md`.
+
+One-off or situational feedback is applied in-session only, without modifying skill files.
+
+## Authoritative Reference
+
+All behavioral rules, safety constraints, FSM states, and phased execution logic are defined in [SKILL.md](SKILL.md). That file is the single source of truth.

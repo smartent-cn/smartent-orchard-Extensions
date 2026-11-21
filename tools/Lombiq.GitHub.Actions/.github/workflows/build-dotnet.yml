@@ -22,10 +22,10 @@ on:
         default: '["ubuntu-24.04"]'
         description: >
           Stringified JSON array with the name of the type of machine(s) to run the workflow under, e.g.
-          '["ubuntu-24.04"]' or '["ubuntu-24.04", "windows-2022"]'.
+          '["ubuntu-24.04"]' or '["ubuntu-24.04", "windows-2025"]'.
       dotnet-version:
         type: string
-        default: 8.0.301
+        default: 10.0.302
         description: Version of the .NET SDK to set up.
       build-directory:
         type: string

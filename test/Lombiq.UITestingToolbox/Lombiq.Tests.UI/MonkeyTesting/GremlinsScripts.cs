@@ -12,8 +12,13 @@ if (horde) horde.stop();";
 
     internal const string GetLastGremlinsClickLogMessageScript = "return sessionStorage.getItem('lastgremlinsclick');";
 
+    private static readonly Lazy<string> _lazyGremlinsPrepareScript = new(
+        () => EmbeddedResourceProvider.ReadEmbeddedFile("gremlins-summoning-circle.js"));
+
     private static readonly Lazy<string> _lazyGremlinsScript = new(
         () => EmbeddedResourceProvider.ReadEmbeddedFile("gremlins.min.js"));
+
+    internal static string GremlinsPrepareScript => _lazyGremlinsPrepareScript.Value;
 
     internal static string GremlinsScript => _lazyGremlinsScript.Value;
 
@@ -31,8 +36,8 @@ if (horde) horde.stop();";
 
         internal string Build()
         {
-            string speciesPart = Species != null ? string.Join(", ", Species) : null;
-            string mogwaisPart = Mogwais != null ? string.Join(", ", Mogwais) : null;
+            var speciesPart = Species != null ? string.Join(", ", Species) : null;
+            var mogwaisPart = Mogwais != null ? string.Join(", ", Mogwais) : null;
 
             return
 

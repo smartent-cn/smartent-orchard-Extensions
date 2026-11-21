@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using OrchardCore.Admin;
@@ -20,7 +21,7 @@ public class ResourceFilterMiddleware
 
     public ResourceFilterMiddleware(RequestDelegate next) => _next = next;
 
-    public async Task InvokeAsync(HttpContext context)
+    public async Task InvokeAsync(HttpContext context, IMemoryCache memoryCache)
     {
         var services = context.RequestServices;
         var providers = services
@@ -33,9 +34,15 @@ public class ResourceFilterMiddleware
         IList<string> themeIds = [];
         if (providers.Exists(providerInfo => providerInfo.ThemeRequirements.Count > 0))
         {
-            var themes = (await services.GetRequiredService<IShellFeaturesManager>().GetAvailableFeaturesAsync())
-                .SelectWhere(feature => feature.Extension as IThemeExtensionInfo)
-                .ToDictionary(info => info.Id);
+            // Without caching, this would issue dozens, if not hundreds of database calls for the Default tenant like
+            // "SELECT TOP (1) [Document].* FROM [Document] WHERE [Document].[Type] = @Type" on each request.
+            // No options are needed for the cache entry, since ideally it's kept for the lifetime of the shell, but it
+            // can be evicted any time.
+            var themes = await memoryCache.GetOrCreateAsync(
+                typeof(ResourceFilterMiddleware).FullName + ".Themes",
+                async _ => (await services.GetRequiredService<IShellFeaturesManager>().GetAvailableFeaturesAsync())
+                    .SelectWhere(feature => feature.Extension as IThemeExtensionInfo)
+                    .ToDictionary(info => info.Id)) ?? [];
 
             // This is necessary to determine if we are in admin mode, because AdminZoneFilter won't have executed yet
             // by this point of the pipeline.
@@ -46,7 +53,7 @@ public class ResourceFilterMiddleware
             var themeName = isAdmin
                 ? (await services.GetRequiredService<IAdminThemeService>().GetAdminThemeAsync())?.Id
                 : (await services.GetRequiredService<ISiteThemeService>().GetSiteThemeAsync())?.Id;
-            var themeNames = new List<string> { themeName };
+            List<string> themeNames = string.IsNullOrWhiteSpace(themeName) ? [] : [themeName];
 
             foreach (var resolver in services.GetServices<IResourceFilterThemeResolver>())
             {
@@ -66,7 +73,7 @@ public class ResourceFilterMiddleware
 
         if (anyProviders)
         {
-            IResourceManager resourceManager = null;
+            IResourceManager? resourceManager = null;
 
             var activeFilters = await builder
                 .ResourceFilters
@@ -74,7 +81,7 @@ public class ResourceFilterMiddleware
                 .WhereAsync(
                     filter => filter.Filter != null
                         ? Task.FromResult(filter.Filter(context))
-                        : filter.FilterAsync(context));
+                        : filter.FilterAsync!(context));
 
             foreach (var filter in activeFilters)
             {
@@ -87,7 +94,7 @@ public class ResourceFilterMiddleware
         await _next(context);
     }
 
-    private static IEnumerable<string> GetThemeAndBaseIds(Dictionary<string, IThemeExtensionInfo> themes, string id)
+    private static IEnumerable<string> GetThemeAndBaseIds(Dictionary<string, IThemeExtensionInfo> themes, string? id)
     {
         if (string.IsNullOrEmpty(id) || !themes.TryGetValue(id, out var info))
         {

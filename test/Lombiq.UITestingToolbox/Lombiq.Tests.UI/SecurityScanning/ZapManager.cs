@@ -29,7 +29,7 @@ public sealed class ZapManager : IAsyncDisposable
     // file in the root too.
     // When updating this version, also regenerate the Automation Framework YAML config files so we don't miss any
     // changes to those.
-    private const string _zapImage = "zaproxy/zap-stable:2.16.1";
+    private const string _zapImage = "zaproxy/zap-stable:2.17.0";
     private const string _zapWorkingDirectoryPath = "/zap/wrk/";
     private const string _zapReportsDirectoryName = "reports";
     private const string _zapHomeDirectoryName = "home";
@@ -178,8 +178,7 @@ public sealed class ZapManager : IAsyncDisposable
             .GetCommand(cliParameters)
             .WithStandardOutputPipe(PipeTarget.ToDelegate(line => _testOutputHelper.WriteLineTimestampedAndDebug(line)))
             .WithStandardErrorPipe(PipeTarget.ToStringBuilder(stdErrBuffer))
-            // This is so no exception is thrown by CliWrap if the exit code is not 0.
-            .WithValidation(CommandResultValidation.None)
+            .WithValidation(CommandResultValidation.None) // Don't raise an exception if the process exit code is not 0.
             .ExecuteAsync(_cancellationTokenSource.Token);
 
         // Under the Ubuntu GitHub Actions runners, at this point, the report's folder (like

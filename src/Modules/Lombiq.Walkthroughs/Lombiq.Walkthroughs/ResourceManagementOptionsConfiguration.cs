@@ -1,15 +1,19 @@
+using Lombiq.HelpfulLibraries.Attributes;
 using Lombiq.Walkthroughs.Constants;
 using Microsoft.Extensions.Options;
 using OrchardCore.ResourceManagement;
-using static Lombiq.Walkthroughs.Constants.ResourceNames;
 
 namespace Lombiq.Walkthroughs;
 
-public class ResourceManagementOptionsConfiguration : IConfigureOptions<ResourceManagementOptions>
+[LibManVersions]
+public partial class ResourceManagementOptionsConfiguration : IConfigureOptions<ResourceManagementOptions>
 {
     private const string Module = $"~/{FeatureIds.Area}/";
     private const string Vendors = Module + "vendors/";
+    private const string Shepherd = Vendors + "shepherd.js/dist/";
     private const string Js = Module + "js/";
+
+    public const string ShepherdModulePath = Shepherd + "js/shepherd.mjs";
 
     private static readonly ResourceManifest _manifest = new();
 
@@ -18,18 +22,15 @@ public class ResourceManagementOptionsConfiguration : IConfigureOptions<Resource
         _manifest.DefineResource("$" + nameof(FeatureIds.Area), FeatureIds.Area);
 
         _manifest
-            .DefineStyle(Shepherd)
-            .SetUrl(Vendors + "shepherd.js/css/shepherd.css");
+            .DefineStyle(ResourceNames.Shepherd)
+            .SetUrl(Shepherd + "css/shepherd.min.css", Shepherd + "css/shepherd.css")
+            .SetVersion(LibManVersions.ShepherdJs);
 
         _manifest
-            .DefineScript(Shepherd)
+            .DefineScript(ResourceNames.Shepherd)
             .SetAttribute("type", "module")
-            .SetUrl(Vendors + "shepherd.js/esm/shepherd.mjs");
-
-        _manifest
-            .DefineScript(ShepherdToWindow)
-            .SetAttribute("type", "module")
-            .SetUrl(Js + "shepherd-to-window.js");
+            .SetUrl(ShepherdModulePath)
+            .SetVersion(LibManVersions.ShepherdJs);
 
         _manifest
             .DefineScript(ResourceNames.Walkthroughs)

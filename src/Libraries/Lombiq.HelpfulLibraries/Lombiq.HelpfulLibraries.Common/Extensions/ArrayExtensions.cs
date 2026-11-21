@@ -22,7 +22,7 @@ public static class ArrayExtensions
     /// it's better to use this instead of the general `FirstOrDefault()` extension method.
     /// </para>
     /// </remarks>
-    public static T Find<T>(this T[] array, Predicate<T> match) => Array.Find(array, match);
+    public static T? Find<T>(this T[] array, Predicate<T> match) => Array.Find(array, match);
 
     /// <summary>
     /// A fluid alternative to <see cref="Array.FindAll{T}(T[], Predicate{T})"/>.

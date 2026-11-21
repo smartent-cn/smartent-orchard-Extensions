@@ -121,6 +121,11 @@ on:
         type: string
         default: '0'
         description: The batch size of the maintenance.
+      restart-after-test:
+        type: string
+        default: 'false'
+        description: >
+          When set to 'true', the destination web app slot will be restarted after testing (pinging) it succeeds.
 
 jobs:
   reset-azure-environment:
@@ -140,7 +145,7 @@ jobs:
           AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_APP_SERVICE_RESET_AZURE_SUBSCRIPTION_ID }}
 
       - name: Initialize PowerShell modules
-        uses: Lombiq/Infrastructure-Scripts/.github/actions/initialize@dev
+        uses: Lombiq/Infrastructure-Scripts/.github/actions/initialize@4f50ec164a1776e84fb39d1fed1bea4403fcfe49 # dev
 
       - name: Stop Web App Slot
         run: |
@@ -208,6 +213,14 @@ jobs:
       - name: Test Web App Slot
         run: |
           Test-AzureWebApp `
+            -ResourceGroupName ${{ inputs.resource-group-name }} `
+            -WebAppName ${{ inputs.app-name }} `
+            -SlotName ${{ inputs.destination-slot-name }}
+
+      - name: Restart Web App Slot
+        if: inputs.restart-after-test == 'true'
+        run: |
+          Restart-AzureWebAppSlot `
             -ResourceGroupName ${{ inputs.resource-group-name }} `
             -WebAppName ${{ inputs.app-name }} `
             -SlotName ${{ inputs.destination-slot-name }}

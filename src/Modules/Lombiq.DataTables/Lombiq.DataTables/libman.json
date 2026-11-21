@@ -1,0 +1,27 @@
+{
+  "version": "3.0",
+  "defaultProvider": "jsdelivr",
+  "defaultDestination": "wwwroot/vendors/[Name]",
+  "libraries": [
+    {
+      "library": "datatables.net@3.1.5",
+      "files": [ "js/dataTables*.js" ]
+    },
+    {
+      "library": "datatables.net-bs5@3.1.5",
+      "files": [ "css/*.css", "js/*.js" ]
+    },
+    {
+      "library": "datatables.net-buttons@4.1.3",
+      "files": [ "js/*.js" ]
+    },
+    {
+      "library": "datatables.net-buttons-bs5@4.1.3",
+      "files": [ "css/*.css", "js/*.js" ]
+    },
+    {
+      "library": "urijs@1.19.11",
+      "files": [ "src/URI.js", "src/URI.min.js" ]
+    }
+  ]
+}

@@ -13,6 +13,14 @@ on:
         description: >
           A JSON string containing key-value pairs of environment variables to be set. You can use this to pass in
           arbitrary environment variables that can be used to e.g. customize the build or test execution.
+          Pass a single-line JSON string: GitHub masks each line of multiline secrets, including standalone braces,
+          which breaks telemetry charts. When using >-, keep all JSON lines equally indented so YAML folds every
+          line break. Example:
+          ENVIRONMENT_VARIABLES_JSON: >-
+            {
+            "MY_ENV_VAR": "value of environment variable",
+            "MY_ENV_VAR2": "value of environment variable"
+            }
 
     inputs:
       cancel-workflow-on-failure:
@@ -25,20 +33,25 @@ on:
         description: The logging verbosity type used by the `dotnet` command.
       dotnet-version:
         type: string
-        default: 8.0.301
+        default: 10.0.302
         description: Version of the .NET SDK to set up.
       node-version:
         type: string
-        default: 22.16.0
+        default: 24.10.0
         description: >
           The Node.js version. Can be a specific version number or other notations, see the documentation of
           https://github.com/actions/setup-node.
+      node-package-manager-cache:
+        type: string
+        default: 'false'
+        description: >
+          Set to true to enable automatic caching based on the package manager field in package.json. By default,
+          caching is disabled for this workflow (which is different from the underlying action's default behavior), to
+          improve stability and backwards compatibility.
       timeout-minutes:
         type: number
         default: 15
         description: Configuration for the timeout-minutes parameter of the workflow. 360 is GitHub's default.
-      # This is really only necessary to work around the https://github.com/nodejs/corepack/issues/612 corepack issue.
-      # Also see https://github.com/Lombiq/NodeJs-Extensions/issues/120.
       enable-corepack:
         type: string
         default: 'false'
@@ -63,6 +76,21 @@ on:
         type: string
         default: 'true'
         description: If set to "true", the Microsoft.SourceLink.GitHub NuGet package is added to the projects.
+      mark-breaking-changes:
+        type: string
+        default: 'true'
+        description: |
+          When set to 'true', failed package validation against the baseline will mark the pull request with a title
+          suffix, a breaking-changes label, and a guidance comment.
+      require-major-version-for-compatibility-suppressions:
+        type: string
+        default: 'false'
+        description: >
+          If set to "true", publishing validation fails when any CompatibilitySuppressions.xml file exists in the
+          repository and the validation version's major version is not greater than the latest stable tag's major version.
+          Versions in the format `vM.N.O-[alpha|beta|preview|rc]` with an optional `".X.<issue-code>`" suffix are
+          exempt. Set to "false" for intentional compatibility suppressions that don't require a SemVer major release.
+          Default is set to 'false' otherwise the validation will fail, because the version is defined automatically.
 
 jobs:
   validate-nuget-publish:
@@ -73,6 +101,7 @@ jobs:
       verbosity: ${{ inputs.verbosity }}
       dotnet-version: ${{ inputs.dotnet-version }}
       node-version: ${{ inputs.node-version }}
+      node-package-manager-cache: ${{ inputs.node-package-manager-cache }}
       timeout-minutes: ${{ inputs.timeout-minutes }}
       enable-corepack: ${{ inputs.enable-corepack }}
       # NoWarn on NU5104 to not have warnings for prerelease dependencies for non-prerelease versions (see
@@ -81,9 +110,11 @@ jobs:
       dotnet-pack-ignore-warning: ${{ inputs.dotnet-pack-ignore-warning }}%3BNU5104
       dotnet-pack-include-symbols: ${{ inputs.dotnet-pack-include-symbols }}
       publish-version: USE_NEXT_PATCH_VERSION
+      require-major-version-for-compatibility-suppressions: ${{ inputs.require-major-version-for-compatibility-suppressions }}
       nuget-artifact-retention-days: ${{ inputs.nuget-artifact-retention-days }}
       add-source-link-package: ${{ inputs.add-source-link-package }}
       dry-run: true
+      mark-breaking-changes: ${{ inputs.mark-breaking-changes }}
     secrets:
       CHECKOUT_TOKEN: ${{ secrets.CHECKOUT_TOKEN }}
       API_KEY: not needed

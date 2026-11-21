@@ -11,10 +11,30 @@
         // https://docs.renovatebot.com/configuration-options/#schedule.
         '* 0-6 * * 4',
     ],
+    lockFileMaintenance: {
+        // Lock File Maintenance (see
+        // https://docs.mend.io/wsk/common-practices-for-renovate-configuration#CommonPracticesforRenovateConfiguration-LockFileMaintenance)
+        // has its own schedule and can't use the same schedule as other updates.
+        schedule: [
+            '* 0-6 * * 4',
+        ],
+    },
     packageRules: [
         {
             groupName: 'Non-Breaking Dependency Versions',
+            // For Orchard Core packages, only patch versions should be updated automatically, and only in web projects.
+            // That's handled in default-orchard-core in the common Renovate config. So, preventing an override of that
+            // here.
+            matchPackageNames: [
+                '!OrchardCore*',
+            ],
             matchUpdateTypes: ['minor', 'patch', 'pin', 'pinDigest'],
+        },
+        {
+            // This overrides Orchard Core's dependency for security; check whether it is still necessary instead of
+            // updating it automatically.
+            matchPackageNames: ['HtmlSanitizer'],
+            enabled: false,
         },
     ]
 }

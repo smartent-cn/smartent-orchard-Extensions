@@ -1,11 +1,14 @@
 using Deque.AxeCore.Commons;
 using Deque.AxeCore.Selenium;
+using Lombiq.Tests.UI.AccessibilityChecking;
+using Lombiq.Tests.UI.Constants;
 using Lombiq.Tests.UI.Exceptions;
 using Lombiq.Tests.UI.Helpers;
+using Lombiq.Tests.UI.Models;
 using Lombiq.Tests.UI.Services;
 using System;
+using System.Collections.Generic;
 using System.IO;
-using TWP.Selenium.Axe.Html;
 
 namespace Lombiq.Tests.UI.Extensions;
 
@@ -26,14 +29,21 @@ public static class AccessibilityCheckingUITestContextExtensions
     public static void AssertAccessibility(
         this UITestContext context,
         Action<AxeBuilder> axeBuilderConfigurator = null,
-        Action<AxeResult> assertAxeResult = null)
+        Action<AccessibilityCheckingResult> assertAxeResult = null)
     {
         var axeResult = context.AnalyzeAccessibility(axeBuilderConfigurator);
+        var result = (AccessibilityCheckingResult)axeResult;
         var accessibilityConfiguration = context.Configuration.AccessibilityCheckingConfiguration;
 
         try
         {
-            (assertAxeResult ?? accessibilityConfiguration.AssertAxeResult)?.Invoke(axeResult);
+            if (accessibilityConfiguration.AxeResultIncompleteFilters.Count > 0 ||
+                accessibilityConfiguration.AxeResultViolationsFilters.Count > 0)
+            {
+                result = FilterAccessibilityResults(result, accessibilityConfiguration);
+            }
+
+            (assertAxeResult ?? accessibilityConfiguration.AssertAxeResult)?.Invoke(result);
         }
         catch (Exception ex)
         {
@@ -48,14 +58,29 @@ public static class AccessibilityCheckingUITestContextExtensions
             var reportDirectoryPath = DirectoryHelper.CreateEnumeratedDirectory(
                 context.GetTempSubDirectoryPath("AxeHtmlReport"));
 
-            var reportPath = Path.Combine(
-                    reportDirectoryPath,
-                    context.TestManifest.Name.MakeFileSystemFriendly() + ".html");
+            var reportPath = Path.Combine(reportDirectoryPath, AccessibilityCheckingConstants.AccessibilityReportFileName);
 
             context.Driver.CreateAxeHtmlReport(axeResult, reportPath);
 
-            context.AppendTestDump(reportPath);
+            context.AppendTestDumpKeepingDuplicates(reportPath);
         }
+    }
+
+    private static AccessibilityCheckingResult FilterAccessibilityResults(
+        AccessibilityCheckingResult axeResult,
+        AccessibilityCheckingConfiguration accessibilityConfiguration)
+    {
+        foreach (var filter in accessibilityConfiguration.AxeResultIncompleteFilters.Values)
+        {
+            axeResult.Incomplete.RemoveAll(item => item is null || !filter(item));
+        }
+
+        foreach (var filter in accessibilityConfiguration.AxeResultViolationsFilters.Values)
+        {
+            axeResult.Violations.RemoveAll(item => item is null || !filter(item));
+        }
+
+        return axeResult;
     }
 
     /// <summary>

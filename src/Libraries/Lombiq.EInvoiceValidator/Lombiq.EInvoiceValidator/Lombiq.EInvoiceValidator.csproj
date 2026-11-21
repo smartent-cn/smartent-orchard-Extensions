@@ -1,42 +1,20 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
-  <Import Condition="'$(NuGetBuild)' != 'true'" Project="..\..\..\Utilities\Lombiq.Npm.Targets\Lombiq.Npm.Targets.props" />
-
+﻿<Project>
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <DefaultItemExcludes>$(DefaultItemExcludes);.git*</DefaultItemExcludes>
+    <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>
+    <LombiqMSBuildLibManTarget>node_modules</LombiqMSBuildLibManTarget>
   </PropertyGroup>
+
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.Library.Sdk/Sdk/Import.props" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Lombiq.MSBuild.Library.Sdk" Version="2.1.1-alpha.9.osoe-344" />
 
   <PropertyGroup>
     <Title>Lombiq eInvoice Validator</Title>
-    <Authors>Lombiq Technologies</Authors>
-    <Copyright>Copyright © 2025, Lombiq Technologies Ltd.</Copyright>
-    <Description>Lombiq eInvoice Validator: Adds validation for EU eInvoices that follow the EN 16931 standard. See the project website for detailed documentation.</Description>
-    <PackageIcon>NuGetIcon.png</PackageIcon>
+    <CopyrightYear>2025</CopyrightYear>
+    <DescriptionBody>Adds validation for EU eInvoices that follow the EN 16931 standard. See the project website for detailed documentation.</DescriptionBody>
     <PackageTags>OrchardCore;Lombiq;AspNetCore;EN16931;eInvoice;XML;UBL;CII</PackageTags>
     <RepositoryUrl>https://github.com/Lombiq/eInvoice-Validator</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/Lombiq/eInvoice-Validator</PackageProjectUrl>
-    <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
   </PropertyGroup>
-
-  <ItemGroup>
-    <None Include="../Readme.md" />
-    <None Include="NuGetIcon.png" Pack="true" PackagePath="" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Jering.Javascript.NodeJS" Version="7.0.0" />
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(NuGetBuild)' == 'true'">
-    <PackageReference Include="Lombiq.HelpfulLibraries.OrchardCore" Version="12.2.0" />
-    <PackageReference Include="Lombiq.Npm.Targets" Version="1.5.0" />
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(NuGetBuild)' != 'true'">
-    <ProjectReference Include="..\..\Lombiq.HelpfulLibraries\Lombiq.HelpfulLibraries.OrchardCore\Lombiq.HelpfulLibraries.OrchardCore.csproj" />
-  </ItemGroup>
 
   <ItemGroup>
     <None Remove="SchemaFiles\CII\*.xsd" />
@@ -48,13 +26,11 @@
 
     <None Remove="JsonStylesheets\*.sef.json" />
     <EmbeddedResource Include="JsonStylesheets\*.sef.json" />
-  </ItemGroup>
 
-  <ItemGroup>
     <Content Include="validator.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Pack>true</Pack>
-      <PackagePath>contentFiles\any\any</PackagePath>
+      <PackagePath>contentFiles\any\$(TargetFramework)</PackagePath>
       <PackageCopyToOutput>true</PackageCopyToOutput>
     </Content>
 
@@ -64,23 +40,24 @@
     </Content>
   </ItemGroup>
 
-  <!--  Needed for projects that uses this project by a NuGet package.  -->
-  <Target Name="AddNodeModules" AfterTargets="NpmDotnetPrebuild">
-    <ItemGroup>
-      <Content Include="node_modules\**\*" Exclude="node_modules\.pnpm\**\*;node_modules\.bin\**\*;">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        <Pack>true</Pack>
-        <PackagePath>contentFiles\any\any\node_modules</PackagePath>
-        <PackageCopyToOutput>true</PackageCopyToOutput>
-      </Content>
-    </ItemGroup>
-  </Target>
+  <ItemGroup>
+    <PackageReference Include="Jering.Javascript.NodeJS" Version="7.0.0" />
+  </ItemGroup>
 
-  <!--  Needed for projects that uses this project by a NuGet package.  -->
-  <PropertyGroup>
-    <PnpmInstallCommand>pnpm install --shamefully-hoist</PnpmInstallCommand>
-  </PropertyGroup>
+  <!-- Security Updates for Orchard Core - make sure to check if these are still necessary -->
+  <ItemGroup Condition="'$(ManagePackageVersionsCentrally)' != 'true'">
+    <PackageReference Include="MySqlConnector" Version="2.6.2" NoWarn="NU1510" />
+    <PackageReference Include="HtmlSanitizer" Version="9.2.1039" NoWarn="NU1510" />
+  </ItemGroup>
 
-  <Import Condition="'$(NuGetBuild)' != 'true'" Project="..\..\..\Utilities\Lombiq.Npm.Targets\Lombiq.Npm.Targets.targets" />
+  <ItemGroup Condition="'$(NuGetBuild)' == 'true'">
+    <PackageReference Include="Lombiq.HelpfulLibraries.OrchardCore" Version="$(PackageVersionLombiqHelpfulLibraries)" />
+  </ItemGroup>
 
+  <ItemGroup Condition="'$(NuGetBuild)' != 'true'">
+    <ProjectReference Include="..\..\Lombiq.HelpfulLibraries\Lombiq.HelpfulLibraries.OrchardCore\Lombiq.HelpfulLibraries.OrchardCore.csproj" />
+  </ItemGroup>
+
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.Library.Sdk/Sdk/Import.targets" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.targets" Sdk="Lombiq.MSBuild.Library.Sdk" Version="2.1.1-alpha.9.osoe-344" />
 </Project>

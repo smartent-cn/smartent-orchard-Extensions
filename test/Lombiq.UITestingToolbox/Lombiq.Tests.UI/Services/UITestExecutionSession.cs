@@ -1,6 +1,9 @@
+#nullable enable
+
 using Atata.HtmlValidation;
 using Cysharp.Text;
 using Lombiq.HelpfulLibraries.Common.Utilities;
+using Lombiq.Tests.UI.AccessibilityChecking;
 using Lombiq.Tests.UI.Constants;
 using Lombiq.Tests.UI.Exceptions;
 using Lombiq.Tests.UI.Extensions;
@@ -8,19 +11,21 @@ using Lombiq.Tests.UI.Helpers;
 using Lombiq.Tests.UI.Models;
 using Lombiq.Tests.UI.SecurityScanning;
 using Lombiq.Tests.UI.Services.GitHub;
+using Lombiq.Tests.UI.SqlQueryMonitoring.Extensions;
 using Microsoft.VisualBasic.FileIO;
 using Mono.Unix;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Internal.Logging;
+using OrchardCore.Email;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text.Json.Nodes;
 using System.Threading;
 using System.Threading.Tasks;
-using TWP.Selenium.Axe.Html;
 using Xunit;
 using Xunit.v3;
 using LogLevel = Microsoft.Extensions.Logging.LogLevel;
@@ -36,17 +41,17 @@ internal sealed class UITestExecutionSession : IAsyncDisposable
     private readonly ITestOutputHelper _testOutputHelper;
 
     private int _screenshotCount;
-    private SynchronizingWebApplicationSnapshotManager _currentSetupSnapshotManager;
-    private string _snapshotDirectoryPath;
+    private SynchronizingWebApplicationSnapshotManager? _currentSetupSnapshotManager;
+    private string? _snapshotDirectoryPath;
     private bool _hasSetupOperation;
     private bool _setupSnapshotDirectoryContainsApp;
-    private SqlServerManager _sqlServerManager;
-    private SmtpService _smtpService;
-    private AzureBlobStorageManager _azureBlobStorageManager;
-    private ZapManager _zapManager;
-    private IWebApplicationInstance _applicationInstance;
-    private UITestContext _context;
-    private DockerConfiguration _dockerConfiguration;
+    private SqlServerManager? _sqlServerManager;
+    private SmtpService? _smtpService;
+    private AzureBlobStorageManager? _azureBlobStorageManager;
+    private ZapManager? _zapManager;
+    private IWebApplicationInstance? _applicationInstance;
+    private UITestContext? _context;
+    private DockerConfiguration? _dockerConfiguration;
 
     public UITestExecutionSession(
         WebApplicationInstanceFactory webApplicationInstanceFactory,
@@ -66,10 +71,16 @@ internal sealed class UITestExecutionSession : IAsyncDisposable
         {
             Log.SetLevel(SeleniumLogConfiguration.LogEventLevel);
 
+            // This is to distinguish Selenium logs created by different test assemblies (important when merging their
+            // TestDump folders in CI).
+            var entryAssemblyName = Assembly.GetEntryAssembly()!.ManifestModule.Name;
+
             // There's no way to tell when the whole test suite ends. This needs to be disposed by the GC when ending
             // the process.
 #pragma warning disable CA2000 // Dispose objects before losing scope
-            Log.Handlers.Add(new FileLogHandler(Path.Combine(UITestExecutorTestDumpConfiguration.DefaultDumpsDirectoryPath, "SeleniumLog.log")));
+            Log.Handlers.Add(new FileLogHandler(Path.Combine(
+                UITestExecutorTestDumpConfiguration.DefaultDumpsDirectoryPath,
+                $"SeleniumLog{entryAssemblyName}.log")));
 #pragma warning restore CA2000 // Dispose objects before losing scope
         }
     }
@@ -78,14 +89,14 @@ internal sealed class UITestExecutionSession : IAsyncDisposable
 
     public async Task<bool> ExecuteAsync(int retryCount, string dumpRootPath)
     {
-        using var cancellationTokenRegistration = _configuration.TestCancellationToken.Register(() =>
+        await using var cancellationTokenRegistration = _configuration.TestCancellationToken.Register(() =>
         {
             _testOutputHelper.WriteLine("Test execution was canceled. Shutting down the test execution session.");
             ShutdownAsync().AsTask().ConfigureAwait(false).GetAwaiter().GetResult();
         });
 
         var startTime = DateTime.UtcNow;
-        IDictionary<string, ITestDumpItem> testDumpContainer = null;
+        IDictionary<string, ITestDumpItem>? testDumpContainer = null;
         // At this point _context may not exist yet.
         if (_context != null) _context.RetryCount = retryCount;
 
@@ -127,7 +138,7 @@ internal sealed class UITestExecutionSession : IAsyncDisposable
             var timeout = _configuration.TimeoutConfiguration.TestRunTimeout;
 
             var timeoutTask = Task.Delay(timeout, _configuration.TestCancellationToken);
-            var testTask = _testManifest.TestAsync(_context);
+            var testTask = _testManifest.RunTestsAsync(_context);
 
             await Task.WhenAny(testTask, timeoutTask);
 
@@ -171,9 +182,9 @@ internal sealed class UITestExecutionSession : IAsyncDisposable
                 var dumpFolderAbsolutePath = Path.Combine(AppContext.BaseDirectory, dumpRootPath);
 
                 _testOutputHelper.WriteLineTimestampedAndDebug(
-                    "The test was attempted {0} time(s) and won't be retried anymore. You can see more details " +
+                    "The test was attempted {0} and won't be retried anymore. You can see more details " +
                         "on why it's failing in the test dump folder: {1}",
-                    retryCount + 1,
+                    StringHelper.PluralizeInvariant("once", "{0} times", retryCount + 1),
                     dumpFolderAbsolutePath);
 
                 throw;
@@ -194,6 +205,8 @@ internal sealed class UITestExecutionSession : IAsyncDisposable
 
     private async ValueTask ShutdownAsync()
     {
+        var tempSubDirectoryPath = _context?.GetTempSubDirectoryPath();
+
         _testOutputHelper.WriteLineTimestampedAndDebug("Shutting down the test execution session.");
 
         if (_configuration.RunAssertLogsOnAllPageChanges)
@@ -202,21 +215,22 @@ internal sealed class UITestExecutionSession : IAsyncDisposable
             _configuration.Events.AfterPageChange -= OnAssertLogsAsync;
         }
 
+        if (_dumpConfiguration.CaptureScreenshots)
+        {
+            _configuration.CustomConfiguration.Remove("ScreenshotsOnPageChangeAndClickWereSetUp");
+
+            _configuration.Events.AfterPageChange -= TakeScreenshotIfEnabledAsync;
+            _configuration.Events.AfterClick -= TakeScreenshotIfEnabledAsync;
+        }
+
+        if (_context?.ElasticsearchRunningContext is { } elasticsearchRunningContext)
+        {
+            await elasticsearchRunningContext.AfterTestAsync(_context);
+        }
+
         if (_applicationInstance != null) await _applicationInstance.DisposeAsync();
-
-        string contextId = null;
-
-        if (_context != null)
-        {
-            contextId = _context.Id;
-            await _context.DisposeAsync();
-        }
-
-        if (_sqlServerManager is not null)
-        {
-            await _sqlServerManager.DisposeAsync();
-        }
-
+        if (_context != null) await _context.DisposeAsync();
+        if (_sqlServerManager != null) await _sqlServerManager.DisposeAsync();
         if (_smtpService != null) await _smtpService.DisposeAsync();
         if (_azureBlobStorageManager != null) await _azureBlobStorageManager.DisposeAsync();
         if (_zapManager != null) await _zapManager.DisposeAsync();
@@ -225,12 +239,14 @@ internal sealed class UITestExecutionSession : IAsyncDisposable
         // handles to the temp folder, that can be cleaned up too. No need to do it on ephemeral GitHub runners, though,
         // also because the ZAP report's folder (like "2025-01-22-ZAP-Report-localhost") will remain unwritable (see the
         // comment in ZapManager).
-        if (!string.IsNullOrEmpty(contextId) && !GitHubHelper.IsGitHubEnvironment)
+        if (!string.IsNullOrEmpty(tempSubDirectoryPath) &&
+            Directory.Exists(tempSubDirectoryPath) &&
+            !GitHubHelper.IsGitHubEnvironment)
         {
             try
             {
                 // This is a clean-up method, no need to forward a CancellationToken.
-                await DirectoryHelper.SafelyDeleteDirectoryIfExistsAsync(DirectoryPaths.GetTempDirectoryPath(contextId), CancellationToken.None);
+                await DirectoryHelper.SafelyDeleteDirectoryIfExistsAsync(tempSubDirectoryPath, CancellationToken.None);
             }
             catch (Exception ex) when (GitHubHelper.IsGitHubEnvironment)
             {
@@ -240,11 +256,6 @@ internal sealed class UITestExecutionSession : IAsyncDisposable
                         "GitHub Actions runners, this is not a fatal error. Exception details: {0}",
                     ex);
             }
-        }
-
-        if (_context?.ElasticsearchRunningContext is { } elasticsearchRunningContext)
-        {
-            await elasticsearchRunningContext.AfterTestAsync(_context);
         }
 
         _screenshotCount = 0;
@@ -264,21 +275,21 @@ internal sealed class UITestExecutionSession : IAsyncDisposable
                     "More than one exceptions in the AggregateException. This shouldn't really happen.");
             }
 
-            ex = aggregateException.InnerException;
+            ex = aggregateException.InnerExceptions[0];
         }
 
-        if (ex is PageChangeAssertionException pageChangeAssertionException)
+        if (ex is PageChangeAssertionException { InnerException: { } pageChangeAssertionInnerException })
         {
-            _testOutputHelper.WriteLineTimestampedAndDebug(pageChangeAssertionException.Message);
-            ex = pageChangeAssertionException.InnerException;
+            _testOutputHelper.WriteLineTimestampedAndDebug(ex.Message);
+            ex = pageChangeAssertionInnerException;
         }
-        else if (_context?.Driver is not null)
+        else if (_context?.Driver is { } driver)
         {
             try
             {
                 // This will throw a WebDriverException if the browser session was closed. This can happen even if
                 // _context.Driver is not null. There's no better way to check this.
-                var handle = _context.Driver.CurrentWindowHandle;
+                var handle = driver.CurrentWindowHandle;
 
                 _testOutputHelper.WriteLineTimestampedAndDebug(
                     $"An exception has occurred while interacting with the page {_context.GetPageTitleAndAddress()}. Window handle: {handle}");
@@ -308,8 +319,8 @@ internal sealed class UITestExecutionSession : IAsyncDisposable
     private async Task CreateTestDumpAsync(
         string dumpRootPath,
         int retryCount,
-        IDictionary<string, ITestDumpItem> testDumpContainer,
-        Func<string, Task> additionalDumpProcess = null)
+        IDictionary<string, ITestDumpItem>? testDumpContainer,
+        Func<string, Task>? additionalDumpProcess = null)
     {
         if (!_dumpConfiguration.CreateTestDump ||
             (testDumpContainer?.Any() != true && additionalDumpProcess == null))
@@ -358,11 +369,13 @@ internal sealed class UITestExecutionSession : IAsyncDisposable
     {
         try
         {
-            using var dumpStream = await item.GetStreamAsync();
-            string filePath = Path.Combine(debugInformationPath, dumpRelativePath);
-            FileSystemHelper.EnsureDirectoryExists(Path.GetDirectoryName(filePath));
+            await using var dumpStream = await item.GetStreamAsync();
+            var filePath = Path.Combine(debugInformationPath, dumpRelativePath);
+            FileSystemHelper.EnsureDirectoryExists(
+                Path.GetDirectoryName(filePath) ??
+                throw new DirectoryNotFoundException($"Invalid path \"{filePath}\"."));
 
-            using var dumpFile = File.Open(
+            await using var dumpFile = File.Open(
                 filePath,
                 FileMode.Create,
                 FileAccess.Write);
@@ -405,6 +418,8 @@ internal sealed class UITestExecutionSession : IAsyncDisposable
 
     private async Task CaptureAppSnapshotAsync(string dumpContainerPath)
     {
+        if (_context == null) return;
+
         var appDumpPath = Path.Combine(dumpContainerPath, "AppDump");
         await _context.Application.TakeSnapshotAsync(appDumpPath);
 
@@ -412,15 +427,14 @@ internal sealed class UITestExecutionSession : IAsyncDisposable
         {
             try
             {
-                var containerName = _dockerConfiguration?.ContainerName;
-                var remotePath = string.IsNullOrEmpty(containerName)
+                var remotePath = string.IsNullOrEmpty(_dockerConfiguration?.ContainerName)
                     ? appDumpPath
                     : _dockerConfiguration.ContainerSnapshotPath;
 
                 await _sqlServerManager.TakeSnapshotAsync(
                     remotePath,
                     appDumpPath,
-                    containerName,
+                    _dockerConfiguration?.ContainerName,
                     useCompressionIfAvailable: true);
             }
             catch (Exception failureException)
@@ -452,12 +466,13 @@ internal sealed class UITestExecutionSession : IAsyncDisposable
         if (ex is AccessibilityAssertionException accessibilityAssertionException
             && _configuration.AccessibilityCheckingConfiguration.CreateReportOnFailure)
         {
-            var accessibilityReportPath = Path.Combine(debugInformationPath, "AccessibilityReport.html");
-            _context.Driver.CreateAxeHtmlReport(accessibilityAssertionException.AxeResult, accessibilityReportPath);
+            var accessibilityReportPath = Path.Combine(debugInformationPath, AccessibilityCheckingConstants.AccessibilityReportFileName);
+            _context?.Driver?.CreateAxeHtmlReport(accessibilityAssertionException.AxeResult, accessibilityReportPath);
 
             if (_configuration.ReportTeamCityMetadata)
             {
-                TeamCityMetadataReporter.ReportArtifactLink(_testManifest, "AccessibilityReport", accessibilityReportPath);
+                TeamCityMetadataReporter.ReportArtifactLink(
+                    _testManifest, AccessibilityCheckingConstants.AccessibilityReportFileNameWithoutExtension, accessibilityReportPath);
             }
         }
 
@@ -487,10 +502,16 @@ internal sealed class UITestExecutionSession : IAsyncDisposable
 
     private Task LogRetryAsync(int retryCount)
     {
+        var retryTimes = StringHelper.PluralizeInvariant("once", "{0} times", retryCount + 1);
+        var retryAttempts = StringHelper.PluralizeInvariant(
+            "1 more attempt",
+            "{0} more attempts",
+            _configuration.MaxRetryCount - retryCount);
+
         _testOutputHelper.WriteLineTimestampedAndDebug(
-            "The test was attempted {0} time(s). {1} more attempt(s) will be made after waiting {2}.",
-            retryCount + 1,
-            _configuration.MaxRetryCount - retryCount,
+            "The test was attempted {0}. {1} will be made after waiting {2}.",
+            retryTimes,
+            retryAttempts,
             _configuration.RetryInterval);
 
         if (_configuration.ExtendGitHubActionsOutput &&
@@ -500,9 +521,7 @@ internal sealed class UITestExecutionSession : IAsyncDisposable
             new GitHubAnnotationWriter(_testOutputHelper).Annotate(
                 LogLevel.Warning,
                 "UI test may be flaky",
-                $"The {_testManifest.Name} test failed {(retryCount + 1).ToTechnicalString()} time(s) and will be " +
-                    "retried. This may indicate it being flaky.",
-                string.Empty);
+                $"The {_testManifest.Name} test failed {retryTimes} and will be retried {retryAttempts}. This may indicate it being flaky.");
         }
 
         if (_configuration.RetryInterval > TimeSpan.Zero)
@@ -624,10 +643,9 @@ internal sealed class UITestExecutionSession : IAsyncDisposable
 
             _configuration.OrchardCoreConfiguration.BeforeTakeSnapshot -= SqlServerManagerBeforeTakeSnapshotHandlerAsync;
 
-            var containerName = _dockerConfiguration?.ContainerName;
             var remotePath = snapshotDirectoryPath;
 
-            if (!string.IsNullOrEmpty(containerName))
+            if (!string.IsNullOrEmpty(_dockerConfiguration?.ContainerName))
             {
                 remotePath = _dockerConfiguration.ContainerSnapshotPath;
 
@@ -643,7 +661,7 @@ internal sealed class UITestExecutionSession : IAsyncDisposable
                 }
             }
 
-            return _sqlServerManager.TakeSnapshotAsync(remotePath, snapshotDirectoryPath, containerName);
+            return _sqlServerManager!.TakeSnapshotAsync(remotePath, snapshotDirectoryPath, _dockerConfiguration?.ContainerName);
         }
 
         // This is necessary because a simple subtraction wouldn't remove previous instances of the local function.
@@ -662,7 +680,7 @@ internal sealed class UITestExecutionSession : IAsyncDisposable
         Task AzureBlobStorageManagerBeforeTakeSnapshotHandlerAsync(OrchardCoreAppStartContext context, string snapshotDirectoryPath)
         {
             _configuration.OrchardCoreConfiguration.BeforeTakeSnapshot -= AzureBlobStorageManagerBeforeTakeSnapshotHandlerAsync;
-            return _azureBlobStorageManager.TakeSnapshotAsync(snapshotDirectoryPath);
+            return _azureBlobStorageManager!.TakeSnapshotAsync(snapshotDirectoryPath);
         }
 
         _configuration.OrchardCoreConfiguration.BeforeTakeSnapshot =
@@ -670,12 +688,11 @@ internal sealed class UITestExecutionSession : IAsyncDisposable
         _configuration.OrchardCoreConfiguration.BeforeTakeSnapshot += AzureBlobStorageManagerBeforeTakeSnapshotHandlerAsync;
     }
 
-    private async Task<UITestContext> CreateContextAsync(Uri testStartRelativeUri)
+    private async Task<UITestContext> CreateContextAsync(Uri? testStartRelativeUri)
     {
         var contextId = Guid.NewGuid().ToString();
         _configuration.BrowserConfiguration.UITestContextId = contextId;
-
-        FileSystemHelper.EnsureDirectoryExists(DirectoryPaths.GetTempDirectoryPath(contextId));
+        _configuration.BrowserConfiguration.TempDirectoryPath = _configuration.TempDirectoryPath;
 
         var sqlServerContext = _configuration.UseSqlServer ? await SetUpSqlServerAsync() : null;
         var azureBlobStorageContext = _configuration.UseAzureBlobStorage ? await SetUpAzureBlobStorageAsync() : null;
@@ -686,13 +703,15 @@ internal sealed class UITestExecutionSession : IAsyncDisposable
 
         Task UITestingBeforeAppStartHandlerAsync(OrchardCoreAppStartContext context, InstanceCommandLineArgumentsBuilder arguments)
         {
-            _configuration.OrchardCoreConfiguration.BeforeAppStart -= UITestingBeforeAppStartHandlerAsync;
-
-            arguments.AddWithValue("Lombiq_Tests_UI:IsUITesting", value: true);
+            arguments.AddWithValue("OrchardCore:OrchardCore_YesSql:EnableThreadSafetyChecks", value: true);
+            arguments.AddWithValue(ConfigurationKeys.IsUITesting, value: true);
+            arguments.AddWithValue(
+                ConfigurationKeys.EnableSqlQueryMonitoring,
+                value: _configuration.SqlQueryMonitoringConfiguration.EnableSqlQueryMonitoringCollection);
 
             if (_configuration.ShortcutsConfiguration.InjectApplicationInfo)
             {
-                arguments.AddWithValue("Lombiq_Tests_UI:InjectApplicationInfo", value: true);
+                arguments.AddWithValue(ConfigurationKeys.InjectApplicationInfo, value: true);
             }
 
             return Task.CompletedTask;
@@ -706,7 +725,22 @@ internal sealed class UITestExecutionSession : IAsyncDisposable
         var appBaseUri = await _applicationInstance.StartUpAsync();
 
         _configuration.SetUpEvents();
+        SetUpPageChangeAssertions();
 
+        return await UITestContext.CreateAsync(new(
+            contextId,
+            _testManifest,
+            _configuration,
+            _applicationInstance,
+            _testOutputHelper,
+            appBaseUri,
+            testStartRelativeUri != null ? new Uri(appBaseUri, testStartRelativeUri.PathAndQuery) : appBaseUri,
+            new(sqlServerContext, smtpContext, azureBlobStorageContext, elasticsearchContext),
+            _zapManager));
+    }
+
+    private void SetUpPageChangeAssertions()
+    {
         if (_configuration.AccessibilityCheckingConfiguration.RunAccessibilityCheckingAssertionOnAllPageChanges)
         {
             _configuration.SetUpAccessibilityCheckingAssertionOnPageChange();
@@ -715,6 +749,12 @@ internal sealed class UITestExecutionSession : IAsyncDisposable
         if (_configuration.HtmlValidationConfiguration.RunHtmlValidationAssertionOnAllPageChanges)
         {
             _configuration.SetUpHtmlValidationAssertionOnPageChange();
+        }
+
+        if (_configuration.SqlQueryMonitoringConfiguration.EnableSqlQueryMonitoringCollection &&
+            _configuration.SqlQueryMonitoringConfiguration.RunSqlQueryMonitoringAssertionOnAllPageChanges)
+        {
+            _configuration.SetUpSqlQueryMonitoringAssertionOnPageChange();
         }
 
         if (_configuration.RunAssertLogsOnAllPageChanges &&
@@ -738,18 +778,6 @@ internal sealed class UITestExecutionSession : IAsyncDisposable
                 return Task.CompletedTask;
             };
         }
-
-        var atataScope = await AtataFactory.StartAtataScopeAsync(contextId, _testOutputHelper, appBaseUri, _configuration);
-
-        return await UITestContext.CreateAsync(
-            contextId,
-            _testManifest,
-            _configuration,
-            _applicationInstance,
-            atataScope,
-            testStartRelativeUri != null ? new Uri(appBaseUri, testStartRelativeUri.PathAndQuery) : appBaseUri,
-            new(sqlServerContext, smtpContext, azureBlobStorageContext, elasticsearchContext),
-            _zapManager);
     }
 
     private string GetSetupHashCode() =>
@@ -774,12 +802,14 @@ internal sealed class UITestExecutionSession : IAsyncDisposable
                 return;
             }
 
-            var containerName = _dockerConfiguration?.ContainerName;
-            var containerPath = string.IsNullOrEmpty(containerName)
+            var containerPath = string.IsNullOrEmpty(_dockerConfiguration?.ContainerName)
                 ? _snapshotDirectoryPath
                 : _dockerConfiguration.ContainerSnapshotPath;
 
-            await _sqlServerManager.RestoreSnapshotAsync(containerPath, _snapshotDirectoryPath, containerName);
+            await _sqlServerManager.RestoreSnapshotAsync(
+                containerPath,
+                _snapshotDirectoryPath,
+                _dockerConfiguration?.ContainerName);
 
             var sitesDirectoryPath = Path.Combine(context.ContentRootPath, "App_Data", "Sites");
             var tenantDirectoryPaths = Directory.GetDirectories(sitesDirectoryPath);
@@ -833,7 +863,7 @@ internal sealed class UITestExecutionSession : IAsyncDisposable
                     "OrchardCore:OrchardCore_Media_Azure:ContainerName",
                     value: _configuration.AzureBlobStorageConfiguration.ContainerName)
                 .AddWithValue("OrchardCore:OrchardCore_Media_Azure:CreateContainer", value: true)
-                .AddWithValue("Lombiq_Tests_UI:UseAzureBlobStorage", value: true);
+                .AddWithValue(ConfigurationKeys.UseAzureBlobStorage, value: true);
 
             if (!_hasSetupOperation || !Directory.Exists(_snapshotDirectoryPath)) return;
 
@@ -853,21 +883,31 @@ internal sealed class UITestExecutionSession : IAsyncDisposable
         var smtpContext = await _smtpService.StartAsync();
         _configuration.SmtpServiceConfiguration.Context = smtpContext;
 
-        // Exclude any errors coming from the smtp4dev JS files.
+        // Exclude any errors coming from the smtp4dev JS files. Worker-html related configurations can be removed
+        // after: https://github.com/rnwood/smtp4dev/issues/1917 is resolved and smtp4dev is updated.
         var indexFile = new Uri(smtpContext.WebUIUri, "/assets/index-").AbsoluteUri;
         _configuration.BrowserLogFilters[nameof(SmtpService)] = entry =>
-            entry.StackTrace?.CallFrames.FirstOrDefault()?.Url.StartsWithOrdinalIgnoreCase(indexFile) != true;
+            entry.StackTrace?.CallFrames.FirstOrDefault()?.Url.StartsWithOrdinalIgnoreCase(indexFile) != true &&
+                !(entry.Text?.ContainsOrdinalIgnoreCase("Failed to execute 'importScripts' on 'WorkerGlobalScope'") == true &&
+                (entry.Text.ContainsOrdinalIgnoreCase("ace-builds/src-noconflict/worker-html.js") ||
+                    entry.StackTrace?.CallFrames.FirstOrDefault()?.Url.ContainsOrdinalIgnoreCase(smtpContext.WebUIUri.AbsoluteUri) == true));
+
+        _configuration.WithIgnoreExpectedNotFoundResponseFilter("/worker-html.js");
 
         Task SmtpServiceBeforeAppStartHandlerAsync(OrchardCoreAppStartContext context, InstanceCommandLineArgumentsBuilder arguments)
         {
             _configuration.OrchardCoreConfiguration.BeforeAppStart -= SmtpServiceBeforeAppStartHandlerAsync;
+
+            const string smtpArgumentPrefix = "OrchardCore:OrchardCore_Email_Smtp:";
             arguments
-                .AddWithValue("Lombiq_Tests_UI:EnableSmtpFeature", value: true)
-                .AddWithValue("OrchardCore:OrchardCore_Email_Smtp:EnableSmtp", value: true)
-                .AddWithValue("OrchardCore:OrchardCore_Email_Smtp:Host", value: "localhost")
-                .AddWithValue("OrchardCore:OrchardCore_Email_Smtp:RequireCredentials", value: false)
-                .AddWithValue("OrchardCore:OrchardCore_Email_Smtp:Port", value: smtpContext.Port)
-                .AddWithValue("OrchardCore:OrchardCore_Email_Smtp:DefaultSender", value: "sender@example.com");
+                .AddWithValue(ConfigurationKeys.EnableSmtpFeature, value: true)
+                .AddWithValue(smtpArgumentPrefix + nameof(SmtpOptions.IsEnabled), value: true)
+                .AddWithValue(smtpArgumentPrefix + nameof(SmtpOptions.Host), value: "localhost")
+                .AddWithValue(smtpArgumentPrefix + nameof(SmtpOptions.RequireCredentials), value: false)
+                .AddWithValue(smtpArgumentPrefix + nameof(SmtpOptions.Port), value: smtpContext.Port)
+                .AddWithValue(smtpArgumentPrefix + nameof(SmtpOptions.DefaultSender), value: "sender@example.com")
+                .AddWithValue(smtpArgumentPrefix + nameof(SmtpOptions.DeliveryMethod), value: nameof(SmtpDeliveryMethod.Network));
+
             return Task.CompletedTask;
         }
 
@@ -880,16 +920,17 @@ internal sealed class UITestExecutionSession : IAsyncDisposable
 
     private ElasticsearchRunningContext SetUpElasticsearch()
     {
-        var id = Guid.NewGuid();
-        var prefix = TestContext.Current.GetElasticsearchSafeIndexName(id);
+        var prefix = TestContext.Current.GetElasticsearchSafeIndexName();
 
         _configuration.OrchardCoreConfiguration.ConfigureElasticsearchPrefix(prefix);
 
-        return new(id, prefix);
+        return new(prefix);
     }
 
     private async Task CaptureBrowserUsingDumpsAsync(string debugInformationPath)
     {
+        if (_context == null) return;
+
         // Saving the failure screenshot and HTML output should be as early after the test fail as possible so they show
         // an accurate state. Otherwise, e.g. the UI can change, resources can load in the meantime.
         if (_dumpConfiguration.CaptureScreenshots)
@@ -897,7 +938,7 @@ internal sealed class UITestExecutionSession : IAsyncDisposable
             await CreateScreenshotsDumpAsync(debugInformationPath);
         }
 
-        if (_dumpConfiguration.CaptureDownloads && Directory.Exists(_context.DownloadsDirectoryPath))
+        if (_dumpConfiguration.CaptureDownloads && Directory.Exists(_context!.DownloadsDirectoryPath))
         {
             FileSystem.CopyDirectory(
                 _context.DownloadsDirectoryPath,
@@ -907,7 +948,7 @@ internal sealed class UITestExecutionSession : IAsyncDisposable
         if (_dumpConfiguration.CaptureHtmlSource)
         {
             _context.RefreshCurrentAtataContext();
-            _context.Scope.AtataContext.TakePageSnapshot("TestDumpPageSnapshot");
+            _context.Scope.DriverSession?.TakePageSnapshot("TestDumpPageSnapshot");
 
             var file = _context.Scope.AtataContext.Artifacts.Files.Value
                 .Single(file => file.Name.Value.Contains("TestDumpPageSnapshot"));
@@ -960,7 +1001,10 @@ internal sealed class UITestExecutionSession : IAsyncDisposable
 
     private Task TakeScreenshotIfEnabledAsync(UITestContext context, string suffix)
     {
-        if (_context == null || !_dumpConfiguration.CaptureScreenshots || !_context.IsBrowserRunning) return Task.CompletedTask;
+        if (_context is not { Driver: ITakesScreenshot } || !_dumpConfiguration.CaptureScreenshots || !_context.IsBrowserRunning)
+        {
+            return Task.CompletedTask;
+        }
 
         var screenshotsPath = _context.ScreenshotsDirectoryPath;
         FileSystemHelper.EnsureDirectoryExists(screenshotsPath);
@@ -988,6 +1032,8 @@ internal sealed class UITestExecutionSession : IAsyncDisposable
 
     private async Task CreateScreenshotsDumpAsync(string debugInformationPath)
     {
+        if (_context == null) return;
+
         await TakeScreenshotIfEnabledAsync(_context);
 
         var screenshotsSourcePath = _context.ScreenshotsDirectoryPath;

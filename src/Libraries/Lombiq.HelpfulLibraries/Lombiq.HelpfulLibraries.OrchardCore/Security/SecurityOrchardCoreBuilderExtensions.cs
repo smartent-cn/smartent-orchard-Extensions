@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.StaticFiles;
 using OrchardCore.Environment.Shell;
 using OrchardCore.Environment.Shell.Models;
-using System;
 using System.Linq;
 
 namespace Microsoft.Extensions.DependencyInjection;
@@ -21,18 +20,6 @@ public static class SecurityOrchardCoreBuilderExtensions
     public static OrchardCoreBuilder ConfigureAntiForgeryAlwaysSecure(this OrchardCoreBuilder builder) =>
         builder.ConfigureServices((services, _) =>
             services.Configure<AntiforgeryOptions>(options => options.Cookie.SecurePolicy = CookieSecurePolicy.Always));
-
-    /// <inheritdoc cref="ConfigureSecurityDefaults(OrchardCoreBuilder, ContentSecurityPolicyHeaderConfiguration)"/>
-    [Obsolete("Use the overload with the ContentSecurityPolicyHeaderConfiguration parameter instead.")]
-    public static OrchardCoreBuilder ConfigureSecurityDefaults(
-        this OrchardCoreBuilder builder,
-        bool allowInlineScript = true,
-        bool allowInlineStyle = false) =>
-        builder.ConfigureSecurityDefaults(new ContentSecurityPolicyHeaderConfiguration
-        {
-            AllowInlineScript = allowInlineScript,
-            AllowInlineStyle = allowInlineStyle,
-        });
 
     /// <summary>
     /// Provides some default security configuration for Orchard Core.
@@ -114,6 +101,15 @@ public static class SecurityOrchardCoreBuilderExtensions
     ///     </item>
     ///     <item>
     ///         <description>
+    ///             Adds <see cref="MonacoContentSecurityPolicyProvider"/> that permits <c>eval</c> and <c>blob:</c> in
+    ///             all ~/Admin pages, required by the Monaco text editor widely used in the admin. You can opt out by
+    ///             setting <see cref="ContentSecurityPolicyHeaderOptions.EnableMonacoContentSecurityPolicyProvider"/>
+    ///             to <see langword="false"/> in the
+    ///             <c>OrchardCore:Lombiq_HelpfulLibraries_OrchardCore_ContentSecurityPolicy</c> app setting.
+    ///         </description>
+    ///     </item>
+    ///     <item>
+    ///         <description>
     ///             Adds a middleware that supplies the <c>Content-Security-Policy</c> header.
     ///         </description>
     ///     </item>
@@ -136,24 +132,6 @@ public static class SecurityOrchardCoreBuilderExtensions
         ConfigureSecurityDefaultsInner(builder, contentSecurityPolicyHeaderConfiguration, useStaticFiles: false);
 
     /// <summary>
-    /// The same as <see cref="ConfigureSecurityDefaults(OrchardCoreBuilder, bool, bool)"/>, but
-    /// also registers the <see cref="StaticFileMiddleware"/> at the end of the chain, so <c>app.UseStaticFiles()</c>
-    /// should not be called when this is used. This is helpful because <see cref="StaticFileMiddleware"/>
-    /// short-circuits the call chain when delivering static files, so later middlewares are not executed (e.g. the
-    /// <c>X-Content-Type-Options: nosniff</c> header wouldn't be added).
-    /// </summary>
-    [Obsolete("Use the overload with the ContentSecurityPolicyHeaderConfiguration parameter instead.")]
-    public static OrchardCoreBuilder ConfigureSecurityDefaultsWithStaticFiles(
-        this OrchardCoreBuilder builder,
-        bool allowInlineScript = true,
-        bool allowInlineStyle = false) =>
-        builder.ConfigureSecurityDefaultsWithStaticFiles(new ContentSecurityPolicyHeaderConfiguration
-        {
-            AllowInlineScript = allowInlineScript,
-            AllowInlineStyle = allowInlineStyle,
-        });
-
-    /// <summary>
     /// The same as <see cref="ConfigureSecurityDefaults(OrchardCoreBuilder, ContentSecurityPolicyHeaderConfiguration)"/>, but
     /// also registers the <see cref="StaticFileMiddleware"/> at the end of the chain, so <c>app.UseStaticFiles()</c>
     /// should not be called when this is used. This is helpful because <see cref="StaticFileMiddleware"/>
@@ -170,6 +148,9 @@ public static class SecurityOrchardCoreBuilderExtensions
         ContentSecurityPolicyHeaderConfiguration contentSecurityPolicyHeaderConfiguration,
         bool useStaticFiles)
     {
+        builder.ApplicationServices.ConfigureFromShellConfiguration<ContentSecurityPolicyHeaderOptions>(
+            "Lombiq_HelpfulLibraries_OrchardCore_ContentSecurityPolicy");
+
         builder.ApplicationServices.AddInlineStartup(
             services => services
                 .AddContentSecurityPolicyProvider<CdnContentSecurityPolicyProvider>()
@@ -181,6 +162,7 @@ public static class SecurityOrchardCoreBuilderExtensions
                 .AddContentSecurityPolicyProvider<BrowserLinkContentSecurityPolicyProvider>()
                 .AddContentSecurityPolicyProvider<ReCaptchaContentSecurityPolicyProvider>()
                 .AddContentSecurityPolicyProvider<GoogleAnalyticsContentSecurityPolicyProvider>()
+                .AddContentSecurityPolicyProvider<MonacoContentSecurityPolicyProvider>()
                 .ConfigureSessionCookieAlwaysSecure(),
             (app, _, serviceProvider) =>
             {

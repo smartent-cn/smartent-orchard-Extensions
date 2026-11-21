@@ -31,7 +31,7 @@ public static class TestCaseUITestContextExtensions
 
         var warningEmails = new List<int>();
         var quotaAwareEmailCount = 0;
-        for (int i = 0; i < maximumEmailQuota; i++)
+        for (var i = 0; i < maximumEmailQuota; i++)
         {
             await context.GoToEmailTestAsync();
             await context.FillEmailTestFormAsync(SuccessfulSubject);
@@ -46,7 +46,7 @@ public static class TestCaseUITestContextExtensions
 
             if (!quotaShouldBeEnforced) continue;
 
-            var warningLevel = Convert.ToInt32(Math.Round((double)quotaAwareEmailCount / maximumEmailQuota * 100, 0));
+            var warningLevel = 100 * quotaAwareEmailCount / maximumEmailQuota;
             if (warningLevel >= 100)
             {
                 await context.GoToDashboardAsync();
@@ -57,10 +57,10 @@ public static class TestCaseUITestContextExtensions
                 await context.GoToDashboardAsync();
                 CheckMessageExistence(context, warningLevel.ToTechnicalString());
 
-                await context.GoToContentItemsPageAsync();
+                await context.GoToContentItemListAsync();
                 CheckMessageExistence(context, warningLevel.ToTechnicalString());
 
-                await context.GoToFeaturesPageAsync();
+                await context.GoToFeaturesAsync();
                 CheckMessageExistence(context, warningLevel.ToTechnicalString());
 
                 if (!warningEmails.Contains(warningLevel))
@@ -92,8 +92,7 @@ public static class TestCaseUITestContextExtensions
 
     private static void CheckMessageExistence(UITestContext context, string warningLevel) =>
         context.CheckExistence(
-            By.XPath($"//p[contains(@class,'alert-warning')]" +
-                $"[contains(.,'It seems that your site sent out {warningLevel}% of e-mail')]"),
+            By.XPath($"//p[contains(@class,'alert-warning')][contains(.,'It seems that your site sent out {warningLevel}% of e-mail')]"),
             exists: true);
 
     private static void CheckEmailsSentWarningMessage(UITestContext context, int maximumEmailQuota, int currentEmailCount)

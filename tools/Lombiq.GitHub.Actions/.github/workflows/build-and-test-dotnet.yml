@@ -13,6 +13,14 @@ on:
         description: >
           A JSON string containing key-value pairs of environment variables to be set. You can use this to pass in
           arbitrary environment variables that can be used to e.g. customize the build or test execution.
+          Pass a single-line JSON string: GitHub masks each line of multiline secrets, including standalone braces,
+          which breaks telemetry charts. When using >-, keep all JSON lines equally indented so YAML folds every
+          line break. Example:
+          ENVIRONMENT_VARIABLES_JSON: >-
+            {
+            "MY_ENV_VAR": "value of environment variable",
+            "MY_ENV_VAR2": "value of environment variable"
+            }
 
     inputs:
       cancel-in-progress-for-this-pr:
@@ -40,7 +48,7 @@ on:
         default: '["ubuntu-24.04"]'
         description: >
           Stringified JSON array with the name of the type of machine(s) to run the workflow under, e.g.
-          '["ubuntu-24.04"]' or '["ubuntu-24.04", "windows-2022"]'.
+          '["ubuntu-24.04"]' or '["ubuntu-24.04", "windows-2025"]'.
       repository:
         description: >
           Repository name with owner to git checkout, if not the current repository. E.g. "Lombiq/GitHub-Actions".
@@ -53,16 +61,30 @@ on:
           defaults to the reference or SHA for that event. Otherwise, uses the default branch.
         type: string
         default: ''
+      free-up-space:
+        type: string
+        default: 'false'
+        description: >
+          Frees up storage space on the runner by deleting files unnecessary for .NET projects. Since it takes time and
+          can break prepared images, this is disabled by default. Enable it if the workflow fails with errors suggesting
+          that the runner has insufficient storage space.
       dotnet-version:
         type: string
-        default: 8.0.301
+        default: 10.0.302
         description: Version of the .NET SDK to set up.
       node-version:
         type: string
-        default: 22.16.0
+        default: 24.10.0
         description: >
           The Node.js version. Can be a specific version number or other notations, see the documentation of
           https://github.com/actions/setup-node.
+      node-package-manager-cache:
+        type: string
+        default: 'false'
+        description: >
+          Set to true to enable automatic caching based on the package manager field in package.json. By default,
+          caching is disabled for this workflow (which is different from the underlying action's default behavior), to
+          improve stability and backwards compatibility.
       blame-hang-timeout:
         type: string
         default: ''
@@ -79,10 +101,10 @@ on:
         description: Configuration parameter for dotnet build, e.g. Release (default) or Debug.
       build-solution-path:
         type: string
-        default: '*.sln'
+        default: '*.sln?'
         description: >
-          The path of the solution or project file to be built. If there's exactly one .sln file in the build directory
-          then this can be omitted. For further information, see the documentation of the build-dotnet action.
+          The path of the solution or project file to be built. If there's exactly one .sln or .slnx file in the build
+          directory then this can be omitted. For further information, see the documentation of the build-dotnet action.
       build-verbosity:
         type: string
         default: quiet
@@ -124,6 +146,12 @@ on:
         description: >
           Duration in days after which the artifact of the build's binary log (if any) will expire. See
           https://github.com/actions/upload-artifact#retention-period for more details.
+      build-fail-on-pending-changes:
+        type: string
+        default: 'true'
+        description: >
+          If set to "true", the workflow fails when the checked out repository has pending Git changes immediately
+          after the build step.
       dotnet-test-process-timeout:
         required: false
         type: number
@@ -133,6 +161,10 @@ on:
         type: string
         default: 'false'
         description: Disables test execution completely if set to "true".
+      test-platform:
+        type: string
+        default: Microsoft.Testing.Platform
+        description: Test platform (Microsoft.Testing.Platform or VSTest). See the test-dotnet action for prerequisites.
       test-filter:
         type: string
         description: >
@@ -154,8 +186,14 @@ on:
         type: string
         default: 'false'
         description: >
-          Enables diagnostic mode for `dotnet test` with the `--diag` flag and writes diagnostic messages to log files,
+          Enables diagnostic mode for `dotnet test` with MTP's `--diagnostic` flag (VSTest: `--diag`) and writes log files,
           to be uploaded as artifacts. See https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-test for details.
+      test-show-time-remaining-until-timeout:
+        type: string
+        default: 'false'
+        description: >
+          Enables the output of a "Until timeout: Ns" type message every second during test execution. This can be
+          helpful if you need an idea about the timing of the test outputs.
       ui-test-retry-interval-seconds:
         type: string
         required: false
@@ -176,7 +214,7 @@ on:
       dotnet-consolidation-exclude-version-regex:
         type: string
         required: false
-        default: \-alpha
+        default: \-(alpha|preview)
         description: >
           A regular expression to match package versions that will be skipped during NuGet package consolidation. See
           the dotnet consolidate docs for details: https://github.com/olsh/dotnet-consolidate?tab=readme-ov-file#usage.
@@ -201,8 +239,8 @@ on:
         type: string
         default: 'true'
         description: >
-          If "true" (the default), detailed telemetry about the workflow run will be collected with
-          https://github.com/catchpoint/workflow-telemetry-action.
+          If "true" (the default), CPU and memory usage charts and a JSON artifact will be generated with
+          https://github.com/dev-hato/actions-workflow-metrics. Private repositories require actions:read permission.
 
 jobs:
   # While the below steps seem suitable to DRY with build-and-test-orchard-core, since reusable workflows can't call
@@ -239,12 +277,17 @@ jobs:
         if: inputs.collect-workflow-telemetry == 'true'
         uses: Lombiq/GitHub-Actions/.github/actions/workflow-telemetry@dev
         with:
-          github_token: ${{ secrets.CHECKOUT_TOKEN }}
+          # Telemetry reads the caller's workflow run, which may be in a different repository from checkout.
+          github_token: ${{ github.token }}
 
       - name: Set Environment Variables
         uses: Lombiq/GitHub-Actions/.github/actions/set-environment-variables@dev
         env:
           ENVIRONMENT_VARIABLES_JSON: ${{ secrets.ENVIRONMENT_VARIABLES_JSON }}
+
+      - name: Free up Space
+        if: inputs.free-up-space == 'true'
+        uses: Lombiq/GitHub-Actions/.github/actions/free-up-space-for-dotnet@dev
 
       - name: Checkout
         uses: Lombiq/GitHub-Actions/.github/actions/checkout@dev
@@ -252,11 +295,6 @@ jobs:
           repository: ${{ inputs.repository }}
           ref: ${{ inputs.repository-ref }}
           token: ${{ secrets.CHECKOUT_TOKEN }}
-
-      - name: Set up .NET
-        uses: Lombiq/GitHub-Actions/.github/actions/setup-dotnet@dev
-        with:
-          dotnet-version: ${{ inputs.dotnet-version }}
 
       - name: Verify that .NET packages are consolidated
         if: ${{ inputs.verify-dotnet-consolidation }}
@@ -266,10 +304,16 @@ jobs:
           exclude-version-regex: ${{ inputs.dotnet-consolidation-exclude-version-regex }}
           exclude-project-path: ${{ inputs.dotnet-consolidation-exclude-project-path }}
 
+      - name: Set up .NET
+        uses: Lombiq/GitHub-Actions/.github/actions/setup-dotnet@dev
+        with:
+          dotnet-version: ${{ inputs.dotnet-version }}
+
       - name: Set up Node.js
         uses: Lombiq/GitHub-Actions/.github/actions/setup-node@dev
         with:
           node-version: ${{ inputs.node-version }}
+          package-manager-cache: ${{ inputs.node-package-manager-cache }}
 
       - name: Build and Static Code Analysis
         uses: Lombiq/GitHub-Actions/.github/actions/build-dotnet@dev
@@ -286,6 +330,14 @@ jobs:
           binary-log-artifact-retention-days: ${{ inputs.build-binary-log-artifact-retention-days }}
           warnings-as-errors: ${{ inputs.warnings-as-errors }}
 
+      - name: Verify Git Status is Clean
+        if: inputs.build-fail-on-pending-changes == 'true'
+        uses: Lombiq/GitHub-Actions/.github/actions/verify-git-status-clean@dev
+        with:
+          ignored-paths: |
+            global.json
+            build.binlog
+
       - name: Tests
         if: inputs.test-disable == 'false'
         uses: Lombiq/GitHub-Actions/.github/actions/test-dotnet@dev
@@ -296,9 +348,11 @@ jobs:
           solution-path: ${{ inputs.build-solution-path }}
           test-verbosity: ${{ inputs.build-verbosity }}
           test-filter: ${{ inputs.test-filter }}
+          test-platform: ${{ inputs.test-platform }}
           artifact-retention-days: ${{ inputs.test-artifact-retention-days }}
           xunit-max-parallel-threads: ${{ inputs.xunit-max-parallel-threads }}
           enable-diagnostic-mode: ${{ inputs.enable-test-diagnostic-mode }}
+          show-time-remaining-until-timeout: ${{ inputs.test-show-time-remaining-until-timeout }}
           ui-test-retry-interval-seconds: ${{ inputs.ui-test-retry-interval-seconds }}
 
       - name: Cancel Workflow on Failure

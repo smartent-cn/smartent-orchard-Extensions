@@ -46,13 +46,15 @@ public static class LocalClockExtensions
     /// be UTC. If the <see cref="DateTime.Kind"/> is something other than <see cref="DateTimeKind.Utc"/> then it will
     /// be coerced without any conversion. If you need conversion use <see cref="ConvertToUtcAsync"/> first.
     /// </summary>
-    public static async Task<string> LocalizeAndFormatAsync(
+    public static async Task<string?> LocalizeAndFormatAsync(
         this ILocalClock localClock,
-        DateTime? dateTimeUtc)
+        DateTime? dateTimeUtc,
+        IFormatProvider? formatProvider = null)
     {
         if (dateTimeUtc == null) return null;
 
-        return ((DateTime?)(await localClock.ConvertToLocalAsync(dateTime: dateTimeUtc.Value)).DateTime).ToString();
+        var localTime = await localClock.ConvertToLocalAsync(dateTime: dateTimeUtc.Value);
+        return localTime.DateTime.ToString(formatProvider);
     }
 
     private static async Task<T> ExecuteInDifferentTimeZoneAsync<T>(HttpContext httpContext, string timeZoneId, Func<Task<T>> asyncAction)

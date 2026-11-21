@@ -6,6 +6,7 @@
     [string] $Version,
     [string] $Switches,
     [string] $ExpectedCodeAnalysisErrors,
+    [string] $RebuildDirectory,
     [boolean] $CreateBinaryLog,
     [boolean] $WarningsAsErrors)
 
@@ -37,7 +38,10 @@ $buildSwitches = ConvertTo-Array @"
     $Switches
 "@
 
-[array] $expectedErrorCodes = ConvertTo-Array $ExpectedCodeAnalysisErrors | ForEach-Object { $PSItem.Split(':')[0] } | Sort-Object
+[array] $expectedErrorCodes = ConvertTo-Array $ExpectedCodeAnalysisErrors |
+    ForEach-Object { $PSItem.Split(':')[0] } |
+    Select-Object -Unique |
+    Sort-Object
 $noErrorsExpected = $expectedErrorCodes.Count -eq 0
 
 if (Test-Path src/Utilities/Lombiq.Gulp.Extensions/Lombiq.Gulp.Extensions.csproj)
@@ -65,6 +69,14 @@ $errorCodes = New-Object 'System.Collections.Generic.List[string]'
 if ($noErrorsExpected)
 {
     dotnet build $SolutionOrProject @buildSwitches
+
+    if (($LASTEXITCODE -eq 0) -and $RebuildDirectory -and (Test-Path -Path $RebuildDirectory))
+    {
+        foreach ($project in (Get-ChildItem -Path $RebuildDirectory -Filter *.csproj -Recurse))
+        {
+            dotnet build $project @buildSwitches
+        }
+    }
 }
 else
 {
@@ -79,8 +91,9 @@ else
     }
 }
 
-if ($noErrorsExpected -and -not $?)
+if ($noErrorsExpected -and ($LASTEXITCODE -gt 0))
 {
+    Write-GitHub "Solution or project build failed with error code $LASTEXITCODE."
     exit 1
 }
 
@@ -88,7 +101,7 @@ Stop-DotNetBuildServers
 
 if ($expectedErrorCodes)
 {
-    $errorCodes = $errorCodes | Sort-Object
+    $errorCodes = $errorCodes | Select-Object -Unique | Sort-Object
     $fail = 0
     $report = New-Object 'System.Text.StringBuilder' "`n"
 

@@ -1,8 +1,10 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <MediaThemeRecipeFileName>DotNest.Core.SDK.MediaTheme</MediaThemeRecipeFileName>
-    <DeploymentFolder>$(MSBuildProjectDirectory)\Deployment</DeploymentFolder>
-    <RecipeToMove>$(DeploymentFolder)\Recipe.json</RecipeToMove>
-    <MediaThemeBaseId>TheTheme</MediaThemeBaseId>
+    <MediaThemeRecipeFileName Condition="$(MediaThemeRecipeFileName) == ''"
+      >$([System.Text.RegularExpressions.Regex]::Replace($(MSBuildProjectName), '\.Theme$', '.MediaTheme'))</MediaThemeRecipeFileName>
+
+    <DeploymentFolder Condition="$(DeploymentFolder) == ''">$(MSBuildProjectDirectory)\Deployment</DeploymentFolder>
+    <RecipeToMove Condition="$(RecipeToMove) == ''">$(DeploymentFolder)\Recipe.json</RecipeToMove>
+    <MediaThemeBaseId Condition="$(MediaThemeBaseId) == ''">TheTheme</MediaThemeBaseId>
   </PropertyGroup>
 </Project>

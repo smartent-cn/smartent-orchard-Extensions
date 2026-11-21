@@ -4,7 +4,7 @@ using Lombiq.Tests.UI.Shortcuts.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi;
 using OrchardCore.Data.YesSql;
 using OrchardCore.Modules;
 using System;
@@ -27,15 +27,24 @@ public sealed class Startup : StartupBase
         app.UseMiddleware<ExceptionContextLoggingMiddleware>();
 }
 
-[Feature(ShortcutsFeatureIds.Swagger)]
-public sealed class SwaggerStartup : StartupBase
+[RequireFeatures("OrchardCore.HealthChecks")]
+public sealed class HealthChecksStartup : StartupBase
+{
+    public override void ConfigureServices(IServiceCollection services)
+    {
+        services.AddSingleton<TestHealthCheckStatusAccessor>();
+        services.AddHealthChecks().AddCheck<TestHealthCheck>(nameof(TestHealthCheck));
+    }
+}
+
+[Feature(ShortcutsFeatureIds.OpenApi)]
+public sealed class OpenApiSetup : StartupBase
 {
     public override void ConfigureServices(IServiceCollection services) =>
-        services.AddSwaggerGen(swaggerGenOptions =>
-            swaggerGenOptions.SwaggerDoc("v1", new OpenApiInfo { Title = "Orchard Core API", Version = "v1" }));
+        services.AddOpenApi(options => options.OpenApiVersion = OpenApiSpecVersion.OpenApi3_1);
 
     public override void Configure(IApplicationBuilder app, IEndpointRouteBuilder routes, IServiceProvider serviceProvider) =>
-        app.UseSwagger();
+        routes.MapOpenApi();
 }
 
 [Feature(ShortcutsFeatureIds.ShiftTime)]

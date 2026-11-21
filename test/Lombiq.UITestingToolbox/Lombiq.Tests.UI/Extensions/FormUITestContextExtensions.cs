@@ -1,12 +1,10 @@
 using AngleSharp.Text;
 using Atata;
-using Lombiq.HelpfulLibraries.Common.Utilities;
 using Lombiq.Tests.UI.Helpers;
 using Lombiq.Tests.UI.Services;
 using OpenQA.Selenium;
 using System;
 using System.Globalization;
-using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 
@@ -16,6 +14,8 @@ namespace Lombiq.Tests.UI.Extensions;
 
 public static class FormUITestContextExtensions
 {
+    public static readonly By SubmitButtonBy = By.XPath("//button[@type='submit' and not(ancestor::form[@action='/Users/LogOff'])]");
+
     public static async Task ClickAndFillInWithRetriesAsync(
         this UITestContext context,
         By by,
@@ -59,7 +59,7 @@ public static class FormUITestContextExtensions
         var editorBy = by.Then(By.CssSelector(".trumbowyg-box > .trumbowyg-editor"));
         context.Get(editorBy).Click();
 
-        expectedHtml ??= StringHelper.CreateInvariant($"<p>{text}</p>");
+        expectedHtml ??= $"<p>{text}</p>";
 
         return context.ExecuteLoggedAsync(
             nameof(ClickAndFillInTrumbowygEditorWithRetriesAsync),
@@ -174,14 +174,17 @@ public static class FormUITestContextExtensions
         By by,
         string text,
         TimeSpan? timeout = null,
-        TimeSpan? interval = null) =>
-        context.ExecuteLoggedAsync(
+        TimeSpan? interval = null)
+    {
+        text ??= string.Empty;
+        return context.ExecuteLoggedAsync(
             nameof(FillInWithRetriesAsync),
             $"{by} - \"{text}\"",
             () => context.RetryIfStaleOrFailAsync(
                 () => Task.FromResult(TryFillElement(context, by, text).GetValue() == text),
                 timeout,
                 interval));
+    }
 
     /// <summary>
     /// Fills a form field with the given text, and retries if the field is left blank (but doesn't check the value).
@@ -259,9 +262,10 @@ public static class FormUITestContextExtensions
 
     public static async Task SetCheckboxValueAsync(this UITestContext context, By by, bool isChecked = true)
     {
-        var element = context.Get(by.OfAnyVisibility());
+        by = by.OfAnyVisibility();
+        var element = context.Get(by);
         var currentValue = element.GetDomProperty("checked") == bool.TrueString;
-        if (currentValue != isChecked) await element.ClickReliablyAsync(context);
+        if (currentValue != isChecked) await element.ClickReliablyAsync(context, by);
     }
 
     public static int GetIntValue(this UITestContext context, By by) =>
@@ -277,7 +281,7 @@ public static class FormUITestContextExtensions
         TimeSpan? timeout = null,
         TimeSpan? interval = null)
     {
-        string title = defaultTitle;
+        var title = defaultTitle;
 
         await context.DoWithRetriesOrFailAsync(
             () =>
@@ -318,7 +322,7 @@ public static class FormUITestContextExtensions
     /// </summary>
     public static void SetDatePicker(this UITestContext context, string id, DateTime value) =>
         context.ExecuteScript(
-            StringHelper.CreateInvariant($"document.getElementById('{id}').value = '{value:yyyy-MM-dd}';") +
+            string.Create(CultureInfo.InvariantCulture, $"document.getElementById('{id}').value = '{value:yyyy-MM-dd}';") +
             $"document.getElementById('{id}').dispatchEvent(new Event('change'));");
 
     public static DateTime GetDatePicker(this UITestContext context, string id) =>
@@ -332,10 +336,7 @@ public static class FormUITestContextExtensions
     /// </summary>
     /// <param name="withJavaScript">When set to <see langword="true"/> it clicks the button with JavaScript.</param>
     public static Task ClickReliablyOnSubmitAsync(this UITestContext context, bool withJavaScript = false) =>
-        ClickReliablyWithSeleniumOrJavascriptAsync(
-            context,
-            By.XPath("//button[@type='submit' and not(ancestor::form[@action='/Users/LogOff'])]"),
-            withJavaScript);
+        ClickReliablyWithSeleniumOrJavascriptAsync(context, SubmitButtonBy, withJavaScript);
 
     /// <summary>
     /// Finds the first submit button with the provided <paramref name="label"/> and clicks on it reliably.
@@ -366,57 +367,9 @@ public static class FormUITestContextExtensions
     public static Task SelectAddNewDropdownAsync(this UITestContext context, By byLocalMenuItem = null) =>
         context.SelectFromBootstrapDropdownReliablyAsync(GetAddNewButton(context), byLocalMenuItem);
 
-    /// <summary>
-    /// Clicks on the <paramref name="dropdownButton"/> until the Bootstrap dropdown menu appears (up to 3 tries) and
-    /// then clicks on the <paramref name="byLocalMenuItem"/> within the dropdown menu's context.
-    /// </summary>
-    /// <param name="context">The current UI test context.</param>
-    /// <param name="dropdownButton">The button that reveals the Bootstrap dropdown menu.</param>
-    /// <param name="byLocalMenuItem">
-    /// The path inside the dropdown menu. If <see langword="null"/> then no selection (clicking) will be made, and the
-    /// dropdown is left open.
-    /// </param>
-    /// <exception cref="InvalidOperationException">
-    /// Thrown if clicking on the button didn't yield a dropdown menu even after retries.
-    /// </exception>
-    public static async Task SelectFromBootstrapDropdownReliablyAsync(
-        this UITestContext context,
-        IWebElement dropdownButton,
-        By byLocalMenuItem)
-    {
-        var byDropdownMenu = By.XPath("./following-sibling::*[contains(@class, 'dropdown-menu')]");
-
-        for (var i = 0; i < 3; i++)
-        {
-            await dropdownButton.ClickReliablyAsync(context);
-
-            var dropdownMenu = dropdownButton.GetAll(byDropdownMenu).SingleOrDefault();
-            if (dropdownMenu != null)
-            {
-                if (byLocalMenuItem != null) await dropdownMenu.Get(byLocalMenuItem).ClickReliablyAsync(context);
-                return;
-            }
-        }
-
-        throw new InvalidOperationException($"Couldn't open dropdown menu in 3 tries.");
-    }
-
-    /// <summary>
-    /// Clicks on the <paramref name="byDropdownButton"/> until the Bootstrap dropdown menu appears (up to 3 tries) and
-    /// then clicks on the menu item with the <paramref name="menuItemLinkText"/> within the dropdown menu's context.
-    /// </summary>
-    /// <param name="context">The current UI test context.</param>
-    /// <param name="byDropdownButton">The path of the button that reveals the Bootstrap dropdown menu.</param>
-    /// <param name="menuItemLinkText">The text of the dropdown menu item.</param>
-    public static Task SelectFromBootstrapDropdownReliablyAsync(
-        this UITestContext context,
-        By byDropdownButton,
-        string menuItemLinkText) =>
-        SelectFromBootstrapDropdownReliablyAsync(context, context.Get(byDropdownButton), By.LinkText(menuItemLinkText));
-
     private static IWebElement TryFillElement(UITestContext context, By by, string text)
     {
-        var element = context.Get(by);
+        var element = context.Get(by.Unsafely());
 
         return context.Driver.TryFillElement(element, text);
     }

@@ -37,7 +37,7 @@ public static class WebDriverFactory
             // is updated automatically by Renovate.
             // If anything on this line is changed, be sure to adjust the regex in the renovate.json5 config file in the
             // root too.
-            chromeConfig.Options.BrowserVersion = "138.0.7204.168";
+            chromeConfig.Options.BrowserVersion = "158.0.8127.36";
 
             configuration.BrowserOptionsConfigurator?.Invoke(chromeConfig.Options);
 
@@ -68,17 +68,17 @@ public static class WebDriverFactory
             // root too.
             if (OperatingSystem.IsLinux())
             {
-                var linuxEdgeVersion = "138.0.3351.95";
+                var linuxEdgeVersion = "158.0.4370.33";
                 options.BrowserVersion = linuxEdgeVersion;
             }
             else if (OperatingSystem.IsWindows())
             {
-                var windowsEdgeVersion = "138.0.3351.95";
+                var windowsEdgeVersion = "158.0.4370.33";
                 options.BrowserVersion = windowsEdgeVersion;
             }
             else if (!OperatingSystem.IsMacOS())
             {
-                var macOsEdgeVersion = "138.0.3351.95";
+                var macOsEdgeVersion = "152.0.4191.53";
                 options.BrowserVersion = macOsEdgeVersion;
             }
 
@@ -118,7 +118,7 @@ public static class WebDriverFactory
             // automatically by Renovate.
             // If anything on this line is changed, be sure to adjust the regex in the renovate.json5 config file in the
             // root too.
-            firefoxOptions.BrowserVersion = "141.0";
+            firefoxOptions.BrowserVersion = "160.0.1";
 
             if (configuration.Headless) firefoxOptions.AddArgument("--headless");
 
@@ -134,6 +134,10 @@ public static class WebDriverFactory
 
             return new FirefoxDriver(firefoxOptions).SetCommonTimeouts(pageLoadTimeout);
         }));
+
+    public static Task<Func<HttpClientDriver>> CreateHttpClientDriverAsync(
+        BrowserConfiguration configuration, TimeSpan pageLoadTimeout, Uri baseUri) =>
+        CreateDriverAsync(() => Task.FromResult(() => new HttpClientDriver(configuration, pageLoadTimeout, baseUri)));
 
     private static TDriverOptions SetCommonOptions<TDriverOptions>(this TDriverOptions driverOptions)
         where TDriverOptions : DriverOptions
@@ -205,7 +209,9 @@ public static class WebDriverFactory
         options.AddUserProfilePreference("profile.password_manager_enabled", "false");
         options.AddUserProfilePreference("reduce-security-for-testing", "null");
         options.AddUserProfilePreference("profile.password_manager_leak_detection", "false");
+        options.AddUserProfilePreference("profile.reduce-security-for-testing", "true");
         options.AddArgument("suppress-message-center-popups");
+        options.AddArgument("disable-features=PasswordLeakDetection");
 
         // Disables the default browser check, which is useless during UI tests.
         options.AddArgument("no-default-browser-check");
@@ -317,9 +323,19 @@ public static class WebDriverFactory
         options.AddArgument("disable-checker-imaging");
         options.AddArgument("disable-image-animation-resync");
 
+        // Disables all experiments set with chrome://flags. Not setting this and enable-benchmarking can cause visual
+        // glitches (like horizontal bars in images) and the file format of screenshots being wrong.
+        options.AddArgument("no-experiments");
+
+        // From https://github.com/GoogleChrome/chrome-launcher/blob/main/docs/chrome-flags-for-tools.md: "Enables the
+        // benchmarking extensions, disables field trials, and forces the use of the default variant. Uses settings that
+        // reduce noise/non-determinism in Chrome. Originally set via chrome://flags."
+        // There's no docs for this flag under https://peter.sh/experiments/chromium-command-line-switches/.
+        options.AddArgument("enable-benchmarking");
+
         if (configuration.FakeVideoSource is not null)
         {
-            var fakeCameraSourceFilePath = configuration.FakeVideoSource.SaveVideoToTempFolder();
+            var fakeCameraSourceFilePath = configuration.FakeVideoSource.SaveVideoToTempFolder(configuration.TempDirectoryPath);
 
             // In some cases the video would not start automatically. To avoid this scenario we are adding the
             // "disable-gesture-requirement-for-media-playback" flag.
@@ -379,7 +395,10 @@ public static class WebDriverFactory
 
     private static string PrepareDownloadDirectory(BrowserConfiguration configuration)
     {
-        var downloadPath = DirectoryPaths.GetTempDirectoryPath(configuration.UITestContextId, DirectoryPaths.Downloads);
+        var downloadPath = OrchardCoreUITestExecutorConfiguration.GetTempDirectoryPathWithFallback(
+            configuration.TempDirectoryPath,
+            configuration.UITestContextId,
+            DirectoryPaths.Downloads);
         FileSystemHelper.EnsureDirectoryExists(downloadPath);
         return downloadPath;
     }

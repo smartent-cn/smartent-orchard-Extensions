@@ -1,7 +1,7 @@
-using Atata;
 using Lombiq.Tests.UI.Extensions;
 using Lombiq.Tests.UI.Services;
 using OpenQA.Selenium;
+using System;
 using System.Threading.Tasks;
 
 namespace Lombiq.Tests.UI.BasicOrchardFeaturesTesting;
@@ -29,7 +29,7 @@ public static class WorkflowsFeatureTestingUITestContextExtensions
                 await context.ClickReliablyOnAsync(By.XPath("//button[@data-activity-type='Event']"));
                 // Make sure that the Content Published event's card loads before trying to add it.
                 context.Exists(By.XPath("//h4[contains(@class, 'card-title') and contains(text(), 'Content Published')]"));
-                await context.ClickReliablyOnUntilNavigationHasOccurredAsync(By.XPath("//a[contains(@href, 'ContentPublishedEvent')]"));
+                await context.ClickReliablyOnAndWaitUntilUrlChangeAsync(By.XPath("//a[contains(@href, 'ContentPublishedEvent')]"));
 
                 await context.ClickAndFillInWithRetriesAsync(By.Id("IActivity_ActivityMetadata_Title"), "Content Published Trigger");
                 await context.SetCheckboxValueAsync(By.XPath("//input[@value='Page']"));
@@ -42,7 +42,7 @@ public static class WorkflowsFeatureTestingUITestContextExtensions
                 context.Exists(notifyBy);
                 // The Add button may be out of the viewport, what makes clicking it unreliable.
                 context.ScrollTo(notifyBy);
-                await context.ClickReliablyOnUntilNavigationHasOccurredAsync(By.XPath("//a[contains(@href, 'NotifyTask')]"));
+                await context.ClickReliablyOnAndWaitUntilUrlChangeAsync(By.XPath("//a[contains(@href, 'NotifyTask')]"));
 
                 await context.ClickAndFillInWithRetriesAsync(By.Id("IActivity_ActivityMetadata_Title"), "Content Published Notification");
                 await context.ClickAndFillInWithRetriesAsync(By.Id("NotifyTask_Message"), contentItemPublishTestSuccessMessage);
@@ -74,13 +74,7 @@ public static class WorkflowsFeatureTestingUITestContextExtensions
                 await context.ClickReliablyOnSubmitAsync("Save", withJavaScript: true);
                 context.ShouldBeSuccess("Workflow has been saved.");
 
-                var contentItemsPage = await context.GoToContentItemsPageAsync();
-                context.RefreshCurrentAtataContext();
-                contentItemsPage
-                    .CreateNewPage()
-                        .Title.Set("Workflows Test Page")
-                        .Publish.ClickAndGo();
-
+                await context.CreateNewPageContentItemAsync("Workflows Test Page", checkSuccess: false);
                 context.ShouldBeSuccess(contentItemPublishTestSuccessMessage);
 
                 // Checking if the workflow run was logged.
@@ -89,6 +83,15 @@ public static class WorkflowsFeatureTestingUITestContextExtensions
                 // If we are testing an app with already existing workflows, our "Test workflow" can end up on a
                 // different page, rather than on the first.
                 await context.FilterOnAdminAsync(testWorkflowName);
+                // This search sometimes takes a bit to load.
+                await context.DoWithRetriesOrFailAsync(
+                    () => Task.FromResult(context
+                        .Driver
+                        .Url
+                        .Replace("%20", " ")
+                        .Replace('+', ' ')
+                        .Contains("Options.Search=" + testWorkflowName)),
+                    TimeSpan.FromMinutes(1));
 
                 await context.ClickReliablyOnAsync(By.XPath("//a[text()='Test workflow']/following-sibling::a[contains(@href, 'Instances')]"));
                 context.Exists(By.XPath("//span[@class = 'badge text-bg-success']"));

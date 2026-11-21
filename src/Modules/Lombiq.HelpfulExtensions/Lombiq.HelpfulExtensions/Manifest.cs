@@ -168,3 +168,33 @@ using static Lombiq.HelpfulExtensions.FeatureIds;
     Category = "Content",
     Description = "Adds a shape along with Razor and Liquid tag helpers for Google Analytics."
 )]
+
+[assembly: Feature(
+    Id = Liquid,
+    Name = "Lombiq Helpful Extensions - Liquid Tags",
+    Category = "Liquid",
+    Description = "Adds various Liquid tags and filters."
+)]
+
+[assembly: Feature(
+    Id = Lucide,
+    Name = "Lombiq Helpful Extensions - Lucide",
+    Category = "Content",
+    Description = "Adds the Lucide icon library as a resource and a TextField editor for picking Lucide icons.",
+    Dependencies =
+    [
+        "OrchardCore.ContentFields",
+        "OrchardCore.Resources",
+    ]
+)]
+
+[assembly: Feature(
+    Id = SimpleIcons,
+    Name = "Lombiq Helpful Extensions - Simple Icons",
+    Category = "Content",
+    Description = "Adds the Simple Icons icon library as a resource and the <simple-icon> tag helper.",
+    Dependencies =
+    [
+        "OrchardCore.DisplayManagement",
+    ]
+)]

@@ -7,12 +7,9 @@ description: >
 # Inputs are copied from https://github.com/actions/setup-node/blob/main/action.yml and formatted, as well as the
 # default Node.js version is specified.
 inputs:
-  always-auth:
-    description: Set always-auth in npmrc.
-    default: false
   node-version:
     description: 'Version Spec of the version to use. Examples: 12.x, 10.15.1, >=10.15.0.'
-    default: 22.16.0
+    default: 24.10.0
   node-version-file:
     description: >
       File containing the version Spec of the version to use. Examples: package.json, .nvmrc, .node-version,
@@ -44,27 +41,40 @@ inputs:
     description: >
       Used to specify a package manager for caching in the default directory. Supported values: npm, yarn,
       pnpm.
+  package-manager-cache:
+    description: >
+      Set to false to disable automatic caching based on the package manager field in package.json. By default,
+      caching is enabled if the package manager field is present.
+    default: true
   cache-dependency-path:
     description: >
       Used to specify the path to a dependency file: package-lock.json, yarn.lock, etc. Supports wildcards or
       a list of file names for caching multiple dependencies.
   mirror:
-    description: >
-      Used to specify an alternative mirror to download Node.js binaries from
+    description: Used to specify an alternative mirror to download Node.js binaries from
   mirror-token:
-    description: >
-      The token used as Authorization header when fetching from the mirror
+    description: The token used as Authorization header when fetching from the mirror
+outputs:
+  cache-hit:
+    description: A boolean value to indicate if a cache was hit.
+    value: ${{ steps.setup-node.outputs.cache-hit }}
+  node-version:
+    description: The installed node version.
+    value: ${{ steps.setup-node.outputs.node-version }}
 
 runs:
   using: composite
   steps:
     - name: Setup Scripts
+      if: inputs.node-version != 'none'
       shell: pwsh
       run: |
         (Resolve-Path '${{ github.action_path }}/../../../Scripts').Path >> $Env:GITHUB_PATH
 
     - name: Set up Node.js
-      uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+      id: setup-node
+      if: inputs.node-version != 'none'
+      uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
       with:
         node-version: ${{ inputs.node-version }}
         node-version-file: ${{ inputs.node-version-file }}
@@ -74,12 +84,13 @@ runs:
         scope: ${{ inputs.scope }}
         token: ${{ inputs.token }}
         cache: ${{ inputs.cache }}
+        package-manager-cache: ${{ inputs.package-manager-cache }}
         cache-dependency-path: ${{ inputs.cache-dependency-path }}
-        always-auth: ${{ inputs.always-auth }}
         mirror: ${{ inputs.mirror }}
         mirror-token: ${{ inputs.mirror-token }}
 
     - name: Save Node.js Version Into Environment Variable
+      if: inputs.node-version != 'none'
       shell: pwsh
       run: |
         $nodeVersion = node --version

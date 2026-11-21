@@ -1,6 +1,6 @@
 using Lombiq.Tests.UI.Constants;
 using Lombiq.Tests.UI.Extensions;
-using Lombiq.Tests.UI.Pages;
+using Lombiq.Tests.UI.Models;
 using OpenQA.Selenium;
 using Shouldly;
 using System.Threading.Tasks;
@@ -23,7 +23,7 @@ public class TenantTests : UITestBase
 
     [Fact]
     public Task CreatingTenantShouldWork() =>
-        ExecuteTestAfterSetupAsync(
+        RunAsync(
             async context =>
             {
                 const string tenantAdminName = "tenantAdmin";
@@ -31,6 +31,7 @@ public class TenantTests : UITestBase
                 await context.SignInDirectlyAsync();
 
                 // Create the tenant with a custom admin user.
+                await context.EnableTenantsFeatureDirectlyAsync();
                 await context.CreateAndSwitchToTenantAsync(
                     TestTenantName,
                     TestTenantUrlPrefix,

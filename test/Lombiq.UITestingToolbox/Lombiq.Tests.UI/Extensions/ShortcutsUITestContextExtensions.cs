@@ -2,7 +2,7 @@ using Lombiq.HelpfulLibraries.OrchardCore.Mvc;
 using Lombiq.Tests.UI.Constants;
 using Lombiq.Tests.UI.Exceptions;
 using Lombiq.Tests.UI.Helpers;
-using Lombiq.Tests.UI.Pages;
+using Lombiq.Tests.UI.Models;
 using Lombiq.Tests.UI.Services;
 using Lombiq.Tests.UI.Shortcuts.Controllers;
 using Lombiq.Tests.UI.Shortcuts.Models;
@@ -153,7 +153,7 @@ public static class ShortcutsUITestContextExtensions
                         IsEnabled = true,
                     },
                     password,
-                    (key, error) => errors.Add(key, error));
+                    errors.Add);
 
                 if (user == null)
                 {
@@ -259,12 +259,20 @@ public static class ShortcutsUITestContextExtensions
                 var shellFeatureManager = serviceProvider.GetRequiredService<IShellFeaturesManager>();
                 var extensionManager = serviceProvider.GetRequiredService<IExtensionManager>();
 
-                var feature = extensionManager.GetFeature(featureId);
+                var feature = extensionManager.GetFeature(featureId)
+                    ?? throw new InvalidOperationException(
+                        $"No feature found with the ID {featureId}. Check if its extension is added to the web project.");
 
                 return shellFeatureManager.EnableFeaturesAsync([feature], force: true);
             },
             tenant,
             activateShell);
+
+    /// <summary>
+    /// Enables the Tenants feature for the default tenant.
+    /// </summary>
+    public static Task EnableTenantsFeatureDirectlyAsync(this UITestContext context) =>
+        context.EnableFeatureDirectlyAsync("OrchardCore.Tenants", ShellSettings.DefaultShellName);
 
     /// <summary>
     /// Disables the feature with the given <paramref name="featureId"/> directly.
@@ -287,6 +295,26 @@ public static class ShortcutsUITestContextExtensions
             },
             tenant,
             activateShell);
+
+    /// <summary>
+    /// Enables the theme with the given <paramref name="themeId"/> directly.
+    /// </summary>
+    public static async Task EnableThemeDirectlyAsync(
+        this UITestContext context,
+        string themeId,
+        bool isAdmin = false,
+        string tenant = null,
+        bool activateShell = true)
+    {
+        await context.EnableFeatureDirectlyAsync(themeId, tenant, activateShell);
+        await UsingScopeAsync(
+            context,
+            serviceProvider => isAdmin
+                ? serviceProvider.GetRequiredService<IAdminThemeService>().SetAdminThemeAsync(themeId)
+                : serviceProvider.GetRequiredService<ISiteThemeService>().SetSiteThemeAsync(themeId),
+            tenant,
+            activateShell);
+    }
 
     /// <summary>
     /// Turns the <c>Lombiq.Tests.UI.Shortcuts.FeatureToggleTestBench</c> feature on, then off, and checks if the
@@ -336,7 +364,7 @@ public static class ShortcutsUITestContextExtensions
     public static Task<ApplicationInfo> GetApplicationInfoAsync(this UITestContext context) =>
         context.GetApi().GetApplicationInfoFromApiAsync();
 
-    private sealed class ExecuteRecipeShortcut { }
+    private sealed class ExecuteRecipeShortcut;
 
     /// <summary>
     /// Executes a recipe identified by its name directly.
@@ -429,18 +457,6 @@ public static class ShortcutsUITestContextExtensions
     }
 
     /// <summary>
-    /// Selects theme by <paramref name="id"/> directly.
-    /// </summary>
-    /// <exception cref="ThemeNotFoundException">If no theme found with the given <paramref name="id"/>.</exception>
-    [Obsolete("Use SetThemeDirectlyAsync() instead. This method will be removed in a future version.")]
-    public static Task SelectThemeAsync(
-        this UITestContext context,
-        string id,
-        string tenant = null,
-        bool activateShell = true) =>
-        context.SetThemeDirectlyAsync(id, tenant, activateShell);
-
-    /// <summary>
     /// Sets the current site or admin theme by <paramref name="id"/> directly, activating the theme without user interaction.
     /// </summary>
     /// <exception cref="ThemeNotFoundException">
@@ -491,14 +507,20 @@ public static class ShortcutsUITestContextExtensions
         string name,
         string urlPrefix,
         OrchardCoreSetupParameters setupParameters,
-        string featureProfile = null)
+        string featureProfile = null,
+        bool enableTenantsFeature = true)
     {
+        if (enableTenantsFeature)
+        {
+            await context.EnableTenantsFeatureDirectlyAsync();
+        }
+
         setupParameters ??= new OrchardCoreSetupParameters(context);
-        var databaseProvider = setupParameters.DatabaseProvider == OrchardCoreSetupPage.DatabaseType.SqlServer
+        var databaseProvider = setupParameters.DatabaseProvider == OrchardCoreSetupParameters.DatabaseType.SqlConnection
             ? DatabaseProviderValue.SqlConnection
             : setupParameters.DatabaseProvider.ToString();
 
-        await context.Application.UsingScopeAsync(
+        await context.Application.UsingScopeServiceProviderAsync(
             async serviceProvider =>
             {
                 var shellHost = serviceProvider.GetRequiredService<IShellHost>();
@@ -521,7 +543,7 @@ public static class ShortcutsUITestContextExtensions
                 await shellHost.UpdateShellSettingsAsync(shellSettings);
             });
 
-        await context.Application.UsingScopeAsync(
+        await context.Application.UsingScopeServiceProviderAsync(
             async serviceProvider =>
             {
                 var setupService = serviceProvider.GetRequiredService<ISetupService>();
@@ -626,15 +648,13 @@ public static class ShortcutsUITestContextExtensions
     /// If not <see langword="null"/> or empty, an additional information notification is displayed with the provided
     /// HTML content.
     /// </param>
-    /// <param name="cancellationToken">A token to cancel interactive mode programmatically.</param>
-    public static async Task SwitchToInteractiveAsync(
-        this UITestContext context, string notificationHtml = null, CancellationToken cancellationToken = default)
+    public static async Task SwitchToInteractiveAsync(this UITestContext context, string notificationHtml = null)
     {
         context.EnsureValidOrchardCoreTenantScope();
 
         InteractiveModeHasBeenUsed = true;
         await context.EnterInteractiveModeAsync(notificationHtml);
-        await context.WaitInteractiveModeAsync(cancellationToken);
+        await context.WaitInteractiveModeAsync();
 
         if (context.Driver.WindowHandles.Count > 1)
         {
@@ -661,14 +681,12 @@ public static class ShortcutsUITestContextExtensions
     /// Periodically polls the <see cref="IShortcutsApi.IsInteractiveModeEnabledAsync"/> and waits half a second if it's
     /// <see langword="true"/>.
     /// </summary>
-    internal static async Task WaitInteractiveModeAsync(this UITestContext context, CancellationToken cancellationToken = default)
+    internal static async Task WaitInteractiveModeAsync(this UITestContext context)
     {
-        if (cancellationToken == default) cancellationToken = context.Configuration.TestCancellationToken;
-
         var client = context.GetApi();
         while (await client.IsInteractiveModeEnabledAsync() && !context.Configuration.TestCancellationToken.IsCancellationRequested)
         {
-            await Task.Delay(TimeSpan.FromMilliseconds(500), cancellationToken);
+            await Task.Delay(TimeSpan.FromMilliseconds(500), context.Configuration.TestCancellationToken);
         }
     }
 
@@ -700,7 +718,7 @@ public static class ShortcutsUITestContextExtensions
         tenant ??= context.TenantName;
         if (tenant.StartsWith('!')) tenant = ShellSettings.DefaultShellName;
 
-        return context.Application.UsingScopeAsync(execute, tenant, activateShell);
+        return context.Application.UsingScopeServiceProviderAsync(execute, tenant, activateShell);
     }
 
     /// <summary>

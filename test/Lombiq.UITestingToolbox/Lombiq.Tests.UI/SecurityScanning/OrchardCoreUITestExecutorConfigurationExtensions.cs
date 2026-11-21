@@ -1,5 +1,4 @@
 using Lombiq.Tests.UI.Extensions;
-using Lombiq.Tests.UI.Helpers;
 using Lombiq.Tests.UI.Services;
 using Lombiq.Tests.UI.Shortcuts.Controllers;
 using Microsoft.Extensions.Logging;
@@ -28,9 +27,8 @@ public static class OrchardCoreUITestExecutorConfigurationExtensions
     }
 
     /// <summary>
-    /// Similar to <see cref="OrchardCoreUITestExecutorConfiguration.AssertAppLogsCanContainCacheFolderErrorsAsync"/>,
-    /// but also permits certain <see cref="LogLevel.Error"/> log messages which represent correct reactions to
-    /// incorrect or malicious user behavior during a security scan.
+    /// Permits certain <see cref="LogLevel.Error"/> log messages which represent correct reactions to incorrect or
+    /// malicious user behavior during a security scan.
     /// </summary>
     public static Func<IWebApplicationInstance, Task> CreateAppLogAssertionForSecurityScan(params string[] additionalPermittedErrorLinePatterns)
     {
@@ -50,6 +48,7 @@ public static class OrchardCoreUITestExecutorConfigurationExtensions
             "System.IO.IOException: Not a directory",
             "System.IO.IOException: The filename, directory name, or volume label syntax is incorrect",
             "System.IO.DirectoryNotFoundException: Could not find a part of the path",
+            "System.IO.IOException: The directory name is invalid.",
             // This happens when a request's model contains a dictionary and a key is missing. While this can be a
             // legitimate application error, during a security scan it's more likely the result of an incomplete
             // artificially constructed request. So the means the ASP.NET Core model binding is working as intended.
@@ -72,7 +71,6 @@ public static class OrchardCoreUITestExecutorConfigurationExtensions
             app.LogsShouldNotContainAsync(
                 logEntry =>
                     logEntry.Level >= LogLevel.Error &&
-                    AppLogAssertionHelper.NotMediaCacheEntries(logEntry) &&
                     !permittedErrorLinePatterns.Any(pattern =>
                         Regex.IsMatch(logEntry.ToString(), pattern, RegexOptions.IgnoreCase | RegexOptions.Compiled)),
                 TestContext.Current.CancellationToken);

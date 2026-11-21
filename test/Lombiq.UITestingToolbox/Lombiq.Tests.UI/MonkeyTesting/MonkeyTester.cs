@@ -41,7 +41,7 @@ internal sealed class MonkeyTester
 
     internal Task TestRecursivelyAsync() =>
         Log.ExecuteSectionAsync(
-            new LogSection($"Execute monkey testing recursively"),
+            new LogSection("Execute monkey testing recursively"),
             async () =>
             {
                 WriteOptionsToLog();
@@ -81,7 +81,7 @@ internal sealed class MonkeyTester
 
     private bool CanTestPage(PageMonkeyTestInfo pageTestInfo)
     {
-        bool canTest = pageTestInfo.HasTimeToTest && ShouldTestPageUrl(pageTestInfo.Url);
+        var canTest = pageTestInfo.HasTimeToTest && ShouldTestPageUrl(pageTestInfo.Url);
 
         if (!canTest)
         {
@@ -104,7 +104,7 @@ internal sealed class MonkeyTester
 
     private PageMonkeyTestInfo GetCurrentPageTestInfo()
     {
-        string urlAsString = _context.Driver.Url;
+        var urlAsString = _context.Driver.Url;
         var url = new Uri(urlAsString);
 
         var sanitizedUrl = SanitizeUrl(url);
@@ -126,7 +126,7 @@ internal sealed class MonkeyTester
 
     private Task TestCurrentPageAsync(PageMonkeyTestInfo pageTestInfo)
     {
-        int randomSeed = GetRandomSeed();
+        var randomSeed = GetRandomSeed();
 
         return TestCurrentPageWithRandomSeedAsync(pageTestInfo, randomSeed);
     }
@@ -154,9 +154,13 @@ internal sealed class MonkeyTester
         // If Gremlin interactions cause the new tabs/windows to open, we need to switch back to the original one.
         _context.SwitchToCurrentWindow();
 
+        // There might be scripts on the page that interfere with Gremlins.js, so we prepare the page first.
+        // Errors like "Uncaught ReferenceError: gremlins is not defined" can happen otherwise.
+        _context.ExecuteScript(GremlinsScripts.GremlinsPrepareScript);
+
         _context.ExecuteScript(GremlinsScripts.GremlinsScript);
 
-        string gremlinsRunScript = BuildGremlinsRunScript(testTime, randomSeed);
+        var gremlinsRunScript = BuildGremlinsRunScript(testTime, randomSeed);
         _context.ExecuteScript(gremlinsRunScript);
 
         var testTimeLeft = MeasureTimeLeftOfMeetingPredicate(

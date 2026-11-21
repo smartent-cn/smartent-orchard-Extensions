@@ -29,16 +29,13 @@ public static class OrchardCoreDashboardUITestContextExtensions
     /// <summary>
     /// Clicks on the "Ok" button on the Bootstrap modal window.
     /// </summary>
-    public static Task ClickModalOkAsync(this UITestContext context) => context.ClickReliablyOnAsync(By.Id("modalOkButton"));
-
-    /// <inheritdoc cref="ClickPublishUntilNavigationHasOccurredAsync(UITestContext, bool, TimeSpan?, TimeSpan?)"/>/>
-    [Obsolete("Use ClickPublishUntilNavigationHasOccurredAsync instead.")]
-    public static Task ClickPublishUntilNavigationAsync(
-        this UITestContext context,
-        bool withJavaScript = false,
-        TimeSpan? timeout = null,
-        TimeSpan? interval = null) =>
-        context.ClickPublishUntilNavigationHasOccurredAsync(withJavaScript, timeout, interval);
+    /// <remarks><para>
+    /// We use <see cref="NavigationUITestContextExtensions.ClickOnWithScriptAsync"/> because clicking on modals can be
+    /// flaky. This can be worked around by using the <c>Lombiq.Tests.UI.AdminTheme</c> admin theme that disables
+    /// animations, but we can't expect that it's always used.
+    /// </para></remarks>
+    public static Task ClickModalOkAsync(this UITestContext context) =>
+        context.ClickOnWithScriptAsync(By.Id("modalOkButton"));
 
     /// <summary>
     /// Sometimes the Publish button doesn't get clicked. This method retries pressing it up to 4 times with a 30 second
@@ -76,11 +73,36 @@ public static class OrchardCoreDashboardUITestContextExtensions
         await context.ClickNewContentItemAsync(contentTypeText);
     }
 
+    /// <summary>
+    /// Navigates to the page for creating a new content item of <paramref name="contentType"/>.
+    /// </summary>
     public static Task CreateNewContentItemAsync(
         this UITestContext context,
         string contentType,
         bool onlyIfNotAlreadyThere = true) =>
             context.GoToAdminRelativeUrlAsync($"/Contents/ContentTypes/{contentType}/Create", onlyIfNotAlreadyThere);
+
+    /// <summary>
+    /// Navigates to the page for creating a new Page content item with the provided <paramref name="title"/>.
+    /// </summary>
+    public static async Task CreateNewPageContentItemAsync(
+        this UITestContext context,
+        string title,
+        bool publish = true,
+        bool checkSuccess = true)
+    {
+        await context.CreateNewContentItemAsync("Page");
+        await context.ClickAndFillInWithRetriesAsync(By.Name("TitlePart.Title"), title);
+
+        if (publish)
+        {
+            await context.ClickPublishAsync();
+            if (checkSuccess)
+            {
+                context.ShouldBeSuccess();
+            }
+        }
+    }
 
     /// <summary>
     /// Navigates to the Content Types page of the Orchard dashboard.
@@ -117,4 +139,10 @@ public static class OrchardCoreDashboardUITestContextExtensions
 
     public static Task GoToContentItemDisplayByIdAsync(this UITestContext context, string contentItemId) =>
         context.GoToAdminRelativeUrlAsync($"/Contents/ContentItems/{contentItemId}/Display");
+
+    /// <summary>
+    /// Clicks the "Toggle" option in the "Bulk actions" dropdown, found in the Features page.
+    /// </summary>
+    public static Task BulkActionsToggleAsync(this UITestContext context) =>
+        context.SelectFromBootstrapDropdownReliablyAsync(By.Id("bulk-action-menu-button"), "Toggle");
 }

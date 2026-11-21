@@ -1,0 +1,102 @@
+<Project>
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
+    <OrchardCoreVersion>3.0.1</OrchardCoreVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageVersion Include="HtmlSanitizer" Version="9.2.1039" />
+    <PackageVersion Include="Lombiq.Analyzers.OrchardCore" Version="7.0.1-alpha.0.osoe-1333" />
+    <PackageVersion Include="Lombiq.AuditTrailExtensions" Version="9.0.0" />
+    <PackageVersion Include="Lombiq.BaseTheme.Core" Version="12.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Lombiq.BaseTheme.Native" Version="12.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Lombiq.BaseTheme.Native.Samples" Version="12.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Lombiq.BaseTheme.Tests.UI" Version="12.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Lombiq.ChartJs" Version="10.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Lombiq.ChartJs.Samples" Version="10.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Lombiq.ChartJs.Tests.UI" Version="10.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Lombiq.ContentEditors" Version="7.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Lombiq.ContentEditors.Samples" Version="7.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Lombiq.ContentEditors.Tests.UI" Version="7.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Lombiq.DataTables" Version="11.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Lombiq.DataTables.Samples" Version="11.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Lombiq.DataTables.Tests.UI" Version="11.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Lombiq.EInvoiceValidator" Version="2.0.1" />
+    <PackageVersion Include="Lombiq.EInvoiceValidator.Sample" Version="2.0.1" />
+    <PackageVersion Include="Lombiq.EmailClient" Version="2.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Lombiq.EmailClient.Samples" Version="2.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Lombiq.EmailClient.Tests.UI" Version="2.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Lombiq.HelpfulExtensions" Version="12.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Lombiq.HelpfulExtensions.Tests.UI" Version="12.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Lombiq.HelpfulLibraries" Version="13.1.0" />
+    <PackageVersion Include="Lombiq.HelpfulLibraries.OrchardCore" Version="13.1.0" />
+    <PackageVersion Include="Lombiq.Hosting.Azure.ApplicationInsights" Version="11.0.1-alpha.0.osoe-1326" />
+    <PackageVersion Include="Lombiq.Hosting.Azure.ApplicationInsights.Tests.UI" Version="11.0.1-alpha.0.osoe-1326" />
+    <PackageVersion Include="Lombiq.Hosting.BuildVersionDisplay" Version="8.0.1-alpha.2.osoe-1317" />
+    <PackageVersion Include="Lombiq.Hosting.BuildVersionDisplay.Tests.UI" Version="8.0.1-alpha.2.osoe-1317" />
+    <PackageVersion Include="Lombiq.Hosting.MediaTheme" Version="9.0.2-alpha.0.osoe-1317" />
+    <PackageVersion Include="Lombiq.Hosting.MediaTheme.Bridge" Version="9.0.2-alpha.0.osoe-1317" />
+    <PackageVersion Include="Lombiq.Hosting.MediaTheme.Bridge.Tests.UI" Version="9.0.2-alpha.0.osoe-1317" />
+    <PackageVersion Include="Lombiq.Hosting.MediaTheme.Targets" Version="9.0.2-alpha.0.osoe-1317" />
+    <PackageVersion Include="Lombiq.Hosting.MediaTheme.Tests.Theme" Version="9.0.2-alpha.0.osoe-1317" />
+    <PackageVersion Include="Lombiq.Hosting.MediaTheme.Tests.UI" Version="9.0.2-alpha.0.osoe-1317" />
+    <PackageVersion Include="Lombiq.Hosting.Tenants.Admin.Login" Version="10.0.1-alpha.3.osoe-1317" />
+    <PackageVersion Include="Lombiq.Hosting.Tenants.EmailQuotaManagement" Version="10.0.1-alpha.3.osoe-1317" />
+    <PackageVersion Include="Lombiq.Hosting.Tenants.EmailQuotaManagement.Tests.UI" Version="10.0.1-alpha.3.osoe-1317" />
+    <PackageVersion Include="Lombiq.Hosting.Tenants.EnvironmentRobots" Version="10.0.1-alpha.3.osoe-1317" />
+    <PackageVersion Include="Lombiq.Hosting.Tenants.EnvironmentRobots.Tests.UI" Version="10.0.1-alpha.3.osoe-1317" />
+    <PackageVersion Include="Lombiq.Hosting.Tenants.FeaturesGuard" Version="10.0.1-alpha.3.osoe-1317" />
+    <PackageVersion Include="Lombiq.Hosting.Tenants.FeaturesGuard.Tests.UI" Version="10.0.1-alpha.3.osoe-1317" />
+    <PackageVersion Include="Lombiq.Hosting.Tenants.HealthChecks" Version="10.0.1-alpha.3.osoe-1317" />
+    <PackageVersion Include="Lombiq.Hosting.Tenants.HealthChecks.Tests.UI" Version="10.0.1-alpha.3.osoe-1317" />
+    <PackageVersion Include="Lombiq.Hosting.Tenants.IdleTenantManagement" Version="10.0.1-alpha.3.osoe-1317" />
+    <PackageVersion Include="Lombiq.Hosting.Tenants.IdleTenantManagement.Tests.UI" Version="10.0.1-alpha.3.osoe-1317" />
+    <PackageVersion Include="Lombiq.Hosting.Tenants.Maintenance" Version="10.0.1-alpha.3.osoe-1317" />
+    <PackageVersion Include="Lombiq.Hosting.Tenants.Maintenance.Tests.UI" Version="10.0.1-alpha.3.osoe-1317" />
+    <PackageVersion Include="Lombiq.Hosting.Tenants.Management" Version="10.0.1-alpha.3.osoe-1317" />
+    <PackageVersion Include="Lombiq.Hosting.Tenants.Management.Tests.UI" Version="10.0.1-alpha.3.osoe-1317" />
+    <PackageVersion Include="Lombiq.Hosting.Tenants.MediaStorageManagement" Version="10.0.1-alpha.3.osoe-1317" />
+    <PackageVersion Include="Lombiq.Hosting.Tenants.MediaStorageManagement.Tests.UI" Version="10.0.1-alpha.3.osoe-1317" />
+    <PackageVersion Include="Lombiq.JsonEditor" Version="10.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Lombiq.JsonEditor.Tests.UI" Version="10.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Lombiq.LoginAsAnybody" Version="6.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Lombiq.LoginAsAnybody.Tests.UI" Version="6.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Lombiq.Marketing" Version="1.0.2-alpha.0.osoe-1317" />
+    <PackageVersion Include="Lombiq.Marketing.Pirsch" Version="1.0.2-alpha.0.osoe-1317" />
+    <PackageVersion Include="Lombiq.Marketing.UrlShortener" Version="1.0.2-alpha.0.osoe-1317" />
+    <PackageVersion Include="Lombiq.Marketing.Tests.UI" Version="1.0.2-alpha.0.osoe-1317" />
+    <PackageVersion Include="Lombiq.Npm.Targets" Version="1.5.3" />
+    <PackageVersion Include="Lombiq.OrchardCoreApiClient.Tests.UI" Version="8.0.1-alpha.2.osoe-1326" />
+    <PackageVersion Include="Lombiq.Privacy" Version="11.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Lombiq.Privacy.Samples" Version="11.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Lombiq.Privacy.Tests.UI" Version="11.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Lombiq.SetupExtensions" Version="8.0.0" />
+    <PackageVersion Include="Lombiq.Tests" Version="6.0.1" />
+    <PackageVersion Include="Lombiq.Tests.UI" Version="16.0.1-alpha.3.osoe-1326" />
+    <PackageVersion Include="Lombiq.Tests.UI.AdminTheme" Version="16.0.1-alpha.3.osoe-1326" />
+    <PackageVersion Include="Lombiq.Tests.UI.AppExtensions" Version="16.0.1-alpha.3.osoe-1326" />
+    <PackageVersion Include="Lombiq.Tests.UI.Shortcuts" Version="16.0.1-alpha.3.osoe-1326" />
+    <PackageVersion Include="Lombiq.UIKit" Version="11.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Lombiq.UIKit.Widgets" Version="11.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Lombiq.UIKit.Widgets.Tests.UI" Version="11.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Lombiq.VueJs.Resources" Version="10.0.0" />
+    <PackageVersion Include="Lombiq.Walkthroughs" Version="4.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Lombiq.Walkthroughs.Tests.UI" Version="4.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Microsoft.AspNetCore.WebUtilities" Version="2.3.14" />
+    <PackageVersion Include="Microsoft.Testing.Extensions.GitHubActionsReport" Version="2.5.2" />
+    <PackageVersion Include="Microsoft.Testing.Extensions.HangDump" Version="2.5.2" />
+    <PackageVersion Include="Microsoft.Testing.Extensions.TrxReport" Version="2.5.2" />
+    <PackageVersion Include="MySqlConnector" Version="2.6.2" />
+    <PackageVersion Include="OrchardCore.Application.Cms.Targets" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.ContentManagement" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.ContentTypes.Abstractions" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.DisplayManagement" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Logging.NLog" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Module.Targets" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.ResourceManagement" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Theme.Targets" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="System.Security.Cryptography.Pkcs" Version="10.0.15" />
+    <PackageVersion Include="System.Security.Cryptography.Xml" Version="10.0.15" />
+    <PackageVersion Include="xunit.v3" Version="4.0.3" />
+  </ItemGroup>
+</Project>

@@ -1,12 +1,11 @@
-/* eslint-disable import/no-unresolved -- ESLint does not know where to find external modules. */
 const saxonJs = require('saxon-js');
-const fs = require('fs');
+const fs = require('node:fs');
 
 const stylesheetCache = new Map();
 
-function getOrLoadStylesheet(sefPath) {
+async function getOrLoadStylesheet(sefPath) {
     if (!stylesheetCache.has(sefPath)) {
-        const sefJson = fs.readFileSync(sefPath, 'utf-8');
+        const sefJson = await fs.promises.readFile(sefPath, 'utf-8');
         const stylesheet = JSON.parse(sefJson);
         stylesheetCache.set(sefPath, stylesheet);
     }
@@ -18,7 +17,7 @@ module.exports = {
     validateAsText: async (convertedSchematronFilePath, xmlTextToValidate) => {
         try {
             const start = Date.now();
-            const stylesheet = getOrLoadStylesheet(convertedSchematronFilePath);
+            const stylesheet = await getOrLoadStylesheet(convertedSchematronFilePath);
 
             const result = await saxonJs.transform({
                 stylesheetInternal: stylesheet,

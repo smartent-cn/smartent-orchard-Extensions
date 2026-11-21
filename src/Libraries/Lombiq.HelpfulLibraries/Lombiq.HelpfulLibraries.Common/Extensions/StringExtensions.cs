@@ -5,8 +5,6 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-#nullable enable
-
 namespace System;
 
 public static class StringExtensions
@@ -101,6 +99,12 @@ public static class StringExtensions
         text != null && toFind != null && text.Contains(toFind, StringComparison.InvariantCultureIgnoreCase);
 
     /// <summary>
+    /// A shortcut for <c>string.Equals(string, StringComparison.Ordinal)</c>.
+    /// </summary>
+    public static bool EqualsOrdinal(this string? text, string? value) =>
+        text?.Equals(value, StringComparison.Ordinal) == true;
+
+    /// <summary>
     /// A shortcut for <c>string.Equals(string, StringComparison.OrdinalIgnoreCase)</c>.
     /// </summary>
     public static bool EqualsOrdinalIgnoreCase(this string text, string? value) =>
@@ -131,21 +135,6 @@ public static class StringExtensions
         text.Replace(oldValue, newValue ?? string.Empty, StringComparison.OrdinalIgnoreCase);
 
     /// <summary>
-    /// Use simple <see cref="string"/> equality check with <c>=</c> instead, since it already uses ordinal string
-    /// comparison.
-    /// </summary>
-    [Obsolete("The string equals operator already uses ordinal string comparison.")]
-    public static bool EqualsOrdinal(this string text, string? value) =>
-        throw new NotSupportedException();
-
-    /// <summary>
-    /// Use <c>string.Contains(string)</c> instead, since it already uses ordinal string comparison..
-    /// </summary>
-    [Obsolete("The string.Contains(value) member method already uses ordinal string comparison.")]
-    public static bool ContainsOrdinal(this string text, string value) =>
-        throw new NotSupportedException();
-
-    /// <summary>
     /// A shortcut for <c>string.StartsWith(string, StringComparison.Ordinal)</c>.
     /// </summary>
     /// <remarks>
@@ -170,11 +159,10 @@ public static class StringExtensions
         text.EndsWith(value, StringComparison.Ordinal);
 
     /// <summary>
-    /// Use <c>string.Replace(string, string) instead, since it already uses ordinal string comparison.</c>.
+    /// A shortcut for <c>string.Replace(string, string, StringComparison.Ordinal)</c>.
     /// </summary>
-    [Obsolete("The string.Replace(oldValue, newValue) member method already uses ordinal string comparison.")]
     public static string ReplaceOrdinal(this string text, string oldValue, string? newValue = "") =>
-        throw new NotSupportedException();
+        text.Replace(oldValue, newValue ?? string.Empty, StringComparison.Ordinal);
 
     /// <summary>
     /// A shortcut for <c>string.CompareOrdinal(string, string)</c> static method.
@@ -246,7 +234,7 @@ public static class StringExtensions
     /// Concatenates an array of strings, using the specified <paramref name="separator"/> between each member. Empty or
     /// null strings are filtered out.
     /// </summary>
-    public static string JoinNotNullOrEmpty(this string[] strings, string separator = "") =>
+    public static string JoinNotNullOrEmpty(this string?[] strings, string separator = "") =>
         string.Join(separator, strings.Where(item => !string.IsNullOrEmpty(item)));
 
     /// <summary>
@@ -302,10 +290,10 @@ public static class StringExtensions
         if (string.IsNullOrEmpty(value)) yield break;
 
         var count = text.Length - value.Length;
-        for (int textIndex = 0; textIndex < count; textIndex++)
+        for (var textIndex = 0; textIndex < count; textIndex++)
         {
             var match = true;
-            for (int valueIndex = 0; match && valueIndex < value.Length; valueIndex++)
+            for (var valueIndex = 0; match && valueIndex < value.Length; valueIndex++)
             {
                 if (text[textIndex + valueIndex] != value[valueIndex]) match = false;
             }
@@ -424,7 +412,7 @@ public static class StringExtensions
             results.Add(startRange);
         }
 
-        for (int i = 0; i < ranges.Count - 1; i++)
+        for (var i = 0; i < ranges.Count - 1; i++)
         {
             var range = new Range(ranges[i].End, ranges[i + 1].Start);
             if (range.Start.Value < range.End.Value) results.Add(range);
@@ -459,4 +447,11 @@ public static class StringExtensions
 
     /// <inheritdoc cref="Concat"/>
     public static string Join(this IList<Range> ranges, string text) => text.Concat(ranges);
+
+    /// <summary>
+    /// Returns <see langword="null"/> if the <paramref name="value"/> is <see langword="null"/> or whitespace. This
+    /// makes chaining with the null-coalescing operator (<c>??</c>) easier.
+    /// </summary>
+    public static string? NullIfWhiteSpace(this string value) =>
+        string.IsNullOrWhiteSpace(value) ? null : value;
 }

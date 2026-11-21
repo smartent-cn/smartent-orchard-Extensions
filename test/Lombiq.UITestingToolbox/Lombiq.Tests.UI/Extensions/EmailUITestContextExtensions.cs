@@ -88,6 +88,8 @@ public static class EmailUITestContextExtensions
         string body,
         bool submit = true)
     {
+        context.Missing(By.XPath("//div[contains(@class, 'alert') and contains(., 'No email providers are currently enabled.')]"));
+
         await context.FillInWithRetriesAsync(By.Id("To"), to);
         await context.FillInWithRetriesAsync(By.Id("Subject"), subject);
         await context.FillInWithRetriesAsync(By.Id("Body"), body);
@@ -96,8 +98,14 @@ public static class EmailUITestContextExtensions
         {
             // Without the navigation state check, operations immediately after this can access stale elements.
             var navigationState = context.AsPageNavigationState();
-            await context.ClickReliablyOnSubmitAsync();
-            navigationState.Wait();
+
+            // Using JavaScript for improved reliability.
+            context.ExecuteScript("document.querySelector('.ta-content form .btn-primary').click();");
+
+            // Sending the e-mail can take more than usual operations.
+            await context.DoWithRetriesOrFailAsync(
+                () => Task.FromResult(navigationState.CheckIfNavigationHasOccurred()),
+                timeout: TimeSpan.FromSeconds(20));
         }
     }
 
@@ -107,10 +115,6 @@ public static class EmailUITestContextExtensions
     /// </summary>
     public static Task FillEmailTestFormAsync(this UITestContext context, string subject) =>
         context.FillEmailTestFormAsync("recipient@example.com", subject, "Hi, this is a test.");
-
-    [Obsolete("Use ConfigureSmtpSettingsAsync() instead.")]
-    public static Task ConfigureSmtpPortAsync(this UITestContext context, int? port = null, bool publish = true) =>
-        throw new NotSupportedException("Use ConfigureSmtpSettingsAsync() instead.");
 
     /// <summary>
     /// Goes to the SMTP settings page and configures the provided settings. The <c>OrchardCore.Email.Smtp</c> feature
@@ -190,7 +194,7 @@ public static class EmailUITestContextExtensions
             {
                 context
                     .Scope.AtataContext.Log
-                    .Info($"Switching to frame 0 failed, smtp4dev page probably reloaded. (attempt " +
+                    .Info("Switching to frame 0 failed, smtp4dev page probably reloaded. (attempt " +
                     $"{retryCount.ToTechnicalString()} out of {maxRetries.ToTechnicalString()}): {exception.Message}");
 
                 if (retryCount == maxRetries) throw;

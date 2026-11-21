@@ -25,25 +25,27 @@
         "Lombiq.HelpfulExtensions.CodeGeneration",
         "Lombiq.HelpfulExtensions.ContentTypes",
         "Lombiq.HelpfulExtensions.Flows",
+        "Lombiq.HelpfulExtensions.Liquid",
         "Lombiq.HelpfulExtensions.ShapeTracing",
         "Lombiq.HelpfulExtensions.TrumbowygBlogPosts",
         "Lombiq.HelpfulExtensions.Widgets",
         "Lombiq.HelpfulLibraries.Samples",
         "Lombiq.Hosting.BuildVersionDisplay",
-        "Lombiq.Hosting.Tenants.Admin.Login",
         "Lombiq.Hosting.Tenants.Admin.Login.SubTenant",
+        "Lombiq.Hosting.Tenants.EmailQuotaManagement",
         "Lombiq.Hosting.Tenants.EnvironmentRobots",
-        "Lombiq.Hosting.Tenants.Management",
-        "Lombiq.Hosting.Tenants.Management.ShellSettingsEditor",
+        "Lombiq.Hosting.Tenants.FeaturesGuard",
+        "Lombiq.Hosting.Tenants.IdleTenantManagement.ShutDownIdleTenants",
         "Lombiq.Hosting.Tenants.Maintenance",
-        "Lombiq.Hosting.Tenants.Maintenance.UpdateSiteUrl",
         "Lombiq.Hosting.Tenants.Maintenance.AddAdministratorRoleToUsersWithRole",
         "Lombiq.Hosting.Tenants.Maintenance.ChangeUserSensitiveContent",
-        "Lombiq.Hosting.Tenants.IdleTenantManagement.ShutDownIdleTenants",
-        "Lombiq.Hosting.Tenants.EmailQuotaManagement",
+        "Lombiq.Hosting.Tenants.Maintenance.UpdateSiteUrl",
+        "Lombiq.Hosting.Tenants.Management",
+        "Lombiq.Hosting.Tenants.MediaStorageManagement",
         "Lombiq.JsonEditor",
         "Lombiq.JsonEditor.ContentEditor",
         "Lombiq.LoginAsAnybody",
+        "Lombiq.Marketing.Pirsch",
         "Lombiq.OSOCE.Samples",
         // We only enable these on a specific test, because it overlaps with too many things.
         // "Lombiq.Privacy.ConsentBanner",
@@ -53,16 +55,12 @@
         "Lombiq.UIKit",
         "Lombiq.UIKit.Showcase",
         "Lombiq.UIKit.Widgets",
-        "Lombiq.VueJs",
-        "Lombiq.VueJs.Samples",
-        "OrchardCore.Tenants.FeatureProfiles",
-        "Lombiq.Hosting.Tenants.FeaturesGuard",
-        "Lombiq.Hosting.Tenants.MediaStorageManagement",
-        "OrchardCore.Localization",
-        "OrchardCore.Features",
-        "OrchardCore.Media",
+        "Lombiq.VueJs.Resources",
         "OrchardCore.Email.Smtp",
-        "TheTheme"
+        "OrchardCore.Localization",
+        "OrchardCore.Media",
+        "TheTheme",
+        "Lombiq.Tests.UI.AdminTheme"
         // Not enabling Lombiq.TrainingDemo.Middlewares because that would write to the error log on every request.
       ]
     },
@@ -174,33 +172,7 @@
     },
     {
       "name": "themes",
-      "admin": "TheAdmin",
       "site": "SafeMode"
-    },
-    {
-      "name": "FeatureProfiles",
-      "FeatureProfiles": {
-        "Features Guard": {
-          "FeatureRules": [
-            {
-              "Rule": "Exclude",
-              "Expression": "OrchardCore.Workflows.Session"
-            },
-            {
-              "Rule": "Exclude",
-              "Expression": "OrchardCore.Search.Lucene"
-            },
-            {
-              "Rule": "Exclude",
-              "Expression": "OrchardCore.MiniProfiler"
-            },
-            {
-              "Rule": "Exclude",
-              "Expression": "Lombiq.Tests.UI.Shortcuts"
-            }
-          ]
-        }
-      }
     },
     {
       "name": "recipes",
@@ -218,6 +190,10 @@
           "name": "Lombiq.UIKit.Widgets.Content"
         }
       ]
+    },
+    {
+      "name": "themes",
+      "admin": "Lombiq.Tests.UI.AdminTheme"
     }
   ]
 }

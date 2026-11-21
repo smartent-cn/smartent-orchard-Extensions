@@ -8,37 +8,12 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading.Tasks;
 using static Lombiq.HelpfulLibraries.AspNetCore.Security.ContentSecurityPolicyDirectives;
-using static Lombiq.HelpfulLibraries.AspNetCore.Security.ContentSecurityPolicyDirectives.CommonValues;
 
 namespace Microsoft.AspNetCore.Builder;
 
 public static class ApplicationBuilderExtensions
 {
     private static readonly char[] _cspDirectivesSeparator = [';'];
-
-    /// <summary>
-    /// Adds a middleware that supplies the <c>Content-Security-Policy</c> header. It may be further expanded by
-    /// registering services that implement <see cref="IContentSecurityPolicyProvider"/>.
-    /// </summary>
-    /// <param name="allowInlineScript">
-    /// If <see langword="true"/> then inline scripts are permitted. When using Orchard Core a lot of front end shapes
-    /// use inline script blocks without a nonce (see https://github.com/OrchardCMS/OrchardCore/issues/13389) making
-    /// this a required setting.
-    /// </param>
-    /// <param name="allowInlineStyle">
-    /// If <see langword="true"/> then inline styles are permitted. Note that even if your site has no embedded style
-    /// blocks and no style attributes, some JavaScript libraries may still create some from code.
-    /// </param>
-    [Obsolete("Use the overload with ContentSecurityPolicyHeaderOptions instead.")]
-    public static IApplicationBuilder UseContentSecurityPolicyHeader(
-        this IApplicationBuilder app,
-        bool allowInlineScript,
-        bool allowInlineStyle) =>
-        app.UseContentSecurityPolicyHeader(new ContentSecurityPolicyHeaderConfiguration
-        {
-            AllowInlineScript = allowInlineScript,
-            AllowInlineStyle = allowInlineStyle,
-        });
 
     /// <summary>
     /// Adds a middleware that supplies the <c>Content-Security-Policy</c> header. It may be further expanded by
@@ -66,22 +41,26 @@ public static class ApplicationBuilderExtensions
             var securityPolicies = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
             {
                 // Default values enforcing a same origin policy for all resources.
-                [BaseUri] = Self,
-                [DefaultSrc] = Self,
-                [FrameSrc] = Self,
-                [ScriptSrc] = Self,
-                [StyleSrc] = Self,
-                [FormAction] = Self,
+                [BaseUri] = CommonValues.Self,
+                [DefaultSrc] = CommonValues.Self,
+                [FrameSrc] = CommonValues.Self,
+                [ScriptSrc] = CommonValues.Self,
+                [StyleSrc] = CommonValues.Self,
+                [FormAction] = CommonValues.Self,
+                [WorkerSrc] = CommonValues.Self,
                 // Needed for SVG images using "data:image/svg+xml,..." data URLs.
-                [ImgSrc] = $"{Self} {Data}",
+                [ImgSrc] = $"{CommonValues.Self} {CommonValues.Data}",
+                // Needed for fonts loaded using "@font-face" as data URLs. Note that Chrome doesn't
+                // care if this directive is missing, but Firefox is stricter about it.
+                [FontSrc] = $"{CommonValues.Self} {CommonValues.Data}",
                 // Modern sites shouldn't need <object>, <embed>, and <applet> elements.
-                [ObjectSrc] = None,
+                [ObjectSrc] = CommonValues.None,
                 // Necessary to prevent clickjacking (https://developer.mozilla.org/en-US/docs/Glossary/Clickjacking).
-                [FrameAncestors] = Self,
+                [FrameAncestors] = CommonValues.Self,
             };
 
-            if (options.AllowInlineScript) securityPolicies[ScriptSrc] = $"{Self} {UnsafeInline}";
-            if (options.AllowInlineStyle) securityPolicies[StyleSrc] = $"{Self} {UnsafeInline}";
+            if (options.AllowInlineScript) securityPolicies[ScriptSrc] = $"{CommonValues.Self} {CommonValues.UnsafeInline}";
+            if (options.AllowInlineStyle) securityPolicies[StyleSrc] = $"{CommonValues.Self} {CommonValues.UnsafeInline}";
 
             context.Response.OnStarting(async () =>
             {
@@ -109,7 +88,7 @@ public static class ApplicationBuilderExtensions
                 {
                     var existingPolicy = context.Response.Headers[key];
                     var existingDirectives = existingPolicy.SelectMany(policy =>
-                        policy.Split(_cspDirectivesSeparator, StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries));
+                        policy?.Split(_cspDirectivesSeparator, StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries) ?? []);
 
                     foreach (var directive in existingDirectives)
                     {
@@ -186,7 +165,7 @@ public static class ApplicationBuilderExtensions
                 var newCookies = new List<string>(capacity: setCookie.Count);
                 var changed = false;
 
-                foreach (var cookie in setCookie.WhereNot(string.IsNullOrWhiteSpace))
+                foreach (var cookie in setCookie.WhereNotNullOrWhiteSpace())
                 {
                     var newCookie = cookie;
 

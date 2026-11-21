@@ -59,18 +59,32 @@ on:
         description: Configuration for the timeout-minutes parameter of the workflow. 360 is GitHub's default.
       machine-type:
         type: string
-        default: windows-2022
-        description: The machine type to run the workflow under, e.g. "windows-2022". Needs to be Windows.
+        default: windows-2025
+        description: The machine type to run the workflow under, e.g. "windows-2025". Needs to be Windows.
+      free-up-space:
+        type: string
+        default: 'false'
+        description: >
+          Frees up storage space on the runner by deleting files unnecessary for .NET projects. Since it takes time and
+          can break prepared images, this is disabled by default. Enable it if the workflow fails with errors suggesting
+          that the runner has insufficient storage space.
       dotnet-version:
         type: string
-        default: 8.0.301
+        default: 10.0.302
         description: Version of the .NET SDK to set up.
       node-version:
         type: string
-        default: 22.16.0
+        default: 24.10.0
         description: >
           The Node.js version. Can be a specific version number or other notations, see the documentation of
           https://github.com/actions/setup-node.
+      node-package-manager-cache:
+        type: string
+        default: 'false'
+        description: >
+          Set to true to enable automatic caching based on the package manager field in package.json. By default,
+          caching is disabled for this workflow (which is different from the underlying action's default behavior), to
+          improve stability and backwards compatibility.
       build-directory:
         type: string
         default: src
@@ -137,6 +151,10 @@ jobs:
         shell: pwsh
     timeout-minutes: ${{ inputs.timeout-minutes }}
     steps:
+      - name: Free up Space
+        if: inputs.free-up-space == 'true'
+        uses: Lombiq/GitHub-Actions/.github/actions/free-up-space-for-dotnet@dev
+
       - name: Checkout
         uses: Lombiq/GitHub-Actions/.github/actions/checkout@dev
         with:
@@ -151,6 +169,7 @@ jobs:
         uses: Lombiq/GitHub-Actions/.github/actions/setup-node@dev
         with:
           node-version: ${{ inputs.node-version }}
+          package-manager-cache: ${{ inputs.node-package-manager-cache }}
 
       - name: Enable Node corepack
         uses: Lombiq/GitHub-Actions/.github/actions/enable-corepack@dev
@@ -179,7 +198,7 @@ jobs:
           AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_APP_SERVICE_DEPLOYMENT_AZURE_SUBSCRIPTION_ID }}
 
       - name: Initialize PowerShell modules
-        uses: Lombiq/Infrastructure-Scripts/.github/actions/initialize@dev
+        uses: Lombiq/Infrastructure-Scripts/.github/actions/initialize@4f50ec164a1776e84fb39d1fed1bea4403fcfe49 # dev
 
       - name: Stop Web App Slot
         run: |

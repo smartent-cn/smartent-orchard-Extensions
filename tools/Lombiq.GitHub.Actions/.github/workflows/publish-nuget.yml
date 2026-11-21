@@ -17,6 +17,14 @@ on:
         description: >
           A JSON string containing key-value pairs of environment variables to be set. You can use this to pass in
           arbitrary environment variables that can be used to e.g. customize the build or test execution.
+          Pass a single-line JSON string: GitHub masks each line of multiline secrets, including standalone braces,
+          which breaks telemetry charts. When using >-, keep all JSON lines equally indented so YAML folds every
+          line break. Example:
+          ENVIRONMENT_VARIABLES_JSON: >-
+            {
+            "MY_ENV_VAR": "value of environment variable",
+            "MY_ENV_VAR2": "value of environment variable"
+            }
 
     inputs:
       cancel-workflow-on-failure:
@@ -31,22 +39,34 @@ on:
         type: string
         default: minimal
         description: The logging verbosity type used by the `dotnet` command.
+      free-up-space:
+        type: string
+        default: 'false'
+        description: >
+          Frees up storage space on the runner by deleting files unnecessary for .NET projects. Since it takes time and
+          can break prepared images, this is disabled by default. Enable it if the workflow fails with errors suggesting
+          that the runner has insufficient storage space.
       dotnet-version:
         type: string
-        default: 8.0.301
+        default: 10.0.302
         description: Version of the .NET SDK to set up.
       node-version:
         type: string
-        default: 22.16.0
+        default: 24.10.0
         description: >
           The Node.js version. Can be a specific version number or other notations, see the documentation of
           https://github.com/actions/setup-node.
+      node-package-manager-cache:
+        type: string
+        default: 'false'
+        description: >
+          Set to true to enable automatic caching based on the package manager field in package.json. By default,
+          caching is disabled for this workflow (which is different from the underlying action's default behavior), to
+          improve stability and backwards compatibility.
       timeout-minutes:
         type: number
         default: 15
         description: Configuration for the timeout-minutes parameter of the workflow. 360 is GitHub's default.
-      # This is really only necessary to work around the https://github.com/nodejs/corepack/issues/612 corepack issue.
-      # Also see https://github.com/Lombiq/NodeJs-Extensions/issues/120.
       enable-corepack:
         type: string
         default: 'false'
@@ -71,6 +91,14 @@ on:
           version (e.g. "1.0.1-preview-1" if the current version is 1.0.0). With "USE_NEXT_PATCH_VERSION" the version is
           derived from the latest non-prerelease version tag to create the next patch version (e.g. "1.0.1" if the current
           version is 1.0.0).
+      require-major-version-for-compatibility-suppressions:
+        type: string
+        default: 'true'
+        description: >
+          If set to "true", publishing fails when any CompatibilitySuppressions.xml file exists in the repository and the
+          publish version's major version is not greater than the latest stable tag's major version. Versions in the
+          format `vM.N.O-[alpha|beta|preview|rc]` with an optional `".X.<issue-code>`" suffix are exempt. Set to
+          "false" for intentional compatibility suppressions that don't require a SemVer major release.
       nuget-artifact-retention-days:
         type: string
         default: '14'
@@ -89,17 +117,29 @@ on:
         description: |
           If set to "true", the action will perform all package creation and validation steps without actually publishing
           the NuGet package or creating a GitHub release.
+      mark-breaking-changes:
+        type: string
+        # Different than validate-nuget-publish because contrary to that workflow, this one doesn't frequently doesn't
+        # run for pull requests.
+        default: 'false'
+        description: |
+          When set to 'true', failed package validation against the baseline will mark the pull request with a title
+          suffix, a breaking-changes label, and a guidance comment.
 
 jobs:
   publish-nuget:
     name: Publish to NuGet
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     timeout-minutes: ${{ inputs.timeout-minutes }}
     steps:
       - name: Set Environment Variables
         uses: Lombiq/GitHub-Actions/.github/actions/set-environment-variables@dev
         env:
           ENVIRONMENT_VARIABLES_JSON: ${{ secrets.ENVIRONMENT_VARIABLES_JSON }}
+
+      - name: Free up Space
+        if: inputs.free-up-space == 'true'
+        uses: Lombiq/GitHub-Actions/.github/actions/free-up-space-for-dotnet@dev
 
       - name: Checkout
         uses: Lombiq/GitHub-Actions/.github/actions/checkout@dev
@@ -115,6 +155,7 @@ jobs:
         uses: Lombiq/GitHub-Actions/.github/actions/setup-node@dev
         with:
           node-version: ${{ inputs.node-version }}
+          package-manager-cache: ${{ inputs.node-package-manager-cache }}
 
       - name: Publish to NuGet
         uses: Lombiq/GitHub-Actions/.github/actions/publish-nuget@dev
@@ -125,9 +166,11 @@ jobs:
           dotnet-pack-ignore-warning: ${{ inputs.dotnet-pack-ignore-warning }}
           dotnet-pack-include-symbols: ${{ inputs.dotnet-pack-include-symbols }}
           publish-version: ${{ inputs.publish-version }}
+          require-major-version-for-compatibility-suppressions: ${{ inputs.require-major-version-for-compatibility-suppressions }}
           nuget-artifact-retention-days: ${{ inputs.nuget-artifact-retention-days }}
           add-source-link-package: ${{ inputs.add-source-link-package }}
           dry-run: ${{ inputs.dry-run }}
+          mark-breaking-changes: ${{ inputs.mark-breaking-changes }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           API_KEY: ${{ secrets.API_KEY }}

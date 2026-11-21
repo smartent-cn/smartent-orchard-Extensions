@@ -5,12 +5,18 @@ description: >
   artifacts.
 
 inputs:
+  test-platform:
+    required: false
+    default: Microsoft.Testing.Platform
+    description: >
+      Test platform: Microsoft.Testing.Platform (requires .NET 10+, the global.json test runner setting, and the
+      GitHubActionsReport and TrxReport extensions) or VSTest for legacy test projects.
   blame-hang-timeout:
     required: false
     default: ''
     description: >
-      Run the tests in blame mode and collects a hang dump when a test exceeds the given timeout. See
-      https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-test for details on available values.
+      Collect a hang dump after the given period without test activity. Bare values are milliseconds.
+      Requires Microsoft.Testing.Extensions.HangDump in MTP mode; uses VSTest blame mode otherwise.
   build-directory:
     required: false
     default: .
@@ -22,11 +28,12 @@ inputs:
     description: Run the dotnet test process with the given timeout in milliseconds. -1 means no timeout.
   solution-path:
     required: false
-    default: '*.sln'
+    default: '*.sln?'
     description: >
-      The path of the solution or project file to be built. If you have exactly one .sln file in the current directory
-      then this can be omitted. Otherwise make sure to specify it to avoid a "Found more than one solution file in
-      <path>. Specify which one to use." error that is thrown when the `*.sln` wildcard results in multiple files.
+      The path of the solution or project file to be built. If you have exactly one .sln or .slnx file in the current
+      directory then this can be omitted. Otherwise make sure to specify it to avoid a "Found more than one solution
+      file in <path>. Specify which one to use." error that is thrown when the `*.sln?` wildcard results in multiple
+      files.
   test-verbosity:
     required: false
     default: quiet
@@ -34,7 +41,7 @@ inputs:
   test-filter:
     required: false
     description: >
-      Filter expression for dotnet test. See:
+      Filter expression for dotnet test (supported by xUnit 4+ in MTP mode). See:
       https://learn.microsoft.com/en-us/dotnet/core/testing/selective-unit-tests.
   test-configuration:
     required: false
@@ -56,14 +63,25 @@ inputs:
     required: false
     default: 'false'
     description: >
-      Enables diagnostic mode for `dotnet test` with the `--diag` flag and writes diagnostic messages to log files, to
-      be uploaded as artifacts. See https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-test for details.
+      Enables diagnostic mode with MTP's --diagnostic flag (VSTest: --diag) and uploads diagnostic logs as artifacts.
+  show-time-remaining-until-timeout:
+    required: false
+    default: 'false'
+    description: >
+      Enables the output of a "Until timeout: Ns" type message every second during test execution. This can be helpful
+      if you need an idea about the timing of the test outputs.
   ui-test-retry-interval-seconds:
     required: false
     default: '30'
     description: >
       Interval in seconds to wait between retries of UI tests. Configuring a non-zero interval increases the chance that
       retries will be successful, due to load on the runner changing.
+  rebuild-directory:
+    required: false
+    default: ''
+    description: >
+      If a path is provided, C# project files are searched and rebuilt inside that directory. This is to be considered a
+      workaround for a build order problem, and should be avoided when possible.
 
 runs:
   using: composite
@@ -95,13 +113,25 @@ runs:
       working-directory: ${{ inputs.build-directory }}
       run: |
         $switches = @{
+          TestPlatform = '${{ inputs.test-platform }}'
           SolutionOrProject = Get-SolutionOrProjectPath ${{ inputs.solution-path }}
           Verbosity = "${{ inputs.test-verbosity }}"
           Filter = "${{ inputs.test-filter }}"
           Configuration = "${{ inputs.test-configuration }}"
           BlameHangTimeout = "${{ inputs.blame-hang-timeout }}"
           TestProcessTimeout = ${{ inputs.dotnet-test-process-timeout }}
+          RebuildDirectory = "${{ inputs.rebuild-directory }}"
           EnableDiagnosticMode = $${{ inputs.enable-diagnostic-mode }}
+          ShowTimeRemainingUntilTimeout = $${{ inputs.show-time-remaining-until-timeout }}
+        }
+
+        $dotnetVersion = [Version](dotnet --version)
+        if ($dotnetVersion.Major -lt 10)
+        {
+            $switches['TestPlatform'] = 'VSTest'
+            Write-GitHub ("The test platform is set to `"VSTest`" because you are using .NET " +
+                "version ($dotnetVersion), older than .NET 10. Please set the `"test-platform`" input " +
+                "to `"VSTest`" explicitly to remove this warning.") 'warning'
         }
 
         Invoke-SolutionOrProjectTests @switches
@@ -188,11 +218,20 @@ runs:
         retention-days: ${{ inputs.artifact-retention-days }}
 
     - name: Test Report
-      uses: phoenix-actions/test-reporting@f957cd93fc2d848d556fa0d03c57bc79127b6b5e # v15
-      if: (success() || failure()) && steps.run-tests.outputs.test-count != 0
+      uses: phoenix-actions/test-reporting@7317eea6e13c47348dd0bb318669485157c518d6 # v16
+      if: (success() || failure()) && steps.run-tests.outputs.test-count != 0 && inputs.test-platform == 'VSTest'
       with:
         name: Test Results (${{inputs.build-directory}}|${{ steps.setup.outputs.runner-suffix }}
         path: ${{inputs.build-directory}}/**/*.trx
         reporter: dotnet-trx
         fail-on-error: 'false'
         output-to: step-summary
+
+    - name: Upload Test Results
+      uses: Lombiq/GitHub-Actions/.github/actions/upload-artifact@dev
+      if: (success() || failure()) && steps.run-tests.outputs.test-count != 0 && inputs.test-platform == 'Microsoft.Testing.Platform'
+      with:
+        name: test-results-${{ steps.setup.outputs.artifact-name-suffix }}
+        path: ${{ inputs.build-directory }}/**/*.trx
+        if-no-files-found: ignore
+        retention-days: ${{ inputs.artifact-retention-days }}

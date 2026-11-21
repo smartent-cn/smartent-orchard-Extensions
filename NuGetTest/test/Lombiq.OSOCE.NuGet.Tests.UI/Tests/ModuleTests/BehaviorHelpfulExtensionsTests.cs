@@ -12,17 +12,23 @@ public class BehaviorHelpfulExtensionsTests : UITestBase
     }
 
     [Fact]
-    public Task CodeGenerationFeatureShouldWork() => ExecuteTestAfterSetupAsync(context => context.TestCodeGenerationFeatureAsync());
+    public Task CodeGenerationFeatureShouldWork() => RunAsync(context => context.TestCodeGenerationFeatureAsync());
 
     [Fact]
-    public Task ContentSetsFeatureShouldWork() => ExecuteTestAfterSetupAsync(context => context.TestContentSetsFeatureAsync());
+    public Task ContentSetsFeatureShouldWork() => RunAsync(context => context.TestContentSetsFeatureAsync());
 
     [Fact]
-    public Task FlowsFeatureShouldWork() => ExecuteTestAfterSetupAsync(context => context.TestFlowsFeatureAsync());
+    public Task FlowsFeatureShouldWork() => RunAsync(context => context.TestFlowsFeatureAsync());
 
     [Fact]
-    public Task TrumbowygBlogPostsFeatureShouldWork() => ExecuteTestAfterSetupAsync(context => context.TestTrumbowygBlogPostsFeatureAsync());
+    public Task LiquidFeatureShouldWork() => RunAsync(context => context.TestLiquidFeatureAsync());
 
     [Fact]
-    public Task WidgetsFeatureShouldWork() => ExecuteTestAfterSetupAsync(context => context.TestWidgetsFeatureAsync());
+    public Task LucideFeatureShouldWork() => RunAsync(context => context.TestLucideFeatureAsync());
+
+    [Fact]
+    public Task TrumbowygBlogPostsFeatureShouldWork() => RunAsync(context => context.TestTrumbowygBlogPostsFeatureAsync());
+
+    [Fact]
+    public Task WidgetsFeatureShouldWork() => RunAsync(context => context.TestWidgetsFeatureAsync());
 }

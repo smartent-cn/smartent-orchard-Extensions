@@ -31,7 +31,6 @@ on:
           The ID of the Azure Subscription the resources are under, which will be mapped to the subscription-id
           parameter when calling azure/login. You can look this up e.g. in the Azure Portal under any resource or the
           subscription itself.
-
       AZURE_APP_SERVICE_PUBLISH_PROFILE:
         required: true
 
@@ -44,18 +43,30 @@ on:
         type: string
         default: ubuntu-24.04
         description: The name of the type of machine to run the workflow under.
+      free-up-space:
+        type: string
+        default: 'false'
+        description: >
+          Frees up storage space on the runner by deleting files unnecessary for .NET projects. Since it takes time and
+          can break prepared images, this is disabled by default. Enable it if the workflow fails with errors suggesting
+          that the runner has insufficient storage space.
       dotnet-version:
         type: string
-        default: 8.0.301
+        default: 10.0.302
         description: Version of the .NET SDK to set up.
       node-version:
         type: string
-        default: 22.16.0
+        default: 24.10.0
         description: >
           The Node.js version. Can be a specific version number or other notations, see the documentation of
           https://github.com/actions/setup-node.
-      # This is really only necessary to work around the https://github.com/nodejs/corepack/issues/612 corepack issue.
-      # Also see https://github.com/Lombiq/NodeJs-Extensions/issues/120.
+      node-package-manager-cache:
+        type: string
+        default: 'false'
+        description: >
+          Set to true to enable automatic caching based on the package manager field in package.json. By default,
+          caching is disabled for this workflow (which is different from the underlying action's default behavior), to
+          improve stability and backwards compatibility.
       enable-corepack:
         type: string
         default: 'false'
@@ -97,6 +108,33 @@ on:
           Change this to any other value to alter the cache key, effectively invalidating the latest cache. This is an
           alternative to clearing the cache manually, see
           https://docs.github.com/en/actions/using-workflows/caching-dependencies-to-speed-up-workflows#managing-caches.
+      build-warnings-as-errors:
+        type: string
+        default: 'true'
+        description: >
+          Whether compiler warnings should be treated as errors during the build process. The default value is "true",
+          the compiler flag "-warnaserror" will be used, causing the build to fail if any warnings are generated. If set
+          to "false", the flag "-warnaserror" will not be used, allowing warnings to be generated without causing the
+          build to fail.
+      build-rebuild-directory:
+        type: string
+        default: ''
+        description: >
+          If a path is provided, C# project files are searched and rebuilt inside that directory. This is to be
+          considered a workaround for a build order problem, and should be avoided when possible.
+      build-create-binary-log:
+        type: string
+        default: 'false'
+        description: >
+          Configures MSBuild to create a binary log. This is useful to inspect and debug builds. See
+          https://github.com/dotnet/msbuild/blob/main/documentation/wiki/Binary-Log.md for details.
+      build-timeout-minutes:
+        type: number
+        default: 360
+        description: >
+          The maximum time the for the "build-dotnet" action's "build" step and for this workflow's "publish" step in
+          minutes. Can be useful in combination with "build-create-binary-log" if the build hangs. If set to zero (which
+          is the default), then there is no timeout.
       timeout-minutes:
         type: number
         default: 360
@@ -155,10 +193,29 @@ on:
       publish-arguments:
         type: string
         description: Additional arguments passed to dotnet publish.
+      publish-show-diagnostics:
+        type: string
+        default: 'false'
+        description: Show diagnostic information while executing the "dotnet publish" command.
       skip-update-latest-tag:
         type: string
         default: 'false'
         description: If set to "true", the latests tags will not be updated.
+      verify-orchard-core-url:
+        type: string
+        default: ''
+        description: >
+          If not empty, this URL will be checked for the "X-Powered-By" HTTP response header, which should have the
+          value 'OrchardCore' to pass. This is performed at the end of the "test-web-app-slot" step.
+      verify-orchard-core-delay-time-seconds:
+        type: number
+        default: 5
+        description: >
+          The wait time between failed access attempts when using "verify-orchard-core-url".
+      upload-publish-package:
+        type: string
+        default: 'false'
+        description: If set to "true", the "Published.zip" file is uploaded as an artifact after creation.
 
 jobs:
   deploy:
@@ -170,6 +227,10 @@ jobs:
         shell: pwsh
     timeout-minutes: ${{ inputs.timeout-minutes }}
     steps:
+      - name: Free up Space
+        if: inputs.free-up-space == 'true'
+        uses: Lombiq/GitHub-Actions/.github/actions/free-up-space-for-dotnet@dev
+
       - name: Checkout
         uses: Lombiq/GitHub-Actions/.github/actions/checkout@dev
         with:
@@ -184,6 +245,7 @@ jobs:
         uses: Lombiq/GitHub-Actions/.github/actions/setup-node@dev
         with:
           node-version: ${{ inputs.node-version }}
+          package-manager-cache: ${{ inputs.node-package-manager-cache }}
 
       - name: Enable Node corepack
         if: inputs.enable-corepack == 'true'
@@ -203,12 +265,14 @@ jobs:
         with:
           directory: ${{ inputs.build-directory }}
           configuration: ${{ inputs.build-configuration }}
+          create-binary-log: ${{ inputs.build-create-binary-log }}
           verbosity: ${{ inputs.build-verbosity }}
           enable-code-analysis: ${{ inputs.build-enable-code-analysis }}
           enable-nuget-caching: ${{ inputs.build-enable-nuget-caching }}
           enable-npm-caching: ${{ inputs.build-enable-npm-caching }}
           cache-version: ${{ inputs.build-cache-version }}
           solution-or-project-path: ${{ inputs.web-project-path }}
+          warnings-as-errors: ${{ inputs.build-warnings-as-errors }}
           # Arguments need to be separated into newlines: https://stackoverflow.com/a/59077879/16192320
           dotnet-build-switches: |
             --self-contained
@@ -218,23 +282,56 @@ jobs:
             -p:AzureDeploy=true
             -p:AzureDeployStage=build
             -p:BuildVersionDisplay_BuildUrl=https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          rebuild-directory: ${{ inputs.build-rebuild-directory }}
+          timeout-minutes: ${{ inputs.build-timeout-minutes }}
 
       - name: Publish
         run: |
-          dotnet publish (Get-ChildItem ${{ inputs.web-project-path }}).FullName `
-            --no-build `
-            --configuration ${{ inputs.build-configuration }} `
-            --output '${{ inputs.build-directory }}/Published' `
-            --verbosity ${{ inputs.build-verbosity }} `
-            --self-contained ${{ inputs.self-contained }} `
-            -p:PublishReadyToRun=${{ inputs.ready-to-run }} `
-            -p:AzureDeploy=true `
-            -p:AzureDeployStage=publish `
-            ${{ steps.set-up-runtime-option.outputs.runtime-option }} ${{ inputs.publish-arguments }}
+          $projectFile = (Get-ChildItem ${{ inputs.web-project-path }}).FullName
+          $block = {
+              $projectFile = $args[0]
+              dotnet publish $projectFile `
+                  --no-build `
+                  --configuration ${{ inputs.build-configuration }} `
+                  --output '${{ inputs.build-directory }}/Published' `
+                  --verbosity ${{ inputs.build-verbosity }} `
+                  --self-contained ${{ inputs.self-contained }} `
+                  -p:PublishReadyToRun=${{ inputs.ready-to-run }} `
+                  -p:AzureDeploy=true `
+                  -p:AzureDeployStage=publish `
+                  ${{ steps.set-up-runtime-option.outputs.runtime-option }} ${{ inputs.publish-arguments }}
+          }
+
+          Invoke-ScriptBlock `
+              -TimeoutMinutes ${{ inputs.build-timeout-minutes }} `
+              -Name "dotnet publish `"$projectFile`"" `
+              -ScriptBlock $block `
+              -ShowDiagnostics $${{ inputs.publish-show-diagnostics }} `
+              -ArgumentList @($projectFile)
+
+      - name: Upload MSBuild Binary Log
+        uses: Lombiq/GitHub-Actions/.github/actions/upload-artifact@dev
+        if: (success() || failure()) && inputs.build-create-binary-log == 'true'
+        with:
+          name: build-binary-log-publish.binlog
+          path: ${{ inputs.build-directory }}/build.binlog
+          if-no-files-found: ignore
+          retention-days: 14
 
       - name: Compress Publish Package
         run: |
-          Compress-Archive -Path .\Published\* -DestinationPath .\Published.zip
+          $basePath = '${{ inputs.build-directory }}/Published'
+          $paths = Get-ChildItem $basePath -Force | ForEach-Object { $PSItem.FullName }
+          Compress-Archive -Path $paths -DestinationPath "$basePath.zip"
+
+      - name: Upload Publish Package
+        uses: Lombiq/GitHub-Actions/.github/actions/upload-artifact@dev
+        if: inputs.upload-publish-package == 'true'
+        with:
+          name: publish-package
+          path: ${{ inputs.build-directory }}/Published.zip
+          if-no-files-found: ignore
+          retention-days: 1
 
       - name: Login to Azure
         uses: Lombiq/GitHub-Actions/.github/actions/login-to-azure@dev
@@ -244,7 +341,7 @@ jobs:
           AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_APP_SERVICE_DEPLOYMENT_AZURE_SUBSCRIPTION_ID }}
 
       - name: Initialize PowerShell modules
-        uses: Lombiq/Infrastructure-Scripts/.github/actions/initialize@dev
+        uses: Lombiq/Infrastructure-Scripts/.github/actions/initialize@4f50ec164a1776e84fb39d1fed1bea4403fcfe49 # dev
 
       - name: Stop Web App Slot
         run: |
@@ -253,8 +350,25 @@ jobs:
             -WebAppName ${{ inputs.app-name }} `
             -SlotName ${{ inputs.slot-name }}
 
+      # With Linux App Services, this fails the first time despite the deployment actually successfully completing, see
+      # https://github.com/Azure/webapps-deploy/issues/362. Quickly rerunning it below works around this.
       - name: Deploy to Azure App Service
-        uses: azure/webapps-deploy@e8d44d20a4b02f733385c4755aca052069eeb988 # v3.0.5
+        id: deploy-to-azure
+        continue-on-error: true
+        uses: azure/webapps-deploy@02a81bead70021f5284939794bcec79c271ab383 # v3.0.8
+        with:
+          app-name: ${{ inputs.app-name }}
+          slot-name: ${{ inputs.slot-name }}
+          publish-profile: ${{ secrets.AZURE_APP_SERVICE_PUBLISH_PROFILE }}
+          package: ${{ inputs.build-directory }}/Published.zip
+          # For docs on the below configs see https://github.com/Azure/webapps-deploy/releases/tag/v3.0.0.
+          type: zip
+          restart: false
+          clean: false
+
+      - name: Deploy to Azure App Service (Retry)
+        if: steps.deploy-to-azure.outcome == 'failure'
+        uses: azure/webapps-deploy@02a81bead70021f5284939794bcec79c271ab383 # v3.0.8
         with:
           app-name: ${{ inputs.app-name }}
           slot-name: ${{ inputs.slot-name }}
@@ -291,6 +405,7 @@ jobs:
           git push origin '${{ inputs.tag-prefix }}/${{ steps.create-timestamp.outputs.timestamp-tag }}'
 
       - name: Start Web App Slot
+        id: start-web-app-slot
         run: |
           Start-AzureWebAppSlot `
             -ResourceGroupName ${{ inputs.resource-group-name }} `
@@ -298,11 +413,56 @@ jobs:
             -SlotName ${{ inputs.slot-name }}
 
       - name: Test Web App Slot
+        id: test-web-app-slot
         run: |
           Test-AzureWebApp `
             -ResourceGroupName ${{ inputs.resource-group-name }} `
             -WebAppName ${{ inputs.app-name }} `
             -SlotName ${{ inputs.slot-name }}
+
+          $verifyOrchardCoreUrl = '${{ inputs.verify-orchard-core-url }}'
+          $verifyOrchardCoreDelayTimeSeconds = ${{ inputs.verify-orchard-core-delay-time-seconds }}
+          if ($verifyOrchardCoreUrl)
+          {
+            for ($i = 0; $i -lt 5; $i += 1)
+            {
+              try
+              {
+                $response = Invoke-WebRequest $verifyOrchardCoreUrl -ErrorAction SilentlyContinue
+                if ($response -and $response.Headers['X-Powered-By'] -eq 'OrchardCore')
+                {
+                  Write-Output "Successfully reached `"$verifyOrchardCoreUrl`" after $i tries."
+                  exit 0
+                }
+              }
+              catch
+              {
+                Write-Output $PSItem.Message
+              }
+
+              Write-Output "Attempt $($i + 1): Couldn't reach `"$verifyOrchardCoreUrl`". Retrying in $verifyOrchardCoreDelayTimeSeconds seconds..."
+
+              Start-Sleep -Seconds $verifyOrchardCoreDelayTimeSeconds
+            }
+
+            Write-GitHub "Couldn't reach `"$verifyOrchardCoreUrl`"!"
+            exit 1
+          }
+
+      - name: Display Startup Logs on Failure
+        if: failure() && (steps.start-web-app-slot.outcome == 'failure' || steps.test-web-app-slot.outcome == 'failure')
+        run: |
+          az webapp log startup show `
+            --resource-group ${{ inputs.resource-group-name }} `
+            --name ${{ inputs.app-name }} `
+            --slot ${{ inputs.slot-name }}
+
+      - name: Display Container Logs on Failure
+        if: failure() && (steps.start-web-app-slot.outcome == 'failure' || steps.test-web-app-slot.outcome == 'failure')
+        run: |
+          az container logs `
+            --resource-group ${{ inputs.resource-group-name }} `
+            --name ${{ inputs.app-name }} `
 
       - name: Cancel Workflow on Failure
         if: failure() && inputs.cancel-workflow-on-failure == 'true'

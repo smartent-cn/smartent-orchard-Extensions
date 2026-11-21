@@ -12,12 +12,15 @@ namespace Lombiq.BaseTheme.Tests.UI.Extensions;
 
 public static class TestCaseUITestContextExtensions
 {
-    public static Task TestBaseThemeFeaturesAsync(this UITestContext context, bool skipLogin = false)
+    public static async Task TestBaseThemeFeaturesAsync(this UITestContext context, bool skipLogin = false)
     {
+        await context.ExecuteRecipeDirectlyAsync("Lombiq.BaseTheme.Native.Samples");
+        await context.GoToHomePageAsync();
+
         var classes = context.Get(By.Id("footer")).GetAttribute("class") ?? string.Empty;
         classes.Split().ShouldContain("text-center");
         context.TestZoneInsertion();
-        return context.TestMainMenuWithAuthenticationAsync(skipLogin);
+        await context.TestMainMenuWithAuthenticationAsync(skipLogin);
     }
 
     public static void TestZoneInsertion(this UITestContext context)
@@ -45,12 +48,12 @@ public static class TestCaseUITestContextExtensions
         if (skipLogin) return;
 
         await context.ClickMainMenuPathAsync("Log In");
-        context.Exists(By.XPath("//form[@action = '/Login']/*[starts-with(name(), 'h') and contains(., 'Log in')]"));
+        context.Exists(By.XPath("//form[@action = '/Login']/../*[starts-with(name(), 'h') and contains(., 'Log in')]"));
     }
 
     public static async Task TestBaseThemeDependencyIsEnabledAsync(this UITestContext context)
     {
-        await context.GoToAdminRelativeUrlAsync("/Features");
+        await context.GoToFeaturesAsync();
         context.Exists(By.Id("btn-disable-Lombiq_HelpfulExtensions_Widgets"));
     }
 
@@ -100,8 +103,11 @@ public static class TestCaseUITestContextExtensions
         await context.GoToAsync<BaseThemeCoreAdminController>(controller => controller.Index());
         await context.SetCheckboxValueAsync(By.Id("HideMenu"));
 
-        await context.ClickReliablyOnAsync(By.XPath("//div[contains(@class, 'thumb-container')]"));
-        await context.ClickReliablyOnAsync(By.CssSelector("#Editor .delete-button").OfAnyVisibility());
+        if (context.Exists(By.XPath("//div[contains(@class, 'thumb-container')]").Safely()))
+        {
+            await context.ClickReliablyOnAsync(By.XPath("//div[contains(@class, 'thumb-container')]"));
+            await context.ClickReliablyOnAsync(By.CssSelector("#Editor .delete-button").OfAnyVisibility());
+        }
 
         selectFromMediaLibraryAsync ??= async () =>
         {

@@ -1,7 +1,7 @@
 using Lombiq.Hosting.MediaTheme.Bridge.Tests.UI.Extensions;
 using Lombiq.Hosting.MediaTheme.Tests.UI.Extensions;
 using Lombiq.Tests.UI.Extensions;
-using Lombiq.Tests.UI.Pages;
+using Lombiq.Tests.UI.Models;
 using Lombiq.Tests.UI.Services;
 using System.Threading.Tasks;
 using Xunit;
@@ -19,7 +19,7 @@ public class BehaviorMediaThemeTests : UITestBase
 
     [Fact]
     public Task MediaThemeShouldWorkWhenDeployed() =>
-        ExecuteTestAfterSetupAsync(async context =>
+        RunAsync(async context =>
         {
             await context.TestMediaThemeDeployedBehaviorAsync();
             await CreateAndSwitchToTenantAsync(context);
@@ -28,7 +28,7 @@ public class BehaviorMediaThemeTests : UITestBase
 
     [Fact]
     public Task MediaThemeShouldWorkLocally() =>
-        ExecuteTestAfterSetupAsync(async context =>
+        RunAsync(async context =>
         {
             await context.TestMediaThemeLocalBehaviorAsync();
             await CreateAndSwitchToTenantAsync(context);
@@ -37,7 +37,7 @@ public class BehaviorMediaThemeTests : UITestBase
 
     [Fact]
     public Task MediaThemeTemplateAccessShouldBeBlocked() =>
-        ExecuteTestAfterSetupAsync(async context => await context.TestMediaThemeTemplatePageAsync());
+        RunAsync(async context => await context.TestMediaThemeTemplatePageAsync());
 
     private static Task CreateAndSwitchToTenantAsync(UITestContext context) =>
         context.CreateAndSwitchToTenantAsync(

@@ -4,16 +4,23 @@ using Lombiq.OrchardCoreApiClient.Models;
 using Lombiq.OrchardCoreApiClient.Tests.UI.Models;
 using Lombiq.Tests.UI.Constants;
 using Lombiq.Tests.UI.Extensions;
+using Lombiq.Tests.UI.Helpers;
 using Lombiq.Tests.UI.Services;
 using OpenQA.Selenium;
 using OrchardCore.Autoroute.Models;
 using OrchardCore.ContentManagement;
+using OrchardCore.Data;
 using OrchardCore.Taxonomies.Models;
+using Refit;
 using Shouldly;
 using System;
+using System.Globalization;
 using System.Linq;
+using System.Net;
+using System.Net.Http.Json;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Xunit;
 
 namespace Lombiq.OrchardCoreApiClient.Tests.UI.Extensions;
 
@@ -27,6 +34,7 @@ public static class TestCaseUITestContextExtensions
         string clientSecret = null,
         string featureProfile = null)
     {
+        await context.EnableTenantsFeatureDirectlyAsync();
         await context.TestTenantsOrchardCoreApiClientBehaviorAsync(
             new ApiClientBehaviorTestModel
             {
@@ -81,7 +89,8 @@ public static class TestCaseUITestContextExtensions
 
         var isLocalTest = context.IsLocalUITest();
 
-        // If the RequestUrlPrefix is not empty or not set we assume we don't want to change it, so we just append "edited" to the RequestUrlHost.
+        // If the RequestUrlPrefix is not empty or not set we assume we don't want to change it, so we just append
+        // "edited" to the RequestUrlHost.
         if (string.IsNullOrEmpty(apiClientBehaviorTestModel.RequestUrlPrefix) && !isLocalTest)
         {
             editModel.RequestUrlPrefix = apiClientBehaviorTestModel.RequestUrlPrefix;
@@ -98,12 +107,14 @@ public static class TestCaseUITestContextExtensions
         // In case of remote tests these values can be different, or coming from environment variables.
         if (isLocalTest)
         {
-            context.Configuration.TestOutputHelper.WriteLine("Using local test settings for creating tenant.");
+            context.Configuration.TestOutputHelper.WriteLineTimestampedAndDebug("Using local test settings for creating tenant.");
             var databaseProvider = context.Configuration.UseSqlServer
-                ? "SqlConnection"
-                : "Sqlite";
+                ? DatabaseProviderValue.SqlConnection
+                : DatabaseProviderValue.Sqlite;
             createApiModel.DatabaseProvider = databaseProvider;
             createApiModel.ConnectionString = context.SqlServerRunningContext?.ConnectionString;
+            setupApiModel.DatabaseProvider = databaseProvider;
+            setupApiModel.ConnectionString = context.SqlServerRunningContext?.ConnectionString;
             createApiModel.RequestUrlHost = string.Empty;
             editModel.RequestUrlHost = string.Empty;
         }
@@ -116,21 +127,24 @@ public static class TestCaseUITestContextExtensions
         const string defaultClientRecipe = "Lombiq.OrchardCoreApiClient.Tests.UI.OpenId";
         context.Scope.AtataContext.Log.Info($"Executing the default client recipe \"{defaultClientRecipe}\": {isDefaultClient}");
 
-        if (isDefaultClient)
+        if (isLocalTest)
         {
-            await context.ExecuteRecipeDirectlyAsync(defaultClientRecipe);
+            if (isDefaultClient)
+            {
+                await context.ExecuteRecipeDirectlyAsync(defaultClientRecipe);
 
-            // Verify that the recipe has successfully created the application.
-            await context.SignInDirectlyAsync();
-            await context.GoToAdminRelativeUrlAsync("/OpenId/Application");
-            await context.ClickReliablyOnAsync(
-                By.XPath($"//li[contains(@class, 'list-group-item') and contains(., '{apiClientSettings.ClientId}')]" +
-                         $"//a[normalize-space(.) = 'Edit']"));
-            context.Get(By.Name("ClientId")).GetAttribute("value").ShouldBe(apiClientSettings.ClientId);
-        }
-        else if (isLocalTest)
-        {
-            await context.SignInDirectlyAsync();
+                // Verify that the recipe has successfully created the application.
+                await context.SignInDirectlyAsync();
+                await context.GoToAdminRelativeUrlAsync("/OpenId/Application");
+                await context.ClickReliablyOnAsync(
+                    By.XPath($"//li[contains(@class, 'list-group-item') and contains(., '{apiClientSettings.ClientId}')]" +
+                        "//a[normalize-space(.) = 'Edit']"));
+                context.Get(By.Name("ClientId")).GetAttribute("value").ShouldBe(apiClientSettings.ClientId);
+            }
+            else
+            {
+                await context.SignInDirectlyAsync();
+            }
         }
 
         // Ensure that the tenant does not exist before starting the tests.
@@ -143,7 +157,7 @@ public static class TestCaseUITestContextExtensions
         // If there are additional steps to execute in the tenant context, do that now.
         if (apiClientBehaviorTestModel.StepsInTenantContext != null)
         {
-            context.Configuration.TestOutputHelper.WriteLine("Executing additional steps in the tenant context...");
+            context.Configuration.TestOutputHelper.WriteLineTimestampedAndDebug("Executing additional steps in the tenant context...");
 
             // Switch to the tenant context.
             if (string.IsNullOrEmpty(createApiModel.RequestUrlHost))
@@ -166,7 +180,7 @@ public static class TestCaseUITestContextExtensions
 
             // Switch back to the Default tenant.
             context.SwitchCurrentTenantToDefault();
-            context.Configuration.TestOutputHelper.WriteLine("Additional steps in the tenant context were done.");
+            context.Configuration.TestOutputHelper.WriteLineTimestampedAndDebug("Additional steps in the tenant context were done.");
         }
 
         await TestTenantEditAsync(context, tenantsApiClient, editModel, setupApiModel, isLocalTest);
@@ -197,7 +211,7 @@ public static class TestCaseUITestContextExtensions
         await TestContentRemoveAsync(context, contentsApiClient, taxonomy);
     }
 
-    public static async Task GoToTenantLandingPageAsync(
+    public static Task GoToTenantLandingPageAsync(
         this UITestContext context,
         string requestUrlPrefix,
         string requestUrlHost = null)
@@ -210,12 +224,11 @@ public static class TestCaseUITestContextExtensions
                 Host = requestUrlHost,
                 Path = requestUrlPrefix,
             };
-            await context.GoToAbsoluteUrlAsync(uriBuilder.Uri, onlyIfNotAlreadyThere: false);
+
+            return context.GoToAbsoluteUrlAsync(uriBuilder.Uri, onlyIfNotAlreadyThere: false);
         }
-        else
-        {
-            await context.GoToRelativeUrlAsync(requestUrlPrefix, onlyIfNotAlreadyThere: false);
-        }
+
+        return context.GoToRelativeUrlAsync(requestUrlPrefix, onlyIfNotAlreadyThere: false);
     }
 
     private static async Task TestTenantCreateAsync(
@@ -224,25 +237,48 @@ public static class TestCaseUITestContextExtensions
         TenantApiModel createApiModel,
         bool checkOnAdmin)
     {
-        context.Configuration.TestOutputHelper.WriteLine("Creating the tenant...");
+        context.Configuration.TestOutputHelper.WriteLineTimestampedAndDebug("Creating the tenant...");
         using (var response = await apiClient.OrchardCoreApi.CreateAsync(createApiModel))
         {
             await context.AssertLogsAsync();
-            response.Error.ShouldBeNull(
-                $"Tenant creation failed with status code {response.StatusCode}. Content: {response.Error?.Content}\n" +
-                $"Request: {response.RequestMessage}\nDriver URL: {context.Driver.Url}");
+            CheckResponse(response, "creation", context);
 
-            context.Configuration.TestOutputHelper.WriteLine("Tenant creation response had no errors.");
+            context.Configuration.TestOutputHelper.WriteLineTimestampedAndDebug("Tenant creation response had no errors.");
 
             // Check if response URL is valid, and visit it (should be the tenant setup page and not 404 error).
-            var responseUrl = new Uri(response.Content);
-            context.Configuration.TestOutputHelper.WriteLine("Trying to go to the tenant setup page: " + responseUrl);
+            if (!Uri.TryCreate(response.Content, UriKind.Absolute, out var responseUrl))
+            {
+                context.Configuration.TestOutputHelper.WriteLineTimestampedAndDebug(
+                    $"Couldn't parse response URL ({response.Content}).\n" + JsonSerializer.Serialize(new
+                    {
+                        response.Content,
+                        response.ContentHeaders,
+                        response.Error,
+                        response.Headers,
+                        response.IsSuccessful,
+                        response.IsSuccessStatusCode,
+                        response.ReasonPhrase,
+                        response.StatusCode,
+                        response.Version,
+                        RequestMessage = new
+                        {
+                            response.RequestMessage.Content,
+                            response.RequestMessage.Headers,
+                            response.RequestMessage.Version,
+                            response.RequestMessage.Method,
+                            response.RequestMessage.RequestUri,
+                            response.RequestMessage.VersionPolicy,
+                        },
+                    }));
+            }
+
+            context.Configuration.TestOutputHelper.WriteLineTimestampedAndDebug("Trying to go to the tenant setup page: " + responseUrl);
             await context.GoToAbsoluteUrlAsync(responseUrl);
         }
 
         if (checkOnAdmin)
         {
-            context.Configuration.TestOutputHelper.WriteLine("Asserting tenant creation on the admin page...");
+            context.Configuration.TestOutputHelper.WriteLineTimestampedAndDebug("Asserting tenant creation on the admin page...");
             await GoToTenantEditorAndAssertCommonTenantFieldsAsync(context, createApiModel);
 
             context.Get(By.CssSelector("#RecipeName option[selected]")).Text
@@ -261,7 +297,7 @@ public static class TestCaseUITestContextExtensions
             }
         }
 
-        context.Configuration.TestOutputHelper.WriteLine("Creating the tenant succeeded.");
+        context.Configuration.TestOutputHelper.WriteLineTimestampedAndDebug("Creating the tenant succeeded.");
     }
 
     private static async Task TestTenantSetupAsync(
@@ -270,15 +306,13 @@ public static class TestCaseUITestContextExtensions
         TenantApiModel createApiModel,
         TenantSetupApiModel setupApiModel)
     {
-        context.Configuration.TestOutputHelper.WriteLine("Initiating tenant setup...");
+        context.Configuration.TestOutputHelper.WriteLineTimestampedAndDebug("Initiating tenant setup...");
         using (var response = await apiClient.OrchardCoreApi.SetupAsync(setupApiModel))
         {
-            response.Error.ShouldBeNull(
-                $"Tenant setup failed with status code {response.StatusCode}. Content: {response.Error?.Content}\n" +
-                $"Request: {response.RequestMessage}\nDriver URL: {context.Driver.Url}");
+            CheckResponse(response, "setup", context);
         }
 
-        context.Configuration.TestOutputHelper.WriteLine("Now going to the tenant landing page to assert the setup.");
+        context.Configuration.TestOutputHelper.WriteLineTimestampedAndDebug("Now going to the tenant landing page to assert the setup.");
 
         await context.GoToTenantLandingPageAsync(createApiModel.RequestUrlPrefix, createApiModel.RequestUrlHost);
 
@@ -287,7 +321,7 @@ public static class TestCaseUITestContextExtensions
 
         await GoToTenantUrlAndAssertHeaderAsync(context, createApiModel, setupApiModel);
 
-        context.Configuration.TestOutputHelper.WriteLine("Setting up the tenant succeeded.");
+        context.Configuration.TestOutputHelper.WriteLineTimestampedAndDebug("Setting up the tenant succeeded.");
     }
 
     private static async Task TestTenantEditAsync(
@@ -297,12 +331,10 @@ public static class TestCaseUITestContextExtensions
         TenantSetupApiModel setupApiModel,
         bool checkOnAdmin)
     {
-        context.Configuration.TestOutputHelper.WriteLine("Editing the tenant...");
+        context.Configuration.TestOutputHelper.WriteLineTimestampedAndDebug("Editing the tenant...");
         using (var response = await apiClient.OrchardCoreApi.EditAsync(editModel))
         {
-            response.Error.ShouldBeNull(
-                $"Tenant edit failed with status code {response.StatusCode}. Content: {response.Error?.Content}\n" +
-                $"Request: {response.RequestMessage}\nDriver URL: {context.Driver.Url}");
+            CheckResponse(response, "edit", context);
         }
 
         if (checkOnAdmin)
@@ -315,17 +347,27 @@ public static class TestCaseUITestContextExtensions
         var originalPrefix = editModel.RequestUrlPrefix;
         var originalHost = editModel.RequestUrlHost;
 
-        editModel.RequestUrlPrefix = string.Empty;
-        editModel.RequestUrlHost = "https://example.com";
-        await apiClient.OrchardCoreApi.EditAsync(editModel);
+        if (!string.IsNullOrEmpty(originalPrefix))
+        {
+            editModel.RequestUrlPrefix = "edit" + originalPrefix;
+        }
+        else
+        {
+            editModel.RequestUrlHost = "edit" + originalHost;
+        }
+
+        using (var response = await apiClient.OrchardCoreApi.EditAsync(editModel))
+        {
+            CheckResponse(response, "edit (with name change)", context);
+        }
+
         if (checkOnAdmin)
         {
             await GoToTenantEditorAndAssertCommonTenantFieldsAsync(context, editModel);
         }
         else
         {
-            await context.GoToTenantLandingPageAsync(originalPrefix, originalHost);
-            context.Missing(By.ClassName("navbar-brand"));
+            await GoToTenantUrlAndAssertHeaderAsync(context, editModel, setupApiModel);
         }
 
         editModel.RequestUrlPrefix = originalPrefix;
@@ -338,7 +380,7 @@ public static class TestCaseUITestContextExtensions
 
         await GoToTenantUrlAndAssertHeaderAsync(context, editModel, setupApiModel);
 
-        context.Configuration.TestOutputHelper.WriteLine("Editing the tenant succeeded.");
+        context.Configuration.TestOutputHelper.WriteLineTimestampedAndDebug("Editing the tenant succeeded.");
     }
 
     private static async Task TestTenantDisableAsync(
@@ -347,13 +389,11 @@ public static class TestCaseUITestContextExtensions
         TenantApiModel editModel,
         bool checkOnAdmin)
     {
-        context.Configuration.TestOutputHelper.WriteLine("Disabling the tenant...");
+        context.Configuration.TestOutputHelper.WriteLineTimestampedAndDebug("Disabling the tenant...");
 
         using (var response = await apiClient.OrchardCoreApi.DisableAsync(editModel.Name))
         {
-            response.Error.ShouldBeNull(
-                $"Tenant disable failed with status code {response.StatusCode}. Content: {response.Error?.Content}\n" +
-                $"Request: {response.RequestMessage}\nDriver URL: {context.Driver.Url}");
+            CheckResponse(response, "disable", context);
         }
 
         if (checkOnAdmin)
@@ -362,13 +402,8 @@ public static class TestCaseUITestContextExtensions
             await context.FilterOnAdminWithSearchBoxAsync(editModel.Name);
             context.Exists(By.XPath($"//a[contains(., 'Enable') and contains(@href, '{editModel.Name}')]"));
         }
-        else
-        {
-            await context.GoToTenantLandingPageAsync(editModel.RequestUrlPrefix, editModel.RequestUrlHost);
-            context.Missing(By.ClassName("navbar-brand"));
-        }
 
-        context.Configuration.TestOutputHelper.WriteLine("Disabling the tenant succeeded.");
+        context.Configuration.TestOutputHelper.WriteLineTimestampedAndDebug("Disabling the tenant succeeded.");
     }
 
     private static async Task TestTenantRemoveAsync(
@@ -377,14 +412,32 @@ public static class TestCaseUITestContextExtensions
         TenantApiModel editModel,
         bool checkOnAdmin)
     {
-        context.Configuration.TestOutputHelper.WriteLine("Removing the tenant...");
+        context.Configuration.TestOutputHelper.WriteLineTimestampedAndDebug("Removing the tenant...");
 
-        using (var response = await apiClient.OrchardCoreApi.RemoveAsync(editModel.Name))
-        {
-            response.Error.ShouldBeNull(
-                $"Tenant remove failed with status code {response.StatusCode}. Content: {response.Error?.Content}\n" +
-                $"Request: {response.RequestMessage}\nDriver URL: {context.Driver.Url}");
-        }
+        await ReliabilityHelper.DoWithRetriesOrFailAsync(
+            async () =>
+            {
+                using var response = await apiClient.OrchardCoreApi.RemoveAsync(editModel.Name);
+
+                // The tenant can remain running for a while even after having been disabled. Waiting a bit here to see
+                // if it gets unstuck.
+                if (response.StatusCode == HttpStatusCode.BadRequest &&
+                    response.Error is ApiException apiException &&
+                    apiException.Content?.Contains($"The tenant '{editModel.Name}' should be 'Disabled' or 'Uninitialized'.") == true)
+                {
+                    context.Configuration.TestOutputHelper.WriteLineTimestampedAndDebug(
+                        "The tenant is still running, despite being disabled, and thus can't be removed. Attempting again.");
+
+                    return false;
+                }
+
+                CheckResponse(response, "remove", context);
+
+                return true;
+            },
+            TimeSpan.FromSeconds(30),
+            TimeSpan.FromSeconds(5),
+            context.Configuration.TestCancellationToken);
 
         if (checkOnAdmin)
         {
@@ -392,13 +445,8 @@ public static class TestCaseUITestContextExtensions
             await context.FilterOnAdminWithSearchBoxAsync(editModel.Name);
             context.Missing(By.LinkText(editModel.Name));
         }
-        else
-        {
-            await context.GoToTenantLandingPageAsync(editModel.RequestUrlPrefix, editModel.RequestUrlHost);
-            context.Missing(By.ClassName("navbar-brand"));
-        }
 
-        context.Configuration.TestOutputHelper.WriteLine("Removing the tenant succeeded.");
+        context.Configuration.TestOutputHelper.WriteLineTimestampedAndDebug("Removing the tenant succeeded.");
     }
 
     private static async Task<string> TestContentCreateAsync(
@@ -412,11 +460,15 @@ public static class TestCaseUITestContextExtensions
 
         context.Get(By.Id("TitlePart_Title")).GetValue().ShouldBe(contentItem.DisplayText);
 
-        context.Get(By.Id("AutoroutePart_RouteContainedItems")).GetValue()
-            .ShouldBe(contentItem.As<AutoroutePart>().RouteContainedItems.ToString().ToLowerFirstLetter());
+        var routeContainedItemsValue = context.Get(By.Id("AutoroutePart_RouteContainedItems")).GetValue();
+        routeContainedItemsValue.ShouldBe(contentItem
+            .GetOrCreate<AutoroutePart>()
+            .RouteContainedItems
+            .ToString()
+            .ToLowerFirstLetter(CultureInfo.InvariantCulture));
 
         context.Get(By.CssSelector("#TaxonomyPart_TermContentType option[selected]")).Text
-            .ShouldBe(contentItem.As<TaxonomyPart>().TermContentType);
+            .ShouldBe(contentItem.GetOrCreate<TaxonomyPart>().TermContentType);
 
         return contentItemIdFromApi;
     }
@@ -437,8 +489,8 @@ public static class TestCaseUITestContextExtensions
 
         contentItemFromApi.DisplayText.ShouldBe(contentItem.DisplayText);
         contentItemFromApi.ContentType.ShouldBe(contentItem.ContentType);
-        contentItemFromApiAutoroutePart.RouteContainedItems.ShouldBe(contentItem.As<AutoroutePart>().RouteContainedItems);
-        contentItemFromApiTaxonomyPart.TermContentType.ShouldBe(contentItem.As<TaxonomyPart>().TermContentType);
+        contentItemFromApiAutoroutePart.RouteContainedItems.ShouldBe(contentItem.GetOrCreate<AutoroutePart>().RouteContainedItems);
+        contentItemFromApiTaxonomyPart.TermContentType.ShouldBe(contentItem.GetOrCreate<TaxonomyPart>().TermContentType);
     }
 
     private static async Task TestContentRemoveAsync(
@@ -451,7 +503,7 @@ public static class TestCaseUITestContextExtensions
 
         await apiClient.OrchardCoreApi.RemoveAsync(contentItem.ContentItemId);
 
-        context.Refresh();
+        await context.RefreshAsync();
         context.Missing(By.XPath($"//a[contains(text(), '{contentItem.DisplayText}')]"));
     }
 
@@ -506,5 +558,19 @@ public static class TestCaseUITestContextExtensions
             DefaultTenantUri = context.Scope.BaseUri,
             DisableCertificateValidation = true,
         };
+    }
+
+    private static void CheckResponse(ApiResponse<string> response, string taskName, UITestContext context)
+    {
+        var request = response.RequestMessage.ToString();
+        if (response.RequestMessage.Content is JsonContent jsonContent)
+        {
+            request += "\nJSON Content: " + JsonSerializer.Serialize(jsonContent.Value);
+        }
+
+        var content = (response.Error as ApiException)?.Content;
+        response.Error.ShouldBeNull(
+            $"Tenant {taskName} failed with status code {response.StatusCode}. Content: {content}\n" +
+            $"Request: {request}\nDriver URL: {context.Driver.Url}");
     }
 }

@@ -25,14 +25,6 @@ public class ApplicationInsightsOptions
     public bool EnableLoggingTestMiddleware { get; set; }
 
     /// <summary>
-    /// Gets or sets the API key to authenticate the control channel for Quick Pulse (Live Metrics Stream). See the
-    /// documentation for more info: <see
-    /// href="https://docs.microsoft.com/en-us/azure/azure-monitor/app/live-stream#secure-the-control-channel"/>.
-    /// </summary>
-    [Obsolete("Microsoft Entra authentication is the only supported method from 30 September 2025. API key authentication will be removed.")]
-    public string QuickPulseTelemetryModuleAuthenticationApiKey { get; set; }
-
-    /// <summary>
     /// Gets or sets a value indicating whether to collect authenticated user's user name, if available, on every
     /// request. Note that the user name might be sensitive personally identifiable information (PII); see the official
     /// documentation on handling PII: <see
@@ -61,13 +53,13 @@ public class ApplicationInsightsOptions
 
     /// <summary>
     /// Gets or sets a value indicating whether to enable a background task that'll produce log entries every minute.
-    /// Entries will only show up in AI if <see cref="EnableBackgroundTaskTelemetryCollection"/> is also <see
+    /// Entries will only show up in AAI if <see cref="EnableBackgroundTaskTelemetryCollection"/> is also <see
     /// langword="true"/>.
     /// </summary>
     public bool EnableLoggingTestBackgroundTask { get; set; }
 
     /// <summary>
-    /// Gets or sets a value indicating whether to inject the client-side AI tracking script.
+    /// Gets or sets a value indicating whether to inject the client-side AAI tracking script.
     /// </summary>
     public bool EnableClientSideTracking { get; set; } = true;
 
@@ -128,4 +120,19 @@ public class ApplicationInsightsOptions
     /// want to see as failures in Application Insights. This will be used for <see cref="DependencyTelemetry"/> types.
     /// </summary>
     public Regex DependencyIgnoreFailureRegex { get; set; }
+
+    /// <summary>
+    /// Gets or sets a value indicating whether profiling with Application Insights Profiler for ASP.NET Core is
+    /// enabled. Setting this allows you to collect profiling data from the Azure Portal by starting a profiler sessions
+    /// there (setting this option doesn't in itself start profiling). For details, see <see
+    /// href="https://github.com/microsoft/ApplicationInsights-Profiler-AspNetCore">the project on GitHub</see>.
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// While the profiler won't do much unless a profiler session is started, it still runs some logic in the
+    /// background continuously when enabled, so only enable this if you actually plan to use it. See <see
+    /// href="https://github.com/microsoft/ApplicationInsights-Profiler-AspNetCore/discussions/242"/> for some context.
+    /// </para>
+    /// </remarks>
+    public bool EnableProfiler { get; set; }
 }

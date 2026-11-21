@@ -1,95 +1,39 @@
-<Project Sdk="Microsoft.NET.Sdk.Razor">
-
-  <Import Condition="'$(NuGetBuild)' != 'true'" Project="..\..\..\Utilities\Lombiq.Npm.Targets\Lombiq.Npm.Targets.props" />
-
+<Project>
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
-    <DefaultItemExcludes>$(DefaultItemExcludes);.git*;node_modules\**</DefaultItemExcludes>
+    <TargetFramework>net10.0</TargetFramework>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.OrchardCore.Module.Sdk/Sdk/Import.props" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Lombiq.MSBuild.OrchardCore.Module.Sdk" Version="2.1.1" />
+
   <PropertyGroup>
     <Title>Lombiq Data Tables for Orchard Core</Title>
-    <Authors>Lombiq Technologies</Authors>
-    <Copyright>Copyright © 2020, Lombiq Technologies Ltd.</Copyright>
-    <Description>Lombiq Data Tables for Orchard Core: An Orchard Core wrapper around the DataTables (https://datatables.net/) library for displaying tabular data from custom data sources. It lets you replace HTML tables with a tag helper or create asynchronous, sortable, searchable server-side generated tables. It also includes a pure Vue.js module that works similarly to DataTables. See the project website for detailed documentation.</Description>
-    <PackageIcon>NuGetIcon.png</PackageIcon>
+    <CopyrightYear>2020</CopyrightYear>
+    <DescriptionBody>An Orchard Core wrapper around the DataTables (https://datatables.net/) library for displaying tabular data from custom data sources. It lets you replace HTML tables with a tag helper or create asynchronous, sortable, searchable server-side generated tables. It also includes a pure Vue.js module that works similarly to DataTables.</DescriptionBody>
     <PackageTags>OrchardCore;Lombiq;AspNetCore;DataTables;Vue.js</PackageTags>
     <RepositoryUrl>https://github.com/Lombiq/Orchard-Data-Tables</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/Lombiq/Orchard-Data-Tables</PackageProjectUrl>
-    <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\Readme.md" />
-    <None Include="NuGetIcon.png" Pack="true" PackagePath="" />
-    <None Include="..\renovate.json5" />
-    <None Remove="node_modules\**" />
-    <Vendor Include="node_modules/datatables.net">
-      <Subdirectory>js</Subdirectory>
-    </Vendor>
-    <Vendor Include="node_modules/datatables.net-buttons">
-      <Subdirectory>js</Subdirectory>
-    </Vendor>
-    <Vendor Include="node_modules/datatables.net-bs5">
-      <CopyTo>datatables.net-bs5-js</CopyTo>
-      <Subdirectory>js</Subdirectory>
-      <Subdirectory>../datatables.net-buttons-bs5/js</Subdirectory>
-    </Vendor>
-    <Vendor Include="node_modules/datatables.net-buttons-bs5">
-      <CopyTo>datatables.net-bs5-css</CopyTo>
-      <Subdirectory>../datatables.net-bs5/css</Subdirectory>
-      <Subdirectory>css</Subdirectory>
-    </Vendor>
-    <Vendor Include="node_modules/urijs">
-      <Subdirectory>src</Subdirectory>
-    </Vendor>
-  </ItemGroup>
-
-  <PropertyGroup Condition="'$(NuGetBuild)' != 'true'">
-    <SourceGeneratorLocation>$(SolutionDir)src\Libraries\Lombiq.HelpfulLibraries\Lombiq.HelpfulLibraries.SourceGenerators\bin\Debug\netstandard2.0\Lombiq.HelpfulLibraries.SourceGenerators.dll</SourceGeneratorLocation>
-    <SourceGeneratorLocation Condition=" '$(Configuration)' != 'Debug' ">
-      $(SolutionDir)src\Libraries\Lombiq.HelpfulLibraries\Lombiq.HelpfulLibraries.SourceGenerators\bin\Release\netstandard2.0\Lombiq.HelpfulLibraries.SourceGenerators.dll
-    </SourceGeneratorLocation>
-  </PropertyGroup>
-
-  <Target Name="CustomBeforeCompile" BeforeTargets="Compile" Condition="'$(NuGetBuild)' != 'true'">
-    <MSBuild Condition="!Exists('$(SourceGeneratorLocation)')" Projects="..\..\..\Libraries\Lombiq.HelpfulLibraries\Lombiq.HelpfulLibraries.SourceGenerators\Lombiq.HelpfulLibraries.SourceGenerators.csproj" />
-  </Target>
-
-  <ItemGroup>
-    <FrameworkReference Include="Microsoft.AspNetCore.App" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="ClosedXML" Version="0.105.0" />
+    <PackageReference Include="ClosedXML" Version="0.105.1" />
     <PackageReference Include="Nito.AsyncEx.Tasks" Version="5.1.2" />
-    <PackageReference Include="OrchardCore.Contents" Version="2.1.0" />
-    <PackageReference Include="OrchardCore.Module.Targets" Version="2.1.0" />
-    <PackageReference Include="OrchardCore.Search.Lucene" Version="2.1.0" />
+    <PackageReference Include="OrchardCore.Data.YesSql" Version="3.0.1" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(NuGetBuild)' != 'true'">
-    <ProjectReference Include="..\..\..\Libraries\Lombiq.HelpfulLibraries\Lombiq.HelpfulLibraries.Attributes\Lombiq.HelpfulLibraries.Attributes.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="true" />
     <ProjectReference Include="..\..\..\Libraries\Lombiq.HelpfulLibraries\Lombiq.HelpfulLibraries.LinqToDb\Lombiq.HelpfulLibraries.LinqToDb.csproj" />
-    <ProjectReference Include="..\..\..\Libraries\Lombiq.HelpfulLibraries\Lombiq.HelpfulLibraries.OrchardCore\Lombiq.HelpfulLibraries.OrchardCore.csproj" />
-    <ProjectReference Include="..\..\..\Libraries\Lombiq.HelpfulLibraries\Lombiq.HelpfulLibraries.SourceGenerators\Lombiq.HelpfulLibraries.SourceGenerators.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
-    <ProjectReference Include="..\..\..\Utilities\Lombiq.Npm.Targets\Lombiq.Npm.Targets.csproj" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(NuGetBuild)' == 'true'">
-    <PackageReference Include="Lombiq.HelpfulLibraries.Attributes" Version="12.2.0" OutputItemType="Analyzer" ReferenceOutputAssembly="true" />
-    <PackageReference Include="Lombiq.HelpfulLibraries.LinqToDb" Version="12.2.0" />
-    <PackageReference Include="Lombiq.HelpfulLibraries.OrchardCore" Version="12.2.0" />
-    <PackageReference Include="Lombiq.HelpfulLibraries.SourceGenerators" Version="12.2.0" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
-    <PackageReference Include="Lombiq.Npm.Targets" Version="1.5.0" />
+    <PackageReference Include="Lombiq.HelpfulLibraries.LinqToDb" Version="$(PackageVersionLombiqHelpfulLibraries)" />
   </ItemGroup>
 
-  <ItemGroup>
-    <AdditionalFiles Include="package.json" />
+  <!-- Security Updates for Orchard Core - make sure to check if these are still necessary -->
+  <ItemGroup Condition="'$(ManagePackageVersionsCentrally)' != 'true'">
+    <PackageReference Include="MySqlConnector" Version="2.6.2" NoWarn="NU1510" />
   </ItemGroup>
 
-  <Import Condition="'$(NuGetBuild)' != 'true'" Project="..\..\..\Utilities\Lombiq.Npm.Targets\Lombiq.Npm.Targets.targets" />
-
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.OrchardCore.Module.Sdk/Sdk/Import.targets" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.targets" Sdk="Lombiq.MSBuild.OrchardCore.Module.Sdk" Version="2.1.1" />
 </Project>

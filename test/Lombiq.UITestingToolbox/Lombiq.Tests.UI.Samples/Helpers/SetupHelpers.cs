@@ -1,7 +1,7 @@
 using Atata;
 using Lombiq.Tests.UI.Constants;
 using Lombiq.Tests.UI.Extensions;
-using Lombiq.Tests.UI.Pages;
+using Lombiq.Tests.UI.Models;
 using Lombiq.Tests.UI.Services;
 using OpenQA.Selenium;
 using System;
@@ -35,8 +35,10 @@ public static class SetupHelpers
 
     public static async Task<Uri> RunSetupAsync(UITestContext context, string recipeId)
     {
-        // Running the setup. OrchardCoreSetupParameters will initialize some basic settings from the context.
-        var homepageUri = await context.GoToSetupPageAndSetupOrchardCoreAsync(
+        // Running the setup. OrchardCoreSetupParameters will initialize some basic settings from the context. Note: if
+        // your setup is very simple, you can skip the SetupHelpers and put context.GoToSetupAndSetupOrchardCoreAsync()
+        // directly into the UseSetup() call in the constructor of your test base class.
+        var homepageUri = await context.GoToSetupAndSetupOrchardCoreAsync(
             new OrchardCoreSetupParameters(context)
             {
                 SiteName = "Lombiq's OSOCE - UI Testing",
@@ -86,14 +88,17 @@ public static class SetupHelpers
         {
             context.Exists(By.Id("navbar"));
         }
-        catch (NoSuchElementException)
+        catch (NoSuchElementException exception)
         {
             var validationErrors = context.GetAll(By.ClassName("field-validation-error"));
 
             if (validationErrors.Count == 0) throw;
 
             var errors = "\n- " + validationErrors.Select(element => element.Text.Trim()).Join("\n- ");
-            throw new AssertionException($"Setup has failed with the following validation errors:{errors}");
+            throw new AssertionException($"Setup has failed with the following validation errors:{errors}", exception);
         }
     }
 }
+
+// Phew, that was a lot of configuration! (And we have just scratched the surface!) Let's see some actual tests.
+// NEXT STATION: Tests/BasicTests.cs

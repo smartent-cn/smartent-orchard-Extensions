@@ -1,4 +1,3 @@
-using Lombiq.Tests.UI.Services;
 using System;
 using System.IO;
 
@@ -11,14 +10,8 @@ public static class DirectoryPaths
     public const string Screenshots = nameof(Screenshots);
     public const string Downloads = nameof(Downloads);
 
-    public static string GetTempDirectoryPath(params string[] subDirectoryNames) =>
-        Path.Combine([Environment.CurrentDirectory, Temp, .. subDirectoryNames]);
-
-    [Obsolete($"Use {nameof(UITestContext)}.{nameof(UITestContext.GetTempSubDirectoryPath)}() instead.")]
-    public static string GetTempSubDirectoryPath(string contextId, params string[] subDirectoryNames) =>
-        GetTempDirectoryPath([contextId, .. subDirectoryNames]);
-
-    [Obsolete($"Use {nameof(UITestContext)}.{nameof(UITestContext.ScreenshotsDirectoryPath)} instead.")]
-    public static string GetScreenshotsDirectoryPath(string contextId) =>
-        GetTempSubDirectoryPath(contextId, Screenshots);
+    internal static string GetTempDirectoryPathWithFallback(string path) =>
+        string.IsNullOrEmpty(path)
+            ? Path.Combine(Environment.CurrentDirectory, Temp)
+            : path;
 }

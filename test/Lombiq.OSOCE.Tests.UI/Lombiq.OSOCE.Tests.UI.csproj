@@ -1,27 +1,18 @@
-<Project Sdk="Microsoft.NET.Sdk">
-
+﻿<Project>
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <IsPackable>false</IsPackable>
-    <OutputType>Exe</OutputType>
   </PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="NoUniqueLandmark.htmlvalidate.json" />
-  </ItemGroup>
+  <Import Project="../../src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.OrchardCore.Tests.UI.Sdk/Sdk/Import.props" />
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
-    <PackageReference Include="xunit.v3" Version="3.0.0" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="3.1.3">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
     <Content Include="xunit.runner.json" CopyToOutputDirectory="PreserveNewest" />
-    <Content Include="NoUniqueLandmark.htmlvalidate.json" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="*.htmlvalidate.json" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\Libraries\Lombiq.HelpfulLibraries\Lombiq.HelpfulLibraries.Samples.Tests.UI\Lombiq.HelpfulLibraries.Samples.Tests.UI.csproj" />
     <ProjectReference Include="..\..\src\Libraries\Lombiq.OrchardCoreApiClient\Lombiq.OrchardCoreApiClient.Tests.UI\Lombiq.OrchardCoreApiClient.Tests.UI.csproj" />
     <ProjectReference Include="..\..\src\Lombiq.OSOCE.Web\Lombiq.OSOCE.Web.csproj" />
     <ProjectReference Include="..\..\src\Modules\Lombiq.ChartJs\Lombiq.ChartJs.Tests.UI\Lombiq.ChartJs.Tests.UI.csproj" />
@@ -31,25 +22,29 @@
     <ProjectReference Include="..\..\src\Modules\Lombiq.HelpfulExtensions\Lombiq.HelpfulExtensions.Tests.UI\Lombiq.HelpfulExtensions.Tests.UI.csproj" />
     <ProjectReference Include="..\..\src\Modules\Lombiq.Hosting.Azure.ApplicationInsights\Lombiq.Hosting.Azure.ApplicationInsights.Tests.UI\Lombiq.Hosting.Azure.ApplicationInsights.Tests.UI.csproj" />
     <ProjectReference Include="..\..\src\Modules\Lombiq.Hosting.BuildVersionDisplay\Lombiq.Hosting.BuildVersionDisplay.Tests.UI\Lombiq.Hosting.BuildVersionDisplay.Tests.UI.csproj" />
+    <ProjectReference Include="..\..\src\Modules\Lombiq.Hosting.Tenants\Lombiq.Hosting.Tenants.Admin.Login.Tests.UI\Lombiq.Hosting.Tenants.Admin.Login.Tests.UI.csproj" />
     <ProjectReference Include="..\..\src\Modules\Lombiq.Hosting.Tenants\Lombiq.Hosting.Tenants.EmailQuotaManagement.Tests.UI\Lombiq.Hosting.Tenants.EmailQuotaManagement.Tests.UI.csproj" />
     <ProjectReference Include="..\..\src\Modules\Lombiq.Hosting.Tenants\Lombiq.Hosting.Tenants.EnvironmentRobots.Tests.UI\Lombiq.Hosting.Tenants.EnvironmentRobots.Tests.UI.csproj" />
     <ProjectReference Include="..\..\src\Modules\Lombiq.Hosting.Tenants\Lombiq.Hosting.Tenants.FeaturesGuard.Tests.UI\Lombiq.Hosting.Tenants.FeaturesGuard.Tests.UI.csproj" />
+    <ProjectReference Include="..\..\src\Modules\Lombiq.Hosting.Tenants\Lombiq.Hosting.Tenants.HealthChecks.Tests.UI\Lombiq.Hosting.Tenants.HealthChecks.Tests.UI.csproj" />
     <ProjectReference Include="..\..\src\Modules\Lombiq.Hosting.Tenants\Lombiq.Hosting.Tenants.IdleTenantManagement.Tests.UI\Lombiq.Hosting.Tenants.IdleTenantManagement.Tests.UI.csproj" />
     <ProjectReference Include="..\..\src\Modules\Lombiq.Hosting.Tenants\Lombiq.Hosting.Tenants.Maintenance.Tests.UI\Lombiq.Hosting.Tenants.Maintenance.Tests.UI.csproj" />
     <ProjectReference Include="..\..\src\Modules\Lombiq.Hosting.Tenants\Lombiq.Hosting.Tenants.Management.Tests.UI\Lombiq.Hosting.Tenants.Management.Tests.UI.csproj" />
     <ProjectReference Include="..\..\src\Modules\Lombiq.Hosting.Tenants\Lombiq.Hosting.Tenants.MediaStorageManagement.Tests.UI\Lombiq.Hosting.Tenants.MediaStorageManagement.Tests.UI.csproj" />
     <ProjectReference Include="..\..\src\Modules\Lombiq.JsonEditor\Lombiq.JsonEditor.Test.UI\Lombiq.JsonEditor.Tests.UI.csproj" />
     <ProjectReference Include="..\..\src\Modules\Lombiq.LoginAsAnybody\Lombiq.LoginAsAnybody.Tests.UI\Lombiq.LoginAsAnybody.Tests.UI.csproj" />
+    <ProjectReference Include="..\..\src\Modules\Lombiq.Marketing\Lombiq.Marketing.Tests.UI\Lombiq.Marketing.Tests.UI.csproj" />
     <ProjectReference Include="..\..\src\Modules\Lombiq.Privacy\Lombiq.Privacy.Tests.UI\Lombiq.Privacy.Tests.UI.csproj" />
     <ProjectReference Include="..\..\src\Modules\Lombiq.UIKit\Lombiq.UIKit.Tests.UI\Lombiq.UIKit.Tests.UI.csproj" />
     <ProjectReference Include="..\..\src\Modules\Lombiq.UIKit\Lombiq.UIKit.Widgets.Tests.UI\Lombiq.UIKit.Widgets.Tests.UI.csproj" />
-    <ProjectReference Include="..\..\src\Modules\Lombiq.VueJs\Lombiq.VueJs.Tests.UI\Lombiq.VueJs.Tests.UI.csproj" />
     <ProjectReference Include="..\..\src\Modules\Lombiq.Walkthroughs\Lombiq.Walkthroughs.Test.UI\Lombiq.Walkthroughs.Tests.UI.csproj" />
     <ProjectReference Include="..\..\src\Themes\Lombiq.BaseTheme\Lombiq.BaseTheme.Tests.UI\Lombiq.BaseTheme.Tests.UI.csproj" />
     <ProjectReference Include="..\..\src\Themes\Lombiq.Hosting.MediaTheme\Lombiq.Hosting.MediaTheme.Bridge.Tests.UI\Lombiq.Hosting.MediaTheme.Bridge.Tests.UI.csproj" />
     <ProjectReference Include="..\..\src\Themes\Lombiq.Hosting.MediaTheme\Lombiq.Hosting.MediaTheme.Tests.UI\Lombiq.Hosting.MediaTheme.Tests.UI.csproj" />
+    <ProjectReference Include="..\..\src\Utilities\Lombiq.MSBuild.Targets\Lombiq.MSBuild.Targets.Tests.UI\Lombiq.MSBuild.Targets.Tests.UI.csproj" />
     <ProjectReference Include="..\Lombiq.UITestingToolbox\Lombiq.Tests.UI.Samples\Lombiq.Tests.UI.Samples.csproj" />
     <ProjectReference Include="..\Lombiq.UITestingToolbox\Lombiq.Tests.UI.Tests.UI\Lombiq.Tests.UI.Tests.UI.csproj" />
   </ItemGroup>
 
+  <Import Project="../../src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.OrchardCore.Tests.UI.Sdk/Sdk/Import.targets" />
 </Project>

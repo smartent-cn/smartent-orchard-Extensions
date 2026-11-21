@@ -1,4 +1,6 @@
+using Lombiq.Tests.UI.Extensions;
 using Lombiq.Walkthroughs.Tests.UI.Extensions;
+using System.Net;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -12,10 +14,17 @@ public class BehaviorWalkthroughsTests : UITestBase
     }
 
     [Fact]
-    public Task WalkthroughsShouldWorkCorrectly() =>
-        ExecuteTestAsync(
-            context => context.RunSetupAndTestWalkthroughsBehaviorAsync(),
-            changeConfiguration: configuration => configuration
+    public Task WalkthroughsShouldWorkCorrectly() => TestBuilder
+        .WithoutSetup()
+        .AddConfiguration(configuration =>
+        {
+            configuration
                 .HtmlValidationConfiguration
-                .WithRelativeConfigPath("NoUniqueLandmark.htmlvalidate.json"));
+                .WithRelativeConfigPath("WalkthroughsShouldWorkCorrectly.htmlvalidate.json");
+
+            // The preview page sends these requests prematurely, which fails validation and perhaps incorrectly
+            // returns an error response. See https://github.com/OrchardCMS/OrchardCore/issues/19440 for details.
+            configuration.WithIgnoreExpectedStatusResponseFilter("/Preview/Draft", HttpStatusCode.InternalServerError);
+        })
+        .RunAsync(context => context.RunSetupAndTestWalkthroughsBehaviorAsync());
 }

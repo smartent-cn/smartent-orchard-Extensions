@@ -3,7 +3,6 @@ using ClosedXML.Graphics;
 using Lombiq.DataTables.Models;
 using Lombiq.DataTables.Services;
 using Lombiq.DataTables.Tests.Helpers;
-using Lombiq.HelpfulLibraries.Common.Utilities;
 using Lombiq.Tests.Helpers;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Options;
@@ -60,7 +59,7 @@ public class ExportTests
             mocker => mocker.MockStringLocalizer<ExcelDataTableExportService>());
 
         Dictionary<int, string> customNumberFormat = null;
-        int columnIndex = 0;
+        var columnIndex = 0;
         do
         {
             if (columns[columnIndex].Name == "Time")
@@ -74,8 +73,8 @@ public class ExportTests
 
         Stream stream = null;
 
+        // On non-Windows platforms, we need to specify a fallback font manually for ClosedXML to work.
         stream = OperatingSystem.IsWindows()
-            // On non-Windows platforms, we need to specify a fallback font manually for ClosedXML to work.
             ? await service.ExportAsync(provider, request, customNumberFormat: customNumberFormat)
             : await TryExportWithFallbackFontsAsync(service, provider, request, customNumberFormat);
 
@@ -102,7 +101,7 @@ public class ExportTests
                 .ToArray()
                 .ShouldBe(
                     pattern[rowIndex],
-                    StringHelper.CreateInvariant($"Row {rowIndex + 1} didn't match expectation."));
+                    string.Create(CultureInfo.InvariantCulture, $"Row {rowIndex + 1} didn't match expectation."));
         }
     }
 
@@ -201,19 +200,18 @@ public class ExportTests
         var date2 = new DateTime(2020, 11, 26, 13, 42, 01, DateTimeKind.Utc);
         var date3 = new DateTime(2020, 11, 26, 1, 42, 01, DateTimeKind.Utc);
 
-        // Simplified collection initialization for the first two would leave the third one as it is. Keeping for
-        // consistency.
-#pragma warning disable IDE0300 // Simplify collection initialization
         // The date value should be the same, only the formatting changes.
         yield return new DataTableShouldMatchExpectationInput(
             "Verify custom number formatting.",
-            new[]
-            {
-                new object[] { 1, date1 },
-                new object[] { 2, date2 },
-                new object[] { 3, date3 },
-            },
-            new[] { ("Num", "Numbers", true), ("Time", "Time", true) },
+            [
+                [1, date1],
+                [2, date2],
+                [3, date3],
+            ],
+            [
+                ("Num", "Numbers", true),
+                ("Time", "Time", true),
+            ],
             string.Format(
                     _worksheetCulture,
                     "1,{0:h:mm:ss tt};2,{1:h:mm:ss tt};3,{2:h:mm:ss tt}",
@@ -226,7 +224,6 @@ public class ExportTests
             0,
             10,
             0);
-#pragma warning restore IDE0300 // Simplify collection initialization
     }
 
     // Sometimes a font is available, however, it's corrupted or missing a table (for example, this can happen on
@@ -242,7 +239,7 @@ public class ExportTests
 
         var maxAttempts = Math.Min(3, fontFamilies.Length);
 
-        for (int i = 0; i < maxAttempts; i++)
+        for (var i = 0; i < maxAttempts; i++)
         {
             var fallbackFont = fontFamilies[i].Name;
 

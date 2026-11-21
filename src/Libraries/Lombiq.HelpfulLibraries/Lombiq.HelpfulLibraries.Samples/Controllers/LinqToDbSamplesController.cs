@@ -1,12 +1,12 @@
 using LinqToDB;
-using Lombiq.HelpfulLibraries.Common.Utilities;
+using LinqToDB.Async;
 using Lombiq.HelpfulLibraries.LinqToDb;
 using Lombiq.HelpfulLibraries.Samples.Models;
 using Microsoft.AspNetCore.Mvc;
 using OrchardCore.Autoroute.Core.Indexes;
 using OrchardCore.ContentManagement.Records;
 using System;
-using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using YesSql;
@@ -26,7 +26,6 @@ public sealed class LinqToDbSamplesController : Controller
     {
         var result = await _session.LinqQueryAsync(
             accessor => accessor
-                // GetTable method optionally receives a collection name.
                 .GetTable<AutoroutePartIndex>()
                 .Where(index => index.Path.Contains('a', StringComparison.OrdinalIgnoreCase))
                 .OrderByDescending(index => index.Path)
@@ -76,7 +75,8 @@ public sealed class LinqToDbSamplesController : Controller
             .Where(record => record.Author == "Jules Verne")
             .DeleteAsync(HttpContext.RequestAborted));
 
-        return Ok(StringHelper.CreateInvariant(
+        return Ok(string.Create(
+            CultureInfo.InvariantCulture,
             $"Inserted: {insertedCount}, modified: {modifiedCount}, deleted: {deletedCount}."));
     }
 }

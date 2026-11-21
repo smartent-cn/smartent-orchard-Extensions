@@ -81,7 +81,7 @@ public static class TestCaseUITestContextExtensions
             {
                 context.Missing(privacyConsentAcceptButtonBy);
             }
-            catch (WebDriverException ex) when (ex.IsStateElementLikeException())
+            catch (WebDriverException ex) when (ex.IsStaleElementLikeException())
             {
                 // If the banner disappears when we're in the middle of Missing() then unlucky timing can cause it to
                 // get properties of the now vanished element, causing a StaleElementReferenceException. This is not a
@@ -93,7 +93,7 @@ public static class TestCaseUITestContextExtensions
         AssertPrivacyConsentAcceptButtonMissing();
 
         // Verify persistence.
-        context.Refresh();
+        await context.RefreshAsync();
         AssertPrivacyConsentAcceptButtonMissing();
     }
 
@@ -105,7 +105,7 @@ public static class TestCaseUITestContextExtensions
         await context.TestRegistrationConsentCheckboxContentAsync();
 
         // Go to registration and create a new user.
-        await context.GoToRegistrationPageAsync();
+        await context.GoToRegistrationAsync();
         await context.FillInWithRetriesAsync(By.Id("RegisterUserForm_UserName"), TestUser.UserName);
         await context.FillInWithRetriesAsync(By.Id("RegisterUserForm_Email"), TestUser.Email);
         await context.FillInWithRetriesAsync(By.Id("RegisterUserForm_Password"), TestUser.Password);
@@ -124,7 +124,7 @@ public static class TestCaseUITestContextExtensions
 
     public static async Task TestRegistrationConsentCheckboxContentAsync(this UITestContext context)
     {
-        await context.GoToRegistrationPageAsync();
+        await context.GoToRegistrationAsync();
 
         context.VerifyElementTexts(
             By.CssSelector(ElementSelectors.PrivacyConsentCheckboxLabelCss),

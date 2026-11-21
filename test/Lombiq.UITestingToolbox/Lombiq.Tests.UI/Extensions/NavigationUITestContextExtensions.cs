@@ -1,12 +1,20 @@
+using AngleSharp.Dom;
+using AngleSharp.Html.Parser;
 using Atata;
 using Lombiq.Tests.UI.Constants;
 using Lombiq.Tests.UI.Helpers;
-using Lombiq.Tests.UI.Pages;
+using Lombiq.Tests.UI.Models;
 using Lombiq.Tests.UI.Services;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
+using OrchardCore.Environment.Shell;
+using Shouldly;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Lombiq.Tests.UI.Extensions;
@@ -24,7 +32,7 @@ public static class NavigationUITestContextExtensions
         string urlWithoutAdminPrefix = null,
         bool onlyIfNotAlreadyThere = true)
     {
-        if (string.IsNullOrEmpty(urlWithoutAdminPrefix)) return context.GoToDashboardAsync();
+        urlWithoutAdminPrefix ??= string.Empty;
 
         return context.GoToAbsoluteUrlAsync(context.GetAbsoluteAdminUri(urlWithoutAdminPrefix), onlyIfNotAlreadyThere);
     }
@@ -48,6 +56,13 @@ public static class NavigationUITestContextExtensions
             {
                 if (onlyIfNotAlreadyThere && context.GetCurrentUri() == absoluteUri) return;
 
+                if (context.Configuration.BrowserConfiguration.Browser == Browser.None)
+                {
+                    // Simplified navigation for HTTP client.
+                    await context.Driver.Navigate().GoToUrlAsync(absoluteUri);
+                    return;
+                }
+
                 await context.Configuration.Events.BeforeNavigation
                     .InvokeAsync<NavigationEventHandler>(eventHandler => eventHandler(context, absoluteUri));
 
@@ -63,12 +78,15 @@ public static class NavigationUITestContextExtensions
 
     public static string GetCurrentAbsolutePath(this UITestContext context) => context.GetCurrentUri().AbsolutePath;
 
+    // A simple new(context.Scope.BaseUri, relativeUrl.TrimStart('/')) would work for most cases but not when using
+    // tenants with a RequestUrlPrefix, because relativeUrl would then be relative to the host.
     public static Uri GetAbsoluteUri(this UITestContext context, string relativeUrl) =>
-        new(context.Scope.BaseUri, relativeUrl.TrimStart('/'));
+        new(context.Scope.BaseUri.OriginalString.TrimEnd('/') + "/" + relativeUrl.TrimStart('/'));
 
     public static Uri GetAbsoluteAdminUri(this UITestContext context, string adminRelativeUrl)
     {
-        var combinedUriString = context.AdminUrlPrefix + adminRelativeUrl;
+        adminRelativeUrl ??= string.Empty;
+        var combinedUriString = context.AdminUrlPrefix + adminRelativeUrl.Trim();
 
         return context.GetAbsoluteUri(combinedUriString);
     }
@@ -113,116 +131,127 @@ public static class NavigationUITestContextExtensions
         await context.SignInDirectlyAsync(email);
     }
 
-    // AtataContext is used from UITestContext in GoToPage() methods so they're future-proof in the case Atata won't be
-    // fully static. Also, with async code it's also necessary to re-set AtataContext.Current now, see:
-    // https://github.com/atata-framework/atata/issues/364.
+    public static Task GoToLoginAsync(this UITestContext context) =>
+        context.GoToRelativeUrlAsync("/Login");
 
-    public static async Task<T> GoToPageAsync<T>(this UITestContext context, bool navigate = true)
-        where T : PageObject<T>
-    {
-        var page = context.ExecuteLogged(
-            nameof(GoToPageAsync),
-            typeof(T).FullName,
-            () => context.Scope.AtataContext.Go.To<T>(navigate: navigate));
-
-        await context.TriggerAfterPageChangeEventAsync();
-
-        context.RefreshCurrentAtataContext();
-
-        return page;
-    }
-
-    public static async Task<T> GoToPageAsync<T>(this UITestContext context, string relativeUrl)
-        where T : PageObject<T>
-    {
-        var page = await context.ExecuteLoggedAsync(
-            $"{typeof(T).FullName} - {relativeUrl}",
-            typeof(T).FullName,
-            async () =>
-            {
-                T pageInternal = null;
-
-                await context.DoWithRetriesUntilNavigationHasOccurredOrFailAsync(
-                    () =>
-                    {
-                        pageInternal = context.Scope.AtataContext.Go.To<T>(
-                            url: context.GetAbsoluteUri(relativeUrl).ToString());
-                        return Task.CompletedTask;
-                    });
-
-                return pageInternal;
-            });
-
-        await context.TriggerAfterPageChangeEventAsync();
-
-        context.RefreshCurrentAtataContext();
-
-        return page;
-    }
-
-    public static async Task<T> GoToAdminPageAsync<T>(this UITestContext context, string relativeUrl = null)
-        where T : PageObject<T>
-    {
-        var uri = context.GetAbsoluteAdminUri(relativeUrl);
-
-        var page = await context.ExecuteLoggedAsync(
-            $"{typeof(T).FullName} - {uri.LocalPath}",
-            typeof(T).FullName,
-            async () =>
-            {
-                T pageInternal = null;
-
-                await context.DoWithRetriesUntilNavigationHasOccurredOrFailAsync(
-                    () =>
-                    {
-                        pageInternal = context.Scope.AtataContext.Go.To<T>(url: uri.ToString());
-                        return Task.CompletedTask;
-                    });
-
-                return pageInternal;
-            });
-
-        await context.TriggerAfterPageChangeEventAsync();
-
-        context.RefreshCurrentAtataContext();
-
-        return page;
-    }
-
-    public static Task<OrchardCoreSetupPage> GoToSetupPageAsync(this UITestContext context, bool navigate = true) =>
-        context.GoToPageAsync<OrchardCoreSetupPage>(navigate);
-
-    public static Task<OrchardCoreLoginPage> GoToLoginPageAsync(this UITestContext context) =>
-        context.GoToPageAsync<OrchardCoreLoginPage>();
-
-    public static Task<Uri> GoToSetupPageAndSetupOrchardCoreAsync(this UITestContext context, string recipeId) =>
-        context.GoToSetupPageAndSetupOrchardCoreAsync(
-            new OrchardCoreSetupParameters(context)
-            {
-                RecipeId = recipeId,
-            });
-
-    public static async Task<Uri> GoToSetupPageAndSetupOrchardCoreAsync(
+    public static Task<Uri> GoToSetupAndSetupOrchardCoreAsync(
         this UITestContext context,
-        OrchardCoreSetupParameters parameters = null)
-    {
-        var setupPage = await context.GoToSetupPageAsync(parameters?.RunSetupOnCurrentPage == false);
-        setupPage = await setupPage.SetupOrchardCoreAsync(context, parameters);
+        string recipeId,
+        bool shouldBeSuccess = true) =>
+        context.GoToSetupAndSetupOrchardCoreAsync(
+            new OrchardCoreSetupParameters(context, recipeId),
+            shouldBeSuccess);
 
-        return setupPage.PageUri.Value;
+    public static async Task<Uri> GoToSetupAndSetupOrchardCoreAsync(
+        this UITestContext context,
+        OrchardCoreSetupParameters parameters = null,
+        bool shouldBeSuccess = true)
+    {
+        if (context.Configuration.SetupConfiguration.SetupWithHttpClient &&
+            context.TenantName == ShellSettings.DefaultShellName)
+        {
+            return await context.SetupOrchardCoreWithHttpClientAsync(parameters, shouldBeSuccess);
+        }
+
+        parameters ??= new(context);
+
+        if (!parameters.RunSetupOnCurrentPage)
+        {
+            await context.GoToAbsoluteUrlAsync(parameters.SetupUri ?? context.TestStartUri);
+        }
+
+        await context.SetupOrchardCoreAsync(parameters);
+        context.CheckExistence(OrchardCoreSetupParameters.FinishSetupSelector, !shouldBeSuccess);
+
+        return new(context.Driver.Url);
     }
 
-    public static Task<OrchardCoreRegistrationPage> GoToRegistrationPageAsync(this UITestContext context) =>
-        context.GoToPageAsync<OrchardCoreRegistrationPage>();
+    public static async Task<Uri> SetupOrchardCoreWithHttpClientAsync(
+        this UITestContext context,
+        OrchardCoreSetupParameters parameters = null,
+        bool shouldBeSuccess = true)
+    {
+        static async Task<IElement> GetElementAsync(HttpResponseMessage response, string query, CancellationToken token)
+        {
+            using (response)
+            {
+                await using var stream = await response.Content.ReadAsStreamAsync(token);
+                var document = await new HtmlParser().ParseDocumentAsync(stream, token);
+                return string.IsNullOrEmpty(query) ? document.DocumentElement : document.QuerySelector(query);
+            }
+        }
 
-    public static Task<OrchardCoreDashboardPage> GoToDashboardAsync(this UITestContext context) =>
-        context.GoToAdminPageAsync<OrchardCoreDashboardPage>();
+        parameters ??= new(context);
 
-    public static Task<OrchardCoreContentItemsPage> GoToContentItemsPageAsync(this UITestContext context) =>
-        context.GoToAdminPageAsync<OrchardCoreContentItemsPage>("/Contents/ContentItems");
+        var cancellationToken = context.Configuration.TestCancellationToken;
 
-    public static Task<OrchardCoreFeaturesPage> GoToFeaturesPageAsync(this UITestContext context) =>
-        context.GoToAdminPageAsync<OrchardCoreFeaturesPage>("/Features");
+        var uri = parameters.RunSetupOnCurrentPage
+            ? context.GetCurrentUri()
+            : parameters.SetupUri ?? context.TestStartUri;
+
+        var isBrowser = context.Configuration.BrowserConfiguration.Browser != Browser.None;
+        using var client = isBrowser ? context.CreateHttpClientWithBrowserContext() : context.CreateHttpClient();
+
+        var verificationToken = (await GetElementAsync(
+                await client.GetAsync(uri, cancellationToken),
+                "input[name=__RequestVerificationToken]",
+                cancellationToken))?
+            .GetAttribute("value");
+
+        var formData = new Dictionary<string, string>
+        {
+            ["SiteName"] = parameters.SiteName,
+            ["RecipeName"] = parameters.RecipeId,
+            ["SiteTimeZone"] = parameters.SiteTimeZoneValue,
+            ["DatabaseProvider"] = parameters.DatabaseProvider.ToString(),
+            ["TablePrefix"] = parameters.TablePrefix,
+            ["ConnectionString"] = parameters.ConnectionString,
+            ["Schema"] = string.Empty,
+            ["UserName"] = parameters.UserName,
+            ["Email"] = parameters.Email,
+            ["Password"] = parameters.Password,
+            ["PasswordConfirmation"] = parameters.Password,
+            ["Secret"] = string.Empty,
+            ["__RequestVerificationToken"] = verificationToken,
+        };
+
+        using var formContent = new FormUrlEncodedContent(formData);
+        var responseSetupScript = await GetElementAsync(
+            await client.PostAsync(uri, formContent, cancellationToken),
+            "script[src*='OrchardCore.Setup']",
+            cancellationToken);
+
+        if (shouldBeSuccess)
+        {
+            if (responseSetupScript != null)
+            {
+                // If setup failed, first try to assert logs so we can return more meaningful errors than just the plain
+                // fact that the setup did not succeed.
+                await context.AssertLogsAsync();
+
+                responseSetupScript.ShouldBeNull("Setup did not succeed.");
+            }
+        }
+        else
+        {
+            responseSetupScript.ShouldNotBeNull("Setup succeeded when it shouldn't.");
+        }
+
+        await context.GoToAbsoluteUrlAsync(uri, onlyIfNotAlreadyThere: false);
+        return uri;
+    }
+
+    public static Task GoToRegistrationAsync(this UITestContext context) =>
+        context.GoToRelativeUrlAsync('/' + UserRegistrationParameters.DefaultUrl);
+
+    public static Task GoToDashboardAsync(this UITestContext context) =>
+        context.GoToAdminRelativeUrlAsync(urlWithoutAdminPrefix: string.Empty, onlyIfNotAlreadyThere: false);
+
+    /// <summary>
+    /// Navigate to the Features admin configuration page.
+    /// </summary>
+    public static Task GoToFeaturesAsync(this UITestContext context) =>
+        context.GoToAdminRelativeUrlAsync("/Features");
 
     /// <summary>
     /// Reloads <see cref="AtataContext.Current"/> from the <see cref="UITestContext"/>. This is necessary during Atata
@@ -258,13 +287,20 @@ public static class NavigationUITestContextExtensions
     public static void SwitchToFrame0(this UITestContext context) =>
         context.SwitchTo(locator => locator.Frame(0), "frame 0");
 
-    // Taken from: https://stackoverflow.com/a/36590395
+    /// <summary>
+    /// Waits until the HTML document is ready, i.e. the page has fully loaded.
+    /// </summary>
+    /// <returns>
+    /// <see langword="true"/> if the page has loaded within the allotted time frame, <see langword="false"/> otherwise.
+    /// </returns>
+    // Taken from: https://stackoverflow.com/a/36590395.
     public static bool WaitForPageLoad(this UITestContext context) =>
         context.ExecuteLogged(
             nameof(WaitForPageLoad),
             context.Driver.Url,
             () => new WebDriverWait(context.Driver, TimeSpan.FromSeconds(10)).Until(
-                driver => driver.ExecuteScript("return document.readyState").Equals("complete")));
+                driver => driver.ExecuteScript("return document.readyState").Equals("complete"),
+                context.Configuration.TestCancellationToken));
 
     public static Task SetTaxonomyFieldByIndexAsync(this UITestContext context, string taxonomyId, int index)
     {
@@ -330,7 +366,16 @@ public static class NavigationUITestContextExtensions
     /// </summary>
     /// <param name="maxTries">The maximum number of clicks attempted altogether, if retries are needed.</param>
     public static Task ClickReliablyOnAsync(this UITestContext context, By by, int maxTries = 3) =>
-        context.Get(by).ClickReliablyAsync(context, maxTries);
+        context.Get(by).ClickReliablyAsync(context, by, maxTries);
+
+    /// <summary>
+    /// Uses <see cref="NavigationWebElementExtensions.ClickReliablyAsync(IWebElement, UITestContext, int)"/> only if
+    /// the element queried by <paramref name="by"/> exists.
+    /// </summary>
+    public static Task ClickReliablyOnIfExistsAsync(this UITestContext context, By by, int maxTries = 3) =>
+        context.Get(by.Safely()) is { } element
+        ? element.ClickReliablyAsync(context, by, maxTries)
+        : Task.CompletedTask;
 
     /// <summary>
     /// Reliably clicks on the link identified by the given text with <see
@@ -338,40 +383,48 @@ public static class NavigationUITestContextExtensions
     /// </summary>
     /// <param name="maxTries">The maximum number of clicks attempted altogether, if retries are needed.</param>
     public static Task ClickReliablyOnByLinkTextAsync(this UITestContext context, string linkText, int maxTries = 3) =>
-        context.Get(By.LinkText(linkText)).ClickReliablyAsync(context, maxTries);
-
-    /// <inheritdoc cref="ClickReliablyOnUntilNavigationHasOccurredAsync(UITestContext, By, TimeSpan?, TimeSpan?)"/>
-    [Obsolete("Use ClickReliablyOnUntilNavigationHasOccurredAsync instead.")]
-    public static Task ClickReliablyOnUntilPageLeaveAsync(
-        this UITestContext context,
-        By by,
-        TimeSpan? timeout = null,
-        TimeSpan? interval = null) =>
-        context.ClickReliablyOnUntilNavigationHasOccurredAsync(by, timeout, interval);
+        context.ClickReliablyOnAsync(By.LinkText(linkText));
 
     /// <summary>
-    /// A convenience method that merges <see cref="ElementRetrievalUITestContextExtensions.Get"/> and <see
-    /// cref="NavigationWebElementExtensions.ClickReliablyUntilNavigationHasOccurredAsync(IWebElement, UITestContext,
-    /// TimeSpan?, TimeSpan?)"/> so the <paramref name="context"/> doesn't have to be passed twice.
+    /// Clicks on <paramref name="by"/> using <see cref="ClickReliablyOnAsync"/> and then waits until the <see
+    /// cref="WebDriver.Url"/> becomes different from the value before the click. This is different from <see
+    /// cref="ClickReliablyOnAndWaitUntilUrlChangeAsync"/> in that it doesn't continuously click until the navigation is
+    /// concluded, which can fail on regular links.
     /// </summary>
-    public static Task ClickReliablyOnUntilNavigationHasOccurredAsync(
+    public static async Task ClickReliablyOnAndWaitUntilUrlChangeAsync(
         this UITestContext context,
         By by,
         TimeSpan? timeout = null,
-        TimeSpan? interval = null) =>
-        context.Get(by).ClickReliablyUntilNavigationHasOccurredAsync(context, timeout, interval);
+        TimeSpan? interval = null)
+    {
+        var element = context.Get(by);
 
-    /// <summary>
-    /// A convenience method that merges <see cref="ElementRetrievalUITestContextExtensions.Get"/> and <see
-    /// cref="NavigationWebElementExtensions.ClickReliablyUntilUrlChangeAsync(IWebElement, UITestContext, TimeSpan?,
-    /// TimeSpan?)"/> so the <paramref name="context"/> doesn't have to be passed twice.
-    /// </summary>
-    public static Task ClickReliablyOnUntilUrlChangeAsync(
-        this UITestContext context,
-        By by,
-        TimeSpan? timeout = null,
-        TimeSpan? interval = null) =>
-        context.Get(by).ClickReliablyUntilUrlChangeAsync(context, timeout, interval);
+        // If selected HTML element is <a> and it points to the current page, then waiting for URL change will time out.
+        // In this special case we want to look for the page's navigation state instead.
+        var isElementLinkToCurrentPage =
+            element.TagName == TagNames.A &&
+            element.GetAttribute("href") == context.Driver.Url;
+
+        // Forms can implicitly direct to their own page, so waiting for navigation is more reliable.
+        var isElementFormSubmitButton =
+            (element.TagName == TagNames.Button || element.TagName == TagNames.Input) &&
+            element.GetAttribute("type") == "submit";
+
+        // We only want to click once in either case. The click has to happen inside the DoWithRetries call's callback,
+        // so it's only invoked the first time when the initial URL or navigation state is already stored.
+        var clickOnlyOnceAsync = ReliabilityHelper.CreateSingleRunProcess(() => element.ClickReliablyAsync(context, by));
+
+        if (isElementLinkToCurrentPage || isElementFormSubmitButton)
+        {
+            await context.DoWithRetriesUntilNavigationHasOccurredOrFailAsync(clickOnlyOnceAsync, timeout, interval);
+        }
+        else
+        {
+            await context.DoWithRetriesUntilUrlChangeOrFailAsync(clickOnlyOnceAsync, timeout, interval);
+        }
+
+        context.WaitForPageLoad();
+    }
 
     /// <summary>
     /// A convenience method that merges <see cref="ElementRetrievalUITestContextExtensions.Get"/> and <see
@@ -380,6 +433,34 @@ public static class NavigationUITestContextExtensions
     /// </summary>
     public static Task ClickOnWithScriptAsync(this UITestContext context, By by) =>
         context.Get(by).ClickWithScriptAsync(context);
+
+    /// <summary>
+    /// Clicks through a path of admin menu items, ensuring that the next steps is visible before trying to click.
+    /// </summary>
+    public static async Task ClickThroughAdminMenuAsync(this UITestContext context, params By[] selectors)
+    {
+        var menuAnimationTime = TimeSpan.FromSeconds(1);
+
+        for (var i = 0; i < selectors.Length - 1; i++)
+        {
+            // Only click on this menu item if the next item is not visible because this menu is already open.
+            if (context.Exists(selectors[i + 1].Safely().Within(menuAnimationTime))) continue;
+
+            // The menus have animations, which interfere with the click being recognized.
+            await context.ClickReliablyOnAsync(selectors[i]);
+
+            context.Exists(selectors[i + 1]);
+        }
+
+        // The last item is clicked separately, because we don't do look-ahead checks here.
+        await context.ClickReliablyOnAsync(selectors[^1]);
+    }
+
+    /// <summary>
+    /// Clicks through a path of admin menu items, ensuring that the next steps is visible before trying to click.
+    /// </summary>
+    public static Task ClickThroughAdminMenuAsync(this UITestContext context, params string[] ids) =>
+        context.ClickThroughAdminMenuAsync(ids.Select(By.Id).ToArray());
 
     /// <summary>
     /// Switches control to JS alert box, accepts it, and switches control back to main document or first frame.
@@ -418,7 +499,54 @@ public static class NavigationUITestContextExtensions
     /// <summary>
     /// Refreshes (reloads) the current page.
     /// </summary>
-    public static void Refresh(this UITestContext context) => context.Scope.Driver.Navigate().Refresh();
+    public static Task RefreshAsync(this UITestContext context) =>
+        context.ExecuteLoggedAsync(
+            nameof(RefreshAsync),
+            async () =>
+            {
+                if (context.Configuration.BrowserConfiguration.Browser == Browser.None)
+                {
+                    // Simplified navigation for HTTP client.
+                    await context.Driver.Navigate().RefreshAsync();
+                    return;
+                }
+
+                var absoluteUri = context.GetCurrentUri();
+
+                await context.Configuration.Events.BeforeNavigation
+                    .InvokeAsync<NavigationEventHandler>(eventHandler => eventHandler(context, absoluteUri));
+
+                await context.Scope.Driver.Navigate().RefreshAsync();
+
+                await context.Configuration.Events.AfterNavigation
+                    .InvokeAsync<NavigationEventHandler>(eventHandler => eventHandler(context, absoluteUri));
+            });
+
+    /// <summary>
+    /// Navigates back to the previous page or URL in the browser's history.
+    /// </summary>
+    public static Task BackAsync(this UITestContext context) =>
+        context.ExecuteLoggedAsync(
+            nameof(BackAsync),
+            async () =>
+            {
+                if (context.Configuration.BrowserConfiguration.Browser == Browser.None)
+                {
+                    // Simplified navigation for HTTP client.
+                    await context.Driver.Navigate().BackAsync();
+                    return;
+                }
+
+                var absoluteUri = context.GetCurrentUri();
+
+                await context.Configuration.Events.BeforeNavigation
+                    .InvokeAsync<NavigationEventHandler>(eventHandler => eventHandler(context, absoluteUri));
+
+                await context.Scope.Driver.Navigate().BackAsync();
+
+                await context.Configuration.Events.AfterNavigation
+                    .InvokeAsync<NavigationEventHandler>(eventHandler => eventHandler(context, absoluteUri));
+            });
 
     /// <summary>
     /// Checks whether the current page is the Orchard setup page.
@@ -459,7 +587,14 @@ public static class NavigationUITestContextExtensions
     /// that's why it's not called "contentItem".</param>
     public static async Task FilterOnAdminAsync(this UITestContext context, string itemName)
     {
-        await context.ClickAndFillInWithRetriesAsync(By.Id("Options_Search"), itemName);
+        if (context.Exists(By.Id("Options_Search").Safely()))
+        {
+            await context.ClickAndFillInWithRetriesAsync(By.Id("Options_Search"), itemName);
+        }
+        else if (context.Exists(By.Id("Options_SearchText")))
+        {
+            await context.ClickAndFillInWithRetriesAsync(By.Id("Options_SearchText"), itemName);
+        }
 
         // Normally we would trigger filtering by pressing the "Enter" key. The filter submit button is hidden, so we
         // have to use JS to click on it.
@@ -477,5 +612,50 @@ public static class NavigationUITestContextExtensions
         // Normally we would trigger filtering by pressing the "Enter" key. The filter submit button is hidden, so we
         // have to use JS to click on it.
         context.ExecuteScript("document.getElementById('submitFilter').click();");
+    }
+
+    /// <summary>
+    /// Clicks on the <paramref name="byDropdownButton"/> until the Bootstrap dropdown menu appears (up to 3 tries) and
+    /// then clicks on the menu item with the <paramref name="menuItemLinkText"/> within the dropdown menu's context.
+    /// </summary>
+    /// <param name="context">The current UI test context.</param>
+    /// <param name="byDropdownButton">The path of the button that reveals the Bootstrap dropdown menu.</param>
+    /// <param name="menuItemLinkText">The text of the dropdown menu item.</param>
+    public static Task SelectFromBootstrapDropdownReliablyAsync(
+        this UITestContext context,
+        By byDropdownButton,
+        string menuItemLinkText) =>
+        SelectFromBootstrapDropdownReliablyAsync(context, context.Get(byDropdownButton), By.LinkText(menuItemLinkText));
+
+    /// <summary>
+    /// Clicks on the <paramref name="dropdownButton"/> until the Bootstrap dropdown menu appears with retries and then
+    /// clicks on the <paramref name="byLocalMenuItem"/> within the dropdown menu's context.
+    /// </summary>
+    /// <param name="context">The current UI test context.</param>
+    /// <param name="dropdownButton">The button that reveals the Bootstrap dropdown menu.</param>
+    /// <param name="byLocalMenuItem">
+    /// The path inside the dropdown menu. If <see langword="null"/> then no selection (clicking) will be made, and the
+    /// dropdown is left open.
+    /// </param>
+    public static Task SelectFromBootstrapDropdownReliablyAsync(
+        this UITestContext context,
+        IWebElement dropdownButton,
+        By byLocalMenuItem)
+    {
+        var byDropdownMenu = By.XPath("./following-sibling::*[contains(@class, 'dropdown-menu')]");
+
+        return ReliabilityHelper.DoWithRetriesAndCatchesAsync(
+            async () =>
+            {
+                await dropdownButton.ClickReliablyAsync(context);
+
+                var dropdownMenu = dropdownButton.Get(byDropdownMenu);
+
+                if (byLocalMenuItem == null) return true;
+
+                await dropdownMenu.Get(byLocalMenuItem).ClickReliablyAsync(context);
+                return true;
+            },
+            cancellationToken: context.Configuration.TestCancellationToken);
     }
 }

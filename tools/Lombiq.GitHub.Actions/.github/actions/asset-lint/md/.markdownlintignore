@@ -1,0 +1,11 @@
+# Exclude foreign packages.
+**/node_modules/**/*
+**/vendors/**/*
+
+# Ignore agent skill files.
+**/.agents/**/*
+
+# Ignore license files.
+**/License.md
+**/LICENSE.md
+**/LICENSE

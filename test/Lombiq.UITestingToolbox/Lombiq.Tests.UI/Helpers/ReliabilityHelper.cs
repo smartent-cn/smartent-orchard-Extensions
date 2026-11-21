@@ -1,8 +1,9 @@
 using Atata;
-using Lombiq.HelpfulLibraries.Common.Utilities;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
+using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -18,7 +19,7 @@ public static class ReliabilityHelper
             // exception below.
             return await innerProcess();
         }
-        catch (WebDriverException ex) when (ex.IsStateElementLikeException())
+        catch (WebDriverException ex) when (ex.IsStaleElementLikeException())
         {
             // When navigating away this exception will be thrown for all old element references. Not nice to use
             // exceptions but there doesn't seem to be a better way to do this.
@@ -34,7 +35,7 @@ public static class ReliabilityHelper
             // exception below.
             return await innerProcess();
         }
-        catch (WebDriverException ex) when (ex.IsStateElementLikeException())
+        catch (WebDriverException ex) when (ex.IsStaleElementLikeException())
         {
             return true;
         }
@@ -294,6 +295,27 @@ public static class ReliabilityHelper
         CancellationToken cancellationToken = default) =>
             DoWithRetriesAsync(_retryIfNotStaleProcess(processAsync), timeout, interval, cancellationToken);
 
+    /// <summary>
+    /// Converts the provided callback into one that's only executed on the first call. This is usedful if you want to
+    /// use the reliability helper to do something once and then wait for a state change.
+    /// </summary>
+    public static Func<Task> CreateSingleRunProcess(Func<Task> processAsync)
+    {
+        var first = true;
+
+        return () =>
+        {
+            if (!first) return Task.CompletedTask;
+            first = false;
+            return processAsync();
+        };
+    }
+
+    [StackTraceHidden]
+    [SuppressMessage(
+        "StyleCop.CSharp.ReadabilityRules",
+        "SA1134:Attributes should not share line",
+        Justification = "We use [StackTraceHidden] for lambdas to avoid polluting the stack trace.")]
     private static (bool IsSuccess, SafeWait<object> Wait) DoWithRetriesInternal(
         Func<bool> process,
         TimeSpan? timeout = null,
@@ -307,7 +329,7 @@ public static class ReliabilityHelper
         if (interval != null) wait.PollingInterval = interval.Value;
 
         return (wait.Until(
-            _ =>
+            [StackTraceHidden] (_) =>
             {
                 cancellationToken.ThrowIfCancellationRequested();
                 return process();
@@ -334,8 +356,8 @@ public static class ReliabilityHelper
     {
         if (retriesResult.IsSuccess) return;
 
-        throw new TimeoutException(StringHelper.CreateInvariant(
+        throw new TimeoutException(
             $"The process didn't succeed with retries before timing out (timeout: {retriesResult.Wait.Timeout}, " +
-            $"polling interval: {retriesResult.Wait.PollingInterval}."));
+            $"polling interval: {retriesResult.Wait.PollingInterval}.");
     }
 }
