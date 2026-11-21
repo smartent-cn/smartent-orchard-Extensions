@@ -21,16 +21,12 @@
     <PackageReference Include="OrchardCore.ContentManagement.Abstractions" Version="$(OrchardCoreVersion)" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(NuGetBuild)' != 'true' and Exists($(LombiqHelpfulLibrariesPath))">
-    <ProjectReference Include="$(LombiqHelpfulLibrariesPath)\Lombiq.HelpfulLibraries.Refit\Lombiq.HelpfulLibraries.Refit.csproj" />
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(NuGetBuild)' != 'true' and !Exists($(LombiqHelpfulLibrariesPath))">
-    <ProjectReference Include="..\..\Lombiq.HelpfulLibraries\Lombiq.HelpfulLibraries.Refit\Lombiq.HelpfulLibraries.Refit.csproj" />
+  <ItemGroup Condition="'$(NuGetBuild)' != 'true'">
+    <ProjectReference Include="..\..\..\..\Smartent-src\Platform\Orchard\Smartent.Orchard.Http.Refit\Smartent.Orchard.Http.Refit.csproj" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(NuGetBuild)' == 'true'">
-    <PackageReference Include="Lombiq.HelpfulLibraries.Refit" Version="$(PackageVersionLombiqHelpfulLibraries)" />
+    <PackageReference Include="Smartent.Orchard.Http.Refit" Version="$(PackageVersionLombiqHelpfulLibraries)" />
   </ItemGroup>
 
   <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.Library.Sdk/Sdk/Import.targets" />

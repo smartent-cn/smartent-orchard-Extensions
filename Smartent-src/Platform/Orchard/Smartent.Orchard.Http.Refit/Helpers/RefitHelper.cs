@@ -2,7 +2,7 @@ using Refit;
 using System;
 using System.Net.Http;
 
-namespace Lombiq.HelpfulLibraries.Refit.Helpers;
+namespace Smartent.Orchard.Http.Refit.Helpers;
 
 public static class RefitHelper
 {

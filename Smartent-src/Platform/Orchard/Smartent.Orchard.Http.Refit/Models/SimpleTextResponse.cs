@@ -1,10 +1,10 @@
-﻿using Refit;
+using Refit;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 
-namespace Lombiq.HelpfulLibraries.Refit.Models;
+namespace Smartent.Orchard.Http.Refit.Models;
 
 /// <summary>
 /// An alternative container to <see cref="ApiResponse{T}"/> of <see cref="string"/> which is not <see

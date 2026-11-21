@@ -31,7 +31,7 @@ Helpful Libraries consists of the following independent libraries (all in their 
 - [LINQ to YesSql / linq2db (Smartent.Orchard.Platform.Data.LinqToYesSql)](../../../../Smartent-src/Platform/Orchard/Smartent.Orchard.Platform.Data.LinqToYesSql/Readme.md)（已迁出）
 - [Orchard Core Libraries](Lombiq.HelpfulLibraries.OrchardCore/Readme.md)
 - [RestEase Libraries for Orchard Core](Lombiq.HelpfulLibraries.RestEase/Readme.md) (Not included in `Lombiq.HelpfulLibraries`, we suggest the Refit libraries instead.)
-- [Refit Libraries for Orchard Core](Lombiq.HelpfulLibraries.Refit/Readme.md)
+- [Refit（Smartent.Orchard.Http.Refit）](../../../../Smartent-src/Platform/Orchard/Smartent.Orchard.Http.Refit/Readme.md)（已迁出）
 - [Source Generators (Smartent.Core.CodeGen.SourceGenerators)](../../../../Smartent-src/Platform/Core/Smartent.Core.CodeGen.SourceGenerators/Readme.md)（已迁出）
 - [Attributes (Smartent.Core.CodeGen.Attributes)](../../../../Smartent-src/Platform/Core/Smartent.Core.CodeGen.Attributes/Readme.md)（已迁出）
 

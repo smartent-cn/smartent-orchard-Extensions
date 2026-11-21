@@ -10,7 +10,7 @@
 | 顺序 | Legacy | 目标（草案） | 状态 |
 |------|--------|-------------|------|
 | 1 | `Lombiq.HelpfulLibraries.LinqToDb` | `Smartent.Orchard.Platform.Data.LinqToYesSql` | **已完成** |
-| 2 | `Lombiq.HelpfulLibraries.Refit` | `Smartent.Orchard.Http.Refit` | 待办 |
+| 2 | `Lombiq.HelpfulLibraries.Refit` | `Smartent.Orchard.Http.Refit` | **已完成** |
 | 3 | `Lombiq.HelpfulLibraries.OrchardCore.Testing` | `Smartent.Test.OrchardCore` | 待办 |
 | 4 | `Lombiq.HelpfulLibraries.OrchardCore` | `Smartent.Orchard.Platform.*`（拆包 TBD） | 待办 |
 | — | `Lombiq.HelpfulLibraries` 元包 | 废弃或仅文档指向各 Smartent 包 | 待办 |
