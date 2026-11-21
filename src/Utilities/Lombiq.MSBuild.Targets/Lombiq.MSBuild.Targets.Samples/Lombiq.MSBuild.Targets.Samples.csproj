@@ -15,8 +15,8 @@
     <!-- When referencing Lombiq.MSBuild.LibMan.Targets as a NuGet package, you have to explicitly include the
          Helpful Libraries packages too, if you want to use source generation. -->
     <PackageReference Include="Lombiq.MSBuild.LibMan.Targets" Version="2.0.1" />
-    <PackageReference Include="Lombiq.HelpfulLibraries.Attributes" Version="13.0.0" OutputItemType="Analyzer" ReferenceOutputAssembly="true" />
-    <PackageReference Include="Lombiq.HelpfulLibraries.SourceGenerators" Version="13.0.0" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+    <PackageReference Include="Smartent.Core.CodeGen.Attributes" Version="13.0.0" OutputItemType="Analyzer" ReferenceOutputAssembly="true" />
+    <PackageReference Include="Smartent.Core.CodeGen.SourceGenerators" Version="13.0.0" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
   </ItemGroup>
 
   <ItemGroup>

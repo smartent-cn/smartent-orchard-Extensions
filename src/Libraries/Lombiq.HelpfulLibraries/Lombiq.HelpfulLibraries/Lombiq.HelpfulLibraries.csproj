@@ -16,7 +16,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Lombiq.HelpfulLibraries.Attributes\Lombiq.HelpfulLibraries.Attributes.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="true" />
+    <ProjectReference Include="..\..\..\..\Smartent-src\Platform\Core\Smartent.Core.CodeGen.Attributes\Smartent.Core.CodeGen.Attributes.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="true" />
     <ProjectReference Include="..\..\..\..\Smartent-src\Platform\Core\Smartent.Core.AspNet\Smartent.Core.AspNet.csproj" PrivateAssets="none" />
     <ProjectReference Include="..\..\..\..\Smartent-src\Platform\Core\Smartent.Core.Cli\Smartent.Core.Cli.csproj" />
     <ProjectReference Include="..\..\..\..\Smartent-src\Platform\Core\Smartent.Core.Primitives\Smartent.Core.Primitives.csproj" PrivateAssets="none" />

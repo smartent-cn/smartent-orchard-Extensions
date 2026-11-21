@@ -1,11 +1,11 @@
-﻿using Lombiq.HelpfulLibraries.Attributes;
+using Smartent.Core.CodeGen.Attributes;
 using Microsoft.CodeAnalysis;
 using System;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
 
-namespace Lombiq.HelpfulLibraries.SourceGenerators;
+namespace Smartent.Core.CodeGen.SourceGenerators;
 
 [Generator]
 public class ConstantFromJsonGenerator : GeneratorFromFileBase

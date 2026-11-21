@@ -8,10 +8,10 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(FromNuGet)' == 'true'">
-    <PackageReference Include="Lombiq.HelpfulLibraries.Attributes" OutputItemType="Analyzer" ReferenceOutputAssembly="true">
+    <PackageReference Include="Smartent.Core.CodeGen.Attributes" OutputItemType="Analyzer" ReferenceOutputAssembly="true">
       <Version Condition="'$(ManagePackageVersionsCentrally)' != 'true'">$(PackageVersionLombiqHelpfulLibraries)</Version>
     </PackageReference>
-    <PackageReference Include="Lombiq.HelpfulLibraries.SourceGenerators" OutputItemType="Analyzer" ReferenceOutputAssembly="false">
+    <PackageReference Include="Smartent.Core.CodeGen.SourceGenerators" OutputItemType="Analyzer" ReferenceOutputAssembly="false">
       <Version Condition="'$(ManagePackageVersionsCentrally)' != 'true'">$(PackageVersionLombiqHelpfulLibraries)</Version>
     </PackageReference>
   </ItemGroup>

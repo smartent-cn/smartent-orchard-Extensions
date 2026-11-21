@@ -1,4 +1,4 @@
-using Lombiq.HelpfulLibraries.Attributes;
+using Smartent.Core.CodeGen.Attributes;
 using Shouldly;
 using System;
 using Xunit;

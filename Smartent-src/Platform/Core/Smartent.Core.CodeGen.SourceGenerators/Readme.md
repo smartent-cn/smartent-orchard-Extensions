@@ -27,20 +27,20 @@ For general details about and on using the Helpful Libraries see the [root Readm
 3. Add reference to both the Source Generator and the Attributes project (which contains the marker attributes like `[ConstantFromJson]`) and make sure to include the project as analyzer:
 
     ```xml
-    <ProjectReference Include="..\Lombiq.HelpfulLibraries.Attributes\Lombiq.HelpfulLibraries.Attributes.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="true" />
-    <ProjectReference Include="..\Lombiq.HelpfulLibraries.SourceGenerators\Lombiq.HelpfulLibraries.SourceGenerators.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+    <ProjectReference Include="..\Smartent.Core.CodeGen.Attributes\Smartent.Core.CodeGen.Attributes.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="true" />
+    <ProjectReference Include="..\Smartent.Core.CodeGen.SourceGenerators\Smartent.Core.CodeGen.SourceGenerators.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
     ```
 
 4. In the samples you can also see the snippet below, while not strictly necessary for the source generator to function, it suppresses a warning that happens in Visual Studio when first cloning the project. If you do decide to include this part make sure you update the relative paths to the correct location of the projects.
 
     ```xml
     <PropertyGroup>
-        <SourceGeneratorLocation>$(SolutionDir)src\Libraries\Lombiq.HelpfulLibraries\Lombiq.HelpfulLibraries.SourceGenerators\bin\Debug\netstandard2.0\Lombiq.HelpfulLibraries.SourceGenerators.dll</SourceGeneratorLocation>
-        <SourceGeneratorLocation Condition=" '$(Configuration)' != 'Debug' ">$(SolutionDir)src\Libraries\Lombiq.HelpfulLibraries\Lombiq.HelpfulLibraries.SourceGenerators\bin\Release\netstandard2.0\Lombiq.HelpfulLibraries.SourceGenerators.dll</SourceGeneratorLocation>
+        <SourceGeneratorLocation>$(SolutionDir)src\Libraries\Lombiq.HelpfulLibraries\Smartent.Core.CodeGen.SourceGenerators\bin\Debug\netstandard2.0\Smartent.Core.CodeGen.SourceGenerators.dll</SourceGeneratorLocation>
+        <SourceGeneratorLocation Condition=" '$(Configuration)' != 'Debug' ">$(SolutionDir)src\Libraries\Lombiq.HelpfulLibraries\Smartent.Core.CodeGen.SourceGenerators\bin\Release\netstandard2.0\Smartent.Core.CodeGen.SourceGenerators.dll</SourceGeneratorLocation>
     </PropertyGroup> 
 
     <Target Name="CustomBeforeCompile" BeforeTargets="Compile">
-        <MSBuild Condition="!Exists('$(SourceGeneratorLocation)')" Projects="..\Lombiq.HelpfulLibraries.SourceGenerators\Lombiq.HelpfulLibraries.SourceGenerators.csproj" />
+        <MSBuild Condition="!Exists('$(SourceGeneratorLocation)')" Projects="..\Smartent.Core.CodeGen.SourceGenerators\Smartent.Core.CodeGen.SourceGenerators.csproj" />
     </Target>
     ```
 
@@ -67,7 +67,7 @@ Where the first parameter is the name of the constant and the second parameter i
     using System;
     using Generators;
     
-    namespace Lombiq.HelpfulLibraries.SourceGenerators.Sample;
+    namespace Smartent.Core.CodeGen.SourceGenerators.Sample;
     
     [ConstantFromJson("GulpUglifyVersion", "package.json", "gulp-uglify")]
     [ConstantFromJson("GulpVersion", "package.json", "gulp")]
@@ -95,7 +95,7 @@ This source generator is for [LibraryManager](https://github.com/aspnet/LibraryM
     using System;
     using Generators;
     
-    namespace Lombiq.HelpfulLibraries.SourceGenerators.Sample;
+    namespace Smartent.Core.CodeGen.SourceGenerators.Sample;
     
     [LibManVersions]
     public partial class Examples

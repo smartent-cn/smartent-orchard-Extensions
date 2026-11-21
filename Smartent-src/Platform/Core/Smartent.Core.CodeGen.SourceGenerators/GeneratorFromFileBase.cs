@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json;
 
-namespace Lombiq.HelpfulLibraries.SourceGenerators;
+namespace Smartent.Core.CodeGen.SourceGenerators;
 
 public abstract class GeneratorFromFileBase : IIncrementalGenerator
 {

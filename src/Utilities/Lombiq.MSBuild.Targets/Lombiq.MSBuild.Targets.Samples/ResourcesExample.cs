@@ -1,10 +1,10 @@
-using Lombiq.HelpfulLibraries.Attributes;
+using Smartent.Core.CodeGen.Attributes;
 
 namespace Lombiq.MSBuild.Targets.Samples;
 
 // Here you can see that the version strings from libman.json are exposed as static constants without any special
 // configuration. You just have to import Lombiq.MSBuild.LibMan.Targets and include the "[LibManVersions]" attribute.
-// (Also reference Lombiq.HelpfulLibraries.SourceGenerators and Lombiq.HelpfulLibraries.SourceGenerators if you are
+// (Also reference Smartent.Core.CodeGen.SourceGenerators and Smartent.Core.CodeGen.Attributes if you are
 // using Lombiq.MSBuild.LibMan.Targets as a NuGet package.)
 
 [LibManVersions]

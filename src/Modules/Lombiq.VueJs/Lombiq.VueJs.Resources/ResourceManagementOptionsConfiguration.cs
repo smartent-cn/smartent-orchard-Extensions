@@ -1,4 +1,4 @@
-using Lombiq.HelpfulLibraries.Attributes;
+using Smartent.Core.CodeGen.Attributes;
 using Lombiq.HelpfulLibraries.OrchardCore.ResourceManagement;
 using Lombiq.VueJs.Resources.Constants;
 using System;

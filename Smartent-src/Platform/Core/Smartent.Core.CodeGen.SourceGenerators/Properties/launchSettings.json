@@ -1,9 +1,9 @@
-﻿{
+{
   "$schema": "http://json.schemastore.org/launchsettings.json",
   "profiles": {
     "DebugRoslynSourceGenerator": {
       "commandName": "DebugRoslynComponent",
-      "targetProject": "../Lombiq.HelpfulLibraries.SourceGenerators.Sample/Lombiq.HelpfulLibraries.SourceGenerators.Sample.csproj"
+      "targetProject": "../Smartent.Core.CodeGen.SourceGenerators.Sample/Smartent.Core.CodeGen.SourceGenerators.Sample.csproj"
     }
   }
 }

@@ -1,6 +1,6 @@
 using System;
 
-namespace Lombiq.HelpfulLibraries.Attributes;
+namespace Smartent.Core.CodeGen.Attributes;
 
 [AttributeUsage(AttributeTargets.Class)]
 public sealed class LibManVersionsAttribute : Attribute

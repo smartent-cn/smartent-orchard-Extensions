@@ -1,5 +1,5 @@
 using Lombiq.DataTables.Constants;
-using Lombiq.HelpfulLibraries.Attributes;
+using Smartent.Core.CodeGen.Attributes;
 using Microsoft.Extensions.Options;
 using OrchardCore.ResourceManagement;
 

@@ -1,0 +1,26 @@
+﻿<Project>
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <IsPackable>true</IsPackable>
+    <Nullable>enable</Nullable>
+    <LangVersion>14.0</LangVersion>
+    <RootNamespace>Smartent.Core.CodeGen.Attributes</RootNamespace>
+    <AssemblyName>Smartent.Core.CodeGen.Attributes</AssemblyName>
+    <PackageId>Smartent.Core.CodeGen.Attributes</PackageId>
+  </PropertyGroup>
+
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../../src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.Library.Sdk/Sdk/Import.props" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Lombiq.MSBuild.Library.Sdk" Version="2.1.1-alpha.9.osoe-344" />
+
+  <PropertyGroup>
+    <Title>Smartent Core CodeGen Attributes</Title>
+    <CopyrightYear>2011</CopyrightYear>
+    <DescriptionBody>源码生成器配套特性（如 LibMan 资源版本、`ConstantFromJson`）。</DescriptionBody>
+    <PackageTags>Smartent;OrchardCore;Attributes;SourceGenerators</PackageTags>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules/tree/master/Smartent-src/Platform/Core/Smartent.Core.CodeGen.Attributes</PackageProjectUrl>
+  </PropertyGroup>
+
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../../src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.Library.Sdk/Sdk/Import.targets" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.targets" Sdk="Lombiq.MSBuild.Library.Sdk" Version="2.1.1-alpha.9.osoe-344" />
+</Project>

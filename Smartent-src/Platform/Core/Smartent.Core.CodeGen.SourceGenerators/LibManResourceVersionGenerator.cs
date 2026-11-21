@@ -1,4 +1,4 @@
-using Lombiq.HelpfulLibraries.Attributes;
+using Smartent.Core.CodeGen.Attributes;
 using Microsoft.CodeAnalysis;
 using System;
 using System.Diagnostics.CodeAnalysis;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 
-namespace Lombiq.HelpfulLibraries.SourceGenerators;
+namespace Smartent.Core.CodeGen.SourceGenerators;
 
 [Generator]
 public class LibManResourceVersionGenerator : GeneratorFromFileBase

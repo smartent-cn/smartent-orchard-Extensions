@@ -1,4 +1,4 @@
-using Lombiq.HelpfulLibraries.Attributes;
+using Smartent.Core.CodeGen.Attributes;
 using Lombiq.Walkthroughs.Constants;
 using Microsoft.Extensions.Options;
 using OrchardCore.ResourceManagement;

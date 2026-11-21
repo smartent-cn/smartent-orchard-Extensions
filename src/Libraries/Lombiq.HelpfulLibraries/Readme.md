@@ -32,8 +32,8 @@ Helpful Libraries consists of the following independent libraries (all in their 
 - [Orchard Core Libraries](Lombiq.HelpfulLibraries.OrchardCore/Readme.md)
 - [RestEase Libraries for Orchard Core](Lombiq.HelpfulLibraries.RestEase/Readme.md) (Not included in `Lombiq.HelpfulLibraries`, we suggest the Refit libraries instead.)
 - [Refit Libraries for Orchard Core](Lombiq.HelpfulLibraries.Refit/Readme.md)
-- [Source Generators](Lombiq.HelpfulLibraries.SourceGenerators/Readme.md)
-- [Attributes](Lombiq.HelpfulLibraries.Attributes/Readme.md)
+- [Source Generators (Smartent.Core.CodeGen.SourceGenerators)](../../../../Smartent-src/Platform/Core/Smartent.Core.CodeGen.SourceGenerators/Readme.md)（已迁出）
+- [Attributes (Smartent.Core.CodeGen.Attributes)](../../../../Smartent-src/Platform/Core/Smartent.Core.CodeGen.Attributes/Readme.md)（已迁出）
 
 Public APIs are always documented so please always read method comments.
 

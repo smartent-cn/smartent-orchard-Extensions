@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 
-namespace Lombiq.HelpfulLibraries.Attributes;
+namespace Smartent.Core.CodeGen.Attributes;
 
 [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
 public sealed class ConstantFromJsonAttribute : Attribute

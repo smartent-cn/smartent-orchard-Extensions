@@ -39,7 +39,7 @@
     <Project Path="src/Libraries/Lombiq.EInvoiceValidator/Lombiq.EInvoiceValidator.Sample/Lombiq.EInvoiceValidator.Sample.csproj" />
     <Project Path="src/Libraries/Lombiq.EInvoiceValidator/Lombiq.EInvoiceValidator/Lombiq.EInvoiceValidator.csproj" />
     <Project Path="Smartent-src/Platform/Core/Smartent.Core.AspNet/Smartent.Core.AspNet.csproj" />
-    <Project Path="src/Libraries/Lombiq.HelpfulLibraries/Lombiq.HelpfulLibraries.Attributes/Lombiq.HelpfulLibraries.Attributes.csproj" />
+    <Project Path="Smartent-src/Platform/Core/Smartent.Core.CodeGen.Attributes/Smartent.Core.CodeGen.Attributes.csproj" />
     <Project Path="Smartent-src/Platform/Core/Smartent.Core.Cli/Smartent.Core.Cli.csproj" />
     <Project Path="Smartent-src/Platform/Core/Smartent.Core.Primitives/Smartent.Core.Primitives.csproj" />
     <Project Path="src/Libraries/Lombiq.HelpfulLibraries/Lombiq.HelpfulLibraries.LinqToDb/Lombiq.HelpfulLibraries.LinqToDb.csproj" />
@@ -47,7 +47,7 @@
     <Project Path="src/Libraries/Lombiq.HelpfulLibraries/Lombiq.HelpfulLibraries.OrchardCore/Lombiq.HelpfulLibraries.OrchardCore.csproj" />
     <Project Path="src/Libraries/Lombiq.HelpfulLibraries/Lombiq.HelpfulLibraries.Refit/Lombiq.HelpfulLibraries.Refit.csproj" />
     <Project Path="src/Libraries/Lombiq.HelpfulLibraries/Lombiq.HelpfulLibraries.RestEase/Lombiq.HelpfulLibraries.RestEase.csproj" />
-    <Project Path="src/Libraries/Lombiq.HelpfulLibraries/Lombiq.HelpfulLibraries.SourceGenerators/Lombiq.HelpfulLibraries.SourceGenerators.csproj" />
+    <Project Path="Smartent-src/Platform/Core/Smartent.Core.CodeGen.SourceGenerators/Smartent.Core.CodeGen.SourceGenerators.csproj" />
     <Project Path="src/Libraries/Lombiq.HelpfulLibraries/Lombiq.HelpfulLibraries/Lombiq.HelpfulLibraries.csproj" />
     <Project Path="src/Libraries/Lombiq.OrchardCoreApiClient/Lombiq.OrchardCoreApiClient.Tester/Lombiq.OrchardCoreApiClient.Tester.csproj" />
     <Project Path="src/Libraries/Lombiq.OrchardCoreApiClient/Lombiq.OrchardCoreApiClient/Lombiq.OrchardCoreApiClient.csproj" />
