@@ -1,4 +1,4 @@
-using Lombiq.HelpfulLibraries.Common.Utilities;
+using Smartent.Core.Primitives.Utilities;
 using Lombiq.Tests.UI.Helpers;
 using Lombiq.Tests.UI.Models;
 using Lombiq.Tests.UI.Services.GitHub;

@@ -1,5 +1,5 @@
 using Atata;
-using Lombiq.HelpfulLibraries.Common.Utilities;
+using Smartent.Core.Primitives.Utilities;
 using Lombiq.Tests.UI.Extensions;
 using Lombiq.Tests.UI.Services;
 using OpenQA.Selenium;

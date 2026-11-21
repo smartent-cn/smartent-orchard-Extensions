@@ -27,7 +27,7 @@ Helpful Libraries consists of the following independent libraries (all in their 
 
 - [ASP.NET Core Libraries](Lombiq.HelpfulLibraries.AspNetCore/Readme.md)
 - [Command Line Libraries](Lombiq.HelpfulLibraries.Cli/Readme.md)
-- [Common Libraries](Lombiq.HelpfulLibraries.Common/Readme.md)
+- [Core Primitives (Smartent.Core.Primitives)](../../../../Smartent-src/Platform/Core/Smartent.Core.Primitives/Readme.md)（原 Common，已迁出）
 - [LINQ to DB Libraries for Orchard Core](Lombiq.HelpfulLibraries.LinqToDb/Readme.md)
 - [Orchard Core Libraries](Lombiq.HelpfulLibraries.OrchardCore/Readme.md)
 - [RestEase Libraries for Orchard Core](Lombiq.HelpfulLibraries.RestEase/Readme.md) (Not included in `Lombiq.HelpfulLibraries`, we suggest the Refit libraries instead.)

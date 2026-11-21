@@ -1,4 +1,4 @@
-using Lombiq.HelpfulLibraries.Common.Utilities;
+using Smartent.Core.Primitives.Utilities;
 using Lombiq.Tests.UI.Constants;
 using Lombiq.Tests.UI.Exceptions;
 using Lombiq.Tests.UI.Extensions;

@@ -2,7 +2,7 @@ using Fluid;
 using Fluid.Ast;
 using Fluid.Values;
 using Lombiq.BaseTheme.Core.Models;
-using Lombiq.HelpfulLibraries.Common.Utilities;
+using Smartent.Core.Primitives.Utilities;
 using Lombiq.HelpfulLibraries.OrchardCore.Liquid;
 using Microsoft.AspNetCore.Mvc.Localization;
 using Microsoft.Extensions.DependencyInjection;

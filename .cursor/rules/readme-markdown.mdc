@@ -1,0 +1,13 @@
+---
+description: 各项目 Readme.md 中英结构与依赖表
+globs: "**/Readme.md"
+alwaysApply: false
+---
+
+# Readme.md
+
+编辑项目 `Readme.md` 时遵循 `docs/standards/project-documentation.md`。
+
+- Smartent-src 下：完整双语 + 引用/用法/扩展/测试。  
+- 带前端：增加 `docs/standards/frontend-dependencies.md` 要求的专节。  
+- 不写死 NuGet 版本号（除迁移指南）；描述能力为主（见 `.agents/README.md`）。

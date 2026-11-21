@@ -24,9 +24,12 @@
   <!-- This option hasn't improved the build time in this solution, but we'll keep it turned on regardless because it
        might be the default one day, it can perhaps help in some cases, and it's not causing any issues.
        See https://github.com/Lombiq/Open-Source-Orchard-Core-Extensions/issues/423. -->
+  <Import Project="$(MSBuildThisFileDirectory)build\Smartent.Orchard.props" />
+  <Import Project="$(MSBuildThisFileDirectory)build\Smartent.Packaging.props" />
+
+  <!-- OrchardCoreVersion 默认值见 build/Smartent.Orchard.props；此处可覆盖。 -->
   <PropertyGroup>
-    <AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
-    <OrchardCoreVersion>3.0.1</OrchardCoreVersion>
+    <OrchardCoreVersion Condition="'$(OrchardCoreVersion)' == ''">3.0.1</OrchardCoreVersion>
   </PropertyGroup>
 
   <!-- Security Updates for Orchard Core - make sure to check if these are still necessary. -->

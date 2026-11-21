@@ -1,4 +1,4 @@
-using Lombiq.HelpfulLibraries.Common.Utilities;
+using Smartent.Core.Primitives.Utilities;
 using Shouldly;
 using Xunit;
 

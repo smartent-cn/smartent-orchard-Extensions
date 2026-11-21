@@ -1,4 +1,4 @@
-using Lombiq.HelpfulLibraries.Common.DependencyInjection;
+using Smartent.Core.Primitives.DependencyInjection;
 using Lombiq.Hosting.Tenants.Maintenance.Constants;
 using Lombiq.Hosting.Tenants.Maintenance.Indexes;
 using Lombiq.Hosting.Tenants.Maintenance.Services;

@@ -1,6 +1,6 @@
 using Atata;
 using Atata.Cli;
-using Lombiq.HelpfulLibraries.Common.Utilities;
+using Smartent.Core.Primitives.Utilities;
 using Lombiq.Tests.UI.Models;
 using OpenQA.Selenium;
 using System;

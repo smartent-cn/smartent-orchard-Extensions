@@ -1,4 +1,4 @@
-using Lombiq.HelpfulLibraries.Common.DependencyInjection;
+using Smartent.Core.Primitives.DependencyInjection;
 using Lombiq.VueJs.Samples.Migrations;
 using Lombiq.VueJs.Samples.Navigation;
 using Lombiq.VueJs.Samples.TagHelpers;

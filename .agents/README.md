@@ -2,6 +2,10 @@
 
 These rules apply to work in the OSOCE superproject and its submodules. Use the skills under [skills](skills) when their workflows apply.
 
+## Smartent migration (this fork)
+
+For Smartent rebranding and `Smartent-src/` work, follow [docs/standards/README.md](../docs/standards/README.md) and [.cursor/rules/](../.cursor/rules/): bilingual project `Readme.md`, Chinese XML docs on public C# APIs, documented frontend/npm deps, commits only after the relevant test gate passes.
+
 ## Branches and commits
 
 - Follow the user's latest branch choice in the superproject and affected submodules. If the user corrects the branch name, stop adding work to the previous branch and preserve its unrelated work.

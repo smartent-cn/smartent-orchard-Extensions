@@ -1,0 +1,13 @@
+---
+description: 含 package.json 或前端资源的项目须详述 npm 依赖与构建
+globs: "**/package.json"
+alwaysApply: false
+---
+
+# 前端依赖 | Frontend
+
+规范：`docs/standards/frontend-dependencies.md`
+
+带 `package.json` 或 MSBuild 编译到 `wwwroot` 的工程，Readme **必须** 含「前端依赖说明」中英表格：包名、版本、用途、构建入口、输出路径、升级注意（Orchard Resource、CSP、UI 测试）。
+
+提交前按 Readme 执行 **dotnet build + 前端构建**（与变更范围一致）。

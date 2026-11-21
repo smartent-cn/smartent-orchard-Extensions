@@ -1,6 +1,6 @@
 using AngleSharp.Dom;
 using Atata;
-using Lombiq.HelpfulLibraries.Common.Utilities;
+using Smartent.Core.Primitives.Utilities;
 using Lombiq.Marketing.Pirsch.Constants;
 using Lombiq.Tests.UI.Extensions;
 using Lombiq.Tests.UI.Services;

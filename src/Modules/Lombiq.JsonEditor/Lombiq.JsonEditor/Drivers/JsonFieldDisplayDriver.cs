@@ -1,4 +1,4 @@
-using Lombiq.HelpfulLibraries.Common.Utilities;
+using Smartent.Core.Primitives.Utilities;
 using Lombiq.JsonEditor.Fields;
 using Lombiq.JsonEditor.ViewModels;
 using Microsoft.Extensions.Localization;

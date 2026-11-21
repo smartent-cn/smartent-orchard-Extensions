@@ -1,4 +1,4 @@
-using Lombiq.HelpfulLibraries.Common.Utilities;
+using Smartent.Core.Primitives.Utilities;
 using Lombiq.UIKit.Widgets.Models;
 using Lombiq.UIKit.Widgets.ViewModels;
 using Microsoft.Extensions.Configuration;

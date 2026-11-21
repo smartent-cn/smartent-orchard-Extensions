@@ -1,5 +1,5 @@
-﻿using Lombiq.HelpfulLibraries.AspNetCore.Exceptions;
-using Lombiq.HelpfulLibraries.Common.Exceptions;
+using Lombiq.HelpfulLibraries.AspNetCore.Exceptions;
+using Smartent.Core.Primitives.Exceptions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;

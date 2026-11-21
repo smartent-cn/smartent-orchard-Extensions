@@ -1,4 +1,4 @@
-﻿using Lombiq.HelpfulLibraries.Common.Utilities;
+using Smartent.Core.Primitives.Utilities;
 
 namespace Lombiq.EmailClient.Models;
 

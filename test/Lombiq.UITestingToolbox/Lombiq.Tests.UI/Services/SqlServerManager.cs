@@ -1,6 +1,6 @@
 using CliWrap;
 using Lombiq.HelpfulLibraries.Cli;
-using Lombiq.HelpfulLibraries.Common.Utilities;
+using Smartent.Core.Primitives.Utilities;
 using Lombiq.Tests.Helpers;
 using Lombiq.Tests.UI.Exceptions;
 using Microsoft.Data.SqlClient;

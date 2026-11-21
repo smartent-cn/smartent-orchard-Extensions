@@ -1,4 +1,4 @@
-using Lombiq.HelpfulLibraries.Common.DependencyInjection;
+using Smartent.Core.Primitives.DependencyInjection;
 using Lombiq.HelpfulLibraries.OrchardCore.Users;
 using Microsoft.Extensions.DependencyInjection;
 using OrchardCore.Modules;

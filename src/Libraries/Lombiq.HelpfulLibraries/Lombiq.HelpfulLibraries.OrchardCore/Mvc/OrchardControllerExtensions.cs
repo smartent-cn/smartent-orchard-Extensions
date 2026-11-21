@@ -1,5 +1,5 @@
 using Lombiq.HelpfulLibraries.AspNetCore.Exceptions;
-using Lombiq.HelpfulLibraries.Common.Exceptions;
+using Smartent.Core.Primitives.Exceptions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Localization;
 using Microsoft.AspNetCore.Mvc.Routing;

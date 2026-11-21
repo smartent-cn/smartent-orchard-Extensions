@@ -1,4 +1,4 @@
-using Lombiq.HelpfulLibraries.Common.Utilities;
+using Smartent.Core.Primitives.Utilities;
 using Lombiq.UIKit.Widgets.Models;
 using Microsoft.Extensions.Localization;
 using OrchardCore.ContentFields.Fields;

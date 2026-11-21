@@ -1,0 +1,15 @@
+---
+description: C# 编码与公共 API 强制中文 XML 注释
+globs: "**/*.cs"
+alwaysApply: false
+---
+
+# C# | .NET
+
+完整说明：`docs/standards/csharp.md`
+
+- 遵循 Microsoft C# 约定；Nullable 启用；异步方法 `*Async`。
+- **`public` / `protected` 类型与成员**：`///` 中文 XML 文档（关键术语可括注英文）。
+- 复杂私有逻辑：至少一行 **中文** `//` 说明意图。
+- 新代码命名空间 `Smartent.*`；禁止新引用 `Lombiq.HelpfulLibraries` 元包。
+- 最小改动范围；不吞异常。

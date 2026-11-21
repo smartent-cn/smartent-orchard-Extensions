@@ -7,7 +7,7 @@
   <Project Path="Lombiq.HelpfulLibraries.AspNetCore/Lombiq.HelpfulLibraries.AspNetCore.csproj" />
   <Project Path="Lombiq.HelpfulLibraries.Attributes/Lombiq.HelpfulLibraries.Attributes.csproj" />
   <Project Path="Lombiq.HelpfulLibraries.Cli/Lombiq.HelpfulLibraries.Cli.csproj" />
-  <Project Path="Lombiq.HelpfulLibraries.Common/Lombiq.HelpfulLibraries.Common.csproj" />
+  <Project Path="../../../Smartent-src/Platform/Core/Smartent.Core.Primitives/Smartent.Core.Primitives.csproj" />
   <Project Path="Lombiq.HelpfulLibraries.LinqToDb/Lombiq.HelpfulLibraries.LinqToDb.csproj" />
   <Project Path="Lombiq.HelpfulLibraries.OrchardCore.Testing/Lombiq.HelpfulLibraries.OrchardCore.Testing.csproj" />
   <Project Path="Lombiq.HelpfulLibraries.OrchardCore/Lombiq.HelpfulLibraries.OrchardCore.csproj" />

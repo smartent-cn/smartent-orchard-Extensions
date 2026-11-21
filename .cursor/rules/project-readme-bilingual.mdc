@@ -1,0 +1,20 @@
+---
+description: Smartent-src 项目必须中英文 Readme（引用/用法/扩展）
+globs: Smartent-src/**/*
+alwaysApply: false
+---
+
+# 项目文档 | Project docs
+
+模板：`docs/templates/PROJECT_README.template.md`  
+规范：`docs/standards/project-documentation.md`
+
+每个可构建 csproj 目录须有 `Readme.md`，含中英双语：
+
+1. 功能与边界  
+2. **引用**：`ProjectReference` + 未来 `PackageReference` 示例  
+3. **使用**：Feature、配置、Recipe  
+4. **升级与扩展**  
+5. 测试命令  
+
+迁入或 API/依赖变更时 **同一 PR 更新 Readme**。

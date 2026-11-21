@@ -1,4 +1,4 @@
-using Lombiq.HelpfulLibraries.Common.DependencyInjection;
+using Smartent.Core.Primitives.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;

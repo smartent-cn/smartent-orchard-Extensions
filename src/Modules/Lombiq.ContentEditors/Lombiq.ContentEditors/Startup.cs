@@ -3,7 +3,7 @@ using Lombiq.ContentEditors.Indexing;
 using Lombiq.ContentEditors.Migrations;
 using Lombiq.ContentEditors.Models;
 using Lombiq.ContentEditors.Services;
-using Lombiq.HelpfulLibraries.Common.DependencyInjection;
+using Smartent.Core.Primitives.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using OrchardCore.ContentManagement;

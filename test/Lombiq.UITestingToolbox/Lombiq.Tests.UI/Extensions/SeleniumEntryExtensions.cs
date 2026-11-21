@@ -1,4 +1,4 @@
-using Lombiq.HelpfulLibraries.Common.Utilities;
+using Smartent.Core.Primitives.Utilities;
 using Lombiq.Tests.UI.Services;
 using OpenQA.Selenium.BiDi.Modules.Log;
 using OpenQA.Selenium.BiDi.Modules.Script;
