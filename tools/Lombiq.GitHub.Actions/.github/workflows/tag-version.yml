@@ -1,0 +1,139 @@
+name: Tag Version
+
+on:
+  workflow_call:
+    secrets:
+      # We can't access org secrets here so they need to be passed in.
+      TAG_VERSION_TOKEN:
+        required: false
+        description: >
+          An authentication token, like a personal access token (PAT), that provides 'Workflow' permission with write
+          access to the workflow files of the repository and can be used to modify GitHub actions and workflows. This is
+          necessary because when a pull request is merged while being authenticated with the default GITHUB_TOKEN of a
+          workflow run, then the merge won't trigger other workflows (like a build workflow on the target branch). This
+          is an intentional limitation, see:
+          https://docs.github.com/en/actions/using-workflows/triggering-a-workflow#triggering-a-workflow-from-a-workflow.
+          Thus, we need to use an alternative authentication token. See
+          https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
+          for info on how to create PATs; you'll need one with the "work" scope. We recommend creating such a token from
+          under a bot user account only used for such operations, so it's not tied to a natural person. If the branch
+          designated as the merge target (see the 'merge-target' input) is protected by a ruleset, then the user account
+          associated with the token must be a member of a team (we recommend creating a dedicated team for this) that is
+          added to the bypass list of the ruleset.
+    inputs:
+      path-include-list:
+        description: >
+          PowerShell string array of paths, relative to the repository root, to search for GHA files, e.g.
+          '@(".github")' or '@(".github/actions", ".github/workflows")'. The parameter must be a PowerShell string
+          array.
+        required: false
+        default: '@(".github")'
+        type: string
+      file-include-list:
+        required: false
+        default: '@("*.yml","*.yaml")'
+        description: >
+          PowerShell string array of file name patterns to include when evaluating GHA files, e.g. '@("*.yml")' or
+          '@("*.yml", "*.yaml")'. The parameter must be a PowerShell string array.
+        type: string
+      called-repo-base-include-list:
+        required: false
+        default: '@("${{ github.repository }}")'
+        description: >
+          PowerShell string array of repository base URLs to include when evaluating called GHA Workflows and Actions,
+          e.g '@("Lombiq/GitHub-Actions")' or '@("Lombiq/GitHub-Actions",
+          "Lombiq/Open-Source-Orchard-Core-Extensions")'. The parameter must be a PowerShell string array.
+        type: string
+      additional-pattern-include-list:
+        required: false
+        default: '@()'
+        description: >
+          PowerShell string array of additional RegEx patterns to include when searching for branch references that need
+          to be updated, e.g.
+          'https://raw.githubusercontent.com/Lombiq/GitHub-Actions/(?<ref>[\w\./-]*)/.github/'. The pattern
+          MUST include a regex named capture group (?<ref>[\w\./-]*) so the captured ref can be updated
+          correctly. The parameter must be a PowerShell string array.
+        type: string
+      expected-ref:
+        required: false
+        default: ${{ github.ref_name }}
+        description: The expected reference value to set for all called GHA Workflows and Actions.
+        type: string
+      merge-target:
+        required: false
+        default: ${{ github.event.repository.default_branch }}
+        description: >
+          The target branch to merge back to after setting the GitHub Actions and Workflows to the version tag. This is
+          necessary because otherwise, the auto-generated release notes will include all the changes since the start of
+          the repo, due to the ancestors of the current release branch not containing the previous release branch.
+        type: string
+
+jobs:
+  run:
+    name: Set GitHub Action/Workflow to Version Tag
+    runs-on: ubuntu-24.04
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - name: Checkout Repository
+        uses: Lombiq/GitHub-Actions/.github/actions/checkout@dev
+        with:
+          token: ${{ secrets.TAG_VERSION_TOKEN }}
+
+      - name: Determine Version Tag Name from Branch Name
+        id: determine-tag
+        run: |
+          $tagname = "${{ inputs.expected-ref }}" -replace 'release/', ''
+          # Same as Set-GitHubOutput. But using that would require converting this to an action and duplicating the
+          # parameters just to use that one script.
+          "tagname=$tagname" >> $Env:GITHUB_OUTPUT
+
+      - name: Set Ref for GitHub Actions and Workflows
+        uses: Lombiq/GitHub-Actions/.github/actions/set-gha-refs@dev
+        with:
+          path-include-list: ${{ inputs.path-include-list }}
+          file-include-list: ${{ inputs.file-include-list }}
+          called-repo-base-include-list: ${{ inputs.called-repo-base-include-list }}
+          additional-pattern-include-list: ${{ inputs.additional-pattern-include-list }}
+          expected-ref: ${{ steps.determine-tag.outputs.tagname }}
+
+      - name: Commit and Push Release Branch Changes
+        uses: stefanzweifel/git-auto-commit-action@778341af668090896ca464160c2def5d1d1a3eb0 # v6.0.1
+        with:
+          commit_message: Set GitHub Actions/Workflows to tag ${{ steps.determine-tag.outputs.tagname }}
+          tagging_message: ${{ steps.determine-tag.outputs.tagname }}
+
+      - name: Force Push Tag
+        continue-on-error: true
+        run: git push --tags --force
+
+      - name: Create Release
+        uses: Lombiq/GitHub-Actions/.github/actions/release-action@dev
+        # This is to prevent creating releases when pushing tags for issue-specific pre-releases like
+        # v4.3.1-alpha.osoe-86.
+        if: "!contains(steps.determine-tag.outputs.tagname, '-')"
+        with:
+          allowUpdates: true
+          generateReleaseNotes: true
+          tag: ${{ steps.determine-tag.outputs.tagname }}
+
+      - name: Merge Back
+        # Same as Create Release above.
+        if: "!contains(steps.determine-tag.outputs.tagname, '-')"
+        run: |
+          git fetch origin ${{ inputs.merge-target }}
+          git checkout ${{ inputs.merge-target }}
+          # Setting the credentials is needed even with the --no-commit merge.
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          # Merge without taking any changes from the release branch.
+          git merge --strategy=ours --no-commit ${{ inputs.expected-ref }}
+
+      - name: Commit and Push Merge Target Changes
+        # Same as Create Release above.
+        if: "!contains(steps.determine-tag.outputs.tagname, '-')"
+        uses: stefanzweifel/git-auto-commit-action@778341af668090896ca464160c2def5d1d1a3eb0 # v6.0.1
+        with:
+          commit_message: Merge remote-tracking branch '${{ inputs.expected-ref }}' into ${{ inputs.merge-target }}
+          skip_dirty_check: true

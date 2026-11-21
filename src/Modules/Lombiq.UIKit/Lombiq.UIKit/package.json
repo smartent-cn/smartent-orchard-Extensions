@@ -1,0 +1,11 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "npm explore nodejs-extensions -- pnpm build",
+    "clean": "npm explore nodejs-extensions -- pnpm clean",
+    "watch": "npm explore nodejs-extensions -- pnpm watch"
+  },
+  "dependencies": {
+    "slick-carousel": "github:kenwheeler/slick#0bce01e901628d038b3a5f6d0947e14fb0ae6016"
+  }
+}

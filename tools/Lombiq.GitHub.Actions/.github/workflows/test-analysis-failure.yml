@@ -1,0 +1,122 @@
+name: Test Analysis Failure
+# Tests to verify that the build of an intentionally bad solution yields the expected analyzer violations.
+
+on:
+  workflow_call:
+    secrets:
+      CHECKOUT_TOKEN:
+        required: false
+        description: >
+          The GitHub token to authenticate checkout with. Pass in a GitHub personal access token if authenticated
+          submodules are used.
+
+    inputs:
+      cancel-workflow-on-failure:
+        description: When set to "true", it will cancel the current workflow run with all jobs if this workflow fails.
+        type: string
+        default: 'true'
+      # This needs to be stringified JSON because inputs don't support arrays, see
+      # https://github.community/t/reusable-workflow-with-strategy-matrix/205676/2.
+      machine-types:
+        type: string
+        default: '["ubuntu-24.04"]'
+        description: >
+          Stringified JSON array with the name of the type of machine(s) to run the workflow under, e.g.
+          '["ubuntu-24.04"]' or '["ubuntu-24.04", "windows-2022"]'.
+      dotnet-version:
+        type: string
+        default: 8.0.301
+        description: Version of the .NET SDK to set up.
+      node-version:
+        type: string
+        default: 22.16.0
+        description: >
+          The Node.js version. Can be a specific version number or other notations, see the documentation of
+          https://github.com/actions/setup-node.
+      # This is really only necessary to work around the https://github.com/nodejs/corepack/issues/612 corepack issue.
+      # Also see https://github.com/Lombiq/NodeJs-Extensions/issues/120.
+      enable-corepack:
+        type: string
+        default: 'false'
+        description: Indicates whether to enable Node.js corepack before the build.
+      build-directory:
+        type: string
+        default: .
+        description: Path to the directory where a solution file can be found.
+      build-enable-nuget-caching:
+        type: string
+        default: 'false'
+        description: >
+          If set to "true", the NuGet packages will be cached by GitHub. This is faster if you have a lot of NuGet
+          packages, but negligible or even slower if you only have a handful. When run on BuildJet, it will use the
+          BuildJet cache instead of GitHub's, which is faster.
+      build-enable-npm-caching:
+        type: string
+        default: 'false'
+        description: >
+          If set to "true", the NPM packages will be cached by GitHub. This is faster if you have a lot of NPM packages,
+          packages, but negligible or even slower if you only have a handful. When run on BuildJet, it will use the
+          BuildJet cache instead of GitHub's, which is faster.
+      build-cache-version:
+        type: string
+        default: '0'
+        description: >
+          Change this to any other value to alter the cache key, effectively invalidating the latest cache. This is an
+          alternative to clearing the cache manually, see
+          https://docs.github.com/en/actions/using-workflows/caching-dependencies-to-speed-up-workflows#managing-caches.
+      build-expected-code-analysis-errors:
+        type: string
+        default: ''
+        description: >
+          If not empty, it indicates that the static code analysis should fail. Then each line should contain one error
+          code. The static code analysis should yield these and only these errors. This is ignored if
+          `enable-code-analysis` is not "true". You may add a colon and then an explanation of the expected error.
+      timeout-minutes:
+        type: number
+        default: 360
+        description: Configuration for the timeout-minutes parameter of the workflow. 360 is GitHub's default.
+
+jobs:
+  test-analysis-failure:
+    runs-on: ${{ matrix.machine-type }}
+    name: Build and Test
+    strategy:
+      matrix:
+        machine-type: ${{ fromJson(inputs.machine-types) }}
+    timeout-minutes: ${{ inputs.timeout-minutes }}
+    steps:
+      - name: Checkout
+        uses: Lombiq/GitHub-Actions/.github/actions/checkout@dev
+        with:
+          token: ${{ secrets.CHECKOUT_TOKEN }}
+
+      - name: Set up .NET
+        uses: Lombiq/GitHub-Actions/.github/actions/setup-dotnet@dev
+        with:
+          dotnet-version: ${{ inputs.dotnet-version }}
+
+      - name: Set up Node.js
+        uses: Lombiq/GitHub-Actions/.github/actions/setup-node@dev
+        with:
+          node-version: ${{ inputs.node-version }}
+
+      - name: Enable Node corepack
+        if: inputs.enable-corepack == 'true'
+        uses: Lombiq/GitHub-Actions/.github/actions/enable-corepack@dev
+
+      - name: Build and Static Code Analysis
+        uses: Lombiq/GitHub-Actions/.github/actions/build-dotnet@dev
+        with:
+          directory: ${{ inputs.build-directory }}
+          verbosity: quiet
+          enable-code-analysis: true
+          enable-nuget-caching: ${{ inputs.build-enable-nuget-caching }}
+          enable-npm-caching: ${{ inputs.build-enable-npm-caching }}
+          cache-version: ${{ inputs.build-cache-version }}
+          expected-code-analysis-errors: ${{ inputs.build-expected-code-analysis-errors }}
+
+      - name: Cancel Workflow on Failure
+        if: failure() && inputs.cancel-workflow-on-failure == 'true'
+        uses: Lombiq/GitHub-Actions/.github/actions/cancel-workflow@dev
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

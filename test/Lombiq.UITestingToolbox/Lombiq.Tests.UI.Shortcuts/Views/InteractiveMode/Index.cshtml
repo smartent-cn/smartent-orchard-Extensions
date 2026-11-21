@@ -1,0 +1,60 @@
+<style at="Head">
+    html, body {
+        overflow: hidden;
+    }
+
+    .interactive__container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: white;
+        z-index: 9999998;
+    }
+
+    .interactive, .message {
+        border: 1px solid black;
+        padding: 2rem;
+        text-align: center;
+        box-sizing: border-box;
+    }
+
+    .interactive {
+        width: 30vw;
+    }
+
+    #messages {
+        z-index: 999999999;
+        position: fixed;
+    }
+
+    .message {
+        width: 100%;
+    }
+
+    .layoutMain__messages {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 9999999;
+        margin: 1rem;
+        width: calc(100vw - 2rem);
+    }
+</style>
+
+<div class="interactive__container">
+    <div class="interactive">
+        <h2>@T["Interactive Mode"]</h2>
+        <p>
+            @T["If you see this, your code has called the <code>context.SwitchToInteractiveAsync()</code> method."]
+            @T["This stops the test evaluation and waits until you click the button below."]
+        </p>
+        <a href="@Url.Action(nameof(InteractiveModeController.Continue))" class="interactive__continue btn btn-primary">
+            @T["Continue Test"]
+        </a>
+    </div>
+</div>

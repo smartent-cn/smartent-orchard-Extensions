@@ -1,0 +1,11 @@
+.vs/
+.idea/
+.vscode/
+obj/
+bin/
+artifacts/
+**/Lombiq.UIKit/wwwroot/vendors/
+node_modules/
+*.user
+.pnpm-debug.log
+.editorconfig

@@ -1,0 +1,13 @@
+.vs/
+.idea/
+.vscode/
+obj/
+bin/
+artifacts/
+wwwroot/
+node_modules/
+*.user
+.pnpm-debug.log
+.ps1-analyzer-stamp
+/TestSolutions/Lombiq.Analyzers.PowerShell.*/Violate-Analyzers.ps1
+.editorconfig

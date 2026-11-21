@@ -1,0 +1,58 @@
+using Lombiq.Tests.UI.Constants;
+using Lombiq.Tests.UI.Models;
+using SixLabors.ImageSharp;
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+
+namespace Lombiq.Tests.UI.Services;
+
+public class BrowserConfiguration
+{
+    public static readonly CultureInfo DefaultAcceptLanguage = new("en-US");
+
+    /// <summary>
+    /// Gets or sets the browser to use for the current test.
+    /// </summary>
+    public Browser Browser { get; set; }
+
+    /// <summary>
+    /// Gets or sets a value indicating whether the test will use the given browser in headless mode, provided that
+    /// there's support for it.
+    /// </summary>
+    public bool Headless { get; set; } = TestConfigurationManager.GetBoolConfiguration("BrowserConfiguration:Headless", defaultValue: true);
+
+    /// <summary>
+    /// Gets or sets the action that will be invoked with the browser's options object so you can modify the options as
+    /// necessary.
+    /// </summary>
+    public Action<object> BrowserOptionsConfigurator { get; set; }
+
+    /// <summary>
+    /// Gets or sets the culture that'll be used in the browser to set the Accept-Language HTTP header and make
+    /// requests. Defaults to <see cref="DefaultAcceptLanguage"/>.
+    /// </summary>
+    public CultureInfo AcceptLanguage { get; set; } = DefaultAcceptLanguage;
+
+    /// <summary>
+    /// Gets or sets a value indicating whether the resolution should be changed to <see
+    /// cref="CommonDisplayResolutions.Standard"/> when the setup is loaded.
+    /// </summary>
+    public Size DefaultBrowserSize { get; set; } = CommonDisplayResolutions.Standard;
+
+    /// <summary>
+    /// Gets or sets the fake camera video source information. See: <see cref="FakeBrowserVideoSource"/>.
+    /// </summary>
+    public FakeBrowserVideoSource FakeVideoSource { get; set; }
+
+    /// <summary>
+    /// Gets a list of command line arguments that were passed to the driver during the driver instance creation.
+    /// </summary>
+    public IList<string> Arguments { get; } = [];
+
+    /// <summary>
+    /// Gets or sets the context ID, to be used during driver creation when the <see cref="UITestContext"/> does not
+    /// exist yet.
+    /// </summary>
+    internal string UITestContextId { get; set; }
+}

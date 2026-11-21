@@ -1,0 +1,198 @@
+name: Run .NET tests
+description: >
+  Runs .NET unit and UI tests (with the Lombiq UI Testing Toolbox for Orchard Core:
+  https://github.com/Lombiq/UI-Testing-Toolbox), generates a test report and uploads UI testing failure dumps to
+  artifacts.
+
+inputs:
+  blame-hang-timeout:
+    required: false
+    default: ''
+    description: >
+      Run the tests in blame mode and collects a hang dump when a test exceeds the given timeout. See
+      https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-test for details on available values.
+  build-directory:
+    required: false
+    default: .
+    description: Path to the directory where a solution file can be found and thus the .NET build has run.
+  dotnet-test-process-timeout:
+    required: false
+    type: number
+    default: -1
+    description: Run the dotnet test process with the given timeout in milliseconds. -1 means no timeout.
+  solution-path:
+    required: false
+    default: '*.sln'
+    description: >
+      The path of the solution or project file to be built. If you have exactly one .sln file in the current directory
+      then this can be omitted. Otherwise make sure to specify it to avoid a "Found more than one solution file in
+      <path>. Specify which one to use." error that is thrown when the `*.sln` wildcard results in multiple files.
+  test-verbosity:
+    required: false
+    default: quiet
+    description: Verbosity parameter for dotnet test.
+  test-filter:
+    required: false
+    description: >
+      Filter expression for dotnet test. See:
+      https://learn.microsoft.com/en-us/dotnet/core/testing/selective-unit-tests.
+  test-configuration:
+    required: false
+    description: Value passed to the --configuration parameter of dotnet test.
+    default: Debug
+  artifact-retention-days:
+    required: false
+    default: '7'
+    description: >
+      Duration in days after which the artifacts of testing (e.g. UI testing failure dump, hang dump, if any) will
+      expire. See https://github.com/actions/upload-artifact#retention-period for more details.
+  xunit-max-parallel-threads:
+    required: false
+    default: '0'
+    description: >
+      Sets the maxParallelThreads configuration in all available xUnit xunit.runner.json configuration files. See
+      https://xunit.net/docs/configuration-files#maxParallelThreads for details on available values.
+  enable-diagnostic-mode:
+    required: false
+    default: 'false'
+    description: >
+      Enables diagnostic mode for `dotnet test` with the `--diag` flag and writes diagnostic messages to log files, to
+      be uploaded as artifacts. See https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-test for details.
+  ui-test-retry-interval-seconds:
+    required: false
+    default: '30'
+    description: >
+      Interval in seconds to wait between retries of UI tests. Configuring a non-zero interval increases the chance that
+      retries will be successful, due to load on the runner changing.
+
+runs:
+  using: composite
+  steps:
+    - name: Setup Scripts
+      shell: pwsh
+      run: |
+        '${{ github.action_path }}' >> $Env:GITHUB_PATH
+        (Resolve-Path '${{ github.action_path }}/../../../Scripts').Path >> $Env:GITHUB_PATH
+
+    - name: Setup & Set Test Parameters
+      id: setup
+      shell: pwsh
+      run: |
+        Initialize-ArtifactNameSuffix '${{ inputs.build-directory }}'
+
+        Set-XUnitMaxParallelThreads -MaxParallelThreads ${{ inputs.xunit-max-parallel-threads }}
+        Set-GitHubEnv 'Lombiq_Tests_UI__OrchardCoreUITestExecutorConfiguration__RetryIntervalSeconds' ${{ inputs.ui-test-retry-interval-seconds }}
+
+    - name: Install dotnet-dump
+      uses: Lombiq/GitHub-Actions/.github/actions/install-dotnet-tool@dev
+      with:
+        name: dotnet-dump
+        version: 8.0.510501
+
+    - name: Run Tests
+      id: run-tests
+      shell: pwsh
+      working-directory: ${{ inputs.build-directory }}
+      run: |
+        $switches = @{
+          SolutionOrProject = Get-SolutionOrProjectPath ${{ inputs.solution-path }}
+          Verbosity = "${{ inputs.test-verbosity }}"
+          Filter = "${{ inputs.test-filter }}"
+          Configuration = "${{ inputs.test-configuration }}"
+          BlameHangTimeout = "${{ inputs.blame-hang-timeout }}"
+          TestProcessTimeout = ${{ inputs.dotnet-test-process-timeout }}
+          EnableDiagnosticMode = $${{ inputs.enable-diagnostic-mode }}
+        }
+
+        Invoke-SolutionOrProjectTests @switches
+
+    # Note that uploading the test dumps would fail under Windows if the path were too long, regardless of
+    # LongPathsEnabled, see: https://github.com/actions/upload-artifact/issues/309. To get around that we merge all
+    # test dumps into the solution root. The following two steps need to be success() || failure() (excluding the
+    # workflow being cancelled), so if there's a test dump it'll be uploaded even if the tests are ultimately passed
+    # after retries.
+    # The same is true for the next step, as well as the failure dump logic below.
+    - name: Merge TestDumps
+      shell: pwsh
+      if: (success() || failure()) && steps.run-tests.outputs.test-count != 0
+      run: Merge-TestDumps -Directory "${{ inputs.build-directory }}"
+
+    # Under Windows this can fail with "ENOENT: no such file or directory" if the path is too long, see
+    # https://github.com/actions/upload-artifact/issues/240.
+    - name: Upload UI Testing Artifacts
+      uses: Lombiq/GitHub-Actions/.github/actions/upload-artifact@dev
+      # We don't need additional conditions, because of the "if-no-files-found" setting.
+      if: (success() || failure()) && steps.run-tests.outputs.test-count != 0
+      with:
+        name: ui-test-test-dump-${{ steps.setup.outputs.artifact-name-suffix }}
+        path: ${{ inputs.build-directory }}/TestDumps/
+        if-no-files-found: ignore
+        retention-days: ${{ inputs.artifact-retention-days }}
+
+    # The UI Testing Toolbox now has test dumps, generalized from failure dumps. This logic for legacy versions is
+    # included for backwards compatibility.
+    - name: Merge FailureDumps
+      shell: pwsh
+      if: (success() || failure()) && steps.run-tests.outputs.test-count != 0
+      run: Merge-FailureDumps -Directory "${{ inputs.build-directory }}"
+
+    # Under Windows this can fail with "ENOENT: no such file or directory" if the path is too long, see
+    # https://github.com/actions/upload-artifact/issues/240.
+    - name: Upload UI Testing Artifacts
+      uses: Lombiq/GitHub-Actions/.github/actions/upload-artifact@dev
+      # We don't need additional conditions, because of the "if-no-files-found" setting.
+      if: (success() || failure()) && steps.run-tests.outputs.test-count != 0
+      with:
+        name: ui-test-failure-dump-${{ steps.setup.outputs.artifact-name-suffix }}
+        path: ${{ inputs.build-directory }}/FailureDumps/
+        if-no-files-found: ignore
+        retention-days: ${{ inputs.artifact-retention-days }}
+
+    - name: Merge Blame Hang Dumps
+      id: merge-blame-hang-dumps
+      shell: pwsh
+      if: failure() && steps.run-tests.outputs.test-count != 0 && inputs.blame-hang-timeout != ''
+      run: Merge-BlameHangDumps -Directory "${{ inputs.build-directory }}" -Configuration "${{ inputs.test-configuration }}"
+
+    - name: Upload Blame Hang Dumps
+      uses: Lombiq/GitHub-Actions/.github/actions/upload-artifact@dev
+      if: |
+        failure() &&
+        steps.run-tests.outputs.test-count != 0 &&
+        inputs.blame-hang-timeout != '' &&
+        steps.merge-blame-hang-dumps.outputs.dump-count != 0
+      with:
+        name: ui-test-blame-hang-dump-${{ steps.setup.outputs.artifact-name-suffix }}
+        path: ${{ inputs.build-directory }}/BlameHangDumps/
+        if-no-files-found: ignore
+        retention-days: ${{ inputs.artifact-retention-days }}
+
+    - name: Upload Dotnet Test Hang Dumps
+      uses: Lombiq/GitHub-Actions/.github/actions/upload-artifact@dev
+      if: (success() || failure()) && steps.run-tests.outputs.test-count != 0 && steps.run-tests.outputs.dotnet-test-hang-dump != 0
+      with:
+        name: dotnet-test-hang-dump-${{ steps.setup.outputs.artifact-name-suffix }}
+        path: ${{ inputs.build-directory }}/DotnetTestHangDumps/
+        if-no-files-found: ignore
+        retention-days: ${{ inputs.artifact-retention-days }}
+
+    - name: Upload Diagnostic Logs
+      uses: Lombiq/GitHub-Actions/.github/actions/upload-artifact@dev
+      # always() is needed because if the test process hangs and the workflow times out, we still need the diagnostic
+      # logs. We don't need additional conditions, because of the "if-no-files-found" setting.
+      if: always() && steps.run-tests.outputs.test-count != 0
+      with:
+        name: dotnet-test-diagnostic-logs-${{ steps.setup.outputs.artifact-name-suffix }}
+        path: ${{ inputs.build-directory }}/DiagnosticLogs/
+        if-no-files-found: ignore
+        retention-days: ${{ inputs.artifact-retention-days }}
+
+    - name: Test Report
+      uses: phoenix-actions/test-reporting@f957cd93fc2d848d556fa0d03c57bc79127b6b5e # v15
+      if: (success() || failure()) && steps.run-tests.outputs.test-count != 0
+      with:
+        name: Test Results (${{inputs.build-directory}}|${{ steps.setup.outputs.runner-suffix }}
+        path: ${{inputs.build-directory}}/**/*.trx
+        reporter: dotnet-trx
+        fail-on-error: 'false'
+        output-to: step-summary

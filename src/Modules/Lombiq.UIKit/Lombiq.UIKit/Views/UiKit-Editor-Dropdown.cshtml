@@ -1,0 +1,61 @@
+@using static Lombiq.UIKit.Constants.Classes
+
+@inject IHtmlGenerator HtmlGenerator
+
+@{
+    var viewModel = (UiKitEditorViewModel)Model.ViewModel;
+
+    var inputAttributes = new Dictionary<string, object> { ["type"] = "hidden" };
+    var defaultData = viewModel.DropdownData.FirstOrDefault(data => data.DataState.Equals(viewModel.For.Model)) ?? new();
+
+    var buttonId = UiKitEditorViewModel.WithUniqueFallback(viewModel.ButtonId, DropdownButtonClass);
+    var containerId = string.IsNullOrWhiteSpace(viewModel.ButtonContainerId)
+        ? $"{buttonId}_Container"
+        : viewModel.ButtonContainerId;
+}
+
+<style asp-name="@ResourceNames.LombiqUiKitEditorStyle"></style>
+
+<div id="@UiKitEditorViewModel.WithUniqueFallback(viewModel.DropdownContainerId, DropdownBlockName)"
+     class="@UiKitEditorBlockName @DropdownBlockName @viewModel.BlockClassName"
+     data-asp-id="@viewModel.For.Name"
+     data-hide-selected="@Json.Serialize(viewModel.HideSelectedFromDropdownList)">
+
+    @viewModel.GenerateLabel(HtmlGenerator)
+
+    @viewModel.GenerateHintBefore()
+
+    @viewModel.GenerateInput(HtmlGenerator, inputAttributes, DropdownInputClass, viewModel.InputClasses)
+    <div asp-validation-class-for="@viewModel.For">
+        <div id="@containerId" class="@DropdownButtonContainerClass dropdown">
+            <button class="btn btn-sm dropdown-toggle @DropdownButtonClass @defaultData.DataClass"
+                    title="@viewModel.For.Model"
+                    @(viewModel.Disabled ? "disabled" : string.Empty)
+                    type="button"
+                    id="@buttonId"
+                    data-bs-toggle="dropdown"
+                    data-selected-class="@defaultData.DataClass">
+                @defaultData.Text
+            </button>
+            <ul class="dropdown-menu dropdown-menu-right @DropdownItemContainerClass">
+                @foreach (var dropdownItem in viewModel.DropdownData)
+                {
+                    <li class="@DropdownItemParentClass">
+                        <a href="javascript:void(0)"
+                           data-state="@dropdownItem.DataState"
+                           data-state-text="@dropdownItem.Text"
+                           data-class="@dropdownItem.DataClass"
+                           data-button-class="@dropdownItem.DataClass"
+                           class="dropdown-item @DropdownItemClass">
+                            @dropdownItem.Text
+                        </a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+
+    @viewModel.GenerateHintAfter()
+</div>
+
+<script asp-name="@ResourceNames.LombiqDropdownScript" at="Foot"></script>

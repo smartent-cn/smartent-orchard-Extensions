@@ -1,0 +1,57 @@
+using System.Collections.Generic;
+using System.Linq;
+
+namespace OrchardCore.ResourceManagement;
+
+public static class ResourceManifestExtensions
+{
+    /// <summary>
+    /// Adds <paramref name="newDependencies"/> and all of their dependencies recursively, and strips duplicates.
+    /// </summary>
+    public static ResourceDefinition SetDependenciesRecursively(
+        this ResourceDefinition definition,
+        ResourceManifest manifest,
+        params ResourceDefinition[] newDependencies)
+    {
+        var resources = manifest.GetResources(definition.Type);
+
+        definition.SetDependencies(); // This is to ensure definition.Dependencies is not null.
+
+        void Add(IEnumerable<ResourceDefinition> additionalDependencies)
+        {
+            foreach (var dependency in additionalDependencies)
+            {
+                definition.Dependencies.Add(dependency.Name);
+
+                var children = dependency
+                    .Dependencies
+                    .SelectWhere(subDependency => resources.GetMaybe(subDependency))
+                    .SelectMany(subDependencies => subDependencies);
+                Add(children);
+            }
+        }
+
+        Add(newDependencies);
+        var unique = definition.Dependencies.ToHashSet();
+        definition.Dependencies.SetItems(unique);
+
+        return definition;
+    }
+
+    /// <summary>
+    /// Gets all resource dictionaries of a given <paramref name="resourceType"/> and collapses them into a lookup where
+    /// the key is the resource name and the values are the dependencies. Resource definitions with no dependencies are
+    /// skipped.
+    /// </summary>
+    public static ILookup<string, string> SingleResourceTypeToLookup(
+        this IEnumerable<ResourceManifest> resourceManifest,
+        string resourceType) =>
+        resourceManifest
+            .SelectMany(manifest => manifest.GetResources(resourceType))
+            .Where(pair => pair.Value != null)
+            .SelectMany(pair => pair.Value
+                .SelectWhere(definition => definition?.Dependencies, dependencies => dependencies?.Count != 0)
+                .SelectMany(dependencies => dependencies
+                    .Select(dependency => new { Resource = pair.Key, Dependency = dependency })))
+            .ToLookup(pair => pair.Resource, pair => pair.Dependency);
+}

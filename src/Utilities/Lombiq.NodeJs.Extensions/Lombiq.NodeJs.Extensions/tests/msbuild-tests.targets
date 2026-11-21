@@ -1,0 +1,34 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <!-- To try out any of these test targets, open a shell in this file's folder and run:
+       msbuild .\msbuild-tests.targets -t:<Target.Name> -v:m
+       where <Target.Name> is the Name of any Target defined in this file. -->
+
+  <Target Name="NoMessageAfterError">
+    <Error Code="X" Text="This error message should be the last thing displayed for target NoMessageAfterError." />
+    <Message Text="This message should not be displayed." Importance="High" />
+  </Target>
+
+  <Target Name="SleepRandom">
+    <MSBuild Projects="..\build\SleepRandom.targets" Properties="MinSeconds=3;MaxSeconds=6;IsTest=true" />
+  </Target>
+
+  <Import Project="../build/LoadExecWithMutexTask.targets" />
+  <Target Name="TestExecWithMutex">
+    <ExecWithMutex Command="echo HELLO" MutexName="NodeJsExtensions_PnpmLink_Mutex" Access="Exclusive" />
+  </Target>
+
+  <Target Name="Now">
+    <Message Text="$([System.DateTime]::Now.ToString('HH:mm:ss.fff'))" Importance="High" />
+  </Target>
+
+  <Target Name="Os">
+    <PropertyGroup>
+      <IsUnix>$([MSBuild]::IsOSUnixLike())</IsUnix>
+      <IsWindows>$([MSBuild]::IsOsPlatform('Windows'))</IsWindows>
+    </PropertyGroup>
+    <Message Text="IsUnix:    $(IsUnix)" Importance="High" />
+    <Message Text="IsWindows: $(IsWindows)" Importance="High" />
+  </Target>
+
+</Project>

@@ -1,0 +1,19 @@
+name: Elasticsearch Setup
+description: Sets up Elasticsearch
+
+runs:
+  using: composite
+  steps:
+    - name: Configure sysctl limits
+      shell: pwsh
+      run: |
+        sudo swapoff -a
+        sudo sysctl -w vm.swappiness=1
+        sudo sysctl -w fs.file-max=262144
+        sudo sysctl -w vm.max_map_count=262144
+
+    - name: Runs Elasticsearch
+      # There are no versions and releases for this action yet, hence only using the commit hash.
+      uses: elastic/elastic-github-actions/elasticsearch@dc110609b1cb3024477ead739ca23ab547b8b9ff
+      with:
+        stack-version: 7.6.0

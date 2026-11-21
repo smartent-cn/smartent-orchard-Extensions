@@ -1,0 +1,105 @@
+name: MSBuild .NET Framework Build with Static Code Analysis
+description: Builds the .NET Framework solution in the given directory with static code analysis.
+
+inputs:
+  directory:
+    required: false
+    default: .
+    description: Path to the directory where a solution file can be found.
+  verbosity:
+    required: false
+    default: quiet
+    description: Verbosity parameter for msbuild.
+  treat-warnings-as-errors:
+    required: false
+    default: 'true'
+    description: If set to "true", warnings produced during the build will be treated as errors and fail the build.
+  enable-code-analysis:
+    required: false
+    default: 'true'
+    description: If set to "true", static code analysis is enabled during the build.
+  publish-version:
+    required: false
+    default: 1.${{ github.run_number }}.${{ github.run_attempt }}-${{ github.run_id }}
+    description: The value given to `msbuild`'s `-Version` switch.
+  msbuild-switches:
+    required: false
+    default: ''
+    description: >
+      Additional command line switches given to `msbuild`. You must split these into multiple lines, even the parameter
+      value.
+  solution-or-project-path:
+    required: false
+    default: '*.sln'
+    description: >
+      The path of the solution or project file to be built. If you have exactly one .sln file in the current directory
+      then this can be omitted. Otherwise make sure to specify it to avoid an "MSB1008: Only one project can be
+      specified." error that is thrown when the `*.sln` wildcard results in multiple files. To build a project file you
+      must specify a path that ends with `.csproj`. An example: "./src/*Web/*.Web.csproj". The value is given to
+      PowerShell's `Get-ChildItem` cmdlet as-is, so grepping is still possible but a name with spaces must be escaped
+      separately.
+  create-binary-log:
+    required: false
+    default: 'false'
+    description: >
+      Configures MSBuild to create a binary log. This is useful to inspect and debug builds. See
+      https://github.com/dotnet/msbuild/blob/main/documentation/wiki/Binary-Log.md for details.
+  binary-log-artifact-retention-days:
+    required: false
+    default: '14'
+    description: >
+      Duration in days after which the artifact of the binary log (if any) will expire. See
+      https://github.com/actions/upload-artifact#retention-period for more details.
+
+runs:
+  using: composite
+  steps:
+    - name: Setup Scripts
+      shell: pwsh
+      run: |
+        '${{ github.action_path }}' >> $Env:GITHUB_PATH
+        (Resolve-Path '${{ github.action_path }}/../../../Scripts').Path >> $Env:GITHUB_PATH
+
+    - name: Add MSBuild to PATH
+      uses: microsoft/setup-msbuild@6fb02220983dee41ce7ae257b6f4d8f9bf5ed4ce # v2.0.0
+      with:
+        vs-version: '[17.3,]'
+        msbuild-architecture: x64
+
+    - name: Build and Static Code Analysis
+      shell: pwsh
+      working-directory: ${{ inputs.directory }}
+      # The BuildVersionDisplay parameters are added to automatically support displaying the branch name and commit hash
+      # as a link to the workflow run in the Orchard Dashboard of an Orchard 1 application that has the
+      # Lombiq.Hosting.Deployments module (https://github.com/Lombiq/Hosting-Deployments) enabled.
+      run: |
+        $givenSwitches = @'
+            -p:BuildVersionDisplay_BuildText=${{ github.sha }}_${{ github.head_ref }}
+            -p:BuildVersionDisplay_BuildUrl=https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+            ${{ inputs.msbuild-switches }}
+        '@
+
+        $allSwitches = @{
+            SolutionOrProject = (Get-ChildItem ${{ inputs.solution-or-project-path }}).FullName
+            Verbosity = '${{ inputs.verbosity }}'
+            TreatWarningsAsErrors = '${{ inputs.treat-warnings-as-errors }}'
+            EnableCodeAnalysis = '${{ inputs.enable-code-analysis }}'
+            Version = '${{ inputs.publish-version }}'
+            Switches = $givenSwitches
+            CreateBinaryLog = $${{ inputs.create-binary-log }}
+        }
+
+        $startTime = [DateTime]::Now
+        Build-DotNetFrameworkSolutionOrProject @allSwitches
+        $endTime = [DateTime]::Now
+
+        Write-Output ("Solution or project build took {0:0.###} seconds." -f ($endTime - $startTime).TotalSeconds)
+
+    - name: Upload MSBuild Binary Log
+      uses: Lombiq/GitHub-Actions/.github/actions/upload-artifact@dev
+      if: (success() || failure()) && inputs.create-binary-log == 'true'
+      with:
+        name: build-binary-log.binlog
+        path: ${{ inputs.directory }}/build.binlog
+        if-no-files-found: ignore
+        retention-days: ${{ inputs.binary-log-artifact-retention-days }}

@@ -1,0 +1,28 @@
+.vs/
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+obj/
+bin/
+artifacts/
+wwwroot/
+node_modules/
+*.user
+.pnpm-debug.log
+
+# Mac
+.DS_Store
+
+/.editorconfig
+
+# Benchmark results
+BenchmarkResults/
+BenchmarkRunLogs/
+
+# Generated files
+eInvoicing-EN16931/
+UBL-2.1.zip
+UBL-2.1/

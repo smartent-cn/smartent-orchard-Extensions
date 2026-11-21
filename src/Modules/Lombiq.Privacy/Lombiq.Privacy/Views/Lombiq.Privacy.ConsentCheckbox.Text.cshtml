@@ -1,0 +1,8 @@
+@inject OrchardCore.Settings.ISiteService SiteService
+
+@{
+    var consentCheckboxText = (await SiteService.GetSiteSettingsAsync())
+        .As<ContentItem>(TypeNames.PrivacyConsentCheckboxSettings).As<LiquidPart>()?.Liquid;
+}
+
+@await Orchard.LiquidToHtmlAsync(consentCheckboxText)

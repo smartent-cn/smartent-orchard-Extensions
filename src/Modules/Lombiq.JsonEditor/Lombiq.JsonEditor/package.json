@@ -1,0 +1,6 @@
+{
+  "private": true,
+  "dependencies": {
+    "jsoneditor": "10.2.0"
+  }
+}

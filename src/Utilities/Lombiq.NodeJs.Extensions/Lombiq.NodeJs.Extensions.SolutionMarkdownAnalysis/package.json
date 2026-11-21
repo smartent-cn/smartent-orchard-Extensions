@@ -1,0 +1,19 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "npm explore nodejs-extensions -- pnpm lint:markdown"
+  },
+  "nodejsExtensions": {
+    "markdown": {
+      "source": "../../../.."
+    }
+  },
+  "devDependencies": {
+    "eslint": "8.47.0",
+    "eslint-config-airbnb-base": "15.0.0",
+    "eslint-plugin-import": "2.28.1",
+    "eslint-plugin-node": "11.1.0",
+    "eslint-plugin-only-warn": "1.1.0",
+    "eslint-plugin-promise": "6.1.1"
+  }
+}

@@ -1,0 +1,397 @@
+using Atata;
+using Lombiq.Tests.UI.Constants;
+using Lombiq.Tests.UI.Exceptions;
+using Lombiq.Tests.UI.Extensions;
+using Lombiq.Tests.UI.Models;
+using Lombiq.Tests.UI.SecurityScanning;
+using OpenQA.Selenium;
+using OpenQA.Selenium.BiDi;
+using OpenQA.Selenium.BiDi.Modules.Network;
+using OrchardCore.Environment.Shell;
+using System;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace Lombiq.Tests.UI.Services;
+
+public sealed class UITestContext : IAsyncDisposable
+{
+    // Multiple browser tabs being open can log at the same time, so we need thread-safe collections. Using a queue to
+    // preserve the insertion order.
+    private readonly ConcurrentQueue<OpenQA.Selenium.BiDi.Modules.Log.LogEntry> _cumulativeBrowserLog = [];
+    private readonly ConcurrentQueue<ResponseData> _cumulativeResponseLog = [];
+
+    private BiDi _biDirectionalDriver;
+
+    /// <summary>
+    /// Gets the globally unique ID of this context. You can use this ID to refer to the current text execution in
+    /// external systems, or in file names.
+    /// </summary>
+    public string Id { get; }
+
+    /// <summary>
+    /// Gets or sets the current retry count. This should only be edited from <c>UITestExecutionSession</c>.
+    /// </summary>
+    internal int RetryCount { get; set; }
+
+    /// <summary>
+    /// Gets a value indicating whether there may be further retries for this test.
+    /// </summary>
+    public bool IsFinalTry => RetryCount >= Configuration?.MaxRetryCount;
+
+    /// <summary>
+    /// Gets data about the currently executing test.
+    /// </summary>
+    public UITestManifest TestManifest { get; }
+
+    /// <summary>
+    /// Gets the configuration of the test execution.
+    /// </summary>
+    public OrchardCoreUITestExecutorConfiguration Configuration { get; }
+
+    /// <summary>
+    /// Gets the context for the currently used SQL Server instance and database, if SQL Server is the DB used for the
+    /// test.
+    /// </summary>
+    public SqlServerRunningContext SqlServerRunningContext { get; }
+
+    /// <summary>
+    /// Gets the web application instance, e.g. an Orchard Core app currently running.
+    /// </summary>
+    public IWebApplicationInstance Application { get; }
+
+    /// <summary>
+    /// Gets a representation of a scope wrapping an Atata-driven UI test.
+    /// </summary>
+    public AtataScope Scope { get; }
+
+    /// <summary>
+    /// Gets the Selenium web driver driving the app via a browser.
+    /// </summary>
+    public IWebDriver Driver => Scope.Driver;
+
+    /// <summary>
+    /// Gets the <see cref="Uri"/> where the test starts, i.e. the URL provided by the setup operation.
+    /// </summary>
+    public Uri TestStartUri { get; }
+
+    /// <summary>
+    /// Gets a value indicating whether a browser is currently running for the test. <see langword="false"/> means that
+    /// no browser was launched (yet). Note that since the browser is only started on demand, with the first operation
+    /// requiring it, a browser might not be currently running even if <see cref="IsBrowserConfigured"/> suggests it
+    /// may.
+    /// </summary>
+    public bool IsBrowserRunning => Scope.IsBrowserRunning;
+
+    /// <summary>
+    /// Gets a value indicating whether a browser is configured to be used for the test. <see langword="false"/> means
+    /// that no browser will be launched. Note that since the browser is only started on demand, with the first
+    /// operation requiring it, a browser might not be currently running even if this suggests it may. Use <see
+    /// cref="IsBrowserRunning"/>" to check for that.
+    /// </summary>
+    public bool IsBrowserConfigured => Configuration.BrowserConfiguration.Browser != Browser.None;
+
+    /// <summary>
+    /// Gets the context for the SMTP service running for the test, if it was requested.
+    /// </summary>
+    public SmtpServiceRunningContext SmtpServiceRunningContext { get; }
+
+    /// <summary>
+    /// Gets the context for the currently used Azure Blob Storage folder, if Blob Storage is used for the test.
+    /// </summary>
+    public AzureBlobStorageRunningContext AzureBlobStorageRunningContext { get; }
+
+    /// <summary>
+    /// Gets the context for the currently used Elasticsearch configuration, if Elasticsearch is used for the test.
+    /// </summary>
+    public ElasticsearchRunningContext ElasticsearchRunningContext { get; }
+
+    /// <summary>
+    /// Gets the service to manage <see href="https://www.zaproxy.org/">Zed Attack Proxy (ZAP)</see> instances for
+    /// security scanning. Usually, it's recommended to use the higher-level ZAP <see
+    /// cref="SecurityScanningUITestContextExtensions"/> extension methods instead.
+    /// </summary>
+    public ZapManager ZapManager { get; }
+
+    /// <summary>
+    /// Gets a cumulative log of browser console entries, containing all entries since the start of the test. This can
+    /// be used to assert on the browser log like failing the test on JavaScript exceptions. Note that since the log is
+    /// updated asynchronously by the browser, entries might appear with some delay.
+    /// </summary>
+    public IReadOnlyList<OpenQA.Selenium.BiDi.Modules.Log.LogEntry> CumulativeBrowserLog => _cumulativeBrowserLog.ToReadOnly();
+
+    /// <summary>
+    /// Gets a cumulative log of browser HTTP responses filtered by <see
+    /// cref="OrchardCoreUITestExecutorConfiguration.ResponseLogFilter"/>, containing all items since the start of the
+    /// test. This can be used to assert on response details. Note that
+    /// since the log is updated asynchronously by the browser, entries might appear with some delay.
+    /// </summary>
+    public IReadOnlyList<ResponseData> CumulativeResponseLog => _cumulativeResponseLog.ToReadOnly();
+
+    /// <summary>
+    /// Gets a dictionary storing some custom contextual data.
+    /// </summary>
+    [SuppressMessage(
+        "Design",
+        "MA0016:Prefer return collection abstraction instead of implementation",
+        Justification = "Deliberately modifiable by consumer code.")]
+    public Dictionary<string, object> CustomContext { get; } = [];
+
+    /// <summary>
+    /// Gets a dictionary with items for the test dump, i.e. output files generated by the tests that aid debugging
+    /// failing tests.
+    /// </summary>
+    public IDictionary<string, ITestDumpItem> TestDumpContainer { get; }
+        = new Dictionary<string, ITestDumpItem>();
+
+    /// <summary>
+    /// Gets the current tenant name. When testing sites with multi-tenancy use
+    /// <see cref="SwitchCurrentTenant(string, string)"/>.
+    /// </summary>
+    public string TenantName { get; private set; } = "Default";
+
+    /// <summary>
+    /// Gets or sets the prefix used for all relative URLs. It should neither start nor end with a slash.
+    /// </summary>
+    public string UrlPrefix { get; set; }
+
+    /// <summary>
+    /// Gets or sets the current Orchard Core admin prefix. When running UI tests on a site that uses a custom admin
+    /// prefix, this value should be set in the test. After that, navigation methods will be able to use the custom
+    /// prefix.
+    /// </summary>
+    public string AdminUrlPrefix { get; set; } = "/Admin";
+
+    /// <summary>
+    /// Gets the absolute path of the <see cref="DirectoryPaths.Screenshots"/> subdirectory inside the current test
+    /// instance's <see cref="DirectoryPaths.Temp"/> directory.
+    /// </summary>
+    public string ScreenshotsDirectoryPath => GetTempSubDirectoryPath(DirectoryPaths.Screenshots);
+
+    /// <summary>
+    /// Gets the absolute path of the <see cref="DirectoryPaths.Downloads"/> subdirectory inside the current test
+    /// instance's <see cref="DirectoryPaths.Temp"/> directory.
+    /// </summary>
+    public string DownloadsDirectoryPath => GetTempSubDirectoryPath(DirectoryPaths.Downloads);
+
+    [SuppressMessage(
+        "Major Code Smell",
+        "S107:Methods should not have too many parameters",
+        Justification = "This is a central context object, we need the data to be passed in the constructor.")]
+    private UITestContext(
+        string id,
+        UITestManifest testManifest,
+        OrchardCoreUITestExecutorConfiguration configuration,
+        IWebApplicationInstance application,
+        AtataScope scope,
+        Uri testStartUri,
+        RunningContextContainer runningContextContainer,
+        ZapManager zapManager)
+    {
+        Id = id;
+        TestManifest = testManifest;
+        Configuration = configuration;
+        Application = application;
+        Scope = scope;
+        TestStartUri = testStartUri;
+        ZapManager = zapManager;
+
+        (
+            SqlServerRunningContext,
+            SmtpServiceRunningContext,
+            AzureBlobStorageRunningContext,
+            ElasticsearchRunningContext
+        ) = runningContextContainer;
+    }
+
+    /// <summary>
+    /// Clears accumulated browser log messages from <see cref="CumulativeBrowserLog"/>.
+    /// </summary>
+    public void ClearCumulativeBrowserLog() => _cumulativeBrowserLog.Clear();
+
+    /// <summary>
+    /// Clears accumulated browser log messages from <see cref="CumulativeResponseLog"/>.
+    /// </summary>
+    public void ClearCumulativeResponseLog() => _cumulativeResponseLog.Clear();
+
+    /// <summary>
+    /// Clears the application and cumulative browser logs.
+    /// </summary>
+    /// <param name="cancellationToken">Optional cancellation token for reading the application logs.</param>
+    public async Task ClearLogsAsync(CancellationToken cancellationToken = default)
+    {
+        foreach (var log in await Application.GetLogsAsync(cancellationToken)) await log.RemoveAsync();
+        ClearCumulativeBrowserLog();
+        ClearCumulativeResponseLog();
+    }
+
+    /// <summary>
+    /// Invokes the registered <see cref="PageChangeEventHandler"/> s. Should be called when the browser loads a new
+    /// page in the app.
+    /// </summary>
+    /// <exception cref="PageChangeAssertionException">
+    /// Thrown when any of the event handlers throws an exception.
+    /// </exception>
+    public async Task TriggerAfterPageChangeEventAsync()
+    {
+        if (IsAlert()) return;
+
+        try
+        {
+            await Configuration.Events.AfterPageChange.InvokeAsync<PageChangeEventHandler>(eventHandler => eventHandler(this));
+        }
+        catch (Exception exception)
+        {
+            throw new PageChangeAssertionException(this, exception);
+        }
+    }
+
+    /// <summary>
+    /// Invokes the registered <see cref="PageChangeEventHandler"/> s and refreshes the Atata context with <see
+    /// cref="NavigationUITestContextExtensions.RefreshCurrentAtataContext(UITestContext)"/>. Should be called when the
+    /// browser loads a new page in the app.
+    /// </summary>
+    public async Task TriggerAfterPageChangeEventAndRefreshAtataContextAsync()
+    {
+        await TriggerAfterPageChangeEventAsync();
+        this.RefreshCurrentAtataContext();
+    }
+
+    /// <summary>
+    /// Changes the current tenant context to the Default one. Note that this doesn't navigate the browser.
+    /// </summary>
+    public void SwitchCurrentTenantToDefault() => SwitchCurrentTenant("Default", string.Empty);
+
+    /// <summary>
+    /// Changes the current tenant context to the provided one. Note that this doesn't navigate the browser.
+    /// </summary>
+    /// <param name="tenantName">
+    /// The technical name of the tenant to change to. If <see langword="null"/>, then <see
+    /// cref="ShellSettings.DefaultShellName"/> is used instead.
+    /// </param>
+    /// <param name="urlPrefix">
+    /// The URL prefix configured for the tenant. Any leading or trailing slashes are trimmed out.
+    /// </param>
+    public void SwitchCurrentTenant(string tenantName, string urlPrefix)
+    {
+        TenantName = tenantName ?? ShellSettings.DefaultShellName;
+        UrlPrefix = urlPrefix.Trim('/');
+        Scope.BaseUri = new Uri(Scope.BaseUri, "/" + UrlPrefix + (string.IsNullOrEmpty(UrlPrefix) ? string.Empty : "/"));
+    }
+
+    /// <summary>
+    /// Changes the current tenant context to the provided one. Note that this doesn't navigate the browser.
+    /// </summary>
+    /// <param name="tenantName">
+    /// The technical name of the tenant to change to. If <see langword="null"/>, then <see
+    /// cref="ShellSettings.DefaultShellName"/> is used instead.
+    /// </param>
+    /// <param name="baseUri">
+    /// The new value of <see cref="Scope"/>.<see cref="AtataScope.BaseUri"/>/ Additionally, <see cref="UrlPrefix"/> is
+    /// set to its <see cref="Uri.AbsolutePath"/> (without leading or trailing slashes).
+    /// </param>
+    public void SwitchCurrentTenant(string tenantName, Uri baseUri)
+    {
+        TenantName = tenantName ?? ShellSettings.DefaultShellName;
+        UrlPrefix = baseUri.AbsolutePath.Trim('/');
+        Scope.BaseUri = baseUri;
+    }
+
+    // This is a central context object, we need the data to be passed in the constructor.
+#pragma warning disable S107 // Methods should not have too many parameters
+    public static async Task<UITestContext> CreateAsync(
+        string id,
+        UITestManifest testManifest,
+        OrchardCoreUITestExecutorConfiguration configuration,
+        IWebApplicationInstance application,
+        AtataScope scope,
+        Uri testStartUri,
+        RunningContextContainer runningContextContainer,
+        ZapManager zapManager)
+#pragma warning restore S107 // Methods should not have too many parameters
+    {
+        var context = new UITestContext(
+            id,
+            testManifest,
+            configuration,
+            application,
+            scope,
+            testStartUri,
+            runningContextContainer,
+            zapManager);
+
+        if (context.IsBrowserConfigured)
+        {
+            context._biDirectionalDriver = await scope.Driver.AsBiDiAsync();
+
+            // We intentionally don't pass the UITestContext to these callbacks: The callbacks are called asynchronously
+            // by the browser (and Selenium), and e.g. the current URL can change between when a JS exception was thrown
+            // and the callback is called. Thus, BrowserLogFilter could e.g. ignore log entries for a URL that actually
+            // originated from a different URL and shouldn't be ignored.
+            await context._biDirectionalDriver.Log.OnEntryAddedAsync(entry =>
+            {
+                if (configuration.BrowserLogFilters.Values.All(filter => filter(entry)))
+                {
+                    context._cumulativeBrowserLog.Enqueue(entry);
+                }
+            });
+
+            if (configuration.TestDumpConfiguration.CaptureResponseLog)
+            {
+                await context._biDirectionalDriver.Network.OnResponseCompletedAsync(responseCompleted =>
+                {
+                    if (configuration.ResponseLogFilter(responseCompleted))
+                    {
+                        context._cumulativeResponseLog.Enqueue(responseCompleted.Response);
+                    }
+                });
+            }
+        }
+
+        return context;
+    }
+
+    /// <summary>
+    /// Returns the subdirectory described by <paramref name="subDirectoryNames"/> inside the current test instance's
+    /// <see cref="DirectoryPaths.Temp"/> directory.
+    /// </summary>
+    public string GetTempSubDirectoryPath(params string[] subDirectoryNames) =>
+        DirectoryPaths.GetTempDirectoryPath([Id, .. subDirectoryNames]);
+
+    /// <summary>
+    /// Returns a path in the <see cref="DirectoryPaths.Downloads"/> subdirectory inside the current test instance's
+    /// <see cref="DirectoryPaths.Temp"/> directory.
+    /// </summary>
+    public string GetDownloadFilePath(params string[] subDirectoryNames) =>
+        DirectoryPaths.GetTempDirectoryPath([Id, DirectoryPaths.Downloads, .. subDirectoryNames]);
+
+    private bool IsAlert()
+    {
+        // If there's an alert (which can happen mostly after a click but also after navigating) then all other driver
+        // operations, even retrieving the current URL, will throw an UnhandledAlertException. Thus we need to check if
+        // an alert is present and that's only possible by catching exceptions.
+        try
+        {
+            Driver.SwitchTo().Alert();
+            return true;
+        }
+        catch (NoAlertPresentException)
+        {
+            return false;
+        }
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        if (_biDirectionalDriver != null) await _biDirectionalDriver.DisposeAsync();
+
+        Scope?.Dispose();
+
+        TestDumpContainer.Values.ForEach(value => value.Dispose());
+        TestDumpContainer.Clear();
+    }
+}

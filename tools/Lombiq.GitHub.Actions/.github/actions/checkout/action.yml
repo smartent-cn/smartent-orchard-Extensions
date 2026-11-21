@@ -1,0 +1,50 @@
+name: Checkout
+description: >
+  Runs actions/checkout. Exists only to centralize which version of the action we use. Intentionally not documented in
+  Actions.md since it's only meant for internal use.
+
+inputs:
+  repository:
+    description: Repository name with owner. For example, actions/checkout
+    default: ${{ github.repository }}
+  ref:
+    description: >
+      The branch, tag or SHA to checkout. When checking out the repository that triggered a workflow, this defaults to
+      the reference or SHA for that event. Otherwise, uses the default branch.
+  token:
+    required: false
+    default: ${{ github.token }}
+    description: >
+      The GitHub token to authenticate checkout with. Pass in a GitHub personal access token if authenticated
+      submodules are used.
+  path:
+    description: Relative path under $GITHUB_WORKSPACE to place the repository
+  fetch-depth:
+    description: Number of commits to fetch. 0 indicates all history for all branches and tags.
+    default: 1
+  submodules:
+    description: >
+      Whether to checkout submodules - `true` to checkout submodules or `recursive` to recursively checkout submodules.
+    default: recursive
+
+runs:
+  using: composite
+  steps:
+    - name: Setup Scripts
+      shell: pwsh
+      run: |
+        (Resolve-Path '${{ github.action_path }}/../../../Scripts').Path >> $Env:GITHUB_PATH
+
+    - name: Set Checkout Token
+      uses: Lombiq/GitHub-Actions/.github/actions/set-checkout-token@dev
+      with:
+        checkout-token: ${{ inputs.token }}
+
+    - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      with:
+        repository: ${{ inputs.repository }}
+        ref: ${{ inputs.ref }}
+        submodules: ${{ inputs.submodules }}
+        token: ${{ env.CHECKOUT_TOKEN }}
+        path: ${{ inputs.path }}
+        fetch-depth: ${{ inputs.fetch-depth }}

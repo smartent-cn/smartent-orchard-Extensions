@@ -1,0 +1,49 @@
+name: Validate Pull Request
+
+on:
+  workflow_call:
+    # We can't access org secrets here so they must be passed in.
+    secrets:
+      JIRA_BASE_URL:
+        required: false
+        description: >
+          The URL of your Jira (Atlassian) instance, following the https://<yourdomain>.atlassian.net pattern (e.g.
+          "https://lombiq.atlassian.net").
+      PARENT_TOKEN:
+        required: false
+        description: >
+          An authentication token, like a personal access token (PAT), that provides read access to the parent
+          repository. This is needed for private repositories to check if the parent pull request exists. See
+          https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
+          for info on how to create PATs; you'll need one with the "repo" scope. Not needed if
+          the parent repository is public.
+    inputs:
+      repository:
+        type: string
+        default: Lombiq/Open-Source-Orchard-Core-Extensions
+        description: The parent repository's full name in "{owner}/{repository}" format.
+      timeout-minutes:
+        type: number
+        default: 3
+        description: Configuration for the timeout-minutes parameter of the workflow.
+
+jobs:
+  validate-submodule-pull-request:
+    runs-on: ubuntu-24.04
+    timeout-minutes: ${{ inputs.timeout-minutes }}
+    steps:
+      - name: Update GitHub issue and Pull Request
+        if: (github.event_name == 'pull_request_target' || github.event_name == 'pull_request') && github.event.action == 'opened'
+        uses: Lombiq/GitHub-Actions/.github/actions/update-github-issue-and-pull-request@dev
+        env:
+          JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Ensure Parent PR Exists
+        if: github.event.pull_request != '' && !startsWith(github.head_ref, 'renovate')
+        uses: Lombiq/GitHub-Actions/.github/actions/verify-submodule-pull-request@dev
+        env:
+          GITHUB_TOKEN: ${{ secrets.PARENT_TOKEN != '' && secrets.PARENT_TOKEN || secrets.GITHUB_TOKEN }}
+        with:
+          title: ${{ github.event.pull_request.title }}
+          repository: ${{ inputs.repository }}

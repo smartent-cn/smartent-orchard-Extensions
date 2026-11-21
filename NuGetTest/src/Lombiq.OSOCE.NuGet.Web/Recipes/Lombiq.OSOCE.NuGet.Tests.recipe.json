@@ -1,0 +1,238 @@
+{
+  "name": "Lombiq.OSOCE.NuGet.Tests",
+  "displayName": "TEST: Lombiq's Open-Source Orchard Core Extensions",
+  "description": "Lombiq's Open-Source Orchard Core Extensions setup recipe for automated UI test execution.",
+  "author": "Lombiq Technologies",
+  "website": "https://github.com/Lombiq/Open-Source-Orchard-Core-Extensions",
+  "version": "1.0",
+  "issetuprecipe": true,
+  "categories": [
+    "test"
+  ],
+  "tags": [
+    "test"
+  ],
+  "steps": [
+    {
+      "name": "feature",
+      "disable": [],
+      "enable": [
+        "OrchardCore.Email.Smtp",
+        "OrchardCore.Localization",
+        "Lombiq.AuditTrailExtensions",
+        "Lombiq.ChartJs",
+        "Lombiq.ContentEditors.Samples",
+        "Lombiq.DataTables.Samples",
+        "Lombiq.HelpfulExtensions.CodeGeneration",
+        "Lombiq.HelpfulExtensions.ContentTypes",
+        "Lombiq.HelpfulExtensions.Flows",
+        "Lombiq.HelpfulExtensions.ShapeTracing",
+        "Lombiq.HelpfulExtensions.Widgets",
+        "Lombiq.HelpfulLibraries.Samples",
+        "Lombiq.Hosting.BuildVersionDisplay",
+        "Lombiq.Hosting.Tenants.Admin.Login",
+        "Lombiq.Hosting.Tenants.Admin.Login.SubTenant",
+        "Lombiq.Hosting.Tenants.EnvironmentRobots",
+        "Lombiq.Hosting.Tenants.Management",
+        "Lombiq.Hosting.Tenants.Management.ShellSettingsEditor",
+        "Lombiq.Hosting.Tenants.EmailQuotaManagement",
+        "Lombiq.Hosting.Tenants.IdleTenantManagement.ShutDownIdleTenants",
+        "Lombiq.Hosting.Tenants.Maintenance.ChangeUserSensitiveContent",
+        "Lombiq.JsonEditor",
+        "Lombiq.LoginAsAnybody",
+        "Lombiq.OSOCE.Samples",
+        "Lombiq.OSOCE.NuGet.TestModule",
+        // We only enable these in a specific test, because the banner overlaps with too many things.
+        // "Lombiq.Privacy.ConsentBanner",
+        // "Lombiq.Privacy.FormConsent",
+        // "Lombiq.Privacy.RegistrationConsent",
+        "Lombiq.TrainingDemo",
+        "Lombiq.UIKit",
+        "Lombiq.UIKit.Widgets",
+        "Lombiq.OSOCE.NuGet.TestTheme",
+        "Lombiq.HelpfulExtensions.Widgets",
+        "Lombiq.VueJs",
+        "Lombiq.VueJs.Samples",
+        "OrchardCore.Tenants.FeatureProfiles",
+        "Lombiq.Hosting.Tenants.FeaturesGuard",
+        "TheTheme"
+        // Not enabling Lombiq.TrainingDemo.Middlewares because that would write to the error log on every request.
+      ]
+    },
+    {
+      "name": "recipes",
+      "Values": [
+        {
+          "executionid": "Lombiq.OSOCE.NuGet.Web",
+          "name": "Blog"
+        }
+      ]
+    },
+    {
+      "name": "settings",
+      "UseCdn": false,
+      "SmtpSettings": {
+        "DefaultSender": "sender@example.com"
+      },
+      "LocalizationSettings": {
+        "DefaultCulture": "en-US",
+        "SupportedCultures": [
+          "en-US"
+        ]
+      }
+    },
+    // These roles are not created the same way as default during testing, so we need to add them here.
+    {
+      "name": "Roles",
+      "Roles": [
+        {
+          "Name": "Moderator",
+          "Description": "Moderator role",
+          "Permissions": [
+            "AccessAdminPanel",
+            "ManageOwnUserInformation"
+          ]
+        },
+        {
+          "Name": "Authenticated",
+          "Description": "Authenticated role",
+          "Permissions": [
+            "ViewContent"
+          ]
+        },
+        {
+          "Name": "Anonymous",
+          "Description": "Anonymous role",
+          "Permissions": [
+            "ViewContent"
+          ]
+        },
+        {
+          "Name": "Author",
+          "Description": "Author role",
+          "Permissions": [
+            "AccessAdminPanel",
+            "ManageOwnUserInformation",
+            "PublishOwnContent",
+            "EditOwnContent",
+            "DeleteOwnContent",
+            "PreviewOwnContent",
+            "CloneOwnContent",
+            "ManageMediaContent"
+          ]
+        },
+        {
+          "Name": "Contributor",
+          "Description": "Contributor role",
+          "Permissions": [
+            "AccessAdminPanel",
+            "ManageOwnUserInformation",
+            "EditOwnContent",
+            "PreviewOwnContent",
+            "CloneOwnContent",
+            "ManageMediaContent"
+          ]
+        },
+        {
+          "Name": "Editor",
+          "Description": "Editor role",
+          "Permissions": [
+            "AccessAdminPanel",
+            "ManageOwnUserInformation",
+            "PublishContent",
+            "EditContent",
+            "DeleteContent",
+            "PreviewContent",
+            "CloneContent",
+            "ListContent",
+            "ManageMediaContent",
+            "ManageWorkflows",
+            "ExecuteWorkflows"
+          ]
+        },
+        {
+          "Name": "Administrator",
+          "Description": "Administrator role",
+          "Permissions": [
+            "ManageSettings",
+            "AccessAdminPanel",
+            "ManageAdminSettings",
+            "ManageUsers",
+            "ManageRoles",
+            "SiteOwner",
+            "ManageTenants",
+            "ApplyTheme",
+            "PublishContent",
+            "EditContent",
+            "DeleteContent",
+            "PreviewContent",
+            "CloneContent",
+            "AccessContentApi",
+            "ListContent",
+            "ViewContentTypes",
+            "EditContentTypes",
+            "ManageMediaContent",
+            "ManageAttachedMediaFieldsFolder",
+            "ManageMediaProfiles",
+            "ViewMediaOptions",
+            "ManageAssetCache",
+            "ViewAzureMediaOptions",
+            "ManageBackgroundTasks",
+            "ManageEmailSettings",
+            "ManageWorkflows",
+            "ExecuteWorkflows",
+            "SetHomepage",
+            "Import",
+            "Export",
+            "ViewAuditTrail",
+            "ManageAuditTrailSettings"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "FeatureProfiles",
+      "FeatureProfiles": {
+        "Features Guard": {
+          "FeatureRules": [
+            {
+              "Rule": "Exclude",
+              "Expression": "OrchardCore.Workflows.Session"
+            },
+            {
+              "Rule": "Exclude",
+              "Expression": "OrchardCore.Search.Lucene"
+            },
+            {
+              "Rule": "Exclude",
+              "Expression": "OrchardCore.MiniProfiler"
+            },
+            {
+              "Rule": "Exclude",
+              "Expression": "Lombiq.Tests.UI.Shortcuts"
+            }
+          ]
+        }
+      }
+    },
+    {
+
+      "name": "themes",
+      "admin": "TheAdmin",
+      "site": "Lombiq.OSOCE.NuGet.TestTheme"
+    },
+    {
+      "name": "recipes",
+      "Values": [
+        {
+          "executionid": "Lombiq.OSOCE.Web",
+          "name": "Lombiq.HelpfulExtensions.ContentSets.Samples"
+        },
+        {
+          "executionid": "Lombiq.OSOCE.Web",
+          "name": "Lombiq.UIKit.Widgets.Content"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+name: PowerShell Static Code Analysis
+
+on:
+  workflow_call:
+    secrets:
+      CHECKOUT_TOKEN:
+        required: false
+        description: >
+          The GitHub token to authenticate checkout. Pass in a GitHub personal access token if authenticated submodules
+          are used.
+
+    inputs:
+      cancel-in-progress-for-this-pr:
+        description: >
+          When set to "true", it will cancel the already running workflow for this pull request. See the concurrency
+          settings of the job for more details.
+        type: string
+        default: 'true'
+      run-windows-powershell:
+        required: false
+        type: string
+        default: 'true'
+        description: >
+          If set to "true", static code analysis is ran through Windows PowerShell (version 5.x), but only on Windows.
+      run-powershell-core:
+        required: false
+        type: string
+        default: 'true'
+        description: >
+          If set to "true", static code analysis is ran through PowerShell Core (version 7+). When not "true", consider
+          removing Linux-based machine-types from the strategy matrix as they won't run analysis through Windows
+          PowerShell either.
+      # This needs to be stringified JSON because inputs don't support arrays, see
+      # https://github.community/t/reusable-workflow-with-strategy-matrix/205676/2.
+      machine-types:
+        required: false
+        type: string
+        default: "['ubuntu-24.04', 'windows-2022']"
+        description: >
+          Stringified JSON array with the name of the type of machine(s) to run the workflow under, e.g.
+          "['ubuntu-24.04']" or "['ubuntu-24.04', 'windows-2022']".
+      timeout-minutes:
+        required: false
+        type: number
+        default: 10
+        description: Configuration for the timeout-minutes parameter of the workflow. GitHub's default is 360.
+      cancel-workflow-on-failure:
+        description: If set to "true", this will cancel the current workflow run with all jobs if this workflow fails.
+        required: false
+        type: string
+        default: 'true'
+
+jobs:
+  powershell-static-code-analysis:
+    runs-on: ${{ matrix.machine-type }}
+    name: PowerShell Static Code Analysis
+    strategy:
+      matrix:
+        machine-type: ${{ fromJson(inputs.machine-types) }}
+    timeout-minutes: ${{ inputs.timeout-minutes }}
+    concurrency:
+      # If "cancel-in-progress-for-this-pr" is set to "true" and this run is for a pull request, then the concurrency
+      # key will be constructed from a handful of parameters to produce a value that would evaluate to the same value on
+      # a subsequent push, causing the already running workflow for this pull request (in this repository) to be
+      # cancelled. Otherwise it will be the ID of the workflow run and the machine type, making it more unique and not
+      # cancel anything. A technical name for this workflow is also included in both cases, so that it doesn't come into
+      # conflict with other jobs calling a different workflow that are started by the same caller workflow.
+      group: |
+        ${{
+          inputs.cancel-in-progress-for-this-pr == 'true' && github.event_name == 'pull_request'
+            && format('{0}_powershell-static-code-analysis_{1}_{2}', github.workflow, github.ref, matrix.machine-type)
+            || format('{0}_powershell-static-code-analysis_{1}', github.run_id, matrix.machine-type)
+        }}
+      cancel-in-progress: ${{ inputs.cancel-in-progress-for-this-pr == 'true' }}
+    steps:
+      - name: Checkout
+        uses: Lombiq/GitHub-Actions/.github/actions/checkout@dev
+        with:
+          token: ${{ secrets.CHECKOUT_TOKEN }}
+
+      - name: PowerShell Static Code Analysis
+        uses: Lombiq/PowerShell-Analyzers/.github/actions/static-code-analysis@dev
+        with:
+          run-windows-powershell: ${{ inputs.run-windows-powershell }}
+          run-powershell-core: ${{ inputs.run-powershell-core }}
+
+      - name: Cancel Workflow on Failure
+        if: failure() && inputs.cancel-workflow-on-failure == 'true'
+        uses: Lombiq/GitHub-Actions/.github/actions/cancel-workflow@dev
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

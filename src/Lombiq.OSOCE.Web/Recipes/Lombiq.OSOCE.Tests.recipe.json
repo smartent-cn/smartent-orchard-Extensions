@@ -1,0 +1,223 @@
+{
+  "name": "Lombiq.OSOCE.Tests",
+  "displayName": "TEST: Lombiq's Open-Source Orchard Core Extensions",
+  "description": "Lombiq's Open-Source Orchard Core Extensions setup recipe for automated UI test execution.",
+  "author": "Lombiq Technologies",
+  "website": "https://github.com/Lombiq/Open-Source-Orchard-Core-Extensions",
+  "version": "1.0",
+  "issetuprecipe": true,
+  "categories": [
+    "test"
+  ],
+  "tags": [
+    "test"
+  ],
+  "steps": [
+    {
+      "name": "feature",
+      "disable": [],
+      "enable": [
+        "Lombiq.AuditTrailExtensions",
+        "Lombiq.ChartJs",
+        "Lombiq.ContentEditors.Samples",
+        "Lombiq.DataTables.Samples",
+        "Lombiq.EmailClient.Samples",
+        "Lombiq.HelpfulExtensions.CodeGeneration",
+        "Lombiq.HelpfulExtensions.ContentTypes",
+        "Lombiq.HelpfulExtensions.Flows",
+        "Lombiq.HelpfulExtensions.ShapeTracing",
+        "Lombiq.HelpfulExtensions.TrumbowygBlogPosts",
+        "Lombiq.HelpfulExtensions.Widgets",
+        "Lombiq.HelpfulLibraries.Samples",
+        "Lombiq.Hosting.BuildVersionDisplay",
+        "Lombiq.Hosting.Tenants.Admin.Login",
+        "Lombiq.Hosting.Tenants.Admin.Login.SubTenant",
+        "Lombiq.Hosting.Tenants.EnvironmentRobots",
+        "Lombiq.Hosting.Tenants.Management",
+        "Lombiq.Hosting.Tenants.Management.ShellSettingsEditor",
+        "Lombiq.Hosting.Tenants.Maintenance",
+        "Lombiq.Hosting.Tenants.Maintenance.UpdateSiteUrl",
+        "Lombiq.Hosting.Tenants.Maintenance.AddAdministratorRoleToUsersWithRole",
+        "Lombiq.Hosting.Tenants.Maintenance.ChangeUserSensitiveContent",
+        "Lombiq.Hosting.Tenants.IdleTenantManagement.ShutDownIdleTenants",
+        "Lombiq.Hosting.Tenants.EmailQuotaManagement",
+        "Lombiq.JsonEditor",
+        "Lombiq.JsonEditor.ContentEditor",
+        "Lombiq.LoginAsAnybody",
+        "Lombiq.OSOCE.Samples",
+        // We only enable these on a specific test, because it overlaps with too many things.
+        // "Lombiq.Privacy.ConsentBanner",
+        // "Lombiq.Privacy.FormConsent",
+        // "Lombiq.Privacy.RegistrationConsent",
+        "Lombiq.TrainingDemo",
+        "Lombiq.UIKit",
+        "Lombiq.UIKit.Showcase",
+        "Lombiq.UIKit.Widgets",
+        "Lombiq.VueJs",
+        "Lombiq.VueJs.Samples",
+        "OrchardCore.Tenants.FeatureProfiles",
+        "Lombiq.Hosting.Tenants.FeaturesGuard",
+        "Lombiq.Hosting.Tenants.MediaStorageManagement",
+        "OrchardCore.Localization",
+        "OrchardCore.Features",
+        "OrchardCore.Media",
+        "OrchardCore.Email.Smtp",
+        "TheTheme"
+        // Not enabling Lombiq.TrainingDemo.Middlewares because that would write to the error log on every request.
+      ]
+    },
+    {
+      "name": "recipes",
+      "Values": [
+        {
+          "executionid": "Lombiq.OSOCE.Web",
+          "name": "Blog"
+        }
+      ]
+    },
+    {
+      "name": "media",
+      "Files": [
+        {
+          // Picture taken from:
+          // https://en.wikipedia.org/wiki/Orchard#/media/File:Streuobstwiesen,_Blick_auf_Traufgang_und_Lochenh%C3%B6rnle.jpg.
+          // This is just showcasing that you can include Media files in these recipes too. Note that if you include
+          // files for recipes in the Web project then you also have to set their "Copy to Output Directory" to
+          // something else than "Do not copy" (this is not necessary if you put recipes and Media files in modules or
+          // themes). You can see this happening in the csproj file.
+          "SourcePath": "Media/meadow-orchard.jpg",
+          "TargetPath": "meadow-orchard.jpg"
+        }
+      ]
+    },
+    {
+      "name": "settings",
+      // To make sure that e.g. numbers and dates are formatted the same way on all machines we have to specify the
+      // culture too.
+      "LocalizationSettings": {
+        "DefaultCulture": "en-US",
+        "SupportedCultures": [
+          "en-US"
+        ]
+      }
+    },
+    // These roles are not created the same way as default during testing, so we need to add them here.
+    {
+      "name": "Roles",
+      "Roles": [
+        {
+          "Name": "Moderator",
+          "Description": "Moderator role",
+          "Permissions": [
+            "AccessAdminPanel",
+            "ManageOwnUserInformation"
+          ]
+        },
+        {
+          "Name": "Authenticated",
+          "Description": "Authenticated role",
+          "Permissions": [
+            "ViewContent"
+          ]
+        },
+        {
+          "Name": "Anonymous",
+          "Description": "Anonymous role",
+          "Permissions": [
+            "ViewContent"
+          ]
+        },
+        {
+          "Name": "Author",
+          "Description": "Author role",
+          "Permissions": [
+            "AccessAdminPanel",
+            "ManageOwnUserInformation",
+            "PublishOwnContent",
+            "EditOwnContent",
+            "DeleteOwnContent",
+            "PreviewOwnContent",
+            "CloneOwnContent",
+            "ManageMediaContent"
+          ]
+        },
+        {
+          "Name": "Contributor",
+          "Description": "Contributor role",
+          "Permissions": [
+            "AccessAdminPanel",
+            "ManageOwnUserInformation",
+            "EditOwnContent",
+            "PreviewOwnContent",
+            "CloneOwnContent",
+            "ManageMediaContent"
+          ]
+        },
+        {
+          "Name": "Editor",
+          "Description": "Editor role",
+          "Permissions": [
+            "AccessAdminPanel",
+            "ManageOwnUserInformation",
+            "PublishContent",
+            "EditContent",
+            "DeleteContent",
+            "PreviewContent",
+            "CloneContent",
+            "ListContent",
+            "ManageMediaContent",
+            "ManageWorkflows",
+            "ExecuteWorkflows"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "themes",
+      "admin": "TheAdmin",
+      "site": "SafeMode"
+    },
+    {
+      "name": "FeatureProfiles",
+      "FeatureProfiles": {
+        "Features Guard": {
+          "FeatureRules": [
+            {
+              "Rule": "Exclude",
+              "Expression": "OrchardCore.Workflows.Session"
+            },
+            {
+              "Rule": "Exclude",
+              "Expression": "OrchardCore.Search.Lucene"
+            },
+            {
+              "Rule": "Exclude",
+              "Expression": "OrchardCore.MiniProfiler"
+            },
+            {
+              "Rule": "Exclude",
+              "Expression": "Lombiq.Tests.UI.Shortcuts"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "recipes",
+      "Values": [
+        {
+          "executionid": "Lombiq.OSOCE.Web",
+          "name": "Lombiq.OSOCE.BaseTheme"
+        },
+        {
+          "executionid": "Lombiq.OSOCE.Web",
+          "name": "Lombiq.HelpfulExtensions.ContentSets.Samples"
+        },
+        {
+          "executionid": "Lombiq.OSOCE.Web",
+          "name": "Lombiq.UIKit.Widgets.Content"
+        }
+      ]
+    }
+  ]
+}

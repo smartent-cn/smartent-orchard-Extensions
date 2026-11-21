@@ -1,0 +1,311 @@
+name: Deploy to Azure App Service
+
+concurrency:
+  group: ${{ inputs.app-name }}AzureWorkflow
+
+on:
+  workflow_call:
+    secrets:
+      CHECKOUT_TOKEN:
+        required: false
+        description: >
+          The GitHub token to authenticate checkout with. Pass in a GitHub personal access token if authenticated
+          submodules are used.
+
+      # These secrets are for OpenID Connect-based authentication with Azure services through the azure/login action
+      # (proxied by our login-to-azure action below). Check out its documentation on how these secrets are used:
+      # https://github.com/azure/login.
+      AZURE_APP_SERVICE_DEPLOYMENT_SERVICE_PRINCIPAL_ID:
+        required: true
+        description: >
+          The Application (client) ID of the Azure Service Principal or Managed Credential, which will be mapped to the
+          client-id parameter when calling azure/login.
+      AZURE_APP_SERVICE_DEPLOYMENT_AZURE_TENANT_ID:
+        required: true
+        description: >
+          The Tenant (Directory) ID of the Microsoft Entra ID tenant, which will be mapped to the tenant-id parameter
+          when calling azure/login.
+      AZURE_APP_SERVICE_DEPLOYMENT_AZURE_SUBSCRIPTION_ID:
+        required: true
+        description: >
+          The ID of the Azure Subscription the resources are under, which will be mapped to the subscription-id
+          parameter when calling azure/login. You can look this up e.g. in the Azure Portal under any resource or the
+          subscription itself.
+
+      AZURE_APP_SERVICE_PUBLISH_PROFILE:
+        required: true
+
+    inputs:
+      cancel-workflow-on-failure:
+        description: When set to "true", it will cancel the current workflow run with all jobs if this workflow fails.
+        type: string
+        default: 'false'
+      machine-type:
+        type: string
+        default: ubuntu-24.04
+        description: The name of the type of machine to run the workflow under.
+      dotnet-version:
+        type: string
+        default: 8.0.301
+        description: Version of the .NET SDK to set up.
+      node-version:
+        type: string
+        default: 22.16.0
+        description: >
+          The Node.js version. Can be a specific version number or other notations, see the documentation of
+          https://github.com/actions/setup-node.
+      # This is really only necessary to work around the https://github.com/nodejs/corepack/issues/612 corepack issue.
+      # Also see https://github.com/Lombiq/NodeJs-Extensions/issues/120.
+      enable-corepack:
+        type: string
+        default: 'false'
+        description: Indicates whether to enable Node.js corepack before the build.
+      build-directory:
+        type: string
+        default: .
+        description: Path to the directory where a solution file can be found.
+      build-configuration:
+        type: string
+        default: Release
+        description: Configuration parameter for dotnet build, e.g. Release (default) or Debug.
+      build-verbosity:
+        type: string
+        default: quiet
+        description: Verbosity parameter for dotnet build.
+      build-enable-code-analysis:
+        type: string
+        default: 'false'
+        description: Indicates whether to enable static code analysis during dotnet build.
+      build-enable-nuget-caching:
+        type: string
+        default: 'false'
+        description: >
+          If set to "true", the NuGet packages will be cached by GitHub. This is faster if you have a lot of NuGet
+          packages, but negligible or even slower if you only have a handful. When run on BuildJet, it will use the
+          BuildJet cache instead of GitHub's, which is faster.
+      build-enable-npm-caching:
+        type: string
+        default: 'false'
+        description: >
+          If set to "true", the NPM packages will be cached by GitHub. This is faster if you have a lot of NPM packages,
+          packages, but negligible or even slower if you only have a handful. When run on BuildJet, it will use the
+          BuildJet cache instead of GitHub's, which is faster.
+      build-cache-version:
+        type: string
+        default: '0'
+        description: >
+          Change this to any other value to alter the cache key, effectively invalidating the latest cache. This is an
+          alternative to clearing the cache manually, see
+          https://docs.github.com/en/actions/using-workflows/caching-dependencies-to-speed-up-workflows#managing-caches.
+      timeout-minutes:
+        type: number
+        default: 360
+        description: Configuration for the timeout-minutes parameter of the workflow. 360 is GitHub's default.
+      app-name:
+        required: true
+        type: string
+        description: What you see at the top of the blade on the Azure Portal. Can contain uppercase letters too.
+      slot-name:
+        required: true
+        type: string
+        description: >
+          What you see at the top of the blade on the Azure Portal, when you open the slot, before the app name in
+          parenthesis.
+      resource-group-name:
+        required: true
+        type: string
+        description: Name of the resource group.
+      web-project-path:
+        type: string
+        default: ./src/*Web/*.Web.csproj
+        description: >
+          The path of the web project file to be processed. The value is given to PowerShell's `Get-ChildItem` cmdlet
+          as-is, so grepping is still possible but a name with spaces must be escaped separately.
+      runtime:
+        type: string
+        description: >
+          Publishes the application for a given runtime. If you use this option, set "self-contained" to the desired
+          value also. "self-contained" is "false" by default.
+      self-contained:
+        type: string
+        default: 'false'
+        description: >
+          Publishes the .NET runtime with your application so the runtime doesn't need to be installed on the target
+          machine.
+      application-insights-resource-id:
+        required: true
+        type: string
+        description: >
+          ID of the Application Insights resource that the release annotation for the deployment should be added to.
+          This can e.g. be looked up on the Azure Portal under the given AI resource's Overview page -> JSON View.
+      ready-to-run:
+        type: string
+        default: 'false'
+        description: >
+          Compiles application assemblies as ReadyToRun (R2R) format. R2R is a form of ahead-of-time (AOT) compilation.
+          If ready to run is set to `true` the `runtime` input is needed.
+      tag-prefix:
+        type: string
+        default: staging
+        required: false
+        description: >
+          The prefix to use for the tag. If not set, 'staging' will be used as the prefix. The tag will be in the
+          format of "<prefix>/latest" and "<prefix>/<timestamp>". This is used for tracking what's deployed, where and
+          when by tagging the deployed commit.
+      publish-arguments:
+        type: string
+        description: Additional arguments passed to dotnet publish.
+      skip-update-latest-tag:
+        type: string
+        default: 'false'
+        description: If set to "true", the latests tags will not be updated.
+
+jobs:
+  deploy:
+    runs-on: ${{ inputs.machine-type }}
+    name: Deploy to Azure App Service
+    environment: ${{ inputs.slot-name }}
+    defaults:
+      run:
+        shell: pwsh
+    timeout-minutes: ${{ inputs.timeout-minutes }}
+    steps:
+      - name: Checkout
+        uses: Lombiq/GitHub-Actions/.github/actions/checkout@dev
+        with:
+          token: ${{ secrets.CHECKOUT_TOKEN }}
+
+      - name: Set up .NET
+        uses: Lombiq/GitHub-Actions/.github/actions/setup-dotnet@dev
+        with:
+          dotnet-version: ${{ inputs.dotnet-version }}
+
+      - name: Set up Node.js
+        uses: Lombiq/GitHub-Actions/.github/actions/setup-node@dev
+        with:
+          node-version: ${{ inputs.node-version }}
+
+      - name: Enable Node corepack
+        if: inputs.enable-corepack == 'true'
+        uses: Lombiq/GitHub-Actions/.github/actions/enable-corepack@dev
+
+      # If runtime is defined, we need to add "--runtime=" to the string so it will be a valid build/publish option. The
+      # "build-dotnet" action requires the additional switches to be in separate lines (even the parameters), but we can
+      # take advantage of the dotnet CLI tolerating the usage of the equal sign.
+      - name: Set up runtime option
+        id: set-up-runtime-option
+        if: ${{ inputs.runtime != '' }}
+        run: |
+          "runtime-option=--runtime=${{ inputs.runtime }}" >> $Env:GITHUB_OUTPUT
+
+      - name: Build and Static Code Analysis
+        uses: Lombiq/GitHub-Actions/.github/actions/build-dotnet@dev
+        with:
+          directory: ${{ inputs.build-directory }}
+          configuration: ${{ inputs.build-configuration }}
+          verbosity: ${{ inputs.build-verbosity }}
+          enable-code-analysis: ${{ inputs.build-enable-code-analysis }}
+          enable-nuget-caching: ${{ inputs.build-enable-nuget-caching }}
+          enable-npm-caching: ${{ inputs.build-enable-npm-caching }}
+          cache-version: ${{ inputs.build-cache-version }}
+          solution-or-project-path: ${{ inputs.web-project-path }}
+          # Arguments need to be separated into newlines: https://stackoverflow.com/a/59077879/16192320
+          dotnet-build-switches: |
+            --self-contained
+            ${{ inputs.self-contained }}
+            -p:PublishReadyToRun=${{ inputs.ready-to-run }}
+            ${{ steps.set-up-runtime-option.outputs.runtime-option }}
+            -p:AzureDeploy=true
+            -p:AzureDeployStage=build
+            -p:BuildVersionDisplay_BuildUrl=https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+      - name: Publish
+        run: |
+          dotnet publish (Get-ChildItem ${{ inputs.web-project-path }}).FullName `
+            --no-build `
+            --configuration ${{ inputs.build-configuration }} `
+            --output '${{ inputs.build-directory }}/Published' `
+            --verbosity ${{ inputs.build-verbosity }} `
+            --self-contained ${{ inputs.self-contained }} `
+            -p:PublishReadyToRun=${{ inputs.ready-to-run }} `
+            -p:AzureDeploy=true `
+            -p:AzureDeployStage=publish `
+            ${{ steps.set-up-runtime-option.outputs.runtime-option }} ${{ inputs.publish-arguments }}
+
+      - name: Compress Publish Package
+        run: |
+          Compress-Archive -Path .\Published\* -DestinationPath .\Published.zip
+
+      - name: Login to Azure
+        uses: Lombiq/GitHub-Actions/.github/actions/login-to-azure@dev
+        env:
+          AZURE_CLIENT_ID: ${{ secrets.AZURE_APP_SERVICE_DEPLOYMENT_SERVICE_PRINCIPAL_ID }}
+          AZURE_TENANT_ID: ${{ secrets.AZURE_APP_SERVICE_DEPLOYMENT_AZURE_TENANT_ID }}
+          AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_APP_SERVICE_DEPLOYMENT_AZURE_SUBSCRIPTION_ID }}
+
+      - name: Initialize PowerShell modules
+        uses: Lombiq/Infrastructure-Scripts/.github/actions/initialize@dev
+
+      - name: Stop Web App Slot
+        run: |
+          Stop-AzureWebAppSlot `
+            -ResourceGroupName ${{ inputs.resource-group-name }} `
+            -WebAppName ${{ inputs.app-name }} `
+            -SlotName ${{ inputs.slot-name }}
+
+      - name: Deploy to Azure App Service
+        uses: azure/webapps-deploy@e8d44d20a4b02f733385c4755aca052069eeb988 # v3.0.5
+        with:
+          app-name: ${{ inputs.app-name }}
+          slot-name: ${{ inputs.slot-name }}
+          publish-profile: ${{ secrets.AZURE_APP_SERVICE_PUBLISH_PROFILE }}
+          package: ${{ inputs.build-directory }}/Published.zip
+          # For docs on the below configs see https://github.com/Azure/webapps-deploy/releases/tag/v3.0.0.
+          type: zip
+          restart: false
+          clean: false
+
+      - name: Create Timestamp
+        id: create-timestamp
+        uses: Lombiq/GitHub-Actions/.github/actions/create-timestamp@dev
+
+      - name: Add Azure Application Insights Release Annotation
+        uses: Lombiq/GitHub-Actions/.github/actions/add-azure-application-insights-release-annotation@dev
+        with:
+          release-name: 'Deploy #${{ github.run_number }} to ${{ inputs.slot-name }}'
+          application-insights-resource-id: ${{ inputs.application-insights-resource-id }}
+          timestamp: ${{ steps.create-timestamp.outputs.timestamp }}
+
+      - name: Remove Old Latest Tags
+        if: ${{ inputs.skip-update-latest-tag != 'true' }}
+        uses: Lombiq/GitHub-Actions/.github/actions/remove-old-latest-tags@dev
+        with:
+          tag-prefix: ${{ inputs.tag-prefix }}
+
+      - name: Tag Latest and Add Timestamp Tag
+        if: ${{ inputs.skip-update-latest-tag != 'true' }}
+        run: |
+          git tag '${{ inputs.tag-prefix }}/latest'
+          git push origin '${{ inputs.tag-prefix }}/latest'
+          git tag '${{ inputs.tag-prefix }}/${{ steps.create-timestamp.outputs.timestamp-tag }}'
+          git push origin '${{ inputs.tag-prefix }}/${{ steps.create-timestamp.outputs.timestamp-tag }}'
+
+      - name: Start Web App Slot
+        run: |
+          Start-AzureWebAppSlot `
+            -ResourceGroupName ${{ inputs.resource-group-name }} `
+            -WebAppName ${{ inputs.app-name }} `
+            -SlotName ${{ inputs.slot-name }}
+
+      - name: Test Web App Slot
+        run: |
+          Test-AzureWebApp `
+            -ResourceGroupName ${{ inputs.resource-group-name }} `
+            -WebAppName ${{ inputs.app-name }} `
+            -SlotName ${{ inputs.slot-name }}
+
+      - name: Cancel Workflow on Failure
+        if: failure() && inputs.cancel-workflow-on-failure == 'true'
+        uses: Lombiq/GitHub-Actions/.github/actions/cancel-workflow@dev
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

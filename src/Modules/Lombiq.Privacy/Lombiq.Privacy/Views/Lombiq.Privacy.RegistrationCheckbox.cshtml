@@ -1,0 +1,13 @@
+@model PrivacyRegistrationConsentCheckboxViewModel
+
+<fieldset class="form-group" asp-validation-class-for="RegistrationCheckbox">
+    <div class="col-md-9">
+        <div class="form-check">
+            <input asp-for="RegistrationCheckbox" class="form-check-input" required />
+            <label class="form-label" asp-for="RegistrationCheckbox" />
+            <shape Type="Lombiq_Privacy_RegistrationCheckbox_Text" />
+            <br>
+            <span asp-validation-for="RegistrationCheckbox" class="text-danger"></span>
+        </div>
+    </div>
+</fieldset>

@@ -1,0 +1,79 @@
+{
+  // A simple setup recipe that sets up the site for playing with the Training Demo. For more info on how recipes work
+  // check out the official docs: https://docs.orchardcore.net/en/latest/docs/reference/modules/Recipes/.
+  "name": "Lombiq.TrainingDemo",
+  "displayName": "Training Demo",
+  "description": "Demo Orchard Core site with the Lombiq.TrainingDemo module enabled.",
+  "author": "Lombiq",
+  "website": "https://github.com/Lombiq/Orchard-Training-Demo-Module",
+  "version": "1.0",
+  "issetuprecipe": true,
+  "categories": [ "training" ],
+  "tags": [ "developer", "training" ],
+  "steps": [
+    {
+      "name": "feature",
+      "disable": [],
+      "enable": [
+        // Modules
+        // Don't include "OrchardCore.*" features here, instead add them to the Manifest.cs file as feature or module
+        // dependency. In this case they are in the "Lombiq.TrainingDemo" featrue's Dependencies. A module's
+        // dependencies are automatically enabled along with the module so you only need to enable your own modules.
+        "Lombiq.TrainingDemo",
+        "Lombiq.TrainingDemo.Middlewares",
+
+        // Themes
+        "TheTheme",
+        "TheAdmin",
+        "SafeMode"
+      ]
+    },
+    {
+      "name": "themes",
+      "admin": "TheAdmin",
+      "site": "TheTheme"
+    },
+    {
+      "name": "settings",
+      "HomeRoute": {
+        "Action": "Index",
+        "Controller": "Home",
+        "Area": "TheTheme"
+      },
+      "LayerSettings": {
+        "Zones": [ "Header", "Messages", "Footer" ]
+      },
+      "CacheMode": 1,
+      "AdminSettings": {
+        "DisplayDarkMode": true,
+        "DisplayMenuFilter": false,
+        "DisplayNewMenu": true,
+        "DisplayTitlesInTopbar": false
+      }
+    },
+    {
+      "name": "layers",
+      "Layers": [
+        {
+          "Name": "Always",
+          "Rule": "true",
+          "Description": "The widgets in this layer are displayed on any page of this site."
+        },
+        {
+          "Name": "Homepage",
+          "Rule": "isHomepage()",
+          "Description": "The widgets in this layer are only displayed on the homepage."
+        }
+      ]
+    },
+    {
+      "name": "recipes",
+      "Values": [
+        {
+          "executionid": "TrainingDemo.Workflows.Sample",
+          "name": "Lombiq.TrainingDemo.Workflows.Sample"
+        }
+      ]
+    }
+  ]
+}

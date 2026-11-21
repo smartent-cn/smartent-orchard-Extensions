@@ -1,0 +1,12 @@
+.vs/
+obj/
+bin/
+artifacts/
+wwwroot/
+node_modules/
+Lombiq.NodeJs.Extensions.Samples/wwwwNonDefaultCssFolder/
+Lombiq.NodeJs.Extensions.Samples/wwwCustomRoot/
+*.user
+.pnpm-debug.log
+.editorconfig
+/Lombiq.NodeJs.Extensions.Samples.NuGet/pnpm-lock.yaml

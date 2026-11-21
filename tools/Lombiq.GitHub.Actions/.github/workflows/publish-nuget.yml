@@ -1,0 +1,139 @@
+name: Publish to NuGet
+
+on:
+  workflow_call:
+    secrets:
+      CHECKOUT_TOKEN:
+        required: false
+        description: >
+          The GitHub token to authenticate checkout with. Pass in a GitHub personal access token if authenticated
+          submodules are used.
+      API_KEY:
+        required: true
+        description: >
+          The API key to authenticate with the NuGet server when pushing packages.
+      ENVIRONMENT_VARIABLES_JSON:
+        required: false
+        description: >
+          A JSON string containing key-value pairs of environment variables to be set. You can use this to pass in
+          arbitrary environment variables that can be used to e.g. customize the build or test execution.
+
+    inputs:
+      cancel-workflow-on-failure:
+        description: When set to "true", it will cancel the current workflow run with all jobs if this workflow fails.
+        type: string
+        default: 'true'
+      source:
+        type: string
+        default: https://api.nuget.org/v3/index.json
+        description: The NuGet server URL used by the `dotnet nuget push` command's `--source` argument.
+      verbosity:
+        type: string
+        default: minimal
+        description: The logging verbosity type used by the `dotnet` command.
+      dotnet-version:
+        type: string
+        default: 8.0.301
+        description: Version of the .NET SDK to set up.
+      node-version:
+        type: string
+        default: 22.16.0
+        description: >
+          The Node.js version. Can be a specific version number or other notations, see the documentation of
+          https://github.com/actions/setup-node.
+      timeout-minutes:
+        type: number
+        default: 15
+        description: Configuration for the timeout-minutes parameter of the workflow. 360 is GitHub's default.
+      # This is really only necessary to work around the https://github.com/nodejs/corepack/issues/612 corepack issue.
+      # Also see https://github.com/Lombiq/NodeJs-Extensions/issues/120.
+      enable-corepack:
+        type: string
+        default: 'false'
+        description: Indicates whether to enable Node.js corepack before the build.
+      dotnet-pack-ignore-warning:
+        type: string
+        default: ''
+        description: >
+          Additional warning codes for the `-p:NoWarn=` argument of `dotnet pack`. The items can be separated by any
+          whitespace, including newlines.
+      dotnet-pack-include-symbols:
+        type: string
+        default: 'true'
+        description: If set to "true", a symbol package will be created together with the NuGet package.
+      publish-version:
+        type: string
+        default: USE_GITHUB_REF_NAME
+        description: >
+          The desired NuGet package version used for publishing. If not specified, the GITHUB_REF_NAME environment variable
+          is used which is suitable if the version is derived from a git tag. If "USE_GITHUB_RUN_NUMBER" is used, then the
+          version is derived from the latest non-prerelease version tag and the current run number to create a preview
+          version (e.g. "1.0.1-preview-1" if the current version is 1.0.0). With "USE_NEXT_PATCH_VERSION" the version is
+          derived from the latest non-prerelease version tag to create the next patch version (e.g. "1.0.1" if the current
+          version is 1.0.0).
+      nuget-artifact-retention-days:
+        type: string
+        default: '14'
+        description: >
+          Duration in days after which the artifact of the NuGet package publishing (if any) will expire. See
+          https://github.com/actions/upload-artifact#retention-period for more details. Note that this only affects the
+          retention of the workflow run's artifact, not the artifacts attached to the release created on GitHub; those
+          will remain indefinitely.
+      add-source-link-package:
+        type: string
+        default: 'true'
+        description: If set to "true", the Microsoft.SourceLink.GitHub NuGet package is added to the projects.
+      dry-run:
+        type: string
+        default: 'false'
+        description: |
+          If set to "true", the action will perform all package creation and validation steps without actually publishing
+          the NuGet package or creating a GitHub release.
+
+jobs:
+  publish-nuget:
+    name: Publish to NuGet
+    runs-on: ubuntu-24.04
+    timeout-minutes: ${{ inputs.timeout-minutes }}
+    steps:
+      - name: Set Environment Variables
+        uses: Lombiq/GitHub-Actions/.github/actions/set-environment-variables@dev
+        env:
+          ENVIRONMENT_VARIABLES_JSON: ${{ secrets.ENVIRONMENT_VARIABLES_JSON }}
+
+      - name: Checkout
+        uses: Lombiq/GitHub-Actions/.github/actions/checkout@dev
+        with:
+          token: ${{ secrets.CHECKOUT_TOKEN }}
+
+      - name: Set up .NET
+        uses: Lombiq/GitHub-Actions/.github/actions/setup-dotnet@dev
+        with:
+          dotnet-version: ${{ inputs.dotnet-version }}
+
+      - name: Set up Node.js
+        uses: Lombiq/GitHub-Actions/.github/actions/setup-node@dev
+        with:
+          node-version: ${{ inputs.node-version }}
+
+      - name: Publish to NuGet
+        uses: Lombiq/GitHub-Actions/.github/actions/publish-nuget@dev
+        with:
+          source: ${{ inputs.source }}
+          verbosity: ${{ inputs.verbosity }}
+          enable-corepack: ${{ inputs.enable-corepack }}
+          dotnet-pack-ignore-warning: ${{ inputs.dotnet-pack-ignore-warning }}
+          dotnet-pack-include-symbols: ${{ inputs.dotnet-pack-include-symbols }}
+          publish-version: ${{ inputs.publish-version }}
+          nuget-artifact-retention-days: ${{ inputs.nuget-artifact-retention-days }}
+          add-source-link-package: ${{ inputs.add-source-link-package }}
+          dry-run: ${{ inputs.dry-run }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          API_KEY: ${{ secrets.API_KEY }}
+
+      - name: Cancel Workflow on Failure
+        if: failure() && inputs.cancel-workflow-on-failure == 'true'
+        uses: Lombiq/GitHub-Actions/.github/actions/cancel-workflow@dev
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

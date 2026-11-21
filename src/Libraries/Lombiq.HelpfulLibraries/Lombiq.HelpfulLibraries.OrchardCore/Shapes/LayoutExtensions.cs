@@ -1,0 +1,29 @@
+using OrchardCore.DisplayManagement;
+using OrchardCore.DisplayManagement.Layout;
+using System.Threading.Tasks;
+
+namespace Lombiq.HelpfulLibraries.OrchardCore.Contents;
+
+public static class LayoutExtensions
+{
+    /// <summary>
+    /// Adds the <paramref name="shape"/> to the zone called <paramref name="zoneName"/>, optionally at the given
+    /// <paramref name="position"/>.
+    /// </summary>
+    public static async Task AddShapeToZoneAsync(
+        this ILayoutAccessor layoutAccessor,
+        string zoneName,
+        IShape shape,
+        string position = "")
+    {
+        var layout = await layoutAccessor.GetLayoutAsync();
+        var zone = layout.Zones[zoneName];
+        if (zone is not null and not PositionWrapper) await zone.AddAsync(shape, position);
+    }
+
+    /// <summary>
+    /// Adds the specified <paramref name="shape"/> to the <c>SideMenu</c> zone.
+    /// </summary>
+    public static Task AddShapeToSideMenuAsync(this ILayoutAccessor layoutAccessor, IShape shape) =>
+        AddShapeToZoneAsync(layoutAccessor, "SideMenu", shape);
+}

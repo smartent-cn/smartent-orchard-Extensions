@@ -1,0 +1,30 @@
+// --------------------------------------------------------------------------------------------------------------------
+// CSS helper classes
+// --------------------------------------------------------------------------------------------------------------------
+
+@import "mixins";
+
+@if variable-exists(debug-mode) and $debug-mode {
+    * {
+        // Required to override existing styles for debugging.
+        // stylelint-disable declaration-no-important
+        background: #000 !important;
+        color: #0f0 !important;
+        outline: solid #f00 1px !important;
+        // stylelint-enable declaration-no-important
+    }
+}
+
+.with-anchor::before {
+    content: "";
+    display: block;
+    position: relative;
+    width: 0;
+    height: 15px;
+    margin-top: 15px;
+
+    @include media-breakpoint-up(md) {
+        height: 45px;
+        margin-top: -45px;
+    }
+}

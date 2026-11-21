@@ -1,0 +1,102 @@
+name: Post Pull Request Checks Automation
+
+on:
+  workflow_call:
+    secrets:
+      # We can't access org secrets here so they need to be passed in.
+      MERGE_TOKEN:
+        required: false
+        description: >
+          An authentication token, like a personal access token (PAT), that provides write access to the repository and
+          can be used to merge the pull request. This is necessary because when a pull request is merged while being
+          authenticated with the default GITHUB_TOKEN of a workflow run, then the merge won't trigger other workflows
+          (like a build workflow on the target branch). This is an intentional limitation, see:
+          https://docs.github.com/en/actions/using-workflows/triggering-a-workflow#triggering-a-workflow-from-a-workflow.
+          Thus, we need to use an alternative authentication token. See
+          https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
+          for info on how to create PATs; you'll need one with the "repo" scope. Check out
+          https://github.com/peter-evans/create-pull-request/blob/main/docs/concepts-guidelines.md#triggering-further-workflow-runs
+          for instructions on what other tokens you can use.
+      JIRA_BASE_URL:
+        required: true
+        description: >
+          Configure as explained under
+          https://github.com/Lombiq/GitHub-Actions/blob/dev/Docs/Workflows/Productivity/CreateJiraIssuesForCommunityActivities.md.
+      JIRA_USER_EMAIL:
+        required: true
+        description: >
+          Configure as explained under
+          https://github.com/Lombiq/GitHub-Actions/blob/dev/Docs/Workflows/Productivity/CreateJiraIssuesForCommunityActivities.md.
+      JIRA_API_TOKEN:
+        required: true
+        description: >
+          Configure as explained under
+          https://github.com/Lombiq/GitHub-Actions/blob/dev/Docs/Workflows/Productivity/CreateJiraIssuesForCommunityActivities.md.
+
+    inputs:
+      merge-method:
+        description: >
+          The merge strategy to be used for the auto-merge-pull-request action. See the API documentation for
+          "merge_method" for applicable values:
+          https://docs.github.com/en/rest/pulls/pulls?apiVersion=2022-11-28#merge-a-pull-request
+        type: string
+        default: merge
+      timeout-minutes:
+        type: number
+        # Sometimes the job is slow to start, so we have to factor in that.
+        default: 3
+        description: Configuration for the timeout-minutes parameter of the workflow.
+      run-only-latest-workflow:
+        type: string
+        description: Run only if the current workflow is the most recent workflow.
+        default: true
+
+jobs:
+  post-pull-request-checks-automation:
+    name: Post Pull Request Checks Automation
+    runs-on: ubuntu-24.04
+    timeout-minutes: ${{ inputs.timeout-minutes }}
+    steps:
+      - name: Check Further Steps Should Run
+        if: inputs.run-only-latest-workflow == 'true'
+        uses: Lombiq/GitHub-Actions/.github/actions/check-current-workflow-is-latest@dev
+        id: check-steps-should-run
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          current-workflow-id: ${{ github.run_id }}
+
+      - name: Set Merge Token
+        if: steps.check-steps-should-run.outputs.is-latest != 'false'
+        shell: pwsh
+        env:
+          MERGE_TOKEN: ${{ secrets.MERGE_TOKEN }}
+        run: |
+          $mergeToken = $Env:MERGE_TOKEN ? $Env:MERGE_TOKEN : "${{ secrets.GITHUB_TOKEN }}"
+          # This could use Set-GitHubEnv but then we'd need to turn this into an action.
+          "MERGE_TOKEN=$mergeToken" >> $Env:GITHUB_ENV
+
+      - name: Automatically Merge Pull Request
+        if: steps.check-steps-should-run.outputs.is-latest != 'false'
+        uses: Lombiq/GitHub-Actions/.github/actions/auto-merge-pull-request@dev
+        env:
+          GITHUB_TOKEN: ${{ env.MERGE_TOKEN }}
+        with:
+          merge-method: ${{ inputs.merge-method }}
+
+      - name: Automatically Transition Jira issue
+        if: steps.check-steps-should-run.outputs.is-latest != 'false'
+        uses: Lombiq/GitHub-Actions/.github/actions/auto-transition-jira-issue@dev
+        env:
+          GITHUB_TOKEN: ${{ env.MERGE_TOKEN }}
+          JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
+          JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
+          JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+
+      - name: Remove Label
+        if: steps.check-steps-should-run.outputs.is-latest != 'false'
+        uses: Lombiq/GitHub-Actions/.github/actions/add-remove-label@dev
+        with:
+          token: ${{ env.MERGE_TOKEN }}
+          labels: merge-and-resolve-jira-issue-if-checks-succeed
+          type: remove

@@ -1,0 +1,15 @@
+.vs/
+.idea/
+.vscode/
+obj/
+bin/
+artifacts/
+wwwroot/
+node_modules/
+*.user
+.pnpm-debug.log
+.editorconfig
+
+# Mac
+.DS_Store
+

@@ -1,0 +1,64 @@
+@using Lombiq.HelpfulLibraries.Common.Utilities
+@using Microsoft.Extensions.Configuration
+@using OrchardCore.DisplayManagement
+@using System.Collections
+@using System.Text.Json.Nodes
+
+@inject IConfiguration Configuration
+
+<style asp-name="@ResourceNames.SlickTheme"></style>
+<script asp-name="@ResourceNames.Slick" at="Foot"></script>
+<script asp-name="@ResourceNames.LombiqSlickCarousel" at="Foot"></script>
+
+@{
+    if ((Model.Shapes as IEnumerable)?.CastWhere<IShape>().ToList() is not { Count: > 0 } shapes)
+    {
+        return;
+    }
+
+    var carouselId = $"carousel-{Guid.NewGuid():N}";
+    var additionalClasses = $"{string.Join(' ', (Model as IShape)?.Classes ?? [])} {Model.AdditionalClasses}"
+        .Split()
+        .WhereNot(string.IsNullOrEmpty);
+
+    var mergeSettings =
+        Model.MergeSettings is string { Length: > 0 } settingsJson &&
+        JsonHelpers.TryParse(settingsJson, out var parsedJson) &&
+        parsedJson is JsonObject parsedJsonObject
+            ? parsedJsonObject
+            : new JsonObject();
+
+    // Always disable autoplay during UI testing to prevent flakiness.
+    var isUiTesting = Configuration.IsUITesting();
+    if (isUiTesting)
+    {
+        mergeSettings["autoplay"] = false;
+    }
+}
+
+<div id="@carouselId"
+     class="slickCarousel @string.Join(' ', additionalClasses)"
+     data-merge-settings="@mergeSettings.ToJsonString()">
+
+    @if (isUiTesting)
+    {
+        // Slick initiates elements with empty attributes (see https://github.com/kenwheeler/slick/issues/4296) and
+        // even though we remove them in Slick's "init" event, sometimes that happens after HTML validation so we have
+        // to disable these rules anyway.
+        <!-- [html-validate-disable attribute-allowed-values, valid-id] -->
+    }
+    <div class="slickCarousel__carousel">
+        @foreach (var shape in shapes)
+        {
+            <div class="slickCarousel__item">
+                @await DisplayAsync(shape)
+            </div>
+        }
+    </div>
+    @if (isUiTesting)
+    {
+        <!-- [html-validate-enable attribute-allowed-values, valid-id] -->
+    }
+
+    <div class="slickCarousel__arrows"></div>
+</div>

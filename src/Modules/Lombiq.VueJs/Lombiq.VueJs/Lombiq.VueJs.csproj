@@ -1,0 +1,94 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="..\..\..\Utilities\Lombiq.NodeJs.Extensions\Lombiq.NodeJs.Extensions\Lombiq.NodeJs.Extensions.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+    <DefaultItemExcludes>$(DefaultItemExcludes);.git*;node_modules\**</DefaultItemExcludes>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(NuGetBuild)' != 'true'">
+    <SourceGeneratorLocation>$(SolutionDir)src\Libraries\Lombiq.HelpfulLibraries\Lombiq.HelpfulLibraries.SourceGenerators\bin\Debug\netstandard2.0\Lombiq.HelpfulLibraries.SourceGenerators.dll</SourceGeneratorLocation>
+    <SourceGeneratorLocation Condition=" '$(Configuration)' != 'Debug' ">
+      $(SolutionDir)src\Libraries\Lombiq.HelpfulLibraries\Lombiq.HelpfulLibraries.SourceGenerators\bin\Release\netstandard2.0\Lombiq.HelpfulLibraries.SourceGenerators.dll
+    </SourceGeneratorLocation>
+  </PropertyGroup>
+
+  <Target Name="CustomBeforeCompile" BeforeTargets="Compile" Condition="'$(NuGetBuild)' != 'true'">
+    <MSBuild Condition="!Exists('$(SourceGeneratorLocation)')" Projects="..\..\..\Libraries\Lombiq.HelpfulLibraries\Lombiq.HelpfulLibraries.SourceGenerators\Lombiq.HelpfulLibraries.SourceGenerators.csproj" />
+  </Target>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <Title>Lombiq Vue.js module for Orchard Core</Title>
+    <Authors>Lombiq Technologies</Authors>
+    <Copyright>Copyright © 2019, Lombiq Technologies Ltd.</Copyright>
+    <Description>Lombiq Vue.js module for Orchard Core: Orchard Core module that contains Vue.js and commonly used Vue.js components to be used in other Vue.js apps as dependencies. Provides extensibility to create Vue.js component templates as Orchard Core shapes making them able to override in themes or modules.</Description>
+    <PackageIcon>NuGetIcon.png</PackageIcon>
+    <PackageTags>OrchardCore;Lombiq;AspNetCore;Vue.js</PackageTags>
+    <RepositoryUrl>https://github.com/Lombiq/Orchard-Vue.js</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/Lombiq/Orchard-Vue.js</PackageProjectUrl>
+    <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="../Readme.md" Link="Readme.md" />
+    <None Include="package.json" Pack="true" PackagePath="" />
+    <None Include="NuGetIcon.png" Pack="true" PackagePath="" />
+    <None Include="build/**" Pack="true" PackagePath="build/" />
+    <None Include="*.props" Pack="true" PackagePath="" />
+    <None Include="*.targets" Pack="true" PackagePath="" />
+    <None Include=".npmrc" Pack="true" PackagePath="" />
+    <None Include="Assets/**" Pack="true" PackagePath="Assets/" />
+    <None Remove="node_modules/**" />
+
+    <!-- Necessary to include the reusabe SFCs in this module. For other modules that consume Lombiq.VueJs this is
+         handled by the Lombiq.VueJs.props file. -->
+    <EmbeddedResource Include="Assets\Scripts\VueComponents\*.vue" />
+
+    <!-- Necessary to avoid NU5118 due to duplicate build/Lombiq.VueJs.props files. The referenced module
+         "OrchardCore.Module.Targets" tries to generate that file from the Package.Build.props mentioned below. -->
+    <None Remove="$(NuGetPackageRoot)orchardcore.module.targets\*\build\Package.Build.props" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="OrchardCore.DisplayManagement" Version="2.1.0" />
+    <PackageReference Include="OrchardCore.Module.Targets" Version="2.1.0" />
+    <PackageReference Include="OrchardCore.ResourceManagement" Version="2.1.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(NuGetBuild)' != 'true'">
+    <ProjectReference Include="..\..\..\Libraries\Lombiq.HelpfulLibraries\Lombiq.HelpfulLibraries.OrchardCore\Lombiq.HelpfulLibraries.OrchardCore.csproj" />
+    <ProjectReference Include="..\..\..\Utilities\Lombiq.NodeJs.Extensions\Lombiq.NodeJs.Extensions\Lombiq.NodeJs.Extensions.csproj" />
+    <ProjectReference Include="..\..\..\Libraries\Lombiq.HelpfulLibraries\Lombiq.HelpfulLibraries.Attributes\Lombiq.HelpfulLibraries.Attributes.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="true" />
+    <ProjectReference Include="..\..\..\Libraries\Lombiq.HelpfulLibraries\Lombiq.HelpfulLibraries.SourceGenerators\Lombiq.HelpfulLibraries.SourceGenerators.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(NuGetBuild)' == 'true'">
+    <PackageReference Include="Lombiq.HelpfulLibraries.OrchardCore" Version="12.2.0" />
+    <PackageReference Include="Lombiq.NodeJs.Extensions" Version="2.2.0" />
+    <PackageReference Include="Lombiq.HelpfulLibraries.SourceGenerators" Version="12.2.0" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+    <PackageReference Include="Lombiq.HelpfulLibraries.Attributes" Version="12.2.0" OutputItemType="Analyzer" ReferenceOutputAssembly="true" />
+  </ItemGroup>
+
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="..\..\..\Utilities\Lombiq.NodeJs.Extensions\Lombiq.NodeJs.Extensions\Lombiq.NodeJs.Extensions.targets" />
+
+  <!-- Execute Lombiq.NodeJs separately, to avoid inheriting these instructions in projects that consume Lombiq.VueJs. -->
+  <Target Name="BuildLocalScripts" AfterTargets="NpmInstall">
+    <Exec Command="npm explore nodejs-extensions -- pnpm build" />
+  </Target>
+
+  <ItemGroup>
+    <AdditionalFiles Include="package.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\renovate.json5">
+      <Link>renovate.json5</Link>
+    </None>
+  </ItemGroup>
+</Project>

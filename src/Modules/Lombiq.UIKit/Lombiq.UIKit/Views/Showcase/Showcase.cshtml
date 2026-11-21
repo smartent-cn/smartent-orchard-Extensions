@@ -1,0 +1,366 @@
+@using Microsoft.AspNetCore.Html
+@using System.Text.Json
+@model ShowcaseViewModel
+
+@{
+    var placeholderText = T["Placeholder"];
+    var labelText = T["Label"];
+
+    var dropdownData = new List<DropdownItem>
+    {
+        new DropdownItem{ Text = T["Text 1"], DataState = true, DataClass = "btn-success"},
+        new DropdownItem{ Text = T["Long Text 2"], DataState = false, DataClass = "btn-danger"},
+    };
+
+    var dropDownData2 = new List<DropdownItem>
+    {
+        new DropdownItem{ Text = T["Text 1"], DataState = Status.Approved, DataClass = "btn-success"},
+        new DropdownItem{ Text = T["Text 2"], DataState = Status.Denied, DataClass = "btn-danger"},
+        new DropdownItem{ Text = T["Long Text 2"], DataState = Status.Pending, DataClass = "btn-warning"},
+    };
+}
+
+<style asp-name="@ResourceNames.LombiqShowcaseStyle"></style>
+<zone Name="Title"><h1>@RenderTitleSegments(T["UI Kit showcase"])</h1></zone>
+<div class="showcaseContainer">
+    <div class="showcaseContainer__item">
+
+        <h1>@T["Textbox:"]</h1>
+
+        <h2>@T["No label"]</h2>
+        <editor type="Textbox"
+                for="@Model.TextBox1"
+                labelPosition="@LabelPosition.None"
+                placeholder="@placeholderText" />
+
+        <editor type="Textbox"
+                for="@Model.TextBox2"
+                labelPosition="@LabelPosition.None"
+                placeholder="@placeholderText" />
+
+        <editor type="Textbox"
+                for="@Model.TextBox3"
+                labelPosition="@LabelPosition.None"
+                IconClasses="fab fa-linkedin"
+                placeholder="@placeholderText" />
+
+        <editor type="Textbox"
+                for="@Model.TextBox1Disabled"
+                labelPosition="@LabelPosition.None"
+                iconClasses="fab fa-facebook-square"
+                placeholder="@placeholderText" />
+
+        <editor type="Textbox"
+                for="@Model.TextBox2Disabled"
+                labelPosition="@LabelPosition.None"
+                placeholder="@placeholderText"
+                Disabled="true" />
+
+        <editor type="Textbox"
+                for="@Model.TextBox3Disabled"
+                labelPosition="@LabelPosition.None"
+                placeholder="@placeholderText"
+                Disabled="true" />
+
+        <h2>@T["Label on top"]</h2>
+        <editor type="Textbox"
+                for="@Model.TextBox4"
+                label="@labelText"
+                labelPosition="@LabelPosition.Top"
+                placeholder="@placeholderText" />
+
+        <editor type="Textbox"
+                for="@Model.TextBox5"
+                label="@labelText"
+                labelPosition="@LabelPosition.Top"
+                placeholder="@placeholderText" />
+
+        <editor type="Textbox"
+                for="@Model.TextBox4Disabled"
+                label="@labelText"
+                labelPosition="@LabelPosition.Top"
+                placeholder="@placeholderText"
+                disabled="true" />
+
+        <h2>@T["Label inside border"]</h2>
+        <editor type="Textbox"
+                for="@Model.TextBox6"
+                label="@labelText"
+                labelPosition="@LabelPosition.Border"
+                placeholder="@placeholderText" />
+
+        <editor type="Textbox"
+                for="@Model.TextBox7"
+                label="@labelText"
+                labelPosition="@LabelPosition.Border"
+                placeholder="@placeholderText" />
+
+        <editor type="Textbox"
+                for="@Model.TextBox5Disabled"
+                label="@labelText"
+                labelPosition="@LabelPosition.Border"
+                placeholder="@placeholderText"
+                disabled="true" />
+    </div>
+    <div class="showcaseContainer__item">
+
+        <h1>@T["Checkbox:"]</h1>
+
+        <h2>@T["Label on right"]</h2>
+        <editor Type="Checkbox"
+                for="@Model.CheckboxFalse1"
+                label="@T["Default false, required"]" />
+
+        <editor Type="Checkbox"
+                for="@Model.CheckboxFalse2"
+                label="@T["Default false"]" />
+
+        <editor Type="Checkbox"
+                for="@Model.CheckboxFalse2Disabled"
+                label="@T["Default false"]"
+                Disabled="true" />
+
+        <h2>@T["Label on left"]</h2>
+        <editor Type="Checkbox"
+                for="@Model.CheckboxTrue1"
+                label="@T["Default true, required"]"
+                labelPosition="@LabelPosition.Left" />
+
+        <editor Type="Checkbox"
+                for="@Model.CheckboxTrue2"
+                label="@T["Default true"]"
+                labelPosition="@LabelPosition.Left" />
+
+        <editor Type="Checkbox"
+                for="@Model.CheckboxTrue2Disabled"
+                label="@T["Default true"]"
+                labelPosition="@LabelPosition.Left"
+                Disabled="true" />
+
+    </div>
+    <div class="showcaseContainer__item">
+        <h1>@T["Custom classes:"]</h1>
+        <h2>@T["Label classes"]</h2>
+
+        <editor type="Textbox"
+                for="@Model.TextBox8"
+                label="@labelText"
+                labelPosition="@LabelPosition.Top"
+                LabelClasses="nonDefaultLabelClass customLabelClass" />
+
+        <editor Type="Checkbox"
+                for="@Model.CheckboxFalse3"
+                label="@T["Default false, required"]"
+                LabelPosition="@LabelPosition.Right"
+                LabelClasses="nonDefaultLabelClass customLabelClass" />
+
+        <h2>@T["Input classes"]</h2>
+
+        <editor type="Textbox"
+                for="@Model.TextBox9"
+                label="@labelText"
+                labelPosition="@LabelPosition.Top"
+                InputClasses="nonDefaultInputClass customInputClass" />
+
+        <editor Type="Checkbox"
+                for="@Model.CheckboxFalse4"
+                label="@T["Default false, required"]"
+                LabelPosition="@LabelPosition.Right"
+                InputClasses="nonDefaultInputClass customInputClass" />
+
+    </div>
+    <div class="showcaseContainer__item">
+        <h1>@T["Hint positioning:"]</h1>
+
+        <editor type="Textbox"
+                for="@Model.TextBox10"
+                label="@labelText"
+                labelPosition="@LabelPosition.Top"
+                Hint="@T["This is a hint positioned before the input."]"
+                HintPosition="@HintPosition.BeforeInput" />
+
+        <editor Type="Textbox"
+                for="@Model.TextBox11"
+                label="@labelText"
+                labelPosition="@LabelPosition.Border"
+                Hint="@T["This is a hint positioned after the input."]"
+                HintPosition="@HintPosition.AfterInput" />
+    </div>
+    <div class="showcaseContainer__item">
+        <h1>@T["Bootstrap dropdown:"]</h1>
+
+        <h2>@T["Hide selected from list"]</h2>
+        <editor type="Dropdown"
+                for="@Model.Dropdown"
+                DropdownContainerId="downContainerId2"
+                ButtonContainerId="buttonContainerId2"
+                ButtonId="buttonId2"
+                DropdownData="@dropdownData"
+                Label="@T["Dropdown 1"]"
+                HideSelectedFromDropdownList="true" />
+
+        <editor type="Dropdown"
+                for="@Model.DropdownDisabled"
+                DropdownContainerId="downContainerId0"
+                ButtonContainerId="buttonContainerId0"
+                ButtonId="buttonId0"
+                DropdownData="@dropdownData"
+                Label="@T["Dropdown 1"]"
+                HideSelectedFromDropdownList="true"
+                Disabled="true" />
+
+        <h2>@T["Don't hide selected from list"]</h2>
+        <editor type="Dropdown"
+                for="@Model.Status"
+                DropdownContainerId="downContainerId1"
+                ButtonContainerId="buttonContainerId1"
+                ButtonId="buttonId1"
+                Label="@T["Dropdown 2"]"
+                DropdownData="@dropDownData2" />
+
+        <editor type="Dropdown"
+                for="@Model.StatusDisabled"
+                DropdownContainerId="downContainerId3"
+                ButtonContainerId="buttonContainerId3"
+                ButtonId="buttonId3"
+                Label="@T["Dropdown 2"]"
+                DropdownData="@dropDownData2"
+                Disabled="true" />
+    </div>
+    <div class="showcaseContainer__item">
+        <h1>@T["Bootstrap controls:"]</h1>
+
+        <h2>@T["Accordion"]</h2>
+        @{
+            var bootstrapAccordionChildren = new BootstrapAccordionItem[]
+            {
+                new () { Title = T["First"], Shape = await New.DateTime(Utc: DateTime.UtcNow) },
+                new () { Title = T["Second"], Shape = await New.DateTime(Utc: DateTime.UtcNow.AddDays(1)) },
+                new () { Title = T["Third"], Shape = await New.DateTime(Utc: DateTime.UtcNow.AddDays(2)) },
+            };
+        }
+        <shape type="BootstrapAccordion"
+               AdditionalClasses="bootstrapAccordionSample"
+               prop-Children="@bootstrapAccordionChildren"></shape>
+
+        <h2>@T["Split Button"]</h2>
+        @{
+            var bootstrapSplitButtonOptions = new[]
+            {
+                (Url: "/", Text: T["Home"].Value),
+                (Url: "/Admin", Text: T["Admin"].Value),
+            };
+        }
+        <bootstrap-split-button options="@bootstrapSplitButtonOptions"
+                                type="primary"
+                                text="@T["Split Button"].Value"
+                                class="bootstrapSplitButtonSample"
+                                button-classes="bootstrapSplitButtonSample__mainButton"
+                                toggle-classes="bootstrapSplitButtonSample__toggleButton"
+                                dropdown-classes="bootstrapSplitButtonSample__dropdown" />
+
+        <h2>@T["Card"]</h2>
+
+        @{
+            // This array has mixed type contents
+            var links = new object[] { ("~/", T["Home"]), ("https://orchardcore.net/", "Orchard Core") };
+            var list = new object[] { "Raw Text", new HtmlString("<a href=\"https://lombiq.com/\">Html Content</a>") };
+        }
+
+        @* Normally the card takes up all horizontal space, but you can use Bootstrap's grid markup to manage the layout
+           (see https://getbootstrap.com/docs/5.3/components/card/#using-grid-markup). *@
+        <div class="row">
+            <div class="col-sm-6 mb-3 mb-sm-0">
+                <shape type="BootstrapCard"
+                       Image="~/Lombiq.UIKit/lombiq-logo-small.svg"
+                       prop-Alt="@T["Top Image"]"
+                       prop-Title="@T["Hello World!"]"
+                       prop-Subtitle="@T["Do you like this card?"]"
+                       prop-Text="@T["An example line of text"]"
+                       prop-Links="@links"
+                       prop-List="@list">
+                    <metadata>
+                        <add-property name="Content">
+                            <h6>@T["Some complicated HTML"]</h6>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididut
+                                ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ull
+                                amco laboris nisi ut aliquip ex ea commodo consequat.
+                            </p>
+                        </add-property>
+                        <add-property name="Footer">
+                            <h6>@T["Excerpt from the English OC Documentation."]</h6>
+                            <blockquote>
+                                Properties can be passed to a shape by adding attributes to the shape tag helper. But
+                                you can also use the <code>&lt;add-property&gt;</code> tag helper inside the
+                                <code>&lt;shape&gt;</code>. This even lets you pass Razor code as properties with the
+                                <code>IHtmlContent</code> value, if you omit the `value` attribute. Something that can't
+                                be easily done otherwise.
+                            </blockquote>
+                        </add-property>
+                    </metadata>
+                </shape>
+            </div>
+
+            <div class="col-sm-6">
+                @* This instance has the image below due to the prop-ImageBottom="true" property. *@
+                <shape type="BootstrapCard"
+                       prop-ImageBottom="true"
+                       Image="~/Lombiq.UIKit/lombiq-logo-small.svg"
+                       prop-Alt="@T["Bottom Image"]"
+                       prop-Title="@T["Hello World!"]"
+                       prop-Subtitle="@T["Do you like this card?"]"
+                       prop-Text="@T["An example line of text"]"
+                       prop-Links="@links"
+                       prop-List="@list">
+                    <metadata>
+                        <add-property name="Content">
+                            <h6>@T["Some complicated HTML"]</h6>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididut
+                                ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ull
+                                amco laboris nisi ut aliquip ex ea commodo consequat.
+                            </p>
+                        </add-property>
+                        <add-property name="Footer">
+                            <h6>@T["Excerpt from the English OC Documentation."]</h6>
+                            <blockquote>
+                                Properties can be passed to a shape by adding attributes to the shape tag helper. But
+                                you can also use the <code>&lt;add-property&gt;</code> tag helper inside the
+                                <code>&lt;shape&gt;</code>. This even lets you pass Razor code as properties with the
+                                <code>IHtmlContent</code> value, if you omit the `value` attribute. Something that can't
+                                be easily done otherwise.
+                            </blockquote>
+                        </add-property>
+                        @* You can add Bootstrap utiltiy classes or any other class to aid in styling. *@
+                        <add-class name="text-center"/>
+                    </metadata>
+                </shape>
+            </div>
+        </div>
+
+    </div>
+    <div class="showcaseContainer__item">
+        <h1>@T["Slick carousel:"]</h1>
+
+        @{
+            var carouselItems = new[]
+            {
+                await New.Message(Message: "Item 1", Type: "Information"),
+                await New.Message(Message: "Item 2", Type: "Information"),
+                await New.Message(Message: "Item 3", Type: "Information"),
+                await New.Message(Message: "Item 4", Type: "Information"),
+                await New.Message(Message: "Item 5", Type: "Information"),
+                await New.Message(Message: "Item 6", Type: "Information"),
+            };
+
+            var carouselSettings = JsonSerializer.Serialize(new { slidesToShow = 4 });
+        }
+
+        <shape type="SlickCarousel"
+               AdditionalClasses="slickCarouselSample"
+               prop-Shapes="@carouselItems"
+               prop-MergeSettings="@carouselSettings"></shape>
+
+    </div>
+</div>

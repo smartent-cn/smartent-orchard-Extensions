@@ -1,0 +1,43 @@
+using Lombiq.Tests.UI.Extensions;
+using Lombiq.Tests.UI.Samples.Extensions;
+using System.Threading.Tasks;
+using Xunit;
+
+namespace Lombiq.Tests.UI.Samples.Tests;
+
+// By default, tests are executed with SQLite. However, you can also run them against a full SQL Server instance and
+// tests will get their DBs there (if you run your app with SQL Server in production then it's recommended to also test
+// with it, should there be any incompatibilities). Note that for this, you need an SQL Server instance running; by
+// default, this will be attempted under the default localhost server name. If you're using anything else, check out the
+// settings in SqlServerConfiguration and Docs/Configuration.md, especially if you use Docker.
+public class SqlServerTests : UITestBase
+{
+    public SqlServerTests(ITestOutputHelper testOutputHelper)
+        : base(testOutputHelper)
+    {
+    }
+
+    // Here we have basically two of the same tests as in BasicTests but now we're using SQL Server as the site's
+    // database. If they still work and there are no errors in the log then the app works with SQL Server too.
+    [Fact]
+    public Task AnonymousHomePageShouldExistWithSqlServer() =>
+        ExecuteTestAfterSetupAsync(
+            context => context.CheckIfAnonymousHomePageExistsAsync(),
+            // Note the configuration! We could also set this globally in UITestBase.
+            configuration => configuration.UseSqlServer = true);
+
+    [Fact]
+    public Task TogglingFeaturesShouldWorkWithSqlServer() =>
+        ExecuteTestAfterSetupAsync(
+            context => context.ExecuteAndAssertTestFeatureToggleAsync(),
+            configuration =>
+            {
+                configuration.UseSqlServer = true;
+
+                configuration.ResponseLogFilter = e =>
+                    e.IsNonSuccessResponseAndNotExpectedNotFoundResponse(ShortcutsUITestContextExtensions.FeatureToggleTestBenchUrl);
+            });
+}
+
+// END OF TRAINING SECTION: Using SQL Server.
+// NEXT STATION: Head over to Tests/AzureBlobStorageTests.cs.

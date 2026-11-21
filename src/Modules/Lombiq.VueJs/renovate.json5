@@ -1,0 +1,28 @@
+{
+    '$schema': 'https://docs.renovatebot.com/renovate-schema.json',
+    extends: [
+        'github>Lombiq/Open-Source-Orchard-Core-Extensions:renovate-osoce-orchard-core-submodule.json5',
+    ],
+    packageRules: [
+        {
+            groupName: 'Vue',
+            matchPackageNames: [
+                'vue*',
+            ],
+        },
+        {
+            groupName: 'Rollup',
+            matchPackageNames: [
+                '/.*rollup.*/',
+            ],
+        },
+        // Can't be updated until breaking changes are fixed in https://github.com/Lombiq/NodeJs-Extensions/issues/116.
+        {
+            groupName: 'ESLint',
+            matchPackageNames: [
+                'eslint*',
+            ],
+            enabled: false,
+        },
+    ],
+}
