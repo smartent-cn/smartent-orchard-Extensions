@@ -4,7 +4,7 @@
   </PropertyGroup>
   
   <ItemGroup Condition="'$(FromNuGet)' != 'true'">
-    <ProjectReference Include="$(LombiqSolutionRootPath)\test\Lombiq.UITestingToolbox\Lombiq.Tests.UI\Lombiq.Tests.UI.csproj" />
+    <ProjectReference Include="$(LombiqSolutionRootPath)/test/Lombiq.UITestingToolbox/Lombiq.Tests.UI/Lombiq.Tests.UI.csproj" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(FromNuGet)' == 'true'">

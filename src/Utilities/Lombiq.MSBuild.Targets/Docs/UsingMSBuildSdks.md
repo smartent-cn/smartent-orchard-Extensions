@@ -59,7 +59,8 @@ All of our MSBuild SDK projects share these features and configurations:
   - PackageLicenseExpression: Defaults to `BSD-3-Clause`.
 - When you import the SDK via the _Import.props_ file, it tries to automatically set these values if they are not yet initialized:
   - LombiqSolutionRootPath: Path of the directory where the solution file and the _src_ directory should be.
-  - LombiqHelpfulLibrariesPath: Path of the _src/Libraries/Lombiq.HelpfulLibraries_ directory where the [Lombiq Helpful Libraries](https://github.com/Lombiq/Helpful-Libraries) submodule should be.
+  - SmartentSrcPath: Path of the repository `Smartent-src/` tree (Core/Platform/Build).
+  - LombiqHelpfulLibrariesPath: Legacy samples/meta still under _src/Libraries/Lombiq.HelpfulLibraries_ (transition only).
   - LombiqAnalyzersPath: Path of the _tools/Lombiq.Analyzers_ directory where the [.NET Analyzers](https://github.com/Lombiq/.NET-Analyzers/) submodule should be.
 - If you import the SDK via the `<Sdk>` element or the _Sdk.props_ file, it sets the `<FromNuGet>true</FromNuGet>` property.
 

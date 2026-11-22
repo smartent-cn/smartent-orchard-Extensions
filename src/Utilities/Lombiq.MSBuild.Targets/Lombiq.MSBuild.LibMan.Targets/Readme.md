@@ -17,7 +17,7 @@ Do you want to quickly try out this project and see it in action? Check it out i
 #### From a Git submodule
 
 1. Reference the targets in your project file by adding an `<Import>` element with the relative path of the Props file at the top end of your project file, and one for the Targets file at bottom end.
-2. If the `Lombiq.HelpfulLibraries.SourceGenerators` project is not found, specify the local relative path to the submodule in the `<LombiqHelpfulLibrariesPath>` property _before_ the `<Import>` element for the Props file.
+2. In the monorepo, CodeGen resolves via `Smartent-src/Platform/Core` automatically. Override `_SmartentCoreCodeGenPath` only in non-standard layouts.
 
 For example:
 

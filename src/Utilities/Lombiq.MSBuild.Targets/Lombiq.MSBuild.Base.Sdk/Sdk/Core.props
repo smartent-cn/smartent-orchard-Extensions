@@ -10,6 +10,9 @@
   <PropertyGroup>
     <PackageVersionLombiqHelpfulLibraries Condition="'$(PackageVersionLombiqHelpfulLibraries)' == ''"
       >13.1.0</PackageVersionLombiqHelpfulLibraries>
+    <!-- Smartent platform/Core NuGet 对齐版本（与 PackageVersionLombiqHelpfulLibraries 同期，M7 前可合并命名）。 -->
+    <PackageVersionSmartentPlatform Condition="'$(PackageVersionSmartentPlatform)' == ''"
+      >$(PackageVersionLombiqHelpfulLibraries)</PackageVersionSmartentPlatform>
     <PackageVersionLombiqTests Condition="'$(PackageVersionLombiqTests)' == ''"
       >6.0.1</PackageVersionLombiqTests>
     <PackageVersionLombiqTestsUI Condition="'$(PackageVersionLombiqTestsUI)' == ''"

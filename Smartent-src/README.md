@@ -27,7 +27,8 @@
 
 - 脚手架已建立（目录 + `build/` 全局属性）。  
 - **M2 完成**：`Platform/Core/` 下五包已迁入（`Smartent.Core.*`）。  
-- **M3 进行中**：`Platform/Orchard/` 下 LinqToDb、Refit、OrchardCore、Testing 已迁入；元包等待办。见 `重构-重组-改名项目方案/projects/M3-Platform-HelpfulLibraries.md`。
+- **M3 基本完成**：Platform/Orchard 与 `Smartent.Test.OrchardCore` 已迁入；元包仅 Legacy 聚合。见 `projects/M3-Platform-HelpfulLibraries.md`。
+- **M4 进行中**：MSBuild Sdk 路径与 Smartent 包版本属性。见 `projects/M4-MSBuild-Targets.md`。
 
 ## 文档与规范
 

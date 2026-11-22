@@ -9,10 +9,11 @@
 
 | 顺序 | 现路径 | 目标（草案） | 状态 |
 |------|--------|-------------|------|
-| 1 | `Lombiq.MSBuild.OrchardCore.Module.Sdk` | 默认依赖 `Smartent.Orchard.Platform`（NuGet + monorepo ProjectReference） | **进行中** |
-| 2 | `Lombiq.MSBuild.OrchardCore.Theme.Sdk` | 同上（按需 Platform） | 待办 |
-| 3 | `Lombiq.MSBuild.Base.Sdk` | `SmartentSrcPath` 等属性；淡化 `LombiqHelpfulLibrariesPath` | **进行中** |
-| 4 | `Lombiq.MSBuild.LibMan.Targets` | 仅 Smartent CodeGen 路径（已完成大部分） | 待收尾 |
+| 1 | `Lombiq.MSBuild.OrchardCore.Module.Sdk` | 默认依赖 `Smartent.Orchard.Platform`（NuGet + monorepo ProjectReference） | **已完成** |
+| 2 | `Lombiq.MSBuild.OrchardCore.Theme.Sdk` | 不注入 Platform（主题按需引用模块/BaseTheme） | **不适用** |
+| 3 | `Lombiq.MSBuild.Base.Sdk` | `SmartentSrcPath`、`PackageVersionSmartentPlatform` | **已完成** |
+| 4 | `Lombiq.MSBuild.LibMan.Targets` | Smartent CodeGen；移除无用 `LombiqHelpfulLibrariesPath` | **已完成** |
+| 4b | OrchardCore.Tests*.Sdk | `LombiqSolutionRootPath` 路径 `/` 规范化 | **已完成** |
 | 5 | `Lombiq.Npm.Targets` / `NodeJs` / `Tailwind` / `SetupExtensions` | `Smartent.Build.*` | 待办 |
 | 6 | Sdk 包发布与 `NuGetTest` 去 `Lombiq.HelpfulLibraries.OrchardCore` 中央版本 | 新 Sdk 版本上源 | 待办 |
 

@@ -21,7 +21,7 @@
   </ItemGroup>
   
   <ItemGroup Condition="'$(FromNuGet)' != 'true'">
-    <ProjectReference Include="$(LombiqSolutionRootPath)\test\Lombiq.Tests\Lombiq.Tests.csproj" />
+    <ProjectReference Include="$(LombiqSolutionRootPath)/test/Lombiq.Tests/Lombiq.Tests.csproj" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(FromNuGet)' == 'true'">

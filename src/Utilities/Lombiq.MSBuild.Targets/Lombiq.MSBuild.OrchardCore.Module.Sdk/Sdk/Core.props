@@ -26,7 +26,7 @@
 
   <ItemGroup Condition="'$(FromNuGet)' == 'true'">
     <PackageReference Include="Smartent.Orchard.Platform">
-      <Version Condition="'$(ManagePackageVersionsCentrally)' != 'true'">$(PackageVersionLombiqHelpfulLibraries)</Version>
+      <Version Condition="'$(ManagePackageVersionsCentrally)' != 'true'">$(PackageVersionSmartentPlatform)</Version>
     </PackageReference>
   </ItemGroup>
 </Project>
