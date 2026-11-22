@@ -13,7 +13,7 @@
 | 2 | `Lombiq.HelpfulLibraries.Refit` | `Smartent.Orchard.Http.Refit` | **已完成** |
 | 3 | `Lombiq.HelpfulLibraries.OrchardCore.Testing` | `Smartent.Test.OrchardCore` @ `Smartent-src/Test/` | **已完成** |
 | 4 | `Lombiq.HelpfulLibraries.OrchardCore` | `Smartent.Orchard.Platform`（单包；`Smartent.Orchard.Platform.*` 拆包 TBD） | **已完成** |
-| 5 | `Lombiq.HelpfulLibraries` 元包 | 废弃或仅文档指向各 Smartent 包 | **进行中**（见 [M3-HelpfulLibraries-MetaPackage.md](M3-HelpfulLibraries-MetaPackage.md)） |
+| 5 | `Lombiq.HelpfulLibraries` 元包 | 废弃或仅文档指向各 Smartent 包 | **基本完成**（见 [M3-HelpfulLibraries-MetaPackage.md](M3-HelpfulLibraries-MetaPackage.md)） |
 
 ## OrchardCore 大库
 

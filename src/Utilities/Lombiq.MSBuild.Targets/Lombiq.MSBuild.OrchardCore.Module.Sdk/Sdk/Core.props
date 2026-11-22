@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(FromNuGet)' != 'true'">
-    <ProjectReference Include="$(LombiqSolutionRootPath)Smartent-src/Platform/Orchard/Smartent.Orchard.Platform/Smartent.Orchard.Platform.csproj" />
+    <ProjectReference Include="$(LombiqSolutionRootPath)/Smartent-src/Platform/Orchard/Smartent.Orchard.Platform/Smartent.Orchard.Platform.csproj" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(FromNuGet)' == 'true'">

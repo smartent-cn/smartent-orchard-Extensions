@@ -1,7 +1,7 @@
 # 子方案：M3 元包 `Lombiq.HelpfulLibraries`
 
 > 阶段：**M3**（第 5 项）  
-> 状态：**进行中**
+> 状态：**基本完成**（元包仍保留于 sln 供 Legacy 打包；无工程 ProjectReference）
 
 ## 目标
 

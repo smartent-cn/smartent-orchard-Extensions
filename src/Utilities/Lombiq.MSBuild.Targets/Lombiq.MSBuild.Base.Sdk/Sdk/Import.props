@@ -9,6 +9,8 @@
   <PropertyGroup>
     <LombiqSolutionRootPath Condition="'$(LombiqSolutionRootPath)' == ''"
       >$([MSBuild]::MakeRelative('$(MSBuildProjectDirectory)', '$(MSBuildThisFileDirectory)../../../../..'))</LombiqSolutionRootPath>
+    <SmartentSrcPath Condition="'$(SmartentSrcPath)' == '' AND '$(LombiqSolutionRootPath)' != ''"
+      >$([MSBuild]::MakeRelative('$(MSBuildProjectDirectory)', '$(LombiqSolutionRootPath)/Smartent-src'))</SmartentSrcPath>
     <LombiqHelpfulLibrariesPath Condition="'$(LombiqHelpfulLibrariesPath)' == '' AND '$(LombiqSolutionRootPath)' != ''"
       >$([MSBuild]::MakeRelative('$(MSBuildProjectDirectory)', '$(LombiqSolutionRootPath)/src/Libraries/Lombiq.HelpfulLibraries'))</LombiqHelpfulLibrariesPath>
     <LombiqAnalyzersPath Condition="'$(LombiqAnalyzersPath)' == '' AND '$(LombiqSolutionRootPath)' != ''"
