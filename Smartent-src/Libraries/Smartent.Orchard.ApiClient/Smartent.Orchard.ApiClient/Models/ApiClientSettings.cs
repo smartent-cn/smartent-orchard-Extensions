@@ -1,0 +1,11 @@
+using System;
+
+namespace Smartent.Orchard.ApiClient.Models;
+
+public class ApiClientSettings
+{
+    public Uri DefaultTenantUri { get; set; }
+    public string ClientId { get; set; }
+    public string ClientSecret { get; set; }
+    public bool DisableCertificateValidation { get; set; }
+}

@@ -32,7 +32,7 @@
     <PackageReference Include="Lombiq.JsonEditor.Tests.UI" />
     <PackageReference Include="Lombiq.LoginAsAnybody.Tests.UI" />
     <PackageReference Include="Lombiq.Marketing.Tests.UI" />
-    <PackageReference Include="Lombiq.OrchardCoreApiClient.Tests.UI" />
+    <PackageReference Include="Smartent.Orchard.ApiClient.Tests.UI" />
     <PackageReference Include="Lombiq.Privacy.Tests.UI" />
     <PackageReference Include="Lombiq.HelpfulExtensions.Tests.UI" />
     <PackageReference Include="Lombiq.UIKit.Widgets.Tests.UI" />

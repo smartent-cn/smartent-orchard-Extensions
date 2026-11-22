@@ -48,8 +48,8 @@
     <Project Path="Smartent-src/Platform/Orchard/Smartent.Orchard.Http.Refit/Smartent.Orchard.Http.Refit.csproj" />
     <Project Path="Smartent-src/Platform/Orchard/Smartent.Orchard.Http.RestEase/Smartent.Orchard.Http.RestEase.csproj" />
     <Project Path="Smartent-src/Platform/Core/Smartent.Core.CodeGen.SourceGenerators/Smartent.Core.CodeGen.SourceGenerators.csproj" />
-    <Project Path="src/Libraries/Lombiq.OrchardCoreApiClient/Lombiq.OrchardCoreApiClient.Tester/Lombiq.OrchardCoreApiClient.Tester.csproj" />
-    <Project Path="src/Libraries/Lombiq.OrchardCoreApiClient/Lombiq.OrchardCoreApiClient/Lombiq.OrchardCoreApiClient.csproj" />
+    <Project Path="Smartent-src/Libraries/Smartent.Orchard.ApiClient/Smartent.Orchard.ApiClient.Tester/Smartent.Orchard.ApiClient.Tester.csproj" />
+    <Project Path="Smartent-src/Libraries/Smartent.Orchard.ApiClient/Smartent.Orchard.ApiClient/Smartent.Orchard.ApiClient.csproj" />
   </Folder>
   <Folder Name="/src/Modules/">
     <Project Path="src/Libraries/Lombiq.HelpfulLibraries/Lombiq.HelpfulLibraries.Samples/Lombiq.HelpfulLibraries.Samples.csproj" />
@@ -113,7 +113,7 @@
     <Project Path="src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.Targets.Samples/Lombiq.MSBuild.Targets.Samples.csproj" />
     <Project Path="Smartent-src/Build/Smartent.Build.Npm.Targets/Smartent.Build.Npm.Targets.csproj" />
     <Project Path="Smartent-src/Build/Smartent.Orchard.Setup/Smartent.Orchard.Setup.csproj" />
-    <Project Path="src/Utilities/Lombiq.Tailwind.Targets/Lombiq.Tailwind.Targets.Samples/Lombiq.Tailwind.Targets.Samples.csproj" />
+    <Project Path="Smartent-src/Build/Smartent.Build.Tailwind.Samples/Smartent.Build.Tailwind.Samples.csproj" />
     <Project Path="Smartent-src/Build/Smartent.Build.Tailwind/Smartent.Build.Tailwind.csproj" />
   </Folder>
   <Folder Name="/test/">
@@ -129,7 +129,7 @@
   <Folder Name="/test/Libraries/">
     <Project Path="src/Libraries/Lombiq.EInvoiceValidator/Lombiq.EInvoiceValidator.Tests/Lombiq.EInvoiceValidator.Tests.csproj" />
     <Project Path="src/Libraries/Lombiq.HelpfulLibraries/Lombiq.HelpfulLibraries.Tests/Lombiq.HelpfulLibraries.Tests.csproj" />
-    <Project Path="src/Libraries/Lombiq.OrchardCoreApiClient/Lombiq.OrchardCoreApiClient.Tests.UI/Lombiq.OrchardCoreApiClient.Tests.UI.csproj" />
+    <Project Path="Smartent-src/Libraries/Smartent.Orchard.ApiClient/Smartent.Orchard.ApiClient.Tests.UI/Smartent.Orchard.ApiClient.Tests.UI.csproj" />
   </Folder>
   <Folder Name="/test/Modules/">
     <Project Path="src/Libraries/Lombiq.HelpfulLibraries/Lombiq.HelpfulLibraries.Samples.Tests.UI/Lombiq.HelpfulLibraries.Samples.Tests.UI.csproj" />
@@ -168,7 +168,7 @@
   <Folder Name="/test/Utilities/">
     <Project Path="src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.Targets.Tests.UI/Lombiq.MSBuild.Targets.Tests.UI.csproj" />
     <Project Path="src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.Targets.Tests/Lombiq.MSBuild.Targets.Tests.csproj" />
-    <Project Path="src/Utilities/Lombiq.Tailwind.Targets/Lombiq.Tailwind.Targets.Tests/Lombiq.Tailwind.Targets.Tests.csproj" />
+    <Project Path="Smartent-src/Build/Smartent.Build.Tailwind.Tests/Smartent.Build.Tailwind.Tests.csproj" />
   </Folder>
   <Folder Name="/tools/">
     <Project Path="src/Themes/Lombiq.Hosting.MediaTheme/Lombiq.Hosting.MediaTheme.Deployer/Lombiq.Hosting.MediaTheme.Deployer.csproj" />

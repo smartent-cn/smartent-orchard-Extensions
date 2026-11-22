@@ -1,0 +1,37 @@
+<Project>
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>Smartent.Orchard.ApiClient</RootNamespace>
+    <AssemblyName>Smartent.Orchard.ApiClient</AssemblyName>
+    <PackageId>Smartent.Orchard.ApiClient</PackageId>
+  </PropertyGroup>
+
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../../src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.Library.Sdk/Sdk/Import.props" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Lombiq.MSBuild.Library.Sdk" Version="2.1.1" />
+
+  <PropertyGroup>
+    <Title>Smartent Orchard API Client</Title>
+    <CopyrightYear>2022</CopyrightYear>
+    <DescriptionBody>Orchard Core Web API 通信客户端（Refit / OpenID）。</DescriptionBody>
+    <PackageTags>Smartent;OrchardCore;Refit;OpenId;ApiClient</PackageTags>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules/tree/master/Smartent-src/Libraries/Smartent.Orchard.ApiClient</PackageProjectUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NodaTime" Version="3.3.7" />
+    <PackageReference Include="Polly" Version="8.9.0" />
+    <PackageReference Include="OrchardCore.ContentManagement.Abstractions" Version="$(OrchardCoreVersion)" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(NuGetBuild)' != 'true'">
+    <ProjectReference Include="..\..\..\Platform\Orchard\Smartent.Orchard.Http.Refit\Smartent.Orchard.Http.Refit.csproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(NuGetBuild)' == 'true'">
+    <PackageReference Include="Smartent.Orchard.Http.Refit" Version="$(PackageVersionSmartentPlatform)" />
+  </ItemGroup>
+
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../../src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.Library.Sdk/Sdk/Import.targets" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.targets" Sdk="Lombiq.MSBuild.Library.Sdk" Version="2.1.1" />
+</Project>

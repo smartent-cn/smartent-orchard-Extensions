@@ -10,13 +10,15 @@
 
     <Otherwise>
       <PropertyGroup>
-        <Authors>Lombiq Technologies</Authors>
-        <Copyright>Copyright © 2025, Lombiq Technologies Ltd.</Copyright>
+        <Authors Condition="'$(Authors)' == ''">Smartent</Authors>
+        <Company Condition="'$(Company)' == ''">Smartent</Company>
+        <Copyright Condition="'$(Copyright)' == ''">Copyright © Smartent</Copyright>
         <PackageIcon>NuGetIcon.png</PackageIcon>
-        <PackageTags>OrchardCore;Lombiq;AspNetCore</PackageTags>
-        <RepositoryUrl>https://github.com/Lombiq/MSBuild-Targets</RepositoryUrl>
-        <PackageProjectUrl>https://github.com/Lombiq/MSBuild-Targets</PackageProjectUrl>
+        <PackageTags Condition="'$(PackageTags)' == ''">OrchardCore;Smartent;AspNetCore;MSBuild</PackageTags>
+        <RepositoryUrl Condition="'$(RepositoryUrl)' == ''">https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
+        <PackageProjectUrl Condition="'$(PackageProjectUrl)' == ''">https://gitee.com/smartent/smartent-training-demo-modules/tree/master/src/Utilities/Lombiq.MSBuild.Targets</PackageProjectUrl>
         <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
+        <!-- NuGet PackageId 仍为 Lombiq.MSBuild.*，待全仓 Sdk= 切换后再改为 Smartent.Build.* -->
       </PropertyGroup>
 
       <ItemGroup>

@@ -17,6 +17,9 @@
 | 5a | `Lombiq.Npm.Targets` | `Smartent.Build.Npm.Targets` | **已完成** |
 | 5b | `NodeJs` / `Tailwind` / `SetupExtensions` | `Smartent.Build.NodeJs`、`Smartent.Build.Tailwind`、`Smartent.Orchard.Setup` | **已完成** |
 | 6 | Sdk 包发布与 `NuGetTest` 去 `Lombiq.HelpfulLibraries.OrchardCore` 中央版本 | 新 Sdk 版本上源 | **单体仓内已完成**（独立 NuGetTest 仍待发布 Sdk） |
+| 7 | Tailwind Samples/Tests 迁入 `Smartent-src/Build/` | — | **已完成** |
+| 8 | `Lombiq.OrchardCoreApiClient` → `Smartent.Orchard.ApiClient` | — | **已完成** |
+| 9 | MSBuild.Targets 发布元数据 Smartent 化（PackageId 仍 Lombiq.MSBuild.*） | — | **首期完成** |
 
 ## M4#1 / #3 首期交付
 

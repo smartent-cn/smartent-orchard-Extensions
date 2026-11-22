@@ -1,4 +1,4 @@
-using Lombiq.OrchardCoreApiClient.Tests.UI.Extensions;
+using Smartent.Orchard.ApiClient.Tests.UI.Extensions;
 using System;
 using System.IO;
 using System.Threading.Tasks;
