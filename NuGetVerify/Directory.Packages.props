@@ -1,0 +1,109 @@
+<Project>
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
+    <OrchardCoreVersion>3.0.1</OrchardCoreVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageVersion Include="HtmlSanitizer" Version="9.2.1039" />
+    <PackageVersion Include="Lombiq.Analyzers.OrchardCore" Version="7.0.1-alpha.0.osoe-1333" />
+    <!-- 仅当 NuGetVerify 独立检出且 UseSmartentMonorepoMsBuildSdk!=true 时，旧 Module.Sdk 2.1.1 需要此项。 -->
+    <PackageVersion Include="Lombiq.HelpfulLibraries.OrchardCore" Version="13.1.0" />
+    <PackageVersion Include="Smartent.Core.AspNet" Version="13.1.0" />
+    <PackageVersion Include="Smartent.Core.Primitives" Version="13.1.0" />
+    <PackageVersion Include="Smartent.Orchard.Http.Refit" Version="13.1.0" />
+    <PackageVersion Include="Smartent.Orchard.Platform" Version="13.1.0" />
+    <PackageVersion Include="Smartent.Orchard.Platform.Data.LinqToYesSql" Version="13.1.0" />
+    <PackageVersion Include="Smartent.Build.Npm.Targets" Version="1.5.3" />
+    <PackageVersion Include="Smartent.Orchard.ApiClient.Tests.UI" Version="8.0.1-alpha.2.osoe-1326" />
+    <PackageVersion Include="Smartent.Build.Tailwind" Version="1.0.0" />
+    <PackageVersion Include="Smartent.Build.NodeJs" Version="3.0.0" />
+    <PackageVersion Include="Smartent.Orchard.Setup" Version="8.0.0" />
+    <PackageVersion Include="Smartent.Test.Unit" Version="6.0.1" />
+    <PackageVersion Include="Smartent.Test.UI" Version="16.0.1-alpha.3.osoe-1326" />
+    <PackageVersion Include="Smartent.Test.UI.AdminTheme" Version="16.0.1-alpha.3.osoe-1326" />
+    <PackageVersion Include="Smartent.Test.UI.AppExtensions" Version="16.0.1-alpha.3.osoe-1326" />
+    <PackageVersion Include="Smartent.Test.UI.Shortcuts" Version="16.0.1-alpha.3.osoe-1326" />
+    <PackageVersion Include="Microsoft.AspNetCore.WebUtilities" Version="2.3.14" />
+    <PackageVersion Include="Microsoft.Testing.Extensions.GitHubActionsReport" Version="2.5.2" />
+    <PackageVersion Include="Microsoft.Testing.Extensions.HangDump" Version="2.5.2" />
+    <PackageVersion Include="Microsoft.Testing.Extensions.TrxReport" Version="2.5.2" />
+    <PackageVersion Include="MySqlConnector" Version="2.6.2" />
+    <PackageVersion Include="OrchardCore.Application.Cms.Targets" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.ContentManagement" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.ContentTypes.Abstractions" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.DisplayManagement" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Logging.NLog" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Module.Targets" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.ResourceManagement" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="OrchardCore.Theme.Targets" Version="$(OrchardCoreVersion)" />
+    <PackageVersion Include="System.Security.Cryptography.Pkcs" Version="10.0.15" />
+    <PackageVersion Include="System.Security.Cryptography.Xml" Version="10.0.15" />
+    <PackageVersion Include="xunit.v3" Version="4.0.3" />
+    <PackageVersion Include="Smartent.Orchard.AuditTrail" Version="9.0.0" />
+    <PackageVersion Include="Smartent.Orchard.ChartJs" Version="10.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.ChartJs.Samples" Version="10.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.ChartJs.Tests.UI" Version="10.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.Theme.Base.Core" Version="12.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.Theme.Base.Native" Version="12.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.Theme.Base.Native.Samples" Version="12.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.Theme.Base.Tests.UI" Version="12.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.ContentEditors" Version="7.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.ContentEditors.Samples" Version="7.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.ContentEditors.Tests.UI" Version="7.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.DataTables" Version="11.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.DataTables.Samples" Version="11.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.DataTables.Tests.UI" Version="11.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.EInvoice" Version="2.0.1" />
+    <PackageVersion Include="Smartent.Orchard.EInvoice.Sample" Version="2.0.1" />
+    <PackageVersion Include="Smartent.Orchard.EmailClient" Version="2.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.EmailClient.Samples" Version="2.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.EmailClient.Tests.UI" Version="2.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.Extensions.Cms" Version="12.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.Extensions.Cms.Tests.UI" Version="12.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.Hosting.ApplicationInsights" Version="11.0.1-alpha.0.osoe-1326" />
+    <PackageVersion Include="Smartent.Orchard.Hosting.ApplicationInsights.Tests.UI" Version="11.0.1-alpha.0.osoe-1326" />
+    <PackageVersion Include="Smartent.Orchard.Hosting.BuildVersion" Version="8.0.1-alpha.2.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.Hosting.BuildVersion.Tests.UI" Version="8.0.1-alpha.2.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.Theme.Media" Version="9.0.2-alpha.0.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.Theme.Media.Tests.Theme" Version="9.0.2-alpha.0.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.Theme.Media.Bridge" Version="9.0.2-alpha.0.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.Theme.Media.Targets" Version="9.0.2-alpha.0.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.Theme.Media.Tests.UI" Version="9.0.2-alpha.0.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.Theme.Media.Bridge.Tests.UI" Version="9.0.2-alpha.0.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.Hosting.Tenants.Admin.Login" Version="10.0.1-alpha.3.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.Hosting.Tenants.EnvironmentRobots" Version="10.0.1-alpha.3.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.Hosting.Tenants.EnvironmentRobots.Tests.UI" Version="10.0.1-alpha.3.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.Hosting.Tenants.FeaturesGuard" Version="10.0.1-alpha.3.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.Hosting.Tenants.FeaturesGuard.Tests.UI" Version="10.0.1-alpha.3.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.Hosting.Tenants.HealthChecks" Version="10.0.1-alpha.3.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.Hosting.Tenants.HealthChecks.Tests.UI" Version="10.0.1-alpha.3.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.Hosting.Tenants.IdleTenantManagement" Version="10.0.1-alpha.3.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.Hosting.Tenants.IdleTenantManagement.Tests.UI" Version="10.0.1-alpha.3.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.Hosting.Tenants.Maintenance" Version="10.0.1-alpha.3.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.Hosting.Tenants.Maintenance.Tests.UI" Version="10.0.1-alpha.3.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.Hosting.Tenants.Management" Version="10.0.1-alpha.3.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.Hosting.Tenants.Management.Tests.UI" Version="10.0.1-alpha.3.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.Hosting.Tenants.MediaStorageManagement" Version="10.0.1-alpha.3.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.Hosting.Tenants.MediaStorageManagement.Tests.UI" Version="10.0.1-alpha.3.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.Hosting.Tenants.EmailQuotaManagement" Version="10.0.1-alpha.3.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.Hosting.Tenants.EmailQuotaManagement.Tests.UI" Version="10.0.1-alpha.3.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.JsonEditor" Version="10.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.JsonEditor.Tests.UI" Version="10.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.LoginAsAnybody" Version="6.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.LoginAsAnybody.Tests.UI" Version="6.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.Marketing" Version="1.0.2-alpha.0.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.Marketing.Pirsch" Version="1.0.2-alpha.0.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.Marketing.UrlShortener" Version="1.0.2-alpha.0.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.Marketing.Tests.UI" Version="1.0.2-alpha.0.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.Privacy" Version="11.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.Privacy.Samples" Version="11.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.Privacy.Tests.UI" Version="11.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.UIKit" Version="11.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.UIKit.Widgets" Version="11.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.UIKit.Widgets.Tests.UI" Version="11.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.VueJs.Resources" Version="10.0.0" />
+    <PackageVersion Include="Smartent.Orchard.Walkthroughs" Version="4.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.Walkthroughs.Tests.UI" Version="4.0.1-alpha.0.osoe-1317" />
+  </ItemGroup>
+</Project>

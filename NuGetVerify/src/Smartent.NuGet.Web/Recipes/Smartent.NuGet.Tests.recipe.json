@@ -1,0 +1,248 @@
+{
+  "name": "Smartent.NuGet.Tests",
+  "displayName": "TEST: Lombiq's Open-Source Orchard Core Extensions",
+  "description": "Lombiq's Open-Source Orchard Core Extensions setup recipe for automated UI test execution.",
+  "author": "Lombiq Technologies",
+  "website": "https://github.com/Lombiq/Open-Source-Orchard-Core-Extensions",
+  "version": "1.0",
+  "issetuprecipe": true,
+  "categories": [
+    "test"
+  ],
+  "tags": [
+    "test"
+  ],
+  "steps": [
+    {
+      "name": "feature",
+      "disable": [],
+      "enable": [
+        "Lombiq.AuditTrailExtensions",
+        "Smartent.Orchard.ChartJs",
+        "Lombiq.ContentEditors.Samples",
+        "Smartent.Orchard.DataTables.Samples",
+        "Lombiq.EmailClient.Samples",
+        "Smartent.Orchard.Extensions.Cms.CodeGeneration",
+        "Smartent.Orchard.Extensions.Cms.ContentTypes",
+        "Smartent.Orchard.Extensions.Cms.Flows",
+        "Smartent.Orchard.Extensions.Cms.Liquid",
+        "Smartent.Orchard.Extensions.Cms.Lucide",
+        "Smartent.Orchard.Extensions.Cms.ShapeTracing",
+        "Smartent.Orchard.Extensions.Cms.TrumbowygBlogPosts",
+        "Smartent.Orchard.Extensions.Cms.Widgets",
+        "Smartent.Orchard.Extensions.Cms.Widgets",
+        "Smartent.Demo.Platform.Samples",
+        "Lombiq.Hosting.BuildVersionDisplay",
+        "Lombiq.Hosting.Tenants.Admin.Login.SubTenant",
+        "Lombiq.Hosting.Tenants.EmailQuotaManagement",
+        "Lombiq.Hosting.Tenants.EnvironmentRobots",
+        "Lombiq.Hosting.Tenants.FeaturesGuard",
+        "Lombiq.Hosting.Tenants.IdleTenantManagement.ShutDownIdleTenants",
+        "Lombiq.Hosting.Tenants.Maintenance",
+        "Lombiq.Hosting.Tenants.Maintenance.AddAdministratorRoleToUsersWithRole",
+        "Lombiq.Hosting.Tenants.Maintenance.ChangeUserSensitiveContent",
+        "Lombiq.Hosting.Tenants.Maintenance.UpdateSiteUrl",
+        "Lombiq.Hosting.Tenants.Management",
+        "Lombiq.Hosting.Tenants.MediaStorageManagement",
+        "Lombiq.JsonEditor",
+        "Lombiq.JsonEditor.ContentEditor",
+        "Lombiq.LoginAsAnybody",
+        "Lombiq.Marketing.Pirsch",
+        "Smartent.Test.UI.AdminTheme",
+        "Smartent.NuGet.TestModule",
+        "Smartent.NuGet.TestTheme",
+        "Lombiq.OSOCE.Samples",
+        // We only enable these in a specific test, because the banner overlaps with too many things.
+        // "Lombiq.Privacy.ConsentBanner",
+        // "Lombiq.Privacy.FormConsent",
+        // "Lombiq.Privacy.RegistrationConsent",
+        "Smartent.Orchard.TrainingDemo",
+        "Smartent.Orchard.UIKit",
+        "Smartent.Orchard.UIKit.Showcase",
+        "Smartent.Orchard.UIKit.Widgets",
+        "Lombiq.VueJs.Resources",
+        "OrchardCore.Email.Smtp",
+        "OrchardCore.Features",
+        "OrchardCore.Localization",
+        "OrchardCore.Media",
+        "OrchardCore.Tenants.FeatureProfiles",
+        "TheTheme"
+        // Not enabling Smartent.Orchard.TrainingDemo.Middlewares because that would write to the error log on every request.
+      ]
+    },
+    {
+      "name": "recipes",
+      "Values": [
+        {
+          "executionid": "Smartent.NuGet.Web",
+          "name": "Blog"
+        }
+      ]
+    },
+    {
+      "name": "settings",
+      "UseCdn": false,
+      "SmtpSettings": {
+        "DefaultSender": "sender@example.com"
+      },
+      "LocalizationSettings": {
+        "DefaultCulture": "en-US",
+        "SupportedCultures": [
+          "en-US"
+        ]
+      }
+    },
+    // These roles are not created the same way as default during testing, so we need to add them here.
+    {
+      "name": "Roles",
+      "Roles": [
+        {
+          "Name": "Moderator",
+          "Description": "Moderator role",
+          "Permissions": [
+            "AccessAdminPanel",
+            "ManageOwnUserInformation"
+          ]
+        },
+        {
+          "Name": "Authenticated",
+          "Description": "Authenticated role",
+          "Permissions": [
+            "ViewContent"
+          ]
+        },
+        {
+          "Name": "Anonymous",
+          "Description": "Anonymous role",
+          "Permissions": [
+            "ViewContent"
+          ]
+        },
+        {
+          "Name": "Author",
+          "Description": "Author role",
+          "Permissions": [
+            "AccessAdminPanel",
+            "ManageOwnUserInformation",
+            "PublishOwnContent",
+            "EditOwnContent",
+            "DeleteOwnContent",
+            "PreviewOwnContent",
+            "CloneOwnContent",
+            "ManageMediaContent"
+          ]
+        },
+        {
+          "Name": "Contributor",
+          "Description": "Contributor role",
+          "Permissions": [
+            "AccessAdminPanel",
+            "ManageOwnUserInformation",
+            "EditOwnContent",
+            "PreviewOwnContent",
+            "CloneOwnContent",
+            "ManageMediaContent"
+          ]
+        },
+        {
+          "Name": "Editor",
+          "Description": "Editor role",
+          "Permissions": [
+            "AccessAdminPanel",
+            "ManageOwnUserInformation",
+            "PublishContent",
+            "EditContent",
+            "DeleteContent",
+            "PreviewContent",
+            "CloneContent",
+            "ListContent",
+            "ManageMediaContent",
+            "ManageWorkflows",
+            "ExecuteWorkflows"
+          ]
+        },
+        {
+          "Name": "Administrator",
+          "Description": "Administrator role",
+          "Permissions": [
+            "ManageSettings",
+            "AccessAdminPanel",
+            "ManageAdminSettings",
+            "ManageUsers",
+            "ManageRoles",
+            "SiteOwner",
+            "ManageTenants",
+            "ApplyTheme",
+            "PublishContent",
+            "EditContent",
+            "DeleteContent",
+            "PreviewContent",
+            "CloneContent",
+            "AccessContentApi",
+            "ListContent",
+            "ViewContentTypes",
+            "EditContentTypes",
+            "ManageMediaContent",
+            "ManageAttachedMediaFieldsFolder",
+            "ManageMediaProfiles",
+            "ViewMediaOptions",
+            "ManageAssetCache",
+            "ViewAzureMediaOptions",
+            "ManageBackgroundTasks",
+            "ManageEmailSettings",
+            "ManageWorkflows",
+            "ExecuteWorkflows",
+            "SetHomepage",
+            "Import",
+            "Export",
+            "ViewAuditTrail",
+            "ManageAuditTrailSettings"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "FeatureProfiles",
+      "FeatureProfiles": {
+        "Features Guard": {
+          "FeatureRules": [
+            {
+              "Rule": "Exclude",
+              "Expression": "OrchardCore.Workflows.Session"
+            },
+            {
+              "Rule": "Exclude",
+              "Expression": "OrchardCore.Search.Lucene"
+            },
+            {
+              "Rule": "Exclude",
+              "Expression": "OrchardCore.MiniProfiler"
+            },
+            {
+              "Rule": "Exclude",
+              "Expression": "Smartent.Test.UI.Shortcuts"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "themes",
+      "admin": "Smartent.Test.UI.AdminTheme",
+      "site": "Smartent.NuGet.TestTheme"
+    },
+    {
+      "name": "recipes",
+      "Values": [
+        {
+          "executionid": "Smartent.Demo.Web",
+          "name": "Smartent.Orchard.Extensions.Cms.ContentSets.Samples"
+        },
+        {
+          "executionid": "Smartent.Demo.Web",
+          "name": "Smartent.Orchard.UIKit.Widgets.Content"
+        }
+      ]
+    }
+  ]
+}

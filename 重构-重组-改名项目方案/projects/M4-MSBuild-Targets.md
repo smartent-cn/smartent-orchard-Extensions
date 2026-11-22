@@ -22,6 +22,7 @@
 | 9 | MSBuild.Targets 发布元数据 Smartent 化（PackageId 仍 Lombiq.MSBuild.*） | — | **首期完成**（含 `Lombiq.MSBuild.Library.Sdk` 重复 Title 修复） |
 | 10 | 根 ESLint/Prettier/Stylelint | 指向 `Smartent.Build.NodeJs/config/`；Legacy 占位 | **已完成** |
 | 11 | 主 sln Release 构建门禁 | VueJs `.nx`、`lint-code.js`、Tests.UI net10 | **已完成** |
+| 12 | `Lombiq.MSBuild.Base.Sdk` 迁入 `Smartent-src/Build/` | 其余 Sdk 仍 Legacy；打包嵌入路径已更新 | **首期完成** |
 
 ## M4#1 / #3 首期交付
 

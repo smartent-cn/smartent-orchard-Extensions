@@ -1,0 +1,46 @@
+<Project Sdk="Lombiq.MSBuild.OrchardCore.Tests.UI.Sdk/2.1.1">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="*.htmlvalidate.json" />
+    <Content Include=".htmlvalidate.json" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="*.htmlvalidate.json" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="../../../Smartent-src/Test/Smartent.Test.Acceptance/*.htmlvalidate.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Smartent.Orchard.Platform" />
+    <PackageReference Include="Smartent.Orchard.Theme.Base.Tests.UI" />
+    <PackageReference Include="Smartent.Orchard.ChartJs.Tests.UI" />
+    <PackageReference Include="Smartent.Orchard.ContentEditors.Tests.UI" />
+    <PackageReference Include="Smartent.Orchard.DataTables.Tests.UI" />
+    <PackageReference Include="Smartent.Orchard.EmailClient.Tests.UI" />
+    <PackageReference Include="Smartent.Orchard.Hosting.ApplicationInsights.Tests.UI" />
+    <PackageReference Include="Smartent.Orchard.Hosting.BuildVersion.Tests.UI" />
+    <PackageReference Include="Smartent.Orchard.Theme.Media.Bridge.Tests.UI" />
+    <PackageReference Include="Smartent.Orchard.Theme.Media.Tests.UI" />
+    <PackageReference Include="Smartent.Orchard.Hosting.Tenants.EnvironmentRobots.Tests.UI" />
+    <PackageReference Include="Smartent.Orchard.Hosting.Tenants.FeaturesGuard.Tests.UI" />
+    <PackageReference Include="Smartent.Orchard.Hosting.Tenants.HealthChecks.Tests.UI" />
+    <PackageReference Include="Smartent.Orchard.Hosting.Tenants.IdleTenantManagement.Tests.UI" />
+    <PackageReference Include="Smartent.Orchard.Hosting.Tenants.MediaStorageManagement.Tests.UI" />
+    <PackageReference Include="Smartent.Orchard.Hosting.Tenants.EmailQuotaManagement.Tests.UI" />
+    <PackageReference Include="Smartent.Orchard.Hosting.Tenants.Maintenance.Tests.UI" />
+    <PackageReference Include="Smartent.Orchard.Hosting.Tenants.Management.Tests.UI" />
+    <PackageReference Include="Smartent.Orchard.JsonEditor.Tests.UI" />
+    <PackageReference Include="Smartent.Orchard.LoginAsAnybody.Tests.UI" />
+    <PackageReference Include="Smartent.Orchard.Marketing.Tests.UI" />
+    <PackageReference Include="Smartent.Orchard.ApiClient.Tests.UI" />
+    <PackageReference Include="Smartent.Orchard.Privacy.Tests.UI" />
+    <PackageReference Include="Smartent.Orchard.Extensions.Cms.Tests.UI" />
+    <PackageReference Include="Smartent.Orchard.UIKit.Widgets.Tests.UI" />
+    <PackageReference Include="Smartent.Orchard.Walkthroughs.Tests.UI" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Smartent.NuGet.Web\Smartent.NuGet.Web.csproj" />
+  </ItemGroup>
+
+</Project>

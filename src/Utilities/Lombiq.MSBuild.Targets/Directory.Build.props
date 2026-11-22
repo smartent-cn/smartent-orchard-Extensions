@@ -37,7 +37,7 @@
       </ItemGroup>
 
       <ItemGroup Condition="$(MSBuildProjectName.EndsWith('.Sdk')) AND MSBuildProjectName != 'Lombiq.MSBuild.Base.Sdk'">
-        <None Include="..\Lombiq.MSBuild.Base.Sdk\Sdk\*.*"
+        <None Include="..\..\..\Smartent-src\Build\Lombiq.MSBuild.Base.Sdk\Sdk\*.*"
               Link="Lombiq.MSBuild.Base.Sdk\*.*"
               Pack="true"
               PackagePath="Lombiq.MSBuild.Base.Sdk\"

@@ -1,0 +1,26 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="../Directory.Build.props" />
+    <File Path=".gitignore" />
+    <File Path="commands.json" />
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Packages.props" />
+    <File Path="NuGet.config" />
+    <File Path="Readme.md" />
+    <File Path="Reset-Local.ps1" />
+    <File Path="Update-LombiqNuGetPackages.ps1" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/Smartent.NuGet.Web/Smartent.NuGet.Web.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/">
+    <Project Path="src/Modules/Smartent.NuGet.TestModule/Smartent.NuGet.TestModule.csproj" />
+  </Folder>
+  <Folder Name="/src/Themes/">
+    <Project Path="src/Themes/Smartent.NuGet.TestTheme/Smartent.NuGet.TestTheme.csproj" />
+  </Folder>
+  <Folder Name="/test/">
+    <Project Path="test/Smartent.NuGet.Tests.UI/Smartent.NuGet.Tests.UI.csproj" />
+    <Project Path="test/Smartent.NuGet.Tests/Smartent.NuGet.Tests.csproj" />
+  </Folder>
+</Solution>

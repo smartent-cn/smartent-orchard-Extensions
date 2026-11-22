@@ -1,0 +1,32 @@
+{
+  "name": "Smartent.NuGet.BaseTheme",
+  "displayName": "Switch to Lombiq.BaseTheme.Native.Sample",
+  "description": "Switch to Lombiq.BaseTheme.Native.Sample.",
+  "author": "Lombiq Technologies",
+  "website": "https://github.com/Lombiq/Open-Source-Orchard-Core-Extensions",
+  "version": "1.0",
+  "issetuprecipe": false,
+  "categories": [
+    "test"
+  ],
+  "tags": [
+    "test"
+  ],
+  "steps": [
+    {
+      "name": "feature",
+      "disable": [
+        "Smartent.Orchard.Extensions.Cms.ShapeTracing"
+      ],
+      "enable": [
+        "Smartent.Test.UI.AdminTheme",
+        "Lombiq.BaseTheme.Native.Samples"
+      ]
+    },
+    {
+      "name": "themes",
+      "admin": "Smartent.Test.UI.AdminTheme",
+      "site": "Lombiq.BaseTheme.Native.Samples"
+    }
+  ]
+}
