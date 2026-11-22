@@ -4,7 +4,7 @@
     <OrchardCoreVersion>3.0.1</OrchardCoreVersion>
   </PropertyGroup>
 
-  <Import Project="../Lombiq.MSBuild.OrchardCore.Theme.Sdk/Sdk/Import.props" />
+  <Import Project="../../../../Smartent-src/Build/Lombiq.MSBuild.OrchardCore.Theme.Sdk/Sdk/Import.props" />
 
   <ItemGroup>
     <EmbeddedResource Update="wwwroot\Theme.png">
@@ -12,5 +12,5 @@
     </EmbeddedResource>
   </ItemGroup>
  
-  <Import Project="../Lombiq.MSBuild.OrchardCore.Theme.Sdk/Sdk/Import.targets" />
+  <Import Project="../../../../Smartent-src/Build/Lombiq.MSBuild.OrchardCore.Theme.Sdk/Sdk/Import.targets" />
 </Project>

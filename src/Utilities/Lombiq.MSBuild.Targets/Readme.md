@@ -1,5 +1,7 @@
 # Lombiq MSBuild Targets
 
+> **Smartent 单仓**：各 `Lombiq.MSBuild.*` Sdk/LibMan **源码**在 [`Smartent-src/Build/`](../../../Smartent-src/Build/Readme.md)。本目录保留 **Samples、Tests** 与 Legacy **Readme 占位**。NuGet **PackageId** 仍为 `Lombiq.MSBuild.*`（目标草案 `Smartent.Build.*.Sdk`，见 [M6-PackageId-Exceptions.md](../../../重构-重组-改名项目方案/M6-PackageId-Exceptions.md)）。
+
 [![Lombiq.MSBuild.Base.Sdk NuGet](https://img.shields.io/nuget/v/Lombiq.MSBuild.Base.Sdk?label=Lombiq.MSBuild.Base.Sdk)](https://www.nuget.org/packages/Lombiq.MSBuild.Base.Sdk/) [![Lombiq.MSBuild.LibMan.Targets NuGet](https://img.shields.io/nuget/v/Lombiq.MSBuild.LibMan.Targets?label=Lombiq.MSBuild.LibMan.Targets)](https://www.nuget.org/packages/Lombiq.MSBuild.LibMan.Targets/) [![Lombiq.MSBuild.Library.Sdk NuGet](https://img.shields.io/nuget/v/Lombiq.MSBuild.Library.Sdk?label=Lombiq.MSBuild.Library.Sdk)](https://www.nuget.org/packages/Lombiq.MSBuild.Library.Sdk/) [![Lombiq.MSBuild.OrchardCore.Module.Sdk NuGet](https://img.shields.io/nuget/v/Lombiq.MSBuild.OrchardCore.Module.Sdk?label=Lombiq.MSBuild.OrchardCore.Module.Sdk)](https://www.nuget.org/packages/Lombiq.MSBuild.OrchardCore.Module.Sdk/) [![Lombiq.MSBuild.OrchardCore.Tests.Sdk NuGet](https://img.shields.io/nuget/v/Lombiq.MSBuild.OrchardCore.Tests.Sdk?label=Lombiq.MSBuild.OrchardCore.Tests.Sdk)](https://www.nuget.org/packages/Lombiq.MSBuild.OrchardCore.Tests.Sdk/) [![Lombiq.MSBuild.OrchardCore.Tests.UI.Library.Sdk NuGet](https://img.shields.io/nuget/v/Lombiq.MSBuild.OrchardCore.Tests.UI.Library.Sdk?label=Lombiq.MSBuild.OrchardCore.Tests.UI.Library.Sdk)](https://www.nuget.org/packages/Lombiq.MSBuild.OrchardCore.Tests.UI.Library.Sdk/) [![Lombiq.MSBuild.OrchardCore.Tests.UI.Sdk NuGet](https://img.shields.io/nuget/v/Lombiq.MSBuild.OrchardCore.Tests.UI.Sdk?label=Lombiq.MSBuild.OrchardCore.Tests.UI.Sdk)](https://www.nuget.org/packages/Lombiq.MSBuild.OrchardCore.Tests.UI.Sdk/) [![Lombiq.MSBuild.OrchardCore.Theme.Sdk NuGet](https://img.shields.io/nuget/v/Lombiq.MSBuild.OrchardCore.Theme.Sdk?label=Lombiq.MSBuild.OrchardCore.Theme.Sdk)](https://www.nuget.org/packages/Lombiq.MSBuild.OrchardCore.Theme.Sdk/)
 
 ## About
@@ -13,14 +15,14 @@ Do you want to quickly try out this project and see it in action? Check it out i
 To learn about the packages maintained in this repository, check out their individual Readmes:
 
 - Targets (`Lombiq.MSBuild.*.Targets`):
-  - [LibMan](Lombiq.MSBuild.LibMan.Targets/Readme.md): Targets for [Microsoft Library Manager](https://github.com/aspnet/LibraryManager) integration.
-- MSBuild SDKs (`Lombiq.MSBuild.*.Sdk`):
-  - [Base](Lombiq.MSBuild.Base.Sdk/Readme.md): The root SDK that configures some common features across all other SDKs. This is imported by our other SDKs, it's unlikely that you'd want to use it directly.
-  - [OrchardCore.Module](Lombiq.MSBuild.OrchardCore.Module.Sdk/Readme.md): An SDK for Orchard Core modules.
-  - [OrchardCore.Tests](Lombiq.MSBuild.OrchardCore.Tests.Sdk/Readme.md): An SDK for unit test projects using `Smartent.Test.Unit`.
-  - [OrchardCore.Tests.UI](Lombiq.MSBuild.OrchardCore.Tests.UI.Sdk/Readme.md): An SDK for UI test projects using `Smartent.Test.UI`.
-  - [OrchardCore.Tests.UI.Library](Lombiq.MSBuild.OrchardCore.Tests.UI.Library.Sdk/Readme.md): An SDK for reusable UI test libraries using `Smartent.Test.UI`.
-  - [OrchardCore.Theme](Lombiq.MSBuild.OrchardCore.Theme.Sdk/Readme.md): An SDK for Orchard Core themes.
+  - [LibMan](../../../Smartent-src/Build/Lombiq.MSBuild.LibMan.Targets/Readme.md): [Microsoft Library Manager](https://github.com/aspnet/LibraryManager) integration.
+- MSBuild SDKs (`Lombiq.MSBuild.*.Sdk`) — source under `Smartent-src/Build/`:
+  - [Base](../../../Smartent-src/Build/Lombiq.MSBuild.Base.Sdk/Readme.md): Root SDK (rarely used directly).
+  - [OrchardCore.Module](../../../Smartent-src/Build/Lombiq.MSBuild.OrchardCore.Module.Sdk/Readme.md): Orchard Core modules.
+  - [OrchardCore.Tests](../../../Smartent-src/Build/Lombiq.MSBuild.OrchardCore.Tests.Sdk/Readme.md): Unit tests with `Smartent.Test.Unit`.
+  - [OrchardCore.Tests.UI](../../../Smartent-src/Build/Lombiq.MSBuild.OrchardCore.Tests.UI.Sdk/Readme.md): UI tests with `Smartent.Test.UI`.
+  - [OrchardCore.Tests.UI.Library](../../../Smartent-src/Build/Lombiq.MSBuild.OrchardCore.Tests.UI.Library.Sdk/Readme.md): Reusable UI test libraries.
+  - [OrchardCore.Theme](../../../Smartent-src/Build/Lombiq.MSBuild.OrchardCore.Theme.Sdk/Readme.md): Orchard Core themes.
 
 > [!NOTE]
 > Read about how to use and configure our MSBuild SDKs [here](Docs/UsingMSBuildSdks.md).

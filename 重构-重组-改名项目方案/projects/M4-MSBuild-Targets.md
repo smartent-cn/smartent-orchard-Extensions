@@ -1,7 +1,7 @@
 # 子方案：M4 Build / MSBuild Targets
 
 > 阶段：**M4**  
-> 状态：**实施中**（2026-11-22）
+> 状态：**Sdk 迁入首期收口**（2026-11-23）；PackageId Smartent 化仍属 M7
 
 ## 范围
 
@@ -31,6 +31,11 @@
 | 18 | `Lombiq.MSBuild.OrchardCore.Tests.Sdk` 迁入 | 单元测试 / `Smartent.Test.Platform` 等 | **首期完成** |
 | 19 | `Lombiq.MSBuild.OrchardCore.Tests.UI.*.Sdk` 迁入 | `Tests.UI.Sdk` 嵌入 Tests.Sdk；UI 库 Sdk | **首期完成** |
 | 20 | Legacy `Lombiq.MSBuild.*` 占位 Readme | Base/LibMan/Module 及本批五 Sdk 迁一删一 | **首期完成** |
+| 21 | `Lombiq.MSBuild.Sdk.Samples` 等 | Theme.Sdk `Smartent-src/Build` 路径 | **首期完成** |
+| 22 | `Readme.md` / `UsingMSBuildSdks.md` | 指向 `Smartent-src/Build`；Legacy 仅占位 | **首期完成** |
+| 23 | `dotnet pack` 冒烟 | Library + Theme + Module.Sdk nupkg | **首期完成** |
+| 24 | `Lombiq.MSBuild.Targets.Tests` | SdkTests + LibManTests + Sdk.Samples 构建 | **首期完成** |
+| 25 | Legacy 目录去重 | 非 git 跟踪的 Sdk 副本清理 | **首期完成** |
 
 ## M4#1 / #3 首期交付
 
@@ -63,8 +68,11 @@ dotnet test Smartent-src/Modules/Smartent.Orchard.TrainingDemo/Smartent.Orchard.
 
 ```powershell
 dotnet build Smartent-src/Modules/Smartent.Orchard.TrainingDemo/Smartent.Orchard.TrainingDemo/Smartent.Orchard.TrainingDemo.csproj
-dotnet build src/Modules/Lombiq.OSOCE.Samples/Lombiq.OSOCE.Samples.csproj
-dotnet test src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.Targets.Tests/Lombiq.MSBuild.Targets.Tests.csproj --filter "FullyQualifiedName~SdkTests"
+dotnet build Smartent-src/Demo/Smartent.Demo.Samples/Smartent.Demo.Samples.csproj -c Release
+dotnet build src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.Sdk.Samples/Lombiq.MSBuild.Sdk.Samples.csproj -c Release
+dotnet test src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.Targets.Tests/Lombiq.MSBuild.Targets.Tests.csproj -c Release
+dotnet pack Smartent-src/Build/Lombiq.MSBuild.Library.Sdk/Lombiq.MSBuild.Library.Sdk.csproj -c Release
+dotnet pack Smartent-src/Build/Lombiq.MSBuild.OrchardCore.Theme.Sdk/Lombiq.MSBuild.OrchardCore.Theme.Sdk.csproj -c Release
 ```
 
 ## 修订

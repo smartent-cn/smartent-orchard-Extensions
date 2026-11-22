@@ -17,6 +17,8 @@
 $env:NUGET_PACKAGES = "$env:USERPROFILE\.nuget\packages"
 dotnet test src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.Targets.Tests/Lombiq.MSBuild.Targets.Tests.csproj --filter "FullyQualifiedName~SdkTests" -c Release
 dotnet build Smartent-src/Build/Lombiq.MSBuild.LibMan.Targets/Lombiq.MSBuild.LibMan.Targets.csproj -c Release
+dotnet pack Smartent-src/Build/Lombiq.MSBuild.Library.Sdk/Lombiq.MSBuild.Library.Sdk.csproj -c Release --no-build
+dotnet pack Smartent-src/Build/Lombiq.MSBuild.OrchardCore.Theme.Sdk/Lombiq.MSBuild.OrchardCore.Theme.Sdk.csproj -c Release --no-build
 ```
 
 ## 未决
