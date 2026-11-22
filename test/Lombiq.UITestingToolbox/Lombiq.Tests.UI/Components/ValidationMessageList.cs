@@ -13,12 +13,11 @@ public class ValidationMessageList<TOwner> : ControlList<ValidationMessage<TOwne
     {
         var validationMessageDefinition = UIComponentResolver.GetControlDefinition(typeof(ValidationMessage<TOwner>));
 
-        var boundControl = controlSelector(Component.Owner);
+        var boundControl = (Control<TOwner>)controlSelector(Component.Owner);
 
-        var scopeLocator = new PlainScopeLocator(By.XPath("ancestor::" + validationMessageDefinition.ScopeXPath))
-        {
-            SearchContext = boundControl.Scope,
-        };
+        var scopeLocator = new PlainScopeLocator(
+            boundControl,
+            By.XPath("ancestor::" + validationMessageDefinition.ScopeXPath));
 
         return Component.Controls.Create<ValidationMessage<TOwner>>(boundControl.ComponentName, scopeLocator);
     }
@@ -27,12 +26,11 @@ public class ValidationMessageList<TOwner> : ControlList<ValidationMessage<TOwne
     {
         var validationMessageDefinition = UIComponentResolver.GetControlDefinition(typeof(ValidationMessage<TOwner>));
 
-        var boundControl = controlSelector(Component.Owner);
+        var boundControl = (Control<TOwner>)controlSelector(Component.Owner);
 
-        var scopeLocator = new PlainScopeLocator(By.XPath("ancestor::" + validationMessageDefinition.ScopeXPath))
-        {
-            SearchContext = boundControl.Scope,
-        };
+        var scopeLocator = new PlainScopeLocator(
+            boundControl,
+            By.XPath("ancestor::" + validationMessageDefinition.ScopeXPath));
 
         return Component.Controls.Create<ValidationMessage<TOwner>>(name, scopeLocator);
     }

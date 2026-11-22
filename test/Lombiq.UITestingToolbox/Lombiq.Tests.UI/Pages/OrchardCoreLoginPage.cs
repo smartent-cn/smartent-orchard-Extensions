@@ -84,7 +84,7 @@ public class OrchardCoreLoginPage : Page<_>
 
         try
         {
-            await context.ClickReliablyOnUntilNavigationHasOccurredAsync(buttonBy);
+            await context.ClickReliablyOnAndWaitUntilUrlChangeAsync(buttonBy);
         }
         catch (TimeoutException)
         {

@@ -3,7 +3,8 @@ const path = require('path');
 const { minify } = require('terser');
 const { rollup } = require('rollup');
 
-const { handleErrorObject, handlePromiseRejectionAsError } = require('.nx/scripts/handle-error');
+const nxScripts = require('./nx-scripts-path')();
+const { handleErrorObject, handlePromiseRejectionAsError } = require(path.join(nxScripts, 'handle-error'));
 
 function createDirectory(directoryPath) {
     return fs.existsSync(directoryPath) ? Promise.resolve() : fs.promises.mkdir(directoryPath, { recursive: true });

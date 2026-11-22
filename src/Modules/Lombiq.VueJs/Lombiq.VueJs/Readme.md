@@ -27,12 +27,12 @@ If you just want to see the whole thing in action, check out the [Samples projec
 
     ```xml
     <Project Sdk="Microsoft.NET.Sdk.Razor">
-      <Import Project="..\..\..\Utilities\Lombiq.NodeJs.Extensions\Lombiq.NodeJs.Extensions\Lombiq.NodeJs.Extensions.props" />
+      <Import Project="..\..\..\..\Smartent-src\Build\Smartent.Build.NodeJs\Smartent.Build.NodeJs\Smartent.Build.NodeJs.props" />
       <Import Project="..\Lombiq.VueJs\Lombiq.VueJs.props" />
         
       <!-- Everything else goes here. -->
     
-      <Import Project="..\..\..\Utilities\Lombiq.NodeJs.Extensions\Lombiq.NodeJs.Extensions\Lombiq.NodeJs.Extensions.targets" />
+      <Import Project="..\..\..\..\Smartent-src\Build\Smartent.Build.NodeJs\Smartent.Build.NodeJs\Smartent.Build.NodeJs.targets" />
       <Import Project="..\Lombiq.VueJs\Lombiq.VueJs.targets" />
     </Project>
     ```

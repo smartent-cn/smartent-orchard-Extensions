@@ -1,8 +1,10 @@
 using Atata.HtmlValidation;
 using Lombiq.Tests.UI.Extensions;
+using Lombiq.Tests.UI.Models;
 using Lombiq.VueJs.Samples.Controllers;
 using Lombiq.VueJs.Tests.UI.Extensions;
 using Shouldly;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
@@ -32,7 +34,7 @@ public class BehaviorVueTests : UITestBase
             configuration =>
             {
                 configuration.BrowserConfiguration.ConfigureFakeVideoSourceForPositiveTest();
-                configuration.HtmlValidationConfiguration.AssertHtmlValidationResultAsync = AssertHtmValidationResultAsync;
+                configuration.HtmlValidationConfiguration.AssertHtmlValidationResultAsync = AssertHtmlValidationResultAsync;
             });
 
     [Fact]
@@ -42,21 +44,19 @@ public class BehaviorVueTests : UITestBase
             configuration =>
             {
                 configuration.BrowserConfiguration.ConfigureFakeVideoSourceForNegativeTest();
-                configuration.HtmlValidationConfiguration.AssertHtmlValidationResultAsync = AssertHtmValidationResultAsync;
+                configuration.HtmlValidationConfiguration.AssertHtmlValidationResultAsync = AssertHtmlValidationResultAsync;
 
                 // The fetch call reports an error to the browser console if the QrCardController.GetBusinessCard()
                 // action results in NotFound.
-                configuration.ResponseLogFilter = e =>
-                    e.IsNonSuccessResponseAndNotExpectedNotFoundResponse(nameof(QrCardController.GetBusinessCard));
+                configuration.WithIgnoreExpectedNotFoundResponseFilter(nameof(QrCardController.GetBusinessCard));
             });
 
-    private static Task AssertHtmValidationResultAsync(HtmlValidationResult validationResult)
+    private static Task AssertHtmlValidationResultAsync(IList<HtmlValidationError> errors)
     {
-        var errors = validationResult.GetParsedErrors()
-            .Where(error =>
-                error.RuleId is not "no-autoplay" and
-                    not "long-title");
-        errors.ShouldBeEmpty(HtmlValidationResultExtensions.GetParsedErrorMessageString(errors));
+        var filteredErrors = errors
+            .Where(error => error.RuleId is not "no-autoplay" and not "long-title")
+            .ToList();
+        filteredErrors.ShouldBeEmpty(HtmlValidationResultExtensions.GetParsedErrorMessageString(filteredErrors));
         return Task.CompletedTask;
     }
 }

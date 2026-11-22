@@ -1,6 +1,8 @@
 const fs = require('fs');
-const { handleErrorObject, handleErrorMessage, handleWarningMessage } = require('.nx/scripts/handle-error');
-const getProjectDirectory = require('.nx/scripts/get-project-directory');
+const path = require('path');
+const nxScripts = require('./nx-scripts-path')();
+const { handleErrorObject, handleErrorMessage, handleWarningMessage } = require(path.join(nxScripts, 'handle-error'));
+const getProjectDirectory = require(path.join(nxScripts, 'get-project-directory'));
 
 async function executeFunctionByCommandLineArgument(functions) {
     const [functionName, argumentOptionsJson] = process.argv.slice(2);

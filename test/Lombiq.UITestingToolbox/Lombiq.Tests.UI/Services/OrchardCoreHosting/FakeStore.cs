@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using YesSql;
 using YesSql.Indexes;
@@ -51,7 +52,14 @@ public sealed class FakeStore : IStore
 
     public Task InitializeAsync() => _store.InitializeAsync();
 
-    public Task InitializeCollectionAsync(string collection) => _store.InitializeCollectionAsync(collection);
+    public Task InitializeAsync(CancellationToken cancellationToken) =>
+        _store.InitializeAsync(cancellationToken);
+
+    public Task InitializeCollectionAsync(string collection) =>
+        _store.InitializeCollectionAsync(collection);
+
+    public Task InitializeCollectionAsync(string collection, CancellationToken cancellationToken) =>
+        _store.InitializeCollectionAsync(collection, cancellationToken);
 
     public IStore RegisterIndexes(IEnumerable<IIndexProvider> indexProviders, string collection = null) =>
         _store.RegisterIndexes(indexProviders, collection);

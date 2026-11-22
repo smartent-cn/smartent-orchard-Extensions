@@ -7,7 +7,7 @@
 凡包含以下任一项的工程，视为 **带前端项目**，`Readme.md` 中 **必须** 有「前端依赖说明」专节（中英文）：
 
 - 根或子目录 `package.json`  
-- `Lombiq.NodeJs.Extensions` / MSBuild npm 目标驱动的 `Assets/`、`*.scss`、`*.js` 编译到 `wwwroot`  
+- `Smartent.Build.NodeJs`（原 `Lombiq.NodeJs.Extensions`）/ MSBuild npm 目标驱动的 `Assets/`、`*.scss`、`*.js` 编译到 `wwwroot`  
 - Vue / Chart.js / DataTables / UIKit 等模块内嵌脚本  
 - Theme 内 Bootstrap / LibMan / Tailwind 管线  
 
@@ -24,7 +24,7 @@
 
 ### Node.js 环境
 
-- 在 Readme 中写明 **推荐 Node 大版本**（与 `Lombiq.NodeJs.Extensions` / 仓库 CI 一致；写能力不写死号时参见 [.agents 文档策略](../../.agents/README.md)）。  
+- 在 Readme 中写明 **推荐 Node 大版本**（与 `Smartent.Build.NodeJs` / 仓库 CI 一致；写能力不写死号时参见 [.agents 文档策略](../../.agents/README.md)）。  
 - 说明是否必须全局安装某 CLI，或仅本地 `npm ci`。
 
 ### Orchard 资源注册

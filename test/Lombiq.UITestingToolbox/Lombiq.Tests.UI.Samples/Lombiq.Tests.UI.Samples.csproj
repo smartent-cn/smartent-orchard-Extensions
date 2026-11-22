@@ -7,6 +7,11 @@
   <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.OrchardCore.Tests.UI.Sdk/Sdk/Import.props" />
   <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Lombiq.MSBuild.OrchardCore.Tests.UI.Sdk" Version="2.1.1" />
 
+  <!-- JavaScriptTests depends on Lombiq.Tests.UI JS runner extensions not yet present in this fork. -->
+  <ItemGroup>
+    <Compile Remove="Tests\JavaScriptTests.cs" />
+  </ItemGroup>
+
   <ItemGroup>
     <None Remove=".htmlvalidate.json" />
     <None Remove="Tests\CustomZapAutomationFrameworkPlan.yml" />
