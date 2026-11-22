@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- https://learn.microsoft.com/dotnet/fundamentals/package-validation/diagnostic-ids -->
+<Suppressions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Smartent.Orchard.Hosting.Tenants.Maintenance.AdminMenu.#ctor(Microsoft.AspNetCore.Http.IHttpContextAccessor,Microsoft.Extensions.Localization.IStringLocalizer{Smartent.Orchard.Hosting.Tenants.Maintenance.AdminMenu},OrchardCore.Environment.Shell.ShellSettings)</Target>
+    <Left>lib/net10.0/Smartent.Orchard.Hosting.Tenants.Maintenance.dll</Left>
+    <Right>lib/net10.0/Smartent.Orchard.Hosting.Tenants.Maintenance.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Smartent.Orchard.Hosting.Tenants.Maintenance.Maintenance.ChangeUserSensitiveContent.ChangeUserSensitiveContentMaintenanceProvider.#ctor(Microsoft.Extensions.Options.IOptions{Smartent.Orchard.Hosting.Tenants.Maintenance.Maintenance.ChangeUserSensitiveContent.ChangeUserSensitiveContentMaintenanceOptions},YesSql.ISession,Microsoft.AspNetCore.Identity.IPasswordHasher{OrchardCore.Users.IUser},OrchardCore.Environment.Shell.ShellSettings)</Target>
+    <Left>lib/net10.0/Smartent.Orchard.Hosting.Tenants.Maintenance.dll</Left>
+    <Right>lib/net10.0/Smartent.Orchard.Hosting.Tenants.Maintenance.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0006</DiagnosticId>
+    <Target>M:Smartent.Orchard.Hosting.Tenants.Maintenance.Services.IMaintenanceManager.ExecuteMaintenanceTaskIfNeededAsync(Smartent.Orchard.Hosting.Tenants.Maintenance.Services.IMaintenanceProvider,Smartent.Orchard.Hosting.Tenants.Maintenance.Models.MaintenanceTaskExecutionContext,System.Boolean)</Target>
+    <Left>lib/net10.0/Smartent.Orchard.Hosting.Tenants.Maintenance.dll</Left>
+    <Right>lib/net10.0/Smartent.Orchard.Hosting.Tenants.Maintenance.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0006</DiagnosticId>
+    <Target>M:Smartent.Orchard.Hosting.Tenants.Maintenance.Services.IMaintenanceManager.GetProviderById(System.String)</Target>
+    <Left>lib/net10.0/Smartent.Orchard.Hosting.Tenants.Maintenance.dll</Left>
+    <Right>lib/net10.0/Smartent.Orchard.Hosting.Tenants.Maintenance.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+</Suppressions>

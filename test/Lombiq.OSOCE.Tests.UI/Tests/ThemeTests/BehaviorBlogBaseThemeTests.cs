@@ -1,4 +1,4 @@
-using Lombiq.BaseTheme.Tests.UI.Extensions;
+using Smartent.Orchard.Theme.Base.Tests.UI.Extensions;
 using Lombiq.OSOCE.Tests.UI.Helpers;
 using Lombiq.Tests.UI.Extensions;
 using Lombiq.Tests.UI.Services;
@@ -25,7 +25,7 @@ public class BehaviorBlogBaseThemeTests : UITestBase
             await context.GoToAdminRelativeUrlAsync("/Themes");
 
             await context.ClickReliablyOnAsync(By.CssSelector(
-                "form[action*='SetCurrentTheme/Lombiq.BaseTheme.Native.Samples'] button"));
+                "form[action*='SetCurrentTheme/Smartent.Orchard.Theme.Base.Native.Samples'] button"));
             context.ShouldBeSuccess();
 
             return homePageUri;

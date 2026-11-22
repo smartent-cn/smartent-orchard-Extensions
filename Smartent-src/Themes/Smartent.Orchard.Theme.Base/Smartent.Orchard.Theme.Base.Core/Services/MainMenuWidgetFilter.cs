@@ -1,0 +1,63 @@
+using Smartent.Orchard.Theme.Base.Core.Constants;
+using Smartent.Orchard.Theme.Base.Core.Models;
+using Smartent.Orchard.Extensions.Cms.Extensions.Widgets;
+using Smartent.Orchard.Extensions.Cms.Extensions.Widgets.ViewModels;
+using Smartent.Orchard.Platform.Mvc;
+using Smartent.Orchard.Platform.Navigation;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using OrchardCore.DisplayManagement;
+using OrchardCore.DisplayManagement.Extensions;
+using OrchardCore.DisplayManagement.Layout;
+using OrchardCore.Navigation;
+using OrchardCore.Settings;
+using System.Threading.Tasks;
+
+namespace Smartent.Orchard.Theme.Base.Core.Services;
+
+public sealed class MainMenuWidgetFilter : WidgetFilterBase<MenuWidgetViewModel>
+{
+    private readonly IHttpContextAccessor _hca;
+    private readonly INavigationManager _navigationManager;
+    private readonly ICssClassHolder _cssClassHolder;
+    private readonly ISiteService _siteService;
+
+    protected override string ZoneName => ZoneNames.Navigation;
+    protected override string ViewName => WidgetTypes.MenuWidget;
+    protected override bool FrontEndOnly => true;
+
+    public MainMenuWidgetFilter(
+        IAuthorizationService authorizationService,
+        IHttpContextAccessor hca,
+        ILayoutAccessor layoutAccessor,
+        IShapeFactory shapeFactory,
+        INavigationManager navigationManager,
+        ICssClassHolder cssClassHolder,
+        ISiteService siteService)
+        : base(requiredPermission: null, authorizationService, layoutAccessor, shapeFactory)
+    {
+        _hca = hca;
+        _navigationManager = navigationManager;
+        _cssClassHolder = cssClassHolder;
+        _siteService = siteService;
+    }
+
+    protected override async Task<MenuWidgetViewModel> GetViewModelAsync()
+    {
+        if (_hca.HttpContext is not { } httpContext ||
+            await _siteService.GetSettingsAsync<BaseThemeSettings>() is { HideMenu: true })
+        {
+            return null;
+        }
+
+        // Add the <nav> classes to the zone holder <nav>.
+        _cssClassHolder.AddClassToZone(ZoneNames.Navigation, "navbar-expand-md");
+        _cssClassHolder.AddClassToZone(ZoneNames.Navigation, "navbar");
+
+        return new(
+            noWrapper: true, // The navigation zone is already the wrapper.
+            menuItems: await _navigationManager.BuildMenuAsync(
+                MainMenuNavigationProviderBase.MainNavigationName,
+                await httpContext.GetActionContextAsync()));
+    }
+}

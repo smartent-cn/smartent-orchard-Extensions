@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="Smartent.Orchard.Theme.Base.Core/Smartent.Orchard.Theme.Base.Core.csproj" />
+  <Project Path="Smartent.Orchard.Theme.Base.Native.Samples/Smartent.Orchard.Theme.Base.Native.Samples.csproj" />
+  <Project Path="Smartent.Orchard.Theme.Base.Native/Smartent.Orchard.Theme.Base.Native.csproj" />
+  <Project Path="Smartent.Orchard.Theme.Base.Tests.UI/Smartent.Orchard.Theme.Base.Tests.UI.csproj" />
+</Solution>

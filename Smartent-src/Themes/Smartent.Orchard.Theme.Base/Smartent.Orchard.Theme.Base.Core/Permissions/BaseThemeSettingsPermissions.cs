@@ -1,0 +1,13 @@
+using Smartent.Orchard.Platform.Users;
+using OrchardCore.Security.Permissions;
+using System.Collections.Generic;
+
+namespace Smartent.Orchard.Theme.Base.Core.Permissions;
+
+public sealed class BaseThemeSettingsPermissions : AdminPermissionBase
+{
+    public static readonly Permission ManageBaseThemeSettings =
+        new(nameof(ManageBaseThemeSettings), "Manage Smartent.Orchard.Theme.Base Settings.");
+
+    protected override IEnumerable<Permission> AdminPermissions => [ManageBaseThemeSettings];
+}

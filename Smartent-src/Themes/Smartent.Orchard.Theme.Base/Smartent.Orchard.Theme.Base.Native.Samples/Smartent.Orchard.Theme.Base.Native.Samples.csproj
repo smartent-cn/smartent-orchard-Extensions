@@ -1,0 +1,33 @@
+<Project>
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>Smartent.Orchard.Theme.Base.Native.Samples</RootNamespace>
+    <AssemblyName>Smartent.Orchard.Theme.Base.Native.Samples</AssemblyName>
+    <PackageId>Smartent.Orchard.Theme.Base.Native.Samples</PackageId>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../../src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.OrchardCore.Theme.Sdk/Sdk/Import.props" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Lombiq.MSBuild.OrchardCore.Theme.Sdk" Version="2.1.1" />
+
+  <PropertyGroup>
+    <Title>Lombiq Base Theme for Orchard Core - Native CSS - Samples</Title>
+    <CopyrightYear>2021</CopyrightYear>
+    <DescriptionBody>Sample project that demonstrates the features of Lombiq Base Theme for Orchard Core.</DescriptionBody>
+    <PackageTags>OrchardCore;Lombiq;AspNetCore;Css;Theming</PackageTags>
+    <RepositoryUrl>https://github.com/Lombiq/Orchard-Base-Theme</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/Lombiq/Orchard-Base-Theme/blob/dev/Smartent.Orchard.Theme.Base.Native.Samples/Readme.md</PackageProjectUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="OrchardCore.Admin" Version="$(OrchardCoreVersion)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Smartent.Orchard.Theme.Base.Native\Smartent.Orchard.Theme.Base.Native.csproj" />
+    <ProjectReference Include="..\..\..\Modules\Smartent.Orchard.Extensions.Cms\Smartent.Orchard.Extensions.Cms\Smartent.Orchard.Extensions.Cms.csproj" />
+  </ItemGroup>
+
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../../src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.OrchardCore.Theme.Sdk/Sdk/Import.targets" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.targets" Sdk="Lombiq.MSBuild.OrchardCore.Theme.Sdk" Version="2.1.1" />
+</Project>

@@ -1,0 +1,18 @@
+using Smartent.Core.AspNet.Security;
+using Microsoft.AspNetCore.Http;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using static Smartent.Core.AspNet.Security.ContentSecurityPolicyDirectives;
+
+namespace Smartent.Orchard.Marketing.Pirsch.Services;
+
+public sealed class PirschSecurityPolicyProvider : IContentSecurityPolicyProvider
+{
+    public ValueTask UpdateAsync(IDictionary<string, string> securityPolicies, HttpContext context)
+    {
+        CspHelper.MergeValues(securityPolicies, ScriptSrc, "api.pirsch.io");
+        CspHelper.MergeValues(securityPolicies, ConnectSrc, "api.pirsch.io");
+
+        return ValueTask.CompletedTask;
+    }
+}

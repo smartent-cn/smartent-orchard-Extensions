@@ -1,3 +1,7 @@
-# Lombiq's Open-Source Orchard Core Extensions - Samples
+# 已迁至 Smartent-src
 
-This is a placeholder module that will contain sample code for UI tests and demonstration content for our open-source Orchard Core extensions.
+`Lombiq.OSOCE.Samples` 已迁入 `Smartent-src/Demo/Smartent.Demo.Samples/`（Feature Id：`Smartent.Demo.Samples`）。
+
+# Moved to Smartent-src
+
+`Lombiq.OSOCE.Samples` now lives at `Smartent-src/Demo/Smartent.Demo.Samples/`.

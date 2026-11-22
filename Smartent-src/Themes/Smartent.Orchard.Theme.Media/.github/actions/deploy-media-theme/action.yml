@@ -1,0 +1,54 @@
+name: Deploy Media Theme
+description: Deploys an Orchard Core Media Theme to an Orchard site via Remote Deployment.
+
+inputs:
+  theme-path:
+    required: false
+    default: .
+    description: Path to the theme project.
+  base-theme-id:
+    required: false
+    description: ID of the base theme of the theme project, if any.
+  clear-media-folder:
+    required: false
+    default: 'true'
+    description: When set to "true", will clear the Media folder of the Media Theme before deployment.
+  dotnet-tool-version:
+    required: false
+    default: ''
+    description: When not empty, the specified version of the .NET tool Smartent.Orchard.Theme.Media.Deployer is used.
+
+runs:
+  using: composite
+  steps:
+    - name: Install Smartent.Orchard.Theme.Media.Deployer
+      shell: pwsh
+      run: |
+        $switches = @()
+        if ('${{ inputs.dotnet-tool-version }}'.Trim() -ne '')
+        {
+          $switches += @('--version', '${{ inputs.dotnet-tool-version }}'.Trim())
+        }
+
+        dotnet tool install --global Smartent.Orchard.Theme.Media.Deployer @switches
+
+    - name: Deploy Media Theme
+      shell: pwsh
+      run: |
+        # Putting --base-id as last, so if it's empty, then the other parameters will still be parsed correctly.
+        $switches = @(
+            '--path', '${{ inputs.theme-path }}'
+            '--clear', '${{ inputs.clear-media-folder }}'
+            '--deployment-path', '${{ inputs.theme-path }}/Deployment'
+            '--remote-deployment-url', '${{ env.URL }}'
+            '--remote-deployment-client-name', '${{ env.CLIENT_NAME }}'
+            '--remote-deployment-client-api-key', '${{ env.CLIENT_API_KEY }}'
+            '--base-id', '${{ inputs.base-theme-id }}'
+        )
+
+        media-theme-deploy @switches
+
+        if ($LastExitCode -ne 0)
+        {
+            Write-Error "Deployment failed, see the errors above."
+        }

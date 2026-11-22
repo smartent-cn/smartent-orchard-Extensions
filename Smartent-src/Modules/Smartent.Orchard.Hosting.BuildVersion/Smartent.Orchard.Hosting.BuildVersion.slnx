@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Smartent.Orchard.Hosting.BuildVersion.Tests.UI/Smartent.Orchard.Hosting.BuildVersion.Tests.UI.csproj" />
+  <Project Path="Smartent.Orchard.Hosting.BuildVersion/Smartent.Orchard.Hosting.BuildVersion.csproj" />
+</Solution>

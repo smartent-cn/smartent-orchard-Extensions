@@ -1,0 +1,89 @@
+@using Smartent.Orchard.Hosting.Tenants.Management.Controllers
+@using OrchardCore.Localization
+@using OrchardCore.Mvc.Core.Utilities
+@using System.Globalization
+@using static Smartent.Orchard.Hosting.Tenants.Management.Constants.FeatureNames
+
+@model Smartent.Orchard.Hosting.Tenants.Management.Models.ShellSettingsEditorViewModel
+
+@{
+    var culture = CultureInfo.CurrentUICulture;
+    var settings = new
+    {
+        AutomaticLayout = true,
+        Language = "json",
+    };
+}
+
+<form asp-action="@nameof(ShellSettingsEditorController.Edit)"
+      asp-controller="@typeof(ShellSettingsEditorController).ControllerName()"
+      asp-area="@Module"
+      method="post"
+      class="no-multisubmit">
+    <div class="ocat-wrapper field-wrapper" id="FieldWrapper">
+        <label asp-for="Json" class="ocat-label">@T["Shell Settings editor"]</label>
+        <div class="ocat-end">
+            <span class="hint">
+                @T["JSON key-value pairs should be set here, in the same way you'd configure the tenant-specific section in an appsettings.json file."]
+            </span>
+            <div id="@Html.IdFor(x => x.Json)_editor" asp-for="Text" style="min-height: 400px;" class="form-control" dir="@culture.GetLanguageDirection()"></div>
+            <textarea asp-for="Json" class="content-preview-text" hidden>@Html.Raw(Model.Json)</textarea>
+        </div>
+    </div>
+    <div class="mb-3">
+        <input hidden asp-for="TenantId" value="@Model.TenantId"/>
+        <button class="btn btn-primary save" type="submit">@T["Save settings"]</button>
+    </div>
+</form>
+
+@* Based on HtmlBodyPart-Monaco.Edit.cshtml, but using "json" instead of "html" and the shortcodes removed. *@
+<script asp-name="monaco" at="Foot"></script>
+<script at="Foot" depends-on="monaco">
+    function onDocumentReady(fn) {
+        if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", fn);
+        } else {
+            fn();
+        }
+    }
+
+    onDocumentReady(function () {
+        const divEditor = document.getElementById('@Html.IdFor(x => x.Json)_editor');
+        if (!divEditor) {
+            return;
+        }
+
+        require(['vs/editor/editor.main'], function () {
+            const settings = @Json.Serialize(settings);
+
+            const json = document.documentElement;
+            const mutationObserver = new MutationObserver(setTheme);
+            mutationObserver.observe(json, { attributes: true });
+
+            function setTheme() {
+                const theme = json.dataset.bsTheme;
+                if (theme === 'dark' || (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                    monaco.editor.setTheme('vs-dark')
+                } else {
+                    monaco.editor.setTheme('vs')
+                }
+            }
+
+            setTheme();
+
+            const editor = monaco.editor.create(divEditor, settings);
+            const textArea = document.getElementById('@Html.IdFor(x => x.Json)');
+
+            editor.getModel().onDidChangeContent(() => {
+                textArea.value = editor.getValue();
+                document.dispatchEvent(new Event('contentpreview:render'));
+            });
+
+            editor.getModel().setValue(textArea.value);
+
+            window.addEventListener('submit', function () {
+                textArea.value = editor.getValue();
+            });
+        });
+    });
+</script>

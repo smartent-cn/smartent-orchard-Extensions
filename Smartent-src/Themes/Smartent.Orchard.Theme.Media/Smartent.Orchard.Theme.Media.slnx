@@ -1,0 +1,9 @@
+<Solution>
+  <Project Path="Smartent.Orchard.Theme.Media.Bridge.Tests.UI/Smartent.Orchard.Theme.Media.Bridge.Tests.UI.csproj" />
+  <Project Path="Smartent.Orchard.Theme.Media.Bridge/Smartent.Orchard.Theme.Media.Bridge.csproj" />
+  <Project Path="Smartent.Orchard.Theme.Media.Deployer/Smartent.Orchard.Theme.Media.Deployer.csproj" />
+  <Project Path="Smartent.Orchard.Theme.Media.Targets/Smartent.Orchard.Theme.Media.Targets.csproj" />
+  <Project Path="Smartent.Orchard.Theme.Media.Tests.Theme/Smartent.Orchard.Theme.Media.Tests.Theme.csproj" />
+  <Project Path="Smartent.Orchard.Theme.Media.Tests.UI/Smartent.Orchard.Theme.Media.Tests.UI.csproj" />
+  <Project Path="Smartent.Orchard.Theme.Media/Smartent.Orchard.Theme.Media.csproj" />
+</Solution>

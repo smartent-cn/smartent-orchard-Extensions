@@ -123,7 +123,7 @@ public static class HostingDefaultsOrchardCoreBuilderExtensions
         if (webApplicationBuilder.Configuration.IsAzureHosting())
         {
             builder
-                .AddDefaultTenantFeatures("Lombiq.Hosting.BuildVersionDisplay")
+                .AddDefaultTenantFeatures("Smartent.Orchard.Hosting.BuildVersion")
                 .AddTenantFeatures("OrchardCore.DataProtection.Azure")
                 .DisableResourceDebugMode();
 

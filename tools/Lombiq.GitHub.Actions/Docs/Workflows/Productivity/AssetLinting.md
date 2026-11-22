@@ -29,7 +29,7 @@ jobs:
         src/Modules/Smartent.Orchard.DataTables/Smartent.Orchard.DataTables;
         src/Modules/Smartent.Orchard.Extensions.Cms/Smartent.Orchard.Extensions.Cms;
         src/Modules/Smartent.Orchard.UIKit/Smartent.Orchard.UIKit;
-        src/Modules/Lombiq.Walkthroughs/Lombiq.Walkthroughs;
+        src/Modules/Smartent.Orchard.Walkthroughs/Smartent.Orchard.Walkthroughs;
         src/Modules/Lombiq.Hosting.Tenants/Lombiq.Hosting.Tenants.Maintenance;
       styles: >-
         src/Modules/Smartent.Orchard.ChartJs/Smartent.Orchard.ChartJs.Samples;
@@ -50,7 +50,7 @@ jobs:
         src/Modules/Lombiq.JsonEditor/Lombiq.JsonEditor;
         src/Modules/Lombiq.Privacy/Lombiq.Privacy;
         src/Modules/Smartent.Orchard.UIKit/Smartent.Orchard.UIKit;
-        src/Modules/Lombiq.Walkthroughs/Lombiq.Walkthroughs;
+        src/Modules/Smartent.Orchard.Walkthroughs/Smartent.Orchard.Walkthroughs;
         src/Themes/Lombiq.BaseTheme/Lombiq.BaseTheme.Core;
         src/Themes/Lombiq.BaseTheme/Lombiq.BaseTheme.Native;
         src/Themes/Lombiq.BaseTheme/Lombiq.BaseTheme.Native.Samples;

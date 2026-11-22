@@ -1,4 +1,4 @@
-using Lombiq.Walkthroughs.Tests.UI.Extensions;
+using Smartent.Orchard.Walkthroughs.Tests.UI.Extensions;
 using System.Threading.Tasks;
 using Xunit;
 

@@ -1,21 +1,11 @@
-# Lombiq Login as Anybody for Orchard Core
+# 已迁至 Smartent-src
 
-[![Lombiq.LoginAsAnybody NuGet](https://img.shields.io/nuget/v/Lombiq.LoginAsAnybody?label=Lombiq.LoginAsAnybody)](https://www.nuget.org/packages/Lombiq.LoginAsAnybody/) [![Lombiq.LoginAsAnybody.Tests.UI NuGet](https://img.shields.io/nuget/v/Lombiq.LoginAsAnybody.Tests.UI?label=Lombiq.LoginAsAnybody.Tests.UI)](https://www.nuget.org/packages/Lombiq.LoginAsAnybody.Tests.UI/)
+`Lombiq.LoginAsAnybody` 已迁入 `Smartent-src/Modules/Smartent.Orchard.LoginAsAnybody/`（Feature Id：`Smartent.Orchard.LoginAsAnybody*`）。
 
-## About
+主解决方案已引用 Smartent-src 路径。本目录在确认无引用后可删除（迁一删一）。
 
-Orchard Core module for administrators to be able to log in as any user. The Orchard 1 version of the module is available on the branch `dev-orchard-1`.
+# Moved to Smartent-src
 
-You can watch a demo video of the project [here](https://www.youtube.com/watch?v=UlZhblts1BI).
+`Lombiq.LoginAsAnybody` now lives at `Smartent-src/Modules/Smartent.Orchard.LoginAsAnybody/` (feature ids: `Smartent.Orchard.LoginAsAnybody*`).
 
-## Documentation
-
-After enabling the module you'll see a new button on the Security → Users page. You can log in as any registered user there. This is useful if you want to see how your Orchard Core app behaves for certain users.
-
-This feature is only available to administrator users with the `LoginAsAnybody`, thus it's not a way to get around security.
-
-## Contributing and support
-
-Bug reports, feature requests, comments, questions, code contributions and love letters are warmly welcome. You can send them to us via GitHub issues and pull requests. Please adhere to our [open-source guidelines](https://lombiq.com/open-source-guidelines) while doing so.
-
-This project is developed by [Lombiq Technologies](https://lombiq.com/). Commercial-grade support is available through Lombiq.
+The main solution references Smartent-src paths. Remove this legacy folder once nothing references it (move-one-delete-one).

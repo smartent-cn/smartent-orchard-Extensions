@@ -1,0 +1,19 @@
+using Smartent.Core.AspNet.Security;
+using Microsoft.AspNetCore.Http;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
+using static Smartent.Core.AspNet.Security.ContentSecurityPolicyDirectives;
+
+namespace Smartent.Orchard.Hosting.ApplicationInsights.Services;
+
+internal sealed class ApplicationInsightsContentSecurityPolicyProvider : IContentSecurityPolicyProvider
+{
+    public ValueTask UpdateAsync(IDictionary<string, string> securityPolicies, HttpContext context)
+    {
+        CspHelper.MergeValues(securityPolicies, ScriptSrc, "js.monitor.azure.com");
+        CspHelper.MergeValues(securityPolicies, ConnectSrc, "*.applicationinsights.azure.com", "js.monitor.azure.com");
+
+        return ValueTask.CompletedTask;
+    }
+}

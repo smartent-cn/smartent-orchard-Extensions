@@ -1,0 +1,94 @@
+@model Smartent.Orchard.VueJs.Samples.ViewModels.EnhancedListViewModel
+
+<form id="enhanced-list">
+    <fieldset id="controls">
+        <input type="number" name="page" value="@Model.Page" min="1" max="10"/>
+        <input type="submit" value="@T["Update"]"/>
+    </fieldset>
+
+    <div>
+        Some other stuff that Vue doesn't care about. You can put your shapes or anything that the browser should
+        continue treating as static HTML into the Vue.js webapp. It won't be bothered. On the other hand, don't place
+        unrelated apps, jQuery-modified content, etc inside a Vue.js app, because its virtual DOM might update and reset
+        your changes.
+    </div>
+
+    @* We use a table for simplicity's sake, but this could be anything else too including an iframe with dynamic src. *@
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">@T["Number"]</th>
+                <th scope="col">@T["Date"]</th>
+                <th scope="col">@T["Day"]</th>
+                <th scope="col">@T["Score"]</th>
+            </tr>
+        </thead>
+        <tbody id="table-body">
+            @foreach (var row in Model.Data)
+            {
+                <tr>
+                    <td>@row.Number</td>
+                    <td>@row.Date</td>
+                    <td>@row.Day</td>
+                    <td>@row.Random</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</form>
+
+<vue-component name="@ResourceNames.EnhancementControl" />
+<vue-component name="@ResourceNames.EnhancementTableBody" />
+@Orchard.GetScriptModuleImportMap()
+
+@* Here we replace the enhanced elements with vue components using vanilla JavaScript. *@
+<script type="module" defer>
+    import { createApp } from 'vue';
+    import EnhancementControl from 'enhancement-control.vue';
+    import EnhancementTableBody from 'enhancement-table-body.vue';
+
+    // If you have a wrapper.
+    document.getElementById('controls').innerHTML = '<enhancement-control v-model="page" :max="10">';
+
+    // If you need to replace an element.
+    const tableBody = document.createElement('enhancement-table-body');
+    tableBody.setAttribute(':data', 'data');
+    document.getElementById('table-body').replaceWith(tableBody);
+
+    // Vue.js app with very light business logic. In general try to move as much of the code into the SFCs as feasible.
+    const url = @(Orchard.Action<VueSfcController>(controller => controller.GetList(999)).JsonHtmlContent());
+    const topComponent = {
+        data() {
+            return @Json.Serialize(new { Model.Page, Model.Data });
+        },
+        watch: {
+            page: function (page) {
+                const self = this;
+                fetch(url.replace('999', page))
+                    .then((response) => response.json())
+                    .then((data) => {
+                        self.data = data;
+                        history.replaceState(undefined, undefined, '?page=' + page)
+                    });
+            },
+        },
+        components: { EnhancementControl, EnhancementTableBody }
+    };
+
+    createApp(topComponent).mount('#enhanced-list');
+</script>
+
+@* Another approach is to introduce a top level SFC that overwrites the whole form with its <template>. This may be more
+   effort but it greatly simplifies the glue logic. If you do this often, consider using a server side rendering
+   framework such as Nuxt.js.
+
+<script type="module" defer>
+    import { createApp } from 'vue';
+    import FullEnhancedList from 'full-enhanced-list.vue';
+
+    createApp(FullEnhancedList, @Json.Serialize(new { InitialPage = Model.Page, InitialData = Model.Data }))
+        .mount('#enhanced-list');
+</script>
+ *@
+
+@* NEXT STATION: Assets/Scripts/VueComponents/enhancement-control.vue *@

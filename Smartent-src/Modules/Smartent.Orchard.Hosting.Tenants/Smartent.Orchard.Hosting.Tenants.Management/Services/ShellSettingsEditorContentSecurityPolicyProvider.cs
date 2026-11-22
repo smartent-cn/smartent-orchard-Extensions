@@ -1,0 +1,21 @@
+using Smartent.Core.AspNet.Security;
+using Smartent.Orchard.Platform.Security;
+using Smartent.Orchard.Hosting.Tenants.Management.Filters;
+using Microsoft.AspNetCore.Http;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
+namespace Smartent.Orchard.Hosting.Tenants.Management.Services;
+
+public class ShellSettingsEditorContentSecurityPolicyProvider : IContentSecurityPolicyProvider
+{
+    public ValueTask UpdateAsync(IDictionary<string, string> securityPolicies, HttpContext context)
+    {
+        if (ShellSettingsEditorFilter.Condition(context))
+        {
+            MonacoContentSecurityPolicyProvider.AddMonacoPolicies(securityPolicies);
+        }
+
+        return ValueTask.CompletedTask;
+    }
+}

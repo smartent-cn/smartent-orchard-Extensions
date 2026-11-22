@@ -1,0 +1,12 @@
+namespace Smartent.Orchard.Marketing.Pirsch.Models;
+
+public sealed class PirschSettings
+{
+    public string ClientSecret { get; set; } = string.Empty;
+
+    public string ClientSideCodeSnippet { get; set; } = string.Empty;
+
+    public string DataDev { get; set; } = string.Empty;
+
+    public string AutoRenderZone { get; set; } = "HeadMeta";
+}

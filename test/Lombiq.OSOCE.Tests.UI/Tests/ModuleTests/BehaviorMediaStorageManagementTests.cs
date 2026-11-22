@@ -1,4 +1,4 @@
-using Lombiq.Hosting.Tenants.MediaStorageManagement.Tests.UI.Extensions;
+using Smartent.Orchard.Hosting.Tenants.MediaStorageManagement.Tests.UI.Extensions;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 using Xunit;

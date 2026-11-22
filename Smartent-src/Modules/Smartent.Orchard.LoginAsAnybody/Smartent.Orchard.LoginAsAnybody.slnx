@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Smartent.Orchard.LoginAsAnybody.Tests.UI/Smartent.Orchard.LoginAsAnybody.Tests.UI.csproj" />
+  <Project Path="Smartent.Orchard.LoginAsAnybody/Smartent.Orchard.LoginAsAnybody.csproj" />
+</Solution>

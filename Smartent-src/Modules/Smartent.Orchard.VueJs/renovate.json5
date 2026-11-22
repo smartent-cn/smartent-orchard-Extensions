@@ -1,0 +1,36 @@
+{
+    '$schema': 'https://docs.renovatebot.com/renovate-schema.json',
+    extends: [
+        'github>Lombiq/Open-Source-Orchard-Core-Extensions:renovate-osoce-orchard-core-submodule.json5',
+    ],
+    // Only the deprecated projects have lock files, so lock file maintenance isn't needed.
+    lockFileMaintenance: {
+        enabled: false,
+    },
+    packageRules: [
+        {
+            // Everything except Smartent.Orchard.VueJs.Resources is deprecated, so those projects shouldn't be updated at all.
+            groupName: 'Legacy Smartent.Orchard.VueJs',
+            matchFileNames: ['Smartent.Orchard.VueJs/**', 'Smartent.Orchard.VueJs.Samples/**', 'Smartent.Orchard.VueJs.Tests.UI/**'],
+            enabled: false,
+        },
+        {
+            groupName: 'Vue',
+            matchPackageNames: [
+                'vue*',
+            ],
+            // Keeping minor and patch updates together with all other such non-breaking updates to prevent having too
+            // many pull requests.
+            matchUpdateTypes: ['major'],
+        },
+        {
+            groupName: 'Rollup',
+            matchPackageNames: [
+                '/.*rollup.*/',
+            ],
+            // Keeping minor and patch updates together with all other such non-breaking updates to prevent having too
+            // many pull requests.
+            matchUpdateTypes: ['major'],
+        },
+    ],
+}

@@ -1,0 +1,26 @@
+<Project>
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>Smartent.Orchard.Theme.Media.Tests.Theme</RootNamespace>
+    <AssemblyName>Smartent.Orchard.Theme.Media.Tests.Theme</AssemblyName>
+    <PackageId>Smartent.Orchard.Theme.Media.Tests.Theme</PackageId>
+  </PropertyGroup>
+
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../../src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.OrchardCore.Theme.Sdk/Sdk/Import.props" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Lombiq.MSBuild.OrchardCore.Theme.Sdk" Version="2.1.1" />
+
+  <PropertyGroup>
+    <Title>Lombiq Hosting - Media Theme Tests Theme for Orchard Core</Title>
+    <CopyrightYear>2022</CopyrightYear>
+    <DescriptionBody>With the help of this test theme, you'll can tests basic media theme logic.</DescriptionBody>
+    <PackageTags>OrchardCore;Lombiq;AspNetCore;Media;Theme</PackageTags>
+    <RepositoryUrl>https://github.com/Lombiq/Hosting-Media-Theme</RepositoryUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Smartent.Orchard.Theme.Media.Bridge\Smartent.Orchard.Theme.Media.Bridge.csproj" />
+  </ItemGroup>
+
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../../src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.OrchardCore.Theme.Sdk/Sdk/Import.targets" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.targets" Sdk="Lombiq.MSBuild.OrchardCore.Theme.Sdk" Version="2.1.1" />
+</Project>

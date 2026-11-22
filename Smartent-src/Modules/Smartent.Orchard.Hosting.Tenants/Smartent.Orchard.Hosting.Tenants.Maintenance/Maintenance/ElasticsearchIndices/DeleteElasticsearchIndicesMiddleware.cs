@@ -1,0 +1,102 @@
+using Elastic.Clients.Elasticsearch;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using OrchardCore.Elasticsearch;
+using OrchardCore.Elasticsearch.Core.Services;
+using OrchardCore.Environment.Shell;
+using OrchardCore.Environment.Shell.Configuration;
+using OrchardCore.Locking.Distributed;
+using System;
+using System.Net;
+using System.Threading.Tasks;
+
+namespace Smartent.Orchard.Hosting.Tenants.Maintenance.Maintenance.ElasticsearchIndices;
+
+public class DeleteElasticsearchIndicesMiddleware
+{
+    private readonly RequestDelegate _next;
+
+    private readonly ShellSettings _shellSettings;
+
+    private readonly IShellSettingsManager _shellSettingsManager;
+
+    private readonly IDistributedLock _distributedLock;
+    private readonly ILogger<DeleteElasticsearchIndicesMiddleware> _logger;
+
+    public DeleteElasticsearchIndicesMiddleware(
+        RequestDelegate next,
+        ShellSettings shellSettings,
+        IShellSettingsManager shellSettingsManager,
+        IDistributedLock distributedLock,
+        ILogger<DeleteElasticsearchIndicesMiddleware> logger)
+    {
+        _next = next;
+        _shellSettings = shellSettings;
+        _shellSettingsManager = shellSettingsManager;
+        _distributedLock = distributedLock;
+        _logger = logger;
+    }
+
+    public async Task InvokeAsync(HttpContext httpContext)
+    {
+        if (httpContext.Request.Method != WebRequestMethods.Http.Get)
+        {
+            await _next.Invoke(httpContext);
+            return;
+        }
+
+        if (await InvokeNextIfUninitializedAsync(_shellSettings, httpContext)) return;
+
+        // Try to acquire a lock before starting installation
+        var (locker, locked) = await _distributedLock.TryAcquireLockAsync(
+            "ELASTICSEARCH_INDICES_DELETION",
+            TimeSpan.FromMinutes(1),
+            TimeSpan.FromMinutes(1));
+
+        if (!locked)
+        {
+            throw new TimeoutException($"Failed to acquire an Elasticsearch indices deletion lock for the tenant: {_shellSettings.Name}");
+        }
+
+        await using var acquiredLock = locker;
+
+        // Check if the tenant was installed by another instance.
+        if (await InvokeNextIfUninitializedAsync(_shellSettings, httpContext)) return;
+
+        using var settings = (await _shellSettingsManager.LoadSettingsAsync(_shellSettings.Name)).AsDisposable();
+
+        // If the tenant was initialized by another instance, then skip again.
+        if (await InvokeNextIfUninitializedAsync(settings, httpContext)) return;
+
+        var services = httpContext.RequestServices;
+        var client = services.GetRequiredService<ElasticsearchClient>();
+        var prefix = services.GetRequiredService<IShellConfiguration>()
+            .GetSection(ElasticsearchConnectionOptionsConfigurations.ConfigSectionName)
+            .GetValue<string>(nameof(ElasticsearchOptions.IndexPrefix));
+
+        try
+        {
+            // Delete all tenant specific indexes in Elasticsearch.
+            await client.DeleteAllIndexesAsync(prefix);
+        }
+        catch (InvalidOperationException exception) when (exception.Message.Contains("cannot be deleted"))
+        {
+            _logger.LogWarning(exception, "Some indexes cannot be deleted.");
+        }
+
+        await _next.Invoke(httpContext);
+    }
+
+    private async Task<bool> InvokeNextIfUninitializedAsync(ShellSettings shellSettings, HttpContext httpContext)
+    {
+        if (shellSettings.IsUninitialized())
+        {
+            return false;
+        }
+
+        await _next.Invoke(httpContext);
+        return true;
+    }
+}

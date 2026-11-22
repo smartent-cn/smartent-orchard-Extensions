@@ -1,0 +1,34 @@
+using Smartent.Orchard.Hosting.Tenants.Maintenance.Constants;
+using Smartent.Orchard.Hosting.Tenants.Maintenance.Models;
+using System;
+using YesSql.Indexes;
+
+namespace Smartent.Orchard.Hosting.Tenants.Maintenance.Indexes;
+
+public class MaintenanceTaskExecutionIndex : MapIndex
+{
+    public string MaintenanceId { get; set; }
+    public DateTime ExecutionTimeUtc { get; set; }
+    public DateTime? ExecutionEndUtc { get; set; }
+    public bool IsSuccess { get; set; }
+    public string BuildVersion { get; set; }
+    public string OrchardVersion { get; set; }
+}
+
+public class MaintenanceTaskExecutionIndexProvider : IndexProvider<MaintenanceTaskExecutionData>
+{
+    public MaintenanceTaskExecutionIndexProvider() =>
+        CollectionName = DocumentCollections.Maintenance;
+
+    public override void Describe(DescribeContext<MaintenanceTaskExecutionData> context) =>
+        context.For<MaintenanceTaskExecutionIndex>()
+            .Map(execution => new MaintenanceTaskExecutionIndex
+            {
+                MaintenanceId = execution.MaintenanceId,
+                ExecutionTimeUtc = execution.ExecutionTimeUtc,
+                ExecutionEndUtc = execution.ExecutionEndUtc,
+                IsSuccess = execution.IsSuccess,
+                BuildVersion = execution.BuildVersion,
+                OrchardVersion = execution.OrchardVersion,
+            });
+}

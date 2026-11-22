@@ -1,4 +1,4 @@
-using Lombiq.Hosting.Tenants.EnvironmentRobots.Tests.UI.Extensions;
+using Smartent.Orchard.Hosting.Tenants.EnvironmentRobots.Tests.UI.Extensions;
 using System.Threading.Tasks;
 using Xunit;
 

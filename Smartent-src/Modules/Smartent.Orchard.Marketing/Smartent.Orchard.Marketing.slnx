@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="Smartent.Orchard.Marketing.Pirsch/Smartent.Orchard.Marketing.Pirsch.csproj" />
+  <Project Path="Smartent.Orchard.Marketing.Tests.UI/Smartent.Orchard.Marketing.Tests.UI.csproj" />
+  <Project Path="Smartent.Orchard.Marketing.UrlShortener/Smartent.Orchard.Marketing.UrlShortener.csproj" />
+  <Project Path="Smartent.Orchard.Marketing/Smartent.Orchard.Marketing.csproj" />
+</Solution>

@@ -1,0 +1,29 @@
+<Project>
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>Smartent.Orchard.VueJs.Resources</RootNamespace>
+    <AssemblyName>Smartent.Orchard.VueJs.Resources</AssemblyName>
+    <PackageId>Smartent.Orchard.VueJs.Resources</PackageId>
+  </PropertyGroup>
+
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../../src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.OrchardCore.Module.Sdk/Sdk/Import.props" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Lombiq.MSBuild.OrchardCore.Module.Sdk" Version="2.1.1-alpha.9.osoe-344" />
+
+  <PropertyGroup>
+    <Title>Lombiq Vue.js module for Orchard Core - Resources</Title>
+    <CopyrightYear>2019</CopyrightYear>
+    <DescriptionBody>Adds some Vue.js 3 packages to Orchard Core as ES Modules.</DescriptionBody>
+    <PackageTags>OrchardCore;Lombiq;AspNetCore;Vue.js</PackageTags>
+    <RepositoryUrl>https://github.com/Lombiq/Orchard-Vue.js</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/Lombiq/Orchard-Vue.js/blob/dev/Smartent.Orchard.VueJs.Resources/Readme.md</PackageProjectUrl>
+  </PropertyGroup>
+
+  <!-- Security Updates for Orchard Core - make sure to check if these are still necessary -->
+  <ItemGroup Condition="'$(ManagePackageVersionsCentrally)' != 'true'">
+    <PackageReference Include="MySqlConnector" Version="2.6.2" NoWarn="NU1510" />
+    <PackageReference Include="HtmlSanitizer" Version="9.2.1039" NoWarn="NU1510" />
+  </ItemGroup>
+
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../../src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.OrchardCore.Module.Sdk/Sdk/Import.targets" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.targets" Sdk="Lombiq.MSBuild.OrchardCore.Module.Sdk" Version="2.1.1-alpha.9.osoe-344" />
+</Project>

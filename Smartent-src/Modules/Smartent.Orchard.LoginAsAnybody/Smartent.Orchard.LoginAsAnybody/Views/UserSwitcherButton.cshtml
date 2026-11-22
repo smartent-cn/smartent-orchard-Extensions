@@ -1,0 +1,9 @@
+@using OrchardCore.Modules
+@using OrchardCore.Users.Models
+@using OrchardCore.Users.ViewModels
+@using static Smartent.Orchard.LoginAsAnybody.Constants.FeatureIds
+
+@model SummaryAdminUserViewModel
+
+<a asp-area="@LoginAsAnybody" asp-controller="UserSwitcher" asp-action="SwitchUser" asp-route-id="@Model.User.UserId"
+    data-url-af="UnsafeUrl" class="btn btn-success btn-sm">@T["Log in as user"]</a>

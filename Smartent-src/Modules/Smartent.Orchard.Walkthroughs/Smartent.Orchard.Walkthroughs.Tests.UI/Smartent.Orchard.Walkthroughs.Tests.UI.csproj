@@ -1,0 +1,31 @@
+<Project>
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>Smartent.Orchard.Walkthroughs.Tests.UI</RootNamespace>
+    <AssemblyName>Smartent.Orchard.Walkthroughs.Tests.UI</AssemblyName>
+    <PackageId>Smartent.Orchard.Walkthroughs.Tests.UI</PackageId>
+  </PropertyGroup>
+
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../../src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.OrchardCore.Tests.UI.Library.Sdk/Sdk/Import.props" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Lombiq.MSBuild.OrchardCore.Tests.UI.Library.Sdk" Version="2.1.1-alpha.9.osoe-344" />
+
+  <PropertyGroup>
+    <Title>Lombiq Walkthroughs for Orchard Core - UI Test Extensions</Title>
+    <CopyrightYear>2023</CopyrightYear>
+    <DescriptionBody>Extensions to aid in UI testing Lombiq Walkthroughs for Orchard Core.</DescriptionBody>
+    <PackageTags>OrchardCore;Lombiq;AspNetCore;Walkthroughs;Tutorial</PackageTags>
+    <RepositoryUrl>https://github.com/Lombiq/Orchard-Walkthroughs</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/Lombiq/Orchard-Walkthroughs/tree/dev/Smartent.Orchard.Walkthroughs.Tests.UI</PackageProjectUrl>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(NuGetBuild)' != 'true'">
+    <ProjectReference Include="..\..\..\..\test\Lombiq.UITestingToolbox\Lombiq.Tests.UI.AdminTheme\Lombiq.Tests.UI.AdminTheme.csproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(NuGetBuild)' == 'true'">
+    <PackageReference Include="Lombiq.Tests.UI.AdminTheme" Version="$(PackageVersionLombiqTestsUI)" />
+  </ItemGroup>
+
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../../src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.OrchardCore.Tests.UI.Library.Sdk/Sdk/Import.targets" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.targets" Sdk="Lombiq.MSBuild.OrchardCore.Tests.UI.Library.Sdk" Version="2.1.1-alpha.9.osoe-344" />
+</Project>

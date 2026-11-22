@@ -1,4 +1,4 @@
-using Lombiq.Hosting.Tenants.FeaturesGuard.Tests.UI.Extensions;
+using Smartent.Orchard.Hosting.Tenants.FeaturesGuard.Tests.UI.Extensions;
 using Lombiq.Tests.UI.Extensions;
 using Lombiq.Tests.UI.Helpers;
 using Lombiq.Tests.UI.Samples.Helpers;

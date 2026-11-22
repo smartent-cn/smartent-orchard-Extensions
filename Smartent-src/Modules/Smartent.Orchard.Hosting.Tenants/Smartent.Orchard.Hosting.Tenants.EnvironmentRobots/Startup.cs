@@ -1,0 +1,36 @@
+using Smartent.Orchard.Hosting.Tenants.EnvironmentRobots.Constants;
+using Smartent.Orchard.Hosting.Tenants.EnvironmentRobots.Filters;
+using Smartent.Orchard.Hosting.Tenants.EnvironmentRobots.Middlewares;
+using Smartent.Orchard.Hosting.Tenants.EnvironmentRobots.Models;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Routing;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using OrchardCore.Environment.Shell.Configuration;
+using OrchardCore.Modules;
+using System;
+
+namespace Smartent.Orchard.Hosting.Tenants.EnvironmentRobots;
+
+[Feature(FeatureNames.EnvironmentRobots)]
+public sealed class Startup : StartupBase
+{
+    private readonly IShellConfiguration _shellConfiguration;
+
+    public Startup(IShellConfiguration shellConfiguration) =>
+        _shellConfiguration = shellConfiguration;
+
+    public override void ConfigureServices(IServiceCollection services)
+    {
+        var options = new EnvironmentRobotsOptions();
+        var configSection = _shellConfiguration
+            .GetSection("Lombiq_Hosting_Tenants_EnvironmentRobots:EnvironmentRobotsOptions");
+        configSection.Bind(options);
+        services.Configure<EnvironmentRobotsOptions>(configSection);
+
+        services.AddMvc(options => options.Filters.Add<EnvironmentRobotsMetaTagFilter>());
+    }
+
+    public override void Configure(IApplicationBuilder app, IEndpointRouteBuilder routes, IServiceProvider serviceProvider) =>
+        app.UseMiddleware<EnvironmentRobotsMiddleware>();
+}

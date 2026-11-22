@@ -1,8 +1,8 @@
 using Atata.HtmlValidation;
 using Lombiq.Tests.UI.Extensions;
 using Lombiq.Tests.UI.Models;
-using Lombiq.VueJs.Samples.Controllers;
-using Lombiq.VueJs.Tests.UI.Extensions;
+using Smartent.Orchard.VueJs.Samples.Controllers;
+using Smartent.Orchard.VueJs.Tests.UI.Extensions;
 using Shouldly;
 using System.Collections.Generic;
 using System.Linq;

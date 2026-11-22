@@ -39,7 +39,7 @@
 
 | 依赖 | 版本 | 用途 | 构建 |
 |------|------|------|------|
-| vue | ^3.x | 管理端 Vue 组件宿主 | `npm run build` in `Lombiq.VueJs/` |
+| vue | ^3.x | 管理端 Vue 组件宿主 | `npm run build` in `Smartent.Orchard.VueJs/` |
 
 **升级注意**：升级 Vue 主版本需同步更新 `Scripts` 清单与 UI 测试快照。
 ```

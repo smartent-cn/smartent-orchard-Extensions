@@ -1,0 +1,32 @@
+using Smartent.Core.AspNet.Security;
+using Smartent.Orchard.VueJs.Models;
+using Smartent.Orchard.VueJs.TagHelpers;
+using Microsoft.AspNetCore.Http;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using static Smartent.Core.AspNet.Security.ContentSecurityPolicyDirectives;
+using static Smartent.Core.AspNet.Security.ContentSecurityPolicyDirectives.CommonValues;
+
+namespace Smartent.Orchard.VueJs.Services;
+
+/// <summary>
+/// Enable the <see cref="UnsafeEval"/> value for the <see cref="ScriptSrc"/> when <see cref="VueComponentTagHelper"/>
+/// or <see cref="VueComponentAppTagHelper"/> are used. This is necessary to evaluate dynamic (not precompiled)
+/// templates used by this module.
+/// </summary>
+public class VueComponentContentSecurityPolicyProvider : IContentSecurityPolicyProvider
+{
+    private readonly VueComponentTagHelperState _state;
+
+    public VueComponentContentSecurityPolicyProvider(VueComponentTagHelperState state) => _state = state;
+
+    public ValueTask UpdateAsync(IDictionary<string, string> securityPolicies, HttpContext context)
+    {
+        if (_state.Active)
+        {
+            ContentSecurityPolicyProvider.MergeDirectiveValues(securityPolicies, [ScriptSrc], UnsafeEval);
+        }
+
+        return ValueTask.CompletedTask;
+    }
+}

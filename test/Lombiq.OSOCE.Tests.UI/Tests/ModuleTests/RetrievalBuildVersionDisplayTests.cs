@@ -1,4 +1,4 @@
-using Lombiq.Hosting.BuildVersionDisplay.Tests.UI.Extensions;
+using Smartent.Orchard.Hosting.BuildVersion.Tests.UI.Extensions;
 using System.Threading.Tasks;
 using Xunit;
 

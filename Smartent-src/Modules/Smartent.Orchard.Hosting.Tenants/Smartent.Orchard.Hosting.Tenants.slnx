@@ -1,0 +1,23 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="Directory.Build.props" />
+    <File Path="NuGet.config" />
+  </Folder>
+  <Project Path="Smartent.Orchard.Hosting.Tenants.Admin.Login/Smartent.Orchard.Hosting.Tenants.Admin.Login.csproj" />
+  <Project Path="Smartent.Orchard.Hosting.Tenants.EmailQuotaManagement.Tests.UI/Smartent.Orchard.Hosting.Tenants.EmailQuotaManagement.Tests.UI.csproj" />
+  <Project Path="Smartent.Orchard.Hosting.Tenants.EmailQuotaManagement/Smartent.Orchard.Hosting.Tenants.EmailQuotaManagement.csproj" />
+  <Project Path="Smartent.Orchard.Hosting.Tenants.EnvironmentRobots.Tests.UI/Smartent.Orchard.Hosting.Tenants.EnvironmentRobots.Tests.UI.csproj" />
+  <Project Path="Smartent.Orchard.Hosting.Tenants.EnvironmentRobots/Smartent.Orchard.Hosting.Tenants.EnvironmentRobots.csproj" />
+  <Project Path="Smartent.Orchard.Hosting.Tenants.FeaturesGuard.Tests.UI/Smartent.Orchard.Hosting.Tenants.FeaturesGuard.Tests.UI.csproj" />
+  <Project Path="Smartent.Orchard.Hosting.Tenants.FeaturesGuard/Smartent.Orchard.Hosting.Tenants.FeaturesGuard.csproj" />
+  <Project Path="Smartent.Orchard.Hosting.Tenants.HealthChecks.Tests.UI/Smartent.Orchard.Hosting.Tenants.HealthChecks.Tests.UI.csproj" />
+  <Project Path="Smartent.Orchard.Hosting.Tenants.HealthChecks/Smartent.Orchard.Hosting.Tenants.HealthChecks.csproj" />
+  <Project Path="Smartent.Orchard.Hosting.Tenants.IdleTenantManagement.Tests.UI/Smartent.Orchard.Hosting.Tenants.IdleTenantManagement.Tests.UI.csproj" />
+  <Project Path="Smartent.Orchard.Hosting.Tenants.IdleTenantManagement/Smartent.Orchard.Hosting.Tenants.IdleTenantManagement.csproj" />
+  <Project Path="Smartent.Orchard.Hosting.Tenants.Maintenance.Tests.UI/Smartent.Orchard.Hosting.Tenants.Maintenance.Tests.UI.csproj" />
+  <Project Path="Smartent.Orchard.Hosting.Tenants.Maintenance/Smartent.Orchard.Hosting.Tenants.Maintenance.csproj" />
+  <Project Path="Smartent.Orchard.Hosting.Tenants.Management.Tests.UI/Smartent.Orchard.Hosting.Tenants.Management.Tests.UI.csproj" />
+  <Project Path="Smartent.Orchard.Hosting.Tenants.Management/Smartent.Orchard.Hosting.Tenants.Management.csproj" />
+  <Project Path="Smartent.Orchard.Hosting.Tenants.MediaStorageManagement.Tests.UI/Smartent.Orchard.Hosting.Tenants.MediaStorageManagement.Tests.UI.csproj" />
+  <Project Path="Smartent.Orchard.Hosting.Tenants.MediaStorageManagement/Smartent.Orchard.Hosting.Tenants.MediaStorageManagement.csproj" />
+</Solution>

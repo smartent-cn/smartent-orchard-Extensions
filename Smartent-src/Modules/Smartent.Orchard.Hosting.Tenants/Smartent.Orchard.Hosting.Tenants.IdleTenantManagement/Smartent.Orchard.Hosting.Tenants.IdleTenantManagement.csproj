@@ -1,0 +1,23 @@
+<Project>
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>Smartent.Orchard.Hosting.Tenants.IdleTenantManagement</RootNamespace>
+    <AssemblyName>Smartent.Orchard.Hosting.Tenants.IdleTenantManagement</AssemblyName>
+    <PackageId>Smartent.Orchard.Hosting.Tenants.IdleTenantManagement</PackageId>
+  </PropertyGroup>
+
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../../src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.OrchardCore.Module.Sdk/Sdk/Import.props" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Lombiq.MSBuild.OrchardCore.Module.Sdk" Version="2.1.1-alpha.9.osoe-344" />
+
+  <PropertyGroup>
+    <Title>Lombiq Hosting - Tenants Idle Tenant Management for Orchard Core</Title>
+    <CopyrightYear>2022</CopyrightYear>
+    <DescriptionBody>With the help of this module, you can ensure that any tenant where the feature is enabled will shutdown after a preset time is elapsed. This can be used to free up resources.</DescriptionBody>
+    <PackageTags>OrchardCore;Lombiq;AspNetCore;Multitenancy;SaaS</PackageTags>
+    <RepositoryUrl>https://github.com/Lombiq/Hosting-Tenants</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/Lombiq/Hosting-Tenants/blob/dev/Smartent.Orchard.Hosting.Tenants.IdleTenantManagement/Readme.md</PackageProjectUrl>
+  </PropertyGroup>
+
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../../src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.OrchardCore.Module.Sdk/Sdk/Import.targets" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.targets" Sdk="Lombiq.MSBuild.OrchardCore.Module.Sdk" Version="2.1.1-alpha.9.osoe-344" />
+</Project>
