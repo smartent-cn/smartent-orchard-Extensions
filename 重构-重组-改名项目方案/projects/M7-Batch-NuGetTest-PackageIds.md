@@ -1,7 +1,7 @@
 # 子方案：M7 批次 #1（NuGetTest 包 ID Smartent 化）
 
 > 阶段：**M7**  
-> 状态：**NuGetVerify / Smartent.NuGet.\***（2026-11-22）
+> 状态：**已完成**（NuGetVerify / Smartent.NuGet.*，2026-11-22）
 
 ## 范围
 

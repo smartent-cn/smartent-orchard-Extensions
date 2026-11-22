@@ -45,6 +45,6 @@ Legacy 指针：
 
 ## 未决
 
-- `NuGetTest/` 仍为 Lombiq 命名（M7）
+- `NuGetVerify` 独立还原 Smartent 包（见 [M7-Batch-LocalNuGetFeed.md](M7-Batch-LocalNuGetFeed.md)）
 - 对外 NuGet：`PackageVersionLombiqTests*` 属性名渐进重命名
 - 全量 UI 测试执行（非 sln 构建门禁）
