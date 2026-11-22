@@ -14,7 +14,7 @@
     <PackageVersionSmartentPlatform>13.1.0</PackageVersionSmartentPlatform>
   </PropertyGroup>
 
-  <Import Project="../Lombiq.MSBuild.OrchardCore.Module.Sdk/Sdk/Import.props" />
-  <Import Project="../Lombiq.MSBuild.OrchardCore.Module.Sdk/Sdk/Import.targets" />
+  <Import Project="../../../../Smartent-src/Build/Lombiq.MSBuild.OrchardCore.Module.Sdk/Sdk/Import.props" />
+  <Import Project="../../../../Smartent-src/Build/Lombiq.MSBuild.OrchardCore.Module.Sdk/Sdk/Import.targets" />
 
 </Project>

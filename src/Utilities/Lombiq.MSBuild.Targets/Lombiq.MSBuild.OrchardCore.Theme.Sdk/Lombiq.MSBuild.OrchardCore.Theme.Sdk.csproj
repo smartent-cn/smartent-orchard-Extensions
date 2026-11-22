@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\Lombiq.MSBuild.OrchardCore.Module.Sdk\Sdk\*.*"
+    <None Include="..\..\..\..\Smartent-src\Build\Lombiq.MSBuild.OrchardCore.Module.Sdk\Sdk\*.*"
           Link="Lombiq.MSBuild.OrchardCore.Module.Sdk\*.*"
           Pack="true"
           PackagePath="Lombiq.MSBuild.OrchardCore.Module.Sdk\"

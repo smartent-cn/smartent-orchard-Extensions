@@ -1,4 +1,7 @@
 <Project>
-  <Import Project="$(MSBuildThisFileDirectory)../Lombiq.MSBuild.OrchardCore.Module.Sdk/Sdk.props" />
+  <Import Condition="Exists('$(MSBuildThisFileDirectory)../../../../../Smartent-src/Build/Lombiq.MSBuild.OrchardCore.Module.Sdk/Sdk/Sdk.props')"
+          Project="$(MSBuildThisFileDirectory)../../../../../Smartent-src/Build/Lombiq.MSBuild.OrchardCore.Module.Sdk/Sdk/Sdk.props" />
+  <Import Condition="!Exists('$(MSBuildThisFileDirectory)../../../../../Smartent-src/Build/Lombiq.MSBuild.OrchardCore.Module.Sdk/Sdk/Sdk.props')"
+          Project="$(MSBuildThisFileDirectory)../Lombiq.MSBuild.OrchardCore.Module.Sdk/Sdk.props" />
   <Import Project="$(MSBuildThisFileDirectory)Core.props" />
 </Project>

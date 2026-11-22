@@ -25,6 +25,7 @@
 | 12 | `Lombiq.MSBuild.Base.Sdk` 迁入 `Smartent-src/Build/` | 其余 Sdk 仍 Legacy；打包嵌入路径已更新 | **首期完成** |
 | 13 | `Lombiq.MSBuild.LibMan.Targets` 迁入 `Smartent-src/Build/` | LibMan 路径、打包嵌入、CodeGen 版本属性 | **首期完成** |
 | 14 | Sdk NuGet 样例 + `SdkTests` | 单体仓 pack 依赖 `Smartent.Orchard.Platform` | **首期完成** |
+| 15 | `Lombiq.MSBuild.OrchardCore.Module.Sdk` 迁入 `Smartent-src/Build/` | Theme.Sdk 打包嵌入、全仓 monorepo Import 路径 | **首期完成** |
 
 ## M4#1 / #3 首期交付
 

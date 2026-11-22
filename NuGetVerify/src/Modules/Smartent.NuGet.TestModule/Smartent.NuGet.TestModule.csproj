@@ -5,14 +5,14 @@
 
   <!-- 单体仓内：使用仓库内已 Smartent 化的 Module.Sdk（不走 nuget.org 2.1.1）。 -->
   <Import Condition="'$(UseSmartentMonorepoMsBuildSdk)' == 'true'"
-          Project="$(SmartentMonorepoRoot)/src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.OrchardCore.Module.Sdk/Sdk/Import.props" />
+          Project="$(SmartentMonorepoRoot)/Smartent-src/Build/Lombiq.MSBuild.OrchardCore.Module.Sdk/Sdk/Import.props" />
   <Import Condition="'$(UseSmartentMonorepoMsBuildSdk)' != 'true'"
           Sdk="Lombiq.MSBuild.OrchardCore.Module.Sdk"
           Project="Sdk.props"
           Version="2.1.1" />
 
   <Import Condition="'$(UseSmartentMonorepoMsBuildSdk)' == 'true'"
-          Project="$(SmartentMonorepoRoot)/src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.OrchardCore.Module.Sdk/Sdk/Import.targets" />
+          Project="$(SmartentMonorepoRoot)/Smartent-src/Build/Lombiq.MSBuild.OrchardCore.Module.Sdk/Sdk/Import.targets" />
   <Import Condition="'$(UseSmartentMonorepoMsBuildSdk)' != 'true'"
           Sdk="Lombiq.MSBuild.OrchardCore.Module.Sdk"
           Project="Sdk.targets"
