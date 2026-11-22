@@ -1,5 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+  <Import Project="../../../src/Utilities/Lombiq.MSBuild.Targets/Directory.Build.props" />
+
   <PropertyGroup>
     <Title>Smartent MSBuild SDK - Orchard Core Module (Lombiq.MSBuild.OrchardCore.Module.Sdk)</Title>
     <Description>Orchard 模块 MSBuild SDK；默认引用 Smartent.Orchard.Platform。</Description>

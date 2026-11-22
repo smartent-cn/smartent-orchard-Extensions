@@ -1,7 +1,9 @@
-# Lombiq MSBuild SDK - UI Testing
+﻿# Lombiq.MSBuild.OrchardCore.Tests.UI.Sdk（已迁出）
 
-This SDK configures executable Orchard Core UI test projects using [Smartent.Test.UI](https://github.com/Lombiq/UI-Testing-Toolbox). It includes the [unit testing SDK](../Lombiq.MSBuild.OrchardCore.Tests.Sdk/Readme.md), which supplies the xUnit runner, Microsoft Testing Platform, and reporting extensions. The UI SDK also supplies the `Smartent.Test.UI` dependency, so test projects only need the UI SDK reference.
+源码已迁至 **`Smartent-src/Build/Lombiq.MSBuild.OrchardCore.Tests.UI.Sdk/`**。PackageId 仍 `Lombiq.MSBuild.*`，直至 M7 切换 `Smartent.Build.*`。
 
-Use [Lombiq.MSBuild.OrchardCore.Tests.UI.Library.Sdk](../Lombiq.MSBuild.OrchardCore.Tests.UI.Library.Sdk/Readme.md) for reusable libraries containing UI test methods. These libraries do not run tests themselves.
+---
 
-See [Using MSBuild SDKs](../Docs/UsingMSBuildSdks.md) for setup. The unit testing SDK's requirements for _global.json_ and central package management apply to this SDK too.
+# Lombiq.MSBuild.OrchardCore.Tests.UI.Sdk (moved)
+
+Sources: **`Smartent-src/Build/Lombiq.MSBuild.OrchardCore.Tests.UI.Sdk/`**. PackageId unchanged until M7.

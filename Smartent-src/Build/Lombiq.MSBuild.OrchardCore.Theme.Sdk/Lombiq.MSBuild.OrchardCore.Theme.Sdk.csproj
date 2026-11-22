@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="../../../src/Utilities/Lombiq.MSBuild.Targets/Directory.Build.props" />
+
+  <PropertyGroup>
+    <Title>Smartent MSBuild SDK - Orchard Core Theme (Lombiq.MSBuild.OrchardCore.Theme.Sdk)</Title>
+    <Description>MSBuild SDK for Orchard Core themes.</Description>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules/tree/master/Smartent-src/Build/Lombiq.MSBuild.OrchardCore.Theme.Sdk</PackageProjectUrl>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\Lombiq.MSBuild.OrchardCore.Module.Sdk\Sdk\*.*"
+          Link="Lombiq.MSBuild.OrchardCore.Module.Sdk\*.*"
+          Pack="true"
+          PackagePath="Lombiq.MSBuild.OrchardCore.Module.Sdk\"
+          Visible="false"/>
+  </ItemGroup>
+
+</Project>

@@ -1,3 +1,9 @@
-# Lombiq MSBuild SDK - Orchard Core Theme
+﻿# Lombiq.MSBuild.OrchardCore.Theme.Sdk（已迁出）
 
-MSBuild SDK for Orchard Core themes. See [Using MSBuild SDKs](../Docs/UsingMSBuildSdks.md) for information on how to use it.
+源码已迁至 **`Smartent-src/Build/Lombiq.MSBuild.OrchardCore.Theme.Sdk/`**。PackageId 仍 `Lombiq.MSBuild.*`，直至 M7 切换 `Smartent.Build.*`。
+
+---
+
+# Lombiq.MSBuild.OrchardCore.Theme.Sdk (moved)
+
+Sources: **`Smartent-src/Build/Lombiq.MSBuild.OrchardCore.Theme.Sdk/`**. PackageId unchanged until M7.

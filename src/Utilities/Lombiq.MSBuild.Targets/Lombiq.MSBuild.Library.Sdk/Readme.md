@@ -1,5 +1,9 @@
-# Lombiq MSBuild SDK - Library
+﻿# Lombiq.MSBuild.Library.Sdk（已迁出）
 
-## About
+源码已迁至 **`Smartent-src/Build/Lombiq.MSBuild.Library.Sdk/`**。PackageId 仍 `Lombiq.MSBuild.*`，直至 M7 切换 `Smartent.Build.*`。
 
-MSBuild SDK for libraries using the core `Microsoft.NET.Sdk` SDK. This inherits all features of the [base SDK](../Lombiq.MSBuild.Base.Sdk/Readme.md), including simplified NuGet config for Lombiq projects.
+---
+
+# Lombiq.MSBuild.Library.Sdk (moved)
+
+Sources: **`Smartent-src/Build/Lombiq.MSBuild.Library.Sdk/`**. PackageId unchanged until M7.

@@ -4,7 +4,7 @@
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
-  <Import Project="../../../src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.OrchardCore.Tests.UI.Sdk/Sdk/Import.props" />
+  <Import Project="../../Build/Lombiq.MSBuild.OrchardCore.Tests.UI.Sdk/Sdk/Import.props" />
 
   <ItemGroup>
     <Content Include="xunit.runner.json" CopyToOutputDirectory="PreserveNewest" />
@@ -48,5 +48,5 @@
     <ProjectReference Include="..\Smartent.Test.UI\Smartent.Test.UI.Tests.UI\Smartent.Test.UI.Tests.UI.csproj" />
   </ItemGroup>
 
-  <Import Project="../../../src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.OrchardCore.Tests.UI.Sdk/Sdk/Import.targets" />
+  <Import Project="../../Build/Lombiq.MSBuild.OrchardCore.Tests.UI.Sdk/Sdk/Import.targets" />
 </Project>

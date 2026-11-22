@@ -1,7 +1,9 @@
-# Lombiq MSBuild SDK - Unit Testing
+﻿# Lombiq.MSBuild.OrchardCore.Tests.Sdk（已迁出）
 
-This MSBuild SDK can be used for unit testing with the [Smartent.Test.Unit](https://github.com/Lombiq/Testing-Toolbox) library. See [Using MSBuild SDKs](../Docs/UsingMSBuildSdks.md) for information on how to use it.
+源码已迁至 **`Smartent-src/Build/Lombiq.MSBuild.OrchardCore.Tests.Sdk/`**。PackageId 仍 `Lombiq.MSBuild.*`，直至 M7 切换 `Smartent.Build.*`。
 
-The SDK configures xUnit and Microsoft Testing Platform (MTP), including the `Microsoft.Testing.Extensions.GitHubActionsReport`, `Microsoft.Testing.Extensions.TrxReport`, and `Microsoft.Testing.Extensions.HangDump` packages. Projects using central package management must declare versions for these packages and `xunit.v3` in _Directory.Packages.props_.
+---
 
-Use .NET SDK 10 or later, and add `"test": { "runner": "Microsoft.Testing.Platform" }` to the solution's _global.json_. Preserve any existing SDK settings. Run tests with `dotnet test --project path/to/Tests.csproj` or `dotnet test --solution path/to/Solution.slnx`.
+# Lombiq.MSBuild.OrchardCore.Tests.Sdk (moved)
+
+Sources: **`Smartent-src/Build/Lombiq.MSBuild.OrchardCore.Tests.Sdk/`**. PackageId unchanged until M7.
