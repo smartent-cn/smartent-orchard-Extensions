@@ -51,7 +51,7 @@
 | Orchard 模块 | `src/Modules/Lombiq.*` | 改名、模块 Id 策略、减引用 |
 | 主题 | `src/Themes/Lombiq.*` | 同上 |
 | 演示宿主 | `src/Smartent.Demo.Web` | 改名、引用更新 |
-| 测试 | `test/*`、`NuGetTest` | 改名、门禁用例 |
+| 测试 | `test/*`、`NuGetVerify` | 改名、门禁用例 |
 | 文档与脚本 | `Readme.md`、`Releasing.md`、`*.ps1`、`renovate*.json5` | Smartent 化、去 Lombiq 上游耦合 |
 
 ### 2.2 在范围外（保持不变名或仅版本管理）
@@ -280,6 +280,9 @@ Legacy 的 `src/` 在终态 **应不存在**（或仅保留无意义占位说明
 | [项目清单.md](项目清单.md) | 现名 → 目标 Smartent 产品线映射（拆包列 TBD） |
 | [projects/_模板.md](projects/_模板.md) | 单项目子方案模板 |
 | [阶段检查表.md](阶段检查表.md) | M0–M7 勾选项 |
+| [projects/M7-Batch-NuGetTest-PackageIds.md](projects/M7-Batch-NuGetTest-PackageIds.md) | M7#1：`NuGetTest` → `NuGetVerify`、包 ID |
+| [projects/M7-Batch-LocalNuGetFeed.md](projects/M7-Batch-LocalNuGetFeed.md) | M7#3–#4：本地 feed、Monorepo sln、CI |
+| [projects/M7-Batch-NuGetVerify-Feed.md](projects/M7-Batch-NuGetVerify-Feed.md) | M7：包版本同步脚本（占位） |
 
 ### 12.1 迁入项目时的文档义务
 

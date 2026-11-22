@@ -21,7 +21,7 @@
 | `Lombiq.TrainingDemo.Middlewares` | `Smartent.Orchard.TrainingDemo.Middlewares` |
 | `Lombiq.TrainingDemo.Workflows.Sample` 等 | 对应 `Smartent.Orchard.TrainingDemo.*` |
 
-已更新：`Smartent.Demo.Web` / `NuGetTest` Recipe 中的启用列表（如适用）。
+已更新：`Smartent.Demo.Web` / `NuGetVerify` Recipe 中的启用列表（如适用）。
 
 Manifest **显示名**仍为 Lombiq Training Demo（教学品牌保留）；`PackageId` = `Smartent.Orchard.TrainingDemo`。
 

@@ -21,7 +21,7 @@ By default, the markdown pipeline is disabled. You need to provide a valid `sour
 
 You can use the special value `_solution_` as the source to lint every _md_ file in your solution directory. The solution directory is considered to be the first parent directory of your project that contains a _sln_ file.
 
-This is useful to catch files not covered by an individual project, such as the root _Readme_. However, it can cause duplicate warnings for files in other projects that use `Lombiq.NodeJs.Extensions`. We suggest setting this value in the solution's "entry" project such as your Web project (e.g. [_Lombiq.OSOCE.NuGet.Web.csproj_](https://github.com/Lombiq/Open-Source-Orchard-Core-Extensions/blob/dev/NuGetTest/src/Lombiq.OSOCE.NuGet.Web/Lombiq.OSOCE.NuGet.Web.csproj)).
+This is useful to catch files not covered by an individual project, such as the root _Readme_. However, it can cause duplicate warnings for files in other projects that use `Smartent.Build.NodeJs`. We suggest setting this value in the solution's "entry" project such as your Web project (e.g. `Smartent.NuGet.Web.csproj` under `NuGetVerify/`).
 
 > ℹ When using Lombiq Node.js Extensions from a submodule, solution-wide Markdown analysis can more easily be achieved by adding the [Lombiq.NodeJs.Extensions.SolutionMarkdownAnalysis](../../Lombiq.NodeJs.Extensions.SolutionMarkdownAnalysis/Readme.md) project to your solution as well.
 

@@ -25,7 +25,7 @@
 1. [x] 元包工程路径仍 Legacy，引用 Smartent 子包。
 2. [x] `Lombiq.OSOCE.Samples` 改为显式 Smartent 引用并验证 `dotnet build`。
 3. [x] 元包 `DescriptionBody` / 文档标明 **Deprecated for new code**。
-4. [x] NuGetTest **前**：Web / Tests → `Smartent.*`；**后**：保留 `Lombiq.HelpfulLibraries.OrchardCore` 中央版本供旧 Module.Sdk 2.1.1。
+4. [x] NuGetVerify **前**：Web / Tests → `Smartent.*`；**后**：保留 `Lombiq.HelpfulLibraries.OrchardCore` 中央版本供旧 Module.Sdk 2.1.1。
 5. [x] 评估是否从 `Smartent.Orchard.sln` 移除元包项目（仅当无工程引用）。
 
 ## 验证

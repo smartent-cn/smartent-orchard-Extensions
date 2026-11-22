@@ -42,5 +42,5 @@ Legacy 目录仅留 `Readme.md` 指针（`src/Modules/Lombiq.{ContentEditors,Jso
 
 ## 未决
 
-- `NuGetTest/` 仍为 Lombiq 包名占位（独立 NuGet 管线未 Smartent 发包）
+- `NuGetVerify/` 仍为 Lombiq 包名占位（独立 NuGet 管线未 Smartent 发包）
 - ~~`ContentEditors` 对 `VueJs.Resources` 的依赖~~ 已改为 `Smartent.Orchard.VueJs.Resources`

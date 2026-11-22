@@ -3,8 +3,8 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <DefaultItemExcludes>$(DefaultItemExcludes);.git*;node_modules\**</DefaultItemExcludes>
-    <!-- Overriding the same values as in the NuGetTest\Directory.Build.props file here because this project won't read
-         from there because it is *not* located under the NuGetTest folder. -->
+    <!-- Overriding the same values as in the NuGetVerify\Directory.Build.props file here because this project won't read
+         from there because it is *not* located under the NuGetVerify folder. -->
     <UseGlobalNodeJsExtensionsNpmPackage>false</UseGlobalNodeJsExtensionsNpmPackage>
     <NodeJsExtensionsNpmPackageSourcePath>./node_modules/.nx</NodeJsExtensionsNpmPackageSourcePath>
     <!-- Overriding the global configuration directory values here to use local configuration files. -->

@@ -25,7 +25,7 @@
 | `Lombiq.UIKit` | `Smartent.Orchard.UIKit` |
 | `Lombiq.HelpfulExtensions` | `Smartent.Orchard.Extensions.Cms` |
 
-已同步：`Smartent.Demo.Web` / `NuGetTest` Recipe（如适用）、测试项目 `ExecuteRecipeDirectlyAsync`、`asp-area` 与主 sln/slnx。
+已同步：`Smartent.Demo.Web` / `NuGetVerify` Recipe（如适用）、测试项目 `ExecuteRecipeDirectlyAsync`、`asp-area` 与主 sln/slnx。
 
 ## 验证
 
@@ -41,5 +41,5 @@ Legacy 目录仅留 `Readme.md` 指针（`src/Modules/Lombiq.{ChartJs,DataTables
 
 ## 未决
 
-- `NuGetTest/Directory.Packages.props` 仍为 Lombiq 包版本占位（独立 NuGet 管线未 Smartent 发包）
+- `NuGetVerify/Directory.Packages.props` 仍为 Lombiq 包版本占位（独立 NuGet 管线未 Smartent 发包）
 - 各模块父级 `Readme.md` 双语头与文化可继续与 TrainingDemo 对齐

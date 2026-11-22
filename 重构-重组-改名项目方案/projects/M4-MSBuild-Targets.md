@@ -16,7 +16,7 @@
 | 4b | OrchardCore.Tests*.Sdk | `LombiqSolutionRootPath` 路径 `/` 规范化 | **已完成** |
 | 5a | `Lombiq.Npm.Targets` | `Smartent.Build.Npm.Targets` | **已完成** |
 | 5b | `NodeJs` / `Tailwind` / `SetupExtensions` | `Smartent.Build.NodeJs`、`Smartent.Build.Tailwind`、`Smartent.Orchard.Setup` | **已完成**（`LoadExecWithMutexTask.targets` → `Smartent.Build.NodeJs.dll`） |
-| 6 | Sdk 包发布与 `NuGetTest` 去 `Lombiq.HelpfulLibraries.OrchardCore` 中央版本 | 新 Sdk 版本上源 | **单体仓内已完成**（独立 NuGetTest 仍待发布 Sdk） |
+| 6 | Sdk 包发布与 `NuGetVerify` 去 `Lombiq.HelpfulLibraries.OrchardCore` 中央版本 | 新 Sdk 版本上源 | **单体仓内已完成**（独立 NuGetVerify 仍待发布 Sdk） |
 | 7 | Tailwind Samples/Tests 迁入 `Smartent-src/Build/` | — | **已完成** |
 | 8 | `Lombiq.OrchardCoreApiClient` → `Smartent.Orchard.ApiClient` | — | **已完成** |
 | 9 | MSBuild.Targets 发布元数据 Smartent 化（PackageId 仍 Lombiq.MSBuild.*） | — | **首期完成**（含 `Lombiq.MSBuild.Library.Sdk` 重复 Title 修复） |
@@ -80,7 +80,7 @@ dotnet pack Smartent-src/Build/Lombiq.MSBuild.OrchardCore.Theme.Sdk/Lombiq.MSBui
 | 版本 | 日期 | 说明 |
 |------|------|------|
 | 1.0 | 2026-11-22 | M3 Platform 收口后启动 M4；首项 Orchard Module Sdk |
-| 1.1 | 2026-11-22 | Sdk 路径/LibMan/Test.Sdk；NuGetTest 单体仓 Module.Sdk |
-| 1.2 | 2026-11-22 | 迁入 `Smartent.Build.Npm.Targets`；NuGetTest 本地 Module.Sdk |
+| 1.1 | 2026-11-22 | Sdk 路径/LibMan/Test.Sdk；NuGetVerify 单体仓 Module.Sdk |
+| 1.2 | 2026-11-22 | 迁入 `Smartent.Build.Npm.Targets`；NuGetVerify 本地 Module.Sdk |
 | 1.3 | 2026-11-22 | 迁入 NodeJs / Tailwind / Setup；主 sln 去元包 |
 | 1.4 | 2026-11-22 | M4#10–#11：根前端配置、`lint-code.js`、Release sln 绿 |

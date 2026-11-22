@@ -42,5 +42,5 @@ Legacy 目录仅留 `Readme.md` 指针。`Lombiq.VueJs` 若仍含未跟踪的 `n
 
 ## 未决
 
-- `NuGetTest/` 仍为 Lombiq 包名占位
+- `NuGetVerify/` 仍为 Lombiq 包名占位
 - VueJs 前端 `pnpm build` 全 sln 门禁（与 M4 记录一致）
