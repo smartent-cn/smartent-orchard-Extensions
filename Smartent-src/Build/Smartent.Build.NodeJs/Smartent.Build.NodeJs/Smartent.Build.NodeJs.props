@@ -1,0 +1,66 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <!-- Only include this file when working with a ProjectReference; when using the NuGet package, this file will be
+       included automatically via the consuming project's .nuget.g.props file. -->
+  <Import Project="../../Smartent.Build.Npm.Targets/Smartent.Build.Npm.Targets.props"
+          Condition="Exists('../../Smartent.Build.Npm.Targets/Smartent.Build.Npm.Targets.props')" />
+  <!-- Common properties for builds of Node.js Extensions itself and consumer projects. -->
+  <Import Project="build/Common.props" />
+
+  <PropertyGroup Condition="'$(NodeJsExtensionsShouldDoWork)' == 'true'">
+    <!-- Read the consuming project's package.json file. -->
+    <_NxProjectPackageJson>$(MSBuildProjectDirectory)/package.json</_NxProjectPackageJson>
+    <_NxProjectPackageJsonContent></_NxProjectPackageJsonContent>
+    <_NxProjectPackageJsonContent Condition="Exists($(_NxProjectPackageJson))">$([System.IO.File]::ReadAllText($(_NxProjectPackageJson)))</_NxProjectPackageJsonContent>
+    <!-- Extract the "nodejsExtensions" property from it. The given regex extracts an object literal which contains only
+         un-nested child object literals (also inside arrays), as is the case with the current configuration schema. -->
+    <_NxConfiguration>$([System.Text.RegularExpressions.Regex]::Match($(_NxProjectPackageJsonContent), `"nodejsExtensions":\s*{([^{}]*{[^{}]*},?)+[^{}]*}`))</_NxConfiguration>
+    <!-- Extract the "scripts.source" directory from the configuration. -->
+    <_NxScriptsSourcePrefix>"scripts":[^}]*"source":\s*"</_NxScriptsSourcePrefix>
+    <_NxScriptsSourceMatch>$([System.Text.RegularExpressions.Regex]::Match($(_NxConfiguration), `$(_NxScriptsSourcePrefix)[^"]+`))</_NxScriptsSourceMatch>
+    <_NxScriptsSourceDirectory>$([System.Text.RegularExpressions.Regex]::Replace($(_NxScriptsSourceMatch), $(_NxScriptsSourcePrefix), ``))</_NxScriptsSourceDirectory>
+    <!-- Extract the "styles.source" directory from the configuration. -->
+    <_NxStylesSourcePrefix>"styles":[^}]*"source":\s*"</_NxStylesSourcePrefix>
+    <_NxStylesSourceMatch>$([System.Text.RegularExpressions.Regex]::Match($(_NxConfiguration), `$(_NxStylesSourcePrefix)[^"]+`))</_NxStylesSourceMatch>
+    <_NxStylesSourceDirectory>$([System.Text.RegularExpressions.Regex]::Replace($(_NxStylesSourceMatch), $(_NxStylesSourcePrefix), ``))</_NxStylesSourceDirectory>
+    <!-- Extract the "sources" property with an array value from the configuration. -->
+    <_NxAssetsSourcesPrefix>"assetsToCopy":\s*\[\s*{[^}]*"sources":\s*\[</_NxAssetsSourcesPrefix>
+    <_NxAssetsSourcesMatch>$([System.Text.RegularExpressions.Regex]::Match($(_NxConfiguration), `$(_NxAssetsSourcesPrefix)([^\]]|\s)+`))</_NxAssetsSourcesMatch>
+    <_NxAssetsSourcesDirectories>$([System.Text.RegularExpressions.Regex]::Replace($(_NxAssetsSourcesMatch), $(_NxAssetsSourcesPrefix), ``).Replace(`"`, ``))</_NxAssetsSourcesDirectories>
+    <!-- Extract all "target" properties from the configuration. -->
+    <_NxTargetProperties>$([System.Text.RegularExpressions.Regex]::Matches($(_NxConfiguration), `(?:"target":\s*")([^"]+)`))</_NxTargetProperties>
+    <!-- Extract all values from the extracted "target" properties. -->
+    <_NxTargetDirectories>$([System.Text.RegularExpressions.Regex]::Replace($(_NxTargetProperties), `"target":\s*"`, ``).Replace(`"`, ``))</_NxTargetDirectories>
+
+    <NodeJsExtensionsScriptsSourceDirectory>$([MSBuild]::ValueOrDefault('$(_NxScriptsSourceDirectory)', 'Assets/Scripts'))</NodeJsExtensionsScriptsSourceDirectory>
+    <NodeJsExtensionsStylesSourceDirectory>$([MSBuild]::ValueOrDefault('$(_NxStylesSourceDirectory)', 'Assets/Styles'))</NodeJsExtensionsStylesSourceDirectory>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(NodeJsExtensionsShouldDoWork)' == 'true'">
+    <NodeJsExtensionsAssetDirectories Include="$(_NxAssetsSourcesDirectories.Split(','))" />
+    <NodeJsExtensionsAssetFiles Include="%(NodeJsExtensionsAssetDirectories.Identity)/**/*" />
+    <NodeJsExtensionsScriptFiles Include="$(NodeJsExtensionsScriptsSourceDirectory)/**/*" />
+    <NodeJsExtensionsStyleFiles Include="$(NodeJsExtensionsStylesSourceDirectory)/**/*" />
+    <NodeJsExtensionsSourceFiles Include="@(NodeJsExtensionsAssetFiles)" />
+    <NodeJsExtensionsSourceFiles Include="@(NodeJsExtensionsScriptFiles)" />
+    <NodeJsExtensionsSourceFiles Include="@(NodeJsExtensionsStyleFiles)" />
+    <NodeJsExtensionsTargetDirectories Include="$(_NxTargetDirectories.Split(`;`))" />
+    <NodeJsExtensionsTargetDirectories
+      Condition="'$(_NxTargetDirectories)' == ''"
+      Include="$(NodeJsExtensionsDefaultTargetDirectory)" />
+    <!-- Remove the generated files from the project, so they won't break dotnet's fast up-to-date check. -->
+    <None Remove="@(NodeJsExtensionsTargetDirectories)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- The following files are used by NPM Targets to support incremental builds. -->
+    <NpmDotnetPrebuildWatchedFiles Remove="@(NpmDotnetPrebuildWatchedFiles)" />
+    <NpmDotnetPrebuildWatchedFiles Include="$(MSBuildProjectDirectory)/package.json" />
+    <NpmDotnetPrebuildWatchedFiles Include="$(MSBuildProjectDirectory)/*lintrc*" />
+    <NpmDotnetPrebuildWatchedFiles Include="@(NodeJsExtensionsSourceFiles)" />
+    <!-- We need to manually notify MSBuild of files that should trigger a fresh build if changed. See:
+         https://github.com/dotnet/project-system/blob/main/docs/up-to-date-check.md. -->
+    <UpToDateCheckInput Include="@(NpmDotnetPrebuildWatchedFiles)" />
+  </ItemGroup>
+
+</Project>

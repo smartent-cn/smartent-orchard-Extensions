@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk.Razor">
 
-  <Import Condition="'$(NuGetBuild)' != 'true'" Project="..\..\..\Utilities\Lombiq.NodeJs.Extensions\Lombiq.NodeJs.Extensions\Lombiq.NodeJs.Extensions.props" />
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="..\..\..\..\Smartent-src\Build\Smartent.Build.NodeJs\Smartent.Build.NodeJs\Smartent.Build.NodeJs.props" />
   <Import Project="..\Lombiq.VueJs\Lombiq.VueJs.props" />
 
   <PropertyGroup>
@@ -51,11 +51,11 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(NuGetBuild)' == 'true'">
-    <PackageReference Include="Lombiq.NodeJs.Extensions" Version="3.0.0" />
+    <PackageReference Include="Smartent.Build.NodeJs" Version="3.0.0" />
     <PackageReference Include="Smartent.Core.Primitives" Version="12.6.1-alpha.7.osoe-925" />
   </ItemGroup>
 
-  <Import Condition="'$(NuGetBuild)' != 'true'" Project="..\..\..\Utilities\Lombiq.NodeJs.Extensions\Lombiq.NodeJs.Extensions\Lombiq.NodeJs.Extensions.targets" />
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="..\..\..\..\Smartent-src\Build\Smartent.Build.NodeJs\Smartent.Build.NodeJs\Smartent.Build.NodeJs.targets" />
   <Import Project="..\Lombiq.VueJs\Lombiq.VueJs.targets" />
 
 </Project>

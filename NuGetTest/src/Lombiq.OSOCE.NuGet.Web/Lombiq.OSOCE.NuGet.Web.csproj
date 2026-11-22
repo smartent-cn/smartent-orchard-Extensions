@@ -59,7 +59,7 @@
     <PackageReference Include="Lombiq.LoginAsAnybody" />
     <PackageReference Include="Lombiq.Privacy" />
     <PackageReference Include="Lombiq.Privacy.Samples" />
-    <PackageReference Include="Lombiq.SetupExtensions" />
+    <PackageReference Include="Smartent.Orchard.Setup" />
     <PackageReference Include="Lombiq.Tests.UI.AdminTheme" />
     <PackageReference Include="Lombiq.Tests.UI.AppExtensions" />
     <PackageReference Include="Lombiq.Tests.UI.Shortcuts" />

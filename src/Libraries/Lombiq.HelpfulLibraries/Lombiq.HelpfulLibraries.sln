@@ -1,4 +1,4 @@
-
+﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32319.34
@@ -10,8 +10,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lombiq.HelpfulLibraries", "Lombiq.HelpfulLibraries\Lombiq.HelpfulLibraries.csproj", "{5F3379C7-ED6B-46AA-B6C3-17CBC2284417}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Orchard.Platform.Data.LinqToYesSql", "..\..\..\Smartent-src\Platform\Orchard\Smartent.Orchard.Platform.Data.LinqToYesSql\Smartent.Orchard.Platform.Data.LinqToYesSql.csproj", "{5F4C7938-BBC4-4A44-83E1-2F33B7717A76}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lombiq.HelpfulLibraries.RestEase", "Lombiq.HelpfulLibraries.RestEase\Lombiq.HelpfulLibraries.RestEase.csproj", "{2D7174D1-88E0-4063-8139-C7FCCC9B3326}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Core.AspNet", "..\..\..\Smartent-src\Platform\Core\Smartent.Core.AspNet\Smartent.Core.AspNet.csproj", "{5E5E1E2F-8096-4B91-809B-5F86A3E8ADCA}"
 EndProject
@@ -31,6 +29,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5E533F4E-2C8C-4FD1-ADDE-551B61F7C416}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E533F4E-2C8C-4FD1-ADDE-551B61F7C416}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E533F4E-2C8C-4FD1-ADDE-551B61F7C416}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E533F4E-2C8C-4FD1-ADDE-551B61F7C416}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEC5970E-7AF7-4360-9C6D-6F3937AEE8E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEC5970E-7AF7-4360-9C6D-6F3937AEE8E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEC5970E-7AF7-4360-9C6D-6F3937AEE8E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEC5970E-7AF7-4360-9C6D-6F3937AEE8E6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5F3379C7-ED6B-46AA-B6C3-17CBC2284417}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5F3379C7-ED6B-46AA-B6C3-17CBC2284417}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F3379C7-ED6B-46AA-B6C3-17CBC2284417}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -39,10 +45,6 @@ Global
 		{5F4C7938-BBC4-4A44-83E1-2F33B7717A76}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F4C7938-BBC4-4A44-83E1-2F33B7717A76}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F4C7938-BBC4-4A44-83E1-2F33B7717A76}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2D7174D1-88E0-4063-8139-C7FCCC9B3326}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2D7174D1-88E0-4063-8139-C7FCCC9B3326}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2D7174D1-88E0-4063-8139-C7FCCC9B3326}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2D7174D1-88E0-4063-8139-C7FCCC9B3326}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5E5E1E2F-8096-4B91-809B-5F86A3E8ADCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5E5E1E2F-8096-4B91-809B-5F86A3E8ADCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E5E1E2F-8096-4B91-809B-5F86A3E8ADCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -67,14 +69,6 @@ Global
 		{5DC1A3D5-0626-4258-95C6-7E5CA5495A80}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5DC1A3D5-0626-4258-95C6-7E5CA5495A80}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5DC1A3D5-0626-4258-95C6-7E5CA5495A80}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EEC5970E-7AF7-4360-9C6D-6F3937AEE8E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EEC5970E-7AF7-4360-9C6D-6F3937AEE8E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EEC5970E-7AF7-4360-9C6D-6F3937AEE8E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EEC5970E-7AF7-4360-9C6D-6F3937AEE8E6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5E533F4E-2C8C-4FD1-ADDE-551B61F7C416}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5E533F4E-2C8C-4FD1-ADDE-551B61F7C416}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5E533F4E-2C8C-4FD1-ADDE-551B61F7C416}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5E533F4E-2C8C-4FD1-ADDE-551B61F7C416}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

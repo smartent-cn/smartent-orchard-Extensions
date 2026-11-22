@@ -1,0 +1,3 @@
+<Project>
+  <Import Project="../Smartent.Build.Tailwind.targets" />
+</Project>

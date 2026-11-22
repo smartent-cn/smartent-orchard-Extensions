@@ -6,9 +6,9 @@
   <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.OrchardCore.Theme.Sdk/Sdk/Import.props" />
   <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Lombiq.MSBuild.OrchardCore.Theme.Sdk" Version="2.1.1-alpha.9.osoe-344" />
 
-  <Import Project="..\Lombiq.Tailwind.Targets\Lombiq.Tailwind.Targets.props" />
+  <Import Project="..\..\..\..\Smartent-src\Build\Smartent.Build.Tailwind\Smartent.Build.Tailwind.props" />
 
-  <Import Project="..\Lombiq.Tailwind.Targets\Lombiq.Tailwind.Targets.targets" />
+  <Import Project="..\..\..\..\Smartent-src\Build\Smartent.Build.Tailwind\Smartent.Build.Tailwind.targets" />
 
   <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.OrchardCore.Theme.Sdk/Sdk/Import.targets" />
   <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.targets" Sdk="Lombiq.MSBuild.OrchardCore.Theme.Sdk" Version="2.1.1-alpha.9.osoe-344" />

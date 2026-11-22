@@ -46,9 +46,8 @@
     <Project Path="Smartent-src/Test/Smartent.Test.OrchardCore/Smartent.Test.OrchardCore.csproj" />
     <Project Path="Smartent-src/Platform/Orchard/Smartent.Orchard.Platform/Smartent.Orchard.Platform.csproj" />
     <Project Path="Smartent-src/Platform/Orchard/Smartent.Orchard.Http.Refit/Smartent.Orchard.Http.Refit.csproj" />
-    <Project Path="src/Libraries/Lombiq.HelpfulLibraries/Lombiq.HelpfulLibraries.RestEase/Lombiq.HelpfulLibraries.RestEase.csproj" />
+    <Project Path="Smartent-src/Platform/Orchard/Smartent.Orchard.Http.RestEase/Smartent.Orchard.Http.RestEase.csproj" />
     <Project Path="Smartent-src/Platform/Core/Smartent.Core.CodeGen.SourceGenerators/Smartent.Core.CodeGen.SourceGenerators.csproj" />
-    <Project Path="src/Libraries/Lombiq.HelpfulLibraries/Lombiq.HelpfulLibraries/Lombiq.HelpfulLibraries.csproj" />
     <Project Path="src/Libraries/Lombiq.OrchardCoreApiClient/Lombiq.OrchardCoreApiClient.Tester/Lombiq.OrchardCoreApiClient.Tester.csproj" />
     <Project Path="src/Libraries/Lombiq.OrchardCoreApiClient/Lombiq.OrchardCoreApiClient/Lombiq.OrchardCoreApiClient.csproj" />
   </Folder>
@@ -113,9 +112,9 @@
     <Project Path="src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.OrchardCore.Theme.Sdk/Lombiq.MSBuild.OrchardCore.Theme.Sdk.csproj" />
     <Project Path="src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.Targets.Samples/Lombiq.MSBuild.Targets.Samples.csproj" />
     <Project Path="Smartent-src/Build/Smartent.Build.Npm.Targets/Smartent.Build.Npm.Targets.csproj" />
-    <Project Path="src/Utilities/Lombiq.SetupExtensions/Lombiq.SetupExtensions.csproj" />
+    <Project Path="Smartent-src/Build/Smartent.Orchard.Setup/Smartent.Orchard.Setup.csproj" />
     <Project Path="src/Utilities/Lombiq.Tailwind.Targets/Lombiq.Tailwind.Targets.Samples/Lombiq.Tailwind.Targets.Samples.csproj" />
-    <Project Path="src/Utilities/Lombiq.Tailwind.Targets/Lombiq.Tailwind.Targets/Lombiq.Tailwind.Targets.csproj" />
+    <Project Path="Smartent-src/Build/Smartent.Build.Tailwind/Smartent.Build.Tailwind.csproj" />
   </Folder>
   <Folder Name="/test/">
     <Project Path="test/Lombiq.OSOCE.Tests.UI/Lombiq.OSOCE.Tests.UI.csproj" />
