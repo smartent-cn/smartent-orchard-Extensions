@@ -1,4 +1,4 @@
-using Lombiq.HelpfulLibraries.OrchardCore.ResourceManagement;
+using Smartent.Orchard.Platform.ResourceManagement;
 using static Lombiq.HelpfulExtensions.Extensions.Trumbowyg.Constants.PrismLanguageNames;
 using static Lombiq.HelpfulExtensions.Extensions.Trumbowyg.Constants.TrumbowygResourceNames;
 

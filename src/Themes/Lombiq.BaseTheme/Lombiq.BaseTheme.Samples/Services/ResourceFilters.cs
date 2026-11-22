@@ -1,5 +1,5 @@
-﻿using Lombiq.BaseTheme.Samples.Constants;
-using Lombiq.HelpfulLibraries.OrchardCore.ResourceManagement;
+using Lombiq.BaseTheme.Samples.Constants;
+using Smartent.Orchard.Platform.ResourceManagement;
 
 namespace Lombiq.DataTables.Samples.Navigation;
 

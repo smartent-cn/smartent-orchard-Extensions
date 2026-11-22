@@ -1,4 +1,4 @@
-using Lombiq.HelpfulLibraries.OrchardCore.Navigation;
+using Smartent.Orchard.Platform.Navigation;
 using Lombiq.Marketing.Pirsch.Drivers;
 using Lombiq.Marketing.Pirsch.Permissions;
 using Microsoft.AspNetCore.Http;

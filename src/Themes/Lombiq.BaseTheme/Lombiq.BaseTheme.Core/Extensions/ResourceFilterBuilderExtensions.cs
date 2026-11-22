@@ -1,6 +1,6 @@
 using Lombiq.BaseTheme.Core.Constants;
 
-namespace Lombiq.HelpfulLibraries.OrchardCore.ResourceManagement;
+namespace Smartent.Orchard.Platform.ResourceManagement;
 
 public static class ResourceFilterBuilderExtensions
 {

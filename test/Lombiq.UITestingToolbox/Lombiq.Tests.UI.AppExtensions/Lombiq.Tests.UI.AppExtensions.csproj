@@ -16,11 +16,11 @@
   </PropertyGroup>
 
   <ItemGroup Condition="'$(NuGetBuild)' != 'true'">
-    <ProjectReference Include="..\..\..\src\Libraries\Lombiq.HelpfulLibraries\Lombiq.HelpfulLibraries.OrchardCore\Lombiq.HelpfulLibraries.OrchardCore.csproj" />
+    <ProjectReference Include="..\..\..\Smartent-src\Platform\Orchard\Smartent.Orchard.Platform\Smartent.Orchard.Platform.csproj" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(NuGetBuild)' == 'true'">
-    <PackageReference Include="Lombiq.HelpfulLibraries.OrchardCore" Version="$(PackageVersionLombiqHelpfulLibraries)" />
+    <PackageReference Include="Smartent.Orchard.Platform" Version="$(PackageVersionLombiqHelpfulLibraries)" />
   </ItemGroup>
 
   <!-- Security Updates for Orchard Core - make sure to check if these are still necessary -->

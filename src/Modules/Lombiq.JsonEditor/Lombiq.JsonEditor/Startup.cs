@@ -1,4 +1,4 @@
-using Lombiq.HelpfulLibraries.OrchardCore.DependencyInjection;
+using Smartent.Orchard.Platform.DependencyInjection;
 using Lombiq.JsonEditor.Constants;
 using Lombiq.JsonEditor.Drivers;
 using Lombiq.JsonEditor.Fields;

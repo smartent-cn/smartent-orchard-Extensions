@@ -1,4 +1,4 @@
-using Lombiq.HelpfulLibraries.OrchardCore.ResourceManagement;
+using Smartent.Orchard.Platform.ResourceManagement;
 using Lombiq.VueJs.Resources.Constants;
 
 namespace Lombiq.VueJs.Resources;

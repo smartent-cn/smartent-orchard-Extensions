@@ -2,7 +2,7 @@
 
 ## About
 
-This Orchard Core module adds [Vue.js 3](https://vuejs.org/) resources to Orchard Core in the form of [JavaScript modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules). To learn more about using JS modules in Orchard Core resource management, check out the feature's [documentation](https://github.com/Lombiq/Helpful-Libraries/blob/dev/Lombiq.HelpfulLibraries.OrchardCore/Docs/ResourceManagement.md#javascript-module-support) in our Helpful Libraries package.
+This Orchard Core module adds [Vue.js 3](https://vuejs.org/) resources to Orchard Core in the form of [JavaScript modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules). To learn more about using JS modules in Orchard Core resource management, check out the feature's [documentation](https://github.com/Lombiq/Helpful-Libraries/blob/dev/Smartent.Orchard.Platform/Docs/ResourceManagement.md#javascript-module-support) in our Helpful Libraries package.
 
 ## Dependencies
 

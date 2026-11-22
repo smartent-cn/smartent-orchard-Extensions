@@ -1,7 +1,7 @@
 using Lombiq.DataTables.Controllers;
 using Lombiq.DataTables.Samples.Controllers;
 using Lombiq.DataTables.Samples.Services;
-using Lombiq.HelpfulLibraries.OrchardCore.Navigation;
+using Smartent.Orchard.Platform.Navigation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Localization;
 using OrchardCore.Navigation;

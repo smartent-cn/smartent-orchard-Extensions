@@ -175,7 +175,7 @@ On Windows, `bash` on `PATH` may be WSL, which doesn't see the Windows `gh` and 
 | --- | --- | --- |
 | `git/analyze-renovate-prs.sh` | 1 | Read-only. Lists every **open PR with a `renovate/*` head branch** in the superproject and each submodule as ELIGIBLE or SKIP (draft / already merged), with PR number, title, `diff --stat` and commit log vs. `origin/dev`. No age cutoff — every open Renovate PR is checked regardless of age. |
 | `git/checkout-latest-renovate-pr.sh` | 2 | Checks out the head branch of the newest applicable open Renovate PR per submodule (same filters). **One PR per repo**, but prints the other eligible PR numbers/branches to merge manually. |
-| `dotnet/build-with-analyzers.sh [target]` | 2 | Builds with `RunAnalyzersDuringBuild=true`, printing only deduplicated error/warning lines. Defaults to `Lombiq.OSOCE.slnx`. |
+| `dotnet/build-with-analyzers.sh [target]` | 2 | Builds with `RunAnalyzersDuringBuild=true`, printing only deduplicated error/warning lines. Defaults to `Smartent.Orchard.slnx`. |
 | `git/update-gha-refs.sh apply\|revert <KEY>` | 3, 5 | Rewrites `Lombiq/GitHub-Actions/...@dev` ↔ `@issue/<KEY>` in `tools/Lombiq.GitHub.Actions/.github/**` and `.github/workflows/**`; never touches other repos' refs. Doesn't commit. |
 | `git/push-issue-branches.sh <KEY>` | 4 | Pushes `issue/<KEY>` in each submodule before its containing repository; skips all other branches. Never force-pushes or targets `dev`. |
 | `gh/wait-for-checks.sh <owner/repo> <pr>` | 4 | Polls PR checks with 60s→300s backoff, prints a compact summary and failing checks; exit 0 pass / 1 fail / 3 timeout. No TUI. |

@@ -1,5 +1,5 @@
 using Smartent.Core.CodeGen.Attributes;
-using Lombiq.HelpfulLibraries.OrchardCore.ResourceManagement;
+using Smartent.Orchard.Platform.ResourceManagement;
 using Lombiq.VueJs.Resources.Constants;
 using System;
 using static Lombiq.VueJs.Resources.Constants.ResourceNames;

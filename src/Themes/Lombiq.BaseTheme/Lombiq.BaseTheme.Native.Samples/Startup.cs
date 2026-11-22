@@ -10,7 +10,7 @@ public sealed class Startup : StartupBase
 {
     public override void ConfigureServices(IServiceCollection services)
     {
-        // This shortcut is added by Lombiq.HelpfulLibraries.OrchardCore.
+        // This shortcut is added by Smartent.Orchard.Platform.
         services.AddResourceManagementConfiguration<ResourceManagementOptionsConfiguration>();
 
         // This is a sample main menu item.

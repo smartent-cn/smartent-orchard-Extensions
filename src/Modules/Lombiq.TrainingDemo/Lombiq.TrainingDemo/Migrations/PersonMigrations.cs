@@ -9,7 +9,7 @@ using OrchardCore.Data.Migration;
 using System;
 using System.Threading.Tasks;
 using YesSql.Sql;
-using static Lombiq.HelpfulLibraries.OrchardCore.Contents.ContentFieldEditorEnums;
+using static Smartent.Orchard.Platform.Contents.ContentFieldEditorEnums;
 
 namespace Lombiq.TrainingDemo.Migrations;
 

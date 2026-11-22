@@ -1,4 +1,4 @@
-using Lombiq.HelpfulLibraries.OrchardCore.Contents;
+using Smartent.Orchard.Platform.Contents;
 using Lombiq.UIKit.Widgets.Models;
 using OrchardCore.ContentFields.Settings;
 using OrchardCore.ContentManagement.Metadata;

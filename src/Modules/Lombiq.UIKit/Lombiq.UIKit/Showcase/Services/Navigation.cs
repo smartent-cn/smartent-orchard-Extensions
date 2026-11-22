@@ -1,4 +1,4 @@
-using Lombiq.HelpfulLibraries.OrchardCore.Navigation;
+using Smartent.Orchard.Platform.Navigation;
 using Lombiq.UIKit.Showcase.Controllers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Localization;

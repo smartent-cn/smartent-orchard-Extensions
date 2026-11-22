@@ -1,5 +1,5 @@
 using Lombiq.ContentEditors.Indexing;
-using Lombiq.HelpfulLibraries.OrchardCore.Data;
+using Smartent.Orchard.Platform.Data;
 using OrchardCore.Data.Migration;
 using System.Threading.Tasks;
 using YesSql.Sql;

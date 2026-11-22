@@ -1,4 +1,4 @@
-using Lombiq.HelpfulLibraries.OrchardCore.TagHelpers;
+using Smartent.Orchard.Platform.TagHelpers;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using OrchardCore.DisplayManagement;
 using System.Threading.Tasks;

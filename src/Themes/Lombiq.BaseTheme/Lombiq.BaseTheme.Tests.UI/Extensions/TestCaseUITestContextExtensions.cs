@@ -1,5 +1,5 @@
 using Atata;
-using Lombiq.HelpfulLibraries.OrchardCore.Mvc;
+using Smartent.Orchard.Platform.Mvc;
 using Lombiq.Tests.UI.Extensions;
 using Lombiq.Tests.UI.Services;
 using OpenQA.Selenium;

@@ -9,8 +9,8 @@
   <Project Path="../../../Smartent-src/Platform/Core/Smartent.Core.Cli/Smartent.Core.Cli.csproj" />
   <Project Path="../../../Smartent-src/Platform/Core/Smartent.Core.Primitives/Smartent.Core.Primitives.csproj" />
   <Project Path="../../../Smartent-src/Platform/Orchard/Smartent.Orchard.Platform.Data.LinqToYesSql/Smartent.Orchard.Platform.Data.LinqToYesSql.csproj" />
-  <Project Path="Lombiq.HelpfulLibraries.OrchardCore.Testing/Lombiq.HelpfulLibraries.OrchardCore.Testing.csproj" />
-  <Project Path="Lombiq.HelpfulLibraries.OrchardCore/Lombiq.HelpfulLibraries.OrchardCore.csproj" />
+  <Project Path="../../../Smartent-src/Test/Smartent.Test.OrchardCore/Smartent.Test.OrchardCore.csproj" />
+  <Project Path="../../../Smartent-src/Platform/Orchard/Smartent.Orchard.Platform/Smartent.Orchard.Platform.csproj" />
   <Project Path="../../../Smartent-src/Platform/Orchard/Smartent.Orchard.Http.Refit/Smartent.Orchard.Http.Refit.csproj" />
   <Project Path="Lombiq.HelpfulLibraries.RestEase/Lombiq.HelpfulLibraries.RestEase.csproj" />
   <Project Path="../../../Smartent-src/Platform/Core/Smartent.Core.CodeGen.SourceGenerators/Smartent.Core.CodeGen.SourceGenerators.csproj" />

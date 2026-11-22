@@ -15,7 +15,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using YesSql;
-using static Lombiq.HelpfulLibraries.OrchardCore.Users.PasswordHelper;
+using static Smartent.Orchard.Platform.Users.PasswordHelper;
 using static Lombiq.Hosting.Tenants.Maintenance.Maintenance.ChangeUserSensitiveContent.ChangeUserSensitiveContentMaintenanceProvider;
 
 namespace Lombiq.Hosting.Tenants.Maintenance.Maintenance.ChangeUserSensitiveContent;

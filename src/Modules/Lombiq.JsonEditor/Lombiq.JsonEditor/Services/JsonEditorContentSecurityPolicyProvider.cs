@@ -1,5 +1,5 @@
 using Smartent.Core.AspNet.Security;
-using Lombiq.HelpfulLibraries.OrchardCore.ResourceManagement;
+using Smartent.Orchard.Platform.ResourceManagement;
 using Lombiq.JsonEditor.Constants;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;

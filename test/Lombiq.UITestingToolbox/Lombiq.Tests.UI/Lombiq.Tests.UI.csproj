@@ -70,7 +70,7 @@
       <ItemGroup>
         <PackageReference Include="Lombiq.Tests" Version="$(PackageVersionLombiqTests)" />
         <PackageReference Include="Smartent.Core.Cli" Version="$(PackageVersionLombiqHelpfulLibraries)" />
-        <PackageReference Include="Lombiq.HelpfulLibraries.OrchardCore" Version="$(PackageVersionLombiqHelpfulLibraries)" />
+        <PackageReference Include="Smartent.Orchard.Platform" Version="$(PackageVersionLombiqHelpfulLibraries)" />
         <PackageReference Include="Smartent.Orchard.Http.Refit" Version="$(PackageVersionLombiqHelpfulLibraries)" />
       </ItemGroup>
     </When>
@@ -78,7 +78,7 @@
       <ItemGroup>
         <ProjectReference Include="..\..\Lombiq.Tests\Lombiq.Tests.csproj" />
         <ProjectReference Include="..\..\..\Smartent-src\Platform\Core\Smartent.Core.Cli\Smartent.Core.Cli.csproj" />
-        <ProjectReference Include="..\..\..\src\Libraries\Lombiq.HelpfulLibraries\Lombiq.HelpfulLibraries.OrchardCore\Lombiq.HelpfulLibraries.OrchardCore.csproj" />
+        <ProjectReference Include="..\..\..\Smartent-src\Platform\Orchard\Smartent.Orchard.Platform\Smartent.Orchard.Platform.csproj" />
         <ProjectReference Include="..\..\..\Smartent-src\Platform\Orchard\Smartent.Orchard.Http.Refit\Smartent.Orchard.Http.Refit.csproj" />
       </ItemGroup>
     </Otherwise>

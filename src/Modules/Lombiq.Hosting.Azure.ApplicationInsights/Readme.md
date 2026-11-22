@@ -67,7 +67,7 @@ builder.Services
 
 Note that due to how the Application Insights .NET SDK works, telemetry can only be collected for the whole app at once; collecting telemetry separately for each tenant is not supported.
 
-You can also use `ConfigureAzureHostingDefaultsWithApplicationInsightsTelemetry` instead; this sets up all the recommended hosting configuration with `ConfigureAzureHostingDefaults` from [Lombiq Helpful Libraries - Orchard Core Libraries](https://github.com/Lombiq/Helpful-Libraries/blob/dev/Lombiq.HelpfulLibraries.OrchardCore/Readme.md).
+You can also use `ConfigureAzureHostingDefaultsWithApplicationInsightsTelemetry` instead; this sets up all the recommended hosting configuration with `ConfigureAzureHostingDefaults` from [Lombiq Helpful Libraries - Orchard Core Libraries](https://github.com/Lombiq/Helpful-Libraries/blob/dev/Smartent.Orchard.Platform/Readme.md).
 
 When using the full CMS approach of Orchard Core (i.e. not decoupled or headless) then the client-side tracking script will be automatically injected as a head script. Otherwise, you can create it with `ITrackingScriptFactory`.
 
@@ -100,7 +100,7 @@ See the [`ApplicationInsightsOptions` class](Lombiq.Hosting.Azure.ApplicationIns
 
 Note that while telemetry from background tasks is collected in form of dependency operations it'll be collected even if `EnableDependencyTrackingTelemetryModule` is `false`.
 
-If you use the security defaults from [Lombiq Helpful Libraries - Orchard Core Libraries - Security](https://github.com/Lombiq/Helpful-Libraries/blob/dev/Lombiq.HelpfulLibraries.OrchardCore/Docs/Security.md), then the security headers necessary to use Application Insight's client-side tracking will automatically be added.
+If you use the security defaults from [Lombiq Helpful Libraries - Orchard Core Libraries - Security](https://github.com/Lombiq/Helpful-Libraries/blob/dev/Smartent.Orchard.Platform/Docs/Security.md), then the security headers necessary to use Application Insight's client-side tracking will automatically be added.
 
 ### Entra Authentication for the Live Metrics control channel
 
@@ -108,7 +108,7 @@ To [secure the Live Metrics control channel](https://learn.microsoft.com/en-us/a
 
 #### Setting up Entra Authentication for Application Insights
 
-> âš  This section is required if you have disabled `Local Authentication` on your AAI resource, see [the docs](https://learn.microsoft.com/en-us/azure/azure-monitor/app/azure-ad-authentication?WT.mc_id=Portal-AppInsightsExtension&tabs=net#disable-local-authentication).
+> âš?This section is required if you have disabled `Local Authentication` on your AAI resource, see [the docs](https://learn.microsoft.com/en-us/azure/azure-monitor/app/azure-ad-authentication?WT.mc_id=Portal-AppInsightsExtension&tabs=net#disable-local-authentication).
 
 If you want to use Entra Authentication for Application Insights, or if you have disabled `Local Authentication` on your AAI resource, you will have to set the `EntraAuthenticationType` option to the authentication type you want to use (`ManagedIdentity` or `ServicePrincipal`) in the `Lombiq_Hosting_Azure_ApplicationInsights` section of your configuration like below.
 
@@ -124,7 +124,7 @@ If you want to use Entra Authentication for Application Insights, or if you have
 
 If you use `ConfigureAzureHostingDefaultsWithApplicationInsightsTelemetry` as mentioned above, then this will be automatically configured for you.
 
-> âš  Client-side tracking will currently fail with 401 Unauthorized if Local Authentication is disabled, see [this bug report](https://github.com/microsoft/ApplicationInsights-dotnet/issues/2893) for the Application Insights .NET SDK. If you need client-side tracking, you will have to keep Local Authentication enabled on your AAI resource for now.
+> âš?Client-side tracking will currently fail with 401 Unauthorized if Local Authentication is disabled, see [this bug report](https://github.com/microsoft/ApplicationInsights-dotnet/issues/2893) for the Application Insights .NET SDK. If you need client-side tracking, you will have to keep Local Authentication enabled on your AAI resource for now.
 
 To set up Entra Authentication for an application hosted on Azure you will have to set up a Managed Identity for the application and give it the `Monitoring Metrics Publisher` role under the given AAI resource (see more on assigning Azure roles [here](https://learn.microsoft.com/en-us/azure/role-based-access-control/role-assignments-portal)) to be able to publish metrics. A managed identity will allow your app to authenticate with the Application Insights resource; see how to set it up for specific Azure services [here](https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/managed-identities-status). We recommend using the simpler system-assigned identity option, since then you can easily allow your app's identity to get a role under the Application Insights resource. Note that it might take a few minutes for the managed identity to work; until then, Live Metrics won't be available.
 

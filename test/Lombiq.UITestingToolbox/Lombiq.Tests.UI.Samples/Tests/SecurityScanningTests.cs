@@ -17,7 +17,7 @@ namespace Lombiq.Tests.UI.Samples.Tests;
 // https://github.com/Lombiq/UI-Testing-Toolbox/blob/dev/Lombiq.Tests.UI/Docs/SecurityScanning.md.
 
 // Most common alerts can be resolved by using the OrchardCoreBuilder.ConfigureSecurityDefaultsWithStaticFiles()
-// extension method from Lombiq.HelpfulLibraries.OrchardCore. We use it in this in our
+// extension method from Smartent.Orchard.Platform. We use it in this in our
 // https://github.com/Lombiq/Open-Source-Orchard-Core-Extensions repo that these samples are configured for, and thus
 // there are almost no alerts. It's worth enabling in your Program and then verifying that everything still works on
 // the site before really getting into security scanning. If you experience any problems related to

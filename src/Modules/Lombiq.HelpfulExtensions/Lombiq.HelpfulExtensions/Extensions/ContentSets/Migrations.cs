@@ -1,6 +1,6 @@
 using Lombiq.HelpfulExtensions.Extensions.ContentSets.Indexes;
 using Lombiq.HelpfulExtensions.Extensions.ContentSets.Models;
-using Lombiq.HelpfulLibraries.OrchardCore.Data;
+using Smartent.Orchard.Platform.Data;
 using OrchardCore.ContentManagement.Metadata;
 using OrchardCore.ContentManagement.Metadata.Settings;
 using OrchardCore.Data.Migration;

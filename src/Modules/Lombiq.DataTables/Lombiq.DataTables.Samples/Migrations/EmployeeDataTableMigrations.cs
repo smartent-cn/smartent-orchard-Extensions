@@ -1,5 +1,5 @@
-﻿using Lombiq.DataTables.Samples.Indexes;
-using Lombiq.HelpfulLibraries.OrchardCore.Data;
+using Lombiq.DataTables.Samples.Indexes;
+using Smartent.Orchard.Platform.Data;
 using System;
 using YesSql.Sql.Schema;
 

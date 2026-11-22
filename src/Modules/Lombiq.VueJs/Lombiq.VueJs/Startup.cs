@@ -1,5 +1,5 @@
 using Smartent.Core.AspNet.Extensions;
-using Lombiq.HelpfulLibraries.OrchardCore.ResourceManagement;
+using Smartent.Orchard.Platform.ResourceManagement;
 using Lombiq.VueJs.Models;
 using Lombiq.VueJs.Services;
 using Lombiq.VueJs.TagHelpers;

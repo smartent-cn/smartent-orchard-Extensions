@@ -1,4 +1,4 @@
-using Lombiq.HelpfulLibraries.OrchardCore.Contents;
+using Smartent.Orchard.Platform.Contents;
 using Lombiq.Hosting.Tenants.MediaStorageManagement.Service;
 using Lombiq.Hosting.Tenants.MediaStorageManagement.ViewModels;
 using Microsoft.AspNetCore.Mvc;

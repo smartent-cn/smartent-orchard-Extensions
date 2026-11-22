@@ -1,5 +1,5 @@
 using Lombiq.HelpfulExtensions.Extensions.Emails.Services;
-using Lombiq.HelpfulLibraries.OrchardCore.Shapes;
+using Smartent.Orchard.Platform.Shapes;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;

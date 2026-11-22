@@ -6,7 +6,7 @@ using OrchardCore.Data.Migration;
 using OrchardCore.Markdown.Models;
 using System.Threading.Tasks;
 using static Lombiq.HelpfulExtensions.Extensions.SiteTexts.Constants.ContentTypes;
-using static Lombiq.HelpfulLibraries.OrchardCore.Contents.ContentFieldEditorEnums;
+using static Smartent.Orchard.Platform.Contents.ContentFieldEditorEnums;
 
 namespace Lombiq.HelpfulExtensions.Extensions.SiteTexts;
 

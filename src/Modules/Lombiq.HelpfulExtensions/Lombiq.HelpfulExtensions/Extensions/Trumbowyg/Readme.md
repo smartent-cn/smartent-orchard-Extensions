@@ -36,10 +36,10 @@ Adds prettified code snippet inserting functionality to Trumbowyg editor by usin
 - yaml
 - yml
 
-Then you need to link the Trumbowyg and Prism styles and scripts where you want it to be used. E.g. if you want to add it to BlogPost content type you can do it with the help of [Lombiq.HelpfulLibraries.OrchardCore](https://github.com/Lombiq/Helpful-Libraries/blob/dev/Lombiq.HelpfulLibraries.OrchardCore/Readme.md) in a IResourceFilterProvider:
+Then you need to link the Trumbowyg and Prism styles and scripts where you want it to be used. E.g. if you want to add it to BlogPost content type you can do it with the help of [Smartent.Orchard.Platform](https://github.com/Lombiq/Helpful-Libraries/blob/dev/Smartent.Orchard.Platform/Readme.md) in a IResourceFilterProvider:
 
 ```csharp
-using Lombiq.HelpfulLibraries.OrchardCore.ResourceManagement;
+using Smartent.Orchard.Platform.ResourceManagement;
 using static Lombiq.HelpfulExtensions.Extensions.Trumbowyg.Constants.PrismLanguageNames;
 using static Lombiq.HelpfulExtensions.Extensions.Trumbowyg.Constants.ResourceNames;
 

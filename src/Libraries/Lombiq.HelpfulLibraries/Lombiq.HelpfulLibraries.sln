@@ -15,11 +15,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lombiq.HelpfulLibraries.Res
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Core.AspNet", "..\..\..\Smartent-src\Platform\Core\Smartent.Core.AspNet\Smartent.Core.AspNet.csproj", "{5E5E1E2F-8096-4B91-809B-5F86A3E8ADCA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lombiq.HelpfulLibraries.OrchardCore", "Lombiq.HelpfulLibraries.OrchardCore\Lombiq.HelpfulLibraries.OrchardCore.csproj", "{741E56D8-C42C-4506-841E-DD2245B2E631}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Orchard.Platform", "..\..\..\Smartent-src\Platform\Orchard\Smartent.Orchard.Platform\Smartent.Orchard.Platform.csproj", "{741E56D8-C42C-4506-841E-DD2245B2E631}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Core.Primitives", "..\..\..\Smartent-src\Platform\Core\Smartent.Core.Primitives\Smartent.Core.Primitives.csproj", "{28D8FE01-5D8B-43EE-8B7A-927D3D3DC627}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lombiq.HelpfulLibraries.OrchardCore.Testing", "Lombiq.HelpfulLibraries.OrchardCore.Testing\Lombiq.HelpfulLibraries.OrchardCore.Testing.csproj", "{F87DC121-2ADD-458D-9E01-BC0032860188}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Test.OrchardCore", "..\..\..\Smartent-src\Test\Smartent.Test.OrchardCore\Smartent.Test.OrchardCore.csproj", "{F87DC121-2ADD-458D-9E01-BC0032860188}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Smartent.Core.Cli", "..\..\..\Smartent-src\Platform\Core\Smartent.Core.Cli\Smartent.Core.Cli.csproj", "{E4434D6F-7C4F-4CBD-AAA3-B57809DFF571}"
 EndProject

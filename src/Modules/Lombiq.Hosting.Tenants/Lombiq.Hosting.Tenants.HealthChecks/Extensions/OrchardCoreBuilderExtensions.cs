@@ -1,4 +1,4 @@
-using Lombiq.HelpfulLibraries.OrchardCore.DependencyInjection;
+using Smartent.Orchard.Platform.DependencyInjection;
 using Lombiq.Hosting.Tenants.HealthChecks.Constants;
 using Microsoft.Extensions.Configuration;
 

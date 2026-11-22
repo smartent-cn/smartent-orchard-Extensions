@@ -1,4 +1,4 @@
-using Lombiq.HelpfulLibraries.OrchardCore.Shapes;
+using Smartent.Orchard.Platform.Shapes;
 using Microsoft.Extensions.FileProviders;
 using Moq;
 using OrchardCore.DisplayManagement.Descriptors;

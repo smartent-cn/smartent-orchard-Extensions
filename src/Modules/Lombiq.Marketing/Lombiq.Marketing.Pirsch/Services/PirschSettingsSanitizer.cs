@@ -1,7 +1,7 @@
 using AngleSharp.Dom;
 using AngleSharp.Html;
 using AngleSharp.Html.Parser;
-using Lombiq.HelpfulLibraries.OrchardCore.Mvc;
+using Smartent.Orchard.Platform.Mvc;
 using Lombiq.Marketing.Pirsch.Constants;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

@@ -1,7 +1,7 @@
 using Lombiq.BaseTheme.Native.Constants;
 using OrchardCore.ResourceManagement;
 
-namespace Lombiq.HelpfulLibraries.OrchardCore.ResourceManagement;
+namespace Smartent.Orchard.Platform.ResourceManagement;
 
 public static class ResourceManagementContextExtensions
 {

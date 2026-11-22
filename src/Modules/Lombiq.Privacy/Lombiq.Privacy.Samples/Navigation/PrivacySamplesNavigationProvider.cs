@@ -1,4 +1,4 @@
-using Lombiq.HelpfulLibraries.OrchardCore.Navigation;
+using Smartent.Orchard.Platform.Navigation;
 using Lombiq.Privacy.Samples.Constants;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;

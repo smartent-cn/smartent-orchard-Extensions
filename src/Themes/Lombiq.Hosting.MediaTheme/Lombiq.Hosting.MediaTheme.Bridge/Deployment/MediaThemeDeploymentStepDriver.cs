@@ -3,8 +3,8 @@ using OrchardCore.Deployment;
 using OrchardCore.DisplayManagement.Handlers;
 using OrchardCore.DisplayManagement.Views;
 using System.Threading.Tasks;
-using static Lombiq.HelpfulLibraries.OrchardCore.Contents.CommonContentDisplayTypes;
-using static Lombiq.HelpfulLibraries.OrchardCore.Contents.CommonLocationNames;
+using static Smartent.Orchard.Platform.Contents.CommonContentDisplayTypes;
+using static Smartent.Orchard.Platform.Contents.CommonLocationNames;
 
 namespace Lombiq.Hosting.MediaTheme.Bridge.Deployment;
 

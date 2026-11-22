@@ -1,4 +1,4 @@
-using Lombiq.HelpfulLibraries.OrchardCore.Contents;
+using Smartent.Orchard.Platform.Contents;
 using Lombiq.Hosting.Tenants.Admin.Login.Extensions;
 using Lombiq.Hosting.Tenants.Admin.Login.Permissions;
 using Microsoft.AspNetCore.Authorization;

@@ -1,5 +1,5 @@
 using Smartent.Core.AspNet.Security;
-using Lombiq.HelpfulLibraries.OrchardCore.Security;
+using Smartent.Orchard.Platform.Security;
 using Lombiq.Hosting.Tenants.Management.Filters;
 using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;

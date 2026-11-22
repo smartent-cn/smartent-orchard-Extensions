@@ -18,7 +18,7 @@
 ## 迁移纪律（每个项目必须满足后再删 Legacy）
 
 1. 新路径下 `dotnet build` 通过。  
-2. 主解决方案（`Lombiq.OSOCE.sln`，后续改名为 `Smartent.Orchard.sln`）已包含新 csproj，且 **无任何 ProjectReference 仍指向旧路径**。  
+2. 主解决方案（`Smartent.Orchard.sln`，原 `Lombiq.OSOCE.sln`）已包含新 csproj，且 **无任何 ProjectReference 仍指向旧路径**。  
 3. 本阶段约定测试通过（见 `重构-重组-改名项目方案/第一步-计划.md`）。  
 4. 删除 `src/`（或 `test/`）中 **仅属于该项目** 的旧文件夹；若目录内仍有未迁工程则保留父目录。  
 5. 在 `重构-重组-改名项目方案/项目清单.md` 中标记该行为「已迁入 Smartent-src」。
@@ -27,7 +27,7 @@
 
 - 脚手架已建立（目录 + `build/` 全局属性）。  
 - **M2 完成**：`Platform/Core/` 下五包已迁入（`Smartent.Core.*`）。  
-- **M3 进行中**：`Platform/Orchard/` 承接原 HelpfulLibraries 的 Orchard 向库；见 `重构-重组-改名项目方案/projects/M3-Platform-HelpfulLibraries.md`。
+- **M3 进行中**：`Platform/Orchard/` 下 LinqToDb、Refit、OrchardCore、Testing 已迁入；元包等待办。见 `重构-重组-改名项目方案/projects/M3-Platform-HelpfulLibraries.md`。
 
 ## 文档与规范
 

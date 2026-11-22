@@ -1,5 +1,5 @@
-using Lombiq.HelpfulLibraries.OrchardCore.DependencyInjection;
-using Lombiq.HelpfulLibraries.OrchardCore.ResourceManagement;
+using Smartent.Orchard.Platform.DependencyInjection;
+using Smartent.Orchard.Platform.ResourceManagement;
 using Lombiq.Hosting.MediaTheme.Bridge.Deployment;
 using Lombiq.Hosting.MediaTheme.Bridge.Middlewares;
 using Lombiq.Hosting.MediaTheme.Bridge.Navigation;

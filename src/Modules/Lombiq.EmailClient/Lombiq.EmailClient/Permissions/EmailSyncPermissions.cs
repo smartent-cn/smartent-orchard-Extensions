@@ -1,4 +1,4 @@
-﻿using Lombiq.HelpfulLibraries.OrchardCore.Users;
+using Smartent.Orchard.Platform.Users;
 using OrchardCore.Security.Permissions;
 using System.Collections.Generic;
 

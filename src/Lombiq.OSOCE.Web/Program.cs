@@ -1,5 +1,5 @@
 using Lombiq.ChartJs.Constants;
-using Lombiq.HelpfulLibraries.OrchardCore.Shapes;
+using Smartent.Orchard.Platform.Shapes;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using OrchardCore.Logging;

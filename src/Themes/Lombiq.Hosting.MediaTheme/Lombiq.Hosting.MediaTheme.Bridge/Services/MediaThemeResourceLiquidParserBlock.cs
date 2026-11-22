@@ -1,6 +1,6 @@
 using Fluid;
 using Fluid.Ast;
-using Lombiq.HelpfulLibraries.OrchardCore.Liquid;
+using Smartent.Orchard.Platform.Liquid;
 using OrchardCore;
 using OrchardCore.ResourceManagement;
 using System;

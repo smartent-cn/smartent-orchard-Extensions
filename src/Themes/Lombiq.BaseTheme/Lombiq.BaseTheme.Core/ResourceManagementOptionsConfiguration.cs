@@ -1,5 +1,5 @@
 using Lombiq.BaseTheme.Core.Constants;
-using Lombiq.HelpfulLibraries.OrchardCore.ResourceManagement;
+using Smartent.Orchard.Platform.ResourceManagement;
 
 namespace Lombiq.BaseTheme.Core;
 

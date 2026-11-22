@@ -15,14 +15,14 @@
 #   bash .agents/skills/renovate-integration/scripts/dotnet/build-with-analyzers.sh [solution-or-project]
 #   WARN_AS_ERROR=false bash .../build-with-analyzers.sh [solution-or-project]
 #
-# Defaults to Lombiq.OSOCE.slnx in the superproject root.
+# Defaults to Smartent.Orchard.slnx in the superproject root.
 #
 # Exit codes:
 #   0 = build succeeded, 1 = build failed (diagnostics printed above).
 
 set -uo pipefail
 
-TARGET="${1:-Lombiq.OSOCE.slnx}"
+TARGET="${1:-Smartent.Orchard.slnx}"
 WARN_AS_ERROR="${WARN_AS_ERROR:-true}"
 LOG=$(mktemp)
 trap 'rm -f "$LOG"' EXIT

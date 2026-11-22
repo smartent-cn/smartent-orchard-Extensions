@@ -1,4 +1,4 @@
-using Lombiq.HelpfulLibraries.OrchardCore.ResourceManagement;
+using Smartent.Orchard.Platform.ResourceManagement;
 using Lombiq.Tests.UI.AdminTheme.Constants;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Routing;

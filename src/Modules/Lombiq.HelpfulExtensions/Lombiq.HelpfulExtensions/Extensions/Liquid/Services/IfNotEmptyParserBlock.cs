@@ -1,7 +1,7 @@
 using Fluid;
 using Fluid.Ast;
 using Lombiq.HelpfulExtensions.Extensions.Liquid.Helpers;
-using Lombiq.HelpfulLibraries.OrchardCore.Liquid;
+using Smartent.Orchard.Platform.Liquid;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;

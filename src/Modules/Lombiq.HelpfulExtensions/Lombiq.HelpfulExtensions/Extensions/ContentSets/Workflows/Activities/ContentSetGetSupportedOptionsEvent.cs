@@ -1,4 +1,4 @@
-﻿using Lombiq.HelpfulLibraries.OrchardCore.Workflow;
+using Smartent.Orchard.Platform.Workflow;
 using Microsoft.Extensions.Localization;
 
 namespace Lombiq.HelpfulExtensions.Extensions.ContentSets.Workflows.Activities;

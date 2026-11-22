@@ -1,4 +1,4 @@
-using Lombiq.HelpfulLibraries.OrchardCore.Mvc;
+using Smartent.Orchard.Platform.Mvc;
 using Lombiq.Tests.UI.Constants;
 using Lombiq.Tests.UI.Exceptions;
 using Lombiq.Tests.UI.Helpers;

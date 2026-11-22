@@ -1,4 +1,4 @@
-using Lombiq.HelpfulLibraries.OrchardCore.ResourceManagement;
+using Smartent.Orchard.Platform.ResourceManagement;
 using static Lombiq.UIKit.Constants.ResourceNames;
 
 namespace Lombiq.UIKit;

@@ -8,7 +8,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace Lombiq.HelpfulLibraries.OrchardCore.Mvc;
+namespace Smartent.Orchard.Platform.Mvc;
 
 public static class TypedRouteUITestContextExtensions
 {

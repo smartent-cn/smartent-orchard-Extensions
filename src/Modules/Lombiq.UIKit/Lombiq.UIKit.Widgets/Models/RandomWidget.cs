@@ -1,4 +1,4 @@
-using Lombiq.HelpfulLibraries.OrchardCore.Contents;
+using Smartent.Orchard.Platform.Contents;
 using OrchardCore.ContentManagement;
 
 namespace Lombiq.UIKit.Widgets.Models;

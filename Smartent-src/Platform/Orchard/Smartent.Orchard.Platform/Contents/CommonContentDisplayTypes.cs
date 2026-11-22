@@ -1,0 +1,16 @@
+using OrchardCore.ContentManagement.Display;
+
+namespace Smartent.Orchard.Platform.Contents;
+
+/// <summary>
+/// Values that can be used with <see cref="IContentItemDisplayManager.BuildDisplayAsync"/> or <see
+/// cref="ContentOrchardRazorHelperExtensions.DisplayAsync"/> to safely select the correct display type.
+/// </summary>
+public static class CommonContentDisplayTypes
+{
+    public const string Detail = nameof(Detail);
+    public const string Summary = nameof(Summary);
+    public const string SummaryAdmin = nameof(SummaryAdmin);
+    public const string Thumbnail = nameof(Thumbnail);
+    public const string Design = nameof(Design);
+}

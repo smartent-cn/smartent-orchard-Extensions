@@ -1,4 +1,4 @@
-using Lombiq.HelpfulLibraries.OrchardCore.Navigation;
+using Smartent.Orchard.Platform.Navigation;
 using Microsoft.Extensions.Localization;
 using OrchardCore.CustomSettings;
 using OrchardCore.CustomSettings.Services;

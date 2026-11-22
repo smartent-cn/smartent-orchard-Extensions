@@ -1,5 +1,5 @@
-﻿using Lombiq.HelpfulExtensions.Extensions.Widgets.Constants;
-using Lombiq.HelpfulLibraries.OrchardCore.Navigation;
+using Lombiq.HelpfulExtensions.Extensions.Widgets.Constants;
+using Smartent.Orchard.Platform.Navigation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Localization;

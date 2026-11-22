@@ -1,4 +1,4 @@
-using Lombiq.HelpfulLibraries.OrchardCore.Data;
+using Smartent.Orchard.Platform.Data;
 using OrchardCore.ContentFields.Fields;
 using OrchardCore.ContentFields.Settings;
 using OrchardCore.ContentManagement;

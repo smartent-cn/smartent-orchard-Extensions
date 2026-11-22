@@ -1,6 +1,6 @@
-using Lombiq.HelpfulLibraries.OrchardCore.Contents;
-using Lombiq.HelpfulLibraries.OrchardCore.DependencyInjection;
-using Lombiq.HelpfulLibraries.OrchardCore.Validation;
+using Smartent.Orchard.Platform.Contents;
+using Smartent.Orchard.Platform.DependencyInjection;
+using Smartent.Orchard.Platform.Validation;
 using Lombiq.JsonEditor.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

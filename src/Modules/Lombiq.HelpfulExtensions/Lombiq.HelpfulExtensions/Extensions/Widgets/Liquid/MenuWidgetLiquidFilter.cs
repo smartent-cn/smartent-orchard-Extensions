@@ -1,7 +1,7 @@
 using Fluid;
 using Fluid.Values;
 using Lombiq.HelpfulExtensions.Extensions.Widgets.ViewModels;
-using Lombiq.HelpfulLibraries.OrchardCore.Liquid;
+using Smartent.Orchard.Platform.Liquid;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 using OrchardCore;

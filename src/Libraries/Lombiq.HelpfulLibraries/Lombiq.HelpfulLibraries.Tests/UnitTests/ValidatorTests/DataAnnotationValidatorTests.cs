@@ -1,4 +1,4 @@
-using Lombiq.HelpfulLibraries.OrchardCore.Contents;
+using Smartent.Orchard.Platform.Contents;
 using Microsoft.Extensions.DependencyInjection;
 using Moq;
 using OrchardCore.ContentFields.Fields;

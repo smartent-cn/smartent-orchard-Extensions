@@ -1,5 +1,5 @@
 using Smartent.Core.Primitives.DependencyInjection;
-using Lombiq.HelpfulLibraries.OrchardCore.Users;
+using Smartent.Orchard.Platform.Users;
 using Microsoft.Extensions.DependencyInjection;
 using OrchardCore.Modules;
 

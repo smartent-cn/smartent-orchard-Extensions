@@ -1,4 +1,4 @@
-using Lombiq.HelpfulLibraries.OrchardCore.Mvc;
+using Smartent.Orchard.Platform.Mvc;
 using Lombiq.Hosting.Tenants.Maintenance.Constants;
 using Lombiq.Hosting.Tenants.Maintenance.Handlers;
 using Lombiq.Hosting.Tenants.Maintenance.Models;

@@ -1,6 +1,6 @@
 using Lombiq.DataTables.Handlers;
 using Lombiq.DataTables.Services;
-using Lombiq.HelpfulLibraries.OrchardCore.Data;
+using Smartent.Orchard.Platform.Data;
 using OrchardCore.ContentManagement.Handlers;
 using OrchardCore.Data.Migration;
 using YesSql.Indexes;

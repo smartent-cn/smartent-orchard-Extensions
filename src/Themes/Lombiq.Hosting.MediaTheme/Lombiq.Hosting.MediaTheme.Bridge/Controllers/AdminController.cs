@@ -1,4 +1,4 @@
-using Lombiq.HelpfulLibraries.OrchardCore.DependencyInjection;
+using Smartent.Orchard.Platform.DependencyInjection;
 using Lombiq.Hosting.MediaTheme.Bridge.Constants;
 using Lombiq.Hosting.MediaTheme.Bridge.Services;
 using Lombiq.Hosting.MediaTheme.Bridge.ViewModels;

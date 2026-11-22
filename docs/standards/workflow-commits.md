@@ -13,7 +13,7 @@
 | 变更类型 | 最低验证 |
 |----------|----------|
 | 仅 `Smartent-src` 下单个库/模块 | 该项目 `dotnet build` + 该项目/模块既有单元测试（若有） |
-| 影响主解决方案引用 | `dotnet build Lombiq.OSOCE.sln`（或更名后的主 sln） |
+| 影响主解决方案引用 | `dotnet build Smartent.Orchard.sln` |
 | Orchard 模块 / 主题（含前端） | 上项 + `npm`/MSBuild 前端管线成功（见项目 `package.json` 说明） |
 | UI 行为变更 | 对应 `*.Tests.UI` 或方案约定的黄金路径用例 |
 | 全阶段验收（M6 等） | 仓库级 UI 测试套件全绿 |

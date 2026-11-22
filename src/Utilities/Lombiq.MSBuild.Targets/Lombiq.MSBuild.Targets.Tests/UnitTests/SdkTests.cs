@@ -70,7 +70,7 @@ public class SdkTests
                 .ShouldBe("Microsoft.AspNetCore.App");
         
             var dependencies = elements["dependency"].Select(node => node.Attributes["id"]?.Value ?? string.Empty).ToList();
-            dependencies.ShouldContain("Lombiq.HelpfulLibraries.OrchardCore");
+            dependencies.ShouldContain("Smartent.Orchard.Platform");
             dependencies.ShouldContain("OrchardCore.Module.Targets");
         }
         finally

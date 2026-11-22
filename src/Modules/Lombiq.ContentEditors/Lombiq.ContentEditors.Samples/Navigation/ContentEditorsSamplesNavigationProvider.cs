@@ -2,7 +2,7 @@ using Lombiq.ContentEditors.Controllers;
 using Lombiq.ContentEditors.Samples.Constants;
 using Lombiq.ContentEditors.Samples.Controllers;
 using Lombiq.ContentEditors.Samples.Services;
-using Lombiq.HelpfulLibraries.OrchardCore.Navigation;
+using Smartent.Orchard.Platform.Navigation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Localization;
 using OrchardCore.Navigation;

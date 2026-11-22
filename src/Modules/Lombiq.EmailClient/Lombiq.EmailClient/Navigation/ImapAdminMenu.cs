@@ -1,6 +1,6 @@
 using Lombiq.EmailClient.Drivers;
 using Lombiq.EmailClient.Permissions;
-using Lombiq.HelpfulLibraries.OrchardCore.Navigation;
+using Smartent.Orchard.Platform.Navigation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Localization;
 using OrchardCore.Navigation;

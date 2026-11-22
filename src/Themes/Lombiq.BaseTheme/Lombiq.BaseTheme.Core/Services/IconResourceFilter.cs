@@ -1,6 +1,6 @@
 using Lombiq.BaseTheme.Core.Attributes;
 using Lombiq.BaseTheme.Core.Models;
-using Lombiq.HelpfulLibraries.OrchardCore.ResourceManagement;
+using Smartent.Orchard.Platform.ResourceManagement;
 using OrchardCore;
 using OrchardCore.Media;
 using OrchardCore.ResourceManagement;

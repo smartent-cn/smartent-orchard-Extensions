@@ -1,4 +1,4 @@
-using Lombiq.HelpfulLibraries.OrchardCore.TagHelpers;
+using Smartent.Orchard.Platform.TagHelpers;
 using Lombiq.UIKit.Models;
 using Lombiq.UIKit.ViewModels;
 using Microsoft.AspNetCore.Mvc.Localization;

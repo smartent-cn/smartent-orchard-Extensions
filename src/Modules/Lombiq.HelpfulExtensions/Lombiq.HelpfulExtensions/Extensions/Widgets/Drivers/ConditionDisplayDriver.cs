@@ -1,5 +1,5 @@
-﻿using Lombiq.HelpfulExtensions.Extensions.Widgets.ViewModels;
-using Lombiq.HelpfulLibraries.OrchardCore.Contents;
+using Lombiq.HelpfulExtensions.Extensions.Widgets.ViewModels;
+using Smartent.Orchard.Platform.Contents;
 using OrchardCore.DisplayManagement.Handlers;
 using OrchardCore.DisplayManagement.Views;
 using OrchardCore.Rules;

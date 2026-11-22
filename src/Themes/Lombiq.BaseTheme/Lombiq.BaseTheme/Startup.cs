@@ -1,6 +1,6 @@
 using Lombiq.BaseTheme.Constants;
 using Lombiq.BaseTheme.Services;
-using Lombiq.HelpfulLibraries.OrchardCore.ResourceManagement;
+using Smartent.Orchard.Platform.ResourceManagement;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using OrchardCore.Modules;

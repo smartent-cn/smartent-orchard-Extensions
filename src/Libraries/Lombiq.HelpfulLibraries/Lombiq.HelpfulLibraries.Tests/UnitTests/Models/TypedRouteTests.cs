@@ -1,4 +1,4 @@
-using Lombiq.HelpfulLibraries.OrchardCore.Mvc;
+using Smartent.Orchard.Platform.Mvc;
 using Lombiq.HelpfulLibraries.Tests.Controllers;
 using Microsoft.Extensions.DependencyInjection;
 using OrchardCore.Admin;

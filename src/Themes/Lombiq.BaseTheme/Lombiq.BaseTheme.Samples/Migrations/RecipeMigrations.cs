@@ -1,4 +1,4 @@
-﻿using Lombiq.HelpfulLibraries.OrchardCore.Data;
+using Smartent.Orchard.Platform.Data;
 using OrchardCore.Recipes.Services;
 
 namespace Lombiq.BaseTheme.Samples.Migrations;

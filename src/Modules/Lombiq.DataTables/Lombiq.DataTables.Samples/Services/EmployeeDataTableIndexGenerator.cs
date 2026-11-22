@@ -1,7 +1,7 @@
 using Lombiq.DataTables.Samples.Indexes;
 using Lombiq.DataTables.Samples.Models;
 using Lombiq.DataTables.Services;
-using Lombiq.HelpfulLibraries.OrchardCore.Data;
+using Smartent.Orchard.Platform.Data;
 using OrchardCore.ContentManagement;
 using OrchardCore.ContentManagement.Handlers;
 using System.Collections.Generic;

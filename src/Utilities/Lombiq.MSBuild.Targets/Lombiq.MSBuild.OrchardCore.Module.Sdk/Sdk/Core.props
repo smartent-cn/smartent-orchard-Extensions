@@ -21,11 +21,11 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(FromNuGet)' != 'true'">
-    <ProjectReference Include="$(LombiqHelpfulLibrariesPath)/Lombiq.HelpfulLibraries.OrchardCore/Lombiq.HelpfulLibraries.OrchardCore.csproj" />
+    <ProjectReference Include="$(LombiqSolutionRootPath)Smartent-src/Platform/Orchard/Smartent.Orchard.Platform/Smartent.Orchard.Platform.csproj" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(FromNuGet)' == 'true'">
-    <PackageReference Include="Lombiq.HelpfulLibraries.OrchardCore">
+    <PackageReference Include="Smartent.Orchard.Platform">
       <Version Condition="'$(ManagePackageVersionsCentrally)' != 'true'">$(PackageVersionLombiqHelpfulLibraries)</Version>
     </PackageReference>
   </ItemGroup>

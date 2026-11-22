@@ -1,4 +1,4 @@
-using Lombiq.HelpfulLibraries.OrchardCore.ResourceManagement;
+using Smartent.Orchard.Platform.ResourceManagement;
 using Lombiq.Walkthroughs.Constants;
 using Lombiq.Walkthroughs.Filters;
 using Microsoft.AspNetCore.Builder;

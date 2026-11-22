@@ -1,5 +1,5 @@
 using Smartent.Core.Primitives.Utilities;
-using Lombiq.HelpfulLibraries.OrchardCore.Shapes;
+using Smartent.Orchard.Platform.Shapes;
 using OrchardCore.DisplayManagement;
 using System.Threading.Tasks;
 

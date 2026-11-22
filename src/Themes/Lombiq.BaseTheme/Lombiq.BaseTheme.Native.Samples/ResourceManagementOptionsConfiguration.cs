@@ -1,9 +1,9 @@
 using Lombiq.BaseTheme.Native.Samples.Constants;
-using Lombiq.HelpfulLibraries.OrchardCore.ResourceManagement;
+using Smartent.Orchard.Platform.ResourceManagement;
 
 namespace Lombiq.BaseTheme.Native.Samples;
 
-// This class sets up the resources. We use a custom base class from Lombiq.HelpfulLibraries.OrchardCore to reduce
+// This class sets up the resources. We use a custom base class from Smartent.Orchard.Platform to reduce
 // boilerplate when using a standard directory structure and no generated minified files. You can learn more about
 // registering resources using stock Orchard Core tools in the Training Demo's "Resource management" section.
 public class ResourceManagementOptionsConfiguration : ResourceManagementOptionsConfiguratorBase
@@ -30,6 +30,6 @@ public class ResourceManagementOptionsConfiguration : ResourceManagementOptionsC
 }
 
 // These resources have to be loaded in. One convenient was is using the resource filter middleware from
-// Lombiq.HelpfulLibraries.OrchardCore, in the Startup class.
+// Smartent.Orchard.Platform, in the Startup class.
 
 // NEXT STATION: Startup.cs

@@ -4,7 +4,7 @@ using OrchardCore.Users.Services;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Xml.Linq;
-using static Lombiq.HelpfulLibraries.OrchardCore.Users.PasswordHelper;
+using static Smartent.Orchard.Platform.Users.PasswordHelper;
 
 namespace Lombiq.HelpfulExtensions.Extensions.OrchardRecipeMigration.Services;
 
