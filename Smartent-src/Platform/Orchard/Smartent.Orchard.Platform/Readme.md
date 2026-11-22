@@ -33,5 +33,5 @@ NuGet：`PackageId` = `Smartent.Orchard.Platform`
 
 ```powershell
 dotnet build Smartent-src/Platform/Orchard/Smartent.Orchard.Platform/Smartent.Orchard.Platform.csproj
-dotnet build src/Modules/Lombiq.TrainingDemo/Lombiq.TrainingDemo/Lombiq.TrainingDemo.csproj
+dotnet build Smartent-src/Modules/Smartent.Orchard.TrainingDemo/Smartent.Orchard.TrainingDemo/Smartent.Orchard.TrainingDemo.csproj
 ```

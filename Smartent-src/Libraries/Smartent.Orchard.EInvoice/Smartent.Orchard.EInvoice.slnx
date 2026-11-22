@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="Smartent.Orchard.EInvoice/Smartent.Orchard.EInvoice.csproj" />
+  <Project Path="Smartent.Orchard.EInvoice.Sample/Smartent.Orchard.EInvoice.Sample.csproj" />
+  <Project Path="Smartent.Orchard.EInvoice.Benchmark/Smartent.Orchard.EInvoice.Benchmark.csproj" />
+  <Project Path="Smartent.Orchard.EInvoice.Tests/Smartent.Orchard.EInvoice.Tests.csproj" />
+</Solution>

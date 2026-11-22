@@ -64,7 +64,7 @@ This will lint the files in _wwwroot/js_ and _wwwroot/css_ folders under the giv
     uses: Lombiq/GitHub-Actions/.github/workflows/asset-lint.yml@dev
     with:
       scripts: >
-        src/Libraries/Lombiq.EInvoiceValidator/Lombiq.EInvoiceValidator:.
+        Smartent-src/Libraries/Smartent.Orchard.EInvoice/Smartent.Orchard.EInvoice:.
 ```
 
 For descriptions of all of the workflow inputs, see [the workflow file](../../../.github/workflows/asset-lint.yml).

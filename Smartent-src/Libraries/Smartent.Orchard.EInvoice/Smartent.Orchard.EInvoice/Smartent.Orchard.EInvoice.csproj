@@ -1,0 +1,62 @@
+<Project>
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <RootNamespace>Smartent.Orchard.EInvoice</RootNamespace>
+    <AssemblyName>Smartent.Orchard.EInvoice</AssemblyName>
+    <PackageId>Smartent.Orchard.EInvoice</PackageId>
+    <LombiqMSBuildLibManTarget>node_modules</LombiqMSBuildLibManTarget>
+  </PropertyGroup>
+
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../../src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.Library.Sdk/Sdk/Import.props" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Lombiq.MSBuild.Library.Sdk" Version="2.1.1-alpha.9.osoe-344" />
+
+  <PropertyGroup>
+    <Title>Smartent Orchard EU eInvoice Validator</Title>
+    <CopyrightYear>2025</CopyrightYear>
+    <DescriptionBody>EN 16931 电子发票校验（UBL/CII，含 Schematron）。</DescriptionBody>
+    <PackageTags>Smartent;OrchardCore;EN16931;eInvoice</PackageTags>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules/tree/master/Smartent-src/Libraries/Smartent.Orchard.EInvoice</PackageProjectUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="SchemaFiles\CII\*.xsd" />
+    <EmbeddedResource Include="SchemaFiles\CII\*.xsd" />
+    <None Remove="SchemaFiles\UBL\common\*.xsd" />
+    <EmbeddedResource Include="SchemaFiles\UBL\common\*.xsd" />
+    <None Remove="SchemaFiles\UBL\maindoc\UBL-Invoice-2.1.xsd" />
+    <EmbeddedResource Include="SchemaFiles\UBL\maindoc\UBL-Invoice-2.1.xsd" />
+    <None Remove="JsonStylesheets\*.sef.json" />
+    <EmbeddedResource Include="JsonStylesheets\*.sef.json" />
+    <Content Include="validator.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Pack>true</Pack>
+      <PackagePath>contentFiles\any\$(TargetFramework)</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+    </Content>
+    <Content Condition="'$(NuGetBuild)' != 'true'" Include="node_modules\**\*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Jering.Javascript.NodeJS" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(ManagePackageVersionsCentrally)' != 'true'">
+    <PackageReference Include="MySqlConnector" Version="2.6.2" NoWarn="NU1510" />
+    <PackageReference Include="HtmlSanitizer" Version="9.2.1039" NoWarn="NU1510" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(NuGetBuild)' == 'true'">
+    <PackageReference Include="Smartent.Orchard.Platform" Version="$(PackageVersionSmartentPlatform)" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(NuGetBuild)' != 'true'">
+    <ProjectReference Include="..\..\..\Platform\Orchard\Smartent.Orchard.Platform\Smartent.Orchard.Platform.csproj" />
+  </ItemGroup>
+
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../../src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.Library.Sdk/Sdk/Import.targets" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.targets" Sdk="Lombiq.MSBuild.Library.Sdk" Version="2.1.1-alpha.9.osoe-344" />
+</Project>

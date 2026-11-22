@@ -35,9 +35,9 @@
     <Project Path="src/Lombiq.OSOCE.Web/Lombiq.OSOCE.Web.csproj" />
   </Folder>
   <Folder Name="/src/Libraries/">
-    <Project Path="src/Libraries/Lombiq.EInvoiceValidator/Lombiq.EInvoiceValidator.Benchmark/Lombiq.EInvoiceValidator.Benchmark.csproj" />
-    <Project Path="src/Libraries/Lombiq.EInvoiceValidator/Lombiq.EInvoiceValidator.Sample/Lombiq.EInvoiceValidator.Sample.csproj" />
-    <Project Path="src/Libraries/Lombiq.EInvoiceValidator/Lombiq.EInvoiceValidator/Lombiq.EInvoiceValidator.csproj" />
+    <Project Path="Smartent-src/Libraries/Smartent.Orchard.EInvoice/Smartent.Orchard.EInvoice.Benchmark/Smartent.Orchard.EInvoice.Benchmark.csproj" />
+    <Project Path="Smartent-src/Libraries/Smartent.Orchard.EInvoice/Smartent.Orchard.EInvoice.Sample/Smartent.Orchard.EInvoice.Sample.csproj" />
+    <Project Path="Smartent-src/Libraries/Smartent.Orchard.EInvoice/Smartent.Orchard.EInvoice/Smartent.Orchard.EInvoice.csproj" />
     <Project Path="Smartent-src/Platform/Core/Smartent.Core.AspNet/Smartent.Core.AspNet.csproj" />
     <Project Path="Smartent-src/Platform/Core/Smartent.Core.CodeGen.Attributes/Smartent.Core.CodeGen.Attributes.csproj" />
     <Project Path="Smartent-src/Platform/Core/Smartent.Core.Cli/Smartent.Core.Cli.csproj" />
@@ -82,7 +82,7 @@
     <Project Path="src/Modules/Lombiq.OSOCE.Samples/Lombiq.OSOCE.Samples.csproj" />
     <Project Path="src/Modules/Lombiq.Privacy/Lombiq.Privacy.Samples/Lombiq.Privacy.Samples.csproj" />
     <Project Path="src/Modules/Lombiq.Privacy/Lombiq.Privacy/Lombiq.Privacy.csproj" />
-    <Project Path="src/Modules/Lombiq.TrainingDemo/Lombiq.TrainingDemo/Lombiq.TrainingDemo.csproj" />
+    <Project Path="Smartent-src/Modules/Smartent.Orchard.TrainingDemo/Smartent.Orchard.TrainingDemo/Smartent.Orchard.TrainingDemo.csproj" />
     <Project Path="src/Modules/Lombiq.UIKit/Lombiq.UIKit.Widgets/Lombiq.UIKit.Widgets.csproj" />
     <Project Path="src/Modules/Lombiq.UIKit/Lombiq.UIKit/Lombiq.UIKit.csproj" />
     <Project Path="src/Modules/Lombiq.VueJs/Lombiq.VueJs.Resources/Lombiq.VueJs.Resources.csproj" />
@@ -127,7 +127,7 @@
     <Project Path="test/Lombiq.UITestingToolbox/Lombiq.Tests.UI/Lombiq.Tests.UI.csproj" />
   </Folder>
   <Folder Name="/test/Libraries/">
-    <Project Path="src/Libraries/Lombiq.EInvoiceValidator/Lombiq.EInvoiceValidator.Tests/Lombiq.EInvoiceValidator.Tests.csproj" />
+    <Project Path="Smartent-src/Libraries/Smartent.Orchard.EInvoice/Smartent.Orchard.EInvoice.Tests/Smartent.Orchard.EInvoice.Tests.csproj" />
     <Project Path="src/Libraries/Lombiq.HelpfulLibraries/Lombiq.HelpfulLibraries.Tests/Lombiq.HelpfulLibraries.Tests.csproj" />
     <Project Path="Smartent-src/Libraries/Smartent.Orchard.ApiClient/Smartent.Orchard.ApiClient.Tests.UI/Smartent.Orchard.ApiClient.Tests.UI.csproj" />
   </Folder>
@@ -155,7 +155,7 @@
     <Project Path="src/Modules/Lombiq.LoginAsAnybody/Lombiq.LoginAsAnybody.Tests.UI/Lombiq.LoginAsAnybody.Tests.UI.csproj" />
     <Project Path="src/Modules/Lombiq.Marketing/Lombiq.Marketing.Tests.UI/Lombiq.Marketing.Tests.UI.csproj" />
     <Project Path="src/Modules/Lombiq.Privacy/Lombiq.Privacy.Tests.UI/Lombiq.Privacy.Tests.UI.csproj" />
-    <Project Path="src/Modules/Lombiq.TrainingDemo/Lombiq.TrainingDemo.Tests/Lombiq.TrainingDemo.Tests.csproj" />
+    <Project Path="Smartent-src/Modules/Smartent.Orchard.TrainingDemo/Smartent.Orchard.TrainingDemo.Tests/Smartent.Orchard.TrainingDemo.Tests.csproj" />
     <Project Path="src/Modules/Lombiq.UIKit/Lombiq.UIKit.Tests.UI/Lombiq.UIKit.Tests.UI.csproj" />
     <Project Path="src/Modules/Lombiq.UIKit/Lombiq.UIKit.Widgets.Tests.UI/Lombiq.UIKit.Widgets.Tests.UI.csproj" />
     <Project Path="src/Modules/Lombiq.Walkthroughs/Lombiq.Walkthroughs.Test.UI/Lombiq.Walkthroughs.Tests.UI.csproj" />

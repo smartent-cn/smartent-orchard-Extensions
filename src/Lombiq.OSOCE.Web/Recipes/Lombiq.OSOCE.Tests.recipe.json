@@ -51,7 +51,7 @@
         // "Lombiq.Privacy.ConsentBanner",
         // "Lombiq.Privacy.FormConsent",
         // "Lombiq.Privacy.RegistrationConsent",
-        "Lombiq.TrainingDemo",
+        "Smartent.Orchard.TrainingDemo",
         "Lombiq.UIKit",
         "Lombiq.UIKit.Showcase",
         "Lombiq.UIKit.Widgets",
@@ -61,7 +61,7 @@
         "OrchardCore.Media",
         "TheTheme",
         "Lombiq.Tests.UI.AdminTheme"
-        // Not enabling Lombiq.TrainingDemo.Middlewares because that would write to the error log on every request.
+        // Not enabling Smartent.Orchard.TrainingDemo.Middlewares because that would write to the error log on every request.
       ]
     },
     {

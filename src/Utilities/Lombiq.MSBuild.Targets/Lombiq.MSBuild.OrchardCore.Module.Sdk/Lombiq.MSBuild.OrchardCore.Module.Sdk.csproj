@@ -1,9 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Title>Lombiq MSBuild SDK - Orchard Core Module</Title>
-    <Description>MSBuild SDK for Orchard Core modules.</Description>
-    <PackageProjectUrl>https://github.com/Lombiq/MSBuild-Targets/blob/dev/Lombiq.MSBuild.OrchardCore.Module.Sdk/Readme.md</PackageProjectUrl>
+    <Title>Smartent MSBuild SDK - Orchard Core Module (Lombiq.MSBuild.OrchardCore.Module.Sdk)</Title>
+    <Description>Orchard 模块 MSBuild SDK；默认引用 Smartent.Orchard.Platform。</Description>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules/tree/master/src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.OrchardCore.Module.Sdk</PackageProjectUrl>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
   </PropertyGroup>
 
 </Project>

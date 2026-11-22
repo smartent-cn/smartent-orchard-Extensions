@@ -1,3 +1,3 @@
 [codespell]
 ignore-words-list += , Chang, CMO, COO, requestor
-skip += , ./tools/Lombiq.GitHub.Actions/*, */SampleInvoices/*, ./src/Libraries/Lombiq.EInvoiceValidator/Lombiq.EInvoiceValidator/JsonStylesheets/*, ./src/Libraries/Lombiq.EInvoiceValidator/Lombiq.EInvoiceValidator/SchemaFiles/*, ./src/Modules/Lombiq.UIKit/Lombiq.UIKit/Views/Showcase/Showcase.cshtml
+skip += , ./tools/Lombiq.GitHub.Actions/*, */SampleInvoices/*, ./Smartent-src/Libraries/Smartent.Orchard.EInvoice/Smartent.Orchard.EInvoice/JsonStylesheets/*, ./Smartent-src/Libraries/Smartent.Orchard.EInvoice/Smartent.Orchard.EInvoice/SchemaFiles/*, ./src/Modules/Lombiq.UIKit/Lombiq.UIKit/Views/Showcase/Showcase.cshtml

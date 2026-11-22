@@ -7,7 +7,7 @@
   <ItemGroup>
     <PackageReference Include="Smartent.Core.Primitives" />
     <PackageReference Include="Smartent.Orchard.Platform" />
-    <PackageReference Include="Lombiq.EInvoiceValidator" />
-    <PackageReference Include="Lombiq.EInvoiceValidator.Sample" />
+    <PackageReference Include="Smartent.Orchard.EInvoice" />
+    <PackageReference Include="Smartent.Orchard.EInvoice.Sample" />
   </ItemGroup>
 </Project>

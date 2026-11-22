@@ -1,4 +1,0 @@
-<Solution>
-  <Project Path="Lombiq.EInvoiceValidator.Sample/Lombiq.EInvoiceValidator.Sample.csproj" />
-  <Project Path="Lombiq.EInvoiceValidator/Lombiq.EInvoiceValidator.csproj" />
-</Solution>

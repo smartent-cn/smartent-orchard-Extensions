@@ -1,5 +1,5 @@
-﻿using Lombiq.EInvoiceValidator.Extensions;
-using Lombiq.EInvoiceValidator.Services;
+﻿using Smartent.Orchard.EInvoice.Extensions;
+using Smartent.Orchard.EInvoice.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Shouldly;
 using System.IO;

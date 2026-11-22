@@ -3,7 +3,7 @@
   <Import Condition="'$(NuGetBuild)' != 'true'" Project="..\..\..\..\Smartent-src\Build\Smartent.Build.NodeJs\Smartent.Build.NodeJs\Smartent.Build.NodeJs.props" />
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
     <DefaultItemExcludes>$(DefaultItemExcludes);.git*;node_modules\**;Tests\**</DefaultItemExcludes>
     <Nullable>enable</Nullable>
@@ -26,8 +26,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="OrchardCore.Admin" Version="2.1.0" />
-    <PackageReference Include="OrchardCore.Theme.Targets" Version="2.1.0" />
+    <PackageReference Include="OrchardCore.Admin" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.Theme.Targets" Version="$(OrchardCoreVersion)" />
   </ItemGroup>
 
   <ItemGroup>
