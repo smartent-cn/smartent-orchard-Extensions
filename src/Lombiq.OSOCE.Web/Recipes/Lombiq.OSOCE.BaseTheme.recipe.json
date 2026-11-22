@@ -18,7 +18,7 @@
     {
       "name": "feature",
       "disable": [
-        "Lombiq.HelpfulExtensions.ShapeTracing"
+        "Smartent.Orchard.Extensions.Cms.ShapeTracing"
       ],
       "enable": [
         "Lombiq.BaseTheme.Native.Samples"

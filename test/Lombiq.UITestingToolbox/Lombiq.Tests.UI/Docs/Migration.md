@@ -60,9 +60,9 @@ app.Run();
 
     <ItemGroup>
     +    <ProjectReference Include="..\..\src\Lombiq.OSOCE.Web\Lombiq.OSOCE.Web.csproj" />
-        <ProjectReference Include="..\..\src\Modules\Lombiq.ChartJs\Lombiq.ChartJs.Tests.UI\Lombiq.ChartJs.Tests.UI.csproj" />
-        <ProjectReference Include="..\..\src\Modules\Lombiq.DataTables\Lombiq.DataTables\Tests\Lombiq.DataTables.Tests.UI\Lombiq.DataTables.Tests.UI.csproj" />
-        <ProjectReference Include="..\..\src\Modules\Lombiq.HelpfulExtensions\Lombiq.HelpfulExtensions.Tests.UI\Lombiq.HelpfulExtensions.Tests.UI.csproj" />
+        <ProjectReference Include="..\..\src\Modules\Smartent.Orchard.ChartJs\Smartent.Orchard.ChartJs.Tests.UI\Smartent.Orchard.ChartJs.Tests.UI.csproj" />
+        <ProjectReference Include="..\..\src\Modules\Smartent.Orchard.DataTables\Smartent.Orchard.DataTables\Tests\Smartent.Orchard.DataTables.Tests.UI\Smartent.Orchard.DataTables.Tests.UI.csproj" />
+        <ProjectReference Include="..\..\src\Modules\Smartent.Orchard.Extensions.Cms\Smartent.Orchard.Extensions.Cms.Tests.UI\Smartent.Orchard.Extensions.Cms.Tests.UI.csproj" />
     ```
 
 2. Change `OrchardCoreUITestBase` implementation like below. `AppAssemblyPath` is not required anymore:

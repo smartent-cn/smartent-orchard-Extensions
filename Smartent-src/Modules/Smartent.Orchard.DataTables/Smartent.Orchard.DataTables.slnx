@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="Smartent.Orchard.DataTables.Samples/Smartent.Orchard.DataTables.Samples.csproj" />
+  <Project Path="Smartent.Orchard.DataTables.Tests.UI/Smartent.Orchard.DataTables.Tests.UI.csproj" />
+  <Project Path="Smartent.Orchard.DataTables/Smartent.Orchard.DataTables.csproj" />
+</Solution>

@@ -1,4 +1,4 @@
-using Lombiq.HelpfulExtensions.Extensions.Emails.Services;
+using Smartent.Orchard.Extensions.Cms.Extensions.Emails.Services;
 using Lombiq.Hosting.Tenants.EmailQuotaManagement.Models;
 using Microsoft.Extensions.Localization;
 using OrchardCore.Email;

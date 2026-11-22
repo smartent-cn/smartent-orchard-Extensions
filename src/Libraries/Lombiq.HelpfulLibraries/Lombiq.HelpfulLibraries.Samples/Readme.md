@@ -1,5 +1,7 @@
-# Lombiq Helpful Libraries for Orchard Core - Samples
+# 已迁至 Smartent-src
 
-Example Orchard Core module that makes use of Lombiq Helpful Libraries.
+`Lombiq.HelpfulLibraries.Samples` 已迁入 `Smartent-src/Demo/Smartent.Demo.Platform.Samples/`。
 
-For general details about and on using the Helpful Libraries see the [root Readme](../Readme.md).
+# Moved to Smartent-src
+
+`Lombiq.HelpfulLibraries.Samples` → `Smartent-src/Demo/Smartent.Demo.Platform.Samples/`.

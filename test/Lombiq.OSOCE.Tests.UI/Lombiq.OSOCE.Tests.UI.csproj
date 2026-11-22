@@ -1,4 +1,4 @@
-﻿<Project>
+<Project>
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
     <IsPackable>false</IsPackable>
@@ -12,14 +12,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Libraries\Lombiq.HelpfulLibraries\Lombiq.HelpfulLibraries.Samples.Tests.UI\Lombiq.HelpfulLibraries.Samples.Tests.UI.csproj" />
+    <ProjectReference Include="..\..\Smartent-src\Demo\Smartent.Demo.Platform.Samples\Smartent.Demo.Platform.Samples.Tests.UI\Smartent.Demo.Platform.Samples.Tests.UI.csproj" />
     <ProjectReference Include="..\..\Smartent-src\Libraries\Smartent.Orchard.ApiClient\Smartent.Orchard.ApiClient.Tests.UI\Smartent.Orchard.ApiClient.Tests.UI.csproj" />
     <ProjectReference Include="..\..\src\Lombiq.OSOCE.Web\Lombiq.OSOCE.Web.csproj" />
-    <ProjectReference Include="..\..\src\Modules\Lombiq.ChartJs\Lombiq.ChartJs.Tests.UI\Lombiq.ChartJs.Tests.UI.csproj" />
+    <ProjectReference Include="..\..\Smartent-src\Modules\Smartent.Orchard.ChartJs\Smartent.Orchard.ChartJs.Tests.UI\Smartent.Orchard.ChartJs.Tests.UI.csproj" />
     <ProjectReference Include="..\..\src\Modules\Lombiq.ContentEditors\Lombiq.ContentEditors.Tests.UI\Lombiq.ContentEditors.Tests.UI.csproj" />
-    <ProjectReference Include="..\..\src\Modules\Lombiq.DataTables\Lombiq.DataTables.Tests.UI\Lombiq.DataTables.Tests.UI.csproj" />
+    <ProjectReference Include="..\..\Smartent-src\Modules\Smartent.Orchard.DataTables\Smartent.Orchard.DataTables.Tests.UI\Smartent.Orchard.DataTables.Tests.UI.csproj" />
     <ProjectReference Include="..\..\src\Modules\Lombiq.EmailClient\Lombiq.EmailClient.Tests.UI\Lombiq.EmailClient.Tests.UI.csproj" />
-    <ProjectReference Include="..\..\src\Modules\Lombiq.HelpfulExtensions\Lombiq.HelpfulExtensions.Tests.UI\Lombiq.HelpfulExtensions.Tests.UI.csproj" />
+    <ProjectReference Include="..\..\Smartent-src\Modules\Smartent.Orchard.Extensions.Cms\Smartent.Orchard.Extensions.Cms.Tests.UI\Smartent.Orchard.Extensions.Cms.Tests.UI.csproj" />
     <ProjectReference Include="..\..\src\Modules\Lombiq.Hosting.Azure.ApplicationInsights\Lombiq.Hosting.Azure.ApplicationInsights.Tests.UI\Lombiq.Hosting.Azure.ApplicationInsights.Tests.UI.csproj" />
     <ProjectReference Include="..\..\src\Modules\Lombiq.Hosting.BuildVersionDisplay\Lombiq.Hosting.BuildVersionDisplay.Tests.UI\Lombiq.Hosting.BuildVersionDisplay.Tests.UI.csproj" />
     <ProjectReference Include="..\..\src\Modules\Lombiq.Hosting.Tenants\Lombiq.Hosting.Tenants.Admin.Login.Tests.UI\Lombiq.Hosting.Tenants.Admin.Login.Tests.UI.csproj" />
@@ -37,8 +37,8 @@
     <ProjectReference Include="..\..\src\Modules\Lombiq.Privacy\Lombiq.Privacy.Tests.UI\Lombiq.Privacy.Tests.UI.csproj" />
     <ProjectReference Include="..\..\src\Modules\Lombiq.VueJs\Lombiq.VueJs.Samples\Lombiq.VueJs.Samples.csproj" />
     <ProjectReference Include="..\..\src\Modules\Lombiq.VueJs\Lombiq.VueJs.Tests.UI\Lombiq.VueJs.Tests.UI.csproj" />
-    <ProjectReference Include="..\..\src\Modules\Lombiq.UIKit\Lombiq.UIKit.Tests.UI\Lombiq.UIKit.Tests.UI.csproj" />
-    <ProjectReference Include="..\..\src\Modules\Lombiq.UIKit\Lombiq.UIKit.Widgets.Tests.UI\Lombiq.UIKit.Widgets.Tests.UI.csproj" />
+    <ProjectReference Include="..\..\Smartent-src\Modules\Smartent.Orchard.UIKit\Smartent.Orchard.UIKit.Tests.UI\Smartent.Orchard.UIKit.Tests.UI.csproj" />
+    <ProjectReference Include="..\..\Smartent-src\Modules\Smartent.Orchard.UIKit\Smartent.Orchard.UIKit.Widgets.Tests.UI\Smartent.Orchard.UIKit.Widgets.Tests.UI.csproj" />
     <ProjectReference Include="..\..\src\Modules\Lombiq.Walkthroughs\Lombiq.Walkthroughs.Test.UI\Lombiq.Walkthroughs.Tests.UI.csproj" />
     <ProjectReference Include="..\..\src\Themes\Lombiq.BaseTheme\Lombiq.BaseTheme.Tests.UI\Lombiq.BaseTheme.Tests.UI.csproj" />
     <ProjectReference Include="..\..\src\Themes\Lombiq.Hosting.MediaTheme\Lombiq.Hosting.MediaTheme.Bridge.Tests.UI\Lombiq.Hosting.MediaTheme.Bridge.Tests.UI.csproj" />

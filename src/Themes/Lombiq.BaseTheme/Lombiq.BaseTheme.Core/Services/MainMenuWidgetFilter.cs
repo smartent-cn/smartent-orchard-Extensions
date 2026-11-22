@@ -1,7 +1,7 @@
 using Lombiq.BaseTheme.Core.Constants;
 using Lombiq.BaseTheme.Core.Models;
-using Lombiq.HelpfulExtensions.Extensions.Widgets;
-using Lombiq.HelpfulExtensions.Extensions.Widgets.ViewModels;
+using Smartent.Orchard.Extensions.Cms.Extensions.Widgets;
+using Smartent.Orchard.Extensions.Cms.Extensions.Widgets.ViewModels;
 using Smartent.Orchard.Platform.Mvc;
 using Smartent.Orchard.Platform.Navigation;
 using Microsoft.AspNetCore.Authorization;

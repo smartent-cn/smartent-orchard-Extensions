@@ -1,0 +1,27 @@
+<Project>
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>    <RootNamespace>Smartent.Orchard.DataTables.Samples</RootNamespace>
+    <AssemblyName>Smartent.Orchard.DataTables.Samples</AssemblyName>
+    <PackageId>Smartent.Orchard.DataTables.Samples</PackageId>
+  </PropertyGroup>
+
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../../src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.OrchardCore.Module.Sdk/Sdk/Import.props" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Lombiq.MSBuild.OrchardCore.Module.Sdk" Version="2.1.1" />
+
+  <PropertyGroup>
+    <Title>Lombiq Data Tables for Orchard Core - Samples</Title>
+    <CopyrightYear>2020</CopyrightYear>
+    <DescriptionBody>Sample content that demonstrates the features of Lombiq Data Tables for Orchard Core.</DescriptionBody>
+    <PackageTags>OrchardCore;Lombiq;AspNetCore;DataTables;Vue.js</PackageTags>
+    <RepositoryUrl>https://github.com/Lombiq/Orchard-Data-Tables</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/Lombiq/Orchard-Data-Tables/blob/dev/Smartent.Orchard.DataTables.Samples/Readme.md</PackageProjectUrl>
+    <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Smartent.Orchard.DataTables\Smartent.Orchard.DataTables.csproj" />
+  </ItemGroup>
+
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../../src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.OrchardCore.Module.Sdk/Sdk/Import.targets" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.targets" Sdk="Lombiq.MSBuild.OrchardCore.Module.Sdk" Version="2.1.1" />
+</Project>

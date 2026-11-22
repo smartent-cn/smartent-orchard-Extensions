@@ -1,11 +1,11 @@
-using Lombiq.ChartJs.Constants;
+using Smartent.Orchard.ChartJs.Constants;
 using Smartent.Orchard.Platform.Shapes;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using OrchardCore.Logging;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using UIKitFeatureIds = Lombiq.UIKit.FeatureIds;
+using UIKitFeatureIds = Smartent.Orchard.UIKit.FeatureIds;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -1,0 +1,20 @@
+@using static Smartent.Orchard.UIKit.Constants.Classes
+
+@inject IHtmlGenerator HtmlGenerator
+
+@{
+    var viewModel = (UiKitEditorViewModel)Model.ViewModel;
+    var reverse = viewModel.LabelPosition == LabelPosition.Left ? " reverse" : string.Empty;
+}
+
+<style asp-name="@ResourceNames.LombiqUiKitEditorStyle"></style>
+
+<div id="@viewModel.GetBlockIdWithFallback()"
+     class="@UiKitEditorBlockName @CheckboxBlockName @viewModel.BlockClassName@reverse">
+    @viewModel.GenerateHintBefore()
+    <div class="form-check">
+        @viewModel.GenerateInput(HtmlGenerator, CheckboxInputClass)
+        @viewModel.GenerateLabel(HtmlGenerator)
+    </div>
+    @viewModel.GenerateHintAfter()
+</div>

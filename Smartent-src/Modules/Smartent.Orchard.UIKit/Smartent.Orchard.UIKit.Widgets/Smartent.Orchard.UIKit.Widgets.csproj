@@ -1,0 +1,33 @@
+<Project>
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>    <RootNamespace>Smartent.Orchard.UIKit.Widgets</RootNamespace>
+    <AssemblyName>Smartent.Orchard.UIKit.Widgets</AssemblyName>
+    <PackageId>Smartent.Orchard.UIKit.Widgets</PackageId>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../../src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.OrchardCore.Module.Sdk/Sdk/Import.props" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Lombiq.MSBuild.OrchardCore.Module.Sdk" Version="2.1.1" />
+
+  <PropertyGroup>
+    <Title>Lombiq UI Kit - Widgets for Orchard Core</Title>
+    <CopyrightYear>2024</CopyrightYear>
+    <DescriptionBody>This module contains widgets based on shapes from Lombiq UI Kit.</DescriptionBody>
+    <PackageTags>OrchardCore;Lombiq;AspNetCore;UI;UIKit;Widgets;front-end</PackageTags>
+    <RepositoryUrl>https://github.com/Lombiq/Orchard-UIKit</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/Lombiq/Orchard-UIKit/blob/dev/Smartent.Orchard.UIKit.Widgets/Readme.md</PackageProjectUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="OrchardCore.Flows" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.Media" Version="$(OrchardCoreVersion)" />
+  </ItemGroup>
+
+  <ItemGroup>
+      <ProjectReference Include="..\Smartent.Orchard.UIKit\Smartent.Orchard.UIKit.csproj" />
+  </ItemGroup>
+
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../../src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.OrchardCore.Module.Sdk/Sdk/Import.targets" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.targets" Sdk="Lombiq.MSBuild.OrchardCore.Module.Sdk" Version="2.1.1" />
+</Project>

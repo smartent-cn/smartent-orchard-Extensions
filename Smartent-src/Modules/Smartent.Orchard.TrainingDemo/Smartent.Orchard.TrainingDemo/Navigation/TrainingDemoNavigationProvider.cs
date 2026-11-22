@@ -10,7 +10,7 @@ namespace Smartent.Orchard.TrainingDemo.Navigation;
 
 // This provider creates "main" type navigation entries. These are not used by Orchard Core itself, but you can call
 // it from custom code. You can retrieve them with INavigationManager.BuildMenuAsync("main", ActionContext). If you
-// use the Lombiq.HelpfulExtensions.Widgets feature, it has a MenuWidget which can accept the MenuItem collection
+// use the Smartent.Orchard.Extensions.Cms.Widgets feature, it has a MenuWidget which can accept the MenuItem collection
 // returned by this method call and display a Bootstrap "navbar" wherever you need a menu. Or if you use a theme
 // which extends Lombiq.BaseTheme.Core, then it already displays your "main" navigation entries as a MenuWidget on its
 // own. Yes, this is basically an ad for our other projects. :)

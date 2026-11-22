@@ -1,11 +1,11 @@
-using Lombiq.HelpfulExtensions.Extensions.Widgets.Constants;
+using Smartent.Orchard.Extensions.Cms.Extensions.Widgets.Constants;
 using Smartent.Orchard.Platform.Navigation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Localization;
 using OrchardCore.Navigation;
 
-namespace Lombiq.DataTables.Samples.Navigation;
+namespace Smartent.Orchard.DataTables.Samples.Navigation;
 
 // Normally you wouldn't put this service into the theme, but in your other modules where the functionality is (and if
 // you are using the Lombiq Open Source Orchard Core Extensions repository then you can find other examples, e.g.

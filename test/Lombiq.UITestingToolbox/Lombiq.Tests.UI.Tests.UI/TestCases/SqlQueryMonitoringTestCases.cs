@@ -1,5 +1,5 @@
 using Smartent.Orchard.Platform.Mvc;
-using Lombiq.HelpfulLibraries.Samples.Controllers;
+using Smartent.Demo.Platform.Samples.Controllers;
 using Lombiq.Tests.UI.Extensions;
 using Lombiq.Tests.UI.Helpers;
 using Lombiq.Tests.UI.Models;
@@ -383,7 +383,7 @@ public static class SqlQueryMonitoringTestCases
         .ConfigureSqlMonitoring()
         .AddTest(async context =>
             {
-                await context.EnableFeatureDirectlyAsync("Lombiq.HelpfulLibraries.Samples");
+                await context.EnableFeatureDirectlyAsync("Smartent.Demo.Platform.Samples");
 
                 var requestPath = context.GetRelativeUrlOfAction<LinqToDbSamplesController>(controller => controller.SimpleQuery());
 

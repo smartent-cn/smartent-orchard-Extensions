@@ -1,7 +1,7 @@
 using Lombiq.BaseTheme.Samples.Constants;
 using Smartent.Orchard.Platform.ResourceManagement;
 
-namespace Lombiq.DataTables.Samples.Navigation;
+namespace Smartent.Orchard.DataTables.Samples.Navigation;
 
 // This service implements conditional configuration to direct the ResourceFilterMiddleware when and what styles need to
 // be added to the resources. The attribute indicates that the middleware should only invoke this provider if the

@@ -1,4 +1,4 @@
-using Lombiq.HelpfulLibraries.Samples.Tests.UI.Extensions;
+using Smartent.Demo.Platform.Samples.Tests.UI.Extensions;
 using System.Threading.Tasks;
 using Xunit;
 

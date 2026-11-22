@@ -1,0 +1,82 @@
+using LinqToDB;
+using LinqToDB.Async;
+using Smartent.Orchard.Platform.Data.LinqToYesSql;
+using Smartent.Demo.Platform.Samples.Models;
+using Microsoft.AspNetCore.Mvc;
+using OrchardCore.Autoroute.Core.Indexes;
+using OrchardCore.ContentManagement.Records;
+using System;
+using System.Globalization;
+using System.Linq;
+using System.Threading.Tasks;
+using YesSql;
+
+namespace Smartent.Demo.Platform.Samples.Controllers;
+
+// Some examples of querying the database with Smartent.Orchard.Platform.Data.LinqToYesSql.
+public sealed class LinqToDbSamplesController : Controller
+{
+    private readonly ISession _session;
+
+    public LinqToDbSamplesController(ISession session) => _session = session;
+
+    // A simple query on AutoroutePartIndex. Open this from under
+    // /Smartent.Demo.Platform.Samples/LinqToDbSamples/SimpleQuery
+    public async Task<IActionResult> SimpleQuery()
+    {
+        var result = await _session.LinqQueryAsync(
+            accessor => accessor
+                .GetTable<AutoroutePartIndex>()
+                .Where(index => index.Path.Contains('a', StringComparison.OrdinalIgnoreCase))
+                .OrderByDescending(index => index.Path)
+                .ToListAsync(HttpContext.RequestAborted));
+
+        return Ok(result);
+    }
+
+    // A more complex query with an SQL JOIN. Open this from under
+    // /Smartent.Demo.Platform.Samples/LinqToDbSamples/JoinQuery
+    public async Task<IActionResult> JoinQuery()
+    {
+        // This will fetch all items under the "blog/" path. If you used the Blog recipe then these will be all blog
+        // posts.
+        var result = await _session.LinqQueryAsync(
+            accessor =>
+                (from contentItemIndex in accessor.GetTable<ContentItemIndex>()
+                 join autoroutePartIndex in accessor.GetTable<AutoroutePartIndex>()
+                 on contentItemIndex.ContentItemId equals autoroutePartIndex.ContentItemId
+                 where autoroutePartIndex.Path.StartsWith("blog/", StringComparison.OrdinalIgnoreCase)
+                 select contentItemIndex.DisplayText)
+                .ToListAsync(HttpContext.RequestAborted));
+
+        return Ok(result);
+    }
+
+    // CRUD operations. Or rather, it's CUD but you've seen enough read operations above. Open this from under
+    // /Smartent.Demo.Platform.Samples/LinqToDbSamples/Crud
+    public async Task<IActionResult> Crud()
+    {
+        // LinqTableQueryAsync method optionally receives a collection name.
+        var insertedCount = await _session.LinqTableQueryAsync<BookRecord, int>(table => table
+            .InsertAsync(
+                () => new BookRecord
+                {
+                    Title = "Twenty Thousand Leagues Under the Seas",
+                    Author = "Jules Verne",
+                },
+                HttpContext.RequestAborted));
+
+        var modifiedCount = await _session.LinqTableQueryAsync<BookRecord, int>(table => table
+            .Where(record => record.Title == "Twenty Thousand Leagues Under the Seas")
+            .Set(record => record.Title, "Around the World in Eighty Days")
+            .UpdateAsync(HttpContext.RequestAborted));
+
+        var deletedCount = await _session.LinqTableQueryAsync<BookRecord, int>(table => table
+            .Where(record => record.Author == "Jules Verne")
+            .DeleteAsync(HttpContext.RequestAborted));
+
+        return Ok(string.Create(
+            CultureInfo.InvariantCulture,
+            $"Inserted: {insertedCount}, modified: {modifiedCount}, deleted: {deletedCount}."));
+    }
+}

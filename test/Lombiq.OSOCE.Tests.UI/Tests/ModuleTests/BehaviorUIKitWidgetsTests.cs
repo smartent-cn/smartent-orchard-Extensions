@@ -1,4 +1,4 @@
-using Lombiq.UIKit.Widgets.Tests.UI.Extensions;
+using Smartent.Orchard.UIKit.Widgets.Tests.UI.Extensions;
 using System.Threading.Tasks;
 using Xunit;
 

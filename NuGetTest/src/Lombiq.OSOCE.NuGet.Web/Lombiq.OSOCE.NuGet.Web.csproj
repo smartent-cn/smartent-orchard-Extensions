@@ -23,15 +23,15 @@
     <PackageReference Include="Lombiq.BaseTheme.Core" />
     <PackageReference Include="Lombiq.BaseTheme.Native" />
     <PackageReference Include="Lombiq.BaseTheme.Native.Samples" />
-    <PackageReference Include="Lombiq.ChartJs" />
-    <PackageReference Include="Lombiq.ChartJs.Samples" />
+    <PackageReference Include="Smartent.Orchard.ChartJs" />
+    <PackageReference Include="Smartent.Orchard.ChartJs.Samples" />
     <PackageReference Include="Lombiq.ContentEditors" />
     <PackageReference Include="Lombiq.ContentEditors.Samples" />
-    <PackageReference Include="Lombiq.DataTables" />
-    <PackageReference Include="Lombiq.DataTables.Samples" />
+    <PackageReference Include="Smartent.Orchard.DataTables" />
+    <PackageReference Include="Smartent.Orchard.DataTables.Samples" />
     <PackageReference Include="Lombiq.EmailClient" />
     <PackageReference Include="Lombiq.EmailClient.Samples" />
-    <PackageReference Include="Lombiq.HelpfulExtensions" />
+    <PackageReference Include="Smartent.Orchard.Extensions.Cms" />
     <PackageReference Include="Smartent.Core.AspNet" />
     <PackageReference Include="Smartent.Core.Primitives" />
     <PackageReference Include="Smartent.Orchard.Http.Refit" />
@@ -63,9 +63,9 @@
     <PackageReference Include="Lombiq.Tests.UI.AdminTheme" />
     <PackageReference Include="Lombiq.Tests.UI.AppExtensions" />
     <PackageReference Include="Lombiq.Tests.UI.Shortcuts" />
-    <PackageReference Include="Lombiq.UIKit" />
-    <PackageReference Include="Lombiq.UIKit.Widgets" />
-    <PackageReference Include="Lombiq.UIKit.Widgets.Tests.UI" />
+    <PackageReference Include="Smartent.Orchard.UIKit" />
+    <PackageReference Include="Smartent.Orchard.UIKit.Widgets" />
+    <PackageReference Include="Smartent.Orchard.UIKit.Widgets.Tests.UI" />
     <PackageReference Include="Lombiq.VueJs.Resources" />
     <PackageReference Include="Lombiq.Walkthroughs" />
   </ItemGroup>

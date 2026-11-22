@@ -24,7 +24,7 @@ builder.Services
             {
                 // "Enable this feature and keep it enabled": "If any of these features are enabled",
                 ["OrchardCore.Media.Azure.Storage"] = new[] { "OrchardCore.Media" },
-                ["OrchardCore.Twitter"] = new[] { "Lombiq.UIKit", "Lombiq.ChartJs" },
+                ["OrchardCore.Twitter"] = new[] { "Smartent.Orchard.UIKit", "Smartent.Orchard.ChartJs" },
             }));
 ```
 

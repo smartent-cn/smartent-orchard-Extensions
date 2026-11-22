@@ -1,4 +1,4 @@
-using Lombiq.DataTables.Tests.UI.Extensions;
+using Smartent.Orchard.DataTables.Tests.UI.Extensions;
 using System.Threading.Tasks;
 using Xunit;
 

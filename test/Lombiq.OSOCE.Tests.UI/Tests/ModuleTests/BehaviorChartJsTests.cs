@@ -1,5 +1,5 @@
-using Lombiq.ChartJs.Models;
-using Lombiq.ChartJs.Tests.UI.Extensions;
+using Smartent.Orchard.ChartJs.Models;
+using Smartent.Orchard.ChartJs.Tests.UI.Extensions;
 using Shouldly;
 using System.Text.Json;
 using System.Threading.Tasks;

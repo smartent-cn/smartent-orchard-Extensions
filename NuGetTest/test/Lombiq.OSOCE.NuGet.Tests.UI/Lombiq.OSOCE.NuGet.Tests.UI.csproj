@@ -13,9 +13,9 @@
   <ItemGroup>
     <PackageReference Include="Smartent.Orchard.Platform" />
     <PackageReference Include="Lombiq.BaseTheme.Tests.UI" />
-    <PackageReference Include="Lombiq.ChartJs.Tests.UI" />
+    <PackageReference Include="Smartent.Orchard.ChartJs.Tests.UI" />
     <PackageReference Include="Lombiq.ContentEditors.Tests.UI" />
-    <PackageReference Include="Lombiq.DataTables.Tests.UI" />
+    <PackageReference Include="Smartent.Orchard.DataTables.Tests.UI" />
     <PackageReference Include="Lombiq.EmailClient.Tests.UI" />
     <PackageReference Include="Lombiq.Hosting.Azure.ApplicationInsights.Tests.UI" />
     <PackageReference Include="Lombiq.Hosting.BuildVersionDisplay.Tests.UI" />
@@ -34,8 +34,8 @@
     <PackageReference Include="Lombiq.Marketing.Tests.UI" />
     <PackageReference Include="Smartent.Orchard.ApiClient.Tests.UI" />
     <PackageReference Include="Lombiq.Privacy.Tests.UI" />
-    <PackageReference Include="Lombiq.HelpfulExtensions.Tests.UI" />
-    <PackageReference Include="Lombiq.UIKit.Widgets.Tests.UI" />
+    <PackageReference Include="Smartent.Orchard.Extensions.Cms.Tests.UI" />
+    <PackageReference Include="Smartent.Orchard.UIKit.Widgets.Tests.UI" />
     <PackageReference Include="Lombiq.Walkthroughs.Tests.UI" />
   </ItemGroup>
 

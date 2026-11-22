@@ -52,17 +52,17 @@
     <Project Path="Smartent-src/Libraries/Smartent.Orchard.ApiClient/Smartent.Orchard.ApiClient/Smartent.Orchard.ApiClient.csproj" />
   </Folder>
   <Folder Name="/src/Modules/">
-    <Project Path="src/Libraries/Lombiq.HelpfulLibraries/Lombiq.HelpfulLibraries.Samples/Lombiq.HelpfulLibraries.Samples.csproj" />
+    <Project Path="Smartent-src/Demo/Smartent.Demo.Platform.Samples/Smartent.Demo.Platform.Samples/Smartent.Demo.Platform.Samples.csproj" />
     <Project Path="src/Modules/Lombiq.AuditTrailExtensions/Lombiq.AuditTrailExtensions.csproj" />
-    <Project Path="src/Modules/Lombiq.ChartJs/Lombiq.ChartJs.Samples/Lombiq.ChartJs.Samples.csproj" />
-    <Project Path="src/Modules/Lombiq.ChartJs/Lombiq.ChartJs/Lombiq.ChartJs.csproj" />
+    <Project Path="Smartent-src/Modules/Smartent.Orchard.ChartJs/Smartent.Orchard.ChartJs.Samples/Smartent.Orchard.ChartJs.Samples.csproj" />
+    <Project Path="Smartent-src/Modules/Smartent.Orchard.ChartJs/Smartent.Orchard.ChartJs/Smartent.Orchard.ChartJs.csproj" />
     <Project Path="src/Modules/Lombiq.ContentEditors/Lombiq.ContentEditors.Samples/Lombiq.ContentEditors.Samples.csproj" />
     <Project Path="src/Modules/Lombiq.ContentEditors/Lombiq.ContentEditors/Lombiq.ContentEditors.csproj" />
-    <Project Path="src/Modules/Lombiq.DataTables/Lombiq.DataTables.Samples/Lombiq.DataTables.Samples.csproj" />
-    <Project Path="src/Modules/Lombiq.DataTables/Lombiq.DataTables/Lombiq.DataTables.csproj" />
+    <Project Path="Smartent-src/Modules/Smartent.Orchard.DataTables/Smartent.Orchard.DataTables.Samples/Smartent.Orchard.DataTables.Samples.csproj" />
+    <Project Path="Smartent-src/Modules/Smartent.Orchard.DataTables/Smartent.Orchard.DataTables/Smartent.Orchard.DataTables.csproj" />
     <Project Path="src/Modules/Lombiq.EmailClient/Lombiq.EmailClient.Samples/Lombiq.EmailClient.Samples.csproj" />
     <Project Path="src/Modules/Lombiq.EmailClient/Lombiq.EmailClient/Lombiq.EmailClient.csproj" />
-    <Project Path="src/Modules/Lombiq.HelpfulExtensions/Lombiq.HelpfulExtensions/Lombiq.HelpfulExtensions.csproj" />
+    <Project Path="Smartent-src/Modules/Smartent.Orchard.Extensions.Cms/Smartent.Orchard.Extensions.Cms/Smartent.Orchard.Extensions.Cms.csproj" />
     <Project Path="src/Modules/Lombiq.Hosting.Azure.ApplicationInsights/Lombiq.Hosting.Azure.ApplicationInsights/Lombiq.Hosting.Azure.ApplicationInsights.csproj" />
     <Project Path="src/Modules/Lombiq.Hosting.BuildVersionDisplay/Lombiq.Hosting.BuildVersionDisplay/Lombiq.Hosting.BuildVersionDisplay.csproj" />
     <Project Path="src/Modules/Lombiq.Hosting.Tenants/Lombiq.Hosting.Tenants.Admin.Login/Lombiq.Hosting.Tenants.Admin.Login.csproj" />
@@ -83,8 +83,8 @@
     <Project Path="src/Modules/Lombiq.Privacy/Lombiq.Privacy.Samples/Lombiq.Privacy.Samples.csproj" />
     <Project Path="src/Modules/Lombiq.Privacy/Lombiq.Privacy/Lombiq.Privacy.csproj" />
     <Project Path="Smartent-src/Modules/Smartent.Orchard.TrainingDemo/Smartent.Orchard.TrainingDemo/Smartent.Orchard.TrainingDemo.csproj" />
-    <Project Path="src/Modules/Lombiq.UIKit/Lombiq.UIKit.Widgets/Lombiq.UIKit.Widgets.csproj" />
-    <Project Path="src/Modules/Lombiq.UIKit/Lombiq.UIKit/Lombiq.UIKit.csproj" />
+    <Project Path="Smartent-src/Modules/Smartent.Orchard.UIKit/Smartent.Orchard.UIKit.Widgets/Smartent.Orchard.UIKit.Widgets.csproj" />
+    <Project Path="Smartent-src/Modules/Smartent.Orchard.UIKit/Smartent.Orchard.UIKit/Smartent.Orchard.UIKit.csproj" />
     <Project Path="src/Modules/Lombiq.VueJs/Lombiq.VueJs.Resources/Lombiq.VueJs.Resources.csproj" />
     <Project Path="src/Modules/Lombiq.Walkthroughs/Lombiq.Walkthroughs/Lombiq.Walkthroughs.csproj" />
     <Project Path="src/Themes/Lombiq.Hosting.MediaTheme/Lombiq.Hosting.MediaTheme.Bridge/Lombiq.Hosting.MediaTheme.Bridge.csproj" />
@@ -132,13 +132,13 @@
     <Project Path="Smartent-src/Libraries/Smartent.Orchard.ApiClient/Smartent.Orchard.ApiClient.Tests.UI/Smartent.Orchard.ApiClient.Tests.UI.csproj" />
   </Folder>
   <Folder Name="/test/Modules/">
-    <Project Path="src/Libraries/Lombiq.HelpfulLibraries/Lombiq.HelpfulLibraries.Samples.Tests.UI/Lombiq.HelpfulLibraries.Samples.Tests.UI.csproj" />
-    <Project Path="src/Modules/Lombiq.ChartJs/Lombiq.ChartJs.Tests.UI/Lombiq.ChartJs.Tests.UI.csproj" />
+    <Project Path="Smartent-src/Demo/Smartent.Demo.Platform.Samples/Smartent.Demo.Platform.Samples.Tests.UI/Smartent.Demo.Platform.Samples.Tests.UI.csproj" />
+    <Project Path="Smartent-src/Modules/Smartent.Orchard.ChartJs/Smartent.Orchard.ChartJs.Tests.UI/Smartent.Orchard.ChartJs.Tests.UI.csproj" />
     <Project Path="src/Modules/Lombiq.ContentEditors/Lombiq.ContentEditors.Tests.UI/Lombiq.ContentEditors.Tests.UI.csproj" />
-    <Project Path="src/Modules/Lombiq.DataTables/Lombiq.DataTables.Tests.UI/Lombiq.DataTables.Tests.UI.csproj" />
-    <Project Path="src/Modules/Lombiq.DataTables/Lombiq.DataTables.Tests/Lombiq.DataTables.Tests.csproj" />
+    <Project Path="Smartent-src/Modules/Smartent.Orchard.DataTables/Smartent.Orchard.DataTables.Tests.UI/Smartent.Orchard.DataTables.Tests.UI.csproj" />
+    <Project Path="Smartent-src/Modules/Smartent.Orchard.DataTables/Smartent.Orchard.DataTables.Tests/Smartent.Orchard.DataTables.Tests.csproj" />
     <Project Path="src/Modules/Lombiq.EmailClient/Lombiq.EmailClient.Tests.UI/Lombiq.EmailClient.Tests.UI.csproj" />
-    <Project Path="src/Modules/Lombiq.HelpfulExtensions/Lombiq.HelpfulExtensions.Tests.UI/Lombiq.HelpfulExtensions.Tests.UI.csproj" />
+    <Project Path="Smartent-src/Modules/Smartent.Orchard.Extensions.Cms/Smartent.Orchard.Extensions.Cms.Tests.UI/Smartent.Orchard.Extensions.Cms.Tests.UI.csproj" />
     <Project Path="src/Modules/Lombiq.Hosting.Azure.ApplicationInsights/Lombiq.Hosting.Azure.ApplicationInsights.Tests.UI/Lombiq.Hosting.Azure.ApplicationInsights.Tests.UI.csproj" />
     <Project Path="src/Modules/Lombiq.Hosting.BuildVersionDisplay/Lombiq.Hosting.BuildVersionDisplay.Tests.UI/Lombiq.Hosting.BuildVersionDisplay.Tests.UI.csproj" />
     <Project Path="src/Modules/Lombiq.Hosting.Tenants/Lombiq.Hosting.Tenants.Admin.Login.Tests.UI/Lombiq.Hosting.Tenants.Admin.Login.Tests.UI.csproj" />
@@ -156,8 +156,8 @@
     <Project Path="src/Modules/Lombiq.Marketing/Lombiq.Marketing.Tests.UI/Lombiq.Marketing.Tests.UI.csproj" />
     <Project Path="src/Modules/Lombiq.Privacy/Lombiq.Privacy.Tests.UI/Lombiq.Privacy.Tests.UI.csproj" />
     <Project Path="Smartent-src/Modules/Smartent.Orchard.TrainingDemo/Smartent.Orchard.TrainingDemo.Tests/Smartent.Orchard.TrainingDemo.Tests.csproj" />
-    <Project Path="src/Modules/Lombiq.UIKit/Lombiq.UIKit.Tests.UI/Lombiq.UIKit.Tests.UI.csproj" />
-    <Project Path="src/Modules/Lombiq.UIKit/Lombiq.UIKit.Widgets.Tests.UI/Lombiq.UIKit.Widgets.Tests.UI.csproj" />
+    <Project Path="Smartent-src/Modules/Smartent.Orchard.UIKit/Smartent.Orchard.UIKit.Tests.UI/Smartent.Orchard.UIKit.Tests.UI.csproj" />
+    <Project Path="Smartent-src/Modules/Smartent.Orchard.UIKit/Smartent.Orchard.UIKit.Widgets.Tests.UI/Smartent.Orchard.UIKit.Widgets.Tests.UI.csproj" />
     <Project Path="src/Modules/Lombiq.Walkthroughs/Lombiq.Walkthroughs.Test.UI/Lombiq.Walkthroughs.Tests.UI.csproj" />
     <Project Path="src/Themes/Lombiq.Hosting.MediaTheme/Lombiq.Hosting.MediaTheme.Bridge.Tests.UI/Lombiq.Hosting.MediaTheme.Bridge.Tests.UI.csproj" />
   </Folder>

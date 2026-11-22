@@ -18,7 +18,7 @@ builder.Services
         .ConfigureFeaturesGuard(
             new Dictionary<string, IEnumerable<string>>
             {
-                ["OrchardCore.Twitter"] = ["Lombiq.UIKit", "Lombiq.ChartJs"],
+                ["OrchardCore.Twitter"] = ["Smartent.Orchard.UIKit", "Smartent.Orchard.ChartJs"],
             })
         .EnableTenantHealthChecks(configuration)
         .EnableAutoSetupIfNotUITesting(configuration));

@@ -1,5 +1,5 @@
 using OrchardCore.DisplayManagement.Manifest;
-using static Lombiq.HelpfulExtensions.FeatureIds;
+using static Smartent.Orchard.Extensions.Cms.FeatureIds;
 
 [assembly: Theme(
     Name = "Lombiq Base Theme - Core Features",

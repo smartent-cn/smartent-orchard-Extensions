@@ -20,11 +20,11 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(NuGetBuild)' != 'true'">
-    <ProjectReference Include="..\..\..\Modules\Lombiq.HelpfulExtensions\Lombiq.HelpfulExtensions\Lombiq.HelpfulExtensions.csproj" />
+    <ProjectReference Include="..\..\..\..\Smartent-src\Modules\Smartent.Orchard.Extensions.Cms\Smartent.Orchard.Extensions.Cms\Smartent.Orchard.Extensions.Cms.csproj" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(NuGetBuild)' == 'true'">
-    <PackageReference Include="Lombiq.HelpfulExtensions" Version="12.0.1-alpha.0.osoe-1317" />
+    <PackageReference Include="Smartent.Orchard.Extensions.Cms" Version="12.0.1-alpha.0.osoe-1317" />
   </ItemGroup>
 
   <!-- Security Updates for Orchard Core - make sure to check if these are still necessary -->

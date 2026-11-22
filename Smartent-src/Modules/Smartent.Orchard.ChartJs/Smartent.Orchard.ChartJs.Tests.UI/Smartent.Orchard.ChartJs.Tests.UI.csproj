@@ -1,0 +1,36 @@
+<Project>
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>    <RootNamespace>Smartent.Orchard.ChartJs.Tests.UI</RootNamespace>
+    <AssemblyName>Smartent.Orchard.ChartJs.Tests.UI</AssemblyName>
+    <PackageId>Smartent.Orchard.ChartJs.Tests.UI</PackageId>
+  </PropertyGroup>
+
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../../src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.OrchardCore.Tests.UI.Library.Sdk/Sdk/Import.props" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Lombiq.MSBuild.OrchardCore.Tests.UI.Library.Sdk" Version="2.1.1" />
+
+  <PropertyGroup>
+    <Title>Lombiq Chart.js for Orchard Core - UI Test Extensions</Title>
+    <CopyrightYear>2021</CopyrightYear>
+    <DescriptionBody>Extensions to aid in UI testing Lombiq Chart.js for Orchard Core.</DescriptionBody>
+    <PackageTags>OrchardCore;Lombiq;AspNetCore;Chart.js</PackageTags>
+    <RepositoryUrl>https://github.com/Lombiq/Orchard-Chart.js</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/Lombiq/Orchard-Chart.js/blob/dev/Smartent.Orchard.ChartJs.Tests.UI/Readme.md</PackageProjectUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Extensions\*.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Smartent.Orchard.ChartJs.Samples\Smartent.Orchard.ChartJs.Samples.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup Condition="'$(NuGetBuild)' == 'true'">
+    <!-- This is needed to make debug symbols loadable during visual verification testing by
+    AssertVisualVerificationApproved to access the caller method source file name. -->
+    <DebugType>embedded</DebugType>
+  </PropertyGroup>
+
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../../src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.OrchardCore.Tests.UI.Library.Sdk/Sdk/Import.targets" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.targets" Sdk="Lombiq.MSBuild.OrchardCore.Tests.UI.Library.Sdk" Version="2.1.1" />
+</Project>

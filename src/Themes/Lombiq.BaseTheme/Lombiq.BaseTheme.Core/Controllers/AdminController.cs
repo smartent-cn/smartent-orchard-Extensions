@@ -1,6 +1,6 @@
 using Lombiq.BaseTheme.Core.Models;
 using Lombiq.BaseTheme.Core.ViewModels;
-using Lombiq.HelpfulExtensions.Extensions.ContentTypes;
+using Smartent.Orchard.Extensions.Cms.Extensions.ContentTypes;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Localization;
 using OrchardCore.Admin;

@@ -17,6 +17,6 @@ using OrchardCore.Modules.Manifest;
     IsAlwaysEnabled = true,
     Dependencies =
     [
-        "Lombiq.HelpfulExtensions.Emails",
+        "Smartent.Orchard.Extensions.Cms.Emails",
     ]
 )]

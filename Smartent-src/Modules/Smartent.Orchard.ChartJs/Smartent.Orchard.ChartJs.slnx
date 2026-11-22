@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="Smartent.Orchard.ChartJs.Samples/Smartent.Orchard.ChartJs.Samples.csproj" />
+  <Project Path="Smartent.Orchard.ChartJs.Tests.UI/Smartent.Orchard.ChartJs.Tests.UI.csproj" />
+  <Project Path="Smartent.Orchard.ChartJs/Smartent.Orchard.ChartJs.csproj" />
+</Solution>

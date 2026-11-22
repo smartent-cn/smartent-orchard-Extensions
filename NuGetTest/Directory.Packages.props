@@ -12,22 +12,22 @@
     <PackageVersion Include="Lombiq.BaseTheme.Native" Version="12.0.1-alpha.0.osoe-1317" />
     <PackageVersion Include="Lombiq.BaseTheme.Native.Samples" Version="12.0.1-alpha.0.osoe-1317" />
     <PackageVersion Include="Lombiq.BaseTheme.Tests.UI" Version="12.0.1-alpha.0.osoe-1317" />
-    <PackageVersion Include="Lombiq.ChartJs" Version="10.0.1-alpha.0.osoe-1317" />
-    <PackageVersion Include="Lombiq.ChartJs.Samples" Version="10.0.1-alpha.0.osoe-1317" />
-    <PackageVersion Include="Lombiq.ChartJs.Tests.UI" Version="10.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.ChartJs" Version="10.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.ChartJs.Samples" Version="10.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.ChartJs.Tests.UI" Version="10.0.1-alpha.0.osoe-1317" />
     <PackageVersion Include="Lombiq.ContentEditors" Version="7.0.1-alpha.0.osoe-1317" />
     <PackageVersion Include="Lombiq.ContentEditors.Samples" Version="7.0.1-alpha.0.osoe-1317" />
     <PackageVersion Include="Lombiq.ContentEditors.Tests.UI" Version="7.0.1-alpha.0.osoe-1317" />
-    <PackageVersion Include="Lombiq.DataTables" Version="11.0.1-alpha.0.osoe-1317" />
-    <PackageVersion Include="Lombiq.DataTables.Samples" Version="11.0.1-alpha.0.osoe-1317" />
-    <PackageVersion Include="Lombiq.DataTables.Tests.UI" Version="11.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.DataTables" Version="11.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.DataTables.Samples" Version="11.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.DataTables.Tests.UI" Version="11.0.1-alpha.0.osoe-1317" />
     <PackageVersion Include="Smartent.Orchard.EInvoice" Version="2.0.1" />
     <PackageVersion Include="Smartent.Orchard.EInvoice.Sample" Version="2.0.1" />
     <PackageVersion Include="Lombiq.EmailClient" Version="2.0.1-alpha.0.osoe-1317" />
     <PackageVersion Include="Lombiq.EmailClient.Samples" Version="2.0.1-alpha.0.osoe-1317" />
     <PackageVersion Include="Lombiq.EmailClient.Tests.UI" Version="2.0.1-alpha.0.osoe-1317" />
-    <PackageVersion Include="Lombiq.HelpfulExtensions" Version="12.0.1-alpha.0.osoe-1317" />
-    <PackageVersion Include="Lombiq.HelpfulExtensions.Tests.UI" Version="12.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.Extensions.Cms" Version="12.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.Extensions.Cms.Tests.UI" Version="12.0.1-alpha.0.osoe-1317" />
     <!-- 仅当 NuGetTest 独立检出且 UseSmartentMonorepoMsBuildSdk!=true 时，旧 Module.Sdk 2.1.1 需要此项。 -->
     <PackageVersion Include="Lombiq.HelpfulLibraries.OrchardCore" Version="13.1.0" />
     <PackageVersion Include="Smartent.Core.AspNet" Version="13.1.0" />
@@ -83,9 +83,9 @@
     <PackageVersion Include="Lombiq.Tests.UI.AdminTheme" Version="16.0.1-alpha.3.osoe-1326" />
     <PackageVersion Include="Lombiq.Tests.UI.AppExtensions" Version="16.0.1-alpha.3.osoe-1326" />
     <PackageVersion Include="Lombiq.Tests.UI.Shortcuts" Version="16.0.1-alpha.3.osoe-1326" />
-    <PackageVersion Include="Lombiq.UIKit" Version="11.0.1-alpha.0.osoe-1317" />
-    <PackageVersion Include="Lombiq.UIKit.Widgets" Version="11.0.1-alpha.0.osoe-1317" />
-    <PackageVersion Include="Lombiq.UIKit.Widgets.Tests.UI" Version="11.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.UIKit" Version="11.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.UIKit.Widgets" Version="11.0.1-alpha.0.osoe-1317" />
+    <PackageVersion Include="Smartent.Orchard.UIKit.Widgets.Tests.UI" Version="11.0.1-alpha.0.osoe-1317" />
     <PackageVersion Include="Lombiq.VueJs.Resources" Version="10.0.0" />
     <PackageVersion Include="Lombiq.Walkthroughs" Version="4.0.1-alpha.0.osoe-1317" />
     <PackageVersion Include="Lombiq.Walkthroughs.Tests.UI" Version="4.0.1-alpha.0.osoe-1317" />

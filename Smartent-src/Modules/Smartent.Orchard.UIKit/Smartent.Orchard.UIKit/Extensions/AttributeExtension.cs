@@ -1,0 +1,25 @@
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System.ComponentModel.DataAnnotations;
+
+namespace Smartent.Orchard.UIKit.Extensions;
+
+public static class AttributeExtension
+{
+    /// <summary>
+    /// Returns <see langword="true"/> if the given model property has <see cref="RequiredAttribute"/> on it. This is
+    /// required because a value type's <see cref="ModelMetadata.IsRequired"/> default is <see langword="true"/>.
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// For more info see
+    /// https://stackoverflow.com/questions/8364009/how-to-disable-modelmetadata-isrequired-from-always-being-true-for-non-nullable/17275026.
+    /// </para>
+    /// </remarks>
+    public static bool RequiredAttributeExists(this ModelMetadata metaData) =>
+        (!metaData.ModelType.IsValueType && metaData.IsRequired)
+        || (metaData.ModelType.IsValueType &&
+            System.Attribute.IsDefined(
+                metaData.ContainerType.GetProperty(metaData.PropertyName),
+                typeof(RequiredAttribute),
+                inherit: false));
+}

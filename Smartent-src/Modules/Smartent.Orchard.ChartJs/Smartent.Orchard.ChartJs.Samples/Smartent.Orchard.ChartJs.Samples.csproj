@@ -1,0 +1,34 @@
+<Project>
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>    <RootNamespace>Smartent.Orchard.ChartJs.Samples</RootNamespace>
+    <AssemblyName>Smartent.Orchard.ChartJs.Samples</AssemblyName>
+    <PackageId>Smartent.Orchard.ChartJs.Samples</PackageId>
+  </PropertyGroup>
+
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../../src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.OrchardCore.Module.Sdk/Sdk/Import.props" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Lombiq.MSBuild.OrchardCore.Module.Sdk" Version="2.1.1" />
+
+  <PropertyGroup>
+    <Title>Lombiq Chart.js for Orchard Core - Samples</Title>
+    <CopyrightYear>2021</CopyrightYear>
+    <DescriptionBody>Sample content that demonstrates the features of Lombiq Chart.js module for Orchard Core.</DescriptionBody>
+    <PackageTags>OrchardCore;Lombiq;AspNetCore;Chart.js</PackageTags>
+    <RepositoryUrl>https://github.com/Lombiq/Orchard-Chart.js</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/Lombiq/Orchard-Chart.js/blob/dev/Smartent.Orchard.ChartJs.Samples/Readme.md</PackageProjectUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Smartent.Orchard.ChartJs\Smartent.Orchard.ChartJs.csproj" />
+    <NpmDotnetPrebuildWatchedFiles Remove="Assets\Styles\chartjs-samples.scss" />
+  </ItemGroup>
+
+  <PropertyGroup Condition="'$(NuGetBuild)' == 'true'">
+    <!-- This is needed because we must use the same in Smartent.Orchard.ChartJs.Tests.UI.csproj. Embedded and portalbe DebugTypes
+    can't be mixed within the repository because we should set "dotnet-pack-include-symbols: false" to avoid "The
+    package does not contain any symbol (.pdb) files." during NuGet publishing. -->
+    <DebugType>embedded</DebugType>
+  </PropertyGroup>
+
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../../src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.OrchardCore.Module.Sdk/Sdk/Import.targets" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.targets" Sdk="Lombiq.MSBuild.OrchardCore.Module.Sdk" Version="2.1.1" />
+</Project>

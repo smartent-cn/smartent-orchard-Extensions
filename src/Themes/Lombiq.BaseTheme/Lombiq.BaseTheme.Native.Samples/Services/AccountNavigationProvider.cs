@@ -1,4 +1,4 @@
-using Lombiq.HelpfulExtensions.Extensions.Widgets.Constants;
+using Smartent.Orchard.Extensions.Cms.Extensions.Widgets.Constants;
 using Smartent.Orchard.Platform.Navigation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;

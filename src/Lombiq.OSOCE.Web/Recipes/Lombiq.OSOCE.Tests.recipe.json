@@ -18,18 +18,18 @@
       "disable": [],
       "enable": [
         "Lombiq.AuditTrailExtensions",
-        "Lombiq.ChartJs",
+        "Smartent.Orchard.ChartJs",
         "Lombiq.ContentEditors.Samples",
-        "Lombiq.DataTables.Samples",
+        "Smartent.Orchard.DataTables.Samples",
         "Lombiq.EmailClient.Samples",
-        "Lombiq.HelpfulExtensions.CodeGeneration",
-        "Lombiq.HelpfulExtensions.ContentTypes",
-        "Lombiq.HelpfulExtensions.Flows",
-        "Lombiq.HelpfulExtensions.Liquid",
-        "Lombiq.HelpfulExtensions.ShapeTracing",
-        "Lombiq.HelpfulExtensions.TrumbowygBlogPosts",
-        "Lombiq.HelpfulExtensions.Widgets",
-        "Lombiq.HelpfulLibraries.Samples",
+        "Smartent.Orchard.Extensions.Cms.CodeGeneration",
+        "Smartent.Orchard.Extensions.Cms.ContentTypes",
+        "Smartent.Orchard.Extensions.Cms.Flows",
+        "Smartent.Orchard.Extensions.Cms.Liquid",
+        "Smartent.Orchard.Extensions.Cms.ShapeTracing",
+        "Smartent.Orchard.Extensions.Cms.TrumbowygBlogPosts",
+        "Smartent.Orchard.Extensions.Cms.Widgets",
+        "Smartent.Demo.Platform.Samples",
         "Lombiq.Hosting.BuildVersionDisplay",
         "Lombiq.Hosting.Tenants.Admin.Login.SubTenant",
         "Lombiq.Hosting.Tenants.EmailQuotaManagement",
@@ -52,9 +52,9 @@
         // "Lombiq.Privacy.FormConsent",
         // "Lombiq.Privacy.RegistrationConsent",
         "Smartent.Orchard.TrainingDemo",
-        "Lombiq.UIKit",
-        "Lombiq.UIKit.Showcase",
-        "Lombiq.UIKit.Widgets",
+        "Smartent.Orchard.UIKit",
+        "Smartent.Orchard.UIKit.Showcase",
+        "Smartent.Orchard.UIKit.Widgets",
         "Lombiq.VueJs.Resources",
         "OrchardCore.Email.Smtp",
         "OrchardCore.Localization",
@@ -183,11 +183,11 @@
         },
         {
           "executionid": "Lombiq.OSOCE.Web",
-          "name": "Lombiq.HelpfulExtensions.ContentSets.Samples"
+          "name": "Smartent.Orchard.Extensions.Cms.ContentSets.Samples"
         },
         {
           "executionid": "Lombiq.OSOCE.Web",
-          "name": "Lombiq.UIKit.Widgets.Content"
+          "name": "Smartent.Orchard.UIKit.Widgets.Content"
         }
       ]
     },

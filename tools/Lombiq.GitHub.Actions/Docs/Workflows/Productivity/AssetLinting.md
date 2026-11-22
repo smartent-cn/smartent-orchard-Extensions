@@ -26,30 +26,30 @@ jobs:
       scripts: >
         src/Modules/Lombiq.ContentEditors/Lombiq.ContentEditors;
         src/Modules/Lombiq.ContentEditors/Lombiq.ContentEditors.Samples;
-        src/Modules/Lombiq.DataTables/Lombiq.DataTables;
-        src/Modules/Lombiq.HelpfulExtensions/Lombiq.HelpfulExtensions;
-        src/Modules/Lombiq.UIKit/Lombiq.UIKit;
+        src/Modules/Smartent.Orchard.DataTables/Smartent.Orchard.DataTables;
+        src/Modules/Smartent.Orchard.Extensions.Cms/Smartent.Orchard.Extensions.Cms;
+        src/Modules/Smartent.Orchard.UIKit/Smartent.Orchard.UIKit;
         src/Modules/Lombiq.Walkthroughs/Lombiq.Walkthroughs;
         src/Modules/Lombiq.Hosting.Tenants/Lombiq.Hosting.Tenants.Maintenance;
       styles: >-
-        src/Modules/Lombiq.ChartJs/Lombiq.ChartJs.Samples;
-        src/Modules/Lombiq.HelpfulExtensions/Lombiq.HelpfulExtensions;
+        src/Modules/Smartent.Orchard.ChartJs/Smartent.Orchard.ChartJs.Samples;
+        src/Modules/Smartent.Orchard.Extensions.Cms/Smartent.Orchard.Extensions.Cms;
         src/Modules/Lombiq.JsonEditor/Lombiq.JsonEditor;
         src/Modules/Lombiq.Privacy/Lombiq.Privacy;
-        src/Modules/Lombiq.UIKit/Lombiq.UIKit;
+        src/Modules/Smartent.Orchard.UIKit/Smartent.Orchard.UIKit;
         src/Themes/Lombiq.BaseTheme/Lombiq.BaseTheme.Core;
         src/Themes/Lombiq.BaseTheme/Lombiq.BaseTheme.Native;
         src/Themes/Lombiq.BaseTheme/Lombiq.BaseTheme.Native.Samples;
       texts: >-
-        src/Modules/Lombiq.ChartJs/Lombiq.ChartJs.Samples;
+        src/Modules/Smartent.Orchard.ChartJs/Smartent.Orchard.ChartJs.Samples;
         src/Modules/Lombiq.ContentEditors/Lombiq.ContentEditors;
         src/Modules/Lombiq.ContentEditors/Lombiq.ContentEditors.Samples;
-        src/Modules/Lombiq.DataTables/Lombiq.DataTables;
-        src/Modules/Lombiq.HelpfulExtensions/Lombiq.HelpfulExtensions;
+        src/Modules/Smartent.Orchard.DataTables/Smartent.Orchard.DataTables;
+        src/Modules/Smartent.Orchard.Extensions.Cms/Smartent.Orchard.Extensions.Cms;
         src/Modules/Lombiq.Hosting.Tenants/Lombiq.Hosting.Tenants.Maintenance;
         src/Modules/Lombiq.JsonEditor/Lombiq.JsonEditor;
         src/Modules/Lombiq.Privacy/Lombiq.Privacy;
-        src/Modules/Lombiq.UIKit/Lombiq.UIKit;
+        src/Modules/Smartent.Orchard.UIKit/Smartent.Orchard.UIKit;
         src/Modules/Lombiq.Walkthroughs/Lombiq.Walkthroughs;
         src/Themes/Lombiq.BaseTheme/Lombiq.BaseTheme.Core;
         src/Themes/Lombiq.BaseTheme/Lombiq.BaseTheme.Native;
@@ -103,7 +103,7 @@ Markdown configuration files:
 > To be safe, always quote parameters so PowerShell passes them correctly.
 
 ```pwsh
-.../Open-Source-Orchard-Core-Extensions/tools/Lombiq.GitHub.Actions/.github/actions/asset-lint/Invoke-Linter.ps1 -ScriptsString 'src/Modules/Lombiq.UIKit/Lombiq.UIKit:wwwroot/js' -StylesString 'src/Modules/Lombiq.UIKit/Lombiq.UIKit:wwwroot/css' -TextsString .
+.../Open-Source-Orchard-Core-Extensions/tools/Lombiq.GitHub.Actions/.github/actions/asset-lint/Invoke-Linter.ps1 -ScriptsString 'src/Modules/Smartent.Orchard.UIKit/Smartent.Orchard.UIKit:wwwroot/js' -StylesString 'src/Modules/Smartent.Orchard.UIKit/Smartent.Orchard.UIKit:wwwroot/css' -TextsString .
 ```
 
 > [!TIP]

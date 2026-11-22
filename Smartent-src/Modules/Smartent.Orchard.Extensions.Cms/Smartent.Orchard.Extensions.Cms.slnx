@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Smartent.Orchard.Extensions.Cms.Tests.UI/Smartent.Orchard.Extensions.Cms.Tests.UI.csproj" />
+  <Project Path="Smartent.Orchard.Extensions.Cms/Smartent.Orchard.Extensions.Cms.csproj" />
+</Solution>

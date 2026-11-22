@@ -32,6 +32,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Lombiq.BaseTheme\Lombiq.BaseTheme.csproj" />
+    <ProjectReference Include="..\..\..\..\Smartent-src\Modules\Smartent.Orchard.Extensions.Cms\Smartent.Orchard.Extensions.Cms\Smartent.Orchard.Extensions.Cms.csproj" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(NuGetBuild)' != 'true'">

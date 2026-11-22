@@ -86,7 +86,7 @@ public static class TestCaseUITestContextExtensions
         Func<string, Task> disableFeature)
     {
         // When ChartJs gets disabled but UIKit is enabled, Twitter should remain enabled.
-        await disableFeature("Lombiq.ChartJs");
+        await disableFeature("Smartent.Orchard.ChartJs");
         context.Exists(By.XPath("//a[@id='btn-disable-Lombiq_UIKit']"));
         context.Exists(By.XPath("//a[@id='btn-disable-OrchardCore_Twitter']"));
 
@@ -95,12 +95,12 @@ public static class TestCaseUITestContextExtensions
         context.Exists(By.XPath("//a[@id='btn-disable-OrchardCore_Twitter']"));
 
         // When UIKit gets disabled and ChartJs is also disabled, Twitter should get disabled.
-        await disableFeature("Lombiq.UIKit");
+        await disableFeature("Smartent.Orchard.UIKit");
         context.Exists(By.XPath("//a[@id='btn-enable-Lombiq_ChartJs']"));
         context.Exists(By.XPath("//a[@id='btn-enable-OrchardCore_Twitter']"));
 
         // When UIKit is enabled, Twitter should get enabled.
-        await enableFeature("Lombiq.UIKit");
+        await enableFeature("Smartent.Orchard.UIKit");
         context.Exists(By.XPath("//a[@id='btn-disable-OrchardCore_Twitter']"));
     }
 

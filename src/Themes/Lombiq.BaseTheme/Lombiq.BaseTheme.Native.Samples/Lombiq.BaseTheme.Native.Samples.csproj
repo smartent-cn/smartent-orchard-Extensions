@@ -22,6 +22,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Lombiq.BaseTheme.Native\Lombiq.BaseTheme.Native.csproj" />
+    <ProjectReference Include="..\..\..\..\Smartent-src\Modules\Smartent.Orchard.Extensions.Cms\Smartent.Orchard.Extensions.Cms\Smartent.Orchard.Extensions.Cms.csproj" />
   </ItemGroup>
 
   <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.OrchardCore.Theme.Sdk/Sdk/Import.targets" />

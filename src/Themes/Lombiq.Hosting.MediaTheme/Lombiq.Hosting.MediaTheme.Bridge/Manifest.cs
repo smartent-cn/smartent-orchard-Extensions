@@ -1,4 +1,4 @@
-using Lombiq.HelpfulExtensions;
+using Smartent.Orchard.Extensions.Cms;
 using OrchardCore.Modules.Manifest;
 
 [assembly: Module(

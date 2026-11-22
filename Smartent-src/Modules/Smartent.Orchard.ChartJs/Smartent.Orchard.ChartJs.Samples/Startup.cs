@@ -1,0 +1,30 @@
+using Smartent.Orchard.ChartJs.Samples.Migrations;
+using Smartent.Orchard.ChartJs.Samples.Models;
+using Smartent.Orchard.ChartJs.Samples.Navigation;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
+using OrchardCore.ContentManagement;
+using OrchardCore.Data.Migration;
+using OrchardCore.Modules;
+using OrchardCore.Navigation;
+using OrchardCore.ResourceManagement;
+
+namespace Smartent.Orchard.ChartJs.Samples;
+
+public sealed class Startup : StartupBase
+{
+    public override void ConfigureServices(IServiceCollection services)
+    {
+        services.AddDataMigration<TagMigrations>();
+
+        services.AddContentPart<IncomePart>()
+            .WithMigration<IncomeMigrations>();
+
+        services.AddContentPart<ExpensePart>()
+            .WithMigration<ExpenseMigrations>();
+
+        services.AddTransient<IConfigureOptions<ResourceManagementOptions>, ResourceManagementOptionsConfiguration>();
+
+        services.AddNavigationProvider<ChartJsSamplesNavigationProvider>();
+    }
+}

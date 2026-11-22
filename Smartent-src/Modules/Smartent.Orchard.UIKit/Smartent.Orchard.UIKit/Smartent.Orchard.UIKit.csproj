@@ -1,0 +1,40 @@
+<Project>
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>    <RootNamespace>Smartent.Orchard.UIKit</RootNamespace>
+    <AssemblyName>Smartent.Orchard.UIKit</AssemblyName>
+    <PackageId>Smartent.Orchard.UIKit</PackageId>
+    <!-- This is disabled, because restoring Slick via LibMan is flaky, see 
+    https://github.com/Lombiq/GitHub-Actions/issues/549. So, we keep the library in the repository. Uncomment this
+    temporarily while updating the Slick snapshot locally. It's not enabled locally either because we don't gain
+    anything by it except for the rare cases of updates, but since LibMan touches the files, they'll show up as changed
+    in Git (at least in Git Extensions), even though their contents didn't change. -->
+    <UseLibMan>false</UseLibMan>
+  </PropertyGroup>
+
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../../src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.OrchardCore.Module.Sdk/Sdk/Import.props" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Lombiq.MSBuild.OrchardCore.Module.Sdk" Version="2.1.1" />
+
+  <PropertyGroup>
+    <Title>Lombiq UI Kit for Orchard Core</Title>
+    <CopyrightYear>2021</CopyrightYear>
+    <DescriptionBody>This module contains reusable shapes like text editors, custom-style checkboxes, dropdown editors, and in the future potentially more complex editors.</DescriptionBody>
+    <PackageTags>OrchardCore;Lombiq;AspNetCore;UI;UIKit;front-end</PackageTags>
+    <RepositoryUrl>https://github.com/Lombiq/Orchard-UIKit</RepositoryUrl>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(NuGetBuild)' != 'true'">
+    <ProjectReference Include="..\..\..\..\test\Lombiq.UITestingToolbox\Lombiq.Tests.UI.AppExtensions\Lombiq.Tests.UI.AppExtensions.csproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(NuGetBuild)' == 'true'">
+    <PackageReference Include="Lombiq.Tests.UI.AppExtensions" Version="$(PackageVersionLombiqTestsUI) " />
+  </ItemGroup>
+
+  <!-- Security Updates for Orchard Core - make sure to check if these are still necessary -->
+  <ItemGroup Condition="'$(ManagePackageVersionsCentrally)' != 'true'">
+    <PackageReference Include="MySqlConnector" Version="2.6.2" NoWarn="NU1510" />
+  </ItemGroup>
+
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../../src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.OrchardCore.Module.Sdk/Sdk/Import.targets" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.targets" Sdk="Lombiq.MSBuild.OrchardCore.Module.Sdk" Version="2.1.1" />
+</Project>

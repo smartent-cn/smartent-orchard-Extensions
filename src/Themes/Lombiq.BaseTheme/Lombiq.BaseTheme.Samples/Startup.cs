@@ -1,5 +1,5 @@
 using Lombiq.BaseTheme.Samples.Migrations;
-using Lombiq.DataTables.Samples.Navigation;
+using Smartent.Orchard.DataTables.Samples.Navigation;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using OrchardCore.Data.Migration;
