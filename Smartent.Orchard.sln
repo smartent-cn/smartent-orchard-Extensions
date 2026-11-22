@@ -50,7 +50,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lombiq.Hosting.Azure.Applic
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Orchard.ChartJs", "Smartent-src\Modules\Smartent.Orchard.ChartJs\Smartent.Orchard.ChartJs\Smartent.Orchard.ChartJs.csproj", "{644CBF86-C2D7-4B00-94BB-BDBC02830611}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lombiq.AuditTrailExtensions", "src\Modules\Lombiq.AuditTrailExtensions\Lombiq.AuditTrailExtensions.csproj", "{A2CBA4B0-6B30-4183-B167-69A99F34FC72}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Orchard.AuditTrail", "Smartent-src\Modules\Smartent.Orchard.AuditTrail\Smartent.Orchard.AuditTrail.csproj", "{A2CBA4B0-6B30-4183-B167-69A99F34FC72}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Orchard.Platform.Data.LinqToYesSql", "Smartent-src\Platform\Orchard\Smartent.Orchard.Platform.Data.LinqToYesSql\Smartent.Orchard.Platform.Data.LinqToYesSql.csproj", "{8BC42764-7D0C-4F18-8663-DB7C9F1734D5}"
 EndProject
@@ -68,7 +68,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lombiq.Hosting.Tenants.Admi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lombiq.Hosting.Tenants.Management", "src\Modules\Lombiq.Hosting.Tenants\Lombiq.Hosting.Tenants.Management\Lombiq.Hosting.Tenants.Management.csproj", "{814CFDA5-35B5-46DE-984D-10507A2D91FD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lombiq.Privacy", "src\Modules\Lombiq.Privacy\Lombiq.Privacy\Lombiq.Privacy.csproj", "{D245F49A-507D-4590-8F95-ADDA50642DB2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Orchard.Privacy", "Smartent-src\Modules\Smartent.Orchard.Privacy\Smartent.Orchard.Privacy\Smartent.Orchard.Privacy.csproj", "{D245F49A-507D-4590-8F95-ADDA50642DB2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{41CE6E12-92B4-4CF5-9D9C-C214C41CA8FE}"
 EndProject
@@ -124,7 +124,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Orchard.ChartJs.Te
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{719F19E1-0B20-490C-B325-74E5FD6C838C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lombiq.Privacy.Samples", "src\Modules\Lombiq.Privacy\Lombiq.Privacy.Samples\Lombiq.Privacy.Samples.csproj", "{B5BF5684-561B-4E48-B1D6-A543CBE1EB1D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Orchard.Privacy.Samples", "Smartent-src\Modules\Smartent.Orchard.Privacy\Smartent.Orchard.Privacy.Samples\Smartent.Orchard.Privacy.Samples.csproj", "{B5BF5684-561B-4E48-B1D6-A543CBE1EB1D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{40E6EA88-BE15-4542-BD9A-3AA8DC69629E}"
 	ProjectSection(SolutionItems) = preProject
@@ -134,7 +134,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 		.github\workflows\validate-pull-request.yml = .github\workflows\validate-pull-request.yml
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lombiq.Privacy.Tests.UI", "src\Modules\Lombiq.Privacy\Lombiq.Privacy.Tests.UI\Lombiq.Privacy.Tests.UI.csproj", "{F6C11C25-7080-4CB5-B278-2A54FB952108}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Orchard.Privacy.Tests.UI", "Smartent-src\Modules\Smartent.Orchard.Privacy\Smartent.Orchard.Privacy.Tests.UI\Smartent.Orchard.Privacy.Tests.UI.csproj", "{F6C11C25-7080-4CB5-B278-2A54FB952108}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Orchard.UIKit.Tests.UI", "Smartent-src\Modules\Smartent.Orchard.UIKit\Smartent.Orchard.UIKit.Tests.UI\Smartent.Orchard.UIKit.Tests.UI.csproj", "{A10F9F17-CB35-4641-B707-C6620A2C4FDC}"
 EndProject
@@ -170,11 +170,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lombiq.Hosting.BuildVersion
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lombiq.Hosting.MediaTheme.Targets", "src\Themes\Lombiq.Hosting.MediaTheme\Lombiq.Hosting.MediaTheme.Targets\Lombiq.Hosting.MediaTheme.Targets.csproj", "{8C24107C-10AA-43EE-A85E-55173EB5B65F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lombiq.ContentEditors", "src\Modules\Lombiq.ContentEditors\Lombiq.ContentEditors\Lombiq.ContentEditors.csproj", "{1B7C5C5D-E20F-4707-A0B5-8602DF7DA78D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Orchard.ContentEditors", "Smartent-src\Modules\Smartent.Orchard.ContentEditors\Smartent.Orchard.ContentEditors\Smartent.Orchard.ContentEditors.csproj", "{1B7C5C5D-E20F-4707-A0B5-8602DF7DA78D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lombiq.ContentEditors.Samples", "src\Modules\Lombiq.ContentEditors\Lombiq.ContentEditors.Samples\Lombiq.ContentEditors.Samples.csproj", "{66571E77-70C3-4A1E-8C0F-9E15F933E771}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Orchard.ContentEditors.Samples", "Smartent-src\Modules\Smartent.Orchard.ContentEditors\Smartent.Orchard.ContentEditors.Samples\Smartent.Orchard.ContentEditors.Samples.csproj", "{66571E77-70C3-4A1E-8C0F-9E15F933E771}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lombiq.ContentEditors.Tests.UI", "src\Modules\Lombiq.ContentEditors\Lombiq.ContentEditors.Tests.UI\Lombiq.ContentEditors.Tests.UI.csproj", "{C90E70CD-B792-4C1D-BE8A-FB47C1C33A36}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Orchard.ContentEditors.Tests.UI", "Smartent-src\Modules\Smartent.Orchard.ContentEditors\Smartent.Orchard.ContentEditors.Tests.UI\Smartent.Orchard.ContentEditors.Tests.UI.csproj", "{C90E70CD-B792-4C1D-BE8A-FB47C1C33A36}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Build.NodeJs.Tests", "Smartent-src\Build\Smartent.Build.NodeJs\Smartent.Build.NodeJs.Tests\Smartent.Build.NodeJs.Tests.csproj", "{B5D907C6-FD72-4024-94D8-5CDBE4F11D3E}"
 EndProject
@@ -194,9 +194,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lombiq.Hosting.Tenants.Envi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Orchard.Http.Refit", "Smartent-src\Platform\Orchard\Smartent.Orchard.Http.Refit\Smartent.Orchard.Http.Refit.csproj", "{924E7381-E54B-4730-A4EF-B1F2158F3CFC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lombiq.JsonEditor", "src\Modules\Lombiq.JsonEditor\Lombiq.JsonEditor\Lombiq.JsonEditor.csproj", "{3F09FC77-F6D2-4214-AAC6-853D55BA5B52}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Orchard.JsonEditor", "Smartent-src\Modules\Smartent.Orchard.JsonEditor\Smartent.Orchard.JsonEditor\Smartent.Orchard.JsonEditor.csproj", "{3F09FC77-F6D2-4214-AAC6-853D55BA5B52}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lombiq.JsonEditor.Tests.UI", "src\Modules\Lombiq.JsonEditor\Lombiq.JsonEditor.Test.UI\Lombiq.JsonEditor.Tests.UI.csproj", "{B26CB762-7E04-4630-ADB5-B84145642441}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Orchard.JsonEditor.Tests.UI", "Smartent-src\Modules\Smartent.Orchard.JsonEditor\Smartent.Orchard.JsonEditor.Tests.UI\Smartent.Orchard.JsonEditor.Tests.UI.csproj", "{B26CB762-7E04-4630-ADB5-B84145642441}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lombiq.Hosting.Tenants.EmailQuotaManagement", "src\Modules\Lombiq.Hosting.Tenants\Lombiq.Hosting.Tenants.EmailQuotaManagement\Lombiq.Hosting.Tenants.EmailQuotaManagement.csproj", "{890050AB-04F8-467A-81CB-8D83B4E61527}"
 EndProject
@@ -234,11 +234,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Orchard.UIKit.Widg
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Orchard.UIKit.Widgets.Tests.UI", "Smartent-src\Modules\Smartent.Orchard.UIKit\Smartent.Orchard.UIKit.Widgets.Tests.UI\Smartent.Orchard.UIKit.Widgets.Tests.UI.csproj", "{619E47B7-2ACF-4DD7-8153-B1AA6DD55521}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lombiq.EmailClient", "src\Modules\Lombiq.EmailClient\Lombiq.EmailClient\Lombiq.EmailClient.csproj", "{9164B5FD-58B6-41E5-8D2D-74ED477D49FC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Smartent.Orchard.EmailClient", "Smartent-src\Modules\Smartent.Orchard.EmailClient\Smartent.Orchard.EmailClient\Smartent.Orchard.EmailClient.csproj", "{9164B5FD-58B6-41E5-8D2D-74ED477D49FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lombiq.EmailClient.Samples", "src\Modules\Lombiq.EmailClient\Lombiq.EmailClient.Samples\Lombiq.EmailClient.Samples.csproj", "{53D6E8C3-6D0B-474C-883E-4D37068990C8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Smartent.Orchard.EmailClient.Samples", "Smartent-src\Modules\Smartent.Orchard.EmailClient\Smartent.Orchard.EmailClient.Samples\Smartent.Orchard.EmailClient.Samples.csproj", "{53D6E8C3-6D0B-474C-883E-4D37068990C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lombiq.EmailClient.Tests.UI", "src\Modules\Lombiq.EmailClient\Lombiq.EmailClient.Tests.UI\Lombiq.EmailClient.Tests.UI.csproj", "{9EE7AB74-B9E4-4BC3-857B-6FED69215719}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Smartent.Orchard.EmailClient.Tests.UI", "Smartent-src\Modules\Smartent.Orchard.EmailClient\Smartent.Orchard.EmailClient.Tests.UI\Smartent.Orchard.EmailClient.Tests.UI.csproj", "{9EE7AB74-B9E4-4BC3-857B-6FED69215719}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lombiq.BaseTheme.Core", "src\Themes\Lombiq.BaseTheme\Lombiq.BaseTheme.Core\Lombiq.BaseTheme.Core.csproj", "{B469FA12-4A28-42D9-8671-FBED3C3C98FB}"
 EndProject

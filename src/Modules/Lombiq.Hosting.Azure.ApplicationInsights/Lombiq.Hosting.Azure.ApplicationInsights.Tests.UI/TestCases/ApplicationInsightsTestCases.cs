@@ -1,4 +1,4 @@
-using Lombiq.Privacy.Tests.UI.Extensions;
+using Smartent.Orchard.Privacy.Tests.UI.Extensions;
 using Lombiq.Tests.UI;
 using Lombiq.Tests.UI.Extensions;
 using Lombiq.Tests.UI.Services;

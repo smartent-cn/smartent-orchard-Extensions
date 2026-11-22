@@ -1,0 +1,27 @@
+<Project>
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>Smartent.Orchard.Privacy.Tests.UI</RootNamespace>
+    <AssemblyName>Smartent.Orchard.Privacy.Tests.UI</AssemblyName>
+    <PackageId>Smartent.Orchard.Privacy.Tests.UI</PackageId>
+  </PropertyGroup>
+
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../../src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.OrchardCore.Tests.UI.Library.Sdk/Sdk/Import.props" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Lombiq.MSBuild.OrchardCore.Tests.UI.Library.Sdk" Version="2.1.1-alpha.9.osoe-344" />
+
+  <PropertyGroup>
+    <Title>Lombiq Privacy for Orchard Core - UI Test Extensions</Title>
+    <CopyrightYear>2018</CopyrightYear>
+    <DescriptionBody>Extensions to aid in UI testing Lombiq Privacy for Orchard Core.</DescriptionBody>
+    <PackageTags>OrchardCore;Lombiq;AspNetCore;Privacy</PackageTags>
+    <RepositoryUrl>https://github.com/Lombiq/Orchard-Privacy</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/Lombiq/Orchard-Privacy/tree/dev/Smartent.Orchard.Privacy.Tests.UI</PackageProjectUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Smartent.Orchard.Privacy.Samples\Smartent.Orchard.Privacy.Samples.csproj" />
+  </ItemGroup>
+
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../../src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.OrchardCore.Tests.UI.Library.Sdk/Sdk/Import.targets" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.targets" Sdk="Lombiq.MSBuild.OrchardCore.Tests.UI.Library.Sdk" Version="2.1.1-alpha.9.osoe-344" />
+</Project>

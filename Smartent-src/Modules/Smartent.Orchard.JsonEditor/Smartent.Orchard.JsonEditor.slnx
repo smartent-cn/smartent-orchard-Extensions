@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Smartent.Orchard.JsonEditor.Test.UI/Smartent.Orchard.JsonEditor.Tests.UI.csproj" />
+  <Project Path="Smartent.Orchard.JsonEditor/Smartent.Orchard.JsonEditor.csproj" />
+</Solution>

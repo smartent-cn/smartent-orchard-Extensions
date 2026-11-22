@@ -1,0 +1,40 @@
+{
+  "name": "Smartent.Orchard.Privacy.Samples",
+  "displayName": "Lombiq Privacy - Sample - Privacy, Forms, Workflows",
+  "description": "Sample for testing and demonstration of the Lombiq Privacy module.",
+  "author": "Lombiq Technologies",
+  "website": "https://github.com/Lombiq/Orchard-Privacy",
+  "version": "1.0",
+  "issetuprecipe": false,
+  "categories": [
+    "training"
+  ],
+  "tags": [
+    "developer",
+    "training",
+    "sample"
+  ],
+  "steps": [
+    {
+      "name": "Recipes",
+      "Values": [
+        {
+          "executionid": "Smartent.Orchard.Privacy.Samples",
+          "name": "Smartent.Orchard.Privacy.Samples.FeaturesAndSettings"
+        },
+        {
+          "executionid": "Smartent.Orchard.Privacy.Samples",
+          "name": "Smartent.Orchard.Privacy.Samples.ContentDefinition"
+        },
+        {
+          "executionid": "Smartent.Orchard.Privacy.Samples",
+          "name": "Smartent.Orchard.Privacy.Samples.WorkflowType"
+        },
+        {
+          "executionid": "Smartent.Orchard.Privacy.Samples",
+          "name": "Smartent.Orchard.Privacy.Samples.Content"
+        }
+      ]
+    }
+  ]
+}

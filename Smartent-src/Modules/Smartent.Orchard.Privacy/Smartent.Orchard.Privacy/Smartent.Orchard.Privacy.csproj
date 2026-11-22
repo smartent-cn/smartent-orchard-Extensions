@@ -1,0 +1,29 @@
+<Project>
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>Smartent.Orchard.Privacy</RootNamespace>
+    <AssemblyName>Smartent.Orchard.Privacy</AssemblyName>
+    <PackageId>Smartent.Orchard.Privacy</PackageId>
+  </PropertyGroup>
+
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../../src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.OrchardCore.Module.Sdk/Sdk/Import.props" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Lombiq.MSBuild.OrchardCore.Module.Sdk" Version="2.1.1-alpha.9.osoe-344" />
+ 
+  <PropertyGroup>
+    <Title>Lombiq Privacy for Orchard Core</Title>
+    <CopyrightYear>2018</CopyrightYear>
+    <DescriptionBody>Orchard module containing features related to data protection/privacy and the EU law on it, the General Data Protection Regulation (GDPR).</DescriptionBody>
+    <PackageTags>OrchardCore;Lombiq;AspNetCore;GDPR;Privacy</PackageTags>
+    <RepositoryUrl>https://github.com/Lombiq/Orchard-Privacy</RepositoryUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="OrchardCore.CustomSettings" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.Forms" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.Liquid" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.Users" Version="$(OrchardCoreVersion)" />
+  </ItemGroup>
+
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../../src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.OrchardCore.Module.Sdk/Sdk/Import.targets" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.targets" Sdk="Lombiq.MSBuild.OrchardCore.Module.Sdk" Version="2.1.1-alpha.9.osoe-344" />
+</Project>

@@ -1,0 +1,27 @@
+<Project>
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>Smartent.Orchard.EmailClient.Samples</RootNamespace>
+    <AssemblyName>Smartent.Orchard.EmailClient.Samples</AssemblyName>
+    <PackageId>Smartent.Orchard.EmailClient.Samples</PackageId>
+  </PropertyGroup>
+
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../../src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.OrchardCore.Module.Sdk/Sdk/Import.props" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Lombiq.MSBuild.OrchardCore.Module.Sdk" Version="2.1.1" />
+
+  <PropertyGroup>
+    <Title>Lombiq Email Client for Orchard Core - Samples</Title>
+    <CopyrightYear>2025</CopyrightYear>
+    <DescriptionBody>Sample content that demonstrates the features of Lombiq Email Client module for Orchard Core.</DescriptionBody>
+    <PackageTags>OrchardCore;Lombiq;AspNetCore;Emails;IMAP</PackageTags>
+    <RepositoryUrl>https://github.com/Lombiq/Orchard-Email-Client</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/Lombiq/Orchard-Email-Client/blob/dev/Smartent.Orchard.EmailClient.Samples/Readme.md</PackageProjectUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Smartent.Orchard.EmailClient\Smartent.Orchard.EmailClient.csproj" />
+  </ItemGroup>
+
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../../src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.OrchardCore.Module.Sdk/Sdk/Import.targets" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.targets" Sdk="Lombiq.MSBuild.OrchardCore.Module.Sdk" Version="2.1.1" />
+</Project>

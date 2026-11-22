@@ -1,0 +1,43 @@
+using Smartent.Orchard.ContentEditors.Samples.Constants;
+using Smartent.Orchard.ContentEditors.Samples.Services;
+using Smartent.Orchard.ContentEditors.ViewModels;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.DependencyInjection;
+using OrchardCore.Modules;
+using System.Threading.Tasks;
+using static OrchardCore.Contents.CommonPermissions;
+
+namespace Smartent.Orchard.ContentEditors.Samples.Controllers;
+
+// In case you want to create an async editor UI on a page other than the admin UI, you can create a similar controller
+// to this one.
+[Feature(FeatureIds.Samples)]
+[Route(Routes.FrontEndContentItemAsyncEditor)]
+public sealed class FrontEndDemoContentItemAsyncEditorController : Controller
+{
+    private readonly IAuthorizationService _authorizationService;
+
+    public FrontEndDemoContentItemAsyncEditorController(IAuthorizationService authorizationService) =>
+        _authorizationService = authorizationService;
+
+    [HttpGet("{contentItemId?}")]
+    [ScriptUnsafeEval]
+    public async Task<IActionResult> Index(string contentItemId)
+    {
+        if (!ModelState.IsValid) return BadRequest(ModelState);
+
+        if (!await _authorizationService.AuthorizeAsync(User, EditContent)) return this.ChallengeOrForbid();
+
+        // You can use the existing ContentItemAsyncEditorViewModel to pass the required data.
+        return View(
+            new ContentItemAsyncEditorViewModel
+            {
+                ProviderName = nameof(SupportTicketAsyncEditorProvider),
+                ContentType = ContentTypes.SupportTicket,
+                ContentItemId = contentItemId,
+            });
+    }
+}
+
+// NEXT STATION: Views/FrontEndDemoContentItemAsyncEditor/Index.cshtml

@@ -97,7 +97,7 @@ public class BasicTests : UITestBase
 
             // If you want to add some sample content in just one test, or change some Orchard configuration
             // quickly, then defining those in a recipe and executing it will come handy:
-            await context.ExecuteRecipeDirectlyAsync("Lombiq.JsonEditor.Sample");
+            await context.ExecuteRecipeDirectlyAsync("Smartent.Orchard.JsonEditor.Sample");
 
             // Retrieving some in-depth details about the app.
             var info = await context.GetApplicationInfoAsync();

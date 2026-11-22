@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="Smartent.Orchard.EmailClient.Samples/Smartent.Orchard.EmailClient.Samples.csproj" />
+  <Project Path="Smartent.Orchard.EmailClient.Tests.UI/Smartent.Orchard.EmailClient.Tests.UI.csproj" />
+  <Project Path="Smartent.Orchard.EmailClient/Smartent.Orchard.EmailClient.csproj" />
+</Solution>

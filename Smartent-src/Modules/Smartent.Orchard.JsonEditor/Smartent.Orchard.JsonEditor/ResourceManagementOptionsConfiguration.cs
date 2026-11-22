@@ -1,0 +1,35 @@
+using Smartent.Core.CodeGen.Attributes;
+using Microsoft.Extensions.Options;
+using OrchardCore.ResourceManagement;
+using static Smartent.Orchard.JsonEditor.Constants.ResourceNames;
+
+namespace Smartent.Orchard.JsonEditor;
+
+[LibManVersions]
+public partial class ResourceManagementOptionsConfiguration : IConfigureOptions<ResourceManagementOptions>
+{
+    private const string Module = "~/Smartent.Orchard.JsonEditor/";
+    private const string Vendors = Module + "vendors/";
+
+    private static readonly ResourceManifest _manifest = new();
+
+    static ResourceManagementOptionsConfiguration()
+    {
+        _manifest
+            .DefineScript(Library)
+            .SetUrl(Vendors + "jsoneditor/dist/jsoneditor.min.js", Vendors + "jsoneditor/dist/jsoneditor.js")
+            .SetVersion(LibManVersions.Jsoneditor);
+
+        _manifest
+            .DefineStyle(Library)
+            .SetUrl(Vendors + "jsoneditor/dist/jsoneditor.min.css", Vendors + "jsoneditor/dist/jsoneditor.css")
+            .SetVersion(LibManVersions.Jsoneditor);
+
+        _manifest
+            .DefineStyle(Style)
+            .SetUrl(Module + "css/json-editor.css")
+            .SetVersion("1.0.0");
+    }
+
+    public void Configure(ResourceManagementOptions options) => options.ResourceManifests.Add(_manifest);
+}

@@ -1,31 +1,31 @@
-# 子方案：Smartent.Core.Primitives（M2 完成�?
+# 子方案：Smartent.Core.Primitives（M2 完成）
 
 > 阶段：M2  
-> 状态：**完成**（待 build/test 验证�?
+> 状态：**完成**（待 build/test 验证）
 
 ## 范围
 
-- �?`Lombiq.HelpfulLibraries.Common` 迁入 `Smartent-src/Platform/Core/Smartent.Core.Primitives`
+- 自 `Lombiq.HelpfulLibraries.Common` 迁入 `Smartent-src/Platform/Core/Smartent.Core.Primitives`
 - 删除 Legacy `src/.../Lombiq.HelpfulLibraries.Common`
 
 ## 命名
 
-| �?| �?|
+| 项 | 值 |
 |----|-----|
 | PackageId | `Smartent.Core.Primitives` |
-| 根命名空�?| `Smartent.Core.Primitives.*`（含 Utilities、Extensions 子命名空间） |
+| 根命名空间 | `Smartent.Core.Primitives.*`（含 Utilities、Extensions 子命名空间） |
 
-## 引用已更�?
+## 引用已更新
 
 - `Lombiq.HelpfulLibraries.{AspNetCore,OrchardCore,Cli,}` 元包
 - `Lombiq.VueJs.Samples`、`Lombiq.OrchardCoreApiClient.Tester`
-- 全仓�?`using` / `@using` 由脚本替�?
+- 全仓库 `using` / `@using` 由脚本替换
 - `Smartent.Orchard.sln` / `slnx`（原 `Lombiq.OSOCE.*`）、`Lombiq.HelpfulLibraries.sln` / `slnx`
 
 ## 遗留
 
-- 部分公共 API 仍为 Lombiq 英文 XML；按 `docs/standards/csharp.md` 后续逐文件补中文�?
-- `HelpfulLibraries.Tests` 仍位�?Legacy 路径，通过元包间接�?Primitives�?
+- 部分公共 API 仍为 Lombiq 英文 XML；按 `docs/standards/csharp.md` 后续逐文件补中文。
+- `HelpfulLibraries.Tests` 仍位于 Legacy 路径，通过元包间接测 Primitives。
 
 ## 验证命令
 
