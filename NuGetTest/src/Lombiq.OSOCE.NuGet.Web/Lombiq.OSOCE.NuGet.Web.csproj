@@ -32,7 +32,11 @@
     <PackageReference Include="Lombiq.EmailClient" />
     <PackageReference Include="Lombiq.EmailClient.Samples" />
     <PackageReference Include="Lombiq.HelpfulExtensions" />
-    <PackageReference Include="Lombiq.HelpfulLibraries" />
+    <PackageReference Include="Smartent.Core.AspNet" />
+    <PackageReference Include="Smartent.Core.Primitives" />
+    <PackageReference Include="Smartent.Orchard.Http.Refit" />
+    <PackageReference Include="Smartent.Orchard.Platform" />
+    <PackageReference Include="Smartent.Orchard.Platform.Data.LinqToYesSql" />
     <PackageReference Include="Lombiq.Hosting.Azure.ApplicationInsights" />
     <PackageReference Include="Lombiq.Hosting.BuildVersionDisplay" />
     <PackageReference Include="Lombiq.Hosting.MediaTheme" />

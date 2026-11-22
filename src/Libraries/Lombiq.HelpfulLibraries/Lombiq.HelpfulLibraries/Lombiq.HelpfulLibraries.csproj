@@ -8,11 +8,11 @@
   <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Lombiq.MSBuild.Library.Sdk" Version="2.1.1-alpha.9.osoe-344" />
 
   <PropertyGroup>
-    <Title>Lombiq Helpful Libraries</Title>
+    <Title>Lombiq Helpful Libraries (deprecated meta-package)</Title>
     <CopyrightYear>2011</CopyrightYear>
-    <DescriptionBody>Various useful libraries that can be handy when developing for .NET, ASP.NET Core, and Orchard Core, to be used from your own projects. This package references all Helpful Libraries libraries, but you can use only the ones specific for your use-case, see the dependencies. See the project website for detailed documentation.</DescriptionBody>
-    <PackageTags>OrchardCore;Lombiq;AspNetCore;YesSql;DateTime;DependencyInjection;GraphQL;Liquid;Localization;Middlewares;Utilities;LinqToDB</PackageTags>
-    <RepositoryUrl>https://github.com/Lombiq/Helpful-Libraries</RepositoryUrl>
+    <DescriptionBody>【Deprecated】Do not take new dependencies. Prefer individual Smartent packages (Smartent.Core.*, Smartent.Orchard.Platform.*). This meta-package aggregates migrated Smartent-src projects for legacy tests and NuGet smoke only.</DescriptionBody>
+    <PackageTags>Smartent;OrchardCore;Deprecated;MetaPackage</PackageTags>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>

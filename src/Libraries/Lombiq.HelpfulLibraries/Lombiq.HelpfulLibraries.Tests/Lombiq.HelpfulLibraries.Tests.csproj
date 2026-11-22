@@ -18,9 +18,14 @@
   </Target>
 
   <ItemGroup>
-    <ProjectReference Include="..\Lombiq.HelpfulLibraries\Lombiq.HelpfulLibraries.csproj" />
     <ProjectReference Include="..\..\..\..\Smartent-src\Platform\Core\Smartent.Core.CodeGen.Attributes\Smartent.Core.CodeGen.Attributes.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="true" />
     <ProjectReference Include="..\..\..\..\Smartent-src\Platform\Core\Smartent.Core.CodeGen.SourceGenerators\Smartent.Core.CodeGen.SourceGenerators.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+    <ProjectReference Include="..\..\..\..\Smartent-src\Platform\Core\Smartent.Core.AspNet\Smartent.Core.AspNet.csproj" />
+    <ProjectReference Include="..\..\..\..\Smartent-src\Platform\Core\Smartent.Core.Cli\Smartent.Core.Cli.csproj" />
+    <ProjectReference Include="..\..\..\..\Smartent-src\Platform\Core\Smartent.Core.Primitives\Smartent.Core.Primitives.csproj" />
+    <ProjectReference Include="..\..\..\..\Smartent-src\Platform\Orchard\Smartent.Orchard.Platform\Smartent.Orchard.Platform.csproj" />
+    <ProjectReference Include="..\..\..\..\Smartent-src\Platform\Orchard\Smartent.Orchard.Platform.Data.LinqToYesSql\Smartent.Orchard.Platform.Data.LinqToYesSql.csproj" />
+    <ProjectReference Include="..\..\..\..\Smartent-src\Platform\Orchard\Smartent.Orchard.Http.Refit\Smartent.Orchard.Http.Refit.csproj" />
   </ItemGroup>
 
   <ItemGroup>

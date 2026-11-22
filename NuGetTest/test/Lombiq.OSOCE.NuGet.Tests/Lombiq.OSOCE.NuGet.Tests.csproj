@@ -5,7 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Lombiq.HelpfulLibraries" />
+    <PackageReference Include="Smartent.Core.Primitives" />
+    <PackageReference Include="Smartent.Orchard.Platform" />
     <PackageReference Include="Lombiq.EInvoiceValidator" />
     <PackageReference Include="Lombiq.EInvoiceValidator.Sample" />
   </ItemGroup>

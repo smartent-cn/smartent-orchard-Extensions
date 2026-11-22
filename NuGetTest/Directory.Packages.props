@@ -28,8 +28,13 @@
     <PackageVersion Include="Lombiq.EmailClient.Tests.UI" Version="2.0.1-alpha.0.osoe-1317" />
     <PackageVersion Include="Lombiq.HelpfulExtensions" Version="12.0.1-alpha.0.osoe-1317" />
     <PackageVersion Include="Lombiq.HelpfulExtensions.Tests.UI" Version="12.0.1-alpha.0.osoe-1317" />
-    <PackageVersion Include="Lombiq.HelpfulLibraries" Version="13.1.0" />
+    <!-- Legacy id still injected by Lombiq.MSBuild.OrchardCore.*.Sdk 2.1.1 from nuget.org until M4 Sdk refresh. -->
+    <PackageVersion Include="Lombiq.HelpfulLibraries.OrchardCore" Version="13.1.0" />
+    <PackageVersion Include="Smartent.Core.AspNet" Version="13.1.0" />
+    <PackageVersion Include="Smartent.Core.Primitives" Version="13.1.0" />
+    <PackageVersion Include="Smartent.Orchard.Http.Refit" Version="13.1.0" />
     <PackageVersion Include="Smartent.Orchard.Platform" Version="13.1.0" />
+    <PackageVersion Include="Smartent.Orchard.Platform.Data.LinqToYesSql" Version="13.1.0" />
     <PackageVersion Include="Lombiq.Hosting.Azure.ApplicationInsights" Version="11.0.1-alpha.0.osoe-1326" />
     <PackageVersion Include="Lombiq.Hosting.Azure.ApplicationInsights.Tests.UI" Version="11.0.1-alpha.0.osoe-1326" />
     <PackageVersion Include="Lombiq.Hosting.BuildVersionDisplay" Version="8.0.1-alpha.2.osoe-1317" />
