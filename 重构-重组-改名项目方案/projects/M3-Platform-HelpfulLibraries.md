@@ -27,7 +27,7 @@ dotnet build Smartent.Orchard.sln -c Debug
 dotnet build Smartent-src/Platform/Orchard/<新项目>/<新项目>.csproj
 dotnet build Smartent-src/Test/Smartent.Test.OrchardCore/Smartent.Test.OrchardCore.csproj
 dotnet build src/Libraries/Lombiq.HelpfulLibraries/Lombiq.HelpfulLibraries/Lombiq.HelpfulLibraries.csproj
-dotnet test src/Libraries/Lombiq.HelpfulLibraries/Lombiq.HelpfulLibraries.Tests/Lombiq.HelpfulLibraries.Tests.csproj --filter "FullyQualifiedName~UnitTests"
+dotnet test Smartent-src/Test/Smartent.Test.Platform/Smartent.Test.Platform.csproj --filter "FullyQualifiedName~UnitTests"
 ```
 
 相关测试随项目执行（含 DataTables 等引用 LinqToDb 时补 build 下游）。

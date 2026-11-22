@@ -19,46 +19,46 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Lombiq.AuditTrailExtensions" />
-    <PackageReference Include="Lombiq.BaseTheme.Core" />
-    <PackageReference Include="Lombiq.BaseTheme.Native" />
-    <PackageReference Include="Lombiq.BaseTheme.Native.Samples" />
+    <PackageReference Include="Smartent.Orchard.AuditTrail" />
+    <PackageReference Include="Smartent.Orchard.Theme.Base.Core" />
+    <PackageReference Include="Smartent.Orchard.Theme.Base.Native" />
+    <PackageReference Include="Smartent.Orchard.Theme.Base.Native.Samples" />
     <PackageReference Include="Smartent.Orchard.ChartJs" />
     <PackageReference Include="Smartent.Orchard.ChartJs.Samples" />
-    <PackageReference Include="Lombiq.ContentEditors" />
-    <PackageReference Include="Lombiq.ContentEditors.Samples" />
+    <PackageReference Include="Smartent.Orchard.ContentEditors" />
+    <PackageReference Include="Smartent.Orchard.ContentEditors.Samples" />
     <PackageReference Include="Smartent.Orchard.DataTables" />
     <PackageReference Include="Smartent.Orchard.DataTables.Samples" />
-    <PackageReference Include="Lombiq.EmailClient" />
-    <PackageReference Include="Lombiq.EmailClient.Samples" />
+    <PackageReference Include="Smartent.Orchard.EmailClient" />
+    <PackageReference Include="Smartent.Orchard.EmailClient.Samples" />
     <PackageReference Include="Smartent.Orchard.Extensions.Cms" />
     <PackageReference Include="Smartent.Core.AspNet" />
     <PackageReference Include="Smartent.Core.Primitives" />
     <PackageReference Include="Smartent.Orchard.Http.Refit" />
     <PackageReference Include="Smartent.Orchard.Platform" />
     <PackageReference Include="Smartent.Orchard.Platform.Data.LinqToYesSql" />
-    <PackageReference Include="Lombiq.Hosting.Azure.ApplicationInsights" />
-    <PackageReference Include="Lombiq.Hosting.BuildVersionDisplay" />
-    <PackageReference Include="Lombiq.Hosting.MediaTheme" />
-    <PackageReference Include="Lombiq.Hosting.MediaTheme.Tests.Theme" />
-    <PackageReference Include="Lombiq.Hosting.MediaTheme.Bridge" />
-    <PackageReference Include="Lombiq.Hosting.MediaTheme.Targets" />
-    <PackageReference Include="Lombiq.Hosting.Tenants.Admin.Login" />
-    <PackageReference Include="Lombiq.Hosting.Tenants.EnvironmentRobots" />
-    <PackageReference Include="Lombiq.Hosting.Tenants.FeaturesGuard" />
-    <PackageReference Include="Lombiq.Hosting.Tenants.HealthChecks" />
-    <PackageReference Include="Lombiq.Hosting.Tenants.IdleTenantManagement" />
-    <PackageReference Include="Lombiq.Hosting.Tenants.Maintenance" />
-    <PackageReference Include="Lombiq.Hosting.Tenants.Management" />
-    <PackageReference Include="Lombiq.Hosting.Tenants.MediaStorageManagement" />
-    <PackageReference Include="Lombiq.Hosting.Tenants.EmailQuotaManagement" />
-    <PackageReference Include="Lombiq.Marketing" />
-    <PackageReference Include="Lombiq.Marketing.Pirsch" />
-    <PackageReference Include="Lombiq.Marketing.UrlShortener" />
-    <PackageReference Include="Lombiq.JsonEditor" />
-    <PackageReference Include="Lombiq.LoginAsAnybody" />
-    <PackageReference Include="Lombiq.Privacy" />
-    <PackageReference Include="Lombiq.Privacy.Samples" />
+    <PackageReference Include="Smartent.Orchard.Hosting.ApplicationInsights" />
+    <PackageReference Include="Smartent.Orchard.Hosting.BuildVersion" />
+    <PackageReference Include="Smartent.Orchard.Theme.Media" />
+    <PackageReference Include="Smartent.Orchard.Theme.Media.Tests.Theme" />
+    <PackageReference Include="Smartent.Orchard.Theme.Media.Bridge" />
+    <PackageReference Include="Smartent.Orchard.Theme.Media.Targets" />
+    <PackageReference Include="Smartent.Orchard.Hosting.Tenants.Admin.Login" />
+    <PackageReference Include="Smartent.Orchard.Hosting.Tenants.EnvironmentRobots" />
+    <PackageReference Include="Smartent.Orchard.Hosting.Tenants.FeaturesGuard" />
+    <PackageReference Include="Smartent.Orchard.Hosting.Tenants.HealthChecks" />
+    <PackageReference Include="Smartent.Orchard.Hosting.Tenants.IdleTenantManagement" />
+    <PackageReference Include="Smartent.Orchard.Hosting.Tenants.Maintenance" />
+    <PackageReference Include="Smartent.Orchard.Hosting.Tenants.Management" />
+    <PackageReference Include="Smartent.Orchard.Hosting.Tenants.MediaStorageManagement" />
+    <PackageReference Include="Smartent.Orchard.Hosting.Tenants.EmailQuotaManagement" />
+    <PackageReference Include="Smartent.Orchard.Marketing" />
+    <PackageReference Include="Smartent.Orchard.Marketing.Pirsch" />
+    <PackageReference Include="Smartent.Orchard.Marketing.UrlShortener" />
+    <PackageReference Include="Smartent.Orchard.JsonEditor" />
+    <PackageReference Include="Smartent.Orchard.LoginAsAnybody" />
+    <PackageReference Include="Smartent.Orchard.Privacy" />
+    <PackageReference Include="Smartent.Orchard.Privacy.Samples" />
     <PackageReference Include="Smartent.Orchard.Setup" />
     <PackageReference Include="Smartent.Test.UI.AdminTheme" />
     <PackageReference Include="Smartent.Test.UI.AppExtensions" />
@@ -66,8 +66,8 @@
     <PackageReference Include="Smartent.Orchard.UIKit" />
     <PackageReference Include="Smartent.Orchard.UIKit.Widgets" />
     <PackageReference Include="Smartent.Orchard.UIKit.Widgets.Tests.UI" />
-    <PackageReference Include="Lombiq.VueJs.Resources" />
-    <PackageReference Include="Lombiq.Walkthroughs" />
+    <PackageReference Include="Smartent.Orchard.VueJs.Resources" />
+    <PackageReference Include="Smartent.Orchard.Walkthroughs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -17,6 +17,10 @@
       >6.0.1</PackageVersionLombiqTests>
     <PackageVersionLombiqTestsUI Condition="'$(PackageVersionLombiqTestsUI)' == ''"
       >16.0.0</PackageVersionLombiqTestsUI>
+    <PackageVersionSmartentTests Condition="'$(PackageVersionSmartentTests)' == ''"
+      >$(PackageVersionLombiqTests)</PackageVersionSmartentTests>
+    <PackageVersionSmartentTestsUI Condition="'$(PackageVersionSmartentTestsUI)' == ''"
+      >$(PackageVersionLombiqTestsUI)</PackageVersionSmartentTestsUI>
   </PropertyGroup>
 
   <Import Project="$(MSBuildThisFileDirectory)LibManIntegration.props" Condition="'$(UseLibMan)' == 'true'" />

@@ -12,31 +12,31 @@
 
   <ItemGroup>
     <PackageReference Include="Smartent.Orchard.Platform" />
-    <PackageReference Include="Lombiq.BaseTheme.Tests.UI" />
+    <PackageReference Include="Smartent.Orchard.Theme.Base.Tests.UI" />
     <PackageReference Include="Smartent.Orchard.ChartJs.Tests.UI" />
-    <PackageReference Include="Lombiq.ContentEditors.Tests.UI" />
+    <PackageReference Include="Smartent.Orchard.ContentEditors.Tests.UI" />
     <PackageReference Include="Smartent.Orchard.DataTables.Tests.UI" />
-    <PackageReference Include="Lombiq.EmailClient.Tests.UI" />
-    <PackageReference Include="Lombiq.Hosting.Azure.ApplicationInsights.Tests.UI" />
-    <PackageReference Include="Lombiq.Hosting.BuildVersionDisplay.Tests.UI" />
-    <PackageReference Include="Lombiq.Hosting.MediaTheme.Bridge.Tests.UI" />
-    <PackageReference Include="Lombiq.Hosting.MediaTheme.Tests.UI" />
-    <PackageReference Include="Lombiq.Hosting.Tenants.EnvironmentRobots.Tests.UI" />
-    <PackageReference Include="Lombiq.Hosting.Tenants.FeaturesGuard.Tests.UI" />
-    <PackageReference Include="Lombiq.Hosting.Tenants.HealthChecks.Tests.UI" />
-    <PackageReference Include="Lombiq.Hosting.Tenants.IdleTenantManagement.Tests.UI" />
-    <PackageReference Include="Lombiq.Hosting.Tenants.MediaStorageManagement.Tests.UI" />
-    <PackageReference Include="Lombiq.Hosting.Tenants.EmailQuotaManagement.Tests.UI" />
-    <PackageReference Include="Lombiq.Hosting.Tenants.Maintenance.Tests.UI" />
-    <PackageReference Include="Lombiq.Hosting.Tenants.Management.Tests.UI" />
-    <PackageReference Include="Lombiq.JsonEditor.Tests.UI" />
-    <PackageReference Include="Lombiq.LoginAsAnybody.Tests.UI" />
-    <PackageReference Include="Lombiq.Marketing.Tests.UI" />
+    <PackageReference Include="Smartent.Orchard.EmailClient.Tests.UI" />
+    <PackageReference Include="Smartent.Orchard.Hosting.ApplicationInsights.Tests.UI" />
+    <PackageReference Include="Smartent.Orchard.Hosting.BuildVersion.Tests.UI" />
+    <PackageReference Include="Smartent.Orchard.Theme.Media.Bridge.Tests.UI" />
+    <PackageReference Include="Smartent.Orchard.Theme.Media.Tests.UI" />
+    <PackageReference Include="Smartent.Orchard.Hosting.Tenants.EnvironmentRobots.Tests.UI" />
+    <PackageReference Include="Smartent.Orchard.Hosting.Tenants.FeaturesGuard.Tests.UI" />
+    <PackageReference Include="Smartent.Orchard.Hosting.Tenants.HealthChecks.Tests.UI" />
+    <PackageReference Include="Smartent.Orchard.Hosting.Tenants.IdleTenantManagement.Tests.UI" />
+    <PackageReference Include="Smartent.Orchard.Hosting.Tenants.MediaStorageManagement.Tests.UI" />
+    <PackageReference Include="Smartent.Orchard.Hosting.Tenants.EmailQuotaManagement.Tests.UI" />
+    <PackageReference Include="Smartent.Orchard.Hosting.Tenants.Maintenance.Tests.UI" />
+    <PackageReference Include="Smartent.Orchard.Hosting.Tenants.Management.Tests.UI" />
+    <PackageReference Include="Smartent.Orchard.JsonEditor.Tests.UI" />
+    <PackageReference Include="Smartent.Orchard.LoginAsAnybody.Tests.UI" />
+    <PackageReference Include="Smartent.Orchard.Marketing.Tests.UI" />
     <PackageReference Include="Smartent.Orchard.ApiClient.Tests.UI" />
-    <PackageReference Include="Lombiq.Privacy.Tests.UI" />
+    <PackageReference Include="Smartent.Orchard.Privacy.Tests.UI" />
     <PackageReference Include="Smartent.Orchard.Extensions.Cms.Tests.UI" />
     <PackageReference Include="Smartent.Orchard.UIKit.Widgets.Tests.UI" />
-    <PackageReference Include="Lombiq.Walkthroughs.Tests.UI" />
+    <PackageReference Include="Smartent.Orchard.Walkthroughs.Tests.UI" />
   </ItemGroup>
 
   <ItemGroup>
