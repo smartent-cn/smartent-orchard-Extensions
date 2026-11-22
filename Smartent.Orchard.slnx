@@ -112,7 +112,7 @@
     <Project Path="src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.OrchardCore.Tests.UI.Sdk/Lombiq.MSBuild.OrchardCore.Tests.UI.Sdk.csproj" />
     <Project Path="src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.OrchardCore.Theme.Sdk/Lombiq.MSBuild.OrchardCore.Theme.Sdk.csproj" />
     <Project Path="src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.Targets.Samples/Lombiq.MSBuild.Targets.Samples.csproj" />
-    <Project Path="src/Utilities/Lombiq.Npm.Targets/Lombiq.Npm.Targets.csproj" />
+    <Project Path="Smartent-src/Build/Smartent.Build.Npm.Targets/Smartent.Build.Npm.Targets.csproj" />
     <Project Path="src/Utilities/Lombiq.SetupExtensions/Lombiq.SetupExtensions.csproj" />
     <Project Path="src/Utilities/Lombiq.Tailwind.Targets/Lombiq.Tailwind.Targets.Samples/Lombiq.Tailwind.Targets.Samples.csproj" />
     <Project Path="src/Utilities/Lombiq.Tailwind.Targets/Lombiq.Tailwind.Targets/Lombiq.Tailwind.Targets.csproj" />

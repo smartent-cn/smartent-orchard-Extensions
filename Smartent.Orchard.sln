@@ -34,7 +34,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lombiq.VueJs", "src\Modules
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utilities", "Utilities", "{11F2CB14-D92A-484F-9C1E-2836B1B04DB8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lombiq.Npm.Targets", "src\Utilities\Lombiq.Npm.Targets\Lombiq.Npm.Targets.csproj", "{7EEC51ED-5483-4A27-93B5-FCD920493604}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Build.Npm.Targets", "Smartent-src\Build\Smartent.Build.Npm.Targets\Smartent.Build.Npm.Targets.csproj", "{7EEC51ED-5483-4A27-93B5-FCD920493604}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lombiq.NodeJs.Extensions", "src\Utilities\Lombiq.NodeJs.Extensions\Lombiq.NodeJs.Extensions\Lombiq.NodeJs.Extensions.csproj", "{E9721628-1170-4F81-A40E-C0F3E24E23A2}"
 EndProject

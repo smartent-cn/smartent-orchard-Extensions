@@ -5,7 +5,7 @@ using System.Linq;
 using System.Xml.Linq;
 using System.Xml.XPath;
 
-namespace Lombiq.Npm.Targets;
+namespace Smartent.Build.Npm.Targets;
 
 public class CopyVendors : Task
 {

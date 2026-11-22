@@ -4,6 +4,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Lombiq.Npm.Targets" />
+    <PackageReference Include="Smartent.Build.Npm.Targets" />
   </ItemGroup>
 </Project>

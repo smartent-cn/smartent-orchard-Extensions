@@ -35,11 +35,11 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(NuGetBuild)' != 'true'">
-    <ProjectReference Include="..\..\Lombiq.Npm.Targets\Lombiq.Npm.Targets.csproj" />
+    <ProjectReference Include="..\..\..\..\Smartent-src\Build\Smartent.Build.Npm.Targets\Smartent.Build.Npm.Targets.csproj" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(NuGetBuild)' == 'true'">
-    <PackageReference Include="Lombiq.Npm.Targets" Version="1.5.0">
+    <PackageReference Include="Smartent.Build.Npm.Targets" Version="1.5.0">
       <!-- See https://docs.microsoft.com/en-us/nuget/consume-packages/package-references-in-project-files#controlling-dependency-assets
            and https://github.com/NuGet/docs.microsoft.com-nuget/issues/2716. -->
       <!-- We want to make NPM-Targets' build files (.props and .targets) available to consumer projects, so we need to
@@ -77,7 +77,7 @@
 
   <PropertyGroup Condition="'$(NuGetBuild)' == 'true'">
     <!-- Suppress execution of NPM Targets during the build of this project. It would be nicer to solve this with
-         ExcludeAssets on the "Lombiq.Npm.Targets" PackageReference, but that does not work. There is currently no way
+         ExcludeAssets on the "Smartent.Build.Npm.Targets" PackageReference, but that does not work. There is currently no way
          for PackageReferences to specify that some assets should not be consumed by itself but still be forwarded to
          projects consuming this one. -->
     <ExecNpmInstallCommand>false</ExecNpmInstallCommand>

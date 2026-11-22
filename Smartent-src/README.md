@@ -8,7 +8,7 @@
 |------|------|
 | `Platform/Core/` | 无 Orchard 依赖：`Smartent.Core.*` |
 | `Platform/Orchard/` | Orchard 开发底座：原 HelpfulLibraries 演进为 `Smartent.Orchard.Platform.*` |
-| `Build/` | MSBuild SDK、Npm、Node、Tailwind、Setup 等（自 `src/Utilities` 迁入） |
+| `Build/` | MSBuild SDK、Npm、Node、Tailwind、Setup 等（自 `src/Utilities` 迁入；见 [Build/README.md](Build/README.md)） |
 | `Libraries/` | ApiClient、EInvoice 等独立库 |
 | `Modules/` | Orchard 模块 |
 | `Themes/` | 主题 |
@@ -28,7 +28,7 @@
 - 脚手架已建立（目录 + `build/` 全局属性）。  
 - **M2 完成**：`Platform/Core/` 下五包已迁入（`Smartent.Core.*`）。  
 - **M3 基本完成**：Platform/Orchard 与 `Smartent.Test.OrchardCore` 已迁入；元包仅 Legacy 聚合。见 `projects/M3-Platform-HelpfulLibraries.md`。
-- **M4 进行中**：MSBuild Sdk 路径与 Smartent 包版本属性。见 `projects/M4-MSBuild-Targets.md`。
+- **M4 进行中**：`Smartent.Build.Npm.Targets` 已迁入 `Build/`；MSBuild Sdk 等见 `projects/M4-MSBuild-Targets.md`。
 
 ## 文档与规范
 
