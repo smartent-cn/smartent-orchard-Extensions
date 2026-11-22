@@ -48,7 +48,7 @@
         "Lombiq.JsonEditor.ContentEditor",
         "Lombiq.LoginAsAnybody",
         "Lombiq.Marketing.Pirsch",
-        "Lombiq.Tests.UI.AdminTheme",
+        "Smartent.Test.UI.AdminTheme",
         "Lombiq.OSOCE.NuGet.TestModule",
         "Lombiq.OSOCE.NuGet.TestTheme",
         "Lombiq.OSOCE.Samples",
@@ -220,7 +220,7 @@
             },
             {
               "Rule": "Exclude",
-              "Expression": "Lombiq.Tests.UI.Shortcuts"
+              "Expression": "Smartent.Test.UI.Shortcuts"
             }
           ]
         }
@@ -228,18 +228,18 @@
     },
     {
       "name": "themes",
-      "admin": "Lombiq.Tests.UI.AdminTheme",
+      "admin": "Smartent.Test.UI.AdminTheme",
       "site": "Lombiq.OSOCE.NuGet.TestTheme"
     },
     {
       "name": "recipes",
       "Values": [
         {
-          "executionid": "Lombiq.OSOCE.Web",
+          "executionid": "Smartent.Demo.Web",
           "name": "Smartent.Orchard.Extensions.Cms.ContentSets.Samples"
         },
         {
-          "executionid": "Lombiq.OSOCE.Web",
+          "executionid": "Smartent.Demo.Web",
           "name": "Smartent.Orchard.UIKit.Widgets.Content"
         }
       ]

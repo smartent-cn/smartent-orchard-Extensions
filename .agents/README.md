@@ -28,7 +28,7 @@ Keep all SDK alpha references in sync with the coordinated prerelease, including
 
 ## SDK consumer contracts
 
-Use `Lombiq.MSBuild.OrchardCore.Tests.UI.Sdk` for executable UI test projects. It supplies the runner and the `Lombiq.Tests.UI` dependency. Use `Lombiq.MSBuild.OrchardCore.Tests.UI.Library.Sdk` for reusable libraries containing UI test methods; it supplies the helper dependency without configuring an executable runner. Update both local imports and NuGet SDK references when migrating consumers.
+Use `Lombiq.MSBuild.OrchardCore.Tests.UI.Sdk` for executable UI test projects. It supplies the runner and the `Smartent.Test.UI` dependency. Use `Lombiq.MSBuild.OrchardCore.Tests.UI.Library.Sdk` for reusable libraries containing UI test methods; it supplies the helper dependency without configuring an executable runner. Update both local imports and NuGet SDK references when migrating consumers.
 
 Validate both executable test consumers and reusable libraries when changing test SDKs. Verify that published packages behave like local submodule imports.
 

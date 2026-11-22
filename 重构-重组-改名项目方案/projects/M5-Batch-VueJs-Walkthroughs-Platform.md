@@ -27,7 +27,7 @@
 | `Lombiq.Marketing.UrlShortener` | `Smartent.Orchard.Marketing.UrlShortener` |
 | `Lombiq.Hosting.Azure.ApplicationInsights` | `Smartent.Orchard.Hosting.ApplicationInsights` |
 
-已同步：`Lombiq.OSOCE.Web` / Recipe、`test/Lombiq.OSOCE.Tests.UI`、`Smartent.Orchard.ContentEditors` → `VueJs.Resources`、`Smartent.Orchard.sln` / `slnx`。
+已同步：`Smartent.Demo.Web` / Recipe、`test/Smartent.Test.Acceptance`、`Smartent.Orchard.ContentEditors` → `VueJs.Resources`、`Smartent.Orchard.sln` / `slnx`。
 
 ## 验证
 

@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk.Razor">
 
-  <Import Condition="'$(NuGetBuild)' != 'true'" Project="..\..\..\..\Smartent-src\Build\Smartent.Build.NodeJs\Smartent.Build.NodeJs\Smartent.Build.NodeJs.props" />
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="..\..\..\Build\Smartent.Build.NodeJs\Smartent.Build.NodeJs\Smartent.Build.NodeJs.props" />
 
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
@@ -19,7 +19,7 @@
   </PropertyGroup>
 
   <Target Name="CustomBeforeCompile" BeforeTargets="Compile" Condition="'$(NuGetBuild)' != 'true'">
-    <MSBuild Condition="!Exists('$(SourceGeneratorLocation)')" Projects="..\..\..\..\Smartent-src\Platform\Core\Smartent.Core.CodeGen.SourceGenerators\Smartent.Core.CodeGen.SourceGenerators.csproj" />
+    <MSBuild Condition="!Exists('$(SourceGeneratorLocation)')" Projects="..\..\..\Platform\Core\Smartent.Core.CodeGen.SourceGenerators\Smartent.Core.CodeGen.SourceGenerators.csproj" />
   </Target>
 
   <ItemGroup>
@@ -64,10 +64,10 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(NuGetBuild)' != 'true'">
-    <ProjectReference Include="..\..\..\..\Smartent-src\Platform\Orchard\Smartent.Orchard.Platform\Smartent.Orchard.Platform.csproj" />
-    <ProjectReference Include="..\..\..\..\Smartent-src\Build\Smartent.Build.NodeJs\Smartent.Build.NodeJs\Smartent.Build.NodeJs.csproj" />
-    <ProjectReference Include="..\..\..\..\Smartent-src\Platform\Core\Smartent.Core.CodeGen.Attributes\Smartent.Core.CodeGen.Attributes.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="true" />
-    <ProjectReference Include="..\..\..\..\Smartent-src\Platform\Core\Smartent.Core.CodeGen.SourceGenerators\Smartent.Core.CodeGen.SourceGenerators.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+    <ProjectReference Include="..\..\..\Platform\Orchard\Smartent.Orchard.Platform\Smartent.Orchard.Platform.csproj" />
+    <ProjectReference Include="..\..\..\Build\Smartent.Build.NodeJs\Smartent.Build.NodeJs\Smartent.Build.NodeJs.csproj" />
+    <ProjectReference Include="..\..\..\Platform\Core\Smartent.Core.CodeGen.Attributes\Smartent.Core.CodeGen.Attributes.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="true" />
+    <ProjectReference Include="..\..\..\Platform\Core\Smartent.Core.CodeGen.SourceGenerators\Smartent.Core.CodeGen.SourceGenerators.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(NuGetBuild)' == 'true'">
@@ -77,7 +77,7 @@
     <PackageReference Include="Smartent.Core.CodeGen.Attributes" Version="12.6.1-alpha.7.osoe-925" OutputItemType="Analyzer" ReferenceOutputAssembly="true" />
   </ItemGroup>
 
-  <Import Condition="'$(NuGetBuild)' != 'true'" Project="..\..\..\..\Smartent-src\Build\Smartent.Build.NodeJs\Smartent.Build.NodeJs\Smartent.Build.NodeJs.targets" />
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="..\..\..\Build\Smartent.Build.NodeJs\Smartent.Build.NodeJs\Smartent.Build.NodeJs.targets" />
 
   <!-- Execute Lombiq.NodeJs separately, to avoid inheriting these instructions in projects that consume Smartent.Orchard.VueJs. -->
   <Target Name="BuildLocalScripts" AfterTargets="NpmInstall">

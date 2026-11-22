@@ -1,0 +1,237 @@
+using Smartent.Test.Unit.Integration.Services;
+using Smartent.Test.UI.Helpers;
+using Smartent.Test.UI.Models;
+using Smartent.Test.UI.Services.OrchardCoreHosting;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Testing;
+using Microsoft.VisualBasic.FileIO;
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+using Xunit;
+
+namespace Smartent.Test.UI.Services;
+
+public delegate Task BeforeAppStartHandler(OrchardCoreAppStartContext context, InstanceCommandLineArgumentsBuilder arguments);
+public delegate void AfterFakeLoggingConfigurationHandler(OrchardCoreAppStartContext context, FakeLogCollectorOptions fakeLogCollectorOptions);
+public delegate Task AfterAppStopHandler(OrchardCoreAppStartContext context);
+public delegate Task BeforeTakeSnapshotHandler(OrchardCoreAppStartContext context, string snapshotDirectoryPath);
+
+public class OrchardCoreConfiguration
+{
+    public string SnapshotDirectoryPath { get; set; }
+    public BeforeAppStartHandler BeforeAppStart { get; set; }
+    public AfterFakeLoggingConfigurationHandler AfterFakeLoggingConfiguration { get; set; }
+    public AfterAppStopHandler AfterAppStop { get; set; }
+    public BeforeTakeSnapshotHandler BeforeTakeSnapshot { get; set; }
+    public int StartCount { get; internal set; }
+}
+
+internal static class OrchardCoreInstanceCounter
+{
+    public static PortLeaseManager PortLeases { get; }
+
+    static OrchardCoreInstanceCounter()
+    {
+        var agentIndexTimesHundred = TestConfigurationManager.GetAgentIndexOrDefault() * 100;
+        PortLeases = new(9000 + agentIndexTimesHundred, 9099 + agentIndexTimesHundred);
+    }
+
+    public static Uri GetUri(int port) => new(string.Create(CultureInfo.InvariantCulture, $"https://localhost:{port}"));
+    public static async Task<Uri> GetNewUriAsync() => GetUri(await PortLeases.LeaseAvailableRandomPortAsync(CancellationToken.None));
+}
+
+/// <summary>
+/// A locally executing Orchard Core application.
+/// </summary>
+public sealed class OrchardCoreInstance<TEntryPoint> : IWebApplicationInstance
+    where TEntryPoint : class
+{
+    private readonly OrchardCoreUITestExecutorConfiguration _configuration;
+    private readonly string _contextId;
+    private readonly CancellationTokenSource _cancellationTokenSource = new();
+
+    private string _contentRootPath;
+    private bool _isDisposed;
+    private OrchardApplicationFactory<TEntryPoint> _orchardApplication;
+    private Uri _url;
+    private TestReverseProxy _reverseProxy;
+
+    public IServiceProvider Services => _orchardApplication?.Services;
+    public OrchardCoreConfiguration OrchardCoreConfiguration => _configuration.OrchardCoreConfiguration;
+    public ITestOutputHelper TestOutputHelper => _configuration.TestOutputHelper;
+
+    public OrchardCoreInstance(OrchardCoreUITestExecutorConfiguration configuration, string contextId)
+    {
+        _configuration = configuration;
+        _contextId = contextId;
+    }
+
+    public async Task<Uri> StartUpAsync()
+    {
+        _url = await OrchardCoreInstanceCounter.GetNewUriAsync();
+        TestOutputHelper.WriteLineTimestampedAndDebug("The generated URL for the Orchard Core instance is \"{0}\".", _url.AbsoluteUri);
+
+        CreateContentRootFolder();
+
+        if (!string.IsNullOrEmpty(OrchardCoreConfiguration.SnapshotDirectoryPath) && Directory.Exists(OrchardCoreConfiguration.SnapshotDirectoryPath))
+        {
+            FileSystem.CopyDirectory(OrchardCoreConfiguration.SnapshotDirectoryPath, _contentRootPath, overwrite: true);
+        }
+        else
+        {
+            // Copying the config files from the assembly path, i.e. the build output path so only those are included
+            // that actually matter.
+            OrchardCoreDirectoryHelper
+                .CopyAppConfigFiles(
+                    Path.GetDirectoryName(typeof(TEntryPoint).Assembly.Location),
+                    _contentRootPath,
+                    _cancellationTokenSource.Token);
+        }
+
+        _reverseProxy = new TestReverseProxy(_url.AbsoluteUri);
+
+        await _reverseProxy.StartAsync();
+
+        OrchardCoreConfiguration.StartCount++;
+        await StartOrchardAppAsync();
+
+        return _url;
+    }
+
+    public Task PauseAsync() => StopOrchardAppAsync();
+
+    public Task ResumeAsync() => StartOrchardAppAsync();
+
+    public Task TakeSnapshotAsync(string snapshotDirectoryPath)
+    {
+        ArgumentNullException.ThrowIfNull(snapshotDirectoryPath);
+
+        return TakeSnapshotInnerAsync(snapshotDirectoryPath);
+    }
+
+    public Task<IEnumerable<IApplicationLog>> GetLogsAsync(CancellationToken cancellationToken = default)
+    {
+        if (Services.GetService<FakeLogCollector>() is { } logCollector)
+        {
+            return Task.FromResult(
+                new IApplicationLog[]
+                {
+                    new FakeLoggerLogApplicationLog
+                    {
+                        LogCollector = logCollector,
+                    },
+                }.AsEnumerable());
+        }
+
+        return Task.FromResult(Enumerable.Empty<IApplicationLog>());
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        if (_isDisposed) return;
+
+        _isDisposed = true;
+        await _cancellationTokenSource.CancelAsync();
+        _cancellationTokenSource.Dispose();
+
+        await StopOrchardAppAsync();
+        if (_reverseProxy != null) await _reverseProxy.DisposeAsync();
+
+        // This is a clean-up method, no need to forward a CancellationToken.
+        await DirectoryHelper.SafelyDeleteDirectoryIfExistsAsync(_contentRootPath, CancellationToken.None, 60);
+    }
+
+    private void CreateContentRootFolder()
+    {
+        _contentRootPath = _configuration.GetTempDirectoryPathWithFallback(_contextId, "App");
+        Directory.CreateDirectory(_contentRootPath);
+        TestOutputHelper.WriteLineTimestampedAndDebug("Content root path was created: {0}", _contentRootPath);
+    }
+
+    private async Task StartOrchardAppAsync()
+    {
+        TestOutputHelper.WriteLineTimestampedAndDebug("Attempting to start the Orchard Core instance.");
+
+        var arguments = new InstanceCommandLineArgumentsBuilder();
+
+        await OrchardCoreConfiguration.BeforeAppStart
+            .InvokeAsync<BeforeAppStartHandler>(handler => handler(CreateAppStartContext(), arguments));
+
+        // This is to avoid adding Razor runtime view compilation.
+        await DirectoryHelper.SafelyDeleteDirectoryIfExistsAsync(
+            Path.Combine(Path.GetDirectoryName(typeof(OrchardCoreInstance<>).Assembly.Location), "refs"), _cancellationTokenSource.Token, 60);
+
+        _orchardApplication = new OrchardApplicationFactory<TEntryPoint>(
+            configuration =>
+                configuration.AddCommandLine(arguments.Arguments.ToArray()),
+            builder => builder
+                .UseContentRoot(_contentRootPath)
+                .UseWebRoot(Path.Combine(_contentRootPath, "wwwroot"))
+                .UseEnvironment(Environments.Development)
+                .ConfigureLogging(loggingBuilder => loggingBuilder.AddFakeLogging(options =>
+                {
+                    options.CollectRecordsForDisabledLogLevels = false;
+                    options.FilteredLevels.Add(LogLevel.Error);
+                    options.FilteredLevels.Add(LogLevel.Critical);
+                    options.OutputFormatter = FakeLoggerApplicationLogEntry.FormatLogRecord;
+                    options.OutputSink += message => TestOutputHelper.WriteLine(message);
+
+                    OrchardCoreConfiguration.AfterFakeLoggingConfiguration?.Invoke(CreateAppStartContext(), options);
+                })),
+            (configuration, orchardBuilder) => orchardBuilder
+                .ConfigureUITesting(configuration, enableShortcutsDuringUITesting: true),
+            _cancellationTokenSource.Token);
+
+        _orchardApplication.ClientOptions.AllowAutoRedirect = false;
+        _orchardApplication.ClientOptions.BaseAddress = new Uri(_reverseProxy.RootUrl);
+        _reverseProxy.AttachConnectionProvider(_orchardApplication);
+
+        TestOutputHelper.WriteLineTimestampedAndDebug("The Orchard Core instance was started.");
+    }
+
+    private async Task StopOrchardAppAsync()
+    {
+        _reverseProxy?.DetachConnectionProvider();
+
+        if (_orchardApplication == null) return;
+
+        TestOutputHelper.WriteLineTimestampedAndDebug("Attempting to stop the Orchard Core instance.");
+
+        await _orchardApplication.DisposeAsync();
+        _orchardApplication = null;
+        await OrchardCoreInstanceCounter.PortLeases.StopLeaseAsync(_url.Port, CancellationToken.None);
+
+        TestOutputHelper.WriteLineTimestampedAndDebug("The Orchard Core instance was stopped.");
+
+        await OrchardCoreConfiguration.AfterAppStop
+            .InvokeAsync<AfterAppStopHandler>(handler => handler(CreateAppStartContext()));
+    }
+
+    private async Task TakeSnapshotInnerAsync(string snapshotDirectoryPath)
+    {
+        await PauseAsync();
+
+        if (Directory.Exists(snapshotDirectoryPath)) Directory.Delete(snapshotDirectoryPath, recursive: true);
+
+        Directory.CreateDirectory(snapshotDirectoryPath);
+
+        await OrchardCoreConfiguration.BeforeTakeSnapshot
+            .InvokeAsync<BeforeTakeSnapshotHandler>(handler => handler(CreateAppStartContext(), snapshotDirectoryPath));
+
+        FileSystem.CopyDirectory(_contentRootPath, snapshotDirectoryPath, overwrite: true);
+
+        await ResumeAsync();
+    }
+
+    private OrchardCoreAppStartContext CreateAppStartContext() =>
+        new(_contentRootPath, _url, OrchardCoreInstanceCounter.PortLeases);
+}

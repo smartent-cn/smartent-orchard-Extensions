@@ -60,9 +60,9 @@
     <PackageReference Include="Lombiq.Privacy" />
     <PackageReference Include="Lombiq.Privacy.Samples" />
     <PackageReference Include="Smartent.Orchard.Setup" />
-    <PackageReference Include="Lombiq.Tests.UI.AdminTheme" />
-    <PackageReference Include="Lombiq.Tests.UI.AppExtensions" />
-    <PackageReference Include="Lombiq.Tests.UI.Shortcuts" />
+    <PackageReference Include="Smartent.Test.UI.AdminTheme" />
+    <PackageReference Include="Smartent.Test.UI.AppExtensions" />
+    <PackageReference Include="Smartent.Test.UI.Shortcuts" />
     <PackageReference Include="Smartent.Orchard.UIKit" />
     <PackageReference Include="Smartent.Orchard.UIKit.Widgets" />
     <PackageReference Include="Smartent.Orchard.UIKit.Widgets.Tests.UI" />

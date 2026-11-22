@@ -1,4 +1,4 @@
-using Lombiq.Tests.Helpers;
+using Smartent.Test.Unit.Helpers;
 using Shouldly;
 using Xunit;
 

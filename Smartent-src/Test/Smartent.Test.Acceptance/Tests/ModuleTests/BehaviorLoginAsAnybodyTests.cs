@@ -1,0 +1,22 @@
+using Smartent.Orchard.LoginAsAnybody.Tests.UI.Extensions;
+using System.Threading.Tasks;
+using Xunit;
+
+namespace Smartent.Test.Acceptance.Tests.ModuleTests;
+
+public class BehaviorLoginAsAnybodyTests : UITestBase
+{
+    public BehaviorLoginAsAnybodyTests(ITestOutputHelper testOutputHelper)
+        : base(testOutputHelper)
+    {
+    }
+
+    [Fact]
+    public Task SwitchingUserShouldWorkCorrectly() =>
+        RunAsync(context => context.SwitchingUserShouldWorkCorrectlyAsync());
+
+    [Fact]
+    public Task PermissionCheckShouldWorkCorrectly() =>
+        RunAsync(
+            context => context.PermissionCheckShouldWorkCorrectlyAsync());
+}

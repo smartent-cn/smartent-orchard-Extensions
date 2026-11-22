@@ -1,5 +1,5 @@
 using Smartent.Orchard.Hosting.Tenants.HealthChecks.Services;
-using Lombiq.Tests.UI.Services;
+using Smartent.Test.UI.Services;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 
 namespace Smartent.Orchard.Hosting.Tenants.HealthChecks.Tests.UI.Extensions;

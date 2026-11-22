@@ -1,0 +1,31 @@
+using Smartent.Orchard.Hosting.Tenants.EmailQuotaManagement.Tests.UI.Extensions;
+using Smartent.Test.UI.Extensions;
+using System.Threading.Tasks;
+using Xunit;
+namespace Smartent.Test.Acceptance.Tests.ModuleTests;
+
+public class BehaviorEmailQuotaTests : UITestBase
+{
+    public BehaviorEmailQuotaTests(ITestOutputHelper testOutputHelper)
+        : base(testOutputHelper)
+    {
+    }
+
+    [Fact]
+    public Task EmailQuotaShouldBlockEmailsOverLimitAndWarn() => TestBuilder
+        .AddConfiguration(configuration => configuration.SetEmailQuotaManagementOptionsForUITest(10))
+        .RunAsync(context => context.TestEmailQuotaManagementBehaviorAsync(10));
+
+    [Fact]
+    public Task EmailQuotaShouldNotBeEnforcedWhenUsingCustomSmtpConfiguration() => TestBuilder
+        .AddConfiguration(configuration => configuration.SetEmailQuotaManagementOptionsForUITest(1))
+        .RunAsync(async context =>
+        {
+            // The default SMTP host is localhost during UI tests. We set it to 127.0.0.1 to still be able to send
+            // emails (since localhost and 127.0.0.1 is the same), but the Email Quota module shouldn't interfere,
+            // thinking it's a non-default host.
+            await context.SignInDirectlyAndGoToDashboardAsync();
+            await context.ConfigureSmtpSettingsAsync("sender@example.com", "127.0.0.1");
+            await context.TestEmailQuotaManagementBehaviorAsync(1, quotaShouldBeEnforced: false);
+        });
+}

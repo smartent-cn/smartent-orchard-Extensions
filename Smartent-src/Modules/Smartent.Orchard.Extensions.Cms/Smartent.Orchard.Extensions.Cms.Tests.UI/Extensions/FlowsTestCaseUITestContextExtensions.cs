@@ -1,8 +1,8 @@
 using Atata;
 using Smartent.Orchard.Extensions.Cms.Tests.UI.Constants;
 using Smartent.Orchard.Extensions.Cms.Tests.UI.Helpers;
-using Lombiq.Tests.UI.Extensions;
-using Lombiq.Tests.UI.Services;
+using Smartent.Test.UI.Extensions;
+using Smartent.Test.UI.Services;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using Shouldly;

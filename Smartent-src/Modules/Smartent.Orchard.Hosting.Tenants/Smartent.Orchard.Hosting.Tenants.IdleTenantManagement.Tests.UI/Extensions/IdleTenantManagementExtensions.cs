@@ -1,4 +1,4 @@
-using Lombiq.Tests.UI.Services;
+using Smartent.Test.UI.Services;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 

@@ -4,11 +4,11 @@
   </PropertyGroup>
   
   <ItemGroup Condition="'$(FromNuGet)' != 'true'">
-    <ProjectReference Include="$(LombiqSolutionRootPath)/test/Lombiq.UITestingToolbox/Lombiq.Tests.UI/Lombiq.Tests.UI.csproj" />
+    <ProjectReference Include="$(LombiqSolutionRootPath)/Smartent-src/Test/Smartent.Test.UI/Smartent.Test.UI/Smartent.Test.UI.csproj" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(FromNuGet)' == 'true'">
-    <PackageReference Include="Lombiq.Tests.UI">
+    <PackageReference Include="Smartent.Test.UI">
       <Version Condition="'$(ManagePackageVersionsCentrally)' != 'true'">$(PackageVersionLombiqTestsUI)</Version>
     </PackageReference>
   </ItemGroup>

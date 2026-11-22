@@ -1,5 +1,5 @@
 using Lombiq.OSOCE.NuGet.Tests.UI.Helpers;
-using Lombiq.Tests.UI;
+using Smartent.Test.UI;
 using Xunit;
 
 namespace Lombiq.OSOCE.NuGet.Tests.UI;

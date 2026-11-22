@@ -5,7 +5,7 @@ using OrchardCore.Modules;
 
 namespace Smartent.Orchard.DataTables.LombiqTests;
 
-[RequireFeatures("Lombiq.Tests.UI.Shortcuts")]
+[RequireFeatures("Smartent.Test.UI.Shortcuts")]
 public sealed class Startup : StartupBase
 {
     public override void ConfigureServices(IServiceCollection services) =>

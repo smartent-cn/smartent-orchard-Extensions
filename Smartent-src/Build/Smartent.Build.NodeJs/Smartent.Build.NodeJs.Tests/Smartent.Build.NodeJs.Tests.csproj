@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\test\Lombiq.Tests\Lombiq.Tests.csproj" />
+    <ProjectReference Include="..\..\..\Test\Smartent.Test.Unit\Smartent.Test.Unit.csproj" />
     <ProjectReference Include="..\Smartent.Build.NodeJs\Smartent.Build.NodeJs.csproj" />
   </ItemGroup>
 

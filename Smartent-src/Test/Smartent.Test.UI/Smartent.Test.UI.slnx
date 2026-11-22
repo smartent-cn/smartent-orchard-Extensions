@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="Smartent.Test.UI.AdminTheme/Smartent.Test.UI.AdminTheme.csproj" />
+  <Project Path="Smartent.Test.UI.AppExtensions/Smartent.Test.UI.AppExtensions.csproj" />
+  <Project Path="Smartent.Test.UI.Shortcuts/Smartent.Test.UI.Shortcuts.csproj" />
+  <Project Path="Smartent.Test.UI/Smartent.Test.UI.csproj" />
+</Solution>

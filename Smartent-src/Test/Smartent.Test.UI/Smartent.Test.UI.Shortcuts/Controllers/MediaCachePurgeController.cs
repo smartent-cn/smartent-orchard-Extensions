@@ -1,0 +1,22 @@
+using Microsoft.AspNetCore.Mvc;
+using OrchardCore.Media;
+using OrchardCore.Modules;
+using System.Threading.Tasks;
+
+namespace Smartent.Test.UI.Shortcuts.Controllers;
+
+[Feature(ShortcutsFeatureIds.MediaCachePurge)]
+public sealed class MediaCachePurgeController : Controller
+{
+    private readonly IMediaFileStoreCache _mediaFileStoreCache;
+
+    public MediaCachePurgeController(IMediaFileStoreCache mediaFileStoreCache)
+        => _mediaFileStoreCache = mediaFileStoreCache;
+
+    public async Task<IActionResult> PurgeMediaCacheDirectly()
+    {
+        var hasErrors = await _mediaFileStoreCache.PurgeAsync();
+
+        return hasErrors ? StatusCode(500) : Ok();
+    }
+}

@@ -23,11 +23,11 @@
   </PropertyGroup>
 
   <ItemGroup Condition="'$(NuGetBuild)' != 'true'">
-    <ProjectReference Include="..\..\..\..\test\Lombiq.UITestingToolbox\Lombiq.Tests.UI.AppExtensions\Lombiq.Tests.UI.AppExtensions.csproj" />
+    <ProjectReference Include="..\..\..\Test\Smartent.Test.UI\Smartent.Test.UI.AppExtensions\Smartent.Test.UI.AppExtensions.csproj" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(NuGetBuild)' == 'true'">
-    <PackageReference Include="Lombiq.Tests.UI.AppExtensions" Version="$(PackageVersionLombiqTestsUI) " />
+    <PackageReference Include="Smartent.Test.UI.AppExtensions" Version="$(PackageVersionLombiqTestsUI) " />
   </ItemGroup>
 
   <!-- Security Updates for Orchard Core - make sure to check if these are still necessary -->

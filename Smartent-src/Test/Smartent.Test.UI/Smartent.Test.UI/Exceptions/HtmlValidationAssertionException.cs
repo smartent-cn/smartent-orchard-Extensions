@@ -1,0 +1,39 @@
+using Atata.HtmlValidation;
+using Smartent.Test.UI.Services;
+using System;
+
+namespace Smartent.Test.UI.Exceptions;
+
+public class HtmlValidationAssertionException : Exception, IAssertionException
+{
+    public HtmlValidationResult HtmlValidationResult { get; }
+    public HtmlValidationConfiguration HtmlValidationConfiguration { get; }
+
+    public HtmlValidationAssertionException(
+        HtmlValidationResult htmlValidationResult,
+        HtmlValidationConfiguration validationConfiguration,
+        Exception innerException)
+        : base(
+            validationConfiguration.CreateReportOnFailure
+                ? $"{innerException.Message} Check the HTML validation report in the failure dump for details."
+                : innerException.Message,
+            innerException)
+    {
+        HtmlValidationResult = htmlValidationResult;
+        HtmlValidationConfiguration = validationConfiguration;
+    }
+
+    public HtmlValidationAssertionException(string message)
+        : base(message)
+    {
+    }
+
+    public HtmlValidationAssertionException(string message, Exception innerException)
+        : base(message, innerException)
+    {
+    }
+
+    public HtmlValidationAssertionException()
+    {
+    }
+}

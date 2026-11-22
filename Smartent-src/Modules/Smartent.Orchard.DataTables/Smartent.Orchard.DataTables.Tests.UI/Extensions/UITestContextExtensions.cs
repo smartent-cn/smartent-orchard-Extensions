@@ -1,8 +1,8 @@
 using Smartent.Orchard.DataTables.Samples.Controllers;
 using Smartent.Orchard.DataTables.Services;
 using Smartent.Orchard.Platform.Mvc;
-using Lombiq.Tests.UI.Extensions;
-using Lombiq.Tests.UI.Services;
+using Smartent.Test.UI.Extensions;
+using Smartent.Test.UI.Services;
 using OpenQA.Selenium;
 using System.Collections.Generic;
 using System.Globalization;

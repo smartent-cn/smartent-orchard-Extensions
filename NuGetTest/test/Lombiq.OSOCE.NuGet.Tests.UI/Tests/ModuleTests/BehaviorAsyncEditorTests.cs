@@ -1,6 +1,6 @@
 using Lombiq.ContentEditors.Tests.UI.Extensions;
-using Lombiq.Tests.UI.Extensions;
-using Lombiq.Tests.UI.Helpers;
+using Smartent.Test.UI.Extensions;
+using Smartent.Test.UI.Helpers;
 using System.Threading.Tasks;
 using Xunit;
 

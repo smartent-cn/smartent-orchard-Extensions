@@ -25,7 +25,7 @@
 | `Lombiq.UIKit` | `Smartent.Orchard.UIKit` |
 | `Lombiq.HelpfulExtensions` | `Smartent.Orchard.Extensions.Cms` |
 
-已同步：`Lombiq.OSOCE.Web` / `NuGetTest` Recipe（如适用）、测试项目 `ExecuteRecipeDirectlyAsync`、`asp-area` 与主 sln/slnx。
+已同步：`Smartent.Demo.Web` / `NuGetTest` Recipe（如适用）、测试项目 `ExecuteRecipeDirectlyAsync`、`asp-area` 与主 sln/slnx。
 
 ## 验证
 

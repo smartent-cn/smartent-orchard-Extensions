@@ -1,5 +1,5 @@
-using Lombiq.Tests.UI.BasicOrchardFeaturesTesting;
-using Lombiq.Tests.UI.Models;
+using Smartent.Test.UI.BasicOrchardFeaturesTesting;
+using Smartent.Test.UI.Models;
 using System.Threading.Tasks;
 using Xunit;
 

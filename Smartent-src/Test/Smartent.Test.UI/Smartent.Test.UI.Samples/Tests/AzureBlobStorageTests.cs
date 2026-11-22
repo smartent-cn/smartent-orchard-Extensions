@@ -1,0 +1,41 @@
+using Smartent.Test.UI.Extensions;
+using Smartent.Test.UI.Samples.Extensions;
+using System.Threading.Tasks;
+using Xunit;
+
+namespace Smartent.Test.UI.Samples.Tests;
+
+// Up until now the Orchard app always used the default local Media storage for managing Media files. However, you may
+// use Azure Blob Storage in production. You can also test your app with it!
+public class AzureBlobStorageTests : UITestBase
+{
+    public AzureBlobStorageTests(ITestOutputHelper testOutputHelper)
+        : base(testOutputHelper)
+    {
+    }
+
+    // Here we have basically two of the same tests as in BasicTests, but now we're using Azure Blob Storage as the
+    // site's Media storage. If they still work and there are no errors in the log then the app works with Azure Blob
+    // Storage too.
+    // Note the configuration too! We could also set it globally in UITestBase. You'll need an accessible Azure Blob
+    // Storage account. For testing we recommend the Azurite emulator
+    // (https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azurite) that can be used from tests
+    // without any further configuration.
+    [Fact]
+    public Task AnonymousHomePageShouldExistWithAzureBlobStorage() => TestBuilder
+        .AddConfiguration(configuration => configuration.UseAzureBlobStorage = true)
+        .RunAsync(context => context.CheckIfAnonymousHomePageExistsAsync());
+
+    [Fact]
+    public Task TogglingFeaturesShouldWorkWithAzureBlobStorage() => TestBuilder
+        .AddConfiguration(configuration =>
+        {
+            configuration.UseAzureBlobStorage = true;
+
+            configuration.WithIgnoreExpectedNotFoundResponseFilter(ShortcutsUITestContextExtensions.FeatureToggleTestBenchUrl);
+        })
+        .RunAsync(context => context.ExecuteAndAssertTestFeatureToggleAsync());
+}
+
+// END OF TRAINING SECTION: Using Azure Blob Storage.
+// NEXT STATION: Head over to Tests/ErrorHandlingTests.cs.

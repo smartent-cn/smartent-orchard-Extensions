@@ -1,0 +1,18 @@
+using Smartent.Orchard.Hosting.Tenants.EmailQuotaManagement.Tests.UI.Extensions;
+using System.Threading.Tasks;
+using Xunit;
+
+namespace Smartent.Test.Acceptance.Tests.ModuleTests;
+
+public class BehaviorTenantAdminLoginTests : UITestBase
+{
+    public BehaviorTenantAdminLoginTests(ITestOutputHelper testOutputHelper)
+        : base(testOutputHelper)
+    {
+    }
+
+    [Fact]
+    public Task TenantEditorShouldHaveLoginAsAdminUserButton() => TestBuilder
+        .AddConfiguration(configuration => configuration.HtmlValidationConfiguration.WithOC15222Filter())
+        .RunAsync(context => context.TestTenantAdminLoginBehaviorAsync());
+}

@@ -1,5 +1,5 @@
-using Lombiq.Tests.UI.Extensions;
-using Lombiq.Tests.UI.Helpers;
+using Smartent.Test.UI.Extensions;
+using Smartent.Test.UI.Helpers;
 using OpenQA.Selenium;
 using Shouldly;
 using System.Threading.Tasks;

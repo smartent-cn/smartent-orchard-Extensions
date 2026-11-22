@@ -21,11 +21,11 @@
   </ItemGroup>
   
   <ItemGroup Condition="'$(FromNuGet)' != 'true'">
-    <ProjectReference Include="$(LombiqSolutionRootPath)/test/Lombiq.Tests/Lombiq.Tests.csproj" />
+    <ProjectReference Include="$(LombiqSolutionRootPath)/Smartent-src/Test/Smartent.Test.Unit/Smartent.Test.Unit.csproj" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(FromNuGet)' == 'true'">
-    <PackageReference Include="Lombiq.Tests">
+    <PackageReference Include="Smartent.Test.Unit">
       <Version Condition="'$(ManagePackageVersionsCentrally)' != 'true'">$(PackageVersionLombiqTests)</Version>
     </PackageReference>
   </ItemGroup>

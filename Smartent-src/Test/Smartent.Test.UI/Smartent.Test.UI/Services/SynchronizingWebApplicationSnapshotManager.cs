@@ -1,0 +1,63 @@
+using Smartent.Test.Unit.Helpers;
+using Smartent.Test.UI.Helpers;
+using System;
+using System.Diagnostics.CodeAnalysis;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace Smartent.Test.UI.Services;
+
+public delegate Task<(UITestContext Context, Uri TestStartUri)> AppInitializer();
+
+/// <summary>
+/// Service for transparently running operations on a web application and snapshotting them just a single time, so the
+/// snapshot can be used for further operations. Create a single instance of this for every kind of snapshot (like an
+/// Orchard application already set up).
+/// </summary>
+[SuppressMessage(
+    "Design",
+    "CA1001:Types that own disposable fields should be disposable",
+    Justification = "This is because SemaphoreSlim but it's not actually necessary to dispose in this case: " +
+        "https://stackoverflow.com/questions/32033416/do-i-need-to-dispose-a-semaphoreslim. Making this class " +
+        "IDisposable would need disposing static members on app shutdown, which is unreliable.")]
+public class SynchronizingWebApplicationSnapshotManager
+{
+    private readonly SemaphoreSlim _semaphore = new(1, 1);
+    private readonly string _snapshotDirectoryPath;
+
+    private Uri _testStartUri;
+    private bool _snapshotCreated;
+
+    public SynchronizingWebApplicationSnapshotManager(string snapshotDirectoryPath) => _snapshotDirectoryPath = snapshotDirectoryPath;
+
+    public async Task<Uri> RunOperationAndSnapshotIfNewAsync(AppInitializer appInitializer, CancellationToken cancellationToken)
+    {
+        DebugHelper.WriteLineTimestamped($"Entering SynchronizingWebApplicationSnapshotManager semaphore for {_snapshotDirectoryPath}.");
+
+        await _semaphore.WaitAsync(cancellationToken);
+        try
+        {
+            if (_snapshotCreated) return _testStartUri;
+
+            DebugHelper.WriteLineTimestamped("Creating snapshot.");
+
+            // Always start the current test run with a fresh snapshot.
+            await DirectoryHelper.SafelyDeleteDirectoryIfExistsAsync(_snapshotDirectoryPath, cancellationToken);
+
+            var result = await appInitializer();
+            await result.Context.Application.TakeSnapshotAsync(_snapshotDirectoryPath);
+
+            DebugHelper.WriteLineTimestamped("Finished snapshot.");
+
+            // At the end so if any exception happens above then it won' be mistakenly set to true.
+            _snapshotCreated = true;
+
+            return _testStartUri ??= result.TestStartUri;
+        }
+        finally
+        {
+            DebugHelper.WriteLineTimestamped($"Exiting SynchronizingWebApplicationSnapshotManager semaphore for {_snapshotDirectoryPath}.");
+            _semaphore.Release();
+        }
+    }
+}

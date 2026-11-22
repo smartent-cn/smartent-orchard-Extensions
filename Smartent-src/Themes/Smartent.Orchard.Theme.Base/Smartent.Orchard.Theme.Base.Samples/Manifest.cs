@@ -21,7 +21,7 @@ using Smartent.Orchard.Theme.Base.Core.Attributes;
 // - Reference the project in your web app.
 // - Enable the "Smartent.Orchard.Theme.Base.Samples" feature in your setup recipe.
 // - Set the site theme to "Smartent.Orchard.Theme.Base.Samples" in your setup recipe.
-// You can see these in the "Lombiq.OSOCE.Web.csproj" and the "Lombiq.OSOCE.Tests.recipe.json" files in the
+// You can see these in the "Smartent.Demo.Web.csproj" and the "Lombiq.OSOCE.Tests.recipe.json" files in the
 // https://github.com/Lombiq/Open-Source-Orchard-Core-Extensions/ repository.
 
 // NEXT STATION: package.json

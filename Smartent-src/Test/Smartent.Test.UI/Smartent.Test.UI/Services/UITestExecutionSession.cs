@@ -1,0 +1,1067 @@
+#nullable enable
+
+using Atata.HtmlValidation;
+using Cysharp.Text;
+using Smartent.Core.Primitives.Utilities;
+using Smartent.Test.UI.AccessibilityChecking;
+using Smartent.Test.UI.Constants;
+using Smartent.Test.UI.Exceptions;
+using Smartent.Test.UI.Extensions;
+using Smartent.Test.UI.Helpers;
+using Smartent.Test.UI.Models;
+using Smartent.Test.UI.SecurityScanning;
+using Smartent.Test.UI.Services.GitHub;
+using Smartent.Test.UI.SqlQueryMonitoring.Extensions;
+using Microsoft.VisualBasic.FileIO;
+using Mono.Unix;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Internal.Logging;
+using OrchardCore.Email;
+using System;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Text.Json.Nodes;
+using System.Threading;
+using System.Threading.Tasks;
+using Xunit;
+using Xunit.v3;
+using LogLevel = Microsoft.Extensions.Logging.LogLevel;
+
+namespace Smartent.Test.UI.Services;
+
+internal sealed class UITestExecutionSession : IAsyncDisposable
+{
+    private readonly WebApplicationInstanceFactory _webApplicationInstanceFactory;
+    private readonly UITestManifest _testManifest;
+    private readonly OrchardCoreUITestExecutorConfiguration _configuration;
+    private readonly UITestExecutorTestDumpConfiguration _dumpConfiguration;
+    private readonly ITestOutputHelper _testOutputHelper;
+
+    private int _screenshotCount;
+    private SynchronizingWebApplicationSnapshotManager? _currentSetupSnapshotManager;
+    private string? _snapshotDirectoryPath;
+    private bool _hasSetupOperation;
+    private bool _setupSnapshotDirectoryContainsApp;
+    private SqlServerManager? _sqlServerManager;
+    private SmtpService? _smtpService;
+    private AzureBlobStorageManager? _azureBlobStorageManager;
+    private ZapManager? _zapManager;
+    private IWebApplicationInstance? _applicationInstance;
+    private UITestContext? _context;
+    private DockerConfiguration? _dockerConfiguration;
+
+    public UITestExecutionSession(
+        WebApplicationInstanceFactory webApplicationInstanceFactory,
+        UITestManifest testManifest,
+        OrchardCoreUITestExecutorConfiguration configuration)
+    {
+        _webApplicationInstanceFactory = webApplicationInstanceFactory;
+        _testManifest = testManifest;
+        _configuration = configuration;
+        _dumpConfiguration = configuration.TestDumpConfiguration;
+        _testOutputHelper = configuration.TestOutputHelper;
+    }
+
+    static UITestExecutionSession()
+    {
+        if (SeleniumLogConfiguration.IsEnabled)
+        {
+            Log.SetLevel(SeleniumLogConfiguration.LogEventLevel);
+
+            // This is to distinguish Selenium logs created by different test assemblies (important when merging their
+            // TestDump folders in CI).
+            var entryAssemblyName = Assembly.GetEntryAssembly()!.ManifestModule.Name;
+
+            // There's no way to tell when the whole test suite ends. This needs to be disposed by the GC when ending
+            // the process.
+#pragma warning disable CA2000 // Dispose objects before losing scope
+            Log.Handlers.Add(new FileLogHandler(Path.Combine(
+                UITestExecutorTestDumpConfiguration.DefaultDumpsDirectoryPath,
+                $"SeleniumLog{entryAssemblyName}.log")));
+#pragma warning restore CA2000 // Dispose objects before losing scope
+        }
+    }
+
+    public ValueTask DisposeAsync() => ShutdownAsync();
+
+    public async Task<bool> ExecuteAsync(int retryCount, string dumpRootPath)
+    {
+        await using var cancellationTokenRegistration = _configuration.TestCancellationToken.Register(() =>
+        {
+            _testOutputHelper.WriteLine("Test execution was canceled. Shutting down the test execution session.");
+            ShutdownAsync().AsTask().ConfigureAwait(false).GetAwaiter().GetResult();
+        });
+
+        var startTime = DateTime.UtcNow;
+        IDictionary<string, ITestDumpItem>? testDumpContainer = null;
+        // At this point _context may not exist yet.
+        if (_context != null) _context.RetryCount = retryCount;
+
+        _testOutputHelper.WriteLineTimestampedAndDebug("Starting execution of {0}.", _testManifest.Name);
+
+        try
+        {
+            var setupConfiguration = _configuration.SetupConfiguration;
+            _hasSetupOperation = setupConfiguration.SetupOperation != null;
+
+            _setupSnapshotDirectoryContainsApp = Directory.Exists(
+                Path.Combine(setupConfiguration.SetupSnapshotDirectoryPath, "App_Data"));
+
+            if (_hasSetupOperation)
+            {
+                await SetupAsync();
+            }
+            else if (_setupSnapshotDirectoryContainsApp)
+            {
+                // In some cases, there is a temporary setup snapshot directory path but no setup operation. For
+                // example, when calling the "ExecuteTestAsync()" method without a setup operation.
+                _configuration.OrchardCoreConfiguration.SnapshotDirectoryPath = setupConfiguration.SetupSnapshotDirectoryPath;
+            }
+
+            // This means there was no setup operation.
+            _context ??= await CreateContextAsync(testStartRelativeUri: null);
+
+            // At this point _context definitely exists, so ensure that RetryCount is set.
+            _context.RetryCount = retryCount;
+
+            _context.TestDumpContainer.Clear();
+            testDumpContainer = _context.TestDumpContainer;
+
+            if (_context.IsBrowserConfigured) _context.SetDefaultBrowserSize();
+
+            var elasticsearchRunningContext = _context.ElasticsearchRunningContext;
+            if (elasticsearchRunningContext != null) await elasticsearchRunningContext.BeforeTestAsync(_context);
+
+            var timeout = _configuration.TimeoutConfiguration.TestRunTimeout;
+
+            var timeoutTask = Task.Delay(timeout, _configuration.TestCancellationToken);
+            var testTask = _testManifest.RunTestsAsync(_context);
+
+            await Task.WhenAny(testTask, timeoutTask);
+
+            // If the EnterInteractiveModeAsync() extension method has been used, then timeout should be ignored to make
+            // the debugging experience smoother. Note that EnterInteractiveModeAsync() should never be used in
+            // committed tests.
+            if (timeoutTask.IsCompleted
+                && !_configuration.TestCancellationToken.IsCancellationRequested
+                && !ShortcutsUITestContextExtensions.InteractiveModeHasBeenUsed)
+            {
+                throw new TimeoutException($"The time allotted for the test ({timeout}) was exceeded.");
+            }
+
+            // Since the timeout task is not yet completed but the Task.WhenAny has finished, the test task is done in
+            // some way. So it's safe to await it here. It's also necessary to cleanly propagate any exceptions that may
+            // have been thrown inside it.
+            await testTask;
+
+            if (elasticsearchRunningContext != null) await elasticsearchRunningContext.AfterTestAsync(_context);
+
+            await _context.AssertLogsAsync();
+
+            await CreateTestDumpAsync(dumpRootPath, retryCount, testDumpContainer);
+
+            return true;
+        }
+        catch (Exception ex)
+        {
+            ex = PrepareAndLogException(ex);
+
+            if (ex is SetupFailedFastException) throw;
+
+            await CreateTestDumpAsync(
+                dumpRootPath,
+                retryCount,
+                testDumpContainer,
+                dumpContainerPath => FailureTestDumpProcessAsync(dumpContainerPath, ex));
+
+            if (_context?.IsFinalTry == true || retryCount >= _configuration.MaxRetryCount)
+            {
+                var dumpFolderAbsolutePath = Path.Combine(AppContext.BaseDirectory, dumpRootPath);
+
+                _testOutputHelper.WriteLineTimestampedAndDebug(
+                    "The test was attempted {0} and won't be retried anymore. You can see more details " +
+                        "on why it's failing in the test dump folder: {1}",
+                    StringHelper.PluralizeInvariant("once", "{0} times", retryCount + 1),
+                    dumpFolderAbsolutePath);
+
+                throw;
+            }
+
+            await LogRetryAsync(retryCount);
+        }
+        finally
+        {
+            await ShutdownAsync();
+
+            _testOutputHelper.WriteLineTimestampedAndDebug(
+                "Finishing execution of {0}, total time: {1}", _testManifest.Name, DateTime.UtcNow - startTime);
+        }
+
+        return false;
+    }
+
+    private async ValueTask ShutdownAsync()
+    {
+        var tempSubDirectoryPath = _context?.GetTempSubDirectoryPath();
+
+        _testOutputHelper.WriteLineTimestampedAndDebug("Shutting down the test execution session.");
+
+        if (_configuration.RunAssertLogsOnAllPageChanges)
+        {
+            _configuration.CustomConfiguration.Remove("LogsAssertionOnPageChangeWasSetUp");
+            _configuration.Events.AfterPageChange -= OnAssertLogsAsync;
+        }
+
+        if (_dumpConfiguration.CaptureScreenshots)
+        {
+            _configuration.CustomConfiguration.Remove("ScreenshotsOnPageChangeAndClickWereSetUp");
+
+            _configuration.Events.AfterPageChange -= TakeScreenshotIfEnabledAsync;
+            _configuration.Events.AfterClick -= TakeScreenshotIfEnabledAsync;
+        }
+
+        if (_context?.ElasticsearchRunningContext is { } elasticsearchRunningContext)
+        {
+            await elasticsearchRunningContext.AfterTestAsync(_context);
+        }
+
+        if (_applicationInstance != null) await _applicationInstance.DisposeAsync();
+        if (_context != null) await _context.DisposeAsync();
+        if (_sqlServerManager != null) await _sqlServerManager.DisposeAsync();
+        if (_smtpService != null) await _smtpService.DisposeAsync();
+        if (_azureBlobStorageManager != null) await _azureBlobStorageManager.DisposeAsync();
+        if (_zapManager != null) await _zapManager.DisposeAsync();
+
+        // First the context needs to be disposed before anything else, and then, once the other services free up any
+        // handles to the temp folder, that can be cleaned up too. No need to do it on ephemeral GitHub runners, though,
+        // also because the ZAP report's folder (like "2025-01-22-ZAP-Report-localhost") will remain unwritable (see the
+        // comment in ZapManager).
+        if (!string.IsNullOrEmpty(tempSubDirectoryPath) &&
+            Directory.Exists(tempSubDirectoryPath) &&
+            !GitHubHelper.IsGitHubEnvironment)
+        {
+            try
+            {
+                // This is a clean-up method, no need to forward a CancellationToken.
+                await DirectoryHelper.SafelyDeleteDirectoryIfExistsAsync(tempSubDirectoryPath, CancellationToken.None);
+            }
+            catch (Exception ex) when (GitHubHelper.IsGitHubEnvironment)
+            {
+                // This can be caused by running a security scan via ZapManager.
+                _testOutputHelper.WriteLineTimestampedAndDebug(
+                    "Cleaning up the temporary directory failed with the following exception. Due to using ephemeral " +
+                        "GitHub Actions runners, this is not a fatal error. Exception details: {0}",
+                    ex);
+            }
+        }
+
+        _screenshotCount = 0;
+
+        _context = null;
+
+        _testOutputHelper.WriteLineTimestampedAndDebug("Finished shutting down the test execution session.");
+    }
+
+    private Exception PrepareAndLogException(Exception ex)
+    {
+        if (ex is AggregateException aggregateException)
+        {
+            if (aggregateException.InnerExceptions.Count > 1)
+            {
+                throw new InvalidOperationException(
+                    "More than one exceptions in the AggregateException. This shouldn't really happen.");
+            }
+
+            ex = aggregateException.InnerExceptions[0];
+        }
+
+        if (ex is PageChangeAssertionException { InnerException: { } pageChangeAssertionInnerException })
+        {
+            _testOutputHelper.WriteLineTimestampedAndDebug(ex.Message);
+            ex = pageChangeAssertionInnerException;
+        }
+        else if (_context?.Driver is { } driver)
+        {
+            try
+            {
+                // This will throw a WebDriverException if the browser session was closed. This can happen even if
+                // _context.Driver is not null. There's no better way to check this.
+                var handle = driver.CurrentWindowHandle;
+
+                _testOutputHelper.WriteLineTimestampedAndDebug(
+                    $"An exception has occurred while interacting with the page {_context.GetPageTitleAndAddress()}. Window handle: {handle}");
+            }
+            catch (WebDriverException webDriverException) when (webDriverException.Message == "invalid session id")
+            {
+                // The browser session was closed, so the driver can't be used to get the page title and address.
+            }
+        }
+
+        _testOutputHelper.WriteLineTimestampedAndDebug($"The test failed with the following exception: {ex}");
+
+        return ex;
+    }
+
+    private async Task FailureTestDumpProcessAsync(string dumpContainerPath, Exception ex)
+    {
+        if (_context == null) return;
+
+        var debugInformationPath = GetDebugInformationPath(dumpContainerPath);
+
+        if (_context.IsBrowserRunning) await CaptureBrowserUsingDumpsAsync(debugInformationPath);
+        if (_dumpConfiguration.CaptureAppSnapshot) await CaptureAppSnapshotAsync(dumpContainerPath);
+        CaptureMarkupValidationResults(ex, debugInformationPath);
+    }
+
+    private async Task CreateTestDumpAsync(
+        string dumpRootPath,
+        int retryCount,
+        IDictionary<string, ITestDumpItem>? testDumpContainer,
+        Func<string, Task>? additionalDumpProcess = null)
+    {
+        if (!_dumpConfiguration.CreateTestDump ||
+            (testDumpContainer?.Any() != true && additionalDumpProcess == null))
+        {
+            return;
+        }
+
+        var dumpContainerPath = Path.Combine(dumpRootPath, $"Attempt {retryCount.ToTechnicalString()}");
+        var debugInformationPath = GetDebugInformationPath(dumpContainerPath);
+
+        try
+        {
+            Directory.CreateDirectory(dumpContainerPath);
+            Directory.CreateDirectory(debugInformationPath);
+
+            await File.WriteAllTextAsync(
+                Path.Combine(dumpRootPath, "TestName.txt"),
+                _testManifest.Name,
+                _configuration.TestCancellationToken);
+
+            if (additionalDumpProcess != null) await additionalDumpProcess(dumpContainerPath);
+
+            if (testDumpContainer != null)
+            {
+                foreach (var toDump in testDumpContainer)
+                {
+                    await SaveTestDumpFromContextAsync(debugInformationPath, toDump.Key, toDump.Value);
+                }
+            }
+        }
+        catch (Exception dumpException)
+        {
+            _testOutputHelper.WriteLineTimestampedAndDebug(
+                $"Creating the test dump of the test failed with the following exception: {dumpException}");
+        }
+        finally
+        {
+            await SaveTestOutputAsync(debugInformationPath);
+        }
+    }
+
+    private async Task SaveTestDumpFromContextAsync(
+        string debugInformationPath,
+        string dumpRelativePath,
+        ITestDumpItem item)
+    {
+        try
+        {
+            await using var dumpStream = await item.GetStreamAsync();
+            var filePath = Path.Combine(debugInformationPath, dumpRelativePath);
+            FileSystemHelper.EnsureDirectoryExists(
+                Path.GetDirectoryName(filePath) ??
+                throw new DirectoryNotFoundException($"Invalid path \"{filePath}\"."));
+
+            await using var dumpFile = File.Open(
+                filePath,
+                FileMode.Create,
+                FileAccess.Write);
+            await dumpStream.CopyToAsync(dumpFile, _configuration.TestCancellationToken);
+        }
+        catch (Exception dumpException)
+        {
+            _testOutputHelper.WriteLineTimestampedAndDebug(
+                $"Saving dump ({dumpRelativePath}) of the test from context failed with the following exception: {dumpException}");
+        }
+    }
+
+    private async Task SaveTestOutputAsync(string debugInformationPath)
+    {
+        try
+        {
+            var concreteTestOutputHelper = _testOutputHelper as TestOutputHelper;
+            concreteTestOutputHelper ??= (_testOutputHelper as ITestOutputHelperDecorator)?.Decorated as TestOutputHelper;
+
+            if (concreteTestOutputHelper != null)
+            {
+                // While this depends on the directory creation in the above try block it needs to come after the catch
+                // otherwise the message saved there wouldn't be included.
+
+                var testOutputPath = Path.Combine(debugInformationPath, "TestOutput.log");
+                await File.WriteAllTextAsync(testOutputPath, concreteTestOutputHelper.Output, _configuration.TestCancellationToken);
+
+                if (_configuration.ReportTeamCityMetadata)
+                {
+                    TeamCityMetadataReporter.ReportArtifactLink(_testManifest, "TestOutput", testOutputPath);
+                }
+            }
+        }
+        catch (Exception testOutputHelperException)
+        {
+            _testOutputHelper.WriteLine(
+                $"Saving the contents of the test output failed with the following exception: {testOutputHelperException}");
+        }
+    }
+
+    private async Task CaptureAppSnapshotAsync(string dumpContainerPath)
+    {
+        if (_context == null) return;
+
+        var appDumpPath = Path.Combine(dumpContainerPath, "AppDump");
+        await _context.Application.TakeSnapshotAsync(appDumpPath);
+
+        if (_sqlServerManager != null)
+        {
+            try
+            {
+                var remotePath = string.IsNullOrEmpty(_dockerConfiguration?.ContainerName)
+                    ? appDumpPath
+                    : _dockerConfiguration.ContainerSnapshotPath;
+
+                await _sqlServerManager.TakeSnapshotAsync(
+                    remotePath,
+                    appDumpPath,
+                    _dockerConfiguration?.ContainerName,
+                    useCompressionIfAvailable: true);
+            }
+            catch (Exception failureException)
+            {
+                _testOutputHelper.WriteLineTimestampedAndDebug(
+                    $"Taking an SQL Server DB snapshot failed with the following exception: {failureException}");
+            }
+        }
+
+        if (_azureBlobStorageManager != null)
+        {
+            try
+            {
+                await _azureBlobStorageManager.TakeSnapshotAsync(appDumpPath);
+            }
+            catch (Exception failureException)
+            {
+                _testOutputHelper.WriteLineTimestampedAndDebug(
+                    $"Taking an Azure Blob Storage snapshot failed with the following exception: {failureException}");
+            }
+        }
+    }
+
+    private void CaptureMarkupValidationResults(Exception ex, string debugInformationPath)
+    {
+        // Saving the accessibility and HTML validation reports to files should happen here and can't earlier since at
+        // that point there's no TestDumps folder yet.
+
+        if (ex is AccessibilityAssertionException accessibilityAssertionException
+            && _configuration.AccessibilityCheckingConfiguration.CreateReportOnFailure)
+        {
+            var accessibilityReportPath = Path.Combine(debugInformationPath, AccessibilityCheckingConstants.AccessibilityReportFileName);
+            _context?.Driver?.CreateAxeHtmlReport(accessibilityAssertionException.AxeResult, accessibilityReportPath);
+
+            if (_configuration.ReportTeamCityMetadata)
+            {
+                TeamCityMetadataReporter.ReportArtifactLink(
+                    _testManifest, AccessibilityCheckingConstants.AccessibilityReportFileNameWithoutExtension, accessibilityReportPath);
+            }
+        }
+
+        if (ex is HtmlValidationAssertionException htmlValidationAssertionException
+            && _configuration.HtmlValidationConfiguration.CreateReportOnFailure)
+        {
+            var resultFilePath = htmlValidationAssertionException.HtmlValidationResult.ResultFilePath;
+            if (!string.IsNullOrEmpty(resultFilePath))
+            {
+                var htmlValidationReportPath = Path.Combine(debugInformationPath, "HtmlValidationReport.txt");
+                File.Move(resultFilePath, htmlValidationReportPath);
+
+                if (_configuration.ReportTeamCityMetadata)
+                {
+                    TeamCityMetadataReporter.ReportArtifactLink(_testManifest, "HtmlValidationReport", htmlValidationReportPath);
+                }
+            }
+            else
+            {
+                _testOutputHelper.WriteLineTimestampedAndDebug(
+                    "While it was configured to create an HTML validation report on validation failure, there was " +
+                    $"no report generated due to {nameof(HtmlValidationOptions)}.{nameof(HtmlValidationOptions.SaveResultToFile)} " +
+                    "being false.");
+            }
+        }
+    }
+
+    private Task LogRetryAsync(int retryCount)
+    {
+        var retryTimes = StringHelper.PluralizeInvariant("once", "{0} times", retryCount + 1);
+        var retryAttempts = StringHelper.PluralizeInvariant(
+            "1 more attempt",
+            "{0} more attempts",
+            _configuration.MaxRetryCount - retryCount);
+
+        _testOutputHelper.WriteLineTimestampedAndDebug(
+            "The test was attempted {0}. {1} will be made after waiting {2}.",
+            retryTimes,
+            retryAttempts,
+            _configuration.RetryInterval);
+
+        if (_configuration.ExtendGitHubActionsOutput &&
+            _configuration.GitHubActionsOutputConfiguration.EnableTestRetryWarningAnnotations &&
+            GitHubHelper.IsGitHubEnvironment)
+        {
+            new GitHubAnnotationWriter(_testOutputHelper).Annotate(
+                LogLevel.Warning,
+                "UI test may be flaky",
+                $"The {_testManifest.Name} test failed {retryTimes} and will be retried {retryAttempts}. This may indicate it being flaky.");
+        }
+
+        if (_configuration.RetryInterval > TimeSpan.Zero)
+        {
+            _testOutputHelper.WriteLineTimestampedAndDebug(
+                "Waiting {0} before retrying the test.", _configuration.RetryInterval);
+
+            return Task.Delay(_configuration.RetryInterval, _configuration.TestCancellationToken);
+        }
+
+        _testOutputHelper.WriteLineTimestampedAndDebug(
+            "No retry interval is set, retrying the test immediately.");
+        return Task.CompletedTask;
+    }
+
+    private async Task SetupAsync()
+    {
+        var setupConfiguration = _configuration.SetupConfiguration;
+
+        var snapshotSubdirectory = "SQLite";
+        if (_configuration.UseSqlServer)
+        {
+            snapshotSubdirectory = _configuration.UseAzureBlobStorage
+                ? "SqlServer-AzureBlob"
+                : "SqlServer";
+        }
+        else if (_configuration.UseAzureBlobStorage)
+        {
+            snapshotSubdirectory = "SQLite-AzureBlob";
+        }
+
+        snapshotSubdirectory += "-" + setupConfiguration.CalculateSetupOperationIdentifier();
+
+        _snapshotDirectoryPath = Path.Combine(setupConfiguration.SetupSnapshotDirectoryPath, snapshotSubdirectory);
+
+        _configuration.OrchardCoreConfiguration.SnapshotDirectoryPath = _snapshotDirectoryPath;
+
+        _currentSetupSnapshotManager = UITestExecutionSessionsMeta.SetupSnapshotManagers.GetOrAdd(
+            _snapshotDirectoryPath,
+            path => new SynchronizingWebApplicationSnapshotManager(path));
+
+        try
+        {
+            _testOutputHelper.WriteLineTimestampedAndDebug("Starting waiting for the setup operation.");
+
+            _dockerConfiguration = TestConfigurationManager.GetConfiguration<DockerConfiguration>();
+
+            var testStartUri = await _currentSetupSnapshotManager.RunOperationAndSnapshotIfNewAsync(
+                async () =>
+                {
+                    _testOutputHelper.WriteLineTimestampedAndDebug("Starting setup operation.");
+
+                    await setupConfiguration.BeforeSetup.InvokeAsync<BeforeSetupHandler>(handler => handler(_configuration));
+
+                    if (setupConfiguration.FastFailSetup &&
+                        UITestExecutionSessionsMeta.SetupOperationFailureCount.TryGetValue(GetSetupHashCode(), out var failure) &&
+                        failure.FailureCount > _configuration.MaxRetryCount)
+                    {
+                        throw new SetupFailedFastException(failure.FailureCount, failure.LatestException);
+                    }
+
+                    // Note that the context creation needs to be done here too because the Orchard app needs the
+                    // snapshot config to be available at startup too.
+                    _context = await CreateContextAsync(testStartRelativeUri: null);
+
+                    SetupSqlServerSnapshot();
+                    SetupAzureBlobStorageSnapshot();
+
+                    if (_context.IsBrowserConfigured) _context.SetDefaultBrowserSize();
+
+                    var result = (_context, await setupConfiguration.SetupOperation(_context));
+
+                    await _context.AssertLogsAsync();
+
+                    await setupConfiguration.AfterSetup.InvokeAsync<AfterSetupHandler>(handler => handler(_configuration));
+
+                    _testOutputHelper.WriteLineTimestampedAndDebug("Finished setup operation.");
+
+                    return result;
+                },
+                _configuration.TestCancellationToken);
+
+            _testOutputHelper.WriteLineTimestampedAndDebug("Finished waiting for the setup operation.");
+
+            // Restart the app even after a fresh setup so all tests run with an app newly started from a snapshot.
+            if (_context != null)
+            {
+                await ShutdownAsync();
+                _context = null;
+            }
+
+            // The host and port of the Uri will change if a new app instance is started from the setup snapshot, so
+            // only the relative part of the Uri can be used.
+            _context = await CreateContextAsync(testStartUri);
+            if (_context.IsBrowserConfigured) await _context.GoToRelativeUrlAsync(testStartUri.PathAndQuery);
+        }
+        catch (Exception ex) when (ex is not SetupFailedFastException)
+        {
+            if (setupConfiguration.FastFailSetup)
+            {
+                UITestExecutionSessionsMeta.SetupOperationFailureCount.AddOrUpdate(
+                    GetSetupHashCode(),
+                    (1, ex),
+                    (_, pair) => (pair.FailureCount, ex));
+            }
+
+            throw;
+        }
+    }
+
+    private void SetupSqlServerSnapshot()
+    {
+        if (!_configuration.UseSqlServer) return;
+
+        // This is only necessary for the setup snapshot.
+        Task SqlServerManagerBeforeTakeSnapshotHandlerAsync(OrchardCoreAppStartContext context, string snapshotDirectoryPath)
+        {
+            ArgumentNullException.ThrowIfNull(snapshotDirectoryPath);
+
+            _configuration.OrchardCoreConfiguration.BeforeTakeSnapshot -= SqlServerManagerBeforeTakeSnapshotHandlerAsync;
+
+            var remotePath = snapshotDirectoryPath;
+
+            if (!string.IsNullOrEmpty(_dockerConfiguration?.ContainerName))
+            {
+                remotePath = _dockerConfiguration.ContainerSnapshotPath;
+
+                // Due to the multiuser focus of Unix-like platforms it's very common that Docker will be a different
+                // user without access to freshly created directories by the current user. Since this is a subdirectory
+                // that third parties can't list without prior knowledge and it only contains freshly created data this
+                // is not a security concern.
+                if (!OperatingSystem.IsWindows())
+                {
+                    if (!Directory.Exists(snapshotDirectoryPath)) Directory.CreateDirectory(snapshotDirectoryPath);
+                    var unixFileInfo = new UnixFileInfo(snapshotDirectoryPath);
+                    unixFileInfo.FileAccessPermissions |= FileAccessPermissions.OtherReadWriteExecute;
+                }
+            }
+
+            return _sqlServerManager!.TakeSnapshotAsync(remotePath, snapshotDirectoryPath, _dockerConfiguration?.ContainerName);
+        }
+
+        // This is necessary because a simple subtraction wouldn't remove previous instances of the local function.
+        // Thus, if anything goes wrong between the below delegate registration and its invocation, it will remain
+        // registered and fail on the disposed SqlServerManager during a retry.
+        _configuration.OrchardCoreConfiguration.BeforeTakeSnapshot =
+            _configuration.OrchardCoreConfiguration.BeforeTakeSnapshot.RemoveAll(SqlServerManagerBeforeTakeSnapshotHandlerAsync);
+        _configuration.OrchardCoreConfiguration.BeforeTakeSnapshot += SqlServerManagerBeforeTakeSnapshotHandlerAsync;
+    }
+
+    private void SetupAzureBlobStorageSnapshot()
+    {
+        if (!_configuration.UseAzureBlobStorage) return;
+
+        // This is only necessary for the setup snapshot.
+        Task AzureBlobStorageManagerBeforeTakeSnapshotHandlerAsync(OrchardCoreAppStartContext context, string snapshotDirectoryPath)
+        {
+            _configuration.OrchardCoreConfiguration.BeforeTakeSnapshot -= AzureBlobStorageManagerBeforeTakeSnapshotHandlerAsync;
+            return _azureBlobStorageManager!.TakeSnapshotAsync(snapshotDirectoryPath);
+        }
+
+        _configuration.OrchardCoreConfiguration.BeforeTakeSnapshot =
+            _configuration.OrchardCoreConfiguration.BeforeTakeSnapshot.RemoveAll(AzureBlobStorageManagerBeforeTakeSnapshotHandlerAsync);
+        _configuration.OrchardCoreConfiguration.BeforeTakeSnapshot += AzureBlobStorageManagerBeforeTakeSnapshotHandlerAsync;
+    }
+
+    private async Task<UITestContext> CreateContextAsync(Uri? testStartRelativeUri)
+    {
+        var contextId = Guid.NewGuid().ToString();
+        _configuration.BrowserConfiguration.UITestContextId = contextId;
+        _configuration.BrowserConfiguration.TempDirectoryPath = _configuration.TempDirectoryPath;
+
+        var sqlServerContext = _configuration.UseSqlServer ? await SetUpSqlServerAsync() : null;
+        var azureBlobStorageContext = _configuration.UseAzureBlobStorage ? await SetUpAzureBlobStorageAsync() : null;
+        var smtpContext = _configuration.UseSmtpService ? await StartSmtpServiceAsync() : null;
+        var elasticsearchContext = _configuration.UseElasticsearch ? SetUpElasticsearch() : null;
+
+        _zapManager = new ZapManager(_testOutputHelper);
+
+        Task UITestingBeforeAppStartHandlerAsync(OrchardCoreAppStartContext context, InstanceCommandLineArgumentsBuilder arguments)
+        {
+            arguments.AddWithValue("OrchardCore:OrchardCore_YesSql:EnableThreadSafetyChecks", value: true);
+            arguments.AddWithValue(ConfigurationKeys.IsUITesting, value: true);
+            arguments.AddWithValue(
+                ConfigurationKeys.EnableSqlQueryMonitoring,
+                value: _configuration.SqlQueryMonitoringConfiguration.EnableSqlQueryMonitoringCollection);
+
+            if (_configuration.ShortcutsConfiguration.InjectApplicationInfo)
+            {
+                arguments.AddWithValue(ConfigurationKeys.InjectApplicationInfo, value: true);
+            }
+
+            return Task.CompletedTask;
+        }
+
+        _configuration.OrchardCoreConfiguration.BeforeAppStart =
+            _configuration.OrchardCoreConfiguration.BeforeAppStart.RemoveAll(UITestingBeforeAppStartHandlerAsync);
+        _configuration.OrchardCoreConfiguration.BeforeAppStart += UITestingBeforeAppStartHandlerAsync;
+
+        _applicationInstance = _webApplicationInstanceFactory(_configuration, contextId);
+        var appBaseUri = await _applicationInstance.StartUpAsync();
+
+        _configuration.SetUpEvents();
+        SetUpPageChangeAssertions();
+
+        return await UITestContext.CreateAsync(new(
+            contextId,
+            _testManifest,
+            _configuration,
+            _applicationInstance,
+            _testOutputHelper,
+            appBaseUri,
+            testStartRelativeUri != null ? new Uri(appBaseUri, testStartRelativeUri.PathAndQuery) : appBaseUri,
+            new(sqlServerContext, smtpContext, azureBlobStorageContext, elasticsearchContext),
+            _zapManager));
+    }
+
+    private void SetUpPageChangeAssertions()
+    {
+        if (_configuration.AccessibilityCheckingConfiguration.RunAccessibilityCheckingAssertionOnAllPageChanges)
+        {
+            _configuration.SetUpAccessibilityCheckingAssertionOnPageChange();
+        }
+
+        if (_configuration.HtmlValidationConfiguration.RunHtmlValidationAssertionOnAllPageChanges)
+        {
+            _configuration.SetUpHtmlValidationAssertionOnPageChange();
+        }
+
+        if (_configuration.SqlQueryMonitoringConfiguration.EnableSqlQueryMonitoringCollection &&
+            _configuration.SqlQueryMonitoringConfiguration.RunSqlQueryMonitoringAssertionOnAllPageChanges)
+        {
+            _configuration.SetUpSqlQueryMonitoringAssertionOnPageChange();
+        }
+
+        if (_configuration.RunAssertLogsOnAllPageChanges &&
+            _configuration.CustomConfiguration.TryAdd("LogsAssertionOnPageChangeWasSetUp", value: true))
+        {
+            _configuration.Events.AfterPageChange += OnAssertLogsAsync;
+        }
+
+        if (_dumpConfiguration.CaptureScreenshots &&
+            _configuration.CustomConfiguration.TryAdd("ScreenshotsOnPageChangeAndClickWereSetUp", value: true))
+        {
+            _configuration.Events.AfterPageChange += TakeScreenshotIfEnabledAsync;
+            _configuration.Events.AfterClick += TakeScreenshotIfEnabledAsync;
+        }
+
+        if (_configuration.CustomConfiguration.TryAdd("LoggingOnPageChangeWasSetUp", value: true))
+        {
+            _configuration.Events.AfterPageChange += context =>
+            {
+                _testOutputHelper.WriteLineTimestampedAndDebug("Page changed to {0}.", context.GetCurrentUri());
+                return Task.CompletedTask;
+            };
+        }
+    }
+
+    private string GetSetupHashCode() =>
+        ZString.Concat(
+            _configuration.SetupConfiguration.CalculateSetupOperationIdentifier(),
+            _configuration.UseSqlServer,
+            _configuration.UseAzureBlobStorage);
+
+    private Task OnAssertLogsAsync(UITestContext context) => context.AssertLogsAsync();
+
+    private async Task<SqlServerRunningContext> SetUpSqlServerAsync()
+    {
+        _sqlServerManager = new SqlServerManager(_configuration.SqlServerDatabaseConfiguration);
+        var sqlServerContext = await _sqlServerManager.CreateDatabaseAsync();
+
+        async Task SqlServerManagerBeforeAppStartHandlerAsync(OrchardCoreAppStartContext context, InstanceCommandLineArgumentsBuilder arguments)
+        {
+            _configuration.OrchardCoreConfiguration.BeforeAppStart -= SqlServerManagerBeforeAppStartHandlerAsync;
+
+            if (!_hasSetupOperation || !Directory.Exists(_snapshotDirectoryPath))
+            {
+                return;
+            }
+
+            var containerPath = string.IsNullOrEmpty(_dockerConfiguration?.ContainerName)
+                ? _snapshotDirectoryPath
+                : _dockerConfiguration.ContainerSnapshotPath;
+
+            await _sqlServerManager.RestoreSnapshotAsync(
+                containerPath,
+                _snapshotDirectoryPath,
+                _dockerConfiguration?.ContainerName);
+
+            var sitesDirectoryPath = Path.Combine(context.ContentRootPath, "App_Data", "Sites");
+            var tenantDirectoryPaths = Directory.GetDirectories(sitesDirectoryPath);
+
+            foreach (var tenantDirectoryPath in tenantDirectoryPaths)
+            {
+                var appSettingsPath = Path.Combine(tenantDirectoryPath, "appsettings.json");
+
+                if (!File.Exists(appSettingsPath))
+                {
+                    throw new InvalidOperationException(
+                        "The setup snapshot's appsettings.json file for the tenant " +
+                        Path.GetFileName(tenantDirectoryPath) +
+                        " wasn't found. This most possibly means that the tenant's setup failed.");
+                }
+
+                var appSettings = JsonNode.Parse(await File.ReadAllTextAsync(appSettingsPath, _configuration.TestCancellationToken))!;
+                appSettings[nameof(sqlServerContext.ConnectionString)] = sqlServerContext.ConnectionString;
+                await File.WriteAllTextAsync(appSettingsPath, appSettings.ToString(), _configuration.TestCancellationToken);
+            }
+        }
+
+        _configuration.OrchardCoreConfiguration.BeforeAppStart =
+            _configuration.OrchardCoreConfiguration.BeforeAppStart.RemoveAll(SqlServerManagerBeforeAppStartHandlerAsync);
+        _configuration.OrchardCoreConfiguration.BeforeAppStart += SqlServerManagerBeforeAppStartHandlerAsync;
+
+        return sqlServerContext;
+    }
+
+    private async Task<AzureBlobStorageRunningContext> SetUpAzureBlobStorageAsync()
+    {
+        _azureBlobStorageManager = new AzureBlobStorageManager(_configuration.AzureBlobStorageConfiguration);
+        var azureBlobStorageContext = await _azureBlobStorageManager.SetupBlobStorageAsync();
+
+        async Task AzureBlobStorageManagerBeforeAppStartHandlerAsync(
+            OrchardCoreAppStartContext context,
+            InstanceCommandLineArgumentsBuilder arguments)
+        {
+            _configuration.OrchardCoreConfiguration.BeforeAppStart -= AzureBlobStorageManagerBeforeAppStartHandlerAsync;
+
+            // These need to be configured directly, since that module reads the configuration directly instead of
+            // allowing post-configuration.
+            arguments
+                .AddWithValue(
+                    "OrchardCore:OrchardCore_Media_Azure:BasePath",
+                    value: azureBlobStorageContext.BasePath + "/{{ ShellSettings.Name }}")
+                .AddWithValue(
+                    "OrchardCore:OrchardCore_Media_Azure:ConnectionString",
+                    value: _configuration.AzureBlobStorageConfiguration.ConnectionString)
+                .AddWithValue(
+                    "OrchardCore:OrchardCore_Media_Azure:ContainerName",
+                    value: _configuration.AzureBlobStorageConfiguration.ContainerName)
+                .AddWithValue("OrchardCore:OrchardCore_Media_Azure:CreateContainer", value: true)
+                .AddWithValue(ConfigurationKeys.UseAzureBlobStorage, value: true);
+
+            if (!_hasSetupOperation || !Directory.Exists(_snapshotDirectoryPath)) return;
+
+            await _azureBlobStorageManager.RestoreSnapshotAsync(_snapshotDirectoryPath);
+        }
+
+        _configuration.OrchardCoreConfiguration.BeforeAppStart =
+            _configuration.OrchardCoreConfiguration.BeforeAppStart.RemoveAll(AzureBlobStorageManagerBeforeAppStartHandlerAsync);
+        _configuration.OrchardCoreConfiguration.BeforeAppStart += AzureBlobStorageManagerBeforeAppStartHandlerAsync;
+
+        return azureBlobStorageContext;
+    }
+
+    private async Task<SmtpServiceRunningContext> StartSmtpServiceAsync()
+    {
+        _smtpService = new SmtpService(_configuration.SmtpServiceConfiguration);
+        var smtpContext = await _smtpService.StartAsync();
+        _configuration.SmtpServiceConfiguration.Context = smtpContext;
+
+        // Exclude any errors coming from the smtp4dev JS files. Worker-html related configurations can be removed
+        // after: https://github.com/rnwood/smtp4dev/issues/1917 is resolved and smtp4dev is updated.
+        var indexFile = new Uri(smtpContext.WebUIUri, "/assets/index-").AbsoluteUri;
+        _configuration.BrowserLogFilters[nameof(SmtpService)] = entry =>
+            entry.StackTrace?.CallFrames.FirstOrDefault()?.Url.StartsWithOrdinalIgnoreCase(indexFile) != true &&
+                !(entry.Text?.ContainsOrdinalIgnoreCase("Failed to execute 'importScripts' on 'WorkerGlobalScope'") == true &&
+                (entry.Text.ContainsOrdinalIgnoreCase("ace-builds/src-noconflict/worker-html.js") ||
+                    entry.StackTrace?.CallFrames.FirstOrDefault()?.Url.ContainsOrdinalIgnoreCase(smtpContext.WebUIUri.AbsoluteUri) == true));
+
+        _configuration.WithIgnoreExpectedNotFoundResponseFilter("/worker-html.js");
+
+        Task SmtpServiceBeforeAppStartHandlerAsync(OrchardCoreAppStartContext context, InstanceCommandLineArgumentsBuilder arguments)
+        {
+            _configuration.OrchardCoreConfiguration.BeforeAppStart -= SmtpServiceBeforeAppStartHandlerAsync;
+
+            const string smtpArgumentPrefix = "OrchardCore:OrchardCore_Email_Smtp:";
+            arguments
+                .AddWithValue(ConfigurationKeys.EnableSmtpFeature, value: true)
+                .AddWithValue(smtpArgumentPrefix + nameof(SmtpOptions.IsEnabled), value: true)
+                .AddWithValue(smtpArgumentPrefix + nameof(SmtpOptions.Host), value: "localhost")
+                .AddWithValue(smtpArgumentPrefix + nameof(SmtpOptions.RequireCredentials), value: false)
+                .AddWithValue(smtpArgumentPrefix + nameof(SmtpOptions.Port), value: smtpContext.Port)
+                .AddWithValue(smtpArgumentPrefix + nameof(SmtpOptions.DefaultSender), value: "sender@example.com")
+                .AddWithValue(smtpArgumentPrefix + nameof(SmtpOptions.DeliveryMethod), value: nameof(SmtpDeliveryMethod.Network));
+
+            return Task.CompletedTask;
+        }
+
+        _configuration.OrchardCoreConfiguration.BeforeAppStart =
+            _configuration.OrchardCoreConfiguration.BeforeAppStart.RemoveAll(SmtpServiceBeforeAppStartHandlerAsync);
+        _configuration.OrchardCoreConfiguration.BeforeAppStart += SmtpServiceBeforeAppStartHandlerAsync;
+
+        return smtpContext;
+    }
+
+    private ElasticsearchRunningContext SetUpElasticsearch()
+    {
+        var prefix = TestContext.Current.GetElasticsearchSafeIndexName();
+
+        _configuration.OrchardCoreConfiguration.ConfigureElasticsearchPrefix(prefix);
+
+        return new(prefix);
+    }
+
+    private async Task CaptureBrowserUsingDumpsAsync(string debugInformationPath)
+    {
+        if (_context == null) return;
+
+        // Saving the failure screenshot and HTML output should be as early after the test fail as possible so they show
+        // an accurate state. Otherwise, e.g. the UI can change, resources can load in the meantime.
+        if (_dumpConfiguration.CaptureScreenshots)
+        {
+            await CreateScreenshotsDumpAsync(debugInformationPath);
+        }
+
+        if (_dumpConfiguration.CaptureDownloads && Directory.Exists(_context!.DownloadsDirectoryPath))
+        {
+            FileSystem.CopyDirectory(
+                _context.DownloadsDirectoryPath,
+                Path.Combine(debugInformationPath, DirectoryPaths.Downloads));
+        }
+
+        if (_dumpConfiguration.CaptureHtmlSource)
+        {
+            _context.RefreshCurrentAtataContext();
+            _context.Scope.DriverSession?.TakePageSnapshot("TestDumpPageSnapshot");
+
+            var file = _context.Scope.AtataContext.Artifacts.Files.Value
+                .Single(file => file.Name.Value.Contains("TestDumpPageSnapshot"));
+
+            var snapshotDumpPath = Path.Combine(debugInformationPath, "PageSource" + Path.GetExtension(file.Name.Value));
+            File.Copy(file.FullName.Value, snapshotDumpPath);
+
+            if (_configuration.ReportTeamCityMetadata)
+            {
+                TeamCityMetadataReporter.ReportArtifactLink(_testManifest, "PageSource", snapshotDumpPath);
+            }
+        }
+
+        if (_dumpConfiguration.CaptureBrowserLog)
+        {
+            var browserLogPath = Path.Combine(debugInformationPath, "BrowserLog.log");
+
+            await File.WriteAllTextAsync(
+                browserLogPath,
+                _context.CumulativeBrowserLog.ToFormattedString(),
+                _configuration.TestCancellationToken);
+
+            if (_configuration.ReportTeamCityMetadata)
+            {
+                TeamCityMetadataReporter.ReportArtifactLink(_testManifest, "BrowserLog", browserLogPath);
+            }
+        }
+
+        if (_dumpConfiguration.CaptureResponseLog)
+        {
+            var responseLogPath = Path.Combine(debugInformationPath, "ResponseLog.log");
+
+            await File.WriteAllTextAsync(
+                responseLogPath,
+                _context.CumulativeResponseLog.ToFormattedString(),
+                _configuration.TestCancellationToken);
+
+            if (_configuration.ReportTeamCityMetadata)
+            {
+                TeamCityMetadataReporter.ReportArtifactLink(_testManifest, "ResponseLog", responseLogPath);
+            }
+        }
+    }
+
+    private Task TakeScreenshotIfEnabledAsync(UITestContext context, IWebElement targeElement) =>
+        TakeScreenshotIfEnabledAsync(context, "AfterClick");
+
+    private Task TakeScreenshotIfEnabledAsync(UITestContext context) =>
+        TakeScreenshotIfEnabledAsync(context, "AfterPageChange");
+
+    private Task TakeScreenshotIfEnabledAsync(UITestContext context, string suffix)
+    {
+        if (_context is not { Driver: ITakesScreenshot } || !_dumpConfiguration.CaptureScreenshots || !_context.IsBrowserRunning)
+        {
+            return Task.CompletedTask;
+        }
+
+        var screenshotsPath = _context.ScreenshotsDirectoryPath;
+        FileSystemHelper.EnsureDirectoryExists(screenshotsPath);
+
+        try
+        {
+            context
+                .TakeScreenshot()
+                .SaveAsFile(GetScreenshotPath(screenshotsPath, _screenshotCount, "-" + suffix));
+
+            _testOutputHelper.WriteLineTimestampedAndDebug("Took screenshot #{0}.", _screenshotCount);
+        }
+        catch (FormatException ex) when (ex.Message.Contains("The input is not a valid Base-64 string"))
+        {
+            // Random "The input is not a valid Base-64 string as it contains a non-base 64 character, more than two
+            // padding characters, or an illegal character among the padding characters." exceptions can happen.
+            _testOutputHelper.WriteLineTimestampedAndDebug(
+                $"Taking the screenshot #{_screenshotCount.ToTechnicalString()} failed with the following exception: {ex}");
+        }
+
+        _screenshotCount++;
+
+        return Task.CompletedTask;
+    }
+
+    private async Task CreateScreenshotsDumpAsync(string debugInformationPath)
+    {
+        if (_context == null) return;
+
+        await TakeScreenshotIfEnabledAsync(_context);
+
+        var screenshotsSourcePath = _context.ScreenshotsDirectoryPath;
+        if (Directory.Exists(screenshotsSourcePath))
+        {
+            var screenshotsDestinationPath = Path.Combine(debugInformationPath, DirectoryPaths.Screenshots);
+            FileSystem.CopyDirectory(screenshotsSourcePath, screenshotsDestinationPath);
+
+            if (_configuration.ReportTeamCityMetadata)
+            {
+                TeamCityMetadataReporter.ReportImage(
+                    _testManifest,
+                    "FailureScreenshot",
+                    GetScreenshotPath(screenshotsDestinationPath, _screenshotCount - 1));
+            }
+        }
+    }
+
+    private static string GetScreenshotPath(string parentDirectoryPath, int index, string nameSuffix = "") =>
+        Path.Combine(parentDirectoryPath, index.ToTechnicalString() + nameSuffix + ".png");
+
+    private static string GetDebugInformationPath(string dumpContainerPath) =>
+        Path.Combine(dumpContainerPath, "DebugInformation");
+}
+
+internal static class UITestExecutionSessionsMeta
+{
+    // We need to have different snapshots based on whether the test uses the defaults, SQL Server and/or Azure Blob.
+    public static ConcurrentDictionary<string, SynchronizingWebApplicationSnapshotManager> SetupSnapshotManagers { get; } = new();
+    public static ConcurrentDictionary<string, (int FailureCount, Exception LatestException)> SetupOperationFailureCount { get; } = new();
+}

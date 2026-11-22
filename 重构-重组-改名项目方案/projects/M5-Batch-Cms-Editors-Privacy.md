@@ -25,7 +25,7 @@
 
 子功能保持 `.<Name>` 后缀（如 `Smartent.Orchard.JsonEditor.ContentEditor`、`Smartent.Orchard.Privacy.ConsentBanner`）。
 
-已同步：`Lombiq.OSOCE.Web` Recipe、`Lombiq.OSOCE.Tests.UI` 项目引用与 `using`、`Smartent.Orchard.sln` / `slnx`、`Lombiq.Hosting.Azure.ApplicationInsights.Tests.UI` 对 Privacy Tests.UI 的引用。
+已同步：`Smartent.Demo.Web` Recipe、`Smartent.Test.Acceptance` 项目引用与 `using`、`Smartent.Orchard.sln` / `slnx`、`Lombiq.Hosting.Azure.ApplicationInsights.Tests.UI` 对 Privacy Tests.UI 的引用。
 
 ## 验证
 

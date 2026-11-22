@@ -1,0 +1,34 @@
+using Smartent.Test.UI.Extensions;
+using Smartent.Test.UI.Samples.Extensions;
+using System.Threading.Tasks;
+using Xunit;
+
+namespace Smartent.Test.UI.Samples.Tests;
+
+// By default, tests are executed with SQLite. However, you can also run them against a full SQL Server instance and
+// tests will get their DBs there (if you run your app with SQL Server in production then it's recommended to also test
+// with it, should there be any incompatibilities). Note that for this, you need an SQL Server instance running; by
+// default, this will be attempted under the default localhost server name. If you're using anything else, check out the
+// settings in SqlServerConfiguration and Docs/Configuration.md, especially if you use Docker.
+public class SqlServerTests : UITestBase
+{
+    public SqlServerTests(ITestOutputHelper testOutputHelper)
+        : base(testOutputHelper) =>
+        // We could also set this globally in UITestBase or individually on a single test.
+        AddConfiguration(configuration => configuration.UseSqlServer = true);
+
+    // Here we have basically two of the same tests as in BasicTests but now we're using SQL Server as the site's
+    // database. If they still work and there are no errors in the log then the app works with SQL Server too.
+    [Fact]
+    public Task AnonymousHomePageShouldExistWithSqlServer() =>
+        RunAsync(context => context.CheckIfAnonymousHomePageExistsAsync());
+
+    [Fact]
+    public Task TogglingFeaturesShouldWorkWithSqlServer() => TestBuilder
+        .AddConfiguration(configuration => configuration
+            .WithIgnoreExpectedNotFoundResponseFilter(ShortcutsUITestContextExtensions.FeatureToggleTestBenchUrl))
+        .RunAsync(context => context.ExecuteAndAssertTestFeatureToggleAsync());
+}
+
+// END OF TRAINING SECTION: Using SQL Server.
+// NEXT STATION: Head over to Tests/AzureBlobStorageTests.cs.

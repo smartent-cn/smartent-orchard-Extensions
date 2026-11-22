@@ -1,3 +1,10 @@
-# 测试（M6）
+# Test | 测试（M6）
 
-计划自 `test/` 迁入：`Smartent.Test.UI`、`Smartent.Test.Unit`、仓库级验收 UI 测试等。
+| Smartent | Legacy |
+|----------|--------|
+| `Smartent.Test.Unit` | `Lombiq.Tests` |
+| `Smartent.Test.UI`（工具箱根目录） | `Lombiq.UITestingToolbox` / `Lombiq.Tests.UI` |
+| `Smartent.Test.Acceptance` | `Lombiq.OSOCE.Tests.UI` |
+| `Smartent.Test.OrchardCore` | （M3 自 HelpfulLibraries 迁入） |
+
+Legacy `test/Lombiq.*` 仅保留说明；请在仓库根目录用 `Smartent.Orchard.sln` 构建。

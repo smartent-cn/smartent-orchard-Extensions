@@ -21,13 +21,13 @@
 | `Lombiq.TrainingDemo.Middlewares` | `Smartent.Orchard.TrainingDemo.Middlewares` |
 | `Lombiq.TrainingDemo.Workflows.Sample` 等 | 对应 `Smartent.Orchard.TrainingDemo.*` |
 
-已更新：`Lombiq.OSOCE.Web` / `NuGetTest` Recipe 中的启用列表（如适用）。
+已更新：`Smartent.Demo.Web` / `NuGetTest` Recipe 中的启用列表（如适用）。
 
 Manifest **显示名**仍为 Lombiq Training Demo（教学品牌保留）；`PackageId` = `Smartent.Orchard.TrainingDemo`。
 
 ## 验证
 
-- `dotnet build`：`Smartent.Orchard.TrainingDemo`、`Lombiq.OSOCE.Web`（Release）
+- `dotnet build`：`Smartent.Orchard.TrainingDemo`、`Smartent.Demo.Web`（Release）
 - `dotnet test`：`Smartent.Orchard.TrainingDemo.Tests`（4/4）
 - 主 sln：已移除 Legacy `src/Modules/Lombiq.TrainingDemo` 项；`Smartent.Orchard.slnx` 指向 Smartent-src
 

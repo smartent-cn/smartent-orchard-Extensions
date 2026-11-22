@@ -1,9 +1,9 @@
-using Lombiq.Tests.UI.Extensions;
-using Lombiq.Tests.UI.Services;
+using Smartent.Test.UI.Extensions;
+using Smartent.Test.UI.Services;
 using OpenQA.Selenium;
 using Shouldly;
 using System.Threading.Tasks;
-using static Lombiq.Tests.UI.Constants.TestUser;
+using static Smartent.Test.UI.Constants.TestUser;
 
 namespace Smartent.Orchard.LoginAsAnybody.Tests.UI.Extensions;
 

@@ -1,0 +1,27 @@
+using Smartent.Orchard.ApiClient.Tests.UI.Extensions;
+using System;
+using System.IO;
+using System.Threading.Tasks;
+using Xunit;
+
+namespace Smartent.Test.Acceptance.Tests.LibraryTests;
+
+public class BehaviorOrchardCoreApiClientTests : UITestBase
+{
+    public BehaviorOrchardCoreApiClientTests(ITestOutputHelper testOutputHelper)
+        : base(testOutputHelper) =>
+        AddConfiguration(configuration =>
+        {
+            // Workaround for long paths in Windows.
+            if (OperatingSystem.IsWindows())
+            {
+                configuration.TempDirectoryPath = Path.Combine(
+                    Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
+                    "oc-api");
+            }
+        });
+
+    [Fact]
+    public Task OrchardCoreApiClientShouldWork() =>
+        RunAsync(context => context.TestOrchardCoreApiClientBehaviorAsync());
+}

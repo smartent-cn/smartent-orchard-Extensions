@@ -32,7 +32,7 @@
     <File Path="tools/Lombiq.GitHub.Actions/.github/actions/asset-lint/js/eslint.config.mjs" />
   </Folder>
   <Folder Name="/src/">
-    <Project Path="src/Lombiq.OSOCE.Web/Lombiq.OSOCE.Web.csproj" />
+    <Project Path="Smartent-src/Demo/Smartent.Demo.Web/Smartent.Demo.Web.csproj" />
   </Folder>
   <Folder Name="/src/Libraries/">
     <Project Path="Smartent-src/Libraries/Smartent.Orchard.EInvoice/Smartent.Orchard.EInvoice.Benchmark/Smartent.Orchard.EInvoice.Benchmark.csproj" />
@@ -100,7 +100,7 @@
     <Project Path="src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.Sdk.Samples/Lombiq.MSBuild.Sdk.Samples.csproj">
       <BuildType Project="Debug" />
     </Project>
-    <Project Path="test/Lombiq.UITestingToolbox/Lombiq.Tests.UI.AdminTheme/Lombiq.Tests.UI.AdminTheme.csproj" />
+    <Project Path="Smartent-src/Test/Smartent.Test.UI/Smartent.Test.UI.AdminTheme/Smartent.Test.UI.AdminTheme.csproj" />
   </Folder>
   <Folder Name="/src/Utilities/">
     <Project Path="Smartent-src/Themes/Smartent.Orchard.Theme.Media/Smartent.Orchard.Theme.Media.Targets/Smartent.Orchard.Theme.Media.Targets.csproj" />
@@ -119,14 +119,14 @@
     <Project Path="Smartent-src/Build/Smartent.Build.Tailwind/Smartent.Build.Tailwind.csproj" />
   </Folder>
   <Folder Name="/test/">
-    <Project Path="test/Lombiq.OSOCE.Tests.UI/Lombiq.OSOCE.Tests.UI.csproj" />
-    <Project Path="test/Lombiq.Tests/Lombiq.Tests.csproj" />
-    <Project Path="test/Lombiq.UITestingToolbox/Lombiq.Tests.UI.AppExtensions/Lombiq.Tests.UI.AppExtensions.csproj" />
-    <Project Path="test/Lombiq.UITestingToolbox/Lombiq.Tests.UI.Samples/Lombiq.Tests.UI.Samples.csproj" />
-    <Project Path="test/Lombiq.UITestingToolbox/Lombiq.Tests.UI.Shortcuts/Lombiq.Tests.UI.Shortcuts.csproj" />
-    <Project Path="test/Lombiq.UITestingToolbox/Lombiq.Tests.UI.TestingModule/Lombiq.Tests.UI.TestingModule.csproj" />
-    <Project Path="test/Lombiq.UITestingToolbox/Lombiq.Tests.UI.Tests.UI/Lombiq.Tests.UI.Tests.UI.csproj" />
-    <Project Path="test/Lombiq.UITestingToolbox/Lombiq.Tests.UI/Lombiq.Tests.UI.csproj" />
+    <Project Path="Smartent-src/Test/Smartent.Test.Acceptance/Smartent.Test.Acceptance.csproj" />
+    <Project Path="Smartent-src/Test/Smartent.Test.Unit/Smartent.Test.Unit.csproj" />
+    <Project Path="Smartent-src/Test/Smartent.Test.UI/Smartent.Test.UI.AppExtensions/Smartent.Test.UI.AppExtensions.csproj" />
+    <Project Path="Smartent-src/Test/Smartent.Test.UI/Smartent.Test.UI.Samples/Smartent.Test.UI.Samples.csproj" />
+    <Project Path="Smartent-src/Test/Smartent.Test.UI/Smartent.Test.UI.Shortcuts/Smartent.Test.UI.Shortcuts.csproj" />
+    <Project Path="Smartent-src/Test/Smartent.Test.UI/Smartent.Test.UI.TestingModule/Smartent.Test.UI.TestingModule.csproj" />
+    <Project Path="Smartent-src/Test/Smartent.Test.UI/Smartent.Test.UI.Tests.UI/Smartent.Test.UI.Tests.UI.csproj" />
+    <Project Path="Smartent-src/Test/Smartent.Test.UI/Smartent.Test.UI/Smartent.Test.UI.csproj" />
   </Folder>
   <Folder Name="/test/Libraries/">
     <Project Path="Smartent-src/Libraries/Smartent.Orchard.EInvoice/Smartent.Orchard.EInvoice.Tests/Smartent.Orchard.EInvoice.Tests.csproj" />

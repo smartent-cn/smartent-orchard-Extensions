@@ -1,5 +1,5 @@
-using Lombiq.Tests.Integration.Controllers;
-using Lombiq.Tests.Integration.Services;
+using Smartent.Test.Unit.Integration.Controllers;
+using Smartent.Test.Unit.Integration.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Moq.AutoMock;

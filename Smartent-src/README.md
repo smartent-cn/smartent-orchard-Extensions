@@ -29,7 +29,8 @@
 - **M2 完成**：`Platform/Core/` 下五包已迁入（`Smartent.Core.*`）。  
 - **M3 基本完成**：Platform/Orchard 与 `Smartent.Test.OrchardCore` 已迁入；元包仅 Legacy 聚合。见 `projects/M3-Platform-HelpfulLibraries.md`。
 - **M4 进行中**：`Build/` 下 Npm、NodeJs、Tailwind、Setup 已 Smartent 化；`Libraries/Smartent.Orchard.ApiClient` 已迁入；MSBuild Sdk 主仓等见 `projects/M4-MSBuild-Targets.md`。
-- **M5**：`Smartent.Orchard.EInvoice`、`Smartent.Orchard.TrainingDemo`、本批 `Demo/Platform.Samples` 与 `Smartent.Orchard.{ChartJs,DataTables,UIKit,Extensions.Cms}` 已迁入；Legacy 仅留 `Readme.md`。子方案见 `projects/M5-Library-EInvoice.md`、`projects/M5-Module-TrainingDemo.md`、`projects/M5-Batch-Platform-Demo-Modules.md`。
+- **M5**：Orchard 模块与主题已基本迁入 `Modules/`、`Themes/`、`Demo/Smartent.Demo.Samples`；见 `projects/M5-Batch-*.md`。
+- **M6**：`Smartent.Demo.Web`、`Smartent.Test.Acceptance`、`Smartent.Test.UI.*`、`Smartent.Test.Unit` 已迁入 `Demo/`、`Test/`；见 `projects/M6-Batch-Demo-Test-Toolchain.md`。
 - **net10 对齐**：VueJs / BaseTheme.Samples / `Smartent.Build.NodeJs.Tests` 已升至 net10，Orchard 包引用统一 `$(OrchardCoreVersion)`。
 - **Release 门禁**：`dotnet build Smartent.Orchard.sln -c Release` 已通过；VueJs 消费 `.nx` 见 `projects/M4-MSBuild-Targets.md` §M4#11。
 

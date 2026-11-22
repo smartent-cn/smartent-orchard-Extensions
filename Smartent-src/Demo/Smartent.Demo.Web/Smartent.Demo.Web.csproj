@@ -1,0 +1,84 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <TieredCompilation>true</TieredCompilation>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <OrchardCoreVersion>3.0.1</OrchardCoreVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Recipes\Media\meadow-orchard.jpg" />
+    <Content Include="Recipes\Media\meadow-orchard.jpg" CopyToOutputDirectory="PreserveNewest" />
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Test\Smartent.Test.UI\Smartent.Test.UI.AdminTheme\Smartent.Test.UI.AdminTheme.csproj" />
+    <ProjectReference Include="..\..\Test\Smartent.Test.UI\Smartent.Test.UI.AppExtensions\Smartent.Test.UI.AppExtensions.csproj" />
+    <ProjectReference Include="..\..\Test\Smartent.Test.UI\Smartent.Test.UI.Shortcuts\Smartent.Test.UI.Shortcuts.csproj" />
+    <ProjectReference Include="..\..\Test\Smartent.Test.UI\Smartent.Test.UI.TestingModule\Smartent.Test.UI.TestingModule.csproj" />
+    <ProjectReference Include="..\..\Demo\Smartent.Demo.Platform.Samples\Smartent.Demo.Platform.Samples\Smartent.Demo.Platform.Samples.csproj" />
+    <ProjectReference Include="..\..\Modules\Smartent.Orchard.AuditTrail\Smartent.Orchard.AuditTrail.csproj" />
+    <ProjectReference Include="..\..\Modules\Smartent.Orchard.ChartJs\Smartent.Orchard.ChartJs\Smartent.Orchard.ChartJs.csproj" />
+    <ProjectReference Include="..\..\Modules\Smartent.Orchard.ChartJs\Smartent.Orchard.ChartJs.Samples\Smartent.Orchard.ChartJs.Samples.csproj" />
+    <ProjectReference Include="..\..\Modules\Smartent.Orchard.ContentEditors\Smartent.Orchard.ContentEditors\Smartent.Orchard.ContentEditors.csproj" />
+    <ProjectReference Include="..\..\Modules\Smartent.Orchard.ContentEditors\Smartent.Orchard.ContentEditors.Samples\Smartent.Orchard.ContentEditors.Samples.csproj" />
+    <ProjectReference Include="..\..\Modules\Smartent.Orchard.DataTables\Smartent.Orchard.DataTables.Samples\Smartent.Orchard.DataTables.Samples.csproj" />
+    <ProjectReference Include="..\..\Modules\Smartent.Orchard.EmailClient\Smartent.Orchard.EmailClient.Samples\Smartent.Orchard.EmailClient.Samples.csproj" />
+    <ProjectReference Include="..\..\Modules\Smartent.Orchard.EmailClient\Smartent.Orchard.EmailClient\Smartent.Orchard.EmailClient.csproj" />
+    <ProjectReference Include="..\..\Modules\Smartent.Orchard.Extensions.Cms\Smartent.Orchard.Extensions.Cms\Smartent.Orchard.Extensions.Cms.csproj" />
+    <ProjectReference Include="..\..\Modules\Smartent.Orchard.Hosting.ApplicationInsights\Smartent.Orchard.Hosting.ApplicationInsights\Smartent.Orchard.Hosting.ApplicationInsights.csproj" />
+    <ProjectReference Include="..\..\Modules\Smartent.Orchard.Hosting.BuildVersion\Smartent.Orchard.Hosting.BuildVersion\Smartent.Orchard.Hosting.BuildVersion.csproj" />
+    <ProjectReference Include="..\..\Modules\Smartent.Orchard.Hosting.Tenants\Smartent.Orchard.Hosting.Tenants.Admin.Login\Smartent.Orchard.Hosting.Tenants.Admin.Login.csproj" />
+    <ProjectReference Include="..\..\Modules\Smartent.Orchard.Hosting.Tenants\Smartent.Orchard.Hosting.Tenants.EmailQuotaManagement\Smartent.Orchard.Hosting.Tenants.EmailQuotaManagement.csproj" />
+    <ProjectReference Include="..\..\Modules\Smartent.Orchard.Hosting.Tenants\Smartent.Orchard.Hosting.Tenants.EnvironmentRobots\Smartent.Orchard.Hosting.Tenants.EnvironmentRobots.csproj" />
+    <ProjectReference Include="..\..\Modules\Smartent.Orchard.Hosting.Tenants\Smartent.Orchard.Hosting.Tenants.FeaturesGuard\Smartent.Orchard.Hosting.Tenants.FeaturesGuard.csproj" />
+    <ProjectReference Include="..\..\Modules\Smartent.Orchard.Hosting.Tenants\Smartent.Orchard.Hosting.Tenants.HealthChecks\Smartent.Orchard.Hosting.Tenants.HealthChecks.csproj" />
+    <ProjectReference Include="..\..\Modules\Smartent.Orchard.Hosting.Tenants\Smartent.Orchard.Hosting.Tenants.IdleTenantManagement\Smartent.Orchard.Hosting.Tenants.IdleTenantManagement.csproj" />
+    <ProjectReference Include="..\..\Modules\Smartent.Orchard.Hosting.Tenants\Smartent.Orchard.Hosting.Tenants.Maintenance\Smartent.Orchard.Hosting.Tenants.Maintenance.csproj" />
+    <ProjectReference Include="..\..\Modules\Smartent.Orchard.Hosting.Tenants\Smartent.Orchard.Hosting.Tenants.Management\Smartent.Orchard.Hosting.Tenants.Management.csproj" />
+    <ProjectReference Include="..\..\Modules\Smartent.Orchard.Hosting.Tenants\Smartent.Orchard.Hosting.Tenants.MediaStorageManagement\Smartent.Orchard.Hosting.Tenants.MediaStorageManagement.csproj" />
+    <ProjectReference Include="..\..\Modules\Smartent.Orchard.JsonEditor\Smartent.Orchard.JsonEditor\Smartent.Orchard.JsonEditor.csproj" />
+    <ProjectReference Include="..\..\Modules\Smartent.Orchard.LoginAsAnybody\Smartent.Orchard.LoginAsAnybody\Smartent.Orchard.LoginAsAnybody.csproj" />
+    <ProjectReference Include="..\..\Modules\Smartent.Orchard.Marketing\Smartent.Orchard.Marketing.Pirsch\Smartent.Orchard.Marketing.Pirsch.csproj" />
+    <ProjectReference Include="..\..\Modules\Smartent.Orchard.Marketing\Smartent.Orchard.Marketing.UrlShortener\Smartent.Orchard.Marketing.UrlShortener.csproj" />
+    <ProjectReference Include="..\..\Demo\Smartent.Demo.Samples\Smartent.Demo.Samples.csproj" />
+    <ProjectReference Include="..\..\Modules\Smartent.Orchard.Privacy\Smartent.Orchard.Privacy\Smartent.Orchard.Privacy.csproj" />
+    <ProjectReference Include="..\..\Modules\Smartent.Orchard.Privacy\Smartent.Orchard.Privacy.Samples\Smartent.Orchard.Privacy.Samples.csproj" />
+    <ProjectReference Include="..\..\Modules\Smartent.Orchard.TrainingDemo\Smartent.Orchard.TrainingDemo\Smartent.Orchard.TrainingDemo.csproj" />
+    <ProjectReference Include="..\..\Modules\Smartent.Orchard.UIKit\Smartent.Orchard.UIKit\Smartent.Orchard.UIKit.csproj" />
+    <ProjectReference Include="..\..\Modules\Smartent.Orchard.UIKit\Smartent.Orchard.UIKit.Widgets\Smartent.Orchard.UIKit.Widgets.csproj" />
+    <ProjectReference Include="..\..\Modules\Smartent.Orchard.Walkthroughs\Smartent.Orchard.Walkthroughs\Smartent.Orchard.Walkthroughs.csproj" />
+    <ProjectReference Include="..\..\Themes\Smartent.Orchard.Theme.Base\Smartent.Orchard.Theme.Base.Native.Samples\Smartent.Orchard.Theme.Base.Native.Samples.csproj" />
+    <ProjectReference Include="..\..\Themes\Smartent.Orchard.Theme.Base\Smartent.Orchard.Theme.Base.Native\Smartent.Orchard.Theme.Base.Native.csproj" />
+    <ProjectReference Include="..\..\Themes\Smartent.Orchard.Theme.Media\Smartent.Orchard.Theme.Media.Tests.Theme\Smartent.Orchard.Theme.Media.Tests.Theme.csproj" />
+    <ProjectReference Include="..\..\Themes\Smartent.Orchard.Theme.Media\Smartent.Orchard.Theme.Media\Smartent.Orchard.Theme.Media.csproj" />
+    <ProjectReference Include="..\..\Themes\Smartent.Orchard.Theme.Media\Smartent.Orchard.Theme.Media.Bridge\Smartent.Orchard.Theme.Media.Bridge.csproj" />
+    <ProjectReference Include="..\..\..\src\Utilities\Lombiq.MSBuild.Targets\Lombiq.MSBuild.Sdk.Samples\Lombiq.MSBuild.Sdk.Samples.csproj" />
+    <ProjectReference Include="..\..\Build\Smartent.Build.Tailwind.Samples\Smartent.Build.Tailwind.Samples.csproj" />
+    <ProjectReference Include="..\..\Build\Smartent.Orchard.Setup\Smartent.Orchard.Setup.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="OrchardCore.Application.Cms.Targets" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.Logging.NLog" Version="$(OrchardCoreVersion)" />
+  </ItemGroup>
+
+  <!-- Suppresses vulnerabilities in 'SixLabors.ImageSharp' version 3.1.12, until the Orchard Core upgrade to v4 is
+  released that drops ImageSharp. -->
+  <ItemGroup Condition="'$(LombiqSdkName)' == ''">
+    <NuGetAuditSuppress Include="https://github.com/advisories/GHSA-gwg2-r3hj-4w44" />
+    <NuGetAuditSuppress Include="https://github.com/advisories/GHSA-j3p4-wp97-rph4" />
+    <NuGetAuditSuppress Include="https://github.com/advisories/GHSA-j9gm-c75j-xc9q" />
+    <NuGetAuditSuppress Include="https://github.com/advisories/GHSA-jjfr-hcj7-qf5w" />
+    <NuGetAuditSuppress Include="https://github.com/advisories/GHSA-wmxv-xphr-5c9g" />
+    <NuGetAuditSuppress Include="https://github.com/advisories/GHSA-v76p-62qx-wwq2" />
+  </ItemGroup>
+
+  <!-- Security Updates for Orchard Core - make sure to check if these are still necessary -->
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="2.3.14" NoWarn="NU1510" />
+  </ItemGroup>
+
+</Project>

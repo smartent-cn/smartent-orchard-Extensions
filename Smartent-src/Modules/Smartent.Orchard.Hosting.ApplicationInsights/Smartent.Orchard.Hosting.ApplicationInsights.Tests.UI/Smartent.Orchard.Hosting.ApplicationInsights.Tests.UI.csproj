@@ -20,7 +20,7 @@
   </PropertyGroup>
 
   <ItemGroup Condition="'$(NuGetBuild)' != 'true'">
-    <ProjectReference Include="..\..\..\..\Smartent-src\Modules\Smartent.Orchard.Privacy\Smartent.Orchard.Privacy.Tests.UI\Smartent.Orchard.Privacy.Tests.UI.csproj" />
+    <ProjectReference Include="..\..\Smartent.Orchard.Privacy\Smartent.Orchard.Privacy.Tests.UI\Smartent.Orchard.Privacy.Tests.UI.csproj" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(NuGetBuild)' == 'true'">

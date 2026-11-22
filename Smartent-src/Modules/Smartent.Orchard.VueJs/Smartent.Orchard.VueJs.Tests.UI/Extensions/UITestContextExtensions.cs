@@ -1,6 +1,6 @@
 using Smartent.Orchard.Platform.Mvc;
-using Lombiq.Tests.UI.Extensions;
-using Lombiq.Tests.UI.Services;
+using Smartent.Test.UI.Extensions;
+using Smartent.Test.UI.Services;
 using Smartent.Orchard.VueJs.Samples.Controllers;
 using System.Threading.Tasks;
 

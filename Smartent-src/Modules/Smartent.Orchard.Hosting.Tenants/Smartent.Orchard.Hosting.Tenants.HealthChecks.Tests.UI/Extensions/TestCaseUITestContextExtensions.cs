@@ -1,10 +1,10 @@
 using Smartent.Orchard.Platform.Mvc;
 using Smartent.Orchard.Hosting.Tenants.HealthChecks.Constants;
-using Lombiq.Tests.UI.Extensions;
-using Lombiq.Tests.UI.Models;
-using Lombiq.Tests.UI.Services;
-using Lombiq.Tests.UI.Shortcuts.Controllers;
-using Lombiq.Tests.UI.Shortcuts.Services;
+using Smartent.Test.UI.Extensions;
+using Smartent.Test.UI.Models;
+using Smartent.Test.UI.Services;
+using Smartent.Test.UI.Shortcuts.Controllers;
+using Smartent.Test.UI.Shortcuts.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using OpenQA.Selenium;
@@ -27,7 +27,7 @@ public static partial class TestCaseUITestContextExtensions
     public static async Task TestHealthChecksAsync(this UITestContext context, string tenantSetupRecipeId)
     {
         // Temporarily disable HTML validation. All we do until this is re-enabled is interact with the
-        // ~/Lombiq.Tests.UI.Shortcuts/Error/HealthCheck and ~/health/live pages, which return plain text. So we'd
+        // ~/Smartent.Test.UI.Shortcuts/Error/HealthCheck and ~/health/live pages, which return plain text. So we'd
         // just validate the browser's text renderer which is pointless.
         var htmlValidation = context.Configuration.HtmlValidationConfiguration.HtmlValidationAndAssertionOnPageChangeRule;
         context.Configuration.HtmlValidationConfiguration.HtmlValidationAndAssertionOnPageChangeRule = _ => false;

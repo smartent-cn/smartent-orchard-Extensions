@@ -1,7 +1,7 @@
 using Smartent.Orchard.Theme.Media.Bridge.Constants;
 using Smartent.Orchard.Theme.Media.Tests.UI.Extensions;
-using Lombiq.Tests.UI.Extensions;
-using Lombiq.Tests.UI.Services;
+using Smartent.Test.UI.Extensions;
+using Smartent.Test.UI.Services;
 using OrchardCore.Media;
 using Shouldly;
 using System.Diagnostics.CodeAnalysis;

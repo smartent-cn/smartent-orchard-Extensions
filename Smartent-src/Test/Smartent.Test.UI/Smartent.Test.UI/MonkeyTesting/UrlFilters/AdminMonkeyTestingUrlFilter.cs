@@ -1,0 +1,17 @@
+using Smartent.Test.UI.Services;
+using System;
+
+namespace Smartent.Test.UI.MonkeyTesting.UrlFilters;
+
+/// <summary>
+/// URL filter that matches the URL to see if it's an admin page (i.e. an URL under /admin).
+/// </summary>
+public class AdminMonkeyTestingUrlFilter : IMonkeyTestingUrlFilter
+{
+    private readonly StartsWithMonkeyTestingUrlFilter _startsWithMonkeyTestingUrlFilter;
+
+    public AdminMonkeyTestingUrlFilter(UITestContext context) =>
+        _startsWithMonkeyTestingUrlFilter = new("/admin", context.AdminUrlPrefix);
+
+    public bool AllowUrl(UITestContext context, Uri url) => _startsWithMonkeyTestingUrlFilter.AllowUrl(context, url);
+}

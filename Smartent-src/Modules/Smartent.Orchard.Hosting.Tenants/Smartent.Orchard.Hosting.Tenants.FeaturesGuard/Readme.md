@@ -82,7 +82,7 @@ Example case 2:
         },
         {
             "Rule": "Exclude",
-            "Expression": "Lombiq.Tests.UI.Shortcuts"
+            "Expression": "Smartent.Test.UI.Shortcuts"
         }
       ]
     }

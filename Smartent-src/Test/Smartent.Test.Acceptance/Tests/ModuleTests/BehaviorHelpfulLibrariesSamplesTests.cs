@@ -1,0 +1,17 @@
+using Smartent.Demo.Platform.Samples.Tests.UI.Extensions;
+using System.Threading.Tasks;
+using Xunit;
+
+namespace Smartent.Test.Acceptance.Tests.ModuleTests;
+
+public class BehaviorHelpfulLibrariesSamplesTests : UITestBase
+{
+    public BehaviorHelpfulLibrariesSamplesTests(ITestOutputHelper testOutputHelper)
+        : base(testOutputHelper)
+    {
+    }
+
+    [Fact]
+    public Task LinqToDbSamplesShouldWorkCorrectly() =>
+        RunAsync(context => context.TestLinqToDbSamplesAsync());
+}

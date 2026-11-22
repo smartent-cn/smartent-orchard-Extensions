@@ -19,13 +19,13 @@
         "Smartent.Orchard.Extensions.Cms.ShapeTracing"
       ],
       "enable": [
-        "Lombiq.Tests.UI.AdminTheme",
+        "Smartent.Test.UI.AdminTheme",
         "Lombiq.BaseTheme.Native.Samples"
       ]
     },
     {
       "name": "themes",
-      "admin": "Lombiq.Tests.UI.AdminTheme",
+      "admin": "Smartent.Test.UI.AdminTheme",
       "site": "Lombiq.BaseTheme.Native.Samples"
     }
   ]

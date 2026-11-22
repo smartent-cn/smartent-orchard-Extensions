@@ -3,7 +3,7 @@ using ClosedXML.Graphics;
 using Smartent.Orchard.DataTables.Models;
 using Smartent.Orchard.DataTables.Services;
 using Smartent.Orchard.DataTables.Tests.Helpers;
-using Lombiq.Tests.Helpers;
+using Smartent.Test.Unit.Helpers;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Options;
 using Moq.AutoMock;

@@ -1,6 +1,6 @@
-using Lombiq.Tests.UI.Extensions;
-using Lombiq.Tests.UI.Models;
-using Lombiq.Tests.UI.Services;
+using Smartent.Test.UI.Extensions;
+using Smartent.Test.UI.Models;
+using Smartent.Test.UI.Services;
 using OpenQA.Selenium;
 using System;
 using System.Threading.Tasks;
@@ -17,7 +17,7 @@ public static class TestCaseUITestContextExtensions
         context.Missing(By.XPath("//label[@for='OrchardCore.Workflows.Session']"));
         context.Missing(By.XPath("//label[@for='OrchardCore.Search.Lucene']"));
         context.Missing(By.XPath("//label[@for='OrchardCore.MiniProfiler']"));
-        context.Missing(By.XPath("//label[@for='Lombiq.Tests.UI.Shortcuts']"));
+        context.Missing(By.XPath("//label[@for='Smartent.Test.UI.Shortcuts']"));
     }
 
     public static async Task TestConditionallyEnabledFeaturesAsync(this UITestContext context, string setupRecipeId)

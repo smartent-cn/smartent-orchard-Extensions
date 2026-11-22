@@ -1,0 +1,52 @@
+<Project>
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <Import Project="../../../src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.OrchardCore.Tests.UI.Sdk/Sdk/Import.props" />
+
+  <ItemGroup>
+    <Content Include="xunit.runner.json" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="*.htmlvalidate.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Demo\Smartent.Demo.Platform.Samples\Smartent.Demo.Platform.Samples.Tests.UI\Smartent.Demo.Platform.Samples.Tests.UI.csproj" />
+    <ProjectReference Include="..\..\Libraries\Smartent.Orchard.ApiClient\Smartent.Orchard.ApiClient.Tests.UI\Smartent.Orchard.ApiClient.Tests.UI.csproj" />
+    <ProjectReference Include="..\..\Demo\Smartent.Demo.Web\Smartent.Demo.Web.csproj" />
+    <ProjectReference Include="..\..\Modules\Smartent.Orchard.ChartJs\Smartent.Orchard.ChartJs.Tests.UI\Smartent.Orchard.ChartJs.Tests.UI.csproj" />
+    <ProjectReference Include="..\..\Modules\Smartent.Orchard.ContentEditors\Smartent.Orchard.ContentEditors.Tests.UI\Smartent.Orchard.ContentEditors.Tests.UI.csproj" />
+    <ProjectReference Include="..\..\Modules\Smartent.Orchard.DataTables\Smartent.Orchard.DataTables.Tests.UI\Smartent.Orchard.DataTables.Tests.UI.csproj" />
+    <ProjectReference Include="..\..\Modules\Smartent.Orchard.EmailClient\Smartent.Orchard.EmailClient.Tests.UI\Smartent.Orchard.EmailClient.Tests.UI.csproj" />
+    <ProjectReference Include="..\..\Modules\Smartent.Orchard.Extensions.Cms\Smartent.Orchard.Extensions.Cms.Tests.UI\Smartent.Orchard.Extensions.Cms.Tests.UI.csproj" />
+    <ProjectReference Include="..\..\Modules\Smartent.Orchard.Hosting.ApplicationInsights\Smartent.Orchard.Hosting.ApplicationInsights.Tests.UI\Smartent.Orchard.Hosting.ApplicationInsights.Tests.UI.csproj" />
+    <ProjectReference Include="..\..\Modules\Smartent.Orchard.Hosting.BuildVersion\Smartent.Orchard.Hosting.BuildVersion.Tests.UI\Smartent.Orchard.Hosting.BuildVersion.Tests.UI.csproj" />
+    <ProjectReference Include="..\..\Modules\Smartent.Orchard.Hosting.Tenants\Smartent.Orchard.Hosting.Tenants.Admin.Login.Tests.UI\Smartent.Orchard.Hosting.Tenants.Admin.Login.Tests.UI.csproj" />
+    <ProjectReference Include="..\..\Modules\Smartent.Orchard.Hosting.Tenants\Smartent.Orchard.Hosting.Tenants.EmailQuotaManagement.Tests.UI\Smartent.Orchard.Hosting.Tenants.EmailQuotaManagement.Tests.UI.csproj" />
+    <ProjectReference Include="..\..\Modules\Smartent.Orchard.Hosting.Tenants\Smartent.Orchard.Hosting.Tenants.EnvironmentRobots.Tests.UI\Smartent.Orchard.Hosting.Tenants.EnvironmentRobots.Tests.UI.csproj" />
+    <ProjectReference Include="..\..\Modules\Smartent.Orchard.Hosting.Tenants\Smartent.Orchard.Hosting.Tenants.FeaturesGuard.Tests.UI\Smartent.Orchard.Hosting.Tenants.FeaturesGuard.Tests.UI.csproj" />
+    <ProjectReference Include="..\..\Modules\Smartent.Orchard.Hosting.Tenants\Smartent.Orchard.Hosting.Tenants.HealthChecks.Tests.UI\Smartent.Orchard.Hosting.Tenants.HealthChecks.Tests.UI.csproj" />
+    <ProjectReference Include="..\..\Modules\Smartent.Orchard.Hosting.Tenants\Smartent.Orchard.Hosting.Tenants.IdleTenantManagement.Tests.UI\Smartent.Orchard.Hosting.Tenants.IdleTenantManagement.Tests.UI.csproj" />
+    <ProjectReference Include="..\..\Modules\Smartent.Orchard.Hosting.Tenants\Smartent.Orchard.Hosting.Tenants.Maintenance.Tests.UI\Smartent.Orchard.Hosting.Tenants.Maintenance.Tests.UI.csproj" />
+    <ProjectReference Include="..\..\Modules\Smartent.Orchard.Hosting.Tenants\Smartent.Orchard.Hosting.Tenants.Management.Tests.UI\Smartent.Orchard.Hosting.Tenants.Management.Tests.UI.csproj" />
+    <ProjectReference Include="..\..\Modules\Smartent.Orchard.Hosting.Tenants\Smartent.Orchard.Hosting.Tenants.MediaStorageManagement.Tests.UI\Smartent.Orchard.Hosting.Tenants.MediaStorageManagement.Tests.UI.csproj" />
+    <ProjectReference Include="..\..\Modules\Smartent.Orchard.JsonEditor\Smartent.Orchard.JsonEditor.Tests.UI\Smartent.Orchard.JsonEditor.Tests.UI.csproj" />
+    <ProjectReference Include="..\..\Modules\Smartent.Orchard.LoginAsAnybody\Smartent.Orchard.LoginAsAnybody.Tests.UI\Smartent.Orchard.LoginAsAnybody.Tests.UI.csproj" />
+    <ProjectReference Include="..\..\Modules\Smartent.Orchard.Marketing\Smartent.Orchard.Marketing.Tests.UI\Smartent.Orchard.Marketing.Tests.UI.csproj" />
+    <ProjectReference Include="..\..\Modules\Smartent.Orchard.Privacy\Smartent.Orchard.Privacy.Tests.UI\Smartent.Orchard.Privacy.Tests.UI.csproj" />
+    <ProjectReference Include="..\..\Modules\Smartent.Orchard.VueJs\Smartent.Orchard.VueJs.Samples\Smartent.Orchard.VueJs.Samples.csproj" />
+    <ProjectReference Include="..\..\Modules\Smartent.Orchard.VueJs\Smartent.Orchard.VueJs.Tests.UI\Smartent.Orchard.VueJs.Tests.UI.csproj" />
+    <ProjectReference Include="..\..\Modules\Smartent.Orchard.UIKit\Smartent.Orchard.UIKit.Tests.UI\Smartent.Orchard.UIKit.Tests.UI.csproj" />
+    <ProjectReference Include="..\..\Modules\Smartent.Orchard.UIKit\Smartent.Orchard.UIKit.Widgets.Tests.UI\Smartent.Orchard.UIKit.Widgets.Tests.UI.csproj" />
+    <ProjectReference Include="..\..\Modules\Smartent.Orchard.Walkthroughs\Smartent.Orchard.Walkthroughs.Tests.UI\Smartent.Orchard.Walkthroughs.Tests.UI.csproj" />
+    <ProjectReference Include="..\..\Themes\Smartent.Orchard.Theme.Base\Smartent.Orchard.Theme.Base.Tests.UI\Smartent.Orchard.Theme.Base.Tests.UI.csproj" />
+    <ProjectReference Include="..\..\Themes\Smartent.Orchard.Theme.Media\Smartent.Orchard.Theme.Media.Bridge.Tests.UI\Smartent.Orchard.Theme.Media.Bridge.Tests.UI.csproj" />
+    <ProjectReference Include="..\..\Themes\Smartent.Orchard.Theme.Media\Smartent.Orchard.Theme.Media.Tests.UI\Smartent.Orchard.Theme.Media.Tests.UI.csproj" />
+    <ProjectReference Include="..\..\..\src\Utilities\Lombiq.MSBuild.Targets\Lombiq.MSBuild.Targets.Tests.UI\Lombiq.MSBuild.Targets.Tests.UI.csproj" />
+    <ProjectReference Include="..\Smartent.Test.UI\Smartent.Test.UI.Samples\Smartent.Test.UI.Samples.csproj" />
+    <ProjectReference Include="..\Smartent.Test.UI\Smartent.Test.UI.Tests.UI\Smartent.Test.UI.Tests.UI.csproj" />
+  </ItemGroup>
+
+  <Import Project="../../../src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.OrchardCore.Tests.UI.Sdk/Sdk/Import.targets" />
+</Project>

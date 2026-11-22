@@ -1,0 +1,37 @@
+using Smartent.Test.UI.Constants;
+using Smartent.Test.UI.Extensions;
+using OpenQA.Selenium;
+using SixLabors.ImageSharp;
+using System.Diagnostics.CodeAnalysis;
+using System.Threading.Tasks;
+using Xunit;
+
+namespace Smartent.Test.Acceptance.Tests.VisualVerificationTests;
+
+public class VisualVerificationTests : UITestBase
+{
+    private static readonly Size[] _visualVerificationSizes =
+    [
+        CommonDisplayResolutions.Standard,
+    ];
+
+    public VisualVerificationTests(ITestOutputHelper testOutputHelper)
+        : base(testOutputHelper)
+    {
+    }
+
+    [Fact]
+    [SuppressMessage("Style", "IDE0055:Fix formatting", Justification = "Needed for inline comments.")]
+    public Task VerifyHomePageAndLayout() =>
+        // Check the whole page so we can verify the margins and to see if header/footer is affected.
+        // The threshold is necessary so the year changing in the footer doesn't cause the test to crash (or other tiny
+        // changes in font rendering).
+        RunAsync(
+            context => context.AssertVisualVerificationApprovedOnAllResolutionsWithPlatformSuffixAsync(
+                _visualVerificationSizes,
+                _ => By.TagName("body"),
+                // Chrome can have rendering differences among GitHub Actions runner types, so to not break CI builds,
+                // allowing a larger threshold. Also, Chrome updates can bring font rendering changes, trying to avoid
+                // failing on those too.
+                pixelErrorPercentageThreshold: 1));
+}

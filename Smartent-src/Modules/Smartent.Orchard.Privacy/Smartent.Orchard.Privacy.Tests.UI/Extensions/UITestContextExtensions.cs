@@ -1,7 +1,7 @@
 using Smartent.Orchard.Privacy.Constants;
 using Smartent.Orchard.Privacy.Tests.UI.Constants;
-using Lombiq.Tests.UI.Extensions;
-using Lombiq.Tests.UI.Services;
+using Smartent.Test.UI.Extensions;
+using Smartent.Test.UI.Services;
 using OpenQA.Selenium;
 using System;
 using System.Linq;

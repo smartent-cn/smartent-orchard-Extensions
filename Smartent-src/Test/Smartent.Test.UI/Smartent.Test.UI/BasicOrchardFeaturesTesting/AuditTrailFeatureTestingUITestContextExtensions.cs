@@ -1,0 +1,45 @@
+using Smartent.Test.UI.Extensions;
+using Smartent.Test.UI.Services;
+using OpenQA.Selenium;
+using System.Threading.Tasks;
+
+namespace Smartent.Test.UI.BasicOrchardFeaturesTesting;
+
+/// <summary>
+/// Provides a set of extension methods for Orchard Core Audit Trail feature testing.
+/// </summary>
+public static class AuditTrailFeatureTestingUITestContextExtensions
+{
+    public static Task TestAuditTrailAsync(this UITestContext context) =>
+    context.ExecuteTestAsync(
+        "Test Audit Trail",
+        async () =>
+        {
+            var auditTrailPath = "/AuditTrail";
+            var auditTrailTestPageTitle = "Audit Trail Test Page";
+
+            await context.EnableFeatureDirectlyAsync("OrchardCore.AuditTrail");
+            await context.GoToAdminRelativeUrlAsync("/Settings" + auditTrailPath);
+
+            await context.GoToEditorTabAsync("Content");
+
+            await context.SetCheckboxValueAsync(By.XPath("//input[@value='Page']"));
+
+            await context.ClickReliablyOnSubmitAsync();
+
+            context.SuccessMessageExists("Site settings updated successfully.");
+
+            await context.CreateNewPageContentItemAsync(auditTrailTestPageTitle);
+
+            await context.GoToAdminRelativeUrlAsync(auditTrailPath);
+
+            var auditTrailTestPageSuccessXpath = "//div[contains(@class, eventdata)]/small[contains(., 'was published')" +
+                $" and contains(., 'of the Page')]/a[text()='{auditTrailTestPageTitle}']";
+
+            context.Exists(By.XPath(auditTrailTestPageSuccessXpath));
+
+            auditTrailTestPageSuccessXpath = auditTrailTestPageSuccessXpath.Replace("published", "created");
+
+            context.Exists(By.XPath(auditTrailTestPageSuccessXpath));
+        });
+}

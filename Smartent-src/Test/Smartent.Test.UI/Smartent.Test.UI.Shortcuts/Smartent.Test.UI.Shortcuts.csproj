@@ -1,0 +1,42 @@
+<Project>
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <IsPublishable>false</IsPublishable>
+  </PropertyGroup>
+
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../../src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.OrchardCore.Module.Sdk/Sdk/Import.props" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Lombiq.MSBuild.OrchardCore.Module.Sdk" Version="2.1.1" />
+
+  <PropertyGroup>
+    <Title>Lombiq UI Testing Toolbox - Shortcuts</Title>
+    <CopyrightYear>2020</CopyrightYear>
+    <DescriptionBody>Provides some useful shortcuts for common operations that UI tests might want to do or check, e.g. turning features on or off, or logging in users.</DescriptionBody>
+    <PackageTags>OrchardCore;Lombiq;AspNetCore;Selenium;Atata;Shouldly;xUnit;Axe;AccessibilityTesting;UITesting;Testing;Automation</PackageTags>
+    <RepositoryUrl>https://github.com/Lombiq/UI-Testing-Toolbox</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/Lombiq/UI-Testing-Toolbox/tree/dev/Smartent.Test.UI.Shortcuts</PackageProjectUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.15" />
+    <!-- Microsoft.OpenApi is required by Microsoft.AspNetCore.OpenApi, but its default version has a security vulnerability.
+         Note: Staying on the 2.x line intentionally (upgraded to the latest patched 2.x release). Microsoft.OpenApi 3.x is
+         only supported starting with Microsoft.AspNetCore.OpenApi 11.x (ASP.NET Core 11, still in preview); using it here
+         breaks the Microsoft.AspNetCore.OpenApi.SourceGenerators-generated code (CS0200 on IOpenApiMediaType.Example,
+         which became read-only in 3.x). See https://learn.microsoft.com/aspnet/core/breaking-changes/11/microsoft-openapi-3x
+         and https://github.com/dotnet/aspnetcore/issues/67930. Once Microsoft.AspNetCore.OpenApi is upgraded to depend on
+         Microsoft.OpenApi >=3.0.0 (i.e., once it targets ASP.NET Core 11+ as stable), this direct PackageReference can be
+         removed and the transitive version will be safe by default.
+         Once this reference is removed, also remove the corresponding config from renovate.json5. -->
+    <PackageReference Include="Microsoft.OpenApi" Version="2.13.1" />
+    <PackageReference Include="OrchardCore.Users" Version="$(OrchardCoreVersion)" />
+  </ItemGroup>
+
+  <!-- Security Updates for Orchard Core - make sure to check if these are still necessary -->
+  <ItemGroup Condition="'$(ManagePackageVersionsCentrally)' != 'true'">
+    <PackageReference Include="MySqlConnector" Version="2.6.2" NoWarn="NU1510" />
+    <PackageReference Include="HtmlSanitizer" Version="9.2.1039" NoWarn="NU1510" />
+  </ItemGroup>
+
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../../src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.OrchardCore.Module.Sdk/Sdk/Import.targets" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.targets" Sdk="Lombiq.MSBuild.OrchardCore.Module.Sdk" Version="2.1.1" />
+</Project>

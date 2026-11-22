@@ -14,7 +14,7 @@
       "name": "recipes",
       "Values": [
         {
-          "executionid": "Lombiq.OSOCE.Web",
+          "executionid": "Smartent.Demo.Web",
           "name": "Blog"
         }
       ]

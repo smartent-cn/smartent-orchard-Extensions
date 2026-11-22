@@ -1,6 +1,6 @@
-using Lombiq.Tests.UI.Extensions;
-using Lombiq.Tests.UI.Models;
-using Lombiq.Tests.UI.Services;
+using Smartent.Test.UI.Extensions;
+using Smartent.Test.UI.Models;
+using Smartent.Test.UI.Services;
 using OpenQA.Selenium;
 using System;
 using System.Threading.Tasks;

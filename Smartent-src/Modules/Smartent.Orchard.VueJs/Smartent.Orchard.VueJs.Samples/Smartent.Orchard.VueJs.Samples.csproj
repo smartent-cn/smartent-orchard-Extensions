@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk.Razor">
 
-  <Import Condition="'$(NuGetBuild)' != 'true'" Project="..\..\..\..\Smartent-src\Build\Smartent.Build.NodeJs\Smartent.Build.NodeJs\Smartent.Build.NodeJs.props" />
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="..\..\..\Build\Smartent.Build.NodeJs\Smartent.Build.NodeJs\Smartent.Build.NodeJs.props" />
   <Import Project="..\Smartent.Orchard.VueJs\Smartent.Orchard.VueJs.props" />
 
   <PropertyGroup>
@@ -50,7 +50,7 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(NuGetBuild)' != 'true'">
-    <ProjectReference Include="..\..\..\..\Smartent-src\Platform\Core\Smartent.Core.Primitives\Smartent.Core.Primitives.csproj" />
+    <ProjectReference Include="..\..\..\Platform\Core\Smartent.Core.Primitives\Smartent.Core.Primitives.csproj" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(NuGetBuild)' == 'true'">
@@ -58,7 +58,7 @@
     <PackageReference Include="Smartent.Core.Primitives" Version="12.6.1-alpha.7.osoe-925" />
   </ItemGroup>
 
-  <Import Condition="'$(NuGetBuild)' != 'true'" Project="..\..\..\..\Smartent-src\Build\Smartent.Build.NodeJs\Smartent.Build.NodeJs\Smartent.Build.NodeJs.targets" />
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="..\..\..\Build\Smartent.Build.NodeJs\Smartent.Build.NodeJs\Smartent.Build.NodeJs.targets" />
   <Import Project="..\Smartent.Orchard.VueJs\Smartent.Orchard.VueJs.targets" />
 
 </Project>

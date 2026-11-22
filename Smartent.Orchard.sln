@@ -5,7 +5,7 @@ VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{648D3BB6-201F-401B-9EF9-D7BBBC6D3ECA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lombiq.OSOCE.Web", "src\Lombiq.OSOCE.Web\Lombiq.OSOCE.Web.csproj", "{1AC7EC46-8FC5-49F8-B995-DA35263AB53F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Demo.Web", "Smartent-src\Demo\Smartent.Demo.Web\Smartent.Demo.Web.csproj", "{1AC7EC46-8FC5-49F8-B995-DA35263AB53F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8B131E3B-202B-486D-A3A4-CB84AC4C3370}"
 	ProjectSection(SolutionItems) = preProject
@@ -54,15 +54,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Orchard.AuditTrail
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Orchard.Platform.Data.LinqToYesSql", "Smartent-src\Platform\Orchard\Smartent.Orchard.Platform.Data.LinqToYesSql\Smartent.Orchard.Platform.Data.LinqToYesSql.csproj", "{8BC42764-7D0C-4F18-8663-DB7C9F1734D5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lombiq.Tests.UI", "test\Lombiq.UITestingToolbox\Lombiq.Tests.UI\Lombiq.Tests.UI.csproj", "{C48BA269-041E-4D17-A05C-BBC0C505B9C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Test.UI", "Smartent-src\Test\Smartent.Test.UI\Smartent.Test.UI\Smartent.Test.UI.csproj", "{C48BA269-041E-4D17-A05C-BBC0C505B9C4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lombiq.Tests.UI.Shortcuts", "test\Lombiq.UITestingToolbox\Lombiq.Tests.UI.Shortcuts\Lombiq.Tests.UI.Shortcuts.csproj", "{63826697-DA99-4729-A56B-2FCDBD9C0607}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Test.UI.Shortcuts", "Smartent-src\Test\Smartent.Test.UI\Smartent.Test.UI.Shortcuts\Smartent.Test.UI.Shortcuts.csproj", "{63826697-DA99-4729-A56B-2FCDBD9C0607}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lombiq.Tests.UI.AppExtensions", "test\Lombiq.UITestingToolbox\Lombiq.Tests.UI.AppExtensions\Lombiq.Tests.UI.AppExtensions.csproj", "{C9BAC943-31BB-43ED-AA81-02CCFF7A7885}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Test.UI.AppExtensions", "Smartent-src\Test\Smartent.Test.UI\Smartent.Test.UI.AppExtensions\Smartent.Test.UI.AppExtensions.csproj", "{C9BAC943-31BB-43ED-AA81-02CCFF7A7885}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lombiq.Tests.UI.Samples", "test\Lombiq.UITestingToolbox\Lombiq.Tests.UI.Samples\Lombiq.Tests.UI.Samples.csproj", "{6F69487B-98F8-4745-8685-AADD7C35FFD0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Test.UI.Samples", "Smartent-src\Test\Smartent.Test.UI\Smartent.Test.UI.Samples\Smartent.Test.UI.Samples.csproj", "{6F69487B-98F8-4745-8685-AADD7C35FFD0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lombiq.Tests", "test\Lombiq.Tests\Lombiq.Tests.csproj", "{76565ADF-DF26-47F8-A43F-57C6EB53CE5D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Test.Unit", "Smartent-src\Test\Smartent.Test.Unit\Smartent.Test.Unit.csproj", "{76565ADF-DF26-47F8-A43F-57C6EB53CE5D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Orchard.Hosting.Tenants.Admin.Login", "Smartent-src\Modules\Smartent.Orchard.Hosting.Tenants\Smartent.Orchard.Hosting.Tenants.Admin.Login\Smartent.Orchard.Hosting.Tenants.Admin.Login.csproj", "{45B54216-B0A4-4D07-ACF9-D9046F9F2705}"
 EndProject
@@ -90,7 +90,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Orchard.DataTables
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Orchard.DataTables.Tests", "Smartent-src\Modules\Smartent.Orchard.DataTables\Smartent.Orchard.DataTables.Tests\Smartent.Orchard.DataTables.Tests.csproj", "{1DEE21A1-F89B-47CF-8971-6C28C0C0F1CF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lombiq.OSOCE.Tests.UI", "test\Lombiq.OSOCE.Tests.UI\Lombiq.OSOCE.Tests.UI.csproj", "{AF7F0D99-B8CF-48D7-9471-A5F91CB53B09}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Test.Acceptance", "Smartent-src\Test\Smartent.Test.Acceptance\Smartent.Test.Acceptance.csproj", "{AF7F0D99-B8CF-48D7-9471-A5F91CB53B09}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Orchard.DataTables.Tests.UI", "Smartent-src\Modules\Smartent.Orchard.DataTables\Smartent.Orchard.DataTables.Tests.UI\Smartent.Orchard.DataTables.Tests.UI.csproj", "{44546C43-8A6D-4C8F-901E-0C87DA596965}"
 EndProject
@@ -160,7 +160,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Orchard.Hosting.Te
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Orchard.Hosting.Tenants.FeaturesGuard.Tests.UI", "Smartent-src\Modules\Smartent.Orchard.Hosting.Tenants\Smartent.Orchard.Hosting.Tenants.FeaturesGuard.Tests.UI\Smartent.Orchard.Hosting.Tenants.FeaturesGuard.Tests.UI.csproj", "{6EFBB112-DA07-4FAB-8D01-6300D7A06CA4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lombiq.Tests.UI.Tests.UI", "test\Lombiq.UITestingToolbox\Lombiq.Tests.UI.Tests.UI\Lombiq.Tests.UI.Tests.UI.csproj", "{C0BFCEEF-372F-44DD-85C0-C5EB1D558B85}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Test.UI.Tests.UI", "Smartent-src\Test\Smartent.Test.UI\Smartent.Test.UI.Tests.UI\Smartent.Test.UI.Tests.UI.csproj", "{C0BFCEEF-372F-44DD-85C0-C5EB1D558B85}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Orchard.Theme.Media.Deployer", "Smartent-src\Themes\Smartent.Orchard.Theme.Media\Smartent.Orchard.Theme.Media.Deployer\Smartent.Orchard.Theme.Media.Deployer.csproj", "{2CA7508D-9E99-4B89-84A9-8F38C860BA76}"
 EndProject

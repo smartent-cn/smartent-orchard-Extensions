@@ -1,8 +1,8 @@
 using Atata;
 using ClosedXML.Excel;
 using Smartent.Orchard.DataTables.Samples.Services;
-using Lombiq.Tests.UI.Extensions;
-using Lombiq.Tests.UI.Services;
+using Smartent.Test.UI.Extensions;
+using Smartent.Test.UI.Services;
 using OpenQA.Selenium;
 using Shouldly;
 using System;

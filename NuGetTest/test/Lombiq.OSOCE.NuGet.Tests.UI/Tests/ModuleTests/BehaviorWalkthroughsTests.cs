@@ -1,4 +1,4 @@
-using Lombiq.Tests.UI.Extensions;
+using Smartent.Test.UI.Extensions;
 using Lombiq.Walkthroughs.Tests.UI.Extensions;
 using System.Net;
 using System.Threading.Tasks;

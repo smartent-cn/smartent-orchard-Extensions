@@ -5,13 +5,13 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Lombiq.OSOCE.Web .NET Core Launch (web)",
+            "name": "Smartent.Demo.Web .NET Core Launch (web)",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/src/Lombiq.OSOCE.Web/bin/Debug/net8.0/Lombiq.OSOCE.Web.dll",
+            "program": "${workspaceFolder}/src/Smartent.Demo.Web/bin/Debug/net8.0/Smartent.Demo.Web.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/src/Lombiq.OSOCE.Web",
+            "cwd": "${workspaceFolder}/src/Smartent.Demo.Web",
             "stopAtEntry": false,
             "serverReadyAction": {
                 "action": "openExternally",
@@ -23,8 +23,8 @@
             "sourceFileMap": {
                 "/Views": "${workspaceFolder}/Views"
             },
-            "launchSettingsFilePath": "${workspaceFolder}/src/Lombiq.OSOCE.Web/Properties/launchSettings.json",
-            "launchSettingsProfile": "Lombiq.OSOCE.Web"
+            "launchSettingsFilePath": "${workspaceFolder}/src/Smartent.Demo.Web/Properties/launchSettings.json",
+            "launchSettingsProfile": "Smartent.Demo.Web"
         }
     ]
 }

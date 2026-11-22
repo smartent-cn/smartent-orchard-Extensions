@@ -1,4 +1,4 @@
-using Lombiq.Tests.UI.Extensions;
+using Smartent.Test.UI.Extensions;
 using Lombiq.VueJs.Tests.UI.Extensions;
 using System.Threading.Tasks;
 using Xunit;

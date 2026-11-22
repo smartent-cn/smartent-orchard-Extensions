@@ -1,6 +1,6 @@
 using Atata;
-using Lombiq.Tests.UI.Extensions;
-using Lombiq.Tests.UI.Services;
+using Smartent.Test.UI.Extensions;
+using Smartent.Test.UI.Services;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using static Smartent.Orchard.Extensions.Cms.Tests.UI.Constants.XPathSelectors;

@@ -1,5 +1,5 @@
 using Lombiq.Hosting.Tenants.HealthChecks.Tests.UI.Extensions;
-using Lombiq.Tests.UI.Extensions;
+using Smartent.Test.UI.Extensions;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 using Xunit;

@@ -1,4 +1,4 @@
-using Lombiq.Tests.UI.Models;
+using Smartent.Test.UI.Models;
 
 namespace Smartent.Orchard.ApiClient.Models;
 

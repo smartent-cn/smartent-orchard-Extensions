@@ -50,7 +50,7 @@
 | 分析器 | `tools/Lombiq.Analyzers*` | 改名（可选拆分） |
 | Orchard 模块 | `src/Modules/Lombiq.*` | 改名、模块 Id 策略、减引用 |
 | 主题 | `src/Themes/Lombiq.*` | 同上 |
-| 演示宿主 | `src/Lombiq.OSOCE.Web` | 改名、引用更新 |
+| 演示宿主 | `src/Smartent.Demo.Web` | 改名、引用更新 |
 | 测试 | `test/*`、`NuGetTest` | 改名、门禁用例 |
 | 文档与脚本 | `Readme.md`、`Releasing.md`、`*.ps1`、`renovate*.json5` | Smartent 化、去 Lombiq 上游耦合 |
 
@@ -205,7 +205,7 @@ Legacy 的 `src/` 在终态 **应不存在**（或仅保留无意义占位说明
 |------|------|
 | L1 | Platform / Core 单元测试 |
 | L2 | 各模块 `*.Tests`、`*.Tests.UI` |
-| L3 | 仓库级 `Smartent.*.Tests.UI`（原 Lombiq.OSOCE.Tests.UI） |
+| L3 | 仓库级 `Smartent.*.Tests.UI`（原 Smartent.Test.Acceptance） |
 | L4 | NuGet 还原 + 仅包引用构建（M7） |
 
 ### 7.2 通过标准（M6）

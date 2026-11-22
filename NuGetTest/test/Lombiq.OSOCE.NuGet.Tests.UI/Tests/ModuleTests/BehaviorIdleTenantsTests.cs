@@ -1,6 +1,6 @@
 using Lombiq.Hosting.Tenants.IdleTenantManagement.Tests.UI.Extensions;
 using Lombiq.OSOCE.NuGet.Tests.UI.Constants;
-using Lombiq.Tests.UI.Extensions;
+using Smartent.Test.UI.Extensions;
 using System.Threading.Tasks;
 using Xunit;
 

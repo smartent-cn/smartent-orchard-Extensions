@@ -1,7 +1,7 @@
 using Smartent.Orchard.Privacy.Tests.UI.Extensions;
-using Lombiq.Tests.UI;
-using Lombiq.Tests.UI.Extensions;
-using Lombiq.Tests.UI.Services;
+using Smartent.Test.UI;
+using Smartent.Test.UI.Extensions;
+using Smartent.Test.UI.Services;
 using Shouldly;
 using System;
 using System.Threading.Tasks;

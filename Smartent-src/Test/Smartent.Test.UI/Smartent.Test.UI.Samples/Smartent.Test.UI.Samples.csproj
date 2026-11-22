@@ -1,0 +1,36 @@
+<Project>
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../../src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.OrchardCore.Tests.UI.Sdk/Sdk/Import.props" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Lombiq.MSBuild.OrchardCore.Tests.UI.Sdk" Version="2.1.1" />
+
+  <!-- JavaScriptTests depends on Smartent.Test.UI JS runner extensions not yet present in this fork. -->
+  <ItemGroup>
+    <Compile Remove="Tests\JavaScriptTests.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove=".htmlvalidate.json" />
+    <None Remove="Tests\CustomZapAutomationFrameworkPlan.yml" />
+    <None Remove="xunit.runner.json" />
+    <None Update="Tests\*.mjs" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include=".htmlvalidate.json" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="Recipes\Lombiq.OSOCE.Tests.Elasticsearch.recipe.json" CopyToOutputDirectory="PreserveNewest" ExcludeFromSingleFile="true" CopyToPublishDirectory="PreserveNewest" />
+    <Content Include="Tests\CustomZapAutomationFrameworkPlan.yml" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="xunit.runner.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Demo\Smartent.Demo.Web\Smartent.Demo.Web.csproj" />
+    <ProjectReference Include="..\Smartent.Test.UI.TestingModule\Smartent.Test.UI.TestingModule.csproj" />
+  </ItemGroup>
+
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../../src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.OrchardCore.Tests.UI.Sdk/Sdk/Import.targets" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.targets" Sdk="Lombiq.MSBuild.OrchardCore.Tests.UI.Sdk" Version="2.1.1" />
+</Project>

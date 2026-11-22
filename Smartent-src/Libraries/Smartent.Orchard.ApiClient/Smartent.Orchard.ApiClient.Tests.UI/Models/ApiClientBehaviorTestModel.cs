@@ -1,5 +1,5 @@
 using Smartent.Orchard.ApiClient.Models;
-using Lombiq.Tests.UI.Services;
+using Smartent.Test.UI.Services;
 using System;
 using System.Threading.Tasks;
 

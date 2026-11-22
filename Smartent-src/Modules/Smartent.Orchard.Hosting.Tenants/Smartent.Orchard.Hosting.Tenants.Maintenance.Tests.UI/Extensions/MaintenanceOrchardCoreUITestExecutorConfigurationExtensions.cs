@@ -1,4 +1,4 @@
-using Lombiq.Tests.UI.Services;
+using Smartent.Test.UI.Services;
 using System.Threading.Tasks;
 
 namespace Smartent.Orchard.Hosting.Tenants.Maintenance.Tests.UI.Extensions;

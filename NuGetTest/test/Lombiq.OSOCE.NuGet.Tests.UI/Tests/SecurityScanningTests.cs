@@ -1,4 +1,4 @@
-using Lombiq.Tests.UI.SecurityScanning;
+using Smartent.Test.UI.SecurityScanning;
 using Shouldly;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;

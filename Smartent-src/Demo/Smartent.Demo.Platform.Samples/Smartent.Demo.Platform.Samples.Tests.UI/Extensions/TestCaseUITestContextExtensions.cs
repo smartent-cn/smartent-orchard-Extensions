@@ -1,7 +1,7 @@
 using Smartent.Orchard.Platform.Mvc;
 using Smartent.Demo.Platform.Samples.Controllers;
-using Lombiq.Tests.UI.Extensions;
-using Lombiq.Tests.UI.Services;
+using Smartent.Test.UI.Extensions;
+using Smartent.Test.UI.Services;
 using Shouldly;
 using System;
 using System.Collections.Generic;

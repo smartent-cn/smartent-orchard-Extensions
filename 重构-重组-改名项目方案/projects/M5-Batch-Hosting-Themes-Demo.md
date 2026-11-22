@@ -23,7 +23,7 @@
 | `Lombiq.BaseTheme.*` | `Smartent.Orchard.Theme.Base.*` |
 | `Lombiq.Hosting.MediaTheme` / `*.Bridge` 等 | `Smartent.Orchard.Theme.Media.*` |
 
-已同步：`Lombiq.OSOCE.Web` ProjectReference / Recipe、`test/Lombiq.OSOCE.Tests.UI`、`Smartent.Orchard.sln` / `slnx`、`HostingDefaultsOrchardCoreBuilderExtensions`（BuildVersion 功能串）。
+已同步：`Smartent.Demo.Web` ProjectReference / Recipe、`test/Smartent.Test.Acceptance`、`Smartent.Orchard.sln` / `slnx`、`HostingDefaultsOrchardCoreBuilderExtensions`（BuildVersion 功能串）。
 
 ## 验证
 
@@ -48,4 +48,4 @@ Legacy 目录仅留 `Readme.md` 指针：
 
 - 各模块 `Manifest.cs` 中面向用户的 **Name/Website** 仍部分引用 Lombiq 上游仓库（NuGet 元数据渐进更新）
 - BaseTheme Native Samples 中 `node_modules` 深层路径在 Windows 上仍可能导致局部清理脚本失败（与 VueJs 同类）
-- Layer 6：`Lombiq.OSOCE.Web`、验收测试工程仍为 legacy 路径/命名
+- Layer 6：`Smartent.Demo.Web`、验收测试工程仍为 legacy 路径/命名

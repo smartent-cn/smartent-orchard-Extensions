@@ -1,0 +1,15 @@
+namespace Smartent.Test.UI.Shortcuts;
+
+public static class ShortcutsFeatureIds
+{
+    internal const string DescriptionUiTestWarning = "WARNING: Only enable this feature in the UI testing environment. ";
+
+    public const string Area = "Smartent.Test.UI.Shortcuts";
+
+    public const string Default = Area;
+    public const string FeatureToggleTestBench = $"{Default}.{nameof(FeatureToggleTestBench)}";
+    public const string MediaCachePurge = $"{Default}.{nameof(MediaCachePurge)}";
+    public const string ShiftTime = $"{Default}.{nameof(ShiftTime)}";
+    public const string OpenApi = $"{Default}.{nameof(OpenApi)}";
+    public const string Workflows = $"{Default}.{nameof(Workflows)}";
+}

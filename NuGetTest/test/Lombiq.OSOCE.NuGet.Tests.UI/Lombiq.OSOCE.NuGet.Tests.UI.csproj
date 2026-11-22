@@ -7,7 +7,7 @@
     <None Remove="*.htmlvalidate.json" />
     <Content Include=".htmlvalidate.json" CopyToOutputDirectory="PreserveNewest" />
     <Content Include="*.htmlvalidate.json" CopyToOutputDirectory="PreserveNewest" />
-    <Content Include="../../../test/Lombiq.OSOCE.Tests.UI/*.htmlvalidate.json" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="../../../Smartent-src/Test/Smartent.Test.Acceptance/*.htmlvalidate.json" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
   <ItemGroup>

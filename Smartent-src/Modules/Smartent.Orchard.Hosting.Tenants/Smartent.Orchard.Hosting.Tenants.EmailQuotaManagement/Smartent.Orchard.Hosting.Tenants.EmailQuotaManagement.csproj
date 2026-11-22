@@ -26,7 +26,7 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(NuGetBuild)' != 'true'">
-    <ProjectReference Include="..\..\..\..\Smartent-src\Modules\Smartent.Orchard.Extensions.Cms\Smartent.Orchard.Extensions.Cms\Smartent.Orchard.Extensions.Cms.csproj" />
+    <ProjectReference Include="..\..\Smartent.Orchard.Extensions.Cms\Smartent.Orchard.Extensions.Cms\Smartent.Orchard.Extensions.Cms.csproj" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(NuGetBuild)' == 'true'">

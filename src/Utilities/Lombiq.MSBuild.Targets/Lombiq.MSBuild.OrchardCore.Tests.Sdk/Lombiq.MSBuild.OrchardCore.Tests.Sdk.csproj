@@ -1,8 +1,8 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <Title>Lombiq MSBuild SDK - Unit Testing</Title>
-    <Description>MSBuild SDK for unit tests using the Lombiq.Tests library.</Description>
+    <Description>MSBuild SDK for unit tests using the Smartent.Test.Unit library.</Description>
     <PackageProjectUrl>https://github.com/Lombiq/MSBuild-Targets/blob/dev/Lombiq.MSBuild.OrchardCore.Tests.Sdk/Readme.md</PackageProjectUrl>
   </PropertyGroup>
 
