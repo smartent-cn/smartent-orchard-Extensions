@@ -1,9 +1,26 @@
-<Project Sdk="Lombiq.MSBuild.OrchardCore.Theme.Sdk/2.1.1">
+<Project Sdk="Microsoft.NET.Sdk.Razor">
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
+  <Import Condition="'$(UseSmartentMonorepoMsBuildSdk)' == 'true'"
+          Project="$(SmartentMonorepoRoot)/Smartent-src/Build/Lombiq.MSBuild.OrchardCore.Theme.Sdk/Sdk/Import.props" />
+  <Import Condition="'$(UseSmartentMonorepoMsBuildSdk)' != 'true'"
+          Sdk="Lombiq.MSBuild.OrchardCore.Theme.Sdk"
+          Project="Sdk.props"
+          Version="2.1.1" />
+
+  <Import Condition="'$(UseSmartentMonorepoMsBuildSdk)' == 'true'"
+          Project="$(SmartentMonorepoRoot)/Smartent-src/Build/Lombiq.MSBuild.OrchardCore.Theme.Sdk/Sdk/Import.targets" />
+  <Import Condition="'$(UseSmartentMonorepoMsBuildSdk)' != 'true'"
+          Sdk="Lombiq.MSBuild.OrchardCore.Theme.Sdk"
+          Project="Sdk.targets"
+          Version="2.1.1" />
+
+  <ItemGroup Condition="'$(UseSmartentMonorepoMsBuildSdk)' == 'true'">
+    <ProjectReference Include="$(SmartentMonorepoRoot)/Smartent-src/Build/Smartent.Build.Npm.Targets/Smartent.Build.Npm.Targets.csproj" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(UseSmartentMonorepoMsBuildSdk)' != 'true'">
     <PackageReference Include="Smartent.Build.Npm.Targets" />
   </ItemGroup>
 </Project>

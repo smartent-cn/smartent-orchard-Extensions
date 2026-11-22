@@ -1,10 +1,29 @@
-﻿<Project Sdk="Lombiq.MSBuild.OrchardCore.Tests.Sdk/2.1.1">
-
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
+  <Import Condition="'$(UseSmartentMonorepoMsBuildSdk)' == 'true'"
+          Project="$(SmartentMonorepoRoot)/Smartent-src/Build/Lombiq.MSBuild.OrchardCore.Tests.Sdk/Sdk/Import.props" />
+  <Import Condition="'$(UseSmartentMonorepoMsBuildSdk)' != 'true'"
+          Sdk="Lombiq.MSBuild.OrchardCore.Tests.Sdk"
+          Project="Sdk.props"
+          Version="2.1.1" />
+
+  <Import Condition="'$(UseSmartentMonorepoMsBuildSdk)' == 'true'"
+          Project="$(SmartentMonorepoRoot)/Smartent-src/Build/Lombiq.MSBuild.OrchardCore.Tests.Sdk/Sdk/Import.targets" />
+  <Import Condition="'$(UseSmartentMonorepoMsBuildSdk)' != 'true'"
+          Sdk="Lombiq.MSBuild.OrchardCore.Tests.Sdk"
+          Project="Sdk.targets"
+          Version="2.1.1" />
+
+  <ItemGroup Condition="'$(UseSmartentMonorepoMsBuildSdk)' == 'true'">
+    <ProjectReference Include="$(SmartentMonorepoRoot)/Smartent-src/Platform/Core/Smartent.Core.Primitives/Smartent.Core.Primitives.csproj" />
+    <ProjectReference Include="$(SmartentMonorepoRoot)/Smartent-src/Platform/Orchard/Smartent.Orchard.Platform/Smartent.Orchard.Platform.csproj" />
+    <ProjectReference Include="$(SmartentMonorepoRoot)/Smartent-src/Libraries/Smartent.Orchard.EInvoice/Smartent.Orchard.EInvoice/Smartent.Orchard.EInvoice.csproj" />
+    <ProjectReference Include="$(SmartentMonorepoRoot)/Smartent-src/Libraries/Smartent.Orchard.EInvoice/Smartent.Orchard.EInvoice.Sample/Smartent.Orchard.EInvoice.Sample.csproj" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(UseSmartentMonorepoMsBuildSdk)' != 'true'">
     <PackageReference Include="Smartent.Core.Primitives" />
     <PackageReference Include="Smartent.Orchard.Platform" />
     <PackageReference Include="Smartent.Orchard.EInvoice" />

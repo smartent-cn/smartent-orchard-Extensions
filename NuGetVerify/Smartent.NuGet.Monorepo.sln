@@ -1,0 +1,37 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.NuGet.TestModule", "src\Modules\Smartent.NuGet.TestModule\Smartent.NuGet.TestModule.csproj", "{735B0FFD-82A9-49EE-B898-E3DF60BBACE0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.NuGet.TestTheme", "src\Themes\Smartent.NuGet.TestTheme\Smartent.NuGet.TestTheme.csproj", "{7A7AB418-7A88-4F7E-ADEF-5F5B293D53FE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.NuGet.Tests", "test\Smartent.NuGet.Tests\Smartent.NuGet.Tests.csproj", "{692A7BF5-5DB9-46C9-8C90-8D2EFC895BAF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Build.NodeJs.Samples.NuGet", "..\Smartent-src\Build\Smartent.Build.NodeJs\Smartent.Build.NodeJs.Samples.NuGet\Smartent.Build.NodeJs.Samples.NuGet.csproj", "{25103E6E-D628-4D36-8FE5-965A293C36D3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{735B0FFD-82A9-49EE-B898-E3DF60BBACE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{735B0FFD-82A9-49EE-B898-E3DF60BBACE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{735B0FFD-82A9-49EE-B898-E3DF60BBACE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{735B0FFD-82A9-49EE-B898-E3DF60BBACE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A7AB418-7A88-4F7E-ADEF-5F5B293D53FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A7AB418-7A88-4F7E-ADEF-5F5B293D53FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A7AB418-7A88-4F7E-ADEF-5F5B293D53FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A7AB418-7A88-4F7E-ADEF-5F5B293D53FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{692A7BF5-5DB9-46C9-8C90-8D2EFC895BAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{692A7BF5-5DB9-46C9-8C90-8D2EFC895BAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{692A7BF5-5DB9-46C9-8C90-8D2EFC895BAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{692A7BF5-5DB9-46C9-8C90-8D2EFC895BAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25103E6E-D628-4D36-8FE5-965A293C36D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25103E6E-D628-4D36-8FE5-965A293C36D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25103E6E-D628-4D36-8FE5-965A293C36D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25103E6E-D628-4D36-8FE5-965A293C36D3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

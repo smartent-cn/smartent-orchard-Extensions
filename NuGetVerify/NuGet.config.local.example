@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copy to NuGet.config.local (gitignored) after: scripts/Pack-SmartentLocalFeed.ps1 -Full -->
+<configuration>
+  <packageSources>
+    <clear />
+    <add key="nuget.org" value="https://api.nuget.org/v3/index.json" />
+    <add key="SmartentLocal" value="../artifacts/smartent-nuget-local" />
+  </packageSources>
+  <packageSourceMapping>
+    <packageSource key="nuget.org">
+      <package pattern="*" />
+      <package pattern="OrchardCore.*" />
+      <package pattern="OrchardCore.Translations.*" />
+    </packageSource>
+    <packageSource key="SmartentLocal">
+      <package pattern="Smartent.*" />
+      <package pattern="Lombiq.MSBuild.*" />
+    </packageSource>
+  </packageSourceMapping>
+</configuration>

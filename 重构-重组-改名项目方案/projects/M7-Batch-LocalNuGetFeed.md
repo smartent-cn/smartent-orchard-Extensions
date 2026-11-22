@@ -8,6 +8,9 @@
 | 项 | 说明 |
 |----|------|
 | `scripts/Pack-SmartentLocalFeed.ps1` | 默认 pack Platform / Module.Sdk / TrainingDemo；`-Full` = 全 `Smartent.Orchard.sln` |
+| `scripts/Build-NuGetVerify-WithLocalFeed.ps1` | `-Full` pack + `NuGet.config.local` 还原/构建全 `Smartent.NuGet.sln` |
+| `NuGetVerify/Smartent.NuGet.Monorepo.sln` | CI 门禁（无 Web / Tests.UI；走 `UseSmartentMonorepoMsBuildSdk`） |
+| `NuGetVerify/NuGet.config.local.example` | 本地 feed 源模板 |
 | `artifacts/smartent-nuget-local/` | 本地 feed 输出目录（gitignore） |
 | `NuGetVerify/NuGet.config` | 注释占位 `SmartentLocal` 源 |
 | 根 `Reset-Local.ps1` | 指向 `Smartent-src/Demo/Smartent.Demo.Web/App_Data` |
@@ -16,9 +19,10 @@
 
 ```powershell
 ./scripts/Pack-SmartentLocalFeed.ps1
-dotnet build NuGetVerify/src/Modules/Smartent.NuGet.TestModule/Smartent.NuGet.TestModule.csproj -c Release
-# 全量 NuGetVerify Web：Pack -Full 并启用 NuGet.config 中 SmartentLocal 后
-# dotnet build NuGetVerify/Smartent.NuGet.sln -c Release
+dotnet build NuGetVerify/Smartent.NuGet.Monorepo.sln -c Release
+# 全量 NuGetVerify Web：
+# Copy-Item NuGetVerify/NuGet.config.local.example NuGetVerify/NuGet.config.local
+# ./scripts/Build-NuGetVerify-WithLocalFeed.ps1
 ```
 
 ## 未决
