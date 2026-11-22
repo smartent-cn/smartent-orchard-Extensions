@@ -130,7 +130,7 @@
   </Folder>
   <Folder Name="/test/Libraries/">
     <Project Path="Smartent-src/Libraries/Smartent.Orchard.EInvoice/Smartent.Orchard.EInvoice.Tests/Smartent.Orchard.EInvoice.Tests.csproj" />
-    <Project Path="src/Libraries/Lombiq.HelpfulLibraries/Lombiq.HelpfulLibraries.Tests/Lombiq.HelpfulLibraries.Tests.csproj" />
+    <Project Path="Smartent-src/Test/Smartent.Test.Platform/Smartent.Test.Platform.csproj" />
     <Project Path="Smartent-src/Libraries/Smartent.Orchard.ApiClient/Smartent.Orchard.ApiClient.Tests.UI/Smartent.Orchard.ApiClient.Tests.UI.csproj" />
   </Folder>
   <Folder Name="/test/Modules/">

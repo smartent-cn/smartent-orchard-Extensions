@@ -100,10 +100,10 @@ No Orchard dependency. Extend via new static extension/utility types. Keep Orcha
 
 ```powershell
 dotnet build Smartent-src/Platform/Core/Smartent.Core.Primitives/Smartent.Core.Primitives.csproj
-dotnet test src/Libraries/Lombiq.HelpfulLibraries/Lombiq.HelpfulLibraries.Tests/Lombiq.HelpfulLibraries.Tests.csproj --filter "FullyQualifiedName~UnitTests.Utilities"
+dotnet test Smartent-src/Test/Smartent.Test.Platform/Smartent.Test.Platform.csproj --filter "FullyQualifiedName~UnitTests.Utilities"
 ```
 
-（单元测试仍在 Legacy `Lombiq.HelpfulLibraries.Tests` 中，覆盖 VersionTree、HtmlHelper 等。）
+（单元测试在 `Smartent.Test.Platform`，覆盖 VersionTree、HtmlHelper 等。）
 
 ---
 

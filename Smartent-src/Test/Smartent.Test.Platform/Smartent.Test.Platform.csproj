@@ -1,0 +1,46 @@
+<Project>
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>Smartent.Test.Platform</RootNamespace>
+    <AssemblyName>Smartent.Test.Platform</AssemblyName>
+    <PackageId>Smartent.Test.Platform</PackageId>
+  </PropertyGroup>
+
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.OrchardCore.Tests.Sdk/Sdk/Import.props" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Lombiq.MSBuild.OrchardCore.Tests.Sdk" Version="2.1.1-alpha.9.osoe-344" />
+
+  <PropertyGroup>
+    <SourceGeneratorLocation>$(SolutionDir)Smartent-src\Platform\Core\Smartent.Core.CodeGen.SourceGenerators\bin\Debug\netstandard2.0\Smartent.Core.CodeGen.SourceGenerators.dll</SourceGeneratorLocation>
+    <SourceGeneratorLocation Condition=" '$(Configuration)' != 'Debug' ">
+      $(SolutionDir)Smartent-src\Platform\Core\Smartent.Core.CodeGen.SourceGenerators\bin\Release\netstandard2.0\Smartent.Core.CodeGen.SourceGenerators.dll
+    </SourceGeneratorLocation>
+  </PropertyGroup>
+
+  <Target Name="CustomBeforeCompile" BeforeTargets="Compile">
+    <MSBuild Condition="!Exists('$(SourceGeneratorLocation)')" Projects="..\..\Platform\Core\Smartent.Core.CodeGen.SourceGenerators\Smartent.Core.CodeGen.SourceGenerators.csproj" />
+  </Target>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Platform\Core\Smartent.Core.CodeGen.Attributes\Smartent.Core.CodeGen.Attributes.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="true" />
+    <ProjectReference Include="..\..\Platform\Core\Smartent.Core.CodeGen.SourceGenerators\Smartent.Core.CodeGen.SourceGenerators.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+    <ProjectReference Include="..\..\Platform\Core\Smartent.Core.AspNet\Smartent.Core.AspNet.csproj" />
+    <ProjectReference Include="..\..\Platform\Core\Smartent.Core.Cli\Smartent.Core.Cli.csproj" />
+    <ProjectReference Include="..\..\Platform\Core\Smartent.Core.Primitives\Smartent.Core.Primitives.csproj" />
+    <ProjectReference Include="..\..\Platform\Orchard\Smartent.Orchard.Platform\Smartent.Orchard.Platform.csproj" />
+    <ProjectReference Include="..\..\Platform\Orchard\Smartent.Orchard.Platform.Data.LinqToYesSql\Smartent.Orchard.Platform.Data.LinqToYesSql.csproj" />
+    <ProjectReference Include="..\..\Platform\Orchard\Smartent.Orchard.Http.Refit\Smartent.Orchard.Http.Refit.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="*-sample.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="VersionTreeTests.*.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.OrchardCore.Tests.Sdk/Sdk/Import.targets" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.targets" Sdk="Lombiq.MSBuild.OrchardCore.Tests.Sdk" Version="2.1.1-alpha.9.osoe-344" />
+</Project>

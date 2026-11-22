@@ -1,45 +1,45 @@
 # Smartent.Core.AspNet | Smartent Core AspNet
 
-> **状�?| Status**：已迁入 Smartent-src（M2�? 
-> **路径 | Path**：`Smartent-src/Platform/Core/Smartent.Core.AspNet`
+> **ç¶æ?| Status**ï¼å·²è¿å¥ Smartent-srcï¼M2ï¼? 
+> **è·¯å¾ | Path**ï¼`Smartent-src/Platform/Core/Smartent.Core.AspNet`
 
 ---
 
-## 摘要 | Summary
+## æè¦ | Summary
 
-**中文**：面�?ASP.NET Core 的扩展库，含内容安全策略（CSP）、Mvc 绑定与筛选器、延迟任务中间件、本地化�?HTTP 扩展；依�?`Smartent.Core.Primitives`�?
+**ä¸­æ**ï¼é¢å?ASP.NET Core çæ©å±åºï¼å«åå®¹å®å¨ç­ç¥ï¼CSPï¼ãMvc ç»å®ä¸ç­éå¨ãå»¶è¿ä»»å¡ä¸­é´ä»¶ãæ¬å°åä¸?HTTP æ©å±ï¼ä¾èµ?`Smartent.Core.Primitives`ã?
 
-**English**: ASP.NET Core helpers—CSP providers, MVC utilities, deferred-task middleware, localization and HTTP extensions; depends on `Smartent.Core.Primitives`.
+**English**: ASP.NET Core helpersâCSP providers, MVC utilities, deferred-task middleware, localization and HTTP extensions; depends on `Smartent.Core.Primitives`.
 
 ---
 
-## 功能说明 | Features
+## åè½è¯´æ | Features
 
-### 中文
+### ä¸­æ
 
-- **Security**：`ContentSecurityPolicyDirectives`、多�?`IContentSecurityPolicyProvider`、`ConfigureSecurityDefaults`（见 `Docs/Security.md`）�?
-- **Mvc**：`JsonModelBinder`、`DevelopmentOnlyAttribute`、`FrontendException` 配套（见 `Docs/Mvc.md`、`Docs/Exceptions.md`）�?
-- **Middlewares**：`DeferredTaskMiddleware`（见 `Docs/Middlewares.md`）�?
-- **Extensions / Localization**：HTTP、配置、Cookie、ForwardedHeaders 等（�?`Docs/`）�?
-- **不实�?*：Orchard 模块清单、YesSql、多租户 Shell（在 `Smartent.Orchard.Platform.*`）�?
+- **Security**ï¼`ContentSecurityPolicyDirectives`ãå¤ç§?`IContentSecurityPolicyProvider`ã`ConfigureSecurityDefaults`ï¼è§ `Docs/Security.md`ï¼ã?
+- **Mvc**ï¼`JsonModelBinder`ã`DevelopmentOnlyAttribute`ã`FrontendException` éå¥ï¼è§ `Docs/Mvc.md`ã`Docs/Exceptions.md`ï¼ã?
+- **Middlewares**ï¼`DeferredTaskMiddleware`ï¼è§ `Docs/Middlewares.md`ï¼ã?
+- **Extensions / Localization**ï¼HTTPãéç½®ãCookieãForwardedHeaders ç­ï¼è§?`Docs/`ï¼ã?
+- **ä¸å®ç?*ï¼Orchard æ¨¡åæ¸åãYesSqlãå¤ç§æ· Shellï¼å¨ `Smartent.Orchard.Platform.*`ï¼ã?
 
 ### English
 
-CSP, MVC, middleware, extensions—see `Docs/`. No Orchard CMS features.
+CSP, MVC, middleware, extensionsâsee `Docs/`. No Orchard CMS features.
 
 ---
 
-## 引用方式 | References
+## å¼ç¨æ¹å¼ | References
 
-### Monorepo（开�?| Development�?
+### Monorepoï¼å¼å?| Developmentï¼?
 
 ```xml
 <ProjectReference Include="..\..\..\..\Smartent-src\Platform\Core\Smartent.Core.AspNet\Smartent.Core.AspNet.csproj" />
 ```
 
-通常同时需�?`Smartent.Core.Primitives`�?
+éå¸¸åæ¶éè¦?`Smartent.Core.Primitives`ã?
 
-### NuGet（发布后 | When published�?
+### NuGetï¼åå¸å | When publishedï¼?
 
 ```xml
 <PackageReference Include="Smartent.Core.AspNet" Version="1.0.0" />
@@ -47,13 +47,13 @@ CSP, MVC, middleware, extensions—see `Docs/`. No Orchard CMS features.
 
 ---
 
-## 使用方式 | Usage
+## ä½¿ç¨æ¹å¼ | Usage
 
-### 中文
+### ä¸­æ
 
-1. 引用程序集后，在 `Startup` / `Program` 中调�?`ConfigureSecurityDefaults()` 或文档中的扩展方法注�?CSP�?
-2. Orchard 模块中注册自定义 `IContentSecurityPolicyProvider` 时，引用 `Smartent.Core.AspNet.Security` 命名空间�?
-3. Web 场景下用户可见错误优先使�?`FrontendException` 而非 `UserReadableException`�?
+1. å¼ç¨ç¨åºéåï¼å¨ `Startup` / `Program` ä¸­è°ç?`ConfigureSecurityDefaults()` æææ¡£ä¸­çæ©å±æ¹æ³æ³¨å?CSPã?
+2. Orchard æ¨¡åä¸­æ³¨åèªå®ä¹ `IContentSecurityPolicyProvider` æ¶ï¼å¼ç¨ `Smartent.Core.AspNet.Security` å½åç©ºé´ã?
+3. Web åºæ¯ä¸ç¨æ·å¯è§éè¯¯ä¼åä½¿ç?`FrontendException` èé `UserReadableException`ã?
 
 ### English
 
@@ -61,26 +61,26 @@ Register security defaults and CSP providers per `Docs/Security.md`; use `Fronte
 
 ---
 
-## 依赖说明 | Dependencies
+## ä¾èµè¯´æ | Dependencies
 
-| 依赖 | 类型 | 用�?|
+| ä¾èµ | ç±»å | ç¨é?|
 |------|------|------|
-| `Microsoft.AspNetCore.App` | FrameworkReference | ASP.NET Core 运行�?|
-| `Smartent.Core.Primitives` | Project | 基础工具与异常类�?|
+| `Microsoft.AspNetCore.App` | FrameworkReference | ASP.NET Core è¿è¡æ?|
+| `Smartent.Core.Primitives` | Project | åºç¡å·¥å·ä¸å¼å¸¸ç±»å?|
 
-### 前端
+### åç«¯
 
-本库定义 **CSP 指令** 与提供程序，不自�?npm 包；使用方的前端资源须在各自模块 Readme 中说明（�?`docs/standards/frontend-dependencies.md`）�?
+æ¬åºå®ä¹ **CSP æä»¤** ä¸æä¾ç¨åºï¼ä¸èªå¸?npm åï¼ä½¿ç¨æ¹çåç«¯èµæºé¡»å¨åèªæ¨¡å Readme ä¸­è¯´æï¼è§?`docs/standards/frontend-dependencies.md`ï¼ã?
 
 ---
 
-## 升级与扩�?| Upgrade & Extension
+## åçº§ä¸æ©å±?| Upgrade & Extension
 
-### 中文
+### ä¸­æ
 
-- 新增 CSP Provider：实�?`IContentSecurityPolicyProvider` 并在 DI 中注册�?
-- �?Orchard `ResourceManagement` 联用时，注意脚本 nonce/hash 与模块加载顺序�?
-- �?Lombiq `HelpfulLibraries.AspNetCore` 迁入；命名空�?`Smartent.Core.AspNet.*`�?
+- æ°å¢ CSP Providerï¼å®ç?`IContentSecurityPolicyProvider` å¹¶å¨ DI ä¸­æ³¨åã?
+- ä¸?Orchard `ResourceManagement` èç¨æ¶ï¼æ³¨æèæ¬ nonce/hash ä¸æ¨¡åå è½½é¡ºåºã?
+- è?Lombiq `HelpfulLibraries.AspNetCore` è¿å¥ï¼å½åç©ºé?`Smartent.Core.AspNet.*`ã?
 
 ### English
 
@@ -88,18 +88,18 @@ Extend via new CSP providers and documented DI registration patterns.
 
 ---
 
-## 测试 | Tests
+## æµè¯ | Tests
 
 ```powershell
 dotnet build Smartent-src/Platform/Core/Smartent.Core.AspNet/Smartent.Core.AspNet.csproj
 dotnet build src/Libraries/Lombiq.HelpfulLibraries/Smartent.Orchard.Platform/Smartent.Orchard.Platform.csproj
 ```
 
-相关单元/集成测试分散�?`Lombiq.HelpfulLibraries.Tests` 与依赖模块的测试中�?
+相关单元/集成测试见 `Smartent.Test.Platform` 与依赖模块的测试。
 
 ---
 
-## 来源与许�?| Provenance & License
+## æ¥æºä¸è®¸å?| Provenance & License
 
-- 源自 Lombiq Helpful-Libraries / AspNetCore，MIT�? 
-- Smartent 衍生部分 Copyright © Smartent�
+- æºèª Lombiq Helpful-Libraries / AspNetCoreï¼MITã? 
+- Smartent è¡çé¨å Copyright Â© Smartentã
