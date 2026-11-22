@@ -105,7 +105,7 @@
   <Folder Name="/src/Utilities/">
     <Project Path="Smartent-src/Themes/Smartent.Orchard.Theme.Media/Smartent.Orchard.Theme.Media.Targets/Smartent.Orchard.Theme.Media.Targets.csproj" />
     <Project Path="Smartent-src/Build/Lombiq.MSBuild.Base.Sdk/Lombiq.MSBuild.Base.Sdk.csproj" />
-    <Project Path="src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.LibMan.Targets/Lombiq.MSBuild.LibMan.Targets.csproj" />
+    <Project Path="Smartent-src/Build/Lombiq.MSBuild.LibMan.Targets/Lombiq.MSBuild.LibMan.Targets.csproj" />
     <Project Path="src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.Library.Sdk/Lombiq.MSBuild.Library.Sdk.csproj" />
     <Project Path="src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.OrchardCore.Module.Sdk/Lombiq.MSBuild.OrchardCore.Module.Sdk.csproj" />
     <Project Path="src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.OrchardCore.Tests.Sdk/Lombiq.MSBuild.OrchardCore.Tests.Sdk.csproj" />

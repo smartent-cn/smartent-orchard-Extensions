@@ -8,7 +8,7 @@
     <File Path="NuGet.config" />
     <File Path="Readme.md" />
     <File Path="Reset-Local.ps1" />
-    <File Path="Update-LombiqNuGetPackages.ps1" />
+    <File Path="Update-SmartentNuGetPackages.ps1" />
   </Folder>
   <Folder Name="/src/">
     <Project Path="src/Smartent.NuGet.Web/Smartent.NuGet.Web.csproj" />

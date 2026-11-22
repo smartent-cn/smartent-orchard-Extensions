@@ -2,7 +2,7 @@
 
   <!-- Importing Lombiq.MSBuild.LibMan.Targets either directly, or as a NuGet package detects your libman.json file
        (creates one if none exists), configures source generation, and applies Orchard Core specific fixes. -->
-  <Import Project="..\Lombiq.MSBuild.LibMan.Targets\Lombiq.MSBuild.LibMan.Targets.props"
+  <Import Project="..\..\..\..\Smartent-src\Build\Lombiq.MSBuild.LibMan.Targets\Lombiq.MSBuild.LibMan.Targets.props"
           Condition="'$(NuGetBuild)' != 'true'"/>
 
   <!-- You have to explicitly include other NuGet packages. For Lombiq.MSBuild.LibMan.Targets, this means only
@@ -27,7 +27,7 @@
   </ItemGroup>
 
   <!-- Don't forget to import the targets file too! -->
-  <Import Project="..\Lombiq.MSBuild.LibMan.Targets\Lombiq.MSBuild.LibMan.Targets.targets"
+  <Import Project="..\..\..\..\Smartent-src\Build\Lombiq.MSBuild.LibMan.Targets\Lombiq.MSBuild.LibMan.Targets.targets"
           Condition="'$(NuGetBuild)' != 'true'"/>
 
   <!-- NEXT STATION: ResourcesExample.cs -->

@@ -29,7 +29,7 @@
       </ItemGroup>
 
       <ItemGroup Condition="$(MSBuildProjectName.EndsWith('.Sdk'))">
-        <None Include="..\Lombiq.MSBuild.LibMan.Targets\*.*"
+        <None Include="..\..\..\Smartent-src\Build\Lombiq.MSBuild.LibMan.Targets\*.*"
               Link="Lombiq.MSBuild.LibMan.Targets\*.*"
               Pack="true"
               PackagePath="Lombiq.MSBuild.LibMan.Targets\"

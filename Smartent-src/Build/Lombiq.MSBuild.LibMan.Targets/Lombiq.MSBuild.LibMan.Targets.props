@@ -8,7 +8,7 @@
   <!-- Configuration -->
 
   <PropertyGroup>
-    <_SmartentCoreCodeGenPath Condition="'$(_SmartentCoreCodeGenPath)' == ''">$([MSBuild]::NormalizePath('$(MSBuildThisFileDirectory)..\..\..\..\Smartent-src\Platform\Core'))</_SmartentCoreCodeGenPath>
+    <_SmartentCoreCodeGenPath Condition="'$(_SmartentCoreCodeGenPath)' == ''">$([MSBuild]::NormalizePath('$(MSBuildThisFileDirectory)..\..\Platform\Core'))</_SmartentCoreCodeGenPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(FromNuGet)' != 'true'">

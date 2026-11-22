@@ -1,11 +1,20 @@
-﻿<Project Sdk="Lombiq.MSBuild.OrchardCore.Module.Sdk/2.1.1-alpha.3.osoe-1308">
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
   <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+    <!-- 单体仓 pack 测试走 ProjectReference，产出 nuspec 依赖 Smartent.Orchard.Platform。 -->
+    <FromNuGet>false</FromNuGet>
     <IsLombiqProject>true</IsLombiqProject>
     <Title>Lombiq MSBuild SDK Sample</Title>
     <CopyrightYear>2026</CopyrightYear>
     <DescriptionBody>Example Description.</DescriptionBody>
     <RepositoryUrl>https://github.com/Lombiq/MSBuild-Targets/</RepositoryUrl>
+    <OrchardCoreVersion>3.0.1</OrchardCoreVersion>
+    <PackageVersionSmartentPlatform>13.1.0</PackageVersionSmartentPlatform>
   </PropertyGroup>
+
+  <Import Project="../Lombiq.MSBuild.OrchardCore.Module.Sdk/Sdk/Import.props" />
+  <Import Project="../Lombiq.MSBuild.OrchardCore.Module.Sdk/Sdk/Import.targets" />
 
 </Project>

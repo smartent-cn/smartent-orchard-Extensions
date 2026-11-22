@@ -13,7 +13,7 @@
 | PackageId / 路径 | 原因 | 目标（草案） |
 |------------------|------|-------------|
 | `Lombiq.MSBuild.Base.Sdk` 及 `Lombiq.MSBuild.*.Sdk` | MSBuild Sdk 仍在 `src/Utilities/Lombiq.MSBuild.Targets`；**Base.Sdk 源码已迁至** `Smartent-src/Build/Lombiq.MSBuild.Base.Sdk` | `Smartent.Build.*.Sdk`（M7 全仓 Sdk= 切换后） |
-| `Lombiq.MSBuild.LibMan.Targets` | 未迁 Build 层 | `Smartent.Build.LibMan.Targets` |
+| `Lombiq.MSBuild.LibMan.Targets` | 源码已迁 `Smartent-src/Build/`（PackageId 不变） | `Smartent.Build.LibMan.Targets`（可选） |
 | `Lombiq.Analyzers` / `Lombiq.Analyzers.OrchardCore` / `Lombiq.Analyzers.PowerShell` | 开发期分析器；NuGet 上仍 Lombiq 品牌 | `Smartent.Build.Analyzers*`（可选，M1/M4） |
 | `Lombiq.HelpfulLibraries.OrchardCore` | 仅 **NuGetVerify 独立检出** + 旧 Module.Sdk 2.1.1 还原 | 移除（新 Sdk + Smartent 包上源后） |
 

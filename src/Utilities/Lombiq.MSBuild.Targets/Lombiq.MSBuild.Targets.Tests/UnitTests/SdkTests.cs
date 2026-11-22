@@ -56,7 +56,7 @@ public class SdkTests
             };
             metadata.Select(results => results.SingleOrDefault()?.InnerText).ToArray().ShouldBe([
                 "Lombiq MSBuild SDK Sample",
-                "Lombiq Technologies",
+                "Lombiq.MSBuild.Sdk.NuGet.Samples",
                 "BSD-3-Clause",
                 "Copyright © 2026, Lombiq Technologies Ltd.",
                 "OrchardCore Lombiq AspNetCore",

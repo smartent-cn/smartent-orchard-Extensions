@@ -23,6 +23,8 @@
 | 10 | 根 ESLint/Prettier/Stylelint | 指向 `Smartent.Build.NodeJs/config/`；Legacy 占位 | **已完成** |
 | 11 | 主 sln Release 构建门禁 | VueJs `.nx`、`lint-code.js`、Tests.UI net10 | **已完成** |
 | 12 | `Lombiq.MSBuild.Base.Sdk` 迁入 `Smartent-src/Build/` | 其余 Sdk 仍 Legacy；打包嵌入路径已更新 | **首期完成** |
+| 13 | `Lombiq.MSBuild.LibMan.Targets` 迁入 `Smartent-src/Build/` | LibMan 路径、打包嵌入、CodeGen 版本属性 | **首期完成** |
+| 14 | Sdk NuGet 样例 + `SdkTests` | 单体仓 pack 依赖 `Smartent.Orchard.Platform` | **首期完成** |
 
 ## M4#1 / #3 首期交付
 

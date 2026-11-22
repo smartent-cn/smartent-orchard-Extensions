@@ -15,7 +15,7 @@
 |--------|----------|------|
 | `Lombiq.HelpfulLibraries.Tests` | ProjectReference 元包 | **已改**为直接 Smartent ProjectReference |
 | `Lombiq.OSOCE.Samples` | ProjectReference 元包 | **改**为直接 Smartent ProjectReference |
-| `NuGetTest` | PackageReference NuGet | 待 Smartent 包发布后改 `PackageReference` |
+| `NuGetVerify` | PackageReference NuGet | Smartent.*（见 M7）；独立 Sdk 2.1.1 仍保留 `Lombiq.HelpfulLibraries.OrchardCore` 例外 |
 | 新模块 | — | **禁止**（见总纲 `重构-重组-改名项目方案/Readme.md` §5.2） |
 
 元包内 `ProjectReference` 已全部指向 `Smartent-src`（Core + Orchard Platform）。
