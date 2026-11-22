@@ -158,6 +158,8 @@ glob:*.user
 *.patch
 *.hg
 build/
+!Smartent-src/Build/
+!Smartent-src/Build/**
 /buildazure
 /buildtasks
 /artifacts
