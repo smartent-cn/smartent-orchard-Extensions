@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="../../../src/Utilities/Lombiq.MSBuild.Targets/Directory.Build.props" />
+  <Import Project="../Directory.Build.props" />
 
   <PropertyGroup>
     <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules/tree/master/Smartent-src/Build/Smartent.Build.Base.Sdk</PackageProjectUrl>
@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="../../../src/Utilities/Lombiq.MSBuild.Targets/Docs/*.*">
+    <Content Include="../Docs/*.*">
       <Link>Docs\%(RecursiveDir)%(Filename)%(Extension)</Link>
     </Content>
   </ItemGroup>

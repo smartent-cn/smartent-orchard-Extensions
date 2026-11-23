@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="../../../src/Utilities/Lombiq.MSBuild.Targets/Directory.Build.props" />
+  <Import Project="../Directory.Build.props" />
 
   <PropertyGroup>
     <Title>Smartent MSBuild SDK - Unit Testing (Lombiq.MSBuild.OrchardCore.Tests.Sdk)</Title>

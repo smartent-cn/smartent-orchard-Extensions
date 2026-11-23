@@ -11,8 +11,8 @@
       >$([MSBuild]::MakeRelative('$(MSBuildProjectDirectory)', '$(MSBuildThisFileDirectory)../../../..'))</LombiqSolutionRootPath>
     <SmartentSrcPath Condition="'$(SmartentSrcPath)' == '' AND '$(LombiqSolutionRootPath)' != ''"
       >$([MSBuild]::MakeRelative('$(MSBuildProjectDirectory)', '$(LombiqSolutionRootPath)/Smartent-src'))</SmartentSrcPath>
-    <LombiqHelpfulLibrariesPath Condition="'$(LombiqHelpfulLibrariesPath)' == '' AND '$(LombiqSolutionRootPath)' != ''"
-      >$([MSBuild]::MakeRelative('$(MSBuildProjectDirectory)', '$(LombiqSolutionRootPath)/src/Libraries/Lombiq.HelpfulLibraries'))</LombiqHelpfulLibrariesPath>
+    <SmartentPlatformPath Condition="'$(SmartentPlatformPath)' == '' AND '$(SmartentSrcPath)' != ''"
+      >$(SmartentSrcPath)/Platform/Orchard</SmartentPlatformPath>
     <LombiqAnalyzersPath Condition="'$(LombiqAnalyzersPath)' == '' AND '$(LombiqSolutionRootPath)' != ''"
       >$([MSBuild]::MakeRelative('$(MSBuildProjectDirectory)', '$(LombiqSolutionRootPath)/tools/Lombiq.Analyzers'))</LombiqAnalyzersPath>
     <SmartentAnalyzersPath Condition="'$(SmartentAnalyzersPath)' == '' AND '$(LombiqAnalyzersPath)' != ''"
