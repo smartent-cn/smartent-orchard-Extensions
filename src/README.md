@@ -7,7 +7,7 @@
 | 区域 | Smartent 目标 |
 |------|----------------|
 | `Libraries/Lombiq.HelpfulLibraries` | 已迁入 `Smartent-src/Platform/`；Legacy 仅 Readme |
-| `Utilities/Lombiq.MSBuild.Targets` | 构建 Sdk（`Smartent.Build.*` 部分已迁入 `Smartent-src/Build/`） |
+| `Utilities/Lombiq.MSBuild.Targets` | **shim** + Readme；产物在 `Smartent-src/Build/` |
 | `Modules/Lombiq.*` | `Smartent-src/Modules/Smartent.Orchard.*` |
 | `Themes/Lombiq.*` | `Smartent-src/Themes/` |
 | `Lombiq.OSOCE.Web` | `Smartent-src/Demo/Smartent.Demo.Web` |

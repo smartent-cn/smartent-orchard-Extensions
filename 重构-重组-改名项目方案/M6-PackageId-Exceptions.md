@@ -2,7 +2,7 @@
 
 > 对应 [阶段检查表.md](阶段检查表.md) M6：`无待发布 PackageId 含 Lombiq.`（已文档化例外）
 
-最后扫描：2026-11-23（M7#11：MSBuild Sdk / LibMan 已 `Smartent.Build.*`）
+最后扫描：2026-11-24（M7#11 + Legacy batch 4–5：MSBuild 样例/测试在 `Smartent-src/Build/`；元包已删）
 
 ## Smartent-src 可发布包
 
@@ -20,7 +20,7 @@
 ## 非发布 / 不纳入扫描
 
 - `NuGetVerify` 宿主工程（`Smartent.NuGet.*`）：不发布 NuGet。
-- Legacy `src/Modules`、`src/Themes` 等归档路径：迁一删一完成前可能仍存在旧 ID，不作为 Smartent 产品发布面。
+- Legacy `src/`：Modules/Themes/test 指针已删；`Utilities`/`Libraries` 仅 Readme + MSBuild shim，**无**待发布 `.csproj`。
 - Orchard Core 官方包、`Meziantou.Analyzer` 等第三方。
 
 ## 复检命令
@@ -33,4 +33,4 @@ rg '<PackageId>Lombiq\.' Smartent-src --glob '*.csproj'
 rg '<PackageId>Lombiq\.' --glob '*.csproj'
 ```
 
-复检结果（2026-11-22）：`Smartent-src` 无匹配；`Lombiq.MSBuild.*` 仅在 `src/Utilities/Lombiq.MSBuild.Targets`。
+复检结果（2026-11-24）：`rg '<PackageId>Lombiq\.' --glob '*.csproj'` **0 匹配**；`Smartent-src` 可发布面均为 `Smartent.*`。例外仅为 `tools/Lombiq.Analyzers*` 与 NuGetVerify 中央版本中的过渡 ID（见上表）。

@@ -10,4 +10,7 @@
   <Project Path="../../../Smartent-src/Build/Smartent.Build.OrchardCore.Tests.UI.Library.Sdk/Smartent.Build.OrchardCore.Tests.UI.Library.Sdk.csproj" />
   <Project Path="../../../Smartent-src/Build/Smartent.Build.OrchardCore.Tests.UI.Sdk/Smartent.Build.OrchardCore.Tests.UI.Sdk.csproj" />
   <Project Path="../../../Smartent-src/Build/Smartent.Build.OrchardCore.Theme.Sdk/Smartent.Build.OrchardCore.Theme.Sdk.csproj" />
+  <Project Path="../../../Smartent-src/Build/Smartent.Build.Targets.Samples/Smartent.Build.Targets.Samples.csproj" />
+  <Project Path="../../../Smartent-src/Build/Smartent.Build.Targets.Tests/Smartent.Build.Targets.Tests.csproj" />
+  <Project Path="../../../Smartent-src/Build/Smartent.Build.Sdk.NuGet.Samples/Smartent.Build.Sdk.NuGet.Samples.csproj" />
 </Solution>

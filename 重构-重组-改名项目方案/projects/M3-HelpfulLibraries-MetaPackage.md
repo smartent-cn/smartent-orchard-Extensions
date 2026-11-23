@@ -1,11 +1,11 @@
 # 子方案：M3 元包 `Lombiq.HelpfulLibraries`
 
 > 阶段：**M3**（第 5 项）  
-> 状态：**基本完成**（元包仍保留于 sln 供 Legacy 打包；无工程 ProjectReference）
+> 状态：**已完成**（2026-11-24：Legacy 元包 **csproj 已删**；`Smartent.Test.Platform` 直引各包）
 
 ## 目标
 
-- 过渡期保留 `Lombiq.HelpfulLibraries` 聚合 csproj，**仅**用于兼容测试与 NuGet 冒烟；不再作为新模块的默认依赖。
+- ~~过渡期保留元包 csproj~~：**已移除**；不再作为新模块的默认依赖。
 - 发布侧逐步改为引用各 `Smartent.*` 包（见 `Smartent-src/Platform/`）。
 - 终态：元包 **废弃** 或替换为 `Smartent.Platform` 聚合包（可选，非本步必须）。
 
@@ -31,7 +31,6 @@
 ## 验证
 
 ```powershell
-dotnet build src/Modules/Lombiq.OSOCE.Samples/Lombiq.OSOCE.Samples.csproj
-dotnet build src/Libraries/Lombiq.HelpfulLibraries/Lombiq.HelpfulLibraries/Lombiq.HelpfulLibraries.csproj
-dotnet test Smartent-src/Test/Smartent.Test.Platform/Smartent.Test.Platform.csproj --filter "FullyQualifiedName~UnitTests"
+dotnet test Smartent-src/Test/Smartent.Test.Platform/Smartent.Test.Platform.csproj --filter "FullyQualifiedName~UnitTests" -c Release
+dotnet test Smartent-src/Build/Smartent.Build.Targets.Tests/Smartent.Build.Targets.Tests.csproj -c Release
 ```

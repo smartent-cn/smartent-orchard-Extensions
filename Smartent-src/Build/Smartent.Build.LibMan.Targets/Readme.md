@@ -1,6 +1,6 @@
 # Lombiq MSBuild Targets - Library Manager for Orchard Core Modules
 
-**中文**：Library Manager 集成 MSBuild 目标；源码在 `Smartent-src/Build/`。NuGet **PackageId** 现为 `Lombiq.MSBuild.LibMan.Targets`，目标 `Smartent.Build.LibMan.Targets`（M7#11）。本地 feed core pack 已包含本包。
+**中文**：Library Manager 集成 MSBuild 目标；**PackageId** `Smartent.Build.LibMan.Targets`（**2.1.1** core feed）。
 
 **English**: LibMan MSBuild targets; PackageId rename planned in M7#11. Included in `Pack-SmartentLocalFeed.ps1` core list.
 
@@ -27,21 +27,21 @@ For example:
 
 ```xml
 <Project>
-    <Import Project="../../../Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.LibMan.Targets/Smartent.Build.LibMan.Targets.props" />
+    <Import Project="../Smartent.Build.LibMan.Targets/Smartent.Build.LibMan.Targets.props" />
     
     <ItemGroup>
         <PackageReference Include="Microsoft.Web.LibraryManager.Build" Version="3.0.114" />
     </ItemGroup>
 
-    <Import Project="../../../Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.LibMan.Targets/Smartent.Build.LibMan.Targets.targets" />
+    <Import Project="../Smartent.Build.LibMan.Targets/Smartent.Build.LibMan.Targets.targets" />
 </Project>
 ```
 
 #### From a NuGet package
 
-1. Reference the targets in your project file by adding the [`Lombiq.MSBuild.LibMan.Targets`](https://www.nuget.org/packages/Lombiq.MSBuild.LibMan.Targets) NuGet package.
-2. To use Library Manager during build, reference the [`Microsoft.Web.LibraryManager.Build`](https://www.nuget.org/packages/Lombiq.MSBuild.LibMan.Targets) NuGet package.
-3. Optionally, if you want to use the automatically generated version numbers (e.g. when declaring an asset in the Orchard Core resource manager), you have to include the [`Lombiq.HelpfulLibraries.SourceGenerators`](https://www.nuget.org/packages/Lombiq.HelpfulLibraries.SourceGenerators/) and [`Lombiq.HelpfulLibraries.Attributes`](https://www.nuget.org/packages/Lombiq.HelpfulLibraries.Attributes/) projects from the Lombiq HelpfulLibraries.
+1. Reference [`Smartent.Build.LibMan.Targets`](https://www.nuget.org/packages/Smartent.Build.LibMan.Targets) (local feed **2.1.1** 或 Gitee Packages)。
+2. Add [`Microsoft.Web.LibraryManager.Build`](https://www.nuget.org/packages/Microsoft.Web.LibraryManager.Build).
+3. For generated libman version constants, add `Smartent.Core.CodeGen.Attributes` and `Smartent.Core.CodeGen.SourceGenerators` (see `Smartent.Build.Targets.Samples`).
 
 For example:
 
@@ -49,9 +49,9 @@ For example:
 <Project>
     <ItemGroup>
         <PackageReference Include="Microsoft.Web.LibraryManager.Build" Version="<latest version>" />
-        <PackageReference Include="Lombiq.MSBuild.LibMan.Targets" Version="<latest version>" />
-        <PackageReference Include="Lombiq.HelpfulLibraries.Attributes" Version="12.6.1-alpha.10.osoe-925" OutputItemType="Analyzer" ReferenceOutputAssembly="true" />
-        <PackageReference Include="Lombiq.HelpfulLibraries.SourceGenerators" Version="12.6.1-alpha.10.osoe-925" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+        <PackageReference Include="Smartent.Build.LibMan.Targets" Version="2.1.1" />
+        <PackageReference Include="Smartent.Core.CodeGen.Attributes" Version="13.0.0" OutputItemType="Analyzer" ReferenceOutputAssembly="true" />
+        <PackageReference Include="Smartent.Core.CodeGen.SourceGenerators" Version="13.0.0" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
     </ItemGroup>
 </Project>
 ```

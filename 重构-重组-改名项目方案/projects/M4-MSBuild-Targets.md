@@ -69,10 +69,10 @@ dotnet test Smartent-src/Modules/Smartent.Orchard.TrainingDemo/Smartent.Orchard.
 ```powershell
 dotnet build Smartent-src/Modules/Smartent.Orchard.TrainingDemo/Smartent.Orchard.TrainingDemo/Smartent.Orchard.TrainingDemo.csproj
 dotnet build Smartent-src/Demo/Smartent.Demo.Samples/Smartent.Demo.Samples.csproj -c Release
-dotnet build src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.Sdk.Samples/Lombiq.MSBuild.Sdk.Samples.csproj -c Release
-dotnet test src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.Targets.Tests/Lombiq.MSBuild.Targets.Tests.csproj -c Release
-dotnet pack Smartent-src/Build/Smartent.Build.Library.Sdk/Lombiq.MSBuild.Library.Sdk.csproj -c Release
-dotnet pack Smartent-src/Build/Smartent.Build.OrchardCore.Theme.Sdk/Lombiq.MSBuild.OrchardCore.Theme.Sdk.csproj -c Release
+dotnet build Smartent-src/Build/Smartent.Build.Sdk.Samples/Smartent.Build.Sdk.Samples.csproj -c Release
+dotnet test Smartent-src/Build/Smartent.Build.Targets.Tests/Smartent.Build.Targets.Tests.csproj -c Release
+dotnet pack Smartent-src/Build/Smartent.Build.Library.Sdk/Smartent.Build.Library.Sdk.csproj -c Release
+dotnet pack Smartent-src/Build/Smartent.Build.OrchardCore.Theme.Sdk/Smartent.Build.OrchardCore.Theme.Sdk.csproj -c Release
 ```
 
 ## 修订

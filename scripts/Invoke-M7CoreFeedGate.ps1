@@ -31,4 +31,8 @@ if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
 $env:NUGET_PACKAGES = "$env:USERPROFILE\.nuget\packages"
 dotnet build (Join-Path $repoRoot 'NuGetVerify/Smartent.NuGet.Monorepo.sln') -c Release
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+$targetsTests = Join-Path $repoRoot 'Smartent-src/Build/Smartent.Build.Targets.Tests/Smartent.Build.Targets.Tests.csproj'
+dotnet test $targetsTests -c Release
 exit $LASTEXITCODE
