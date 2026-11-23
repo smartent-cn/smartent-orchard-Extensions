@@ -15,7 +15,7 @@
     <packageSource key="nuget.org">
       <package pattern="*" />
       <package pattern="OrchardCore.*" />
-      <package pattern="Lombiq.Analyzers.*" />
+      <package pattern="Smartent.Build.Analyzers.*" />
     </packageSource>
   </packageSourceMapping>
 </configuration>

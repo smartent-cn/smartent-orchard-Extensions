@@ -10,12 +10,12 @@
     <packageSource key="SmartentLocal">
       <package pattern="Smartent.*" />
       <package pattern="Smartent.Build.*" />
+      <package pattern="Smartent.Build.Analyzers.*" />
     </packageSource>
     <packageSource key="nuget.org">
       <package pattern="*" />
       <package pattern="OrchardCore.*" />
       <package pattern="OrchardCore.Translations.*" />
-      <package pattern="Smartent.Build.Analyzers.*" />
     </packageSource>
   </packageSourceMapping>
 </configuration>

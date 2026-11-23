@@ -19,7 +19,8 @@
       >$([MSBuild]::MakeRelative('$(MSBuildProjectDirectory)', '$(SmartentSolutionRootPath)/tools/Smartent.Build.Analyzers'))</SmartentAnalyzersPath>
     <LombiqAnalyzersPath Condition="'$(LombiqAnalyzersPath)' == '' AND '$(SmartentAnalyzersPath)' != ''"
       >$(SmartentAnalyzersPath)</LombiqAnalyzersPath>
-    <LombiqMSBuildLibManTargetsPath>$(MSBuildThisFileDirectory)../../Smartent.Build.LibMan.Targets</LombiqMSBuildLibManTargetsPath>
+    <SmartentMSBuildLibManTargetsPath>$(MSBuildThisFileDirectory)../../Smartent.Build.LibMan.Targets</SmartentMSBuildLibManTargetsPath>
+    <LombiqMSBuildLibManTargetsPath Condition="'$(LombiqMSBuildLibManTargetsPath)' == ''">$(SmartentMSBuildLibManTargetsPath)</LombiqMSBuildLibManTargetsPath>
   </PropertyGroup>
 
   <Import Project="$(MSBuildThisFileDirectory)Core.props" />

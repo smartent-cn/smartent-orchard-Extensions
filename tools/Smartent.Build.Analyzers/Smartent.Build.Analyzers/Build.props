@@ -66,24 +66,19 @@
     </ItemGroup>
   </Target>
 
-  <!-- This target ensures, that LombiqNetAnalyzers is called during Build as well. This way the LombiqNetAnalyzers
-       target can remain independent, and calling it in itself won't trigger any Build-related targets. This target acts
-       as a bridge by being dependent on LombiqNetAnalyzers and running after AfterResolveReferences (which is part of
-       Build). -->
-  <Target Name="CopyEditorconfig" DependsOnTargets="LombiqNetAnalyzers" AfterTargets="AfterResolveReferences">
+  <!-- This target ensures that SmartentNetAnalyzers is called during Build as well. -->
+  <Target Name="CopyEditorconfig" DependsOnTargets="SmartentNetAnalyzers" AfterTargets="AfterResolveReferences">
   </Target>
 
-  <!-- This target should be used in CI before build, e.g. `dotnet msbuild -target:LombiqNetAnalyzers | Out-Null`. Use
-       `| Out-Null` in PowerShell or `>/dev/null 2>&1` in bash to suppress output because it will complain if not every
-       project has this target, but that's not really relevant. If you are using NuGet, then the argument should be
-       "-target:Restore;LombiqNetAnalyzers" (including the quotes) to restore all package dependencies first.
-       .editorconfig needs to be copied since this is the only standard way for every editor to be able to use it (until
-       extending other .editorconfig files will be possible: https://github.com/editorconfig/editorconfig/issues/236). -->
-  <Target Name="LombiqNetAnalyzers">
+  <!-- Use in CI before build, e.g. `dotnet msbuild -target:Restore;SmartentNetAnalyzers | Out-Null`. -->
+  <Target Name="SmartentNetAnalyzers">
     <Copy Condition="'$(SolutionDir)' != '*Undefined*'"
           SourceFiles="$(MSBuildThisFileDirectory).editorconfig"
           DestinationFolder="$(SolutionDir)"
           SkipUnchangedFiles="true" />
   </Target>
+
+  <!-- Back-compat for Lombiq.Analyzers consumers and older CI scripts. -->
+  <Target Name="LombiqNetAnalyzers" DependsOnTargets="SmartentNetAnalyzers" />
 
 </Project>

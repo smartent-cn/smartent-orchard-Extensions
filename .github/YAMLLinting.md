@@ -1,3 +1,3 @@
 # Linting YAML
 
-YAML files for GitHub Actions can be linted using `yamllint`. Please refer to [this documentation in Lombiq.Github.Actions](https://github.com/Lombiq/GitHub-Actions/blob/dev/Docs/Workflows/Productivity/YamlLinting.md) to know more.
+YAML files for GitHub Actions can be linted using `yamllint`. See [tools/Smartent.GitHub.Actions/Docs/Workflows/Productivity/YamlLinting.md](../tools/Smartent.GitHub.Actions/Docs/Workflows/Productivity/YamlLinting.md) and [docs/ci/Smartent-GitHub-Actions.md](../docs/ci/Smartent-GitHub-Actions.md).

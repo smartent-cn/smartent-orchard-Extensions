@@ -206,4 +206,4 @@ src/*.Web/Localization
 .ps1-analyzer-stamp
 /NDependOut/
 /build.binlog
-/github-相关信息.txt
+/github-gitee-相关信息.md

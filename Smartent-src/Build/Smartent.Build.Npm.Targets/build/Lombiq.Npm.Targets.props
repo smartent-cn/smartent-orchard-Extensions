@@ -1,3 +1,3 @@
 <Project>
-  <Import Project="../Lombiq.Npm.Targets.props"/>
+  <Import Project="../Smartent.Build.Npm.Targets.props"/>
 </Project>

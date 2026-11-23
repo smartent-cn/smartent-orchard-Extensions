@@ -38,7 +38,7 @@ Or if you only want to see the errors and not the full build output (including e
 dotnet build MySolution.sln --no-incremental -warnaserror /p:TreatWarningsAsErrors=true /p:RunAnalyzersDuringBuild=true -nologo -consoleLoggerParameters:NoSummary -verbosity:quiet
 ```
 
-> ⚠ If you are using the NuGet package, run `dotnet msbuild "-t:Restore;LombiqNetAnalyzers" MySolution.sln` first to ensure the _.editorconfig_ file is deployed. This is especially important for CI usage. For local development, you can simply rebuild the solution.
+> ⚠ If you are using the NuGet package, run `dotnet msbuild "-t:Restore;SmartentNetAnalyzers" MySolution.sln` first to ensure the _.editorconfig_ file is deployed (`LombiqNetAnalyzers` remains a back-compat alias). This is especially important for CI usage. For local development, you can simply rebuild the solution.
 
 ## Non-SDK-style .NET Framework projects
 

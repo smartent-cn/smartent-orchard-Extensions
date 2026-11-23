@@ -27,6 +27,8 @@ It supports these scenarios:
 
 Pirsch settings can come from appsettings or from the Orchard admin. If both are set, the admin settings take precedence.
 
+> **配置节名**：请使用 `Smartent_Marketing`；仍支持 Legacy `Lombiq_Marketing`（见 `MarketingConfigurationKeys`）。
+
 To use the module, follow these steps:
 
 1. Enable the `Smartent.Orchard.Marketing.Pirsch` feature from the admin.
@@ -39,7 +41,7 @@ Example appsettings or environment variable configuration:
 ```json5
 {
   "OrchardCore": {
-    "Lombiq_Marketing": {
+    "Smartent_Marketing": {
       "Pirsch": {
         // If you want to clear the admin-stored Pirsch API client secret during tenant start.
         "ClearClientSecretsMaintenance": {

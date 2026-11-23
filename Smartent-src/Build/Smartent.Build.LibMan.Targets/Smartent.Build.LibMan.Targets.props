@@ -2,7 +2,8 @@
 
   <PropertyGroup>
     <FromNuGet Condition="'$(FromNuGet)' == ''">$(NuGetBuild)</FromNuGet>
-    <LombiqMSBuildLibManTarget Condition="'$(LombiqMSBuildLibManTarget)' == ''">wwwroot\vendors</LombiqMSBuildLibManTarget>
+    <SmartentMSBuildLibManTarget Condition="'$(SmartentMSBuildLibManTarget)' == ''">wwwroot\vendors</SmartentMSBuildLibManTarget>
+    <LombiqMSBuildLibManTarget Condition="'$(LombiqMSBuildLibManTarget)' == ''">$(SmartentMSBuildLibManTarget)</LombiqMSBuildLibManTarget>
   </PropertyGroup>
 
   <!-- Configuration -->

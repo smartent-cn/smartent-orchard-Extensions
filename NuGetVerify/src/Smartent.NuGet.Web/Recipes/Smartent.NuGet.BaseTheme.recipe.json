@@ -1,9 +1,9 @@
 {
   "name": "Smartent.NuGet.BaseTheme",
-  "displayName": "Switch to Lombiq.BaseTheme.Native.Sample",
-  "description": "Switch to Lombiq.BaseTheme.Native.Sample.",
-  "author": "Lombiq Technologies",
-  "website": "https://github.com/Lombiq/Open-Source-Orchard-Core-Extensions",
+  "displayName": "Switch to Smartent.Orchard.Theme.Base.Samples",
+  "description": "Switch to Smartent.Orchard.Theme.Base.Samples theme for UI tests.",
+  "author": "Smartent",
+  "website": "https://gitee.com/smartent/smartent-orchard-Extensions",
   "version": "1.0",
   "issetuprecipe": false,
   "categories": [
@@ -20,13 +20,13 @@
       ],
       "enable": [
         "Smartent.Test.UI.AdminTheme",
-        "Lombiq.BaseTheme.Native.Samples"
+        "Smartent.Orchard.Theme.Base.Samples"
       ]
     },
     {
       "name": "themes",
       "admin": "Smartent.Test.UI.AdminTheme",
-      "site": "Lombiq.BaseTheme.Native.Samples"
+      "site": "Smartent.Orchard.Theme.Base.Samples"
     }
   ]
 }

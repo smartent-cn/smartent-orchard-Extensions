@@ -25,8 +25,6 @@ $projects = @(
 )
 
 $env:NUGET_PACKAGES = "$env:USERPROFILE\.nuget\packages"
-$localFeed = (Resolve-Path (Join-Path $repoRoot 'artifacts/smartent-nuget-local')).Path
-$restoreSources = @($localFeed, 'https://api.nuget.org/v3/index.json')
 Push-Location $nugetVerify
 try {
     foreach ($rel in $projects) {
@@ -34,9 +32,7 @@ try {
         & dotnet restore $rel `
             --configfile $restoreConfig `
             -p:Configuration=$Configuration `
-            -p:ForceStandaloneNuGetVerify=true `
-            --source $localFeed `
-            --source 'https://api.nuget.org/v3/index.json'
+            -p:ForceStandaloneNuGetVerify=true
         if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
     }
     Write-Output 'Core PackageReference restore succeeded.'

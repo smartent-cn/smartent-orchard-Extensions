@@ -162,10 +162,10 @@ public static class TestCaseUITestContextExtensions
             {
                 argumentsBuilder
                     .AddWithValue(
-                        "OrchardCore:Lombiq_Marketing:Pirsch:ClientSideCodeSnippet",
+                        "OrchardCore:Smartent_Marketing:Pirsch:ClientSideCodeSnippet",
                         TestPirschScript)
                     .AddWithValue(
-                        "OrchardCore:Lombiq_Marketing:Pirsch:DataDev",
+                        "OrchardCore:Smartent_Marketing:Pirsch:DataDev",
                         TestPirschDataDev);
 
                 return Task.CompletedTask;

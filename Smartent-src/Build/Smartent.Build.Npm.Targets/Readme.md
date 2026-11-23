@@ -29,5 +29,5 @@ NuGet：`PackageId` = `Smartent.Build.Npm.Targets`
 
 ```powershell
 dotnet build Smartent-src/Build/Smartent.Build.Npm.Targets/Smartent.Build.Npm.Targets.csproj
-dotnet build src/Utilities/Lombiq.NodeJs.Extensions/Lombiq.NodeJs.Extensions/Lombiq.NodeJs.Extensions.csproj
+dotnet build Smartent-src/Build/Smartent.Build.NodeJs/Smartent.Build.NodeJs/Smartent.Build.NodeJs.csproj
 ```

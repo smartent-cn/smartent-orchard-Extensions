@@ -12,13 +12,13 @@
     {
       "name": "Feature",
       "enable": [
-        "Lombiq.Hosting.MediaTheme.Bridge",
-        "Lombiq.Hosting.MediaTheme"
+        "Smartent.Orchard.Theme.Media.Bridge",
+        "Smartent.Orchard.Theme.Media"
       ]
     },
     {
       "name": "Themes",
-      "Site": "Lombiq.Hosting.MediaTheme"
+      "Site": "Smartent.Orchard.Theme.Media"
     },
     {
       "name": "mediatheme",

@@ -5,10 +5,10 @@
       "workingDirectory": ".",
       "arguments": "-ExecutionPolicy Bypass -NonInteractive -File .\\Reset-Local.ps1"
     },
-    "Update Lombiq NuGet packages": {
+    "Update Smartent NuGet packages": {
       "fileName": "powershell.exe",
       "workingDirectory": ".",
-      "arguments": "-ExecutionPolicy Bypass -NonInteractive -File .\\Update-LombiqNuGetPackages.ps1"
+      "arguments": "-ExecutionPolicy Bypass -NonInteractive -File .\\Update-SmartentNuGetPackages.ps1"
     }
   }
 }

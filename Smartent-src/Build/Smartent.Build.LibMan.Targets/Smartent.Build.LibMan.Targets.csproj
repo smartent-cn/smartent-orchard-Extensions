@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
-    <Title>Lombiq MSBuild Targets - Library Manager for Orchard Core Modules</Title>
+    <Title>Smartent MSBuild Targets - Library Manager for Orchard Core Modules</Title>
     <Description>MSBuild target for Microsoft Library Manager integration. See the project website for detailed documentation.</Description>
     <PackageTags>OrchardCore;Smartent;AspNetCore;LibMan;LibraryManager</PackageTags>
     <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules/tree/master/Smartent-src/Build/Smartent.Build.LibMan.Targets</PackageProjectUrl>
@@ -13,6 +13,8 @@
   <ItemGroup>
     <None Include="Smartent.Build.LibMan.Targets.props" Pack="true" PackagePath="" />
     <None Include="Smartent.Build.LibMan.Targets.targets" Pack="true" PackagePath="" />
+    <None Include="Lombiq.MSBuild.LibMan.Targets.props" Pack="true" PackagePath="" />
+    <None Include="Lombiq.MSBuild.LibMan.Targets.targets" Pack="true" PackagePath="" />
     <None Include="libman.json" Pack="true" PackagePath="" />
   </ItemGroup>
 

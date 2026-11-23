@@ -1,5 +1,6 @@
 name: Build and Test
 
+# Reusable workflows still call Lombiq/GitHub-Actions@dev until smartent-cn/Smartent.GitHub.Actions is published — see docs/ci/Smartent-GitHub-Actions.md.
 # Runs for PRs opened for any branch, and pushes to the dev branch.
 on:
   pull_request:

@@ -1,5 +1,5 @@
 <Project>
-  <Import Project="$(LombiqMSBuildLibManTargetsPath)/Smartent.Build.LibMan.Targets.props" />
+  <Import Project="$(SmartentMSBuildLibManTargetsPath)/Smartent.Build.LibMan.Targets.props" />
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Web.LibraryManager.Build">

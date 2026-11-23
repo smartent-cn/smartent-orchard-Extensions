@@ -2,8 +2,8 @@
   // This is necessary to be in a separate recipe, because otherwise the widget and layer setup from
   // Lombiq.BaseTheme.LayersAndZones.recipe would be superseded by the default config.
   "name": "Smartent.Demo.BaseTheme",
-  "displayName": "Switch to Lombiq.BaseTheme.Native.Sample",
-  "description": "Switch to Lombiq.BaseTheme.Native.Sample.",
+  "displayName": "Switch to Smartent.Orchard.Theme.Base.Samples",
+  "description": "Switch to Smartent.Orchard.Theme.Base.Samples theme for tests.",
   "author": "Lombiq Technologies",
   "website": "https://github.com/Lombiq/Open-Source-Orchard-Core-Extensions",
   "version": "1.0",
@@ -21,12 +21,12 @@
         "Smartent.Orchard.Extensions.Cms.ShapeTracing"
       ],
       "enable": [
-        "Lombiq.BaseTheme.Native.Samples"
+        "Smartent.Orchard.Theme.Base.Samples"
       ]
     },
     {
       "name": "themes",
-      "site": "Lombiq.BaseTheme.Native.Samples"
+      "site": "Smartent.Orchard.Theme.Base.Samples"
     }
   ]
 }

@@ -1,4 +1,5 @@
 using Smartent.Orchard.Hosting.Tenants.Maintenance.Services;
+using Smartent.Orchard.Marketing;
 using Microsoft.Extensions.DependencyInjection;
 using OrchardCore.Environment.Shell.Configuration;
 using OrchardCore.Modules;
@@ -17,7 +18,7 @@ public sealed class Startup : StartupBase
     public override void ConfigureServices(IServiceCollection services)
     {
         services.Configure<ClearPirschClientSecretsMaintenanceOptions>(
-            _shellConfiguration.GetSection("Lombiq_Marketing:Pirsch:ClearClientSecretsMaintenance"));
+            _shellConfiguration.GetMarketingSection("Pirsch:ClearClientSecretsMaintenance"));
 
         services.AddScoped<IMaintenanceProvider, ClearPirschClientSecretsMaintenanceProvider>();
     }

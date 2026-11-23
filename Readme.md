@@ -34,6 +34,8 @@ Note that this solution also has an Orchard 1 counterpart, [Lombiq's Open-Source
 
 ### Modules
 
+> **Smartent 模块**：源码与 PackageId 索引见 [`Smartent-src/Modules/README.md`](Smartent-src/Modules/README.md)。下列 Lombiq 外链为 Legacy OSOCE 说明，逐项迁移中。
+
 - [`Lombiq.AuditTrailExtensions`](https://github.com/Lombiq/Audit-Trail-Extensions): A module with additional features for the [Audit Trail module](https://docs.orchardcore.net/en/latest/docs/reference/modules/AuditTrail/) in Orchard Core.
 - [`Smartent.Orchard.ChartJs`](https://github.com/Lombiq/Orchard-Chart.js): An Orchard Core wrapper around the [Chart.js](https://www.chartjs.org/) library for displaying datasets as various charts.
 - [`Lombiq.ContentEditors`](https://github.com/Lombiq/Orchard-Content-Editors): With the help of this module you can create custom multi-page editors with async loading and saving. Watch a demo video of it from the Orchard Community Meeting [here](https://www.youtube.com/watch?v=WJ4dmbG9oVs).
@@ -65,21 +67,22 @@ Note that this solution also has an Orchard 1 counterpart, [Lombiq's Open-Source
 - [`Lombiq.VueJs`](https://github.com/Lombiq/Orchard-Vue.js): [Orchard Core](https://orchardproject.net/) module that contains [Vue.js](https://vuejs.org/) resources.
 - [`Lombiq.Walkthroughs`](https://github.com/Lombiq/Orchard-Walkthroughs): Do you want to learn about the most important Orchard Core features with a hands-on tutorial that guides you with interactive tooltips, right there in Orchard Core? This module is for you! Check out a demo video of it [here](https://www.youtube.com/watch?v=mWfngBADvX0).
 
-### Themes
+### Themes（Smartent-src）
 
-- [`Lombiq.BaseTheme.Native`](https://github.com/Lombiq/Orchard-Base-Theme): This theme contains infrastructure for custom native CSS Bootstrap 5 themes (using Orchard Core's built-in resource for BS5) with standardized zones and built-in front end menu display.
-- [`Lombiq.BaseTheme.Native.Samples`](https://github.com/Lombiq/Orchard-Base-Theme/tree/dev/Lombiq.BaseTheme.Native.Samples): A sample theme that demonstrates the features of the [`Lombiq.BaseTheme.Native`](https://github.com/Lombiq/Orchard-Base-Theme).
-- [`Lombiq.Hosting.MediaTheme`](https://github.com/Lombiq/Hosting-Media-Theme): With the help of this theme and its dependency, the [`Lombiq.Hosting.MediaTheme.Bridge`](https://github.com/Lombiq/Hosting-Media-Theme), you'll be able to host your theme assets and templates from Media Library.
-- [`Lombiq.Hosting.MediaTheme.Tests.Theme`](https://github.com/Lombiq/Hosting-Media-Theme): A theme only used for testing that demonstrates the local development version of a Media Theme.
-- [`Lombiq.Tailwind.Targets.Samples`](https://github.com/Lombiq/Tailwind-Targets/tree/dev/Lombiq.Tailwind.Targets.Samples): A minimal Orchard Core theme that demonstrates using [`Lombiq.Tailwind.Targets`](https://github.com/Lombiq/Tailwind-Targets) in a real theme project.
+源码与 PackageId 见 [`Smartent-src/Themes/README.md`](Smartent-src/Themes/README.md)。
 
-### Utilities
+- `Smartent.Orchard.Theme.Base` / `.Native` / `.Samples`（原 Lombiq.BaseTheme.*）
+- `Smartent.Orchard.Theme.Media` / `.Bridge` / `.Tests.Theme`（原 Lombiq.Hosting.MediaTheme.*）
+- `Smartent.Build.Tailwind` 样例主题（原 Lombiq.Tailwind.Targets.Samples）
 
-- [`Lombiq.Hosting.MediaTheme.Targets`](https://github.com/Lombiq/Hosting-Media-Theme): Provides automatic Media Theme package creation during build.
-- [`Lombiq.MSBuild.LibMan.Targets` and `Lombiq.MSBuild.*.Sdk`](https://github.com/Lombiq/MSBuild-Targets/): Contains MSBuild Targets and Props files to streamline repetitive project configuration.
-- [`Lombiq.Npm.Targets`](https://github.com/Lombiq/NPM-Targets): Provides automatic NPM package installation and a custom NPM command execution before building a .NET project. This way it is possible for example to manage assets (e.g. .scss files or images) in a folder that will be automatically compiled into the _wwwroot_ folder on build, which then can be excluded from the version control system.
-- [`Lombiq.SetupExtensions`](https://github.com/Lombiq/Setup-Extensions): Extensions for setting up an Orchard Core application.
-- [`Lombiq.Tailwind.Targets`](https://github.com/Lombiq/Tailwind-Targets): Provides automatic Tailwind CSS compilation before building a .NET project, without requiring Node.js in the consuming app.
+### Utilities / Build（Smartent-src/Build）
+
+见 [`Smartent-src/Build/`](Smartent-src/Build/) 与各子项目 `Readme.md`。
+
+- `Smartent.Build.LibMan.Targets`、`Smartent.Build.Base.Sdk` 与各 Orchard Sdk（原 Lombiq.MSBuild.*）
+- `Smartent.Build.Npm.Targets`、`Smartent.Build.NodeJs`（原 Lombiq.Npm / Lombiq.NodeJs.Extensions）
+- `Smartent.Orchard.Setup`（原 Lombiq.SetupExtensions）
+- `Smartent.Build.Tailwind`（原 Lombiq.Tailwind.Targets）
 
 ### Testing
 
@@ -107,12 +110,10 @@ You can activate various sample content in the site:
 - [`Smartent.Orchard.DataTables`](https://github.com/Lombiq/Orchard-Data-Tables):
   - Go to Features in the admin dashboard and select "Lombiq Data Tables - Samples".
   - Go to Recipes in the admin dashboard and select "Lombiq Data Tables - Sample Content - Employee".
-- [`Lombiq.BaseTheme.Native`](https://github.com/Lombiq/Orchard-Base-Theme):
-  - The "TEST: Basic Orchard Features" setup recipe automatically sets it up. If not using it, run the "Lombiq Orchard Core Base Theme - Layers and Zones" recipe, and then enable the theme in Admin → Design → Themes.
-  - In case of theme development you can use the "Lombiq Orchard Core Base Theme - Styling Demo" theme to test against some common HTML elements.
+- [`Smartent.Orchard.Theme.Base.Samples`](Smartent-src/Themes/Smartent.Orchard.Theme.Base/): Run recipe `Smartent.Demo.BaseTheme` or NuGetVerify `Smartent.NuGet.BaseTheme` in tests; feature id `Smartent.Orchard.Theme.Base.Samples`.
 - [`Smartent.Orchard.ChartJs`](https://github.com/Lombiq/Orchard-Chart.js): Go to Recipes in the admin dashboard and select "Lombiq Chart.js - Sample Content - Income/Expense".
 - [`Lombiq.Privacy`](https://github.com/Lombiq/Orchard-Privacy): Go to Recipes in the admin dashboard and select "Lombiq Privacy - Sample Content - Privacy, Forms, Workflows".
-- [`Lombiq.Hosting.MediaTheme`](https://github.com/Lombiq/Hosting-Media-Theme): Go to Recipes in the admin dashboard and select "Lombiq Hosting - Media Theme - Samples".
+- [`Smartent.Orchard.Theme.Media`](Smartent-src/Themes/Smartent.Orchard.Theme.Media/): Media Theme 部署配方见 `Smartent.NuGet.Web.recipe.json` / 主题模块文档。
 
 ## Contributing and support
 

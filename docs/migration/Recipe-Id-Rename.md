@@ -13,3 +13,15 @@
 | `Lombiq.OrchardCoreApiClient.*` | `Smartent.Orchard.ApiClient.*` | `Smartent.Orchard.ApiClient*/Recipes/` |
 
 扩展模块样例 Recipe 的 `name` 早即为 `Smartent.Orchard.Extensions.Cms.*`；仅 **文件名** 从 `Lombiq.HelpfulExtensions.*` 改为 `Smartent.Orchard.Extensions.Cms.*`（2026-11-23）。
+
+## NuGetVerify（M7 #21）
+
+Recipe **`name`** 未改；`steps` 内 **feature / theme id** 已与 Smartent 模块对齐：
+
+| 旧 feature / theme id | 新 id |
+|------------------------|-------|
+| `Lombiq.Hosting.MediaTheme` / `.Bridge` | `Smartent.Orchard.Theme.Media` / `.Bridge` |
+| `Lombiq.BaseTheme.Native.Samples` | `Smartent.Orchard.Theme.Base.Samples` |
+| `Lombiq.*` 模块（Tests 配方 enable 列表） | `Smartent.Orchard.*` / `Smartent.Demo.*`（见 `Smartent.NuGet.Tests.recipe.json`） |
+
+Demo 侧 `Smartent.Demo.BaseTheme` 配方与 NuGetVerify `Smartent.NuGet.BaseTheme` 使用相同的 Base Samples 主题 id。
