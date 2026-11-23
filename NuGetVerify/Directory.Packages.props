@@ -21,6 +21,8 @@
     <PackageVersion Include="Smartent.Build.NodeJs" Version="3.0.0" />
     <PackageVersion Include="Smartent.Orchard.Setup" Version="8.0.0" />
     <PackageVersion Include="Smartent.Test.Unit" Version="6.0.1" />
+    <!-- 独立检出：nuget.org 上 Tests.Sdk 2.1.1 仍引用 Lombiq.Tests（见 M6-PackageId-Exceptions.md） -->
+    <PackageVersion Include="Lombiq.Tests" Version="6.0.1" />
     <PackageVersion Include="Smartent.Test.UI" Version="16.0.1-alpha.3.osoe-1326" />
     <PackageVersion Include="Smartent.Test.UI.AdminTheme" Version="16.0.1-alpha.3.osoe-1326" />
     <PackageVersion Include="Smartent.Test.UI.AppExtensions" Version="16.0.1-alpha.3.osoe-1326" />

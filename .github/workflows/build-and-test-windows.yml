@@ -93,6 +93,7 @@ jobs:
       parent-job-name: nuget-solution
       machine-types: '["windows-2025"]'
       build-directory: NuGetVerify
+      build-solution-path: Smartent.NuGet.Monorepo.sln
       timeout-minutes: 30
       # This way, we can see Node.js build issues in the build log.
       build-verbosity: minimal

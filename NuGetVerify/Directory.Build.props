@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <!-- 作为本 monorepo 子目录时，测试模块走本地 Module.Sdk（Smartent.Orchard.Platform），无需 Lombiq.HelpfulLibraries.OrchardCore 中央版本。 -->
-  <PropertyGroup Condition="Exists('$(MSBuildThisFileDirectory)..\Smartent-src\Build\Lombiq.MSBuild.OrchardCore.Module.Sdk\Sdk\Import.props')">
+  <PropertyGroup Condition="Exists('$(MSBuildThisFileDirectory)..\Smartent-src\Build\Lombiq.MSBuild.OrchardCore.Module.Sdk\Sdk\Import.props') and '$(ForceStandaloneNuGetVerify)' != 'true'">
     <SmartentMonorepoRoot>$(MSBuildThisFileDirectory)..</SmartentMonorepoRoot>
     <UseSmartentMonorepoMsBuildSdk>true</UseSmartentMonorepoMsBuildSdk>
     <NuGetBuild>false</NuGetBuild>
