@@ -1,4 +1,4 @@
-using Lombiq.ContentEditors.Tests.UI.Extensions;
+﻿using Smartent.Orchard.ContentEditors.Tests.UI.Extensions;
 using Smartent.Test.UI.Extensions;
 using Smartent.Test.UI.Helpers;
 using System.Threading.Tasks;

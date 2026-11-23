@@ -4,7 +4,7 @@
     <IsPublishable>false</IsPublishable>
   </PropertyGroup>
 
-  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../../../Smartent-src/Build/Smartent.Build.Base.Sdk/Sdk/Import.props" />
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../Build/Smartent.Build.Base.Sdk/Sdk/Import.props" />
   <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Smartent.Build.Base.Sdk" Version="2.1.1" />
 
   <PropertyGroup>
@@ -20,6 +20,6 @@
     <None Include="Smartent.Orchard.Theme.Media.Targets.targets" Pack="true" PackagePath="build\Smartent.Orchard.Theme.Media.Targets.targets" />
   </ItemGroup>
 
-  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../../../Smartent-src/Build/Smartent.Build.Base.Sdk/Sdk/Import.targets" />
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../Build/Smartent.Build.Base.Sdk/Sdk/Import.targets" />
   <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.targets" Sdk="Smartent.Build.Base.Sdk" Version="2.1.1" />
 </Project>

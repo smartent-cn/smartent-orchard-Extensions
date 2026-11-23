@@ -1,4 +1,4 @@
-using Lombiq.Hosting.Tenants.IdleTenantManagement.Tests.UI.Extensions;
+﻿using Smartent.Orchard.Hosting.Tenants.IdleTenantManagement.Tests.UI.Extensions;
 using Smartent.NuGet.Tests.UI.Constants;
 using Smartent.Test.UI.Extensions;
 using System.Threading.Tasks;

@@ -43,15 +43,30 @@ else {
     Write-Output 'Step 1/3: Skip pack (existing feed).'
 }
 
+$exampleConfig = Join-Path $nugetVerify 'NuGet.config.local.example'
 if (-not (Test-Path $localConfig)) {
-    throw "Missing $localConfig — copy from NuGet.config.local.example and enable SmartentLocal."
+    Copy-Item $exampleConfig $localConfig -Force
+    Write-Output "Created $localConfig from example."
 }
+
+$gapScript = Join-Path $PSScriptRoot 'Pack-NuGetVerifySupplementalGaps.ps1'
+Write-Output 'Pack NuGetVerify supplemental gaps (not in Smartent.Orchard.sln feed)...'
+& $gapScript -Configuration $Configuration
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+$alignScript = Join-Path $PSScriptRoot 'Align-NuGetVerifyVersionsToLocalFeed.ps1'
+Write-Output 'Align NuGetVerify package versions to local feed (Directory.Packages.local.props)...'
+& $alignScript
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+$seedScript = Join-Path $PSScriptRoot 'Seed-LocalFeedSdkToNuGetCache.ps1'
+& $seedScript
 
 $env:NUGET_PACKAGES = "$env:USERPROFILE\.nuget\packages"
 Push-Location $nugetVerify
 try {
     Write-Output 'Step 2/3: dotnet restore Smartent.NuGet.sln ...'
-    dotnet restore Smartent.NuGet.sln -c $Configuration --configfile $localConfig
+    dotnet restore Smartent.NuGet.sln --configfile $localConfig
     if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
     Write-Output 'Step 3/3: dotnet build Smartent.NuGet.sln ...'
     dotnet build Smartent.NuGet.sln -c $Configuration --no-restore --configfile $localConfig

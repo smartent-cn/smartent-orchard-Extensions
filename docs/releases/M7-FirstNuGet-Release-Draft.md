@@ -16,9 +16,9 @@
 ## 发布前清单
 
 - [x] `Invoke-M7CoreFeedGate.ps1` 绿（本地；CI 见 `smartent-local-feed-smoke.yml`）
-- [ ] `Export-FeedManifestSummary.ps1` 与产品清单一致
-- [ ] Gitee `NuGet.config` 源已启用（[M7-Batch-15](../../重构-重组-改名项目方案/projects/M7-Batch-15-GiteeNuGetConfig.md)）
-- [ ] （可选）`Build-NuGetVerify-WithLocalFeed.ps1` 全 sln 绿
+- [x] `Export-FeedManifestSummary.ps1` 与本地 feed 对齐（示例：`Total: 123` · `Smartent.*: 113` · `Lombiq.*: 10` — 以当前 `feed-manifest.txt` 为准）
+- [ ] Gitee `NuGet.config` 源已启用（[M7-Batch-15](../../重构-重组-改名项目方案/projects/M7-Batch-15-GiteeNuGetConfig.md)；示例 [NuGet.config.gitee.example](NuGet.config.gitee.example)）
+- [x] `Build-NuGetVerify-WithLocalFeed.ps1` 全 `Smartent.NuGet.sln` Release 构建绿（本地 `-SkipPack` + supplemental gaps）
 
 ## 全量 NuGetVerify
 
@@ -27,6 +27,16 @@
 ```powershell
 ./scripts/Pack-SmartentLocalFeed.ps1 -Full
 ./scripts/Build-NuGetVerify-WithLocalFeed.ps1 -SkipPack
+./scripts/Export-FeedManifestSummary.ps1
+```
+
+## Gitee 推送（M7#10）
+
+```powershell
+$env:GITEE_NUGET_SOURCE_URL = 'https://gitee.com/api/v5/packages/<owner>/<repo>/nuget/index.json'  # 以实称为准
+$env:GITEE_NUGET_API_KEY = '<token>'
+./scripts/Publish-SmartentFeedToGitee.ps1 -WhatIf
+./scripts/Publish-SmartentFeedToGitee.ps1
 ```
 
 ## 仍保留 Lombiq PackageId（首版可并存）

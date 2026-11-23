@@ -25,7 +25,30 @@ if ($Full) {
     }
     Write-Output 'Packing Smartent.Orchard.sln (may take several minutes)...'
     dotnet pack (Join-Path $repoRoot 'Smartent.Orchard.sln') -c Release --output $OutputPath /p:ContinuousIntegrationBuild=true
-    exit $LASTEXITCODE
+    if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+    . (Join-Path $PSScriptRoot 'feed-full-verify-supplemental.ps1')
+    $extra = Get-SmartentFullVerifySupplementalPackProjects
+    foreach ($entry in $extra) {
+        $proj = Join-Path $repoRoot $entry.Rel
+        if (-not (Test-Path $proj)) { throw "Missing supplemental project: $proj" }
+        $packArgs = @('pack', $proj, '-c', 'Release', '--output', $OutputPath, '/p:ContinuousIntegrationBuild=true')
+        if ($entry.Version) { $packArgs += "/p:Version=$($entry.Version)" }
+        Write-Output "Supplemental pack $($entry.Rel) ..."
+        & dotnet @packArgs
+        if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+    }
+
+    $nupkgs = Get-ChildItem -Path $OutputPath -Filter '*.nupkg' -File | ForEach-Object { $_.Name }
+    $manifestPath = Join-Path $OutputPath 'feed-manifest.txt'
+    $nupkgs | Sort-Object | Set-Content -Path $manifestPath -Encoding utf8
+    Write-Output "Wrote $manifestPath ($($nupkgs.Count) packages)"
+    if (-not $SkipVerify) {
+        $verifyScript = Join-Path $PSScriptRoot 'Verify-SmartentLocalFeed.ps1'
+        & $verifyScript -OutputPath $OutputPath
+        exit $LASTEXITCODE
+    }
+    exit 0
 }
 
 . (Join-Path $PSScriptRoot 'feed-core-pack-versions.ps1')

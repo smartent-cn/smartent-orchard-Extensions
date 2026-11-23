@@ -1,5 +1,5 @@
-using Smartent.Test.UI.Extensions;
-using Lombiq.Walkthroughs.Tests.UI.Extensions;
+﻿using Smartent.Test.UI.Extensions;
+using Smartent.Orchard.Walkthroughs.Tests.UI.Extensions;
 using System.Net;
 using System.Threading.Tasks;
 using Xunit;

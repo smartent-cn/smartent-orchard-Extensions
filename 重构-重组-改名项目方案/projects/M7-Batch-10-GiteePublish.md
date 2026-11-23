@@ -17,6 +17,9 @@
 ```powershell
 # 远程源就绪后
 ./scripts/Build-NuGetVerify-WithLocalFeed.ps1 -SkipPack
+
+# 推送前预演（需 GITEE_NUGET_SOURCE_URL；无 URL 时仅列出包名）
+./scripts/Publish-SmartentFeedToGitee.ps1 -WhatIf
 ```
 
 本地发布前请先绿：`./scripts/Invoke-M7CoreFeedGate.ps1`

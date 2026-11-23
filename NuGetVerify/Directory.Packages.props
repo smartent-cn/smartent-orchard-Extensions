@@ -111,7 +111,9 @@
     <PackageVersion Include="Smartent.Orchard.UIKit.Widgets" Version="11.0.1-alpha.0.osoe-1317" />
     <PackageVersion Include="Smartent.Orchard.UIKit.Widgets.Tests.UI" Version="11.0.1-alpha.0.osoe-1317" />
     <PackageVersion Include="Smartent.Orchard.VueJs.Resources" Version="10.0.0" />
+    <PackageVersion Include="Smartent.Orchard.VueJs.Tests.UI" Version="10.0.0" />
     <PackageVersion Include="Smartent.Orchard.Walkthroughs" Version="4.0.1-alpha.0.osoe-1317" />
     <PackageVersion Include="Smartent.Orchard.Walkthroughs.Tests.UI" Version="4.0.1-alpha.0.osoe-1317" />
   </ItemGroup>
+  <Import Condition="Exists('Directory.Packages.local.props')" Project="Directory.Packages.local.props" />
 </Project>

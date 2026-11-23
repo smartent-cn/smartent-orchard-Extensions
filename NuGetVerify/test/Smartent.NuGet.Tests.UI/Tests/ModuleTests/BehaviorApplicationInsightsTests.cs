@@ -1,4 +1,4 @@
-using Lombiq.Hosting.Azure.ApplicationInsights.Tests.UI.TestCases;
+﻿using Smartent.Orchard.Hosting.ApplicationInsights.Tests.UI.TestCases;
 using System.Threading.Tasks;
 using Xunit;
 

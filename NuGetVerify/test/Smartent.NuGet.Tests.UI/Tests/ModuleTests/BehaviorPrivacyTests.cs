@@ -1,4 +1,4 @@
-using Lombiq.Privacy.Tests.UI.Extensions;
+﻿using Smartent.Orchard.Privacy.Tests.UI.Extensions;
 using Smartent.Test.UI.Extensions;
 using System.Threading.Tasks;
 using Xunit;

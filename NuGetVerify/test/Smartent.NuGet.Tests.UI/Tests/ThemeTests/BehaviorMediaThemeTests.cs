@@ -1,5 +1,5 @@
-using Lombiq.Hosting.MediaTheme.Bridge.Tests.UI.Extensions;
-using Lombiq.Hosting.MediaTheme.Tests.UI.Extensions;
+﻿using Smartent.Orchard.Theme.Media.Bridge.Tests.UI.Extensions;
+using Smartent.Orchard.Theme.Media.Tests.UI.Extensions;
 using System.Threading.Tasks;
 using Xunit;
 

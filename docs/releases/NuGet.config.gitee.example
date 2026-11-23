@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copy to user-level or repo NuGet.config after Gitee Packages is enabled. Do NOT commit API keys. -->
+<configuration>
+  <packageSources>
+    <clear />
+    <add key="nuget.org" value="https://api.nuget.org/v3/index.json" />
+    <!-- Replace URL with your Gitee NuGet v3 endpoint (includes auth query or use api-key on push). -->
+    <add key="Smartent" value="https://gitee.com/api/v5/packages/&lt;owner&gt;/nuget/index.json" />
+  </packageSources>
+  <packageSourceMapping>
+    <packageSource key="Smartent">
+      <package pattern="Smartent.*" />
+      <package pattern="Smartent.Build.*" />
+    </packageSource>
+    <packageSource key="nuget.org">
+      <package pattern="*" />
+      <package pattern="OrchardCore.*" />
+      <package pattern="Lombiq.Analyzers.*" />
+    </packageSource>
+  </packageSourceMapping>
+</configuration>

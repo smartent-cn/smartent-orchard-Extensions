@@ -1,4 +1,4 @@
-using Lombiq.JsonEditor.Tests.UI.Extensions;
+﻿using Smartent.Orchard.JsonEditor.Tests.UI.Extensions;
 using System.Threading.Tasks;
 using Xunit;
 
