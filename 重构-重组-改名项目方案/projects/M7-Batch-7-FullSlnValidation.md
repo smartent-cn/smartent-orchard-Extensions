@@ -21,7 +21,11 @@ Copy-Item NuGetVerify/NuGet.config.local.example NuGetVerify/NuGet.config.local
 ./scripts/Build-NuGetVerify-WithLocalFeed.ps1
 ```
 
+## 后续
+
+- 批次 #9：CI feed smoke、独立 PackageReference 还原见 [M7-Batch-9-CIPackageRestore.md](M7-Batch-9-CIPackageRestore.md)
+
 ## 未决
 
-- 远程 Gitee Packages 与 CI 可选 job
+- 远程 Gitee Packages 与 CI secret
 - `Smartent.NuGet.Web` Recipe 引用的全部模块包须与 `-Full` pack 清单一致

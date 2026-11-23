@@ -21,6 +21,7 @@ dotnet build NuGetVerify/Smartent.NuGet.Monorepo.sln -c Release
 # Core 本地 feed 冒烟
 ./scripts/Pack-SmartentLocalFeed.ps1
 ./scripts/Verify-SmartentLocalFeed.ps1
+./scripts/Test-NuGetVerifyCorePackageRestore.ps1
 
 # 全量 sln（耗时长，需 -Full pack）
 Copy-Item NuGetVerify/NuGet.config.local.example NuGetVerify/NuGet.config.local
