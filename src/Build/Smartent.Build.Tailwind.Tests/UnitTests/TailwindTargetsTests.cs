@@ -2,7 +2,7 @@ using Shouldly;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Lombiq.Tailwind.Targets.Tests.UnitTests;
+namespace Smartent.Build.Tailwind.Tests.UnitTests;
 
 public class TailwindTargetsTests
 {

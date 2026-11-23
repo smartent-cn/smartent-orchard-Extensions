@@ -1,11 +1,11 @@
-# 列出 Smartent-src 中含 PackageId 的可发布 csproj（粗筛，不含 IsPackable=false）。
+# 列出 src/ 中含 PackageId 的可发布 csproj（粗筛，不含 IsPackable=false）。
 param(
     [string]$Root = ''
 )
 
 $ErrorActionPreference = 'Stop'
 if (-not $Root) {
-    $Root = Join-Path (Split-Path -Parent $PSScriptRoot) 'Smartent-src'
+    $Root = Join-Path (Split-Path -Parent $PSScriptRoot) 'src'
 }
 
 $results = @()

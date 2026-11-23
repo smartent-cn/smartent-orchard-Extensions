@@ -8,6 +8,13 @@
 
   <Import Project="..\Smartent.Build.Tailwind\Smartent.Build.Tailwind.props" />
 
+  <PropertyGroup>
+  <!-- Use checked-in wwwroot/css/site.css when GitHub CLI download is unavailable. -->
+    <TailwindRunOnBuild Condition="Exists('$(TailwindCliPath)')">true</TailwindRunOnBuild>
+    <TailwindRunOnBuild Condition="!Exists('$(TailwindCliPath)')">false</TailwindRunOnBuild>
+    <TailwindCliDownload Condition="!Exists('$(TailwindCliPath)')">false</TailwindCliDownload>
+  </PropertyGroup>
+
   <Import Project="..\Smartent.Build.Tailwind\Smartent.Build.Tailwind.targets" />
 
   <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../Build/Smartent.Build.OrchardCore.Theme.Sdk/Sdk/Import.targets" />

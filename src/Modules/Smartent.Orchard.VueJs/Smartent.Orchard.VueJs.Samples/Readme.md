@@ -11,7 +11,7 @@ Vue.js is a progressive framework for building user interfaces, mostly single-pa
 
 If you are not familiar with Vue.js you can skip this tutorial or give it a try and see how cool of a framework it is. See: <https://vuejs.org/guide/introduction.html>
 
-If you'd like to learn by example, check out our [Open-Source Orchard Core Extensions](https://github.com/Lombiq/Open-Source-Orchard-Core-Extensions) full Orchard Core solution and also see our other useful Orchard Core-related open-source projects!
+If you'd like to learn by example, check out our [Open-Source Orchard Core Extensions](https://github.com/smartent-cn/smartent-orchard-Extensions) full Orchard Core solution and also see our other useful Orchard Core-related open-source projects!
 
 ## Training sections
 

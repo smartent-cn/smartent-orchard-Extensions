@@ -2,7 +2,7 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Lombiq.Tailwind.Targets.Tests;
+namespace Smartent.Build.Tailwind.Tests;
 
 internal static class TailwindTargetsSample
 {

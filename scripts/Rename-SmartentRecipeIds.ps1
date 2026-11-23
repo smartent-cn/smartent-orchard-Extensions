@@ -1,7 +1,7 @@
 # Update Orchard recipe ids and related strings after recipe file renames.
 $ErrorActionPreference = 'Stop'
 $repo = (Resolve-Path (Join-Path $PSScriptRoot '..')).Path
-$root = Join-Path $repo 'Smartent-src'
+$root = Join-Path $repo 'src'
 
 $replacements = [ordered]@{
     'Lombiq.OSOCE.BasicOrchardFeaturesTests' = 'Smartent.Demo.BasicOrchardFeaturesTests'

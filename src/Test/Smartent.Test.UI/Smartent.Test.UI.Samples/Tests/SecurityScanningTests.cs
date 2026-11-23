@@ -18,7 +18,7 @@ namespace Smartent.Test.UI.Samples.Tests;
 
 // Most common alerts can be resolved by using the OrchardCoreBuilder.ConfigureSecurityDefaultsWithStaticFiles()
 // extension method from Smartent.Orchard.Platform. We use it in this in our
-// https://github.com/Lombiq/Open-Source-Orchard-Core-Extensions repo that these samples are configured for, and thus
+// https://github.com/smartent-cn/smartent-orchard-Extensions repo that these samples are configured for, and thus
 // there are almost no alerts. It's worth enabling in your Program and then verifying that everything still works on
 // the site before really getting into security scanning. If you experience any problems related to
 // Content-Security-Policy, take a look at the documentation of IContentSecurityPolicyProvider and

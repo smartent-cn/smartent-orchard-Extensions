@@ -1,6 +1,6 @@
 # Making an Orchard Core app testable
 
-Tips on making specific features testable are under the ["Creating tests" page](CreatingTests.md) but here are some tips for the whole Orchard Core app you want to test. For an example of a UI-tested Orchard Core application see [Lombiq's Open-Source Orchard Core Extensions](https://github.com/Lombiq/Open-Source-Orchard-Core-Extensions).
+Tips on making specific features testable are under the ["Creating tests" page](CreatingTests.md) but here are some tips for the whole Orchard Core app you want to test. For an example of a UI-tested Orchard Core application see [Lombiq's Open-Source Orchard Core Extensions](https://github.com/smartent-cn/smartent-orchard-Extensions).
 
 **Note** that certain features of the Lombiq UI Testing Toolbox need to be enabled from test code in addition to making the app testable. Check out `OrchardCoreUITestExecutorConfiguration` for that part of the configuration; this page is only about changes necessary in the app.
 

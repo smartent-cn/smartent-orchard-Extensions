@@ -3,7 +3,7 @@
   "displayName": "Lombiq JSON Editor - Sample",
   "description": "Sample configuration for the Lombiq JSON Editor module.",
   "author": "Lombiq Technologies",
-  "website": "https://github.com/Lombiq/Open-Source-Orchard-Core-Extensions",
+  "website": "https://github.com/smartent-cn/smartent-orchard-Extensions",
   "version": "1.0",
   "issetuprecipe": false,
   "categories": [

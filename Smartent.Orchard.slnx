@@ -102,7 +102,7 @@
     </Project>
     <Project Path="src/Test/Smartent.Test.UI/Smartent.Test.UI.AdminTheme/Smartent.Test.UI.AdminTheme.csproj" />
   </Folder>
-  <Folder Name="/src/Utilities/">
+  <Folder Name="/src/Build/">
     <Project Path="src/Themes/Smartent.Orchard.Theme.Media/Smartent.Orchard.Theme.Media.Targets/Smartent.Orchard.Theme.Media.Targets.csproj" />
     <Project Path="src/Build/Smartent.Build.Base.Sdk/Smartent.Build.Base.Sdk.csproj" />
     <Project Path="src/Build/Smartent.Build.LibMan.Targets/Smartent.Build.LibMan.Targets.csproj" />

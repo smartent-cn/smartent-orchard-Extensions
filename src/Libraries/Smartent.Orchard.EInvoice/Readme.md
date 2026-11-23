@@ -28,7 +28,7 @@ Uses [CEN/TC 434 - EN-16931 - Validation artifacts](https://github.com/Connectin
 
 See a blog post about the library on [Orchard Dojo](https://orcharddojo.net/blog/validate-your-en-16931-einvoices-in-net-with-the-lombiq-einvoice-validator).
 
-Do you want to quickly try out this project and see it in action? Check it out in our [Open-Source Orchard Core Extensions](https://github.com/Lombiq/Open-Source-Orchard-Core-Extensions) full Orchard Core solution and also see our other useful Orchard Core-related open-source projects!
+Do you want to quickly try out this project and see it in action? Check it out in our [Open-Source Orchard Core Extensions](https://github.com/smartent-cn/smartent-orchard-Extensions) full Orchard Core solution and also see our other useful Orchard Core-related open-source projects!
 
 ## Projects
 

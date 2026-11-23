@@ -1,6 +1,6 @@
 # Smartent.Core.AspNet | Smartent Core AspNet
 
-> **ç¶æ?| Status**ï¼å·²è¿å¥ Smartent-srcï¼M2ï¼? 
+> **状态 | Status**：已迁入 `src/`（M2）。
 > **è·¯å¾ | Path**ï¼`src/Platform/Core/Smartent.Core.AspNet`
 
 ---

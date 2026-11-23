@@ -46,7 +46,7 @@
 
   <!-- This module requires Smartent.Orchard.Platform, and it can be included two ways. The PackageReference
   is used by the standalone solution, while ProjectReference is needed when including the module in
-  https://github.com/Lombiq/Open-Source-Orchard-Core-Extensions. Only one of the two is ever active. -->
+  https://github.com/smartent-cn/smartent-orchard-Extensions. Only one of the two is ever active. -->
 
   <ItemGroup Condition="Exists('..\..\..\Platform\Orchard\Smartent.Orchard.Platform\Smartent.Orchard.Platform.csproj')">
     <ProjectReference Include="..\..\..\Platform\Orchard\Smartent.Orchard.Platform\Smartent.Orchard.Platform.csproj" />

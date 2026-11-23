@@ -10,7 +10,7 @@
 
 We at [Lombiq](https://lombiq.com/) also used this module for the new [Lombiq website](https://lombiq.com/) when migrating it from Orchard 1 to Orchard Core ([see case study](https://lombiq.com/blog/how-we-renewed-and-migrated-lombiq-com-from-orchard-1-to-orchard-core)). It also makes [DotNest, the Orchard Core SaaS](https://dotnest.com/) better.
 
-Do you want to quickly try out this project and see it in action? Check it out in our [Open-Source Orchard Core Extensions](https://github.com/Lombiq/Open-Source-Orchard-Core-Extensions) full Orchard Core solution and also see our other useful Orchard Core-related open-source projects!
+Do you want to quickly try out this project and see it in action? Check it out in our [Open-Source Orchard Core Extensions](https://github.com/smartent-cn/smartent-orchard-Extensions) full Orchard Core solution and also see our other useful Orchard Core-related open-source projects!
 
 ## Documentation
 
@@ -19,7 +19,7 @@ Just enable the "Lombiq Hosting - Build Version Display" feature on the `Default
 Optionally, a link to the CI build's page can be display as well. During `dotnet build`, provide this in the `BuildVersionDisplay_BuildUrl` property. E.g.:
 
 ```pwsh
-dotnet build .\MyApp.sln -p:BuildVersionDisplay_BuildUrl=https://github.com/Lombiq/Open-Source-Orchard-Core-Extensions/actions/runs/123
+dotnet build .\MyApp.sln -p:BuildVersionDisplay_BuildUrl=https://github.com/smartent-cn/smartent-orchard-Extensions/actions/runs/123
 ```
 
 The [Deploy to Azure App Service workflow](https://github.com/Lombiq/GitHub-Actions/blob/dev/Docs/Workflows/AzureHosting/DeployToAzureAppService.md) also takes care of this.

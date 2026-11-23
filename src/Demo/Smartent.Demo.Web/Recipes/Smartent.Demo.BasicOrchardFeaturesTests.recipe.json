@@ -3,7 +3,7 @@
   "displayName": "TEST: Basic Orchard Features",
   "description": "Setup recipe for automated UI test execution, checking the basic Orchard features. See the BasicOrchardFeaturesTests test.",
   "author": "Lombiq Technologies",
-  "website": "https://github.com/Lombiq/Open-Source-Orchard-Core-Extensions",
+  "website": "https://github.com/smartent-cn/smartent-orchard-Extensions",
   "version": "1.0",
   "issetuprecipe": true,
   "categories": [

@@ -42,7 +42,7 @@ foreach ($proj in @(
 $needed = $refs | Sort-Object -Unique | Where-Object { -not $inFeed.ContainsKey($_) }
 
 $idToRel = @{}
-Get-ChildItem -Path (Join-Path $repoRoot 'Smartent-src') -Recurse -Filter '*.csproj' -File -ErrorAction SilentlyContinue |
+Get-ChildItem -Path (Join-Path $repoRoot 'src') -Recurse -Filter '*.csproj' -File -ErrorAction SilentlyContinue |
     Where-Object { $_.FullName -notmatch '[\\/]node_modules[\\/]' } | ForEach-Object {
     $t = Get-Content -LiteralPath $_.FullName -Raw
     if ($t -match '<IsPackable>\s*false\s*</IsPackable>') { return }

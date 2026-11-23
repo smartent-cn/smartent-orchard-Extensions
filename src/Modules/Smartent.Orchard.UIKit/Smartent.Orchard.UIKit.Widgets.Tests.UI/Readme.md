@@ -4,7 +4,7 @@
 
 Extension methods that test various features in UI Kit Widgets for Orchard Core.
 
-Call these from a UI test project that also references _Smartent.Orchard.UIKit.Widgets_ to verify the module's basic features; as seen in [Open-Source Orchard Core Extensions](https://github.com/Lombiq/Open-Source-Orchard-Core-Extensions).
+Call these from a UI test project that also references _Smartent.Orchard.UIKit.Widgets_ to verify the module's basic features; as seen in [Open-Source Orchard Core Extensions](https://github.com/smartent-cn/smartent-orchard-Extensions).
 
 ## Contributing and support
 

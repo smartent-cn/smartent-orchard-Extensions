@@ -53,4 +53,4 @@ Defaults:
 ## Scenario Catalog
 
 For complete scenarios, see
-[`test/Smartent.Test.Acceptance/Tests/SqlMonitoringTests/Readme.md`](https://github.com/Lombiq/Open-Source-Orchard-Core-Extensions/blob/dev/test/Smartent.Test.Acceptance/Tests/SqlMonitoringTests/Readme.md).
+[`test/Smartent.Test.Acceptance/Tests/SqlMonitoringTests/Readme.md`](https://github.com/smartent-cn/smartent-orchard-Extensions/blob/dev/test/Smartent.Test.Acceptance/Tests/SqlMonitoringTests/Readme.md).

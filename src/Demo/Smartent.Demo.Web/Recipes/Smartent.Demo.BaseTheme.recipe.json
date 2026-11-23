@@ -5,7 +5,7 @@
   "displayName": "Switch to Smartent.Orchard.Theme.Base.Samples",
   "description": "Switch to Smartent.Orchard.Theme.Base.Samples theme for tests.",
   "author": "Lombiq Technologies",
-  "website": "https://github.com/Lombiq/Open-Source-Orchard-Core-Extensions",
+  "website": "https://github.com/smartent-cn/smartent-orchard-Extensions",
   "version": "1.0",
   "issetuprecipe": false,
   "categories": [

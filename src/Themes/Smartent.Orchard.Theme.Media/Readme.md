@@ -8,7 +8,7 @@ The Media Theme feature will allow developers to host their themes in the Orchar
 
 We at [Lombiq](https://lombiq.com/) also used this SDK for the new [Show Orchard website](https://showorchard.com/) when migrating it from Orchard 1 DotNest to DotNest Core (see [case study](https://dotnest.com/blog/show-orchard-case-study-migrating-an-orchard-1-dotnest-site-to-orchard-core) and the [theme's source code](https://github.com/Lombiq/Show-Orchard-Theme)).
 
-Do you want to quickly try out this project and see it in action? Check it out in our [Open-Source Orchard Core Extensions](https://github.com/Lombiq/Open-Source-Orchard-Core-Extensions) full Orchard Core solution and also see our other useful Orchard Core-related open-source projects!
+Do you want to quickly try out this project and see it in action? Check it out in our [Open-Source Orchard Core Extensions](https://github.com/smartent-cn/smartent-orchard-Extensions) full Orchard Core solution and also see our other useful Orchard Core-related open-source projects!
 
 ## Documentation
 

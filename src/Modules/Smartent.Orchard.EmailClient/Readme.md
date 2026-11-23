@@ -6,7 +6,7 @@
 
 An email client for Orchard Core that can fetch emails (including attachments) from a server. Right now it supports IMAP only. There's also a feature that can sync emails periodically from a background task in an extensible way; you can create your content items from emails for example.
 
-Do you want to quickly try out this project and see it in action? Check it out in our [Open-Source Orchard Core Extensions](https://github.com/Lombiq/Open-Source-Orchard-Core-Extensions) full Orchard Core solution and also see our other useful Orchard Core-related open-source projects!
+Do you want to quickly try out this project and see it in action? Check it out in our [Open-Source Orchard Core Extensions](https://github.com/smartent-cn/smartent-orchard-Extensions) full Orchard Core solution and also see our other useful Orchard Core-related open-source projects!
 
 ## Documentation
 
