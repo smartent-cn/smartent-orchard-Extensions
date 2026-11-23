@@ -96,8 +96,8 @@
     <Project Path="Smartent-src/Themes/Smartent.Orchard.Theme.Base/Smartent.Orchard.Theme.Base.Native.Samples/Smartent.Orchard.Theme.Base.Native.Samples.csproj" />
     <Project Path="Smartent-src/Themes/Smartent.Orchard.Theme.Base/Smartent.Orchard.Theme.Base.Native/Smartent.Orchard.Theme.Base.Native.csproj" />
     <Project Path="Smartent-src/Themes/Smartent.Orchard.Theme.Media/Smartent.Orchard.Theme.Media.Tests.Theme/Smartent.Orchard.Theme.Media.Tests.Theme.csproj" />
-    <Project Path="src/Themes/Smartent.Orchard.Theme.Media/Smartent.Orchard.Theme.Media/Smartent.Orchard.Theme.Media.csproj" />
-    <Project Path="src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.Sdk.Samples/Lombiq.MSBuild.Sdk.Samples.csproj">
+    <Project Path="Smartent-src/Themes/Smartent.Orchard.Theme.Media/Smartent.Orchard.Theme.Media/Smartent.Orchard.Theme.Media.csproj" />
+    <Project Path="Smartent-src/Build/Smartent.Build.Sdk.Samples/Smartent.Build.Sdk.Samples.csproj">
       <BuildType Project="Debug" />
     </Project>
     <Project Path="Smartent-src/Test/Smartent.Test.UI/Smartent.Test.UI.AdminTheme/Smartent.Test.UI.AdminTheme.csproj" />
@@ -112,7 +112,8 @@
     <Project Path="Smartent-src/Build/Smartent.Build.OrchardCore.Tests.UI.Library.Sdk/Smartent.Build.OrchardCore.Tests.UI.Library.Sdk.csproj" />
     <Project Path="Smartent-src/Build/Smartent.Build.OrchardCore.Tests.UI.Sdk/Smartent.Build.OrchardCore.Tests.UI.Sdk.csproj" />
     <Project Path="Smartent-src/Build/Smartent.Build.OrchardCore.Theme.Sdk/Smartent.Build.OrchardCore.Theme.Sdk.csproj" />
-    <Project Path="src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.Targets.Samples/Lombiq.MSBuild.Targets.Samples.csproj" />
+    <Project Path="Smartent-src/Build/Smartent.Build.Targets.Samples/Smartent.Build.Targets.Samples.csproj" />
+    <Project Path="Smartent-src/Build/Smartent.Build.Sdk.NuGet.Samples/Smartent.Build.Sdk.NuGet.Samples.csproj" />
     <Project Path="Smartent-src/Build/Smartent.Build.Npm.Targets/Smartent.Build.Npm.Targets.csproj" />
     <Project Path="Smartent-src/Build/Smartent.Orchard.Setup/Smartent.Orchard.Setup.csproj" />
     <Project Path="Smartent-src/Build/Smartent.Build.Tailwind.Samples/Smartent.Build.Tailwind.Samples.csproj" />
@@ -169,8 +170,8 @@
     <Project Path="Smartent-src/Themes/Smartent.Orchard.Theme.Media/Smartent.Orchard.Theme.Media.Tests.UI/Smartent.Orchard.Theme.Media.Tests.UI.csproj" />
   </Folder>
   <Folder Name="/test/Utilities/">
-    <Project Path="src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.Targets.Tests.UI/Lombiq.MSBuild.Targets.Tests.UI.csproj" />
-    <Project Path="src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.Targets.Tests/Lombiq.MSBuild.Targets.Tests.csproj" />
+    <Project Path="Smartent-src/Build/Smartent.Build.Targets.Tests.UI/Smartent.Build.Targets.Tests.UI.csproj" />
+    <Project Path="Smartent-src/Build/Smartent.Build.Targets.Tests/Smartent.Build.Targets.Tests.csproj" />
     <Project Path="Smartent-src/Build/Smartent.Build.Tailwind.Tests/Smartent.Build.Tailwind.Tests.csproj" />
   </Folder>
   <Folder Name="/tools/">

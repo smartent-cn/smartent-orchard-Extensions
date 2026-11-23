@@ -1,6 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
     <IsPublishable>false</IsPublishable>
     <RootNamespace>Smartent.Build.Npm.Targets</RootNamespace>
     <AssemblyName>Smartent.Build.Npm.Targets</AssemblyName>

@@ -2,6 +2,8 @@
 
 本目录是 **重构后的唯一目标代码根**。尚未迁出的工程仍留在仓库根下的 `src/`、`test/`、`tools/` 中（Legacy），迁完并验收后删除对应 Legacy 路径。
 
+**Legacy 对照与拆包明细**（删 `src/` 前必读）：[docs/migration/Legacy-to-Smartent-src-Mapping.md](../docs/migration/Legacy-to-Smartent-src-Mapping.md)
+
 ## 目录约定
 
 | 路径 | 用途 |
@@ -27,8 +29,8 @@
 
 - 脚手架已建立（目录 + `build/` 全局属性）。  
 - **M2 完成**：`Platform/Core/` 下五包已迁入（`Smartent.Core.*`）。  
-- **M3 基本完成**：Platform/Orchard 与 `Smartent.Test.OrchardCore` 已迁入；元包仅 Legacy 聚合。见 `projects/M3-Platform-HelpfulLibraries.md`。
-- **M4 首期完成**：Sdk 源码在 `Build/`；Legacy `src/Utilities/Lombiq.MSBuild.Targets` 仅 Samples/Tests。见 `projects/M4-MSBuild-Targets.md`。
+- **M3 基本完成**：Platform/Orchard 与 `Smartent.Test.OrchardCore` 已迁入；Legacy 元包已移除。见 `projects/M3-Platform-HelpfulLibraries.md`。
+- **M4 首期完成**：Sdk 与 Samples/Tests 均在 `Build/`；Legacy `src/Utilities/Lombiq.MSBuild.Targets` 仅 shim + Readme。见 `projects/M4-MSBuild-Targets.md`。
 - **M7 进行中**：`NuGetVerify`、本地 feed 脚本见仓库根 `scripts/` 与 `projects/M7-Batch-*.md`。
 - **M5**：Orchard 模块与主题已基本迁入 `Modules/`、`Themes/`、`Demo/Smartent.Demo.Samples`；见 `projects/M5-Batch-*.md`。
 - **M6**：宿主与测试工具链已迁入；`Smartent.Test.Platform`（原 HelpfulLibraries.Tests）；见 `projects/M6-Batch-*.md`。
