@@ -6,7 +6,11 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageVersion Include="HtmlSanitizer" Version="9.2.1039" />
-    <!-- M6/M7 例外：发布前仍保留 Lombiq 包 Id，见 重构-重组-改名项目方案/M6-PackageId-Exceptions.md -->
+    <PackageVersion Include="Smartent.Build.LibMan.Targets" Version="2.1.1" />
+    <PackageVersion Include="Smartent.Build.OrchardCore.Module.Sdk" Version="2.1.1" />
+    <PackageVersion Include="Smartent.Build.OrchardCore.Theme.Sdk" Version="2.1.1" />
+    <PackageVersion Include="Smartent.Build.OrchardCore.Tests.Sdk" Version="2.1.1" />
+    <!-- M6/M7 例外：分析器等仍 Lombiq，见 M6-PackageId-Exceptions.md -->
     <PackageVersion Include="Lombiq.Analyzers.OrchardCore" Version="7.0.1-alpha.0.osoe-1333" />
     <!-- 仅当 NuGetVerify 独立检出且 UseSmartentMonorepoMsBuildSdk!=true 时，旧 Module.Sdk 2.1.1 需要此项。 -->
     <PackageVersion Include="Lombiq.HelpfulLibraries.OrchardCore" Version="13.1.0" />
@@ -20,6 +24,7 @@
     <PackageVersion Include="Smartent.Build.Tailwind" Version="1.0.0" />
     <PackageVersion Include="Smartent.Build.NodeJs" Version="3.0.0" />
     <PackageVersion Include="Smartent.Orchard.Setup" Version="8.0.0" />
+    <PackageVersion Include="Smartent.Orchard.TrainingDemo" Version="1.0.0" />
     <PackageVersion Include="Smartent.Test.Unit" Version="6.0.1" />
     <!-- 独立检出：nuget.org 上 Tests.Sdk 2.1.1 仍引用 Lombiq.Tests（见 M6-PackageId-Exceptions.md） -->
     <PackageVersion Include="Lombiq.Tests" Version="6.0.1" />

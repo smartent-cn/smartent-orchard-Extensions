@@ -1,19 +1,23 @@
 name: Smartent Local Feed Smoke
 
-# Core pack + verify；不跑 -Full pack。手动或 dev 上 scripts 变更时触发。
+# Core pack → M7 聚合门禁；不跑 -Full pack。
 on:
   workflow_dispatch:
   push:
     branches:
       - dev
+      - master
     paths:
       - scripts/Pack-SmartentLocalFeed.ps1
       - scripts/Verify-SmartentLocalFeed.ps1
       - scripts/Test-NuGetVerifyCorePackageRestore.ps1
+      - scripts/Invoke-M7CoreFeedGate.ps1
+      - scripts/feed-core-pack-versions.ps1
+      - scripts/Assert-FeedCorePackVersions.ps1
 
 jobs:
   feed-smoke:
-    name: Pack, verify, and core NuGetVerify restore
+    name: M7 core feed gate
     runs-on: ubuntu-24.04
     timeout-minutes: 45
     steps:
@@ -25,10 +29,6 @@ jobs:
         with:
           dotnet-version: '10.0.x'
 
-      - name: Pack and verify local feed
+      - name: Invoke M7 core feed gate
         shell: pwsh
-        run: ./scripts/Pack-SmartentLocalFeed.ps1
-
-      - name: Standalone PackageReference restore smoke
-        shell: pwsh
-        run: ./scripts/Test-NuGetVerifyCorePackageRestore.ps1 -SkipPack
+        run: ./scripts/Invoke-M7CoreFeedGate.ps1

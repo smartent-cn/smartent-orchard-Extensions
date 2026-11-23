@@ -12,8 +12,8 @@
     <PackageOutputPath>./nupkg</PackageOutputPath>
   </PropertyGroup>
 
-  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../Build/Lombiq.MSBuild.Library.Sdk/Sdk/Import.props" />
-  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Lombiq.MSBuild.Library.Sdk" Version="2.1.1" />
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../Build/Smartent.Build.Library.Sdk/Sdk/Import.props" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Smartent.Build.Library.Sdk" Version="2.1.1" />
 
   <PropertyGroup>
     <Title>Lombiq Hosting - Media Theme Deployer for Orchard Core</Title>
@@ -32,6 +32,6 @@
     <None Include="..\.github\workflows\deploy-media-theme.yml" Link=".github\deploy-media-theme.yml" />
   </ItemGroup>
 
-  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../Build/Lombiq.MSBuild.Library.Sdk/Sdk/Import.targets" />
-  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.targets" Sdk="Lombiq.MSBuild.Library.Sdk" Version="2.1.1" />
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../Build/Smartent.Build.Library.Sdk/Sdk/Import.targets" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.targets" Sdk="Smartent.Build.Library.Sdk" Version="2.1.1" />
 </Project>

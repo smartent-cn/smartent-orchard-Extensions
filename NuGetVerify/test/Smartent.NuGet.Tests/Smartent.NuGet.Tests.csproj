@@ -1,19 +1,19 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
   </PropertyGroup>
 
   <Import Condition="'$(UseSmartentMonorepoMsBuildSdk)' == 'true'"
-          Project="$(SmartentMonorepoRoot)/Smartent-src/Build/Lombiq.MSBuild.OrchardCore.Tests.Sdk/Sdk/Import.props" />
+          Project="$(SmartentMonorepoRoot)/Smartent-src/Build/Smartent.Build.OrchardCore.Tests.Sdk/Sdk/Import.props" />
   <Import Condition="'$(UseSmartentMonorepoMsBuildSdk)' != 'true'"
-          Sdk="Lombiq.MSBuild.OrchardCore.Tests.Sdk"
+          Sdk="Smartent.Build.OrchardCore.Tests.Sdk"
           Project="Sdk.props"
           Version="2.1.1" />
 
   <Import Condition="'$(UseSmartentMonorepoMsBuildSdk)' == 'true'"
-          Project="$(SmartentMonorepoRoot)/Smartent-src/Build/Lombiq.MSBuild.OrchardCore.Tests.Sdk/Sdk/Import.targets" />
+          Project="$(SmartentMonorepoRoot)/Smartent-src/Build/Smartent.Build.OrchardCore.Tests.Sdk/Sdk/Import.targets" />
   <Import Condition="'$(UseSmartentMonorepoMsBuildSdk)' != 'true'"
-          Sdk="Lombiq.MSBuild.OrchardCore.Tests.Sdk"
+          Sdk="Smartent.Build.OrchardCore.Tests.Sdk"
           Project="Sdk.targets"
           Version="2.1.1" />
 

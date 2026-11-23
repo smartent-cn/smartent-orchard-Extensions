@@ -7,8 +7,8 @@
     <PackageId>Smartent.Build.Npm.Targets</PackageId>
   </PropertyGroup>
 
-  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../Lombiq.MSBuild.Base.Sdk/Sdk/Import.props" />
-  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Lombiq.MSBuild.Base.Sdk" Version="2.1.1-alpha.9.osoe-344" />
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../Smartent.Build.Base.Sdk/Sdk/Import.props" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Smartent.Build.Base.Sdk" Version="2.1.1-alpha.9.osoe-344" />
 
   <PropertyGroup>
     <Title>Smartent NPM MSBuild Targets</Title>
@@ -40,6 +40,6 @@
     <PackageReference Include="Microsoft.Build.Utilities.Core" Version="18.11.0" />
   </ItemGroup>
 
-  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../Lombiq.MSBuild.Base.Sdk/Sdk/Import.targets" />
-  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.targets" Sdk="Lombiq.MSBuild.Base.Sdk" Version="2.1.1-alpha.9.osoe-344" />
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../Smartent.Build.Base.Sdk/Sdk/Import.targets" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.targets" Sdk="Smartent.Build.Base.Sdk" Version="2.1.1-alpha.9.osoe-344" />
 </Project>

@@ -1,0 +1,8 @@
+<Project>
+  <PropertyGroup>
+    <FromNuGet>true</FromNuGet>
+    <LombiqMSBuildLibManTargetsPath>$(MSBuildThisFileDirectory)../../Smartent.Build.LibMan.Targets</LombiqMSBuildLibManTargetsPath>
+  </PropertyGroup>
+  
+  <Import Project="$(MSBuildThisFileDirectory)Core.props" />
+</Project>

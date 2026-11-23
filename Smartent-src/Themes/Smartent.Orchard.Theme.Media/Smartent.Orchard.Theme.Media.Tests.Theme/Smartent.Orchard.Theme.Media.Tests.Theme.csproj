@@ -6,8 +6,8 @@
     <PackageId>Smartent.Orchard.Theme.Media.Tests.Theme</PackageId>
   </PropertyGroup>
 
-  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../Build/Lombiq.MSBuild.OrchardCore.Theme.Sdk/Sdk/Import.props" />
-  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Lombiq.MSBuild.OrchardCore.Theme.Sdk" Version="2.1.1" />
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../Build/Smartent.Build.OrchardCore.Theme.Sdk/Sdk/Import.props" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Smartent.Build.OrchardCore.Theme.Sdk" Version="2.1.1" />
 
   <PropertyGroup>
     <Title>Lombiq Hosting - Media Theme Tests Theme for Orchard Core</Title>
@@ -21,6 +21,6 @@
     <ProjectReference Include="..\Smartent.Orchard.Theme.Media.Bridge\Smartent.Orchard.Theme.Media.Bridge.csproj" />
   </ItemGroup>
 
-  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../Build/Lombiq.MSBuild.OrchardCore.Theme.Sdk/Sdk/Import.targets" />
-  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.targets" Sdk="Lombiq.MSBuild.OrchardCore.Theme.Sdk" Version="2.1.1" />
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../Build/Smartent.Build.OrchardCore.Theme.Sdk/Sdk/Import.targets" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.targets" Sdk="Smartent.Build.OrchardCore.Theme.Sdk" Version="2.1.1" />
 </Project>

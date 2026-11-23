@@ -1,10 +1,10 @@
-﻿<Project>
+<Project>
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
     <OrchardCoreVersion>3.0.1</OrchardCoreVersion>
   </PropertyGroup>
 
-  <Import Project="../../../../Smartent-src/Build/Lombiq.MSBuild.OrchardCore.Theme.Sdk/Sdk/Import.props" />
+  <Import Project="../../../../Smartent-src/Build/Smartent.Build.OrchardCore.Theme.Sdk/Sdk/Import.props" />
 
   <ItemGroup>
     <EmbeddedResource Update="wwwroot\Theme.png">
@@ -12,5 +12,5 @@
     </EmbeddedResource>
   </ItemGroup>
  
-  <Import Project="../../../../Smartent-src/Build/Lombiq.MSBuild.OrchardCore.Theme.Sdk/Sdk/Import.targets" />
+  <Import Project="../../../../Smartent-src/Build/Smartent.Build.OrchardCore.Theme.Sdk/Sdk/Import.targets" />
 </Project>

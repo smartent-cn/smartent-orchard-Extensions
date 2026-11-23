@@ -7,15 +7,16 @@
     <add key="SmartentLocal" value="../artifacts/smartent-nuget-local" />
   </packageSources>
   <packageSourceMapping>
+    <packageSource key="SmartentLocal">
+      <package pattern="Smartent.*" />
+      <package pattern="Smartent.Build.*" />
+      <package pattern="Lombiq.MSBuild.*" />
+    </packageSource>
     <packageSource key="nuget.org">
       <package pattern="*" />
       <package pattern="OrchardCore.*" />
       <package pattern="OrchardCore.Translations.*" />
       <package pattern="Lombiq.Analyzers.*" />
-    </packageSource>
-    <packageSource key="SmartentLocal">
-      <package pattern="Smartent.*" />
-      <package pattern="Lombiq.MSBuild.*" />
     </packageSource>
   </packageSourceMapping>
 </configuration>

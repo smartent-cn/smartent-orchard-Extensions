@@ -1,0 +1,7 @@
+{
+  "msbuild-sdks": {
+    "Smartent.Build.OrchardCore.Module.Sdk": "2.1.1",
+    "Smartent.Build.OrchardCore.Theme.Sdk": "2.1.1",
+    "Smartent.Build.OrchardCore.Tests.Sdk": "2.1.1"
+  }
+}

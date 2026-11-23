@@ -10,6 +10,8 @@
 
     <Otherwise>
       <PropertyGroup>
+        <Version Condition="'$(Version)' == '' and $(MSBuildProjectName.StartsWith('Smartent.Build.'))">2.1.1</Version>
+        <PackageType Condition="$(MSBuildProjectName.EndsWith('.Sdk'))">MSBuildSdk</PackageType>
         <Authors Condition="'$(Authors)' == ''">Smartent</Authors>
         <Company Condition="'$(Company)' == ''">Smartent</Company>
         <Copyright Condition="'$(Copyright)' == ''">Copyright © Smartent</Copyright>
@@ -18,7 +20,7 @@
         <RepositoryUrl Condition="'$(RepositoryUrl)' == ''">https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
         <PackageProjectUrl Condition="'$(PackageProjectUrl)' == ''">https://gitee.com/smartent/smartent-training-demo-modules/tree/master/src/Utilities/Lombiq.MSBuild.Targets</PackageProjectUrl>
         <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
-        <!-- NuGet PackageId 仍为 Lombiq.MSBuild.*，待全仓 Sdk= 切换后再改为 Smartent.Build.* -->
+        <!-- MSBuild Sdk 包 Id：Smartent.Build.*（与 Smartent-src/Build 目录一致） -->
       </PropertyGroup>
 
       <ItemGroup>
@@ -29,18 +31,18 @@
       </ItemGroup>
 
       <ItemGroup Condition="$(MSBuildProjectName.EndsWith('.Sdk'))">
-        <None Include="..\..\..\Smartent-src\Build\Lombiq.MSBuild.LibMan.Targets\*.*"
-              Link="Lombiq.MSBuild.LibMan.Targets\*.*"
+        <None Include="..\..\..\Smartent-src\Build\Smartent.Build.LibMan.Targets\*.*"
+              Link="Smartent.Build.LibMan.Targets\*.*"
               Pack="true"
-              PackagePath="Lombiq.MSBuild.LibMan.Targets\"
+              PackagePath="Smartent.Build.LibMan.Targets\"
               Visible="false"/>
       </ItemGroup>
 
-      <ItemGroup Condition="$(MSBuildProjectName.EndsWith('.Sdk')) AND MSBuildProjectName != 'Lombiq.MSBuild.Base.Sdk'">
-        <None Include="..\..\..\Smartent-src\Build\Lombiq.MSBuild.Base.Sdk\Sdk\*.*"
-              Link="Lombiq.MSBuild.Base.Sdk\*.*"
+      <ItemGroup Condition="$(MSBuildProjectName.EndsWith('.Sdk')) AND MSBuildProjectName != 'Smartent.Build.Base.Sdk'">
+        <None Include="..\..\..\Smartent-src\Build\Smartent.Build.Base.Sdk\Sdk\*.*"
+              Link="Smartent.Build.Base.Sdk\*.*"
               Pack="true"
-              PackagePath="Lombiq.MSBuild.Base.Sdk\"
+              PackagePath="Smartent.Build.Base.Sdk\"
               Visible="false"/>
       </ItemGroup>
     </Otherwise>

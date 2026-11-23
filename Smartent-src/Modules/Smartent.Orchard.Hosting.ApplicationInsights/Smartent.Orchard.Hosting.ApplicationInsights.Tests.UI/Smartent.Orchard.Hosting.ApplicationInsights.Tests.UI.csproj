@@ -7,8 +7,8 @@
     <PackageVersionLombiqTestsUI>16.0.1-alpha.3.osoe-1326</PackageVersionLombiqTestsUI>
   </PropertyGroup>
 
-  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../Build/Lombiq.MSBuild.OrchardCore.Tests.UI.Library.Sdk/Sdk/Import.props" />
-  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Lombiq.MSBuild.OrchardCore.Tests.UI.Library.Sdk" Version="2.1.1" />
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../Build/Smartent.Build.OrchardCore.Tests.UI.Library.Sdk/Sdk/Import.props" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Smartent.Build.OrchardCore.Tests.UI.Library.Sdk" Version="2.1.1" />
 
   <PropertyGroup>
     <Title>Lombiq Hosting - Azure Application Insights for Orchard Core - UI Test Extensions</Title>
@@ -32,6 +32,6 @@
     <PackageReference Include="MySqlConnector" Version="2.6.2" NoWarn="NU1510" />
   </ItemGroup>
 
-  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../Build/Lombiq.MSBuild.OrchardCore.Tests.UI.Library.Sdk/Sdk/Import.targets" />
-  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.targets" Sdk="Lombiq.MSBuild.OrchardCore.Tests.UI.Library.Sdk" Version="2.1.1" />
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../Build/Smartent.Build.OrchardCore.Tests.UI.Library.Sdk/Sdk/Import.targets" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.targets" Sdk="Smartent.Build.OrchardCore.Tests.UI.Library.Sdk" Version="2.1.1" />
 </Project>

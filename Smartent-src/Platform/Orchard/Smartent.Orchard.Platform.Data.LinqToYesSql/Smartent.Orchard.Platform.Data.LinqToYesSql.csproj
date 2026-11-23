@@ -7,8 +7,8 @@
     <PackageId>Smartent.Orchard.Platform.Data.LinqToYesSql</PackageId>
   </PropertyGroup>
 
-  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../Build/Lombiq.MSBuild.Library.Sdk/Sdk/Import.props" />
-  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Lombiq.MSBuild.Library.Sdk" Version="2.1.1-alpha.9.osoe-344" />
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../Build/Smartent.Build.Library.Sdk/Sdk/Import.props" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Smartent.Build.Library.Sdk" Version="2.1.1-alpha.9.osoe-344" />
 
   <PropertyGroup>
     <Title>Smartent Orchard Platform Data (LINQ to YesSql)</Title>
@@ -28,6 +28,6 @@
     <PackageReference Include="MySqlConnector" Version="2.6.2" NoWarn="NU1510" />
   </ItemGroup>
 
-  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../Build/Lombiq.MSBuild.Library.Sdk/Sdk/Import.targets" />
-  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.targets" Sdk="Lombiq.MSBuild.Library.Sdk" Version="2.1.1-alpha.9.osoe-344" />
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../Build/Smartent.Build.Library.Sdk/Sdk/Import.targets" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.targets" Sdk="Smartent.Build.Library.Sdk" Version="2.1.1-alpha.9.osoe-344" />
 </Project>

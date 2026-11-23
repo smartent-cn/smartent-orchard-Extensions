@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+<Project Sdk="Microsoft.NET.Sdk.Razor">
 
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
@@ -14,7 +14,7 @@
     <PackageVersionSmartentPlatform>13.1.0</PackageVersionSmartentPlatform>
   </PropertyGroup>
 
-  <Import Project="../../../../Smartent-src/Build/Lombiq.MSBuild.OrchardCore.Module.Sdk/Sdk/Import.props" />
-  <Import Project="../../../../Smartent-src/Build/Lombiq.MSBuild.OrchardCore.Module.Sdk/Sdk/Import.targets" />
+  <Import Project="../../../../Smartent-src/Build/Smartent.Build.OrchardCore.Module.Sdk/Sdk/Import.props" />
+  <Import Project="../../../../Smartent-src/Build/Smartent.Build.OrchardCore.Module.Sdk/Sdk/Import.targets" />
 
 </Project>

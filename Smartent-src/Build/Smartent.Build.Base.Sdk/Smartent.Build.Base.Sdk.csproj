@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="../../../src/Utilities/Lombiq.MSBuild.Targets/Directory.Build.props" />
+
+  <PropertyGroup>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules/tree/master/Smartent-src/Build/Smartent.Build.Base.Sdk</PackageProjectUrl>
+    <Title>Lombiq MSBuild SDK - Base</Title>
+    <Description>Base SDK for other Lombiq MSBuild SDKs. Don't use this directly.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="../../../src/Utilities/Lombiq.MSBuild.Targets/Docs/*.*">
+      <Link>Docs\%(RecursiveDir)%(Filename)%(Extension)</Link>
+    </Content>
+  </ItemGroup>
+
+</Project>

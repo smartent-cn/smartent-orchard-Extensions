@@ -1,0 +1,4 @@
+<Project>
+  <Import Project="$(MSBuildThisFileDirectory)../../Smartent.Build.OrchardCore.Module.Sdk/Sdk/Import.props" />
+  <Import Project="$(MSBuildThisFileDirectory)Core.props" />
+</Project>

@@ -1,14 +1,14 @@
 # Using MSBuild SDKs
 
 > [!NOTE]
-> **Smartent monorepo**：Sdk 源码在 `Smartent-src/Build/Lombiq.MSBuild.*`；本目录下各 `Lombiq.MSBuild.*` 文件夹仅为 Legacy 占位 Readme。PackageId 仍为 `Lombiq.MSBuild.*` 直至 M7 切换 `Smartent.Build.*`。
+> **Smartent monorepo**：Sdk 源码在 `Smartent-src/Build/Smartent.Build.*`；本目录下各 `Lombiq.MSBuild.*` 文件夹仅为 Legacy 占位 Readme。PackageId 仍为 `Lombiq.MSBuild.*` 直至 M7 切换 `Smartent.Build.*`。
 >
-> The following document uses [Lombiq.MSBuild.OrchardCore.Module.Sdk](../../../../Smartent-src/Build/Lombiq.MSBuild.OrchardCore.Module.Sdk/Readme.md) as an example (all `Lombiq.MSBuild.OrchardCore.*.Sdk` behave similarly).
+> The following document uses [Lombiq.MSBuild.OrchardCore.Module.Sdk](../../../../Smartent-src/Build/Smartent.Build.OrchardCore.Module.Sdk/Readme.md) as an example (all `Lombiq.MSBuild.OrchardCore.*.Sdk` behave similarly).
 
 It can be used by updating your project XML's root `Sdk` attribute to contain the NuGet package name and version, like this:
 
 ```xml
-<Project Sdk="Lombiq.MSBuild.OrchardCore.Module.Sdk/1.0.0">
+<Project Sdk="Smartent.Build.OrchardCore.Module.Sdk/1.0.0">
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
   </PropertyGroup>
@@ -24,9 +24,9 @@ Or by removing the `Sdk` attribute and importing the .props and .targets files d
     <TargetFramework>net10.0</TargetFramework>
   </PropertyGroup>
 
-  <Import Project="Sdk.props" Sdk="Lombiq.MSBuild.OrchardCore.Module.Sdk" Version="1.0.0" />
+  <Import Project="Sdk.props" Sdk="Smartent.Build.OrchardCore.Module.Sdk" Version="1.0.0" />
   ...
-  <Import Project="Sdk.targets" Sdk="Lombiq.MSBuild.OrchardCore.Module.Sdk" Version="1.0.0" />
+  <Import Project="Sdk.targets" Sdk="Smartent.Build.OrchardCore.Module.Sdk" Version="1.0.0" />
 </Project>
 ```
 
@@ -34,9 +34,9 @@ If you want to use a local copy rather than NuGet, you can import these files by
 
 ```xml
 <Project>
-  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../Build/Lombiq.MSBuild.OrchardCore.Module.Sdk/Sdk/Import.props" />
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../Build/Smartent.Build.OrchardCore.Module.Sdk/Sdk/Import.props" />
   ...
-  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../Build/Lombiq.MSBuild.OrchardCore.Module.Sdk/Sdk/Import.targets" />
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../Build/Smartent.Build.OrchardCore.Module.Sdk/Sdk/Import.targets" />
 </Project>
 ```
 
@@ -68,4 +68,4 @@ All of our MSBuild SDK projects share these features and configurations:
 
 ## LibMan Integration
 
-If the project importing this SDK has a _libman.json_ file in the project root, then [Lombiq.MSBuild.LibMan.Targets](../../../../Smartent-src/Build/Lombiq.MSBuild.LibMan.Targets/Readme.md) is automatically imported and all of its features can be used. To disable this feature, also include a _.disable-libman_ file in the project root. It can be empty, only file existence is checked.
+If the project importing this SDK has a _libman.json_ file in the project root, then [Lombiq.MSBuild.LibMan.Targets](../../../../Smartent-src/Build/Smartent.Build.LibMan.Targets/Readme.md) is automatically imported and all of its features can be used. To disable this feature, also include a _.disable-libman_ file in the project root. It can be empty, only file existence is checked.

@@ -1,7 +1,0 @@
-<Project>
-  <Import Condition="Exists('$(MSBuildThisFileDirectory)../../Lombiq.MSBuild.OrchardCore.Module.Sdk/Sdk/Sdk.props')"
-          Project="$(MSBuildThisFileDirectory)../../Lombiq.MSBuild.OrchardCore.Module.Sdk/Sdk/Sdk.props" />
-  <Import Condition="!Exists('$(MSBuildThisFileDirectory)../../Lombiq.MSBuild.OrchardCore.Module.Sdk/Sdk/Sdk.props')"
-          Project="$(MSBuildThisFileDirectory)../Lombiq.MSBuild.OrchardCore.Module.Sdk/Sdk.props" />
-  <Import Project="$(MSBuildThisFileDirectory)Core.props" />
-</Project>

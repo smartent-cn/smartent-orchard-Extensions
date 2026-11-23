@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="../../../src/Utilities/Lombiq.MSBuild.Targets/Directory.Build.props" />
+
+  <PropertyGroup>
+    <Title>Smartent MSBuild SDK - UI Testing Libraries (Lombiq.MSBuild.OrchardCore.Tests.UI.Library.Sdk)</Title>
+    <Description>MSBuild SDK for reusable UI test libraries using Smartent.Test.UI.</Description>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules/tree/master/Smartent-src/Build/Smartent.Build.OrchardCore.Tests.UI.Library.Sdk</PackageProjectUrl>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
+  </PropertyGroup>
+
+</Project>

@@ -1,10 +1,21 @@
 # M7 本地 feed 聚合门禁：pack → verify → 独立还原 → Monorepo sln 构建。
 param(
-    [switch]$SkipPack
+    [switch]$SkipPack,
+    [switch]$WhatIf
 )
 
 $ErrorActionPreference = 'Stop'
 $repoRoot = Split-Path -Parent $PSScriptRoot
+
+& (Join-Path $PSScriptRoot 'Assert-FeedCorePackVersions.ps1')
+if (-not $?) { exit 1 }
+
+if ($WhatIf) {
+    & (Join-Path $PSScriptRoot 'Pack-SmartentLocalFeed.ps1') -WhatIf
+    Write-Output 'WhatIf: Test-NuGetVerifyCorePackageRestore -SkipPack'
+    Write-Output 'WhatIf: dotnet build NuGetVerify/Smartent.NuGet.Monorepo.sln -c Release'
+    exit 0
+}
 
 if (-not $SkipPack) {
     & (Join-Path $PSScriptRoot 'Pack-SmartentLocalFeed.ps1')

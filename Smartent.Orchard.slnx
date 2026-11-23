@@ -104,14 +104,14 @@
   </Folder>
   <Folder Name="/src/Utilities/">
     <Project Path="Smartent-src/Themes/Smartent.Orchard.Theme.Media/Smartent.Orchard.Theme.Media.Targets/Smartent.Orchard.Theme.Media.Targets.csproj" />
-    <Project Path="Smartent-src/Build/Lombiq.MSBuild.Base.Sdk/Lombiq.MSBuild.Base.Sdk.csproj" />
-    <Project Path="Smartent-src/Build/Lombiq.MSBuild.LibMan.Targets/Lombiq.MSBuild.LibMan.Targets.csproj" />
-    <Project Path="Smartent-src/Build/Lombiq.MSBuild.Library.Sdk/Lombiq.MSBuild.Library.Sdk.csproj" />
-    <Project Path="Smartent-src/Build/Lombiq.MSBuild.OrchardCore.Module.Sdk/Lombiq.MSBuild.OrchardCore.Module.Sdk.csproj" />
-    <Project Path="Smartent-src/Build/Lombiq.MSBuild.OrchardCore.Tests.Sdk/Lombiq.MSBuild.OrchardCore.Tests.Sdk.csproj" />
-    <Project Path="Smartent-src/Build/Lombiq.MSBuild.OrchardCore.Tests.UI.Library.Sdk/Lombiq.MSBuild.OrchardCore.Tests.UI.Library.Sdk.csproj" />
-    <Project Path="Smartent-src/Build/Lombiq.MSBuild.OrchardCore.Tests.UI.Sdk/Lombiq.MSBuild.OrchardCore.Tests.UI.Sdk.csproj" />
-    <Project Path="Smartent-src/Build/Lombiq.MSBuild.OrchardCore.Theme.Sdk/Lombiq.MSBuild.OrchardCore.Theme.Sdk.csproj" />
+    <Project Path="Smartent-src/Build/Smartent.Build.Base.Sdk/Smartent.Build.Base.Sdk.csproj" />
+    <Project Path="Smartent-src/Build/Smartent.Build.LibMan.Targets/Smartent.Build.LibMan.Targets.csproj" />
+    <Project Path="Smartent-src/Build/Smartent.Build.Library.Sdk/Smartent.Build.Library.Sdk.csproj" />
+    <Project Path="Smartent-src/Build/Smartent.Build.OrchardCore.Module.Sdk/Smartent.Build.OrchardCore.Module.Sdk.csproj" />
+    <Project Path="Smartent-src/Build/Smartent.Build.OrchardCore.Tests.Sdk/Smartent.Build.OrchardCore.Tests.Sdk.csproj" />
+    <Project Path="Smartent-src/Build/Smartent.Build.OrchardCore.Tests.UI.Library.Sdk/Smartent.Build.OrchardCore.Tests.UI.Library.Sdk.csproj" />
+    <Project Path="Smartent-src/Build/Smartent.Build.OrchardCore.Tests.UI.Sdk/Smartent.Build.OrchardCore.Tests.UI.Sdk.csproj" />
+    <Project Path="Smartent-src/Build/Smartent.Build.OrchardCore.Theme.Sdk/Smartent.Build.OrchardCore.Theme.Sdk.csproj" />
     <Project Path="src/Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.Targets.Samples/Lombiq.MSBuild.Targets.Samples.csproj" />
     <Project Path="Smartent-src/Build/Smartent.Build.Npm.Targets/Smartent.Build.Npm.Targets.csproj" />
     <Project Path="Smartent-src/Build/Smartent.Orchard.Setup/Smartent.Orchard.Setup.csproj" />

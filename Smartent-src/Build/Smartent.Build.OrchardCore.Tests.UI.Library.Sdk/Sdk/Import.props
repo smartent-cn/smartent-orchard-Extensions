@@ -1,0 +1,5 @@
+<Project>
+  <Import Project="$(MSBuildThisFileDirectory)../../Smartent.Build.Base.Sdk/Sdk/Import.props" />
+  <Import Project="$(MSBuildThisFileDirectory)Core.props" />
+  <Sdk Name="Microsoft.NET.Sdk" />
+</Project>

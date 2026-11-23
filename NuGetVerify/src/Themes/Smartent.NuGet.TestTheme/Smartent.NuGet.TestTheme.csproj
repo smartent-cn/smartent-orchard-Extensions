@@ -4,16 +4,16 @@
   </PropertyGroup>
 
   <Import Condition="'$(UseSmartentMonorepoMsBuildSdk)' == 'true'"
-          Project="$(SmartentMonorepoRoot)/Smartent-src/Build/Lombiq.MSBuild.OrchardCore.Theme.Sdk/Sdk/Import.props" />
+          Project="$(SmartentMonorepoRoot)/Smartent-src/Build/Smartent.Build.OrchardCore.Theme.Sdk/Sdk/Import.props" />
   <Import Condition="'$(UseSmartentMonorepoMsBuildSdk)' != 'true'"
-          Sdk="Lombiq.MSBuild.OrchardCore.Theme.Sdk"
+          Sdk="Smartent.Build.OrchardCore.Theme.Sdk"
           Project="Sdk.props"
           Version="2.1.1" />
 
   <Import Condition="'$(UseSmartentMonorepoMsBuildSdk)' == 'true'"
-          Project="$(SmartentMonorepoRoot)/Smartent-src/Build/Lombiq.MSBuild.OrchardCore.Theme.Sdk/Sdk/Import.targets" />
+          Project="$(SmartentMonorepoRoot)/Smartent-src/Build/Smartent.Build.OrchardCore.Theme.Sdk/Sdk/Import.targets" />
   <Import Condition="'$(UseSmartentMonorepoMsBuildSdk)' != 'true'"
-          Sdk="Lombiq.MSBuild.OrchardCore.Theme.Sdk"
+          Sdk="Smartent.Build.OrchardCore.Theme.Sdk"
           Project="Sdk.targets"
           Version="2.1.1" />
 

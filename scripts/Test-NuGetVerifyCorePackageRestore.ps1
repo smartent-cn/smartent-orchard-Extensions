@@ -1,4 +1,4 @@
-# 在 core 本地 feed 下，模拟独立 NuGetVerify 的 PackageReference 还原（不走 monorepo Sdk）。
+# Standalone NuGetVerify PackageReference restore against core local feed.
 param(
     [switch]$SkipPack,
     [string]$Configuration = 'Release'
@@ -7,32 +7,36 @@ param(
 $ErrorActionPreference = 'Stop'
 $repoRoot = Split-Path -Parent $PSScriptRoot
 $nugetVerify = Join-Path $repoRoot 'NuGetVerify'
-$localConfig = Join-Path $nugetVerify 'NuGet.config.local'
-$exampleConfig = Join-Path $nugetVerify 'NuGet.config.local.example'
-
-if (-not (Test-Path $localConfig)) {
-    Copy-Item $exampleConfig $localConfig
-    Write-Output "Created $localConfig from example."
-}
+$restoreConfig = Join-Path $nugetVerify 'NuGet.config'
+Write-Output "Using $restoreConfig (SmartentLocal + nuget.org)."
 
 if (-not $SkipPack) {
     & (Join-Path $PSScriptRoot 'Pack-SmartentLocalFeed.ps1')
     if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 }
 
+& (Join-Path $PSScriptRoot 'Seed-LocalFeedSdkToNuGetCache.ps1')
+if (-not $?) { exit 1 }
+
 $projects = @(
-    'test/Smartent.NuGet.Tests/Smartent.NuGet.Tests.csproj',
-    'src/Modules/Smartent.NuGet.TestModule/Smartent.NuGet.TestModule.csproj',
+    'test/Smartent.NuGet.Tests/Smartent.NuGet.Tests.csproj'
+    'src/Modules/Smartent.NuGet.TestModule/Smartent.NuGet.TestModule.csproj'
     'src/Themes/Smartent.NuGet.TestTheme/Smartent.NuGet.TestTheme.csproj'
 )
-# Tests 还原可能仍缺 Platform 传递依赖；未绿时可先验 Module/Theme，或 expansion core pack / -Full。
 
 $env:NUGET_PACKAGES = "$env:USERPROFILE\.nuget\packages"
+$localFeed = (Resolve-Path (Join-Path $repoRoot 'artifacts/smartent-nuget-local')).Path
+$restoreSources = @($localFeed, 'https://api.nuget.org/v3/index.json')
 Push-Location $nugetVerify
 try {
     foreach ($rel in $projects) {
         Write-Output "Restoring (standalone) $rel ..."
-        dotnet restore $rel --configfile $localConfig -p:Configuration=$Configuration -p:ForceStandaloneNuGetVerify=true
+        & dotnet restore $rel `
+            --configfile $restoreConfig `
+            -p:Configuration=$Configuration `
+            -p:ForceStandaloneNuGetVerify=true `
+            --source $localFeed `
+            --source 'https://api.nuget.org/v3/index.json'
         if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
     }
     Write-Output 'Core PackageReference restore succeeded.'

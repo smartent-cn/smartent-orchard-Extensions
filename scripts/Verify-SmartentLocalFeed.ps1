@@ -16,13 +16,15 @@ if (-not (Test-Path $OutputPath)) {
 
 $requiredPackageIds = @(
     'Smartent.Orchard.Platform',
-    'Lombiq.MSBuild.OrchardCore.Module.Sdk',
-    'Lombiq.MSBuild.OrchardCore.Theme.Sdk',
-    'Lombiq.MSBuild.OrchardCore.Tests.Sdk',
+    'Smartent.Build.LibMan.Targets',
+    'Smartent.Build.OrchardCore.Module.Sdk',
+    'Smartent.Build.OrchardCore.Theme.Sdk',
+    'Smartent.Build.OrchardCore.Tests.Sdk',
     'Smartent.Build.Npm.Targets',
     'Smartent.Build.NodeJs',
     'Smartent.Orchard.TrainingDemo',
     'Smartent.Core.Primitives',
+    'Smartent.Core.AspNet',
     'Smartent.Test.Unit',
     'Smartent.Orchard.EInvoice',
     'Smartent.Orchard.EInvoice.Sample'

@@ -2,7 +2,7 @@
 
 > 对应 [阶段检查表.md](阶段检查表.md) M6：`无待发布 PackageId 含 Lombiq.`（已文档化例外）
 
-最后扫描：2026-11-23（M4#16–#25 Sdk 迁入收口）
+最后扫描：2026-11-23（M7#11：MSBuild Sdk / LibMan 已 `Smartent.Build.*`）
 
 ## Smartent-src 可发布包
 
@@ -12,8 +12,7 @@
 
 | PackageId / 路径 | 原因 | 目标（草案） |
 |------------------|------|-------------|
-| `Lombiq.MSBuild.*` Sdk / LibMan | 源码均在 `Smartent-src/Build/`；`src/Utilities/Lombiq.MSBuild.Targets` 仅 **Samples、Targets.Tests*** | `Smartent.Build.*.Sdk`（M7 全仓 Sdk= 切换后） |
-| `Lombiq.MSBuild.LibMan.Targets` | 源码已迁 `Smartent-src/Build/`（PackageId 不变） | `Smartent.Build.LibMan.Targets`（可选） |
+| ~~`Lombiq.MSBuild.*` Sdk / LibMan~~ | **已收口** | `Smartent.Build.*`（M7#11，版本 **2.1.1** 本地 feed） |
 | `Lombiq.Analyzers` / `Lombiq.Analyzers.OrchardCore` / `Lombiq.Analyzers.PowerShell` | 开发期分析器；NuGet 上仍 Lombiq 品牌 | `Smartent.Build.Analyzers*`（可选，M1/M4） |
 | `Lombiq.HelpfulLibraries.OrchardCore` | 仅 **NuGetVerify 独立检出** + 旧 Module.Sdk 2.1.1 还原 | 移除（新 Sdk + Smartent 包上源后） |
 | `Lombiq.Tests` | **NuGetVerify** 独立模式 + nuget.org **Tests.Sdk 2.1.1** 传递引用 | 本地 feed 用 `Smartent.Test.Unit`；上源后统一 Smartent |

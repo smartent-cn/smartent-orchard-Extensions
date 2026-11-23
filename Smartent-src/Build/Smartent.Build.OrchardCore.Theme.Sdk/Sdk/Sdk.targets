@@ -1,0 +1,7 @@
+<Project>
+  <Import Condition="Exists('$(MSBuildThisFileDirectory)../../Smartent.Build.OrchardCore.Module.Sdk/Sdk/Sdk.targets')"
+          Project="$(MSBuildThisFileDirectory)../../Smartent.Build.OrchardCore.Module.Sdk/Sdk/Sdk.targets" />
+  <Import Condition="!Exists('$(MSBuildThisFileDirectory)../../Smartent.Build.OrchardCore.Module.Sdk/Sdk/Sdk.targets')"
+          Project="$(MSBuildThisFileDirectory)../Smartent.Build.OrchardCore.Module.Sdk/Sdk.targets" />
+  <Import Project="$(MSBuildThisFileDirectory)Core.targets" />
+</Project>

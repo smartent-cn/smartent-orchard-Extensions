@@ -1,5 +1,8 @@
 # Lombiq's Open-Source Orchard Core Extensions
 
+> **Smartent 训练演示仓**（Gitee `smartent-training-demo-modules`）：新代码在 [`Smartent-src/`](Smartent-src/README.md)；重构方案见 [`重构-重组-改名项目方案/`](重构-重组-改名项目方案/README.md)；M7 本地 NuGet 门禁：`./scripts/Invoke-M7CoreFeedGate.ps1`。  
+> **Smartent training demo monorepo**: application code lives under `Smartent-src/`; M7 feed gate: `./scripts/Invoke-M7CoreFeedGate.ps1`. Below is legacy Lombiq OSOCE documentation.
+
 [![Build and Test](https://github.com/Lombiq/Open-Source-Orchard-Core-Extensions/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/Lombiq/Open-Source-Orchard-Core-Extensions/actions/workflows/build-and-test.yml) [![Build and Test Windows](https://github.com/Lombiq/Open-Source-Orchard-Core-Extensions/actions/workflows/build-and-test-windows.yml/badge.svg)](https://github.com/Lombiq/Open-Source-Orchard-Core-Extensions/actions/workflows/build-and-test-windows.yml) [![GitHub commit activity](https://img.shields.io/github/commit-activity/m/Lombiq/Open-Source-Orchard-Core-Extensions)](https://github.com/Lombiq/Open-Source-Orchard-Core-Extensions/commits/dev) [![GitHub last commit](https://img.shields.io/github/last-commit/Lombiq/Open-Source-Orchard-Core-Extensions)](https://github.com/Lombiq/Open-Source-Orchard-Core-Extensions/commits/dev) [![GitHub contributors](https://img.shields.io/github/contributors/Lombiq/Open-Source-Orchard-Core-Extensions)](https://github.com/Lombiq/Open-Source-Orchard-Core-Extensions/graphs/contributors)
 
 ## About

@@ -22,7 +22,7 @@
   <ItemGroup>
     <AssemblyAttribute Include="System.Reflection.AssemblyMetadataAttribute">
       <_Parameter1>SdkSamplePath</_Parameter1>
-      <_Parameter2>$(MSBuildThisFileDirectory)../Lombiq.MSBuild.Sdk.NuGet.Samples</_Parameter2>
+      <_Parameter2>$(MSBuildThisFileDirectory)../Smartent.Build.Sdk.NuGet.Samples</_Parameter2>
     </AssemblyAttribute>
   </ItemGroup>
 

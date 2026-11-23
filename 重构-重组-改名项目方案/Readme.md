@@ -285,7 +285,15 @@ Legacy 的 `src/` 在终态 **应不存在**（或仅保留无意义占位说明
 | [projects/M7-Batch-6-FeedHygiene.md](projects/M7-Batch-6-FeedHygiene.md) | M7#6：core pack 列表、NodeJs Samples、`-CorePack` |
 | [projects/M7-Batch-7-FullSlnValidation.md](projects/M7-Batch-7-FullSlnValidation.md) | M7#7：feed 校验脚本、全 sln 还原流程 |
 | [projects/M7-Batch-9-CIPackageRestore.md](projects/M7-Batch-9-CIPackageRestore.md) | M7#9：本地 feed CI、独立 PackageReference 还原 |
-| [projects/M7-Batch-10-GiteePublish.md](projects/M7-Batch-10-GiteePublish.md) | M7#10：Gitee Packages、首版发布清单（占位） |
+| [projects/M7-Batch-10-GiteePublish.md](projects/M7-Batch-10-GiteePublish.md) | M7#10：Gitee Packages、首版发布清单 |
+| [projects/M7-Batch-10a-BuildFolderRename.md](projects/M7-Batch-10a-BuildFolderRename.md) | **插入**：`Build/Lombiq.MSBuild.*` → `Smartent.Build.*` 目录改名 |
+| [projects/M7-Batch-11-SdkPackageIdRename.md](projects/M7-Batch-11-SdkPackageIdRename.md) | M7#11：Sdk PackageId → `Smartent.Build.*` |
+| [projects/M7-Batch-12-FeedCentralVersions.md](projects/M7-Batch-12-FeedCentralVersions.md) | M7#12：feed 与中央版本 assert |
+| [docs/releases/M7-FirstNuGet-Release-Draft.md](../docs/releases/M7-FirstNuGet-Release-Draft.md) | 首版 NuGet 发布说明（草案） |
+| [projects/M7-Batch-13-FullNuGetVerifyPack.md](projects/M7-Batch-13-FullNuGetVerifyPack.md) | M7#13：全量 `-Full` pack 运行手册 |
+| [projects/M7-Batch-14-LegacyPublishSurface.md](projects/M7-Batch-14-LegacyPublishSurface.md) | M7#14：Legacy 元包 / MSBuild 发布面 |
+| [projects/M7-Batch-15-GiteeNuGetConfig.md](projects/M7-Batch-15-GiteeNuGetConfig.md) | M7#15：Gitee / mapping 配置模板 |
+| [projects/M7-Batch-16-CoreFeedExpansion.md](projects/M7-Batch-16-CoreFeedExpansion.md) | M7#16：LibMan core pack、manifest 摘要 |
 | [projects/M7-Batch-NuGetVerify-Feed.md](projects/M7-Batch-NuGetVerify-Feed.md) | M7：包版本同步脚本（占位） |
 
 ### 12.1 迁入项目时的文档义务
