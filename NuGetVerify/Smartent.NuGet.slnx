@@ -6,6 +6,8 @@
     <File Path="Directory.Build.props" />
     <File Path="Directory.Packages.props" />
     <File Path="NuGet.config" />
+    <File Path="NuGet.config.local.example" />
+    <File Path="Smartent.NuGet.Monorepo.sln" />
     <File Path="Readme.md" />
     <File Path="Reset-Local.ps1" />
     <File Path="Update-SmartentNuGetPackages.ps1" />

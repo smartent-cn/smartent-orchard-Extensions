@@ -23,6 +23,10 @@ if ($Full) {
 $coreProjects = @(
     'Smartent-src/Platform/Orchard/Smartent.Orchard.Platform/Smartent.Orchard.Platform.csproj',
     'Smartent-src/Build/Lombiq.MSBuild.OrchardCore.Module.Sdk/Lombiq.MSBuild.OrchardCore.Module.Sdk.csproj',
+    'Smartent-src/Build/Lombiq.MSBuild.OrchardCore.Theme.Sdk/Lombiq.MSBuild.OrchardCore.Theme.Sdk.csproj',
+    'Smartent-src/Build/Lombiq.MSBuild.OrchardCore.Tests.Sdk/Lombiq.MSBuild.OrchardCore.Tests.Sdk.csproj',
+    'Smartent-src/Build/Smartent.Build.Npm.Targets/Smartent.Build.Npm.Targets.csproj',
+    'Smartent-src/Build/Smartent.Build.NodeJs/Smartent.Build.NodeJs/Smartent.Build.NodeJs.csproj',
     'Smartent-src/Modules/Smartent.Orchard.TrainingDemo/Smartent.Orchard.TrainingDemo/Smartent.Orchard.TrainingDemo.csproj'
 )
 

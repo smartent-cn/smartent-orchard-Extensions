@@ -9,4 +9,5 @@ Lombiq.NodeJs.Extensions.Samples/wwwCustomRoot/
 *.user
 .pnpm-debug.log
 .editorconfig
-/Lombiq.NodeJs.Extensions.Samples.NuGet/pnpm-lock.yaml
+/Smartent.Build.NodeJs.Samples.NuGet/pnpm-lock.yaml
+/Smartent.Build.NodeJs.Samples.NuGet/.prettierrc.js

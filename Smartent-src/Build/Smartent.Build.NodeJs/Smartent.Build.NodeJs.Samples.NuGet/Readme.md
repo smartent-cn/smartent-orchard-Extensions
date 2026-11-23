@@ -1,5 +1,5 @@
-# Lombiq Node.js Extensions - NuGet Samples
+# Smartent Build Node.js — NuGet 样例 | NuGet sample
 
-Example project that makes use of Lombiq Node.js Extensions from its [NuGet package](https://www.nuget.org/packages/Lombiq.NodeJs.Extensions/).
+**中文**：通过 **NuGet 包形态** 引用 Node.js 构建扩展时的示例工程；在 **本 monorepo** 内通过 `ProjectReference` 使用 `Smartent.Build.NodeJs`，并列入 `NuGetVerify/Smartent.NuGet.Monorepo.sln`。
 
-For general details about Lombiq Node.js Extensions and how to use it in your project, see the [root Readme](../Readme.md).
+**English**: Sample that exercises Node.js build targets. In this repository it references `Smartent.Build.NodeJs` via project reference (packaged as `Smartent.Build.NodeJs` on publish). See the [parent Readme](../Readme.md).

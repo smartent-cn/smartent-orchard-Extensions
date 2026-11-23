@@ -1,13 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
+  <Import Project="..\Smartent.Build.NodeJs\Smartent.Build.NodeJs.props" />
+
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>8.0</LangVersion>
     <DefaultItemExcludes>$(DefaultItemExcludes);.git*;node_modules\**</DefaultItemExcludes>
-    <!-- Overriding the same values as in the NuGetVerify\Directory.Build.props file here because this project won't read
-         from there because it is *not* located under the NuGetVerify folder. -->
+    <!-- NuGetVerify\Directory.Build.props 对该路径不可见；与单体仓 NodeJs 样例对齐。 -->
     <UseGlobalNodeJsExtensionsNpmPackage>false</UseGlobalNodeJsExtensionsNpmPackage>
     <NodeJsExtensionsNpmPackageSourcePath>./node_modules/.nx</NodeJsExtensionsNpmPackageSourcePath>
-    <!-- Overriding the global configuration directory values here to use local configuration files. -->
     <NodeJsExtensionsGlobalESLintConfigurationDirectory></NodeJsExtensionsGlobalESLintConfigurationDirectory>
     <NodeJsExtensionsGlobalStylelintConfigurationDirectory></NodeJsExtensionsGlobalStylelintConfigurationDirectory>
   </PropertyGroup>
@@ -17,9 +18,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <!-- Adding Node.js Extensions as a PackageReference will result in inclusion of its .props and .targets files
-         during Build. -->
-    <PackageReference Include="Lombiq.NodeJs.Extensions" Version="2.2.0" />
+    <ProjectReference Include="..\Smartent.Build.NodeJs\Smartent.Build.NodeJs.csproj" />
   </ItemGroup>
+
+  <Import Project="..\Smartent.Build.NodeJs\Smartent.Build.NodeJs.targets" />
 
 </Project>

@@ -1,6 +1,7 @@
 # Pack Smartent.* 到本地 feed 并构建 NuGetVerify 全 sln（仅 PackageReference）。
 param(
     [switch]$SkipPack,
+    [switch]$CorePack,
     [string]$Configuration = 'Release'
 )
 
@@ -11,7 +12,12 @@ $nugetVerify = Join-Path $repoRoot 'NuGetVerify'
 $localConfig = Join-Path $nugetVerify 'NuGet.config.local'
 
 if (-not $SkipPack) {
-    & $feedScript -Full
+    if ($CorePack) {
+        & $feedScript
+    }
+    else {
+        & $feedScript -Full
+    }
     if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 }
 

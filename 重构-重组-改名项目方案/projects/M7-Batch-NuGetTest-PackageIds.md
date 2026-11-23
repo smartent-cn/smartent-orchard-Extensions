@@ -12,12 +12,11 @@
 ## 验证
 
 ```powershell
-# 需配置可还原 Smartent 包的 NuGet 源（M7 发布前可能仍失败）
-dotnet restore NuGetVerify/Smartent.NuGet.sln
-dotnet build NuGetVerify/Smartent.NuGet.sln -c Release
+dotnet build NuGetVerify/Smartent.NuGet.Monorepo.sln -c Release
+# 全量 sln：scripts/Build-NuGetVerify-WithLocalFeed.ps1 + NuGet.config.local
 ```
 
-主仓门禁仍以 `Smartent.Orchard.sln` 为准。
+主仓门禁仍以 `Smartent.Orchard.sln` 为准；CI NuGet 作业使用 `Smartent.NuGet.Monorepo.sln`。
 
 ## 未决
 
