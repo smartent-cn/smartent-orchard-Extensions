@@ -5,7 +5,7 @@
 # error/warning lines, so build logs never flood the conversation.
 #
 # Uses --warnaserror / TreatWarningsAsErrors=true by default, matching the
-# superproject's actual CI (tools/Lombiq.GitHub.Actions build-dotnet action
+# superproject's actual CI (tools/Smartent.GitHub.Actions build-dotnet action
 # defaults warnings-as-errors to true). Without this, a warning can look
 # harmless locally while still failing the real CI build — pass
 # WARN_AS_ERROR=false only to intentionally reproduce the more lenient,

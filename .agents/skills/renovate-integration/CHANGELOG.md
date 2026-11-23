@@ -45,7 +45,7 @@ All notable changes to this skill are documented here. This log is **append-only
 
 **Use `[skip ci]` on the superproject commit that reverts the temporary GitHub Actions refs**
 
-- Phase 5: the superproject commit created after `update-gha-refs.sh revert <WORK_ITEM_KEY>` (reverted workflow files plus the `tools/Lombiq.GitHub.Actions` pointer) must include `[skip ci]`. The global safety rules note this as an always-safe `[skip ci]` case.
+- Phase 5: the superproject commit created after `update-gha-refs.sh revert <WORK_ITEM_KEY>` (reverted workflow files plus the `tools/Smartent.GitHub.Actions` pointer) must include `[skip ci]`. The global safety rules note this as an always-safe `[skip ci]` case.
 - Reason: during OSOE-1330 that commit was pushed without it and started a full "Build and Test" run, although reverting refs to `@dev` adds no new content and needs no CI.
 
 ---
@@ -74,7 +74,7 @@ All notable changes to this skill are documented here. This log is **append-only
 
 **Make local analyzer-build validation match CI's `-warnaserror` by default**
 
-- `scripts/dotnet/build-with-analyzers.sh` now passes `--warnaserror`/`TreatWarningsAsErrors=true` by default (opt out with `WARN_AS_ERROR=false`), matching `tools/Lombiq.GitHub.Actions`'s `build-dotnet` action, which defaults `warnings-as-errors` to `true`.
+- `scripts/dotnet/build-with-analyzers.sh` now passes `--warnaserror`/`TreatWarningsAsErrors=true` by default (opt out with `WARN_AS_ERROR=false`), matching `tools/Smartent.GitHub.Actions`'s `build-dotnet` action, which defaults `warnings-as-errors` to `true`.
 - Reason: during OSOE-1312, the script reported MA0219/MA0185 as non-blocking warnings, which was used to justify not fixing them. The actual CI build treats warnings as errors and failed on both, well after the analysis had already been (wrongly) closed as "no fix needed" — only caught once real CI runs surfaced the failures. Local validation that doesn't mirror CI's flags gives false confidence.
 
 ---
@@ -206,7 +206,7 @@ Reason: User feedback during OSOE-1311 — the skill previously only called out 
 
 **Fix Phase 5: revert GHA refs in submodule before merging**
 
-- Updated Phase 5 to revert `@issue/<WORK_ITEM_KEY>` → `@dev` in `tools/Lombiq.GitHub.Actions` (commit + push on the issue branch) **before** merging the submodule PR, not just in the superproject after merging.
+- Updated Phase 5 to revert `@issue/<WORK_ITEM_KEY>` → `@dev` in `tools/Smartent.GitHub.Actions` (commit + push on the issue branch) **before** merging the submodule PR, not just in the superproject after merging.
 - Without this, the `@issue/...` self-references would land on `dev` in the GitHub-Actions repo.
 
 Reason: In OSOE-1252, the GitHub-Actions submodule was merged to `dev` with `@issue/OSOE-1252` refs still in place because Phase 5 only instructed reverting in the superproject.
@@ -286,7 +286,7 @@ Reason: Prevent the agent from ignoring the script and generating its own branch
 **Clarify Phase 2 superproject renovate branch handling and Phase 3 branch reference updates**
 
 - Phase 2: Added instruction to check for and merge the superproject's own `renovate/*` branch instead of manually editing files that Renovate already updated.
-- Phase 3: Expanded with detailed steps for temporarily updating `@dev` branch references to `@issue/<WORK_ITEM_KEY>` in both `tools/Lombiq.GitHub.Actions/.github/` and the superproject's `.github/workflows/` when GitHub Actions has changes (e.g. lock file maintenance in asset-lint).
+- Phase 3: Expanded with detailed steps for temporarily updating `@dev` branch references to `@issue/<WORK_ITEM_KEY>` in both `tools/Smartent.GitHub.Actions/.github/` and the superproject's `.github/workflows/` when GitHub Actions has changes (e.g. lock file maintenance in asset-lint).
 - Phase 3: Clarified that these are temporary references reverted in Phase 5.
 
 Reason: Ensure consistency — superproject dependency updates should come from Renovate branches, and CI must resolve GitHub Actions references from the issue branch during testing.

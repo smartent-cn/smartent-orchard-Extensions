@@ -14,7 +14,7 @@
     <SmartentPlatformPath Condition="'$(SmartentPlatformPath)' == '' AND '$(SmartentSrcPath)' != ''"
       >$(SmartentSrcPath)/Platform/Orchard</SmartentPlatformPath>
     <LombiqAnalyzersPath Condition="'$(LombiqAnalyzersPath)' == '' AND '$(LombiqSolutionRootPath)' != ''"
-      >$([MSBuild]::MakeRelative('$(MSBuildProjectDirectory)', '$(LombiqSolutionRootPath)/tools/Lombiq.Analyzers'))</LombiqAnalyzersPath>
+      >$([MSBuild]::MakeRelative('$(MSBuildProjectDirectory)', '$(LombiqSolutionRootPath)/tools/Smartent.Build.Analyzers'))</LombiqAnalyzersPath>
     <SmartentAnalyzersPath Condition="'$(SmartentAnalyzersPath)' == '' AND '$(LombiqAnalyzersPath)' != ''"
       >$(LombiqAnalyzersPath)</SmartentAnalyzersPath>
     <LombiqMSBuildLibManTargetsPath>$(MSBuildThisFileDirectory)../../Smartent.Build.LibMan.Targets</LombiqMSBuildLibManTargetsPath>

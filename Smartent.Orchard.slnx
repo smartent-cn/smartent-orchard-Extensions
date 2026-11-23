@@ -28,8 +28,8 @@
     <File Path="Reset-Local.ps1" />
   </Folder>
   <Folder Name="/Solution Items/Asset Linting Action Configuration/">
-    <File Path="tools/Lombiq.GitHub.Actions/.github/actions/asset-lint/css/stylelint.config.mjs" />
-    <File Path="tools/Lombiq.GitHub.Actions/.github/actions/asset-lint/js/eslint.config.mjs" />
+    <File Path="tools/Smartent.GitHub.Actions/.github/actions/asset-lint/css/stylelint.config.mjs" />
+    <File Path="tools/Smartent.GitHub.Actions/.github/actions/asset-lint/js/eslint.config.mjs" />
   </Folder>
   <Folder Name="/src/">
     <Project Path="Smartent-src/Demo/Smartent.Demo.Web/Smartent.Demo.Web.csproj" />
@@ -176,11 +176,11 @@
   </Folder>
   <Folder Name="/tools/">
     <Project Path="Smartent-src/Themes/Smartent.Orchard.Theme.Media/Smartent.Orchard.Theme.Media.Deployer/Smartent.Orchard.Theme.Media.Deployer.csproj" />
-    <Project Path="tools/Lombiq.Analyzers.PowerShell/Lombiq.Analyzers.PowerShell/Lombiq.Analyzers.PowerShell.csproj" />
-    <Project Path="tools/Lombiq.Analyzers/Lombiq.Analyzers.NetFx/Lombiq.Analyzers.NetFx.csproj" />
-    <Project Path="tools/Lombiq.Analyzers/Lombiq.Analyzers.Orchard1/Lombiq.Analyzers.Orchard1.csproj" />
-    <Project Path="tools/Lombiq.Analyzers/Lombiq.Analyzers.OrchardCore/Lombiq.Analyzers.OrchardCore.csproj" />
-    <Project Path="tools/Lombiq.Analyzers/Lombiq.Analyzers.VisualStudioExtension/Lombiq.Analyzers.VisualStudioExtension.csproj" />
-    <Project Path="tools/Lombiq.Analyzers/Lombiq.Analyzers/Lombiq.Analyzers.csproj" />
+    <Project Path="tools/Smartent.Build.Analyzers.PowerShell/Lombiq.Analyzers.PowerShell/Lombiq.Analyzers.PowerShell.csproj" />
+    <Project Path="tools/Smartent.Build.Analyzers/Lombiq.Analyzers.NetFx/Lombiq.Analyzers.NetFx.csproj" />
+    <Project Path="tools/Smartent.Build.Analyzers/Lombiq.Analyzers.Orchard1/Lombiq.Analyzers.Orchard1.csproj" />
+    <Project Path="tools/Smartent.Build.Analyzers/Lombiq.Analyzers.OrchardCore/Lombiq.Analyzers.OrchardCore.csproj" />
+    <Project Path="tools/Smartent.Build.Analyzers/Lombiq.Analyzers.VisualStudioExtension/Lombiq.Analyzers.VisualStudioExtension.csproj" />
+    <Project Path="tools/Smartent.Build.Analyzers/Lombiq.Analyzers/Lombiq.Analyzers.csproj" />
   </Folder>
 </Solution>

@@ -29,4 +29,4 @@ dotnet test Smartent-src/Build/Smartent.Build.Targets.Tests/Smartent.Build.Targe
 
 - `Invoke-M7FullNuGetVerifyGate.ps1`（夜间 `-Full` pack）
 - `M7#10` Gitee push（凭据就绪时）
-- `tools/Lombiq.Analyzers*` → `Smartent.Build.Analyzers*`（可选）
+- ~~`tools/Lombiq.Analyzers*`~~ → `tools/Smartent.Build.Analyzers*`（已完成）

@@ -109,8 +109,8 @@ Required state: `PR_CREATION`
 Gate: proceed only after `APPROVED: Phase 2`
 
 Actions:
-- When `tools/Lombiq.GitHub.Actions` has changes (e.g. lock file maintenance in asset-lint), its internal `Lombiq/GitHub-Actions/...@dev` refs must temporarily point at the issue branch so CI resolves them from there.
-- Run `scripts/git/update-gha-refs.sh apply <WORK_ITEM_KEY>` from the superproject root. It rewrites only refs preceded by `Lombiq/GitHub-Actions/` in `tools/Lombiq.GitHub.Actions/.github/**` and the superproject's `.github/workflows/**`, leaving other repos' refs (e.g. `Lombiq/PowerShell-Analyzers`) untouched. **Never hand-roll this replacement.**
+- When `tools/Smartent.GitHub.Actions` has changes (e.g. lock file maintenance in asset-lint), its internal `Lombiq/GitHub-Actions/...@dev` refs must temporarily point at the issue branch so CI resolves them from there.
+- Run `scripts/git/update-gha-refs.sh apply <WORK_ITEM_KEY>` from the superproject root. It rewrites only refs preceded by `Lombiq/GitHub-Actions/` in `tools/Smartent.GitHub.Actions/.github/**` and the superproject's `.github/workflows/**`, leaving other repos' refs (e.g. `Lombiq/PowerShell-Analyzers`) untouched. **Never hand-roll this replacement.**
 - Commit the submodule change first, then stage the updated submodule pointer with the superproject workflow changes and commit (see the pointer rule in Phase 4).
 - These refs are **temporary** — reverted in Phase 5 with `update-gha-refs.sh revert <WORK_ITEM_KEY>`.
 - Validate workflow YAML syntax, then proceed directly to Phase 4 (no approval checkpoint).
@@ -143,7 +143,7 @@ Required state: `FINALIZATION`
 Gate: proceed only after `APPROVED: Phase 4`
 
 Actions:
-- **Before merging any PRs**, run `scripts/git/verify-dev-sync.sh` (stop on DRIFT), then revert the Phase 3 temporary refs with `scripts/git/update-gha-refs.sh revert <WORK_ITEM_KEY>` and commit + push the result in both `tools/Lombiq.GitHub.Actions` and the superproject. The superproject commit (the reverted workflow files plus the `tools/Lombiq.GitHub.Actions` pointer, explicit paths only) must include `[skip ci]` in its message: a ref revert needs no CI run. This ensures `@dev` self-references land on `dev` once merged.
+- **Before merging any PRs**, run `scripts/git/verify-dev-sync.sh` (stop on DRIFT), then revert the Phase 3 temporary refs with `scripts/git/update-gha-refs.sh revert <WORK_ITEM_KEY>` and commit + push the result in both `tools/Smartent.GitHub.Actions` and the superproject. The superproject commit (the reverted workflow files plus the `tools/Smartent.GitHub.Actions` pointer, explicit paths only) must include `[skip ci]` in its message: a ref revert needs no CI run. This ensures `@dev` self-references land on `dev` once merged.
 - The GitHub Actions PR's `validate-gha-refs` check may fail after the revert because an unapproved PR expects issue-branch refs rather than `@dev`. Inspect the failure and confirm it is solely this expected mismatch, verify the new commit only reverts the temporary refs, and verify all other checks on the new head pass and the pre-revert head passed CI. In that case the Phase 4 approval covers the admin merge; no GitHub review or additional user approval is needed solely for this failure. Investigate any other failures normally.
 - Merge **all** submodule branches to `dev` with `gh pr merge --merge --admin` (never squash/rebase, never `git push`/`git merge` directly onto `dev`; `--admin` bypasses merge queues/branch protection). Pin each merge with `--match-head-commit <sha>` of the head the superproject's CI covered, except that the GitHub Actions PR uses the verified ref-revert head described above: Renovate may have force-pushed since, and a moved head counts as changed content (see the pointer-commit rule below):
   - PRs for submodules with `issue/<WORK_ITEM_KEY>` branches (from Phase 4).
@@ -176,7 +176,7 @@ On Windows, `bash` on `PATH` may be WSL, which doesn't see the Windows `gh` and 
 | `git/analyze-renovate-prs.sh` | 1 | Read-only. Lists every **open PR with a `renovate/*` head branch** in the superproject and each submodule as ELIGIBLE or SKIP (draft / already merged), with PR number, title, `diff --stat` and commit log vs. `origin/dev`. No age cutoff — every open Renovate PR is checked regardless of age. |
 | `git/checkout-latest-renovate-pr.sh` | 2 | Checks out the head branch of the newest applicable open Renovate PR per submodule (same filters). **One PR per repo**, but prints the other eligible PR numbers/branches to merge manually. |
 | `dotnet/build-with-analyzers.sh [target]` | 2 | Builds with `RunAnalyzersDuringBuild=true`, printing only deduplicated error/warning lines. Defaults to `Smartent.Orchard.slnx`. |
-| `git/update-gha-refs.sh apply\|revert <KEY>` | 3, 5 | Rewrites `Lombiq/GitHub-Actions/...@dev` ↔ `@issue/<KEY>` in `tools/Lombiq.GitHub.Actions/.github/**` and `.github/workflows/**`; never touches other repos' refs. Doesn't commit. |
+| `git/update-gha-refs.sh apply\|revert <KEY>` | 3, 5 | Rewrites `Lombiq/GitHub-Actions/...@dev` ↔ `@issue/<KEY>` in `tools/Smartent.GitHub.Actions/.github/**` and `.github/workflows/**`; never touches other repos' refs. Doesn't commit. |
 | `git/push-issue-branches.sh <KEY>` | 4 | Pushes `issue/<KEY>` in each submodule before its containing repository; skips all other branches. Never force-pushes or targets `dev`. |
 | `gh/wait-for-checks.sh <owner/repo> <pr>` | 4 | Polls PR checks with 60s→300s backoff, prints a compact summary and failing checks; exit 0 pass / 1 fail / 3 timeout. No TUI. |
 | `git/verify-dev-sync.sh` | 5 | Verifies local `dev` matches `origin/dev` everywhere; exits non-zero on drift. |

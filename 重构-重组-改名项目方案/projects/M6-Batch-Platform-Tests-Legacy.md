@@ -32,5 +32,5 @@ dotnet build Smartent.Orchard.sln -c Release
 ## 未决
 
 - `Lombiq.MSBuild.*` Sdk 源码已迁至 `Smartent-src/Build/`；`src/Utilities/Lombiq.MSBuild.Targets` 仅 Samples/Tests
-- `tools/Lombiq.Analyzers*`（M1 可选）
+- `tools/Smartent.Build.Analyzers*`（M1 目录已改名；包 Id 待定）
 - `NuGetVerify` 独立还原（M7 Smartent 包上源后）

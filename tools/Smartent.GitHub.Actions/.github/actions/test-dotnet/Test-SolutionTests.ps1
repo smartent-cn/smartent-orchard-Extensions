@@ -12,4 +12,4 @@ $switches = @{
     TestProcessTimeout = '600000'
 }
 
-.\tools\Lombiq.GitHub.Actions\.github\actions\test-dotnet\Invoke-SolutionOrProjectTests.ps1 @switches
+.\tools\Smartent.GitHub.Actions\.github\actions\test-dotnet\Invoke-SolutionOrProjectTests.ps1 @switches

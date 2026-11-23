@@ -34,7 +34,7 @@ Use this approach if you always want to use the very latest version, or if you'd
 
    ```gitmodules
    [submodule "Lombiq.Analyzers"]
-       path = tools/Lombiq.Analyzers
+       path = tools/Smartent.Build.Analyzers
        url = https://github.com/Lombiq/.NET-Analyzers.git
        branch = dev
    ```
@@ -44,7 +44,7 @@ Use this approach if you always want to use the very latest version, or if you'd
 
    ```xml
    <Project>
-     <Import Project="tools/Lombiq.Analyzers/Build.props" />
+     <Import Project="tools/Smartent.Build.Analyzers/Build.props" />
    </Project>
    ```
 
@@ -84,7 +84,7 @@ The key difference compared to .NET projects is that for non-SDK-style .NET Fram
 
    ```xml
    <Project>
-     <Import Project="../../../tools/Lombiq.Analyzers.NetFx/Build.props" />
+     <Import Project="../../../tools/Smartent.Build.Analyzers/Lombiq.Analyzers.NetFx/Build.props" />
    </Project>
    ```
 

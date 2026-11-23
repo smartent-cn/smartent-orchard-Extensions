@@ -13,7 +13,7 @@
 #   bash .agents/skills/renovate-integration/scripts/git/update-gha-refs.sh revert OSOE-123
 #
 # Files covered:
-#   - tools/Lombiq.GitHub.Actions/.github/**/*.yml (actions/ and workflows/)
+#   - tools/Smartent.GitHub.Actions/.github/**/*.yml (actions/ and workflows/)
 #   - .github/workflows/*.yml (superproject)
 #
 # Safety:
@@ -70,7 +70,7 @@ process_dir() {
 }
 
 echo "--- $MODE: Lombiq/GitHub-Actions @$from -> @$to ---"
-process_dir "tools/Lombiq.GitHub.Actions/.github"
+process_dir "tools/Smartent.GitHub.Actions/.github"
 process_dir ".github/workflows"
 
 echo "Files changed: $changed"

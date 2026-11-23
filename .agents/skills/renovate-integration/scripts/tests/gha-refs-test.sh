@@ -13,10 +13,10 @@ script="$(cd "$(dirname "$0")/.." && pwd)/git/update-gha-refs.sh"
 sandbox=$(mktemp -d)
 trap 'rm -rf "$sandbox"' EXIT
 
-mkdir -p "$sandbox/tools/Lombiq.GitHub.Actions/.github/actions/foo" "$sandbox/.github/workflows"
+mkdir -p "$sandbox/tools/Smartent.GitHub.Actions/.github/actions/foo" "$sandbox/.github/workflows"
 touch "$sandbox/.git"
 
-cat > "$sandbox/tools/Lombiq.GitHub.Actions/.github/actions/foo/action.yml" <<'YAML'
+cat > "$sandbox/tools/Smartent.GitHub.Actions/.github/actions/foo/action.yml" <<'YAML'
 runs:
   steps:
     - uses: Lombiq/GitHub-Actions/.github/actions/setup@dev
@@ -30,12 +30,12 @@ jobs:
     uses: Lombiq/GitHub-Actions/.github/workflows/build-and-test.yml@dev
 YAML
 
-before=$(cat "$sandbox/tools/Lombiq.GitHub.Actions/.github/actions/foo/action.yml" "$sandbox/.github/workflows/build.yml")
+before=$(cat "$sandbox/tools/Smartent.GitHub.Actions/.github/actions/foo/action.yml" "$sandbox/.github/workflows/build.yml")
 
 cd "$sandbox"
 bash "$script" apply OSOE-123 > /dev/null
 
-applied=$(cat tools/Lombiq.GitHub.Actions/.github/actions/foo/action.yml .github/workflows/build.yml)
+applied=$(cat tools/Smartent.GitHub.Actions/.github/actions/foo/action.yml .github/workflows/build.yml)
 
 if printf '%s' "$applied" | grep -q 'PowerShell-Analyzers/.github/actions/lint@issue'; then
   echo "FAIL: rewrote a non-Lombiq/GitHub-Actions ref."
@@ -54,7 +54,7 @@ if [ "$(printf '%s' "$applied" | grep -c 'GitHub-Actions/[^@]*@issue/OSOE-123')"
 fi
 
 bash "$script" revert OSOE-123 > /dev/null
-after=$(cat tools/Lombiq.GitHub.Actions/.github/actions/foo/action.yml .github/workflows/build.yml)
+after=$(cat tools/Smartent.GitHub.Actions/.github/actions/foo/action.yml .github/workflows/build.yml)
 
 if [ "$before" != "$after" ]; then
   echo "FAIL: revert did not restore the original content."

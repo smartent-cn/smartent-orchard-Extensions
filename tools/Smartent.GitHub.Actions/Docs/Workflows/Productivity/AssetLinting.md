@@ -103,7 +103,7 @@ Markdown configuration files:
 > To be safe, always quote parameters so PowerShell passes them correctly.
 
 ```pwsh
-.../Open-Source-Orchard-Core-Extensions/tools/Lombiq.GitHub.Actions/.github/actions/asset-lint/Invoke-Linter.ps1 -ScriptsString 'src/Modules/Smartent.Orchard.UIKit/Smartent.Orchard.UIKit:wwwroot/js' -StylesString 'src/Modules/Smartent.Orchard.UIKit/Smartent.Orchard.UIKit:wwwroot/css' -TextsString .
+.../Open-Source-Orchard-Core-Extensions/tools/Smartent.GitHub.Actions/.github/actions/asset-lint/Invoke-Linter.ps1 -ScriptsString 'src/Modules/Smartent.Orchard.UIKit/Smartent.Orchard.UIKit:wwwroot/js' -StylesString 'src/Modules/Smartent.Orchard.UIKit/Smartent.Orchard.UIKit:wwwroot/css' -TextsString .
 ```
 
 > [!TIP]

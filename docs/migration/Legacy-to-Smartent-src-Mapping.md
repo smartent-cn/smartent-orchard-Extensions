@@ -42,7 +42,7 @@
 | `src/Utilities/Lombiq.MSBuild.Targets/` | **shim**：`Directory.Build.props` 转发 `Smartent-src/Build/`；各 Sdk 子目录为 Readme |
 | `src/Libraries/Lombiq.HelpfulLibraries/` | **仅剩** Readme / CI 残留；元包 **已删** |
 | `src/Utilities/Lombiq.Tailwind.Targets/` | 仅文档/残留；源码在 `Smartent-src/Build/Smartent.Build.Tailwind` |
-| `tools/Lombiq.Analyzers/*` | 未迁入 `Smartent-src`；主 sln 仍引用 |
+| `tools/Smartent.Build.Analyzers/*` | 未迁入 `Smartent-src`；主 sln 仍引用 |
 
 `src/Modules/**`、`src/Themes/**`：**已删**（2026-11-24 batch 3）；`test/Lombiq.*` 指针已删。
 
@@ -182,8 +182,8 @@ Legacy 行状态：**指针可删**（`src/Modules/Lombiq.*` 目录），删除�
 
 | 路径 | 计划 / 说明 |
 |------|-------------|
-| `tools/Lombiq.Analyzers/*` | 可选 `Smartent.Build.Analyzers.*`（M1/M4 **TBD**） |
-| `tools/Lombiq.GitHub.Actions` | 可选 Smartent CI 复制（**未迁入**） |
+| `tools/Smartent.Build.Analyzers/*` | 可选 `Smartent.Build.Analyzers.*`（M1/M4 **TBD**） |
+| `tools/Smartent.GitHub.Actions` | 可选 Smartent CI 复制（**未迁入**） |
 | MSBuild Samples/Tests | 已迁 `Smartent-src/Build/Smartent.Build.*` |
 
 PackageId 仍为 Lombiq 的例外清单：[M6-PackageId-Exceptions.md](../../重构-重组-改名项目方案/M6-PackageId-Exceptions.md)。

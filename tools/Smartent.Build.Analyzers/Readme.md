@@ -1,6 +1,6 @@
 # Lombiq .NET Analyzers
 
-> **Smartent 单仓说明**：开发期仍通过 `tools/Lombiq.Analyzers` 与 NuGet 包 `Lombiq.Analyzers.*` 接入；待发布目标为 `Smartent.Build.Analyzers*`（见 [M6-PackageId-Exceptions.md](../../重构-重组-改名项目方案/M6-PackageId-Exceptions.md)）。MSBuild 属性 `SmartentAnalyzersPath` 与 `LombiqAnalyzersPath` 同源。
+> **Smartent 单仓说明**：开发期通过 `tools/Smartent.Build.Analyzers` 与 NuGet 包 `Lombiq.Analyzers.*` 接入；待发布目标为 `Smartent.Build.Analyzers*`（见 [M6-PackageId-Exceptions.md](../../重构-重组-改名项目方案/M6-PackageId-Exceptions.md)）。MSBuild 属性 `SmartentAnalyzersPath` 与 `LombiqAnalyzersPath` 同源。
 
 [![Lombiq.Analyzers NuGet](https://img.shields.io/nuget/v/Lombiq.Analyzers?label=Lombiq.Analyzers)](https://www.nuget.org/packages/Lombiq.Analyzers/) [![Lombiq.Analyzers.NetFx NuGet](https://img.shields.io/nuget/v/Lombiq.Analyzers.NetFx?label=Lombiq.Analyzers.NetFx)](https://www.nuget.org/packages/Lombiq.Analyzers.NetFx/) [![Lombiq.Analyzers.OrchardCore NuGet](https://img.shields.io/nuget/v/Lombiq.Analyzers.OrchardCore?label=Lombiq.Analyzers.OrchardCore)](https://www.nuget.org/packages/Lombiq.Analyzers.OrchardCore/) [![Lombiq.Analyzers.Orchard1 NuGet](https://img.shields.io/nuget/v/Lombiq.Analyzers.Orchard1?label=Lombiq.Analyzers.Orchard1)](https://www.nuget.org/packages/Lombiq.Analyzers.Orchard1/) [![Lombiq.Analyzers.VisualStudioExtension NuGet](https://img.shields.io/nuget/v/Lombiq.Analyzers.VisualStudioExtension?label=Lombiq.Analyzers.VisualStudioExtension)](https://www.nuget.org/packages/Lombiq.Analyzers.VisualStudioExtension/)
 

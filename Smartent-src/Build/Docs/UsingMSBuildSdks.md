@@ -63,7 +63,7 @@ All of our MSBuild SDK projects share these features and configurations:
   - LombiqSolutionRootPath: Path of the directory where the solution file and the _src_ directory should be.
   - SmartentSrcPath: Path of the repository `Smartent-src/` tree (Core/Platform/Build).
   - SmartentPlatformPath / `SmartentSrcPath`: 平台库在 _Smartent-src/Platform_（NuGet：`Smartent.Orchard.Platform`）。
-  - LombiqAnalyzersPath: Path of the _tools/Lombiq.Analyzers_ directory where the [.NET Analyzers](https://github.com/Lombiq/.NET-Analyzers/) submodule should be.
+  - LombiqAnalyzersPath: Path of the _tools/Smartent.Build.Analyzers_ directory where the [.NET Analyzers](https://github.com/Lombiq/.NET-Analyzers/) submodule should be.
 - If you import the SDK via the `<Sdk>` element or the _Sdk.props_ file, it sets the `<FromNuGet>true</FromNuGet>` property.
 
 ## LibMan Integration

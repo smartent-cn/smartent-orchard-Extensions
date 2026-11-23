@@ -29,5 +29,5 @@
 ## 下一批建议
 
 - Gitee `Publish-SmartentFeedToGitee.ps1`（凭据）
-- `tools/Lombiq.Analyzers*` Smartent 化（可选）
+- `tools/Smartent.Build.Analyzers*` 目录已 Smartent 化（PackageId 仍为 Lombiq）
 - Legacy `src/Utilities` Sdk Readme 批量删占位
