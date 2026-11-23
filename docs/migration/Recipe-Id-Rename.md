@@ -4,7 +4,7 @@
 
 | 旧 Recipe `name` / 文件前缀 | 新 Recipe `name` | 典型路径 |
 |-----------------------------|------------------|----------|
-| `Lombiq.OSOCE.Tests` | `Smartent.Demo.Tests` | `Smartent-src/Demo/Smartent.Demo.Web/Recipes/` |
+| `Lombiq.OSOCE.Tests` | `Smartent.Demo.Tests` | `src/Demo/Smartent.Demo.Web/Recipes/` |
 | `Lombiq.OSOCE.BasicOrchardFeaturesTests` | `Smartent.Demo.BasicOrchardFeaturesTests` | 同上 |
 | `Lombiq.OSOCE.BaseTheme` | `Smartent.Demo.BaseTheme` | 同上 |
 | `Lombiq.OSOCE.Tests.FeaturesGuard` | `Smartent.Demo.Tests.FeaturesGuard` | 同上 |

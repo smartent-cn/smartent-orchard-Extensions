@@ -1,0 +1,8 @@
+{
+  "extends": "../../../src/Build/Smartent.Build.NodeJs/Smartent.Build.NodeJs/config/.eslintrc.lombiq-base.js",
+
+  "rules": {
+    // Add overriding rules here like this:
+    // "example-rule" : "error"
+  }
+}

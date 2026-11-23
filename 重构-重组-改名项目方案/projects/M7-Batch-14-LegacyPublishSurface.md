@@ -7,8 +7,8 @@
 
 | Legacy | 说明 |
 |--------|------|
-| `src/Libraries/Lombiq.HelpfulLibraries` | **元包已删**；仅 Readme → `Smartent-src/Platform/` |
-| `src/Utilities/Lombiq.MSBuild.Targets` | **shim**（`Directory.Build.props`）；Samples/Tests 在 `Smartent-src/Build/Smartent.Build.*` |
+| `src/Libraries/Lombiq.HelpfulLibraries` | **元包已删**；仅 Readme → `src/Platform/` |
+| `src/Utilities/Lombiq.MSBuild.Targets` | **shim**（`Directory.Build.props`）；Samples/Tests 在 `src/Build/Smartent.Build.*` |
 | `scripts/List-SmartentPackableProjects.ps1` | 与 `docs/releases/M7-FirstNuGet-Release-Draft.md` 对照 |
 
 ## 验证

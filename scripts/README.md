@@ -12,7 +12,7 @@
 | [Invoke-M7CoreFeedGate.ps1](Invoke-M7CoreFeedGate.ps1) | 上述 + Monorepo sln 构建 + `Smartent.Build.Targets.Tests`（`-SkipPack` / `-WhatIf`） |
 | [Invoke-M7FullNuGetVerifyGate.ps1](Invoke-M7FullNuGetVerifyGate.ps1) | Core gate + 全 `Smartent.NuGet.sln`（`-SkipPack` 需 `NuGet.config.local` + 已 pack feed） |
 | [Assert-FeedCorePackVersions.ps1](Assert-FeedCorePackVersions.ps1) | 校验 core pack 版本与 `NuGetVerify/Directory.Packages.props` |
-| [List-SmartentPackableProjects.ps1](List-SmartentPackableProjects.ps1) | 列出 `Smartent-src` 中带 `PackageId` 的工程 |
+| [List-SmartentPackableProjects.ps1](List-SmartentPackableProjects.ps1) | 列出 `src` 中带 `PackageId` 的工程 |
 | [Export-FeedManifestSummary.ps1](Export-FeedManifestSummary.ps1) | 汇总 `feed-manifest.txt`（Smartent/Lombiq 计数） |
 | [Seed-LocalFeedSdkToNuGetCache.ps1](Seed-LocalFeedSdkToNuGetCache.ps1) | 可选：将 feed 内 **MSBuildSdk** nupkg 解压到本地包缓存（纯 Sdk 还原调试） |
 | [Publish-SmartentFeedToGitee.ps1](Publish-SmartentFeedToGitee.ps1) | 环境变量 `GITEE_NUGET_SOURCE_URL` / `GITEE_NUGET_API_KEY` 推送本地 feed；`-WhatIf` 列举 |

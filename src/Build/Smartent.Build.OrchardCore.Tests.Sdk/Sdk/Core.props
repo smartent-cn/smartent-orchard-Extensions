@@ -1,0 +1,42 @@
+<Project>
+  <PropertyGroup>
+    <SmartentSdkName>OrchardCore.Tests</SmartentSdkName>
+    <LombiqSdkName>$(SmartentSdkName)</LombiqSdkName>
+    <OutputType>Exe</OutputType>
+    <UseMicrosoftTestingPlatformRunner>true</UseMicrosoftTestingPlatformRunner>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Testing.Extensions.GitHubActionsReport">
+      <Version Condition="'$(ManagePackageVersionsCentrally)' != 'true'">2.5.2</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Testing.Extensions.HangDump">
+      <Version Condition="'$(ManagePackageVersionsCentrally)' != 'true'">2.5.2</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Testing.Extensions.TrxReport">
+      <Version Condition="'$(ManagePackageVersionsCentrally)' != 'true'">2.5.2</Version>
+    </PackageReference>
+    <PackageReference Include="xunit.v3">
+      <Version Condition="'$(ManagePackageVersionsCentrally)' != 'true'">4.0.3</Version>
+    </PackageReference>
+  </ItemGroup>
+  
+  <ItemGroup Condition="'$(FromNuGet)' != 'true'">
+    <ProjectReference Include="$(SmartentSolutionRootPath)/src/Test/Smartent.Test.Unit/Smartent.Test.Unit.csproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(FromNuGet)' == 'true'">
+    <PackageReference Include="Smartent.Test.Unit">
+      <Version Condition="'$(ManagePackageVersionsCentrally)' != 'true'">$(PackageVersionLombiqTests)</Version>
+    </PackageReference>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Content Include="Recipes\*.recipe.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>

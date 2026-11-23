@@ -6,7 +6,7 @@
 
 ## Smartent-src 可发布包
 
-`Smartent-src/**` 下显式 `PackageId` 均为 `Smartent.*`（ Orchard 模块/主题/Core/Platform/Build 工具链）。
+`src/**` 下显式 `PackageId` 均为 `Smartent.*`（ Orchard 模块/主题/Core/Platform/Build 工具链）。
 
 ## 仍使用 `Lombiq.*` PackageId（已登记例外）
 

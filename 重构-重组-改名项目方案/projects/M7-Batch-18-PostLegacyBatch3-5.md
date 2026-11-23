@@ -22,7 +22,7 @@
 
 ```powershell
 ./scripts/Invoke-M7CoreFeedGate.ps1 -SkipPack
-dotnet test Smartent-src/Build/Smartent.Build.Targets.Tests/Smartent.Build.Targets.Tests.csproj -c Release
+dotnet test src/Build/Smartent.Build.Targets.Tests/Smartent.Build.Targets.Tests.csproj -c Release
 ```
 
 ## 下一批建议

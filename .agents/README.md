@@ -4,7 +4,7 @@ These rules apply to work in the OSOCE superproject and its submodules. Use the 
 
 ## Smartent migration (this fork)
 
-For Smartent rebranding and `Smartent-src/` work, follow [docs/standards/README.md](../docs/standards/README.md) and [.cursor/rules/](../.cursor/rules/): bilingual project `Readme.md`, Chinese XML docs on public C# APIs, documented frontend/npm deps, commits only after the relevant test gate passes.
+For Smartent rebranding and `src/` work, follow [docs/standards/README.md](../docs/standards/README.md) and [.cursor/rules/](../.cursor/rules/): bilingual project `Readme.md`, Chinese XML docs on public C# APIs, documented frontend/npm deps, commits only after the relevant test gate passes.
 
 ## Branches and commits
 

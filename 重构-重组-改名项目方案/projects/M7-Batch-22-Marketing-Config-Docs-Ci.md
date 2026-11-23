@@ -13,7 +13,7 @@
 | 4 | `appsettings.json` | Demo Web + NuGetVerify Web → `Smartent_Marketing` |
 | 5 | Pirsch `Readme.md` | 示例 JSON 与兼容说明 |
 | 6 | Marketing Tests.UI | OrchardCore 配置键路径 |
-| 7 | `AssetLinting.md` | 示例路径 `Smartent-src/` |
+| 7 | `AssetLinting.md` | 示例路径 `src/` |
 | 8 | 根 `Readme.md` | Themes/Utilities/Samples 指向 Smartent 包与路径 |
 | 9 | `docs/migration/Configuration-Key-Rename.md` + Gitee NuGet 示例 | 配置键对照；`Smartent.Build.Analyzers.*` mapping |
 | 10 | 门禁 | `Invoke-M7CoreFeedGate.ps1 -SkipPack` + `Smartent.Orchard.sln` Release |

@@ -1,0 +1,33 @@
+<Project>
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <RootNamespace>Smartent.Orchard.Platform.Data.LinqToYesSql</RootNamespace>
+    <AssemblyName>Smartent.Orchard.Platform.Data.LinqToYesSql</AssemblyName>
+    <PackageId>Smartent.Orchard.Platform.Data.LinqToYesSql</PackageId>
+  </PropertyGroup>
+
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../Build/Smartent.Build.Library.Sdk/Sdk/Import.props" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Smartent.Build.Library.Sdk" Version="2.1.1-alpha.9.osoe-344" />
+
+  <PropertyGroup>
+    <Title>Smartent Orchard Platform Data (LINQ to YesSql)</Title>
+    <CopyrightYear>2011</CopyrightYear>
+    <DescriptionBody>在 Orchard YesSql 会话上以 LINQ（linq2db）查询数据库的扩展。</DescriptionBody>
+    <PackageTags>Smartent;OrchardCore;YesSql;linq2db</PackageTags>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules/tree/master/src/Platform/Orchard/Smartent.Orchard.Platform.Data.LinqToYesSql</PackageProjectUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="linq2db" Version="6.5.1" />
+    <PackageReference Include="OrchardCore.Data.YesSql" Version="$(OrchardCoreVersion)" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(ManagePackageVersionsCentrally)' != 'true'">
+    <PackageReference Include="MySqlConnector" Version="2.6.2" NoWarn="NU1510" />
+  </ItemGroup>
+
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../Build/Smartent.Build.Library.Sdk/Sdk/Import.targets" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.targets" Sdk="Smartent.Build.Library.Sdk" Version="2.1.1-alpha.9.osoe-344" />
+</Project>

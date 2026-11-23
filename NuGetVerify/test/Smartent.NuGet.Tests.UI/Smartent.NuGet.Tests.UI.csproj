@@ -4,14 +4,14 @@
   </PropertyGroup>
 
   <Import Condition="'$(UseSmartentMonorepoMsBuildSdk)' == 'true'"
-          Project="$(SmartentMonorepoRoot)/Smartent-src/Build/Smartent.Build.OrchardCore.Tests.UI.Sdk/Sdk/Import.props" />
+          Project="$(SmartentMonorepoRoot)/src/Build/Smartent.Build.OrchardCore.Tests.UI.Sdk/Sdk/Import.props" />
   <Import Condition="'$(UseSmartentMonorepoMsBuildSdk)' != 'true'"
           Sdk="Smartent.Build.OrchardCore.Tests.UI.Sdk"
           Project="Sdk.props"
           Version="2.1.1" />
 
   <Import Condition="'$(UseSmartentMonorepoMsBuildSdk)' == 'true'"
-          Project="$(SmartentMonorepoRoot)/Smartent-src/Build/Smartent.Build.OrchardCore.Tests.UI.Sdk/Sdk/Import.targets" />
+          Project="$(SmartentMonorepoRoot)/src/Build/Smartent.Build.OrchardCore.Tests.UI.Sdk/Sdk/Import.targets" />
   <Import Condition="'$(UseSmartentMonorepoMsBuildSdk)' != 'true'"
           Sdk="Smartent.Build.OrchardCore.Tests.UI.Sdk"
           Project="Sdk.targets"
@@ -21,7 +21,7 @@
     <None Remove="*.htmlvalidate.json" />
     <Content Include=".htmlvalidate.json" CopyToOutputDirectory="PreserveNewest" />
     <Content Include="*.htmlvalidate.json" CopyToOutputDirectory="PreserveNewest" />
-    <Content Include="../../../Smartent-src/Test/Smartent.Test.Acceptance/*.htmlvalidate.json" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="../../../src/Test/Smartent.Test.Acceptance/*.htmlvalidate.json" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,6 +1,6 @@
 ---
 description: Smartent-src 项目必须中英文 Readme（引用/用法/扩展）
-globs: Smartent-src/**/*
+globs: src/**/*
 alwaysApply: false
 ---
 

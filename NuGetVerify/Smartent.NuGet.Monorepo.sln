@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.NuGet.TestTheme", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.NuGet.Tests", "test\Smartent.NuGet.Tests\Smartent.NuGet.Tests.csproj", "{692A7BF5-5DB9-46C9-8C90-8D2EFC895BAF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Build.NodeJs.Samples.NuGet", "..\Smartent-src\Build\Smartent.Build.NodeJs\Smartent.Build.NodeJs.Samples.NuGet\Smartent.Build.NodeJs.Samples.NuGet.csproj", "{25103E6E-D628-4D36-8FE5-965A293C36D3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Build.NodeJs.Samples.NuGet", "..\src\Build\Smartent.Build.NodeJs\Smartent.Build.NodeJs.Samples.NuGet\Smartent.Build.NodeJs.Samples.NuGet.csproj", "{25103E6E-D628-4D36-8FE5-965A293C36D3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

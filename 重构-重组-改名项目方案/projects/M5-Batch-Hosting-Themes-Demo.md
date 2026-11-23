@@ -1,17 +1,17 @@
 # 子方案：M5 批次 #4（BuildVersion + Tenants + Demo.Samples + Base/Media 主题）
 
 > 阶段：**M5**  
-> 状态：**已迁入 Smartent-src**（2026-11-22）
+> 状态：**已迁入 src**（2026-11-22）
 
 ## 范围
 
 | Legacy | Smartent-src |
 |--------|----------------|
-| `Lombiq.Hosting.BuildVersionDisplay` (+ Tests.UI) | `Smartent-src/Modules/Smartent.Orchard.Hosting.BuildVersion/` |
-| `Lombiq.Hosting.Tenants`（多 csproj） | `Smartent-src/Modules/Smartent.Orchard.Hosting.Tenants/` |
-| `Lombiq.OSOCE.Samples` | `Smartent-src/Demo/Smartent.Demo.Samples/` |
-| `Lombiq.BaseTheme`（Core/Native/Samples 等） | `Smartent-src/Themes/Smartent.Orchard.Theme.Base/` |
-| `Lombiq.Hosting.MediaTheme`（含 Bridge、Tests.Theme） | `Smartent-src/Themes/Smartent.Orchard.Theme.Media/` |
+| `Lombiq.Hosting.BuildVersionDisplay` (+ Tests.UI) | `src/Modules/Smartent.Orchard.Hosting.BuildVersion/` |
+| `Lombiq.Hosting.Tenants`（多 csproj） | `src/Modules/Smartent.Orchard.Hosting.Tenants/` |
+| `Lombiq.OSOCE.Samples` | `src/Demo/Smartent.Demo.Samples/` |
+| `Lombiq.BaseTheme`（Core/Native/Samples 等） | `src/Themes/Smartent.Orchard.Theme.Base/` |
+| `Lombiq.Hosting.MediaTheme`（含 Bridge、Tests.Theme） | `src/Themes/Smartent.Orchard.Theme.Media/` |
 
 ## Feature Id（破坏性，示例）
 

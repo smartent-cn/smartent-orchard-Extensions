@@ -1,16 +1,16 @@
 # 子方案：M6 批次 #1（Demo.Web + 测试工具链）
 
 > 阶段：**M6**  
-> 状态：**已迁入 Smartent-src**（2026-11-22）
+> 状态：**已迁入 src**（2026-11-22）
 
 ## 范围
 
 | Legacy | Smartent-src |
 |--------|----------------|
-| `Lombiq.OSOCE.Web` | `Smartent-src/Demo/Smartent.Demo.Web/` |
-| `Lombiq.OSOCE.Tests.UI` | `Smartent-src/Test/Smartent.Test.Acceptance/` |
-| `Lombiq.UITestingToolbox` / `Lombiq.Tests.UI.*` | `Smartent-src/Test/Smartent.Test.UI/` |
-| `Lombiq.Tests` | `Smartent-src/Test/Smartent.Test.Unit/` |
+| `Lombiq.OSOCE.Web` | `src/Demo/Smartent.Demo.Web/` |
+| `Lombiq.OSOCE.Tests.UI` | `src/Test/Smartent.Test.Acceptance/` |
+| `Lombiq.UITestingToolbox` / `Lombiq.Tests.UI.*` | `src/Test/Smartent.Test.UI/` |
+| `Lombiq.Tests` | `src/Test/Smartent.Test.Unit/` |
 
 ## 破坏性变更（摘要）
 

@@ -11,7 +11,7 @@
 
 已更新示例：
 
-- `Smartent-src/Demo/Smartent.Demo.Web/appsettings.json`（`Smartent_Marketing`、`Smartent_TrainingDemo`）
+- `src/Demo/Smartent.Demo.Web/appsettings.json`（`Smartent_Marketing`、`Smartent_TrainingDemo`）
 - `NuGetVerify/src/Smartent.NuGet.Web/appsettings.json`（Marketing）
 - `Smartent.Orchard.Marketing.Pirsch/Readme.md`
 

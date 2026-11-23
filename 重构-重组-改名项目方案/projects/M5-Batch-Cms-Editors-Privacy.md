@@ -1,17 +1,17 @@
 # 子方案：M5 批次 #2（ContentEditors + JsonEditor + EmailClient + Privacy + AuditTrail）
 
 > 阶段：**M5**  
-> 状态：**已迁入 Smartent-src**（2026-11-22）
+> 状态：**已迁入 src**（2026-11-22）
 
 ## 范围
 
 | Legacy | Smartent-src |
 |--------|----------------|
-| `Lombiq.ContentEditors` (+ Samples, Tests.UI) | `Smartent-src/Modules/Smartent.Orchard.ContentEditors/` |
-| `Lombiq.JsonEditor` (+ Tests.UI) | `Smartent-src/Modules/Smartent.Orchard.JsonEditor/` |
-| `Lombiq.EmailClient` (+ Samples, Tests.UI) | `Smartent-src/Modules/Smartent.Orchard.EmailClient/` |
-| `Lombiq.Privacy` (+ Samples, Tests.UI) | `Smartent-src/Modules/Smartent.Orchard.Privacy/` |
-| `Lombiq.AuditTrailExtensions` | `Smartent-src/Modules/Smartent.Orchard.AuditTrail/` |
+| `Lombiq.ContentEditors` (+ Samples, Tests.UI) | `src/Modules/Smartent.Orchard.ContentEditors/` |
+| `Lombiq.JsonEditor` (+ Tests.UI) | `src/Modules/Smartent.Orchard.JsonEditor/` |
+| `Lombiq.EmailClient` (+ Samples, Tests.UI) | `src/Modules/Smartent.Orchard.EmailClient/` |
+| `Lombiq.Privacy` (+ Samples, Tests.UI) | `src/Modules/Smartent.Orchard.Privacy/` |
+| `Lombiq.AuditTrailExtensions` | `src/Modules/Smartent.Orchard.AuditTrail/` |
 
 ## Feature Id（破坏性）
 

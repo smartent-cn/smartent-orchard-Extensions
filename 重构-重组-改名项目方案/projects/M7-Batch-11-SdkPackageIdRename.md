@@ -5,7 +5,7 @@
 
 ## 目标
 
-将 `Smartent-src/Build/` 下已迁入 Sdk 的 **PackageId** 从 `Lombiq.MSBuild.*` 改为 `Smartent.Build.*`（或团队定名）。**仓库目录**已统一为 `Smartent.Build.*`（见插入批次：文件夹改名，PackageId 仍 Lombiq）。
+将 `src/Build/` 下已迁入 Sdk 的 **PackageId** 从 `Lombiq.MSBuild.*` 改为 `Smartent.Build.*`（或团队定名）。**仓库目录**已统一为 `Smartent.Build.*`（见插入批次：文件夹改名，PackageId 仍 Lombiq）。
 
 ## 建议顺序
 

@@ -6,13 +6,13 @@
 
 1. **一次 PR / 提交聚焦一个可验证单元**（单个迁入项目、单个功能、或单组测试修复）。  
 2. **完成定义（DoD）**：本节所列测试门禁通过 + 相关中英文 `Readme.md` 已更新（Smartent-src 下为强制）。  
-3. **重构迁入**（`Smartent-src/`）：遵循 [第一步-计划.md](../../重构-重组-改名项目方案/第一步-计划.md) 的「迁一删一」；未切换完引用前 **不得** 删除 Legacy 目录。
+3. **重构迁入**（`src/`）：遵循 [第一步-计划.md](../../重构-重组-改名项目方案/第一步-计划.md) 的「迁一删一」；未切换完引用前 **不得** 删除 Legacy 目录。
 
 ### 测试门禁（提交前必须满足）
 
 | 变更类型 | 最低验证 |
 |----------|----------|
-| 仅 `Smartent-src` 下单个库/模块 | 该项目 `dotnet build` + 该项目/模块既有单元测试（若有） |
+| 仅 `src` 下单个库/模块 | 该项目 `dotnet build` + 该项目/模块既有单元测试（若有） |
 | 影响主解决方案引用 | `dotnet build Smartent.Orchard.sln` |
 | Orchard 模块 / 主题（含前端） | 上项 + `npm`/MSBuild 前端管线成功（见项目 `package.json` 说明） |
 | UI 行为变更 | 对应 `*.Tests.UI` 或方案约定的黄金路径用例 |
@@ -42,13 +42,13 @@
 
 ### Cadence
 
-One PR/commit = one verifiable unit (single migrated project, feature, or test fix). DoD = tests below + bilingual project README updated when under `Smartent-src/`.
+One PR/commit = one verifiable unit (single migrated project, feature, or test fix). DoD = tests below + bilingual project README updated when under `src/`.
 
 ### Test gates (before commit)
 
 | Change | Minimum |
 |--------|---------|
-| Single library in `Smartent-src/` | `dotnet build` on that project + its unit tests if any |
+| Single library in `src/` | `dotnet build` on that project + its unit tests if any |
 | Solution references touched | Build the main solution |
 | Module/theme with frontend | Above + frontend pipeline per `package.json` |
 | UI behavior | Relevant `*.Tests.UI` or agreed golden path |

@@ -5,7 +5,7 @@
 
 ## 目标
 
-将 `Smartent-src/Build/` 下 8 个 `Lombiq.MSBuild.*` **文件夹**改名为 `Smartent.Build.*`，与 `Smartent.Build.NodeJs` 等并列；**暂不**改 NuGet `PackageId`（仍为 `Lombiq.MSBuild.*`，见 [M7-Batch-11-SdkPackageIdRename.md](M7-Batch-11-SdkPackageIdRename.md)）。
+将 `src/Build/` 下 8 个 `Lombiq.MSBuild.*` **文件夹**改名为 `Smartent.Build.*`，与 `Smartent.Build.NodeJs` 等并列；**暂不**改 NuGet `PackageId`（仍为 `Lombiq.MSBuild.*`，见 [M7-Batch-11-SdkPackageIdRename.md](M7-Batch-11-SdkPackageIdRename.md)）。
 
 ## 映射
 

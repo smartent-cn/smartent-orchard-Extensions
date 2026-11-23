@@ -5,7 +5,7 @@
 
 ## 范围
 
-- 自 `Lombiq.HelpfulLibraries.Common` 迁入 `Smartent-src/Platform/Core/Smartent.Core.Primitives`
+- 自 `Lombiq.HelpfulLibraries.Common` 迁入 `src/Platform/Core/Smartent.Core.Primitives`
 - 删除 Legacy `src/.../Lombiq.HelpfulLibraries.Common`
 
 ## 命名
@@ -30,7 +30,7 @@
 ## 验证命令
 
 ```powershell
-dotnet build Smartent-src/Platform/Core/Smartent.Core.Primitives/Smartent.Core.Primitives.csproj
+dotnet build src/Platform/Core/Smartent.Core.Primitives/Smartent.Core.Primitives.csproj
 dotnet build src/Libraries/Lombiq.HelpfulLibraries/Smartent.Orchard.Platform/Smartent.Orchard.Platform.csproj
 dotnet test src/Libraries/Lombiq.HelpfulLibraries/Lombiq.HelpfulLibraries.Tests/Lombiq.HelpfulLibraries.Tests.csproj --filter "FullyQualifiedName~UnitTests.Utilities"
 ```

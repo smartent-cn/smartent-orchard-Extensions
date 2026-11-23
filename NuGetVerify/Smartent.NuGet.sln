@@ -35,7 +35,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.NuGet.Tests.UI", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utilities", "Utilities", "{FB27E080-5C89-425F-A6F1-CD4E690CF195}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Build.NodeJs.Samples.NuGet", "..\Smartent-src\Build\Smartent.Build.NodeJs\Smartent.Build.NodeJs.Samples.NuGet\Smartent.Build.NodeJs.Samples.NuGet.csproj", "{25103E6E-D628-4D36-8FE5-965A293C36D3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Build.NodeJs.Samples.NuGet", "..\src\Build\Smartent.Build.NodeJs\Smartent.Build.NodeJs.Samples.NuGet\Smartent.Build.NodeJs.Samples.NuGet.csproj", "{25103E6E-D628-4D36-8FE5-965A293C36D3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

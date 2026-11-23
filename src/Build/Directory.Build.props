@@ -1,0 +1,50 @@
+<Project>
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+  </PropertyGroup>
+
+  <Choose>
+    <When Condition="$(MSBuildProjectName.EndsWith('.Tests')) OR $(MSBuildProjectName.EndsWith('.Tests.UI')) OR $(MSBuildProjectName.EndsWith('.Samples'))">
+      <!-- Non-publishable Build samples/tests. -->
+    </When>
+
+    <Otherwise>
+      <PropertyGroup>
+        <Version Condition="'$(Version)' == '' and $(MSBuildProjectName.StartsWith('Smartent.Build.'))">2.1.1</Version>
+        <PackageType Condition="$(MSBuildProjectName.EndsWith('.Sdk'))">MSBuildSdk</PackageType>
+        <Authors Condition="'$(Authors)' == ''">Smartent</Authors>
+        <Company Condition="'$(Company)' == ''">Smartent</Company>
+        <Copyright Condition="'$(Copyright)' == ''">Copyright © Smartent</Copyright>
+        <PackageIcon>NuGetIcon.png</PackageIcon>
+        <PackageTags Condition="'$(PackageTags)' == ''">OrchardCore;Smartent;AspNetCore;MSBuild</PackageTags>
+        <RepositoryUrl Condition="'$(RepositoryUrl)' == ''">https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
+        <PackageProjectUrl Condition="'$(PackageProjectUrl)' == ''">https://gitee.com/smartent/smartent-training-demo-modules/tree/master/src/Build</PackageProjectUrl>
+        <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
+      </PropertyGroup>
+
+      <ItemGroup>
+        <None Include="Readme.md" Condition="Exists('Readme.md')" />
+        <None Include="NuGetIcon.png" Pack="true" PackagePath="" Condition="Exists('NuGetIcon.png')" />
+        <None Include="Sdk\**" Pack="true" PackagePath="Sdk\" Condition="Exists('Sdk')" />
+        <None Include="build\**" Pack="true" PackagePath="build\" Condition="Exists('build')" />
+      </ItemGroup>
+
+      <ItemGroup Condition="$(MSBuildProjectName.EndsWith('.Sdk'))">
+        <None Include="$(MSBuildThisFileDirectory)Smartent.Build.LibMan.Targets\*.*"
+              Link="Smartent.Build.LibMan.Targets\*.*"
+              Pack="true"
+              PackagePath="Smartent.Build.LibMan.Targets\"
+              Visible="false" />
+      </ItemGroup>
+
+      <ItemGroup Condition="$(MSBuildProjectName.EndsWith('.Sdk')) AND MSBuildProjectName != 'Smartent.Build.Base.Sdk'">
+        <None Include="$(MSBuildThisFileDirectory)Smartent.Build.Base.Sdk\Sdk\*.*"
+              Link="Smartent.Build.Base.Sdk\*.*"
+              Pack="true"
+              PackagePath="Smartent.Build.Base.Sdk\"
+              Visible="false" />
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
+
+</Project>

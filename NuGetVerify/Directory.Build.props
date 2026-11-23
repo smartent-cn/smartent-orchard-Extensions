@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <!-- 单体仓内（含 ForceStandalone 仅包还原验证）：走仓库内 Sdk 路径，产品包仍从本地 feed 还原。 -->
-  <PropertyGroup Condition="Exists('$(MSBuildThisFileDirectory)..\Smartent-src\Build\Smartent.Build.OrchardCore.Module.Sdk\Sdk\Import.props')">
+  <PropertyGroup Condition="Exists('$(MSBuildThisFileDirectory)..\src\Build\Smartent.Build.OrchardCore.Module.Sdk\Sdk\Import.props')">
     <SmartentMonorepoRoot>$(MSBuildThisFileDirectory)..</SmartentMonorepoRoot>
     <UseSmartentMonorepoMsBuildSdk>true</UseSmartentMonorepoMsBuildSdk>
     <NuGetBuild>false</NuGetBuild>

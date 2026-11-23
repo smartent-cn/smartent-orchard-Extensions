@@ -22,7 +22,7 @@
 
 ```powershell
 ./scripts/Invoke-M7CoreFeedGate.ps1 -SkipPack
-dotnet build Smartent-src/Smartent.Orchard.sln -c Release
+dotnet build src/Smartent.Orchard.sln -c Release
 ```
 
 ## 下一批建议

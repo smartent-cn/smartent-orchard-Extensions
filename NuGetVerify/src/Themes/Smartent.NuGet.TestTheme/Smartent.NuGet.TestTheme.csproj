@@ -4,21 +4,21 @@
   </PropertyGroup>
 
   <Import Condition="'$(UseSmartentMonorepoMsBuildSdk)' == 'true'"
-          Project="$(SmartentMonorepoRoot)/Smartent-src/Build/Smartent.Build.OrchardCore.Theme.Sdk/Sdk/Import.props" />
+          Project="$(SmartentMonorepoRoot)/src/Build/Smartent.Build.OrchardCore.Theme.Sdk/Sdk/Import.props" />
   <Import Condition="'$(UseSmartentMonorepoMsBuildSdk)' != 'true'"
           Sdk="Smartent.Build.OrchardCore.Theme.Sdk"
           Project="Sdk.props"
           Version="2.1.1" />
 
   <Import Condition="'$(UseSmartentMonorepoMsBuildSdk)' == 'true'"
-          Project="$(SmartentMonorepoRoot)/Smartent-src/Build/Smartent.Build.OrchardCore.Theme.Sdk/Sdk/Import.targets" />
+          Project="$(SmartentMonorepoRoot)/src/Build/Smartent.Build.OrchardCore.Theme.Sdk/Sdk/Import.targets" />
   <Import Condition="'$(UseSmartentMonorepoMsBuildSdk)' != 'true'"
           Sdk="Smartent.Build.OrchardCore.Theme.Sdk"
           Project="Sdk.targets"
           Version="2.1.1" />
 
   <ItemGroup Condition="'$(UseSmartentMonorepoMsBuildSdk)' == 'true'">
-    <ProjectReference Include="$(SmartentMonorepoRoot)/Smartent-src/Build/Smartent.Build.Npm.Targets/Smartent.Build.Npm.Targets.csproj" />
+    <ProjectReference Include="$(SmartentMonorepoRoot)/src/Build/Smartent.Build.Npm.Targets/Smartent.Build.Npm.Targets.csproj" />
   </ItemGroup>
   <ItemGroup Condition="'$(UseSmartentMonorepoMsBuildSdk)' != 'true'">
     <PackageReference Include="Smartent.Build.Npm.Targets" />

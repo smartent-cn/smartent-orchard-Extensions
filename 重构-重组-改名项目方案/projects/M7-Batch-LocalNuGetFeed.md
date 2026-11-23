@@ -13,7 +13,7 @@
 | `NuGetVerify/NuGet.config.local.example` | 本地 feed 源模板 |
 | `artifacts/smartent-nuget-local/` | 本地 feed 输出目录（gitignore） |
 | `NuGetVerify/NuGet.config` | 注释占位 `SmartentLocal` 源 |
-| 根 `Reset-Local.ps1` | 指向 `Smartent-src/Demo/Smartent.Demo.Web/App_Data` |
+| 根 `Reset-Local.ps1` | 指向 `src/Demo/Smartent.Demo.Web/App_Data` |
 
 ## 验证
 

@@ -1,13 +1,13 @@
 # 子方案：M5 `Smartent.Orchard.TrainingDemo`
 
 > 阶段：**M5**  
-> 状态：**已迁入 Smartent-src**（2026-11-22）
+> 状态：**已迁入 src**（2026-11-22）
 
 ## 范围
 
 | 原路径 | 新路径 |
 |--------|--------|
-| `src/Modules/Lombiq.TrainingDemo/` | `Smartent-src/Modules/Smartent.Orchard.TrainingDemo/` |
+| `src/Modules/Lombiq.TrainingDemo/` | `src/Modules/Smartent.Orchard.TrainingDemo/` |
 
 子工程：`Smartent.Orchard.TrainingDemo`、`Smartent.Orchard.TrainingDemo.Tests`、`Smartent.Orchard.TrainingDemo.Web`（本地教学宿主，未入主 sln）。
 

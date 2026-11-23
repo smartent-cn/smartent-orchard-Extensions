@@ -8,7 +8,7 @@ alwaysApply: true
 完整说明：`docs/standards/workflow-commits.md`
 
 - 每完成 **一个可验证单元**（迁入项目 / 功能 / 测试修复）且 **测试门禁通过** 后，才可建议用户提交；**未经用户明确要求不得 `git commit` / push**。
-- `Smartent-src/`：迁一删一；引用全部切换前 **不得** 删除 Legacy `src/` 对应目录。
+- `src/`：迁一删一；引用全部切换前 **不得** 删除 Legacy `src/` 对应目录。
 - 构建通过 **不能** 替代该变更所需的 UI/集成测试。
-- 重构/功能 PR 须同步更新该项目 **中英文** `Readme.md`（`Smartent-src` 下强制）。
+- 重构/功能 PR 须同步更新该项目 **中英文** `Readme.md`（`src` 下强制）。
 - 读仓库规则时同时参阅 `.agents/README.md` 与 `重构-重组-改名项目方案/`。

@@ -13,8 +13,8 @@
 | 4 | `M6-PackageId-Exceptions.md` | 仅分析器例外 |
 | 5 | `M7-Batch-9` / `M7-Batch-NuGetTest-PackageIds` | 文档同步 |
 | 6 | `NuGetVerify/Readme.md` | Smartent.Test.Unit 还原说明 |
-| 7 | Legacy `UsingMSBuildSdks.md` | 指针 → `Smartent-src/Build/Docs` |
-| 8 | `Smartent-src/Build/Docs/UsingMSBuildSdks.md` | 去掉 HelpfulLibraries Legacy 路径说明 |
+| 7 | Legacy `UsingMSBuildSdks.md` | 指针 → `src/Build/Docs` |
+| 8 | `src/Build/Docs/UsingMSBuildSdks.md` | 去掉 HelpfulLibraries Legacy 路径说明 |
 | 9 | `scripts/README.md` | Full gate 前置条件 |
 | 10 | 门禁 | `Invoke-M7CoreFeedGate.ps1 -SkipPack` |
 

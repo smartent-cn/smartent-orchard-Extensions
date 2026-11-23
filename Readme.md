@@ -1,7 +1,7 @@
 # Lombiq's Open-Source Orchard Core Extensions
 
-> **Smartent 训练演示仓**（Gitee `smartent-training-demo-modules`）：新代码在 [`Smartent-src/`](Smartent-src/README.md)；重构方案见 [`重构-重组-改名项目方案/`](重构-重组-改名项目方案/README.md)；M7 本地 NuGet 门禁：`./scripts/Invoke-M7CoreFeedGate.ps1`。  
-> **Smartent training demo monorepo**: application code lives under `Smartent-src/`; M7 feed gate: `./scripts/Invoke-M7CoreFeedGate.ps1`. Below is legacy Lombiq OSOCE documentation.
+> **Smartent 训练演示仓**（Gitee `smartent-training-demo-modules`）：新代码在 [`src/`](src/README.md)；重构方案见 [`重构-重组-改名项目方案/`](重构-重组-改名项目方案/README.md)；M7 本地 NuGet 门禁：`./scripts/Invoke-M7CoreFeedGate.ps1`。  
+> **Smartent training demo monorepo**: application code lives under `src/`; M7 feed gate: `./scripts/Invoke-M7CoreFeedGate.ps1`. Below is legacy Lombiq OSOCE documentation.
 
 [![Build and Test](https://github.com/Lombiq/Open-Source-Orchard-Core-Extensions/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/Lombiq/Open-Source-Orchard-Core-Extensions/actions/workflows/build-and-test.yml) [![Build and Test Windows](https://github.com/Lombiq/Open-Source-Orchard-Core-Extensions/actions/workflows/build-and-test-windows.yml/badge.svg)](https://github.com/Lombiq/Open-Source-Orchard-Core-Extensions/actions/workflows/build-and-test-windows.yml) [![GitHub commit activity](https://img.shields.io/github/commit-activity/m/Lombiq/Open-Source-Orchard-Core-Extensions)](https://github.com/Lombiq/Open-Source-Orchard-Core-Extensions/commits/dev) [![GitHub last commit](https://img.shields.io/github/last-commit/Lombiq/Open-Source-Orchard-Core-Extensions)](https://github.com/Lombiq/Open-Source-Orchard-Core-Extensions/commits/dev) [![GitHub contributors](https://img.shields.io/github/contributors/Lombiq/Open-Source-Orchard-Core-Extensions)](https://github.com/Lombiq/Open-Source-Orchard-Core-Extensions/graphs/contributors)
 
@@ -34,7 +34,7 @@ Note that this solution also has an Orchard 1 counterpart, [Lombiq's Open-Source
 
 ### Modules
 
-> **Smartent 模块**：源码与 PackageId 索引见 [`Smartent-src/Modules/README.md`](Smartent-src/Modules/README.md)。下列 Lombiq 外链为 Legacy OSOCE 说明，逐项迁移中。
+> **Smartent 模块**：源码与 PackageId 索引见 [`src/Modules/README.md`](src/Modules/README.md)。下列 Lombiq 外链为 Legacy OSOCE 说明，逐项迁移中。
 
 - [`Lombiq.AuditTrailExtensions`](https://github.com/Lombiq/Audit-Trail-Extensions): A module with additional features for the [Audit Trail module](https://docs.orchardcore.net/en/latest/docs/reference/modules/AuditTrail/) in Orchard Core.
 - [`Smartent.Orchard.ChartJs`](https://github.com/Lombiq/Orchard-Chart.js): An Orchard Core wrapper around the [Chart.js](https://www.chartjs.org/) library for displaying datasets as various charts.
@@ -67,17 +67,17 @@ Note that this solution also has an Orchard 1 counterpart, [Lombiq's Open-Source
 - [`Lombiq.VueJs`](https://github.com/Lombiq/Orchard-Vue.js): [Orchard Core](https://orchardproject.net/) module that contains [Vue.js](https://vuejs.org/) resources.
 - [`Lombiq.Walkthroughs`](https://github.com/Lombiq/Orchard-Walkthroughs): Do you want to learn about the most important Orchard Core features with a hands-on tutorial that guides you with interactive tooltips, right there in Orchard Core? This module is for you! Check out a demo video of it [here](https://www.youtube.com/watch?v=mWfngBADvX0).
 
-### Themes（Smartent-src）
+### Themes（`src/`）
 
-源码与 PackageId 见 [`Smartent-src/Themes/README.md`](Smartent-src/Themes/README.md)。
+源码与 PackageId 见 [`src/Themes/README.md`](src/Themes/README.md)。
 
 - `Smartent.Orchard.Theme.Base` / `.Native` / `.Samples`（原 Lombiq.BaseTheme.*）
 - `Smartent.Orchard.Theme.Media` / `.Bridge` / `.Tests.Theme`（原 Lombiq.Hosting.MediaTheme.*）
 - `Smartent.Build.Tailwind` 样例主题（原 Lombiq.Tailwind.Targets.Samples）
 
-### Utilities / Build（Smartent-src/Build）
+### Utilities / Build（src/Build）
 
-见 [`Smartent-src/Build/`](Smartent-src/Build/) 与各子项目 `Readme.md`。
+见 [`src/Build/`](src/Build/) 与各子项目 `Readme.md`。
 
 - `Smartent.Build.LibMan.Targets`、`Smartent.Build.Base.Sdk` 与各 Orchard Sdk（原 Lombiq.MSBuild.*）
 - `Smartent.Build.Npm.Targets`、`Smartent.Build.NodeJs`（原 Lombiq.Npm / Lombiq.NodeJs.Extensions）
@@ -110,10 +110,10 @@ You can activate various sample content in the site:
 - [`Smartent.Orchard.DataTables`](https://github.com/Lombiq/Orchard-Data-Tables):
   - Go to Features in the admin dashboard and select "Lombiq Data Tables - Samples".
   - Go to Recipes in the admin dashboard and select "Lombiq Data Tables - Sample Content - Employee".
-- [`Smartent.Orchard.Theme.Base.Samples`](Smartent-src/Themes/Smartent.Orchard.Theme.Base/): Run recipe `Smartent.Demo.BaseTheme` or NuGetVerify `Smartent.NuGet.BaseTheme` in tests; feature id `Smartent.Orchard.Theme.Base.Samples`.
+- [`Smartent.Orchard.Theme.Base.Samples`](src/Themes/Smartent.Orchard.Theme.Base/): Run recipe `Smartent.Demo.BaseTheme` or NuGetVerify `Smartent.NuGet.BaseTheme` in tests; feature id `Smartent.Orchard.Theme.Base.Samples`.
 - [`Smartent.Orchard.ChartJs`](https://github.com/Lombiq/Orchard-Chart.js): Go to Recipes in the admin dashboard and select "Lombiq Chart.js - Sample Content - Income/Expense".
 - [`Lombiq.Privacy`](https://github.com/Lombiq/Orchard-Privacy): Go to Recipes in the admin dashboard and select "Lombiq Privacy - Sample Content - Privacy, Forms, Workflows".
-- [`Smartent.Orchard.Theme.Media`](Smartent-src/Themes/Smartent.Orchard.Theme.Media/): Media Theme 部署配方见 `Smartent.NuGet.Web.recipe.json` / 主题模块文档。
+- [`Smartent.Orchard.Theme.Media`](src/Themes/Smartent.Orchard.Theme.Media/): Media Theme 部署配方见 `Smartent.NuGet.Web.recipe.json` / 主题模块文档。
 
 ## Contributing and support
 

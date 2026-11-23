@@ -1,0 +1,44 @@
+<Project>
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <PackageVersionLombiqTestsUI>16.0.1-alpha.3.osoe-1326</PackageVersionLombiqTestsUI>
+  </PropertyGroup>
+
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../Build/Smartent.Build.OrchardCore.Tests.UI.Library.Sdk/Sdk/Import.props" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Smartent.Build.OrchardCore.Tests.UI.Library.Sdk" Version="2.1.1" />
+
+  <PropertyGroup>
+    <RootNamespace>Smartent.Orchard.ApiClient.Tests.UI</RootNamespace>
+    <AssemblyName>Smartent.Orchard.ApiClient.Tests.UI</AssemblyName>
+    <PackageId>Smartent.Orchard.ApiClient.Tests.UI</PackageId>
+    <Title>Smartent Orchard API Client - UI Test Extensions</Title>
+    <CopyrightYear>2022</CopyrightYear>
+    <DescriptionBody>Smartent Orchard API Client 的 UI 测试扩展。</DescriptionBody>
+    <PackageTags>Smartent;OrchardCore;Refit;OpenId;ApiClient;UITesting</PackageTags>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules/tree/master/src/Libraries/Smartent.Orchard.ApiClient</PackageProjectUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Recipes\Smartent.Orchard.ApiClient.Tests.UI.OpenId.recipe.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Recipes\Smartent.Orchard.ApiClient.Tests.UI.OpenId.recipe.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Smartent.Orchard.ApiClient\Smartent.Orchard.ApiClient.csproj" />
+  </ItemGroup>
+
+  <!-- Security Updates for Orchard Core - make sure to check if these are still necessary -->
+  <ItemGroup Condition="'$(ManagePackageVersionsCentrally)' != 'true'">
+    <PackageReference Include="HtmlSanitizer" Version="9.2.1039" NoWarn="NU1510" />
+  </ItemGroup>
+
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../Build/Smartent.Build.OrchardCore.Tests.UI.Library.Sdk/Sdk/Import.targets" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.targets" Sdk="Smartent.Build.OrchardCore.Tests.UI.Library.Sdk" Version="2.1.1" />
+</Project>

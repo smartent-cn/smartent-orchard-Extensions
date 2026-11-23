@@ -27,4 +27,4 @@ GitHub 要求可复用工作流 YAML 位于某仓库的 **`.github/workflows/`**
 ## 本地对照文档 | Local docs
 
 - `tools/Smartent.GitHub.Actions/Docs/Workflows/Productivity/PublishNuGetPackage.md`
-- `tools/Smartent.GitHub.Actions/Docs/Workflows/Productivity/AssetLinting.md`（示例路径已用 `Smartent-src/`）
+- `tools/Smartent.GitHub.Actions/Docs/Workflows/Productivity/AssetLinting.md`（示例路径已用 `src/`）

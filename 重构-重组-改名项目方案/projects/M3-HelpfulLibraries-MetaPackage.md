@@ -6,7 +6,7 @@
 ## 目标
 
 - ~~过渡期保留元包 csproj~~：**已移除**；不再作为新模块的默认依赖。
-- 发布侧逐步改为引用各 `Smartent.*` 包（见 `Smartent-src/Platform/`）。
+- 发布侧逐步改为引用各 `Smartent.*` 包（见 `src/Platform/`）。
 - 终态：元包 **废弃** 或替换为 `Smartent.Platform` 聚合包（可选，非本步必须）。
 
 ## 现状（2026-11-22）
@@ -18,7 +18,7 @@
 | `NuGetVerify` | PackageReference NuGet | `Smartent.*` + `Smartent.Build.*` Sdk（已移除 `Lombiq.HelpfulLibraries.OrchardCore` 中央版本） |
 | 新模块 | — | **禁止**（见总纲 `重构-重组-改名项目方案/Readme.md` §5.2） |
 
-元包内 `ProjectReference` 已全部指向 `Smartent-src`（Core + Orchard Platform）。
+元包内 `ProjectReference` 已全部指向 `src`（Core + Orchard Platform）。
 
 ## 步骤
 
@@ -31,6 +31,6 @@
 ## 验证
 
 ```powershell
-dotnet test Smartent-src/Test/Smartent.Test.Platform/Smartent.Test.Platform.csproj --filter "FullyQualifiedName~UnitTests" -c Release
-dotnet test Smartent-src/Build/Smartent.Build.Targets.Tests/Smartent.Build.Targets.Tests.csproj -c Release
+dotnet test src/Test/Smartent.Test.Platform/Smartent.Test.Platform.csproj --filter "FullyQualifiedName~UnitTests" -c Release
+dotnet test src/Build/Smartent.Build.Targets.Tests/Smartent.Build.Targets.Tests.csproj -c Release
 ```

@@ -24,36 +24,36 @@ jobs:
     uses: Lombiq/GitHub-Actions/.github/workflows/asset-lint.yml@dev
     with:
       scripts: >
-        Smartent-src/Modules/Smartent.Orchard.ContentEditors/Smartent.Orchard.ContentEditors;
-        Smartent-src/Modules/Smartent.Orchard.ContentEditors/Smartent.Orchard.ContentEditors.Samples;
-        Smartent-src/Modules/Smartent.Orchard.DataTables/Smartent.Orchard.DataTables;
-        Smartent-src/Modules/Smartent.Orchard.Extensions.Cms/Smartent.Orchard.Extensions.Cms;
-        Smartent-src/Modules/Smartent.Orchard.UIKit/Smartent.Orchard.UIKit;
-        Smartent-src/Modules/Smartent.Orchard.Walkthroughs/Smartent.Orchard.Walkthroughs;
-        Smartent-src/Modules/Smartent.Orchard.Hosting.Tenants/Smartent.Orchard.Hosting.Tenants.Maintenance;
+        src/Modules/Smartent.Orchard.ContentEditors/Smartent.Orchard.ContentEditors;
+        src/Modules/Smartent.Orchard.ContentEditors/Smartent.Orchard.ContentEditors.Samples;
+        src/Modules/Smartent.Orchard.DataTables/Smartent.Orchard.DataTables;
+        src/Modules/Smartent.Orchard.Extensions.Cms/Smartent.Orchard.Extensions.Cms;
+        src/Modules/Smartent.Orchard.UIKit/Smartent.Orchard.UIKit;
+        src/Modules/Smartent.Orchard.Walkthroughs/Smartent.Orchard.Walkthroughs;
+        src/Modules/Smartent.Orchard.Hosting.Tenants/Smartent.Orchard.Hosting.Tenants.Maintenance;
       styles: >-
-        Smartent-src/Modules/Smartent.Orchard.ChartJs/Smartent.Orchard.ChartJs.Samples;
-        Smartent-src/Modules/Smartent.Orchard.Extensions.Cms/Smartent.Orchard.Extensions.Cms;
-        Smartent-src/Modules/Smartent.Orchard.JsonEditor/Smartent.Orchard.JsonEditor;
-        Smartent-src/Modules/Smartent.Orchard.Privacy/Smartent.Orchard.Privacy;
-        Smartent-src/Modules/Smartent.Orchard.UIKit/Smartent.Orchard.UIKit;
-        Smartent-src/Themes/Smartent.Orchard.Theme.Base/Smartent.Orchard.Theme.Base.Core;
-        Smartent-src/Themes/Smartent.Orchard.Theme.Base/Smartent.Orchard.Theme.Base.Native;
-        Smartent-src/Themes/Smartent.Orchard.Theme.Base/Smartent.Orchard.Theme.Base.Samples;
+        src/Modules/Smartent.Orchard.ChartJs/Smartent.Orchard.ChartJs.Samples;
+        src/Modules/Smartent.Orchard.Extensions.Cms/Smartent.Orchard.Extensions.Cms;
+        src/Modules/Smartent.Orchard.JsonEditor/Smartent.Orchard.JsonEditor;
+        src/Modules/Smartent.Orchard.Privacy/Smartent.Orchard.Privacy;
+        src/Modules/Smartent.Orchard.UIKit/Smartent.Orchard.UIKit;
+        src/Themes/Smartent.Orchard.Theme.Base/Smartent.Orchard.Theme.Base.Core;
+        src/Themes/Smartent.Orchard.Theme.Base/Smartent.Orchard.Theme.Base.Native;
+        src/Themes/Smartent.Orchard.Theme.Base/Smartent.Orchard.Theme.Base.Samples;
       texts: >-
-        Smartent-src/Modules/Smartent.Orchard.ChartJs/Smartent.Orchard.ChartJs.Samples;
-        Smartent-src/Modules/Smartent.Orchard.ContentEditors/Smartent.Orchard.ContentEditors;
-        Smartent-src/Modules/Smartent.Orchard.ContentEditors/Smartent.Orchard.ContentEditors.Samples;
-        Smartent-src/Modules/Smartent.Orchard.DataTables/Smartent.Orchard.DataTables;
-        Smartent-src/Modules/Smartent.Orchard.Extensions.Cms/Smartent.Orchard.Extensions.Cms;
-        Smartent-src/Modules/Smartent.Orchard.Hosting.Tenants/Smartent.Orchard.Hosting.Tenants.Maintenance;
-        Smartent-src/Modules/Smartent.Orchard.JsonEditor/Smartent.Orchard.JsonEditor;
-        Smartent-src/Modules/Smartent.Orchard.Privacy/Smartent.Orchard.Privacy;
-        Smartent-src/Modules/Smartent.Orchard.UIKit/Smartent.Orchard.UIKit;
-        Smartent-src/Modules/Smartent.Orchard.Walkthroughs/Smartent.Orchard.Walkthroughs;
-        Smartent-src/Themes/Smartent.Orchard.Theme.Base/Smartent.Orchard.Theme.Base.Core;
-        Smartent-src/Themes/Smartent.Orchard.Theme.Base/Smartent.Orchard.Theme.Base.Native;
-        Smartent-src/Themes/Smartent.Orchard.Theme.Base/Smartent.Orchard.Theme.Base.Samples;
+        src/Modules/Smartent.Orchard.ChartJs/Smartent.Orchard.ChartJs.Samples;
+        src/Modules/Smartent.Orchard.ContentEditors/Smartent.Orchard.ContentEditors;
+        src/Modules/Smartent.Orchard.ContentEditors/Smartent.Orchard.ContentEditors.Samples;
+        src/Modules/Smartent.Orchard.DataTables/Smartent.Orchard.DataTables;
+        src/Modules/Smartent.Orchard.Extensions.Cms/Smartent.Orchard.Extensions.Cms;
+        src/Modules/Smartent.Orchard.Hosting.Tenants/Smartent.Orchard.Hosting.Tenants.Maintenance;
+        src/Modules/Smartent.Orchard.JsonEditor/Smartent.Orchard.JsonEditor;
+        src/Modules/Smartent.Orchard.Privacy/Smartent.Orchard.Privacy;
+        src/Modules/Smartent.Orchard.UIKit/Smartent.Orchard.UIKit;
+        src/Modules/Smartent.Orchard.Walkthroughs/Smartent.Orchard.Walkthroughs;
+        src/Themes/Smartent.Orchard.Theme.Base/Smartent.Orchard.Theme.Base.Core;
+        src/Themes/Smartent.Orchard.Theme.Base/Smartent.Orchard.Theme.Base.Native;
+        src/Themes/Smartent.Orchard.Theme.Base/Smartent.Orchard.Theme.Base.Samples;
 ```
 
 This will lint the files in _wwwroot/js_ and _wwwroot/css_ folders under the given folders, respectively. If you need linting in a different directory, you can also append `:{relative path or glob pattern}` after each project directory path. For example to lint scripts in the project root:
@@ -64,7 +64,7 @@ This will lint the files in _wwwroot/js_ and _wwwroot/css_ folders under the giv
     uses: Lombiq/GitHub-Actions/.github/workflows/asset-lint.yml@dev
     with:
       scripts: >
-        Smartent-src/Libraries/Smartent.Orchard.EInvoice/Smartent.Orchard.EInvoice:.
+        src/Libraries/Smartent.Orchard.EInvoice/Smartent.Orchard.EInvoice:.
 ```
 
 For descriptions of all of the workflow inputs, see [the workflow file](../../../.github/workflows/asset-lint.yml).

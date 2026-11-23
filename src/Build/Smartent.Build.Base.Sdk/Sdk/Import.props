@@ -1,0 +1,27 @@
+<Project>
+  <!-- You can't set the target framework inside a NuGet package because that information is used to find it in the
+       first place, so setting TargetFramework only makes sense when this SDK is imported from submodule. -->
+  <PropertyGroup>
+    <TargetFramework Condition="'$(TargetFramework)' == ''">net10.0</TargetFramework>
+  </PropertyGroup>
+
+  <!-- Base paths used to normalize ProjectReference paths. Relative paths are used to make them shorter. -->
+  <PropertyGroup>
+    <SmartentSolutionRootPath Condition="'$(SmartentSolutionRootPath)' == ''"
+      >$([MSBuild]::MakeRelative('$(MSBuildProjectDirectory)', '$(MSBuildThisFileDirectory)../../../..'))</SmartentSolutionRootPath>
+    <LombiqSolutionRootPath Condition="'$(LombiqSolutionRootPath)' == '' AND '$(SmartentSolutionRootPath)' != ''"
+      >$(SmartentSolutionRootPath)</LombiqSolutionRootPath>
+    <SmartentSrcPath Condition="'$(SmartentSrcPath)' == '' AND '$(SmartentSolutionRootPath)' != ''"
+      >$([MSBuild]::MakeRelative('$(MSBuildProjectDirectory)', '$(SmartentSolutionRootPath)/src'))</SmartentSrcPath>
+    <SmartentPlatformPath Condition="'$(SmartentPlatformPath)' == '' AND '$(SmartentSrcPath)' != ''"
+      >$(SmartentSrcPath)/Platform/Orchard</SmartentPlatformPath>
+    <SmartentAnalyzersPath Condition="'$(SmartentAnalyzersPath)' == '' AND '$(SmartentSolutionRootPath)' != ''"
+      >$([MSBuild]::MakeRelative('$(MSBuildProjectDirectory)', '$(SmartentSolutionRootPath)/tools/Smartent.Build.Analyzers'))</SmartentAnalyzersPath>
+    <LombiqAnalyzersPath Condition="'$(LombiqAnalyzersPath)' == '' AND '$(SmartentAnalyzersPath)' != ''"
+      >$(SmartentAnalyzersPath)</LombiqAnalyzersPath>
+    <SmartentMSBuildLibManTargetsPath>$(MSBuildThisFileDirectory)../../Smartent.Build.LibMan.Targets</SmartentMSBuildLibManTargetsPath>
+    <LombiqMSBuildLibManTargetsPath Condition="'$(LombiqMSBuildLibManTargetsPath)' == ''">$(SmartentMSBuildLibManTargetsPath)</LombiqMSBuildLibManTargetsPath>
+  </PropertyGroup>
+
+  <Import Project="$(MSBuildThisFileDirectory)Core.props" />
+</Project>

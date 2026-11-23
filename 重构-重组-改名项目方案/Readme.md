@@ -117,11 +117,11 @@ Smartent.{产品线}.{具体名称}
 
 ### 4.1 双树过渡期
 
-- **`Smartent-src/`**：重构后的 **目标代码树**（新建、迁入、扩编均在此进行）。  
+- **`src/`**：重构后的 **目标代码树**（新建、迁入、扩编均在此进行）。  
 - **`src/`、`test/`、`tools/`**：**Legacy**，每完成一个项目的迁移与验收后 **删除** 对应 Lombiq 目录。  
 - **`build/`**：全仓库 MSBuild 基线（Legacy 与 Smartent-src **共用**）。
 
-纪律见 [Smartent-src/README.md](../Smartent-src/README.md) 与 **[第一步-计划.md](第一步-计划.md)**。
+纪律见 [src/README.md](../src/README.md) 与 **[第一步-计划.md](第一步-计划.md)**。
 
 ### 4.2 终态目录示意
 
@@ -130,7 +130,7 @@ Smartent-Training-Demo-Modules/
   build/
     Smartent.Orchard.props
     Smartent.Packaging.props
-  Smartent-src/
+  src/
     Platform/Core/                  # Smartent.Core.*
     Platform/Orchard/               # Smartent.Orchard.Platform.*
     Build/                          # Smartent.Build.*
@@ -276,7 +276,7 @@ Legacy 的 `src/` 在终态 **应不存在**（或仅保留无意义占位说明
 | [docs/standards/README.md](../docs/standards/README.md) | **Smartent 开发规范总览**（C#、中英 Readme、前端依赖、测试门禁提交） |
 | [.cursor/rules/](../.cursor/rules/) | Cursor Agent 规则（与上表同步） |
 | [第一步-计划.md](第一步-计划.md) | **M1：Smartent-src 脚手架与下步迁移动作** |
-| [Smartent-src/README.md](../Smartent-src/README.md) | 新树目录约定与「迁一删一」纪律 |
+| [src/README.md](../src/README.md) | 新树目录约定与「迁一删一」纪律 |
 | [项目清单.md](项目清单.md) | 现名 → 目标 Smartent 产品线映射（拆包列 TBD） |
 | [projects/_模板.md](projects/_模板.md) | 单项目子方案模板 |
 | [阶段检查表.md](阶段检查表.md) | M0–M7 勾选项 |
@@ -301,7 +301,7 @@ Legacy 的 `src/` 在终态 **应不存在**（或仅保留无意义占位说明
 
 ### 12.1 迁入项目时的文档义务
 
-每完成一个 `Smartent-src` 项目迁入且测试通过：
+每完成一个 `src` 项目迁入且测试通过：
 
 1. 按 [PROJECT_README.template.md](../docs/templates/PROJECT_README.template.md) 编写或更新 `Readme.md`（中英文）。  
 2. 为新增/变更的 **public API** 补 **中文** XML 注释。  

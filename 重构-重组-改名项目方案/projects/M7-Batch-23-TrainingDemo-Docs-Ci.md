@@ -12,7 +12,7 @@
 | 3 | TrainingDemo `Startup` | `GetTrainingDemoSection()` |
 | 4 | Demo `appsettings.json` | `Smartent_TrainingDemo` |
 | 5 | `Configuration-Key-Rename.md` | TrainingDemo 行 |
-| 6 | `Smartent-src/Modules/README.md` | 中英模块索引表 |
+| 6 | `src/Modules/README.md` | 中英模块索引表 |
 | 7 | 根 `Readme.md` | Modules 段指向 Smartent-src 索引 |
 | 8 | `docs/ci/Smartent-GitHub-Actions.md` | GHA 迁移动机与步骤 |
 | 9 | `.github/YAMLLinting.md` + `build-and-test.yml` 注释 | 指向 Smartent GHA 文档 |

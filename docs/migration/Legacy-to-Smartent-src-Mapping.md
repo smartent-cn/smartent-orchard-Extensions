@@ -1,11 +1,11 @@
-# Legacy `src/` / `test/` → `Smartent-src/` 对照表
+# Legacy `src/` / `test/` → `src/` 对照表
 
 > **用途**：删除 Legacy 目录**之前**必须查阅并更新本表；与 [项目清单.md](../../重构-重组-改名项目方案/项目清单.md) 互补（清单偏阶段与发布策略，本表偏路径与拆包明细）。  
-> **English**: Authoritative path mapping from Lombiq legacy trees to `Smartent-src/` before any Legacy folder removal.
+> **English**: Authoritative path mapping from Lombiq legacy trees to `src/` before any Legacy folder removal.
 
 **版本 | Version**: 1.0  
 **最近更新 | Last updated**: 2026-11-24  
-**维护**：删 Legacy 子目录或新增 `Smartent-src` 工程时，在本表增改一行并注明 `Legacy 删除状态`。
+**维护**：删 Legacy 子目录或新增 `src` 工程时，在本表增改一行并注明 `Legacy 删除状态`。
 
 ---
 
@@ -15,7 +15,7 @@
 |-----------------|------|
 | **指针可删** | Legacy 下仅 `Readme.md`，无 `.csproj`，且仓库内无 `ProjectReference`/`Import` 指向该路径 |
 | **保留** | 仍有 `.csproj` 或 MSBuild/工程仍引用，**不得**删 |
-| **待脱钩** | 源码已在 `Smartent-src`，但 Legacy 仍被引用（删前需改 csproj/Import） |
+| **待脱钩** | 源码已在 `src`，但 Legacy 仍被引用（删前需改 csproj/Import） |
 | **未迁入** | 仍只有 Legacy 实现或未计划迁入 |
 
 | 拆包 | 含义 |
@@ -39,10 +39,10 @@
 
 | Legacy 路径 | 原因 |
 |-------------|------|
-| ~~`src/Utilities/Lombiq.MSBuild.Targets/`~~ | **已删**（2026-11-23）；MSBuild 在 `Smartent-src/Build/` |
+| ~~`src/Utilities/Lombiq.MSBuild.Targets/`~~ | **已删**（2026-11-23）；MSBuild 在 `src/Build/` |
 | ~~`src/Libraries/Lombiq.HelpfulLibraries/`~~ | **已删**（2026-11-23） |
-| ~~`src/Utilities/Lombiq.Tailwind.Targets/`~~ | **已删**（2026-11-23）；源码在 `Smartent-src/Build/Smartent.Build.Tailwind` |
-| `tools/Smartent.Build.Analyzers/*` | 未迁入 `Smartent-src`；主 sln 仍引用 |
+| ~~`src/Utilities/Lombiq.Tailwind.Targets/`~~ | **已删**（2026-11-23）；源码在 `src/Build/Smartent.Build.Tailwind` |
+| `tools/Smartent.Build.Analyzers/*` | 未迁入 `src`；主 sln 仍引用 |
 
 `src/` 现仅保留 [`src/README.md`](../../src/README.md) 指针说明。`src/Modules/**`、`src/Themes/**`：**已删**（2026-11-24 batch 3）；`test/Lombiq.*` 指针已删。
 
@@ -50,7 +50,7 @@
 
 ## 4. Platform / Core（原 `Lombiq.HelpfulLibraries` 拆包）
 
-原单仓多 csproj → `Smartent-src/Platform/` + `Smartent-src/Test/`。
+原单仓多 csproj → `src/Platform/` + `src/Test/`。
 
 | Legacy（旧项目 / 目录） | Smartent-src 路径 | 主 PackageId（发布面） | 拆包 | Legacy 删除状态 |
 |-------------------------|-------------------|------------------------|------|-----------------|
@@ -91,7 +91,7 @@
 | `Lombiq.MSBuild.Sdk.NuGet.Samples` | `Build/Smartent.Build.Sdk.NuGet.Samples` | — | 1:1 | **已删** |
 | `Lombiq.MSBuild.Targets.Tests` | `Build/Smartent.Build.Targets.Tests` | — | 1:1 | **已删** |
 | `Lombiq.MSBuild.Targets.Tests.UI` | `Build/Smartent.Build.Targets.Tests.UI` | — | 1:1 | **已删** |
-| `Lombiq.MSBuild.Targets/Directory.Build.props` | `Smartent-src/Build/Directory.Build.props` | — | — | **shim**（转发 Import） |
+| `Lombiq.MSBuild.Targets/Directory.Build.props` | `src/Build/Directory.Build.props` | — | — | **shim**（转发 Import） |
 
 ---
 
@@ -104,7 +104,7 @@
 
 ---
 
-## 7. Orchard 模块（`src/Modules` → `Smartent-src/Modules`）
+## 7. Orchard 模块（`src/Modules` → `src/Modules`）
 
 ### 7.1 单主模块 1:1（含 Samples / Tests / Tests.UI 子工程随主模块改名）
 
@@ -184,7 +184,7 @@ Legacy 行状态：**指针可删**（`src/Modules/Lombiq.*` 目录），删除�
 |------|-------------|
 | `tools/Smartent.Build.Analyzers/*` | 可选 `Smartent.Build.Analyzers.*`（M1/M4 **TBD**） |
 | `tools/Smartent.GitHub.Actions` | 可选 Smartent CI 复制（**未迁入**） |
-| MSBuild Samples/Tests | 已迁 `Smartent-src/Build/Smartent.Build.*` |
+| MSBuild Samples/Tests | 已迁 `src/Build/Smartent.Build.*` |
 
 PackageId 仍为 Lombiq 的例外清单：[M6-PackageId-Exceptions.md](../../重构-重组-改名项目方案/M6-PackageId-Exceptions.md)。
 
@@ -205,4 +205,4 @@ PackageId 仍为 Lombiq 的例外清单：[M6-PackageId-Exceptions.md](../../重
 | 日期 | 变更 |
 |------|------|
 | 2026-11-23 | 初版：汇总 M2–M7 已迁入路径、1:N 拆包、Legacy 删除状态快照 |
-| 2026-11-24 | Legacy batch 3–5：`src/Modules`、`src/Themes`、`test` 指针删除；MSBuild 样例/测试与元包迁 `Smartent-src/Build`；`Smartent.Orchard.slnx` 去 Legacy 工程路径 |
+| 2026-11-24 | Legacy batch 3–5：`src/Modules`、`src/Themes`、`test` 指针删除；MSBuild 样例/测试与元包迁 `src/Build`；`Smartent.Orchard.slnx` 去 Legacy 工程路径 |

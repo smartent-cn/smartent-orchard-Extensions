@@ -1,0 +1,96 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="..\..\..\Build\Smartent.Build.NodeJs\Smartent.Build.NodeJs\Smartent.Build.NodeJs.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>Smartent.Orchard.VueJs</RootNamespace>
+    <AssemblyName>Smartent.Orchard.VueJs</AssemblyName>
+    <PackageId>Smartent.Orchard.VueJs</PackageId>
+    <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+    <DefaultItemExcludes>$(DefaultItemExcludes);.git*;node_modules\**</DefaultItemExcludes>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(NuGetBuild)' != 'true'">
+    <SourceGeneratorLocation>$(SolutionDir)src\Platform\Core\Smartent.Core.CodeGen.SourceGenerators\bin\Debug\netstandard2.0\Smartent.Core.CodeGen.SourceGenerators.dll</SourceGeneratorLocation>
+    <SourceGeneratorLocation Condition=" '$(Configuration)' != 'Debug' ">
+      $(SolutionDir)src\Platform\Core\Smartent.Core.CodeGen.SourceGenerators\bin\Release\netstandard2.0\Smartent.Core.CodeGen.SourceGenerators.dll
+    </SourceGeneratorLocation>
+  </PropertyGroup>
+
+  <Target Name="CustomBeforeCompile" BeforeTargets="Compile" Condition="'$(NuGetBuild)' != 'true'">
+    <MSBuild Condition="!Exists('$(SourceGeneratorLocation)')" Projects="..\..\..\Platform\Core\Smartent.Core.CodeGen.SourceGenerators\Smartent.Core.CodeGen.SourceGenerators.csproj" />
+  </Target>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <Title>Lombiq Vue.js module for Orchard Core</Title>
+    <Authors>Lombiq Technologies</Authors>
+    <Copyright>Copyright © 2019, Lombiq Technologies Ltd.</Copyright>
+    <Description>Lombiq Vue.js module for Orchard Core: Orchard Core module that contains Vue.js and commonly used Vue.js components to be used in other Vue.js apps as dependencies. Provides extensibility to create Vue.js component templates as Orchard Core shapes making them able to override in themes or modules.</Description>
+    <PackageIcon>NuGetIcon.png</PackageIcon>
+    <PackageTags>OrchardCore;Lombiq;AspNetCore;Vue.js</PackageTags>
+    <RepositoryUrl>https://github.com/Lombiq/Orchard-Vue.js</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/Lombiq/Orchard-Vue.js</PackageProjectUrl>
+    <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="package.json" Pack="true" PackagePath="" />
+    <None Include="NuGetIcon.png" Pack="true" PackagePath="" />
+    <None Include="build/**" Pack="true" PackagePath="build/" />
+    <None Include="*.props" Pack="true" PackagePath="" />
+    <None Include="*.targets" Pack="true" PackagePath="" />
+    <None Include=".npmrc" Pack="true" PackagePath="" />
+    <None Include="Assets/**" Pack="true" PackagePath="Assets/" />
+    <None Remove="node_modules/**" />
+
+    <!-- Necessary to include the reusabe SFCs in this module. For other modules that consume Smartent.Orchard.VueJs this is
+         handled by the Smartent.Orchard.VueJs.props file. -->
+    <EmbeddedResource Include="Assets\Scripts\VueComponents\*.vue" />
+
+    <!-- Necessary to avoid NU5118 due to duplicate build/Smartent.Orchard.VueJs.props files. The referenced module
+         "OrchardCore.Module.Targets" tries to generate that file from the Package.Build.props mentioned below. -->
+    <None Remove="$(NuGetPackageRoot)orchardcore.module.targets\*\build\Package.Build.props" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="OrchardCore.DisplayManagement" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.Module.Targets" Version="$(OrchardCoreVersion)" />
+    <PackageReference Include="OrchardCore.ResourceManagement" Version="$(OrchardCoreVersion)" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(NuGetBuild)' != 'true'">
+    <ProjectReference Include="..\..\..\Platform\Orchard\Smartent.Orchard.Platform\Smartent.Orchard.Platform.csproj" />
+    <ProjectReference Include="..\..\..\Build\Smartent.Build.NodeJs\Smartent.Build.NodeJs\Smartent.Build.NodeJs.csproj" />
+    <ProjectReference Include="..\..\..\Platform\Core\Smartent.Core.CodeGen.Attributes\Smartent.Core.CodeGen.Attributes.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="true" />
+    <ProjectReference Include="..\..\..\Platform\Core\Smartent.Core.CodeGen.SourceGenerators\Smartent.Core.CodeGen.SourceGenerators.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(NuGetBuild)' == 'true'">
+    <PackageReference Include="Smartent.Orchard.Platform" Version="12.6.1-alpha.7.osoe-925" />
+    <PackageReference Include="Smartent.Build.NodeJs" Version="3.0.0" />
+    <PackageReference Include="Smartent.Core.CodeGen.SourceGenerators" Version="12.6.1-alpha.7.osoe-925" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+    <PackageReference Include="Smartent.Core.CodeGen.Attributes" Version="12.6.1-alpha.7.osoe-925" OutputItemType="Analyzer" ReferenceOutputAssembly="true" />
+  </ItemGroup>
+
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="..\..\..\Build\Smartent.Build.NodeJs\Smartent.Build.NodeJs\Smartent.Build.NodeJs.targets" />
+
+  <!-- Execute Lombiq.NodeJs separately, to avoid inheriting these instructions in projects that consume Smartent.Orchard.VueJs. -->
+  <Target Name="BuildLocalScripts" AfterTargets="NpmInstall">
+    <Exec Command="npm explore nodejs-extensions -- pnpm build" />
+  </Target>
+
+  <ItemGroup>
+    <AdditionalFiles Include="package.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\renovate.json5">
+      <Link>renovate.json5</Link>
+    </None>
+  </ItemGroup>
+</Project>

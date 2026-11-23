@@ -1,17 +1,17 @@
 # 子方案：M5 批次（Samples + ChartJs + DataTables + UIKit + Extensions.Cms）
 
 > 阶段：**M5**  
-> 状态：**已迁入 Smartent-src**（2026-11-22）
+> 状态：**已迁入 src**（2026-11-22）
 
 ## 范围
 
 | Legacy | Smartent-src |
 |--------|----------------|
-| `Lombiq.HelpfulLibraries.Samples` (+ Tests.UI) | `Smartent-src/Demo/Smartent.Demo.Platform.Samples/` |
-| `Lombiq.ChartJs` (+ Samples, Tests.UI) | `Smartent-src/Modules/Smartent.Orchard.ChartJs/` |
-| `Lombiq.DataTables` (+ Samples, Tests, Tests.UI) | `Smartent-src/Modules/Smartent.Orchard.DataTables/` |
-| `Lombiq.UIKit` (+ Widgets, Tests.UI, Widgets.Tests.UI) | `Smartent-src/Modules/Smartent.Orchard.UIKit/` |
-| `Lombiq.HelpfulExtensions` (+ Tests.UI) | `Smartent-src/Modules/Smartent.Orchard.Extensions.Cms/` |
+| `Lombiq.HelpfulLibraries.Samples` (+ Tests.UI) | `src/Demo/Smartent.Demo.Platform.Samples/` |
+| `Lombiq.ChartJs` (+ Samples, Tests.UI) | `src/Modules/Smartent.Orchard.ChartJs/` |
+| `Lombiq.DataTables` (+ Samples, Tests, Tests.UI) | `src/Modules/Smartent.Orchard.DataTables/` |
+| `Lombiq.UIKit` (+ Widgets, Tests.UI, Widgets.Tests.UI) | `src/Modules/Smartent.Orchard.UIKit/` |
+| `Lombiq.HelpfulExtensions` (+ Tests.UI) | `src/Modules/Smartent.Orchard.Extensions.Cms/` |
 
 ## Feature Id（破坏性）
 
@@ -32,7 +32,7 @@
 ```powershell
 $env:NUGET_PACKAGES = "$env:USERPROFILE\.nuget\packages"
 dotnet build Smartent.Orchard.sln -c Release
-dotnet test Smartent-src/Modules/Smartent.Orchard.DataTables/Smartent.Orchard.DataTables.Tests/Smartent.Orchard.DataTables.Tests.csproj -c Release
+dotnet test src/Modules/Smartent.Orchard.DataTables/Smartent.Orchard.DataTables.Tests/Smartent.Orchard.DataTables.Tests.csproj -c Release
 ```
 
 ## 迁一删一

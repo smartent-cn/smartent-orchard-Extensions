@@ -6,7 +6,7 @@
 
 | 位置 | 文件名 | 是否必须中英文 |
 |------|--------|----------------|
-| `Smartent-src/**` 下每个 **可构建 csproj 目录** | `Readme.md` | **必须** |
+| `src/**` 下每个 **可构建 csproj 目录** | `Readme.md` | **必须** |
 | Legacy `src/**` 在迁入完成前 | 原 `Readme.md` | 迁入时在 Smartent 副本中补全双语 |
 | 仅测试/样例、不单独发布 | 可合并到父项目 Readme | 须在父文档列出子项目 |
 
@@ -30,7 +30,7 @@
 
 **Monorepo（开发）**
 \`\`\`xml
-<ProjectReference Include="..\..\..\Smartent-src\Platform\Core\Smartent.Core.Primitives\Smartent.Core.Primitives.csproj" />
+<ProjectReference Include="..\..\..\src\Platform\Core\Smartent.Core.Primitives\Smartent.Core.Primitives.csproj" />
 \`\`\`
 
 **NuGet（发布后，版本号以实际发布为准）**
@@ -56,4 +56,4 @@
 
 ## English
 
-Every buildable project under `Smartent-src/` must have a bilingual `Readme.md` using the template sections: features, references (ProjectReference + PackageReference), usage, dependencies, upgrade/extension notes, tests, provenance. Update README in the same PR when dependencies or public API change.
+Every buildable project under `src/` must have a bilingual `Readme.md` using the template sections: features, references (ProjectReference + PackageReference), usage, dependencies, upgrade/extension notes, tests, provenance. Update README in the same PR when dependencies or public API change.

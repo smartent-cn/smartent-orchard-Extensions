@@ -1,7 +1,7 @@
 # {Smartent.Package.Id} | {English Product Name}
 
-> **状态 | Status**: 草稿 Draft / 已迁入 Smartent-src Migrated / 已发布 NuGet Published  
-> **路径 | Path**: `Smartent-src/...`
+> **状态 | Status**: 草稿 Draft / 已迁入 src Migrated / 已发布 NuGet Published  
+> **路径 | Path**: `src/...`
 
 ---
 

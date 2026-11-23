@@ -1,17 +1,17 @@
 # 子方案：M5 批次 #3（VueJs + Walkthroughs + LoginAsAnybody + Marketing + Hosting.ApplicationInsights）
 
 > 阶段：**M5**  
-> 状态：**已迁入 Smartent-src**（2026-11-22）
+> 状态：**已迁入 src**（2026-11-22）
 
 ## 范围
 
 | Legacy | Smartent-src |
 |--------|----------------|
-| `Lombiq.VueJs` (+ Resources, Samples, Tests.UI) | `Smartent-src/Modules/Smartent.Orchard.VueJs/` |
-| `Lombiq.Walkthroughs` (+ Tests.UI) | `Smartent-src/Modules/Smartent.Orchard.Walkthroughs/` |
-| `Lombiq.LoginAsAnybody` (+ Tests.UI) | `Smartent-src/Modules/Smartent.Orchard.LoginAsAnybody/` |
-| `Lombiq.Marketing` (+ Pirsch, UrlShortener, Tests.UI) | `Smartent-src/Modules/Smartent.Orchard.Marketing/` |
-| `Lombiq.Hosting.Azure.ApplicationInsights` (+ Tests.UI) | `Smartent-src/Modules/Smartent.Orchard.Hosting.ApplicationInsights/` |
+| `Lombiq.VueJs` (+ Resources, Samples, Tests.UI) | `src/Modules/Smartent.Orchard.VueJs/` |
+| `Lombiq.Walkthroughs` (+ Tests.UI) | `src/Modules/Smartent.Orchard.Walkthroughs/` |
+| `Lombiq.LoginAsAnybody` (+ Tests.UI) | `src/Modules/Smartent.Orchard.LoginAsAnybody/` |
+| `Lombiq.Marketing` (+ Pirsch, UrlShortener, Tests.UI) | `src/Modules/Smartent.Orchard.Marketing/` |
+| `Lombiq.Hosting.Azure.ApplicationInsights` (+ Tests.UI) | `src/Modules/Smartent.Orchard.Hosting.ApplicationInsights/` |
 
 ## Feature Id（破坏性）
 

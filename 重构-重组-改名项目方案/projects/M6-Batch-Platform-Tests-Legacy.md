@@ -7,7 +7,7 @@
 
 | 项 | 说明 |
 |----|------|
-| `Lombiq.HelpfulLibraries.Tests` | → `Smartent-src/Test/Smartent.Test.Platform/` |
+| `Lombiq.HelpfulLibraries.Tests` | → `src/Test/Smartent.Test.Platform/` |
 | `src/Modules/Lombiq.VueJs/` 残留副本 | 删除重复 `Lombiq.VueJs` / `Samples` 树，仅保留 `Readme.md` 指针 |
 
 ## 破坏性变更（摘要）
@@ -20,7 +20,7 @@
 ## 验证
 
 ```powershell
-dotnet test Smartent-src/Test/Smartent.Test.Platform/Smartent.Test.Platform.csproj --filter "FullyQualifiedName~UnitTests"
+dotnet test src/Test/Smartent.Test.Platform/Smartent.Test.Platform.csproj --filter "FullyQualifiedName~UnitTests"
 dotnet build Smartent.Orchard.sln -c Release
 ```
 
@@ -31,6 +31,6 @@ dotnet build Smartent.Orchard.sln -c Release
 
 ## 未决
 
-- `Lombiq.MSBuild.*` Sdk 源码已迁至 `Smartent-src/Build/`；`src/Utilities/Lombiq.MSBuild.Targets` 仅 Samples/Tests
+- `Lombiq.MSBuild.*` Sdk 源码已迁至 `src/Build/`；`src/Utilities/Lombiq.MSBuild.Targets` 仅 Samples/Tests
 - `tools/Smartent.Build.Analyzers*`（M1 目录已改名；包 Id 待定）
 - `NuGetVerify` 独立还原（M7 Smartent 包上源后）

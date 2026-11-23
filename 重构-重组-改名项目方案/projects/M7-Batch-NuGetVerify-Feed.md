@@ -15,11 +15,11 @@
 
 ```powershell
 $env:NUGET_PACKAGES = "$env:USERPROFILE\.nuget\packages"
-dotnet test Smartent-src/Build/Smartent.Build.Targets.Tests/Smartent.Build.Targets.Tests.csproj -c Release
+dotnet test src/Build/Smartent.Build.Targets.Tests/Smartent.Build.Targets.Tests.csproj -c Release
 dotnet build NuGetVerify/Smartent.NuGet.Monorepo.sln -c Release
-dotnet build Smartent-src/Build/Smartent.Build.LibMan.Targets/Smartent.Build.LibMan.Targets.csproj -c Release
-dotnet pack Smartent-src/Build/Smartent.Build.Library.Sdk/Smartent.Build.Library.Sdk.csproj -c Release
-dotnet pack Smartent-src/Build/Smartent.Build.OrchardCore.Theme.Sdk/Smartent.Build.OrchardCore.Theme.Sdk.csproj -c Release
+dotnet build src/Build/Smartent.Build.LibMan.Targets/Smartent.Build.LibMan.Targets.csproj -c Release
+dotnet pack src/Build/Smartent.Build.Library.Sdk/Smartent.Build.Library.Sdk.csproj -c Release
+dotnet pack src/Build/Smartent.Build.OrchardCore.Theme.Sdk/Smartent.Build.OrchardCore.Theme.Sdk.csproj -c Release
 ```
 
 ## 未决

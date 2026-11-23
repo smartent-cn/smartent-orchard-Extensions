@@ -1,13 +1,13 @@
 # 子方案：M5 `Smartent.Orchard.EInvoice`
 
 > 阶段：**M5**  
-> 状态：**已迁入 Smartent-src**（2026-11-22）
+> 状态：**已迁入 src**（2026-11-22）
 
 ## 范围
 
 | 原路径 | 新路径 |
 |--------|--------|
-| `src/Libraries/Lombiq.EInvoiceValidator/` | `Smartent-src/Libraries/Smartent.Orchard.EInvoice/` |
+| `src/Libraries/Lombiq.EInvoiceValidator/` | `src/Libraries/Smartent.Orchard.EInvoice/` |
 
 `PackageId`：`Smartent.Orchard.EInvoice`（Sample/Benchmark/Tests 卫星工程同步改名）。
 
@@ -22,5 +22,5 @@
 
 ## 验证
 
-- `dotnet test Smartent-src/Libraries/Smartent.Orchard.EInvoice/Smartent.Orchard.EInvoice.Tests`（36/36）
+- `dotnet test src/Libraries/Smartent.Orchard.EInvoice/Smartent.Orchard.EInvoice.Tests`（36/36）
 - 主 sln 已含主包 + Tests/Sample/Benchmark
