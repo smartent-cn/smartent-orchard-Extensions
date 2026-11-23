@@ -1,8 +1,8 @@
-# Lombiq Data Tables for Orchard Core - Samples
+# Smartent Orchard Data Tables for Orchard Core - Samples
 
 ## About
 
-Example Orchard Core module that makes use of Lombiq Data Tables for Orchard Core.
+Example Orchard Core module that makes use of Smartent Orchard Data Tables for Orchard Core.
 
 For general details about and usage instructions see the [root Readme](../Readme.md).
 
@@ -18,6 +18,6 @@ You can start with any of these sections, they demonstrate different approaches 
 
 ## Contributing and support
 
-Bug reports, feature requests, comments, questions, code contributions and love letters are warmly welcome. You can send them to us via GitHub issues and pull requests. Please adhere to our [open-source guidelines](https://lombiq.com/open-source-guidelines) while doing so.
+Bug reports, feature requests, comments, questions, code contributions and love letters are warmly welcome. You can send them to us via GitHub issues and pull requests. Please adhere to our [open-source guidelines](https://gitee.com/smartent/open-source-guidelines) while doing so.
 
-This project is developed by [Lombiq Technologies](https://lombiq.com/). Commercial-grade support is available through Lombiq.
+This project is developed by [Smartent](https://gitee.com/smartent/). Commercial-grade support is available through Smartent.

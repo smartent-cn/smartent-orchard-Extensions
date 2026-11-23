@@ -1,4 +1,4 @@
-# Lombiq Base Theme for Orchard Core - Native CSS
+# Smartent Orchard Theme Base for Orchard Core - Native CSS
 
 ## About
 

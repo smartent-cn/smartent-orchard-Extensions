@@ -50,7 +50,7 @@ public class MultiBrowserTests : UITestBase
 
     private static Task NavbarIsCorrectAsync(UITestContext context)
     {
-        context.Get(By.ClassName("navbar-brand")).Text.ShouldBe("Lombiq's OSOCE - UI Testing");
+        context.Get(By.ClassName("navbar-brand")).Text.ShouldBe("Smartent's OSOCE - UI Testing");
         return Task.CompletedTask;
     }
 }

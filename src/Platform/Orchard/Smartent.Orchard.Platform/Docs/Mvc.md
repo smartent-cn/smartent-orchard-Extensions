@@ -1,4 +1,4 @@
-# Lombiq Helpful Libraries - Orchard Core Libraries - MVC for Orchard Core
+# Smartent Helpful Libraries - Orchard Core Libraries - MVC for Orchard Core
 
 ## Extensions and helpers
 
@@ -15,7 +15,7 @@ This class provides a strongly typed way to generate local URLs for Orchard Core
 
 Check out the [`Smartent.Demo.Platform.Samples` project](../../Smartent.Demo.Platform.Samples) for examples and a [video demo here](https://www.youtube.com/watch?v=_q1kCqkeSE0).
 
-If you also use our [UI Testing Toolbox](https://github.com/Lombiq/UI-Testing-Toolbox/), you can use the `UITestContext.GoTo()` extension method from there, as well.
+If you also use our [UI Testing Toolbox](https://gitee.com/smartent/smartent-training-demo-modules you can use the `UITestContext.GoTo()` extension method from there, as well.
 
 ## `WidgetFilterBase<T>`
 

@@ -1,9 +1,9 @@
 {
   "name": "Smartent.Orchard.Privacy.Samples.FeaturesAndSettings",
-  "displayName": "Lombiq Privacy - Sample - Privacy, Forms, Workflows",
-  "description": "Sample for testing and demonstration of the Lombiq Privacy module.",
-  "author": "Lombiq Technologies",
-  "website": "https://github.com/Lombiq/Orchard-Privacy",
+  "displayName": "Smartent Orchard Privacy - Sample - Privacy, Forms, Workflows",
+  "description": "Sample for testing and demonstration of the Smartent Orchard Privacy module.",
+  "author": "Smartent",
+  "website": "https://gitee.com/smartent/smartent-training-demo-modules",
   "version": "1.0",
   "issetuprecipe": false,
   "categories": [
@@ -33,7 +33,7 @@
     },
     {
       "name": "Settings",
-      // To represent the usage of "Lombiq Privacy - Registration consent".
+      // To represent the usage of "Smartent Orchard Privacy - Registration consent".
       // Here is a possible solution for a use case, where competitors can make registration,
       // and the registration form comes up as home page.
       "HomeRoute": {

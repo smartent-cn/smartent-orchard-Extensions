@@ -3,8 +3,8 @@
   "name": "Smartent.Test.UI.Samples.Elasticsearch",
   "displayName": "TEST: Elasticsearch Configuration",
   "description": "Elasticsearch Configuration recipe for automated UI test execution.",
-  "author": "Lombiq Technologies",
-  "website": "https://github.com/Lombiq/UI-Testing-Toolbox",
+  "author": "Smartent",
+  "website": "https://gitee.com/smartent/smartent-training-demo-modules",
   "version": "1.0",
   "issetuprecipe": true,
   "categories": [

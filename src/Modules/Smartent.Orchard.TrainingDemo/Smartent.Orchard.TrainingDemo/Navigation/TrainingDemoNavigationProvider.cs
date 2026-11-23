@@ -12,11 +12,11 @@ namespace Smartent.Orchard.TrainingDemo.Navigation;
 // it from custom code. You can retrieve them with INavigationManager.BuildMenuAsync("main", ActionContext). If you
 // use the Smartent.Orchard.Extensions.Cms.Widgets feature, it has a MenuWidget which can accept the MenuItem collection
 // returned by this method call and display a Bootstrap "navbar" wherever you need a menu. Or if you use a theme
-// which extends Lombiq.BaseTheme.Core, then it already displays your "main" navigation entries as a MenuWidget on its
+// which extends Smartent.BaseTheme.Core, then it already displays your "main" navigation entries as a MenuWidget on its
 // own. Yes, this is basically an ad for our other projects. :)
 //
-// For details on how to use them, see the Lombiq.BaseTheme.Samples project:
-// https://github.com/Lombiq/Orchard-Base-Theme/tree/dev/Lombiq.BaseTheme.Native.Samples
+// For details on how to use them, see the Smartent.BaseTheme.Samples project:
+// https://gitee.com/smartent/smartent-training-demo-modules
 public class TrainingDemoNavigationProvider : MainMenuNavigationProviderBase
 {
     public TrainingDemoNavigationProvider(

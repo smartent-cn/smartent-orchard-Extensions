@@ -14,7 +14,7 @@
   <PropertyGroup>
     <Title>Smartent NPM MSBuild Targets</Title>
     <CopyrightYear>2020</CopyrightYear>
-    <DescriptionBody>在构建前自动执行 npm/pnpm 安装与自定义脚本（原 Lombiq.Npm.Targets）。</DescriptionBody>
+    <DescriptionBody>在构建前自动执行 npm/pnpm 安装与自定义脚本（原 Smartent.Npm.Targets）。</DescriptionBody>
     <PackageTags>Smartent;NPM;Node.js;MSBuild;Build</PackageTags>
     <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
     <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules/tree/master/src/Build/Smartent.Build.Npm.Targets</PackageProjectUrl>

@@ -20,7 +20,7 @@ namespace Microsoft.Extensions.DependencyInjection;
 public static class ApplicationInsightsInitializerExtensions
 {
     /// <summary>
-    /// Lombiq-recommended opinionated default configuration for features of an Orchard Core application hosted in
+    /// Smartent-recommended opinionated default configuration for features of an Orchard Core application hosted in
     /// Azure, with Application Insights telemetry. If any of the configuration values exist, they won't be overridden,
     /// so e.g. appsettings.json configuration will take precedence.
     /// </summary>

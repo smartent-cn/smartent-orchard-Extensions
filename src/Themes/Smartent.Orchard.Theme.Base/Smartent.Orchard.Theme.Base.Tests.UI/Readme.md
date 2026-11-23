@@ -1,8 +1,8 @@
-# Lombiq Base Theme for Orchard Core - UI Test Extensions
+# Smartent Orchard Theme Base for Orchard Core - UI Test Extensions
 
 ## About
 
-Extension methods that test various features in Lombiq Base Theme for Orchard Core.
+Extension methods that test various features in Smartent Orchard Theme Base for Orchard Core.
 
 For general details about and usage instructions see the [root Readme](../Readme.md).
 

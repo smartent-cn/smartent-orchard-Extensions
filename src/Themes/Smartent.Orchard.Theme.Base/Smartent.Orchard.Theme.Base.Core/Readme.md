@@ -1,4 +1,4 @@
-# Lombiq Base Theme for Orchard Core - Core Features
+# Smartent Orchard Theme Base for Orchard Core - Core Features
 
 ## About
 

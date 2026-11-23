@@ -19,9 +19,9 @@ public static class SetupHelpers
     // into your web project (because you can also add recipes to test projects, like this one also has one) then you
     // can also use try it out during development.
 
-    // Check it out if you're interested: It's in the Smartent.Demo.Web project if you're now looking at the Lombiq's
+    // Check it out if you're interested: It's in the Smartent.Demo.Web project if you're now looking at the Smartent's
     // Open-Source Orchard Core Extensions solution, or under
-    // https://github.com/smartent-cn/smartent-orchard-Extensions/blob/dev/src/Smartent.Demo.Web/Recipes/Lombiq.OSOCE.Tests.recipe.json
+    // https://github.com/smartent-cn/smartent-orchard-Extensions/blob/dev/src/Smartent.Demo.Web/Recipes/Smartent.Demo.Tests.recipe.json
     // otherwise. Notably, it turns off CDN usage and configures culture settings to make test execution consistent
     // regardless of the host settings. If you use a setup recipe for local development then you can execute that from
     // this test recipe too.
@@ -41,7 +41,7 @@ public static class SetupHelpers
         var homepageUri = await context.GoToSetupAndSetupOrchardCoreAsync(
             new OrchardCoreSetupParameters(context)
             {
-                SiteName = "Lombiq's OSOCE - UI Testing",
+                SiteName = "Smartent's OSOCE - UI Testing",
                 RecipeId = recipeId,
                 // A table prefix is not really needed but this way we also check whether we've written any SQL that
                 // doesn't support prefixes.

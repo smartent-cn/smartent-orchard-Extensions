@@ -1,4 +1,4 @@
-# Lombiq Helpful Libraries - Common Libraries - Dependency Injection
+# Smartent Helpful Libraries - Common Libraries - Dependency Injection
 
 ## Lazy injection support
 

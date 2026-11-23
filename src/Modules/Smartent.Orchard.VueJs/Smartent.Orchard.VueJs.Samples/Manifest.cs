@@ -1,11 +1,11 @@
 using OrchardCore.Modules.Manifest;
 
 [assembly: Module(
-    Name = "Lombiq Vue.js - Samples",
-    Author = "Lombiq Technologies",
-    Website = "https://github.com/Lombiq/Orchard-Vue.js",
+    Name = "Smartent Orchard Vue.js - Samples",
+    Author = "Smartent",
+    Website = "https://gitee.com/smartent/smartent-training-demo-modules",
     Version = "0.0.1",
-    Description = "Samples for Lombiq Vue.js.",
+    Description = "Samples for Smartent Orchard Vue.js.",
     Category = "Vue.js",
     Dependencies =
     [

@@ -10,12 +10,12 @@
   <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Smartent.Build.OrchardCore.Tests.UI.Library.Sdk" Version="2.1.1-alpha.9.osoe-344" />
 
   <PropertyGroup>
-    <Title>Lombiq Hosting - Build Version Display for Orchard Core - UI Test Extensions</Title>
+    <Title>Smartent Orchard Hosting - Build Version Display for Orchard Core - UI Test Extensions</Title>
     <CopyrightYear>2023</CopyrightYear>
-    <DescriptionBody>Extension methods that test various features in Lombiq Hosting - Build Version Display for Orchard Core.</DescriptionBody>
-    <PackageTags>OrchardCore;Lombiq;AspNetCore;CodeGeneration;ShapeTracing;Widgets</PackageTags>
-    <RepositoryUrl>https://github.com/Lombiq/Hosting-Build-Version-Display</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/Lombiq/Hosting-Build-Version-Display/tree/dev/Smartent.Orchard.Hosting.BuildVersion.Tests.UI</PackageProjectUrl>
+    <DescriptionBody>Extension methods that test various features in Smartent Orchard Hosting - Build Version Display for Orchard Core.</DescriptionBody>
+    <PackageTags>OrchardCore;Smartent;AspNetCore;CodeGeneration;ShapeTracing;Widgets</PackageTags>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules</PackageProjectUrl>
   </PropertyGroup>
 
   <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../Build/Smartent.Build.OrchardCore.Tests.UI.Library.Sdk/Sdk/Import.targets" />

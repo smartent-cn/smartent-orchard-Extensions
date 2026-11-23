@@ -1,4 +1,4 @@
-# Lombiq Content Editors for Orchard Core
+# Smartent Orchard Content Editors for Orchard Core
 
 [![Smartent.Orchard.ContentEditors NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.ContentEditors?label=Smartent.Orchard.ContentEditors)](https://www.nuget.org/packages/Smartent.Orchard.ContentEditors/) [![Smartent.Orchard.ContentEditors.Samples NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.ContentEditors.Samples?label=Smartent.Orchard.ContentEditors.Samples)](https://www.nuget.org/packages/Smartent.Orchard.ContentEditors.Samples/) [![Smartent.Orchard.ContentEditors.Tests.UI NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.ContentEditors.Tests.UI?label=Smartent.Orchard.ContentEditors.Tests.UI)](https://www.nuget.org/packages/Smartent.Orchard.ContentEditors.Tests.UI/)
 
@@ -6,7 +6,7 @@
 
 Module for managing advanced content editing processes based on editor groups and asynchronous operations. Watch a demo video of it from the Orchard Community Meeting [here](https://www.youtube.com/watch?v=WJ4dmbG9oVs).
 
-We at [Lombiq](https://lombiq.com/) also used this module for the new [Smithsonian Folkways Recordings website](https://folkways.si.edu/) when migrating it from Orchard 1 to Orchard Core ([see case study](https://lombiq.com/blog/smithsonian-folkways-recordings-now-upgraded-to-orchard-core)).
+We at [Smartent](https://gitee.com/smartent/) also used this module for the new [Smithsonian Folkways Recordings website](https://folkways.si.edu/) when migrating it from Orchard 1 to Orchard Core ([see case study](https://gitee.com/smartent/blog/smithsonian-folkways-recordings-now-upgraded-to-orchard-core)).
 
 Do you want to quickly try out this project and see it in action? Check it out in our [Open-Source Orchard Core Extensions](https://github.com/smartent-cn/smartent-orchard-Extensions) full Orchard Core solution and also see our other useful Orchard Core-related open-source projects!
 
@@ -14,8 +14,8 @@ Do you want to quickly try out this project and see it in action? Check it out i
 
 Apart from the main module ([Smartent.Orchard.ContentEditors](Smartent.Orchard.ContentEditors)) there are two other projects with their own NuGet packages:
 
-- [Lombiq - Content Editors - Samples](Smartent.Orchard.ContentEditors.Samples)
-- [Lombiq - Content Editors - Tests - UI](Smartent.Orchard.ContentEditors.Tests.UI)
+- [Smartent - Content Editors - Samples](Smartent.Orchard.ContentEditors.Samples)
+- [Smartent - Content Editors - Tests - UI](Smartent.Orchard.ContentEditors.Tests.UI)
 
 Check out the [`Smartent.Orchard.ContentEditors.Samples` project](Smartent.Orchard.ContentEditors.Samples) for various examples in the form of an Orchard Core module.
 
@@ -29,6 +29,6 @@ The Async Editor feature provides an infrastructure for creating editors that ca
 
 ## Contributing and support
 
-Bug reports, feature requests, comments, questions, code contributions and love letters are warmly welcome. You can send them to us via GitHub issues and pull requests. Please adhere to our [open-source guidelines](https://lombiq.com/open-source-guidelines) while doing so.
+Bug reports, feature requests, comments, questions, code contributions and love letters are warmly welcome. You can send them to us via GitHub issues and pull requests. Please adhere to our [open-source guidelines](https://gitee.com/smartent/open-source-guidelines) while doing so.
 
-This project is developed by [Lombiq Technologies](https://lombiq.com/). Commercial-grade support is available through Lombiq.
+This project is developed by [Smartent](https://gitee.com/smartent/). Commercial-grade support is available through Smartent.

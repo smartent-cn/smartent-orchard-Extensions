@@ -2,11 +2,11 @@ using Smartent.Orchard.ContentEditors.Constants;
 using OrchardCore.Modules.Manifest;
 
 [assembly: Module(
-    Name = "Lombiq Content Editors - Samples",
-    Author = "Lombiq Technologies",
+    Name = "Smartent Orchard Content Editors - Samples",
+    Author = "Smartent",
     Version = "0.0.1",
-    Website = "https://github.com/Lombiq/Orchard-Content-Editors",
-    Description = "Samples for Lombiq Content Editors.",
+    Website = "https://gitee.com/smartent/smartent-training-demo-modules",
+    Description = "Samples for Smartent Orchard Content Editors.",
     Category = "Development",
     Dependencies = [FeatureIds.AsyncEditor]
 )]

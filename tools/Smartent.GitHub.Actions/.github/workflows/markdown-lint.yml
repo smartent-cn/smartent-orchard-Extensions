@@ -16,9 +16,9 @@ on:
         type: string
         default: 'true'
       config:
-        description: Path to a file to use for the base configuration object (defaults to "lombiq.markdownlint.json").
+        description: Path to a file to use for the base configuration object (defaults to "smartent.markdownlint.json").
         type: string
-        default: lombiq.markdownlint.json
+        default: smartent.markdownlint.json
       fix:
         description: Whether to fix issues automatically for the rules that support it (any truthy value enables).
         type: string

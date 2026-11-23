@@ -4,19 +4,19 @@
     <RootNamespace>Smartent.Orchard.Hosting.ApplicationInsights.Tests.UI</RootNamespace>
     <AssemblyName>Smartent.Orchard.Hosting.ApplicationInsights.Tests.UI</AssemblyName>
     <PackageId>Smartent.Orchard.Hosting.ApplicationInsights.Tests.UI</PackageId>
-    <PackageVersionLombiqTestsUI>16.0.1-alpha.3.osoe-1326</PackageVersionLombiqTestsUI>
+    <PackageVersionSmartentTestsUI>16.0.1-alpha.3.osoe-1326</PackageVersionSmartentTestsUI>
   </PropertyGroup>
 
   <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../Build/Smartent.Build.OrchardCore.Tests.UI.Library.Sdk/Sdk/Import.props" />
   <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Smartent.Build.OrchardCore.Tests.UI.Library.Sdk" Version="2.1.1" />
 
   <PropertyGroup>
-    <Title>Lombiq Hosting - Azure Application Insights for Orchard Core - UI Test Extensions</Title>
+    <Title>Smartent Orchard Hosting - Azure Application Insights for Orchard Core - UI Test Extensions</Title>
     <CopyrightYear>2015</CopyrightYear>
-    <DescriptionBody>Extension methods that test various features in Lombiq Hosting - Azure Application Insights for Orchard Core, with the help of Lombiq UI Testing Toolbox for Orchard Core.</DescriptionBody>
-    <PackageTags>OrchardCore;Lombiq;AspNetCore;ApplicationInsights;Analytics;Telemetry;Monitoring;LombiqHostingSuite;Shouldly;xUnit;UITesting;Testing</PackageTags>
-    <RepositoryUrl>https://github.com/Lombiq/Orchard-Azure-Application-Insights</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/Lombiq/Orchard-Azure-Application-Insights/blob/dev/Smartent.Orchard.Hosting.ApplicationInsights.Tests.UI/Readme.md</PackageProjectUrl>
+    <DescriptionBody>Extension methods that test various features in Smartent Orchard Hosting - Azure Application Insights for Orchard Core, with the help of Smartent UI Testing for Orchard Core.</DescriptionBody>
+    <PackageTags>OrchardCore;Smartent;AspNetCore;ApplicationInsights;Analytics;Telemetry;Monitoring;SmartentHosting;Shouldly;xUnit;UITesting;Testing</PackageTags>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(NuGetBuild)' != 'true'">
@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(NuGetBuild)' == 'true'">
-    <PackageReference Include="Lombiq.Privacy.Tests.UI" Version="11.0.1-alpha.0.osoe-1317" />
+    <PackageReference Include="Smartent.Privacy.Tests.UI" Version="11.0.1-alpha.0.osoe-1317" />
   </ItemGroup>
 
   <!-- Security Updates for Orchard Core - make sure to check if these are still necessary -->

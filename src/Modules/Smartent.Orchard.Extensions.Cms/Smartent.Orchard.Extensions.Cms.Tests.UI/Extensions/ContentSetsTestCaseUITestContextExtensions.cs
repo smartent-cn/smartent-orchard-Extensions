@@ -11,7 +11,7 @@ namespace Smartent.Orchard.Extensions.Cms.Tests.UI.Extensions;
 public static class ContentSetsTestCaseUITestContextExtensions
 {
     /// <summary>
-    /// Tests the Lombiq Helpful Extensions - Content Sets feature.
+    /// Tests the Smartent Orchard Extensions - Content Sets feature.
     /// </summary>
     public static async Task TestContentSetsFeatureAsync(this UITestContext context)
     {

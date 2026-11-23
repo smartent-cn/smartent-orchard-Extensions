@@ -17,7 +17,7 @@ public static class MenuWidgetExtension
             .Query
             .TrimStart('?')
             .Split('&')
-            .Contains("Lombiq.MenuWidget.Post=true", StringComparer.OrdinalIgnoreCase);
+            .Contains("Smartent.MenuWidget.Post=true", StringComparer.OrdinalIgnoreCase);
 
         return isForm ? MenuWidgetItemType.FormPost : MenuWidgetItemType.Link;
     }

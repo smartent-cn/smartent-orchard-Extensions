@@ -11,12 +11,12 @@
   <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Smartent.Build.OrchardCore.Module.Sdk" Version="2.1.1" />
 
   <PropertyGroup>
-    <Title>Lombiq UI Kit - Widgets for Orchard Core</Title>
+    <Title>Smartent Orchard UI Kit - Widgets for Orchard Core</Title>
     <CopyrightYear>2024</CopyrightYear>
-    <DescriptionBody>This module contains widgets based on shapes from Lombiq UI Kit.</DescriptionBody>
-    <PackageTags>OrchardCore;Lombiq;AspNetCore;UI;UIKit;Widgets;front-end</PackageTags>
-    <RepositoryUrl>https://github.com/Lombiq/Orchard-UIKit</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/Lombiq/Orchard-UIKit/blob/dev/Smartent.Orchard.UIKit.Widgets/Readme.md</PackageProjectUrl>
+    <DescriptionBody>This module contains widgets based on shapes from Smartent Orchard UI Kit.</DescriptionBody>
+    <PackageTags>OrchardCore;Smartent;AspNetCore;UI;UIKit;Widgets;front-end</PackageTags>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>

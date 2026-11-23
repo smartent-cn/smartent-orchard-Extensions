@@ -10,12 +10,12 @@
   <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Smartent.Build.OrchardCore.Module.Sdk" Version="2.1.1-alpha.9.osoe-344" />
 
   <PropertyGroup>
-    <Title>Lombiq Hosting - Tenants FeaturesGuard for Orchard Core</Title>
+    <Title>Smartent Orchard Hosting - Tenants FeaturesGuard for Orchard Core</Title>
     <CopyrightYear>2022</CopyrightYear>
     <DescriptionBody>This module contains the FeaturesGuard feature, which prevents disabling a configurable set of features on tenants.</DescriptionBody>
-    <PackageTags>OrchardCore;Lombiq;AspNetCore;Tenants;LombiqHostingSuite;</PackageTags>
-    <RepositoryUrl>https://github.com/Lombiq/Hosting-Tenants</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/Lombiq/Hosting-Tenants/blob/dev/Smartent.Orchard.Hosting.Tenants.FeaturesGuard/Readme.md</PackageProjectUrl>
+    <PackageTags>OrchardCore;Smartent;AspNetCore;Tenants;SmartentHosting;</PackageTags>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules</PackageProjectUrl>
   </PropertyGroup>
 
   <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../Build/Smartent.Build.OrchardCore.Module.Sdk/Sdk/Import.targets" />

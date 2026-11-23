@@ -10,7 +10,7 @@ MSBuild SDK、前端构建与 Orchard 安装相关工程目录。
 
 Monorepo 内 Orchard 模块/主题工程通过 `src/Build/Smartent.Build.OrchardCore.Module.Sdk` 等 **相对路径** 引用 Sdk；`NuGetBuild=true` 时使用 `Sdk="Smartent.Build.*"` 从 feed / nuget.org 还原。
 
-MSBuild 样例与 LibMan/NuGet pack 测试位于本目录（`Smartent.Build.Sdk.Samples`、`Smartent.Build.Targets.*`）。Legacy `src/Utilities/Lombiq.MSBuild.Targets/` 仅作 **Readme 占位**（迁一删一）。
+MSBuild 样例与 LibMan/NuGet pack 测试位于本目录（`Smartent.Build.Sdk.Samples`、`Smartent.Build.Targets.*`）。Legacy `src/Utilities/Smartent.MSBuild.Targets/` 仅作 **Readme 占位**（迁一删一）。
 
 ---
 

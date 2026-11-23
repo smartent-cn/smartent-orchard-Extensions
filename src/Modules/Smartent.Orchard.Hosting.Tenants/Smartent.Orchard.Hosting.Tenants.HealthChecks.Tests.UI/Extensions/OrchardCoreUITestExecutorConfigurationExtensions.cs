@@ -7,7 +7,7 @@ namespace Smartent.Orchard.Hosting.Tenants.HealthChecks.Tests.UI.Extensions;
 public static class OrchardCoreUITestExecutorConfigurationExtensions
 {
     /// <summary>
-    /// Configures UI tests for the "Lombiq Hosting - Tenants Health Checks" feature.
+    /// Configures UI tests for the "Smartent Orchard Hosting - Tenants Health Checks" feature.
     /// </summary>
     public static void ConfigureTenantHealthCheckTests(this OrchardCoreUITestExecutorConfiguration configuration)
     {

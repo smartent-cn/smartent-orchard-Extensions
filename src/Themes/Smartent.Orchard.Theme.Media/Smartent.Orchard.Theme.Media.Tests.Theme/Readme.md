@@ -1,4 +1,4 @@
-# Lombiq Hosting - Media Theme - Test Theme
+# Smartent Orchard Hosting - Media Theme - Test Theme
 
 A theme only used for testing that demonstrates the local development version of a Media Theme.
 

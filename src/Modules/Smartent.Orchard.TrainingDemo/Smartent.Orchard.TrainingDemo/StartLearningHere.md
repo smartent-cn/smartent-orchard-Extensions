@@ -8,7 +8,7 @@ We'll guide you on your journey to become an Orchard Core developer. Look for "N
 
 ## Moving forward
 
-We've invested a lot of time creating this module. If you have ideas regarding it or have found mistakes, please let us know on [the project page on GitHub](https://github.com/Lombiq/Orchard-Training-Demo-Module).
+We've invested a lot of time creating this module. If you have ideas regarding it or have found mistakes, please let us know on [the project page on GitHub](https://gitee.com/smartent/smartent-training-demo-modules
 
 If you'd like to get trained instead of self-learning or you need help in form of mentoring sessions take a look at [Orchard Dojo's trainings](https://orcharddojo.net/orchard-training).
 
@@ -24,7 +24,7 @@ Later on, you may want to take a look at _Map.cs_ (remember, "X marks the spot!"
 
 Note that the module's [recipe file](https://docs.orchardcore.net/en/latest/docs/reference/modules/Recipes/) that you used during setup is in the _Recipes_ folder. A lot of features included in this module are configured from there; you can check it out too.
 
-This demo is heavily inspired by [Sipke Schoorstra's Orchard Harvest session](https://www.youtube.com/watch?v=MH9mcodTX-U) and brought to you by [Lombiq Technologies](https://lombiq.com/).
+This demo is heavily inspired by [Sipke Schoorstra's Orchard Harvest session](https://www.youtube.com/watch?v=MH9mcodTX-U) and brought to you by [Smartent](https://gitee.com/smartent/).
 
 ## Training sections
 
@@ -41,7 +41,7 @@ This demo is heavily inspired by [Sipke Schoorstra's Orchard Harvest session](ht
 - [Content Field display and editor options](Views/ColorField.Option.cshtml)
 - [Resource management](ResourceManagementOptionsConfiguration.cs)
 - [Permissions and authorization](Controllers/AuthorizationController.cs)
-- [Navigation menus](Controllers/AdminController.cs) ([See here for a similar tutorial about theming with Lombiq.BaseTheme.Native.](https://github.com/Lombiq/Orchard-Base-Theme/tree/dev/Lombiq.BaseTheme.Native.Samples))
+- [Navigation menus](Controllers/AdminController.cs) ([See here for a similar tutorial about theming with Smartent.BaseTheme.Native.](https://gitee.com/smartent/smartent-training-demo-modules
 - [Site settings and `IConfiguration`](Controllers/SiteSettingsController.cs)
 - [Utilizing action and result filters](Filters/ShapeInjectionFilter.cs)
 - [Shape tables](Services/ShapeHidingShapeTableProvider.cs)

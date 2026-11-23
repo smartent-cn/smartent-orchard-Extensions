@@ -112,7 +112,7 @@ public class MaintenanceManager : IMaintenanceManager
             }
 
             // We must use SaveChangesAsync and not FlushAsync, otherwise the migration will fail after site reset. See
-            // https://github.com/Lombiq/Hosting-Tenants/pull/182 for details.
+            // https://gitee.com/smartent/smartent-training-demo-modules for details.
             await _session.SaveAsync(execution, collection: DocumentCollections.Maintenance);
             await _session.SaveChangesAsync();
         }

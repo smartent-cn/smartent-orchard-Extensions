@@ -27,14 +27,14 @@
   </ItemGroup>
 
   <PropertyGroup>
-    <Title>Lombiq Vue.js module for Orchard Core</Title>
-    <Authors>Lombiq Technologies</Authors>
-    <Copyright>Copyright © 2019, Lombiq Technologies Ltd.</Copyright>
-    <Description>Lombiq Vue.js module for Orchard Core: Orchard Core module that contains Vue.js and commonly used Vue.js components to be used in other Vue.js apps as dependencies. Provides extensibility to create Vue.js component templates as Orchard Core shapes making them able to override in themes or modules.</Description>
+    <Title>Smartent Orchard Vue.js module for Orchard Core</Title>
+    <Authors>Smartent</Authors>
+    <Copyright>Copyright © 2019, Smartent</Copyright>
+    <Description>Smartent Orchard Vue.js module for Orchard Core: Orchard Core module that contains Vue.js and commonly used Vue.js components to be used in other Vue.js apps as dependencies. Provides extensibility to create Vue.js component templates as Orchard Core shapes making them able to override in themes or modules.</Description>
     <PackageIcon>NuGetIcon.png</PackageIcon>
-    <PackageTags>OrchardCore;Lombiq;AspNetCore;Vue.js</PackageTags>
-    <RepositoryUrl>https://github.com/Lombiq/Orchard-Vue.js</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/Lombiq/Orchard-Vue.js</PackageProjectUrl>
+    <PackageTags>OrchardCore;Smartent;AspNetCore;Vue.js</PackageTags>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules</PackageProjectUrl>
     <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
   </PropertyGroup>
 
@@ -79,7 +79,7 @@
 
   <Import Condition="'$(NuGetBuild)' != 'true'" Project="..\..\..\Build\Smartent.Build.NodeJs\Smartent.Build.NodeJs\Smartent.Build.NodeJs.targets" />
 
-  <!-- Execute Lombiq.NodeJs separately, to avoid inheriting these instructions in projects that consume Smartent.Orchard.VueJs. -->
+  <!-- Execute Smartent.NodeJs separately, to avoid inheriting these instructions in projects that consume Smartent.Orchard.VueJs. -->
   <Target Name="BuildLocalScripts" AfterTargets="NpmInstall">
     <Exec Command="npm explore nodejs-extensions -- pnpm build" />
   </Target>

@@ -1,11 +1,11 @@
 using OrchardCore.Modules.Manifest;
 
 [assembly: Module(
-    Name = "Lombiq Privacy - Samples",
-    Author = "Lombiq Technologies",
-    Website = "https://github.com/Lombiq/Orchard-Privacy",
+    Name = "Smartent Orchard Privacy - Samples",
+    Author = "Smartent",
+    Website = "https://gitee.com/smartent/smartent-training-demo-modules",
     Version = "0.0.1",
-    Description = "Samples for Lombiq Privacy.",
+    Description = "Samples for Smartent Orchard Privacy.",
     Category = "Privacy",
     Dependencies =
     [

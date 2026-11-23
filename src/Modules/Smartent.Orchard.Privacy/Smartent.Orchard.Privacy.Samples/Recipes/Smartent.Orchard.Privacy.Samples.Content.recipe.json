@@ -1,9 +1,9 @@
 {
   "name": "Smartent.Orchard.Privacy.Samples.Content",
-  "displayName": "Lombiq Privacy - Sample - Privacy, Forms, Workflows",
-  "description": "Sample for testing and demonstration of the Lombiq Privacy module.",
-  "author": "Lombiq Technologies",
-  "website": "https://github.com/Lombiq/Orchard-Privacy",
+  "displayName": "Smartent Orchard Privacy - Sample - Privacy, Forms, Workflows",
+  "description": "Sample for testing and demonstration of the Smartent Orchard Privacy module.",
+  "author": "Smartent",
+  "website": "https://gitee.com/smartent/smartent-training-demo-modules",
   "version": "1.0",
   "issetuprecipe": false,
   "categories": [

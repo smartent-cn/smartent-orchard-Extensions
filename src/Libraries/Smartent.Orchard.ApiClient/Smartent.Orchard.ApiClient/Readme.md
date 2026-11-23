@@ -1,4 +1,4 @@
-# Lombiq API Client for Orchard Core
+# Smartent API Client for Orchard Core
 
 ## About
 

@@ -5,7 +5,7 @@
     ],
     packageRules: [
         // Microsoft.ApplicationInsights.AspNetCore v3 needs a manual migration, see:
-        // https://github.com/Lombiq/Orchard-Azure-Application-Insights/issues/108.
+        // https://gitee.com/smartent/smartent-training-demo-modules
         {
             matchPackageNames: ['Microsoft.ApplicationInsights.*'],
             enabled: false,

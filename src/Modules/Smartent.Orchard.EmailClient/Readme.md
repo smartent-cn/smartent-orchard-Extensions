@@ -1,4 +1,4 @@
-# Lombiq Email Client
+# Smartent Orchard Email Client
 
 [![Smartent.Orchard.EmailClient NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.EmailClient?label=Smartent.Orchard.EmailClient)](https://www.nuget.org/packages/Smartent.Orchard.EmailClient/) [![Smartent.Orchard.EmailClient.Tests.UI NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.EmailClient.Tests.UI?label=Smartent.Orchard.EmailClient.Tests.UI)](https://www.nuget.org/packages/Smartent.Orchard.EmailClient.Tests.UI/)
 
@@ -47,6 +47,6 @@ The email syncing is happening automatically in the `EmailSyncBackgroundTask` on
 
 ## Contributing and support
 
-Bug reports, feature requests, comments, questions, code contributions and love letters are warmly welcome. You can send them to us via GitHub issues and pull requests. Please adhere to our [open-source guidelines](https://lombiq.com/open-source-guidelines) while doing so.
+Bug reports, feature requests, comments, questions, code contributions and love letters are warmly welcome. You can send them to us via GitHub issues and pull requests. Please adhere to our [open-source guidelines](https://gitee.com/smartent/open-source-guidelines) while doing so.
 
-This project is developed by [Lombiq Technologies](https://lombiq.com/). Commercial-grade support is available through Lombiq.
+This project is developed by [Smartent](https://gitee.com/smartent/). Commercial-grade support is available through Smartent.

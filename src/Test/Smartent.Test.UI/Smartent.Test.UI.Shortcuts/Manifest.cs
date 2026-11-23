@@ -3,15 +3,15 @@ using OrchardCore.Users;
 using static Smartent.Test.UI.Shortcuts.ShortcutsFeatureIds;
 
 [assembly: Module(
-    Name = "Shortcuts - Lombiq UI Testing Toolbox",
-    Author = "Lombiq Technologies",
-    Website = "https://github.com/Lombiq/UI-Testing-Toolbox",
+    Name = "Shortcuts - Smartent UI Testing",
+    Author = "Smartent",
+    Website = "https://gitee.com/smartent/smartent-training-demo-modules",
     Version = "0.0.1"
 )]
 
 [assembly: Feature(
     Id = Default,
-    Name = "Lombiq UI Testing Toolbox - Shortcuts",
+    Name = "Smartent UI Testing - Shortcuts",
     Category = "Development",
     Description = DescriptionUiTestWarning + "Provides shortcuts for common operations that UI tests might want to do or check.",
     Dependencies =
@@ -26,14 +26,14 @@ using static Smartent.Test.UI.Shortcuts.ShortcutsFeatureIds;
 
 [assembly: Feature(
     Id = FeatureToggleTestBench,
-    Name = "Feature Toggle Test Bench - Shortcuts - Lombiq UI Testing Toolbox",
+    Name = "Feature Toggle Test Bench - Shortcuts - Smartent UI Testing",
     Category = "Development",
     Description = "WARNING: Don't enable this feature by hand. Can be turned on and off to test if feature state changes work."
 )]
 
 [assembly: Feature(
     Id = MediaCachePurge,
-    Name = "Media Cache Purge - Shortcuts - Lombiq UI Testing Toolbox",
+    Name = "Media Cache Purge - Shortcuts - Smartent UI Testing",
     Category = "Development",
     Description = DescriptionUiTestWarning + "Provides shortcut for Media Cache Purge.",
     Dependencies =
@@ -44,7 +44,7 @@ using static Smartent.Test.UI.Shortcuts.ShortcutsFeatureIds;
 
 [assembly: Feature(
     Id = Workflows,
-    Name = "Workflows - Shortcuts - Lombiq UI Testing Toolbox",
+    Name = "Workflows - Shortcuts - Smartent UI Testing",
     Category = "Development",
     Description = DescriptionUiTestWarning + "Provides shortcut for Workflows.",
     Dependencies =
@@ -55,7 +55,7 @@ using static Smartent.Test.UI.Shortcuts.ShortcutsFeatureIds;
 
 [assembly: Feature(
     Id = OpenApi,
-    Name = "OpenAPI - Shortcuts - Lombiq UI Testing Toolbox",
+    Name = "OpenAPI - Shortcuts - Smartent UI Testing",
     Category = "Development",
     Description = DescriptionUiTestWarning + "Provides an endpoint to generate a JSON OpenAPI definition for " +
                   "the web APIs available in the app. Used in security scanning."
@@ -63,7 +63,7 @@ using static Smartent.Test.UI.Shortcuts.ShortcutsFeatureIds;
 
 [assembly: Feature(
     Id = ShiftTime,
-    Name = "Shift Time - Shortcuts - Lombiq UI Testing Toolbox",
+    Name = "Shift Time - Shortcuts - Smartent UI Testing",
     Category = "Development",
     Description = DescriptionUiTestWarning + "Adds a custom IClock implementation where the clock can be shifted by " +
                   "a specified value."

@@ -8,17 +8,17 @@ on:
         required: true
         description: >
           Configure as explained under
-          https://github.com/Lombiq/GitHub-Actions/blob/dev/Docs/Workflows/Productivity/CreateJiraIssuesForCommunityActivities.md.
+          https://gitee.com/smartent/smartent-training-demo-modules
       JIRA_USER_EMAIL:
         required: true
         description: >
           Configure as explained under
-          https://github.com/Lombiq/GitHub-Actions/blob/dev/Docs/Workflows/Productivity/CreateJiraIssuesForCommunityActivities.md.
+          https://gitee.com/smartent/smartent-training-demo-modules
       JIRA_API_TOKEN:
         required: true
         description: >
           Configure as explained under
-          https://github.com/Lombiq/GitHub-Actions/blob/dev/Docs/Workflows/Productivity/CreateJiraIssuesForCommunityActivities.md.
+          https://gitee.com/smartent/smartent-training-demo-modules
       JIRA_PROJECT_KEY:
         required: true
         description: The project key in JIRA, i.e. the prefix of issue keys (the "KEY" part of KEY-123).

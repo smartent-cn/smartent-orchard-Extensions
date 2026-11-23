@@ -1,9 +1,9 @@
 {
   "name": "Smartent.Orchard.UIKit.Widgets.Content",
-  "displayName": "Lombiq UI Kit - Widgets - Sample Content - Carousel Widget",
-  "description": "Sample content for testing and demonstration of the Lombiq UI Kit - Widgets module.",
-  "author": "Lombiq Technologies",
-  "website": "https://github.com/Lombiq/Orchard-UIKit",
+  "displayName": "Smartent Orchard UI Kit - Widgets - Sample Content - Carousel Widget",
+  "description": "Sample content for testing and demonstration of the Smartent Orchard UI Kit - Widgets module.",
+  "author": "Smartent",
+  "website": "https://gitee.com/smartent/smartent-training-demo-modules",
   "version": "1.0",
   "issetuprecipe": false,
   "categories": [

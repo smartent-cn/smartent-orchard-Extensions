@@ -1,4 +1,4 @@
-# Lombiq Helpful Libraries - Orchard Core Libraries - Middlewares
+# Smartent Helpful Libraries - Orchard Core Libraries - Middlewares
 
 Contains Orchard Core specific ASP.NET Core middlewares and middleware-related services.
 

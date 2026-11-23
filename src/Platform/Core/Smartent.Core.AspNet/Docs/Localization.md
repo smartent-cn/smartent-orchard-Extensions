@@ -1,4 +1,4 @@
-# Lombiq Helpful Libraries - ASP.NET Core Libraries - Localization
+# Smartent Helpful Libraries - ASP.NET Core Libraries - Localization
 
 ## Extensions
 

@@ -1,4 +1,4 @@
-# Lombiq Helpful Libraries - Orchard Core Libraries - Tag Helpers
+# Smartent Helpful Libraries - Orchard Core Libraries - Tag Helpers
 
 Make sure to use `services.AddTagHelpers<T>()` in the `Startup` class and `@addTagHelper *, Smartent.Orchard.Platform` in the __ViewImports.cshtml_ file.
 

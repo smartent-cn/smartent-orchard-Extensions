@@ -2,16 +2,16 @@ using OrchardCore.Modules.Manifest;
 using static Smartent.Orchard.LoginAsAnybody.Constants.FeatureIds;
 
 [assembly: Module(
-    Name = "Lombiq Login as Anybody",
-    Author = "Lombiq Technologies",
+    Name = "Smartent Orchard Login as Anybody",
+    Author = "Smartent",
     Version = "0.0.1",
     Description = "Module that allows administrator users to log in as any user.",
-    Website = "https://github.com/Lombiq/Orchard-Login-as-Anybody"
+    Website = "https://gitee.com/smartent/smartent-training-demo-modules"
 )]
 
 [assembly: Feature(
     Id = LoginAsAnybody,
-    Name = "Lombiq Login as Anybody",
+    Name = "Smartent Orchard Login as Anybody",
     Category = "Security",
     Description = "Module that allows administrator users to log in as any user.",
     Dependencies =

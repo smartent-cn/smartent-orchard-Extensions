@@ -1,4 +1,4 @@
-# Lombiq Helpful Libraries - Common Libraries - Utilities
+# Smartent Helpful Libraries - Common Libraries - Utilities
 
 - `CultureHelpers`: A static helper class with utility functions for retrieving available countries and languages.
 - `ExceptionHelpers`: Using these helpers, arguments can be tested without writing `if` statements.

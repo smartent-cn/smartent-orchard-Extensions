@@ -2,9 +2,9 @@ using Smartent.Orchard.Hosting.Tenants.EnvironmentRobots.Constants;
 using OrchardCore.Modules.Manifest;
 
 [assembly: Module(
-    Name = "Lombiq Hosting - Tenants Environment Robots",
-    Author = "Lombiq Technologies",
-    Website = "https://github.com/Lombiq/Hosting-Tenants",
+    Name = "Smartent Orchard Hosting - Tenants Environment Robots",
+    Author = "Smartent",
+    Website = "https://gitee.com/smartent/smartent-training-demo-modules",
     Version = "0.0.1",
     Description = "Prevents search bots from indexing non-production environments by adding a meta tag and a response"
         + " header with noindex, nofollow values.",
@@ -13,7 +13,7 @@ using OrchardCore.Modules.Manifest;
 
 [assembly: Feature(
     Id = FeatureNames.EnvironmentRobots,
-    Name = "Lombiq Hosting - Tenants Environment Robots",
+    Name = "Smartent Orchard Hosting - Tenants Environment Robots",
     Category = "Hosting",
     IsAlwaysEnabled = true
 )]

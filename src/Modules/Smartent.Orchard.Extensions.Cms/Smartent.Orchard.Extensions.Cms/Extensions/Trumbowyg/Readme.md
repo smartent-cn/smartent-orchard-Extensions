@@ -36,7 +36,7 @@ Adds prettified code snippet inserting functionality to Trumbowyg editor by usin
 - yaml
 - yml
 
-Then you need to link the Trumbowyg and Prism styles and scripts where you want it to be used. E.g. if you want to add it to BlogPost content type you can do it with the help of [Smartent.Orchard.Platform](https://github.com/Lombiq/Helpful-Libraries/blob/dev/Smartent.Orchard.Platform/Readme.md) in a IResourceFilterProvider:
+Then you need to link the Trumbowyg and Prism styles and scripts where you want it to be used. E.g. if you want to add it to BlogPost content type you can do it with the help of [Smartent.Orchard.Platform](https://gitee.com/smartent/smartent-training-demo-modules in a IResourceFilterProvider:
 
 ```csharp
 using Smartent.Orchard.Platform.ResourceManagement;
@@ -96,5 +96,5 @@ You can use any other Prism theme by registering their corresponding stylesheet,
 
 <!-- textlint-disable doubled-spaces -->
 > [!TIP]
-> If you want to add this to the `BlogPost` content type, then just enable the ["Lombiq Helpful Extensions - Trumbowyg code snippet - Blog Posts" feature](../TrumbowygBlogPosts/Readme.md), since it configures all of the above. Note though, that the `BlogPost` content type provided by Orchard Core's Blog recipe doesn't have a part or field that uses Trumbowyg, so you'll need to add one (e.g. an Html Field, or Html Body Part) first.
+> If you want to add this to the `BlogPost` content type, then just enable the ["Smartent Orchard Extensions - Trumbowyg code snippet - Blog Posts" feature](../TrumbowygBlogPosts/Readme.md), since it configures all of the above. Note though, that the `BlogPost` content type provided by Orchard Core's Blog recipe doesn't have a part or field that uses Trumbowyg, so you'll need to add one (e.g. an Html Field, or Html Body Part) first.
 <!-- textlint-enable doubled-spaces -->

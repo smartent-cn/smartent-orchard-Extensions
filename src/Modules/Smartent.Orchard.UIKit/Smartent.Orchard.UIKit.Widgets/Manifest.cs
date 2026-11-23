@@ -2,11 +2,11 @@ using Smartent.Orchard.UIKit;
 using OrchardCore.Modules.Manifest;
 
 [assembly: Module(
-    Name = "Lombiq UI Kit - Widgets",
-    Author = "Lombiq Technologies",
+    Name = "Smartent Orchard UI Kit - Widgets",
+    Author = "Smartent",
     Version = "0.0.1",
-    Description = "Module for reusable widgets based on Lombiq UI Kit.",
-    Website = "https://github.com/Lombiq/Orchard-UIKit",
+    Description = "Module for reusable widgets based on Smartent Orchard UI Kit.",
+    Website = "https://gitee.com/smartent/smartent-training-demo-modules",
     Category = "Development",
     Dependencies = [
         FeatureIds.Base,

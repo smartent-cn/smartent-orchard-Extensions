@@ -38,7 +38,6 @@
     <TailwindCliDownloadUrl Condition="'$(TailwindCliDownloadUrl)' == ''">https://github.com/tailwindlabs/tailwindcss/releases/download/$(TailwindCliVersionForDownload)/$(TailwindCliFileName)</TailwindCliDownloadUrl>
 
     <TailwindCliCacheDirectory Condition="'$(TailwindCliCacheDirectory)' == ''">$(BaseIntermediateOutputPath)tailwind</TailwindCliCacheDirectory>
-    <TailwindCliDownload Condition="'$(TailwindCliDownload)' == ''">true</TailwindCliDownload>
 
     <TailwindWatchMode Condition="'$(TailwindWatchMode)' == ''">always</TailwindWatchMode>
 
@@ -71,6 +70,13 @@
     <TailwindCliCacheDirectoryPath Condition="$([System.IO.Path]::IsPathRooted('$(TailwindCliCacheDirectory)'))">$(TailwindCliCacheDirectory)</TailwindCliCacheDirectoryPath>
     <TailwindCliCacheDirectoryPath Condition="'$(TailwindCliCacheDirectoryPath)' == ''">$([System.IO.Path]::Combine('$(MSBuildProjectDirectory)', '$(TailwindCliCacheDirectory)'))</TailwindCliCacheDirectoryPath>
 
+    <TailwindCliVendoredPath
+      Condition="'$(TailwindCliVendoredPath)' == ''">$([System.IO.Path]::Combine('$(MSBuildThisFileDirectory)', 'cli', '$(TailwindCliLocalFileName)'))</TailwindCliVendoredPath>
+
+    <TailwindCliDownload Condition="Exists('$(TailwindCliVendoredPath)')">false</TailwindCliDownload>
+    <TailwindCliDownload Condition="'$(TailwindCliDownload)' == ''">true</TailwindCliDownload>
+    <TailwindCliPath
+      Condition="'$(TailwindCliPath)' == '' AND Exists('$(TailwindCliVendoredPath)')">$(TailwindCliVendoredPath)</TailwindCliPath>
     <TailwindCliPath Condition="'$(TailwindCliPath)' == ''">$([System.IO.Path]::Combine('$(TailwindCliCacheDirectoryPath)', '$(TailwindCliLocalFileName)'))</TailwindCliPath>
     <TailwindCliTempPath Condition="'$(TailwindCliTempPath)' == ''">$(TailwindCliPath).tmp</TailwindCliTempPath>
 

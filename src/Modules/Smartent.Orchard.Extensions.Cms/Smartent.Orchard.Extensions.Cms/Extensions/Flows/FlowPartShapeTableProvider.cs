@@ -9,7 +9,7 @@ internal sealed class FlowPartShapeTableProvider : IShapeTableProvider
     {
         builder
             .Describe("FlowPart")
-            .OnDisplaying(displaying => displaying.Shape.Metadata.Alternates.Add("Lombiq_HelpfulExtensions_Flows_FlowPart"));
+            .OnDisplaying(displaying => displaying.Shape.Metadata.Alternates.Add("Smartent_Orchard_Extensions_Cms_Flows_FlowPart"));
 
         return ValueTask.CompletedTask;
     }

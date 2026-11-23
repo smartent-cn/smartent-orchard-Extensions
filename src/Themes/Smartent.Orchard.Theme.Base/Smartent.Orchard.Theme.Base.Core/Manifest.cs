@@ -2,10 +2,10 @@ using OrchardCore.DisplayManagement.Manifest;
 using static Smartent.Orchard.Extensions.Cms.FeatureIds;
 
 [assembly: Theme(
-    Name = "Lombiq Base Theme - Core Features",
-    Author = "Lombiq Technologies",
+    Name = "Smartent Orchard Theme Base - Core Features",
+    Author = "Smartent",
     Version = "0.0.1",
-    Website = "https://github.com/Lombiq/Orchard-Base-Theme",
+    Website = "https://gitee.com/smartent/smartent-training-demo-modules",
     Description = "All the shared content between the Sass and native CSS versions of the base theme.",
     Dependencies =
     [

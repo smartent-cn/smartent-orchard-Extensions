@@ -10,12 +10,12 @@
   <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Smartent.Build.OrchardCore.Module.Sdk" Version="2.1.1-alpha.9.osoe-344" />
 
   <PropertyGroup>
-    <Title>Lombiq Privacy for Orchard Core - Samples</Title>
+    <Title>Smartent Orchard Privacy for Orchard Core - Samples</Title>
     <CopyrightYear>2018</CopyrightYear>
-    <DescriptionBody>Sample content that demonstrates the features of Lombiq Privacy module for Orchard Core.</DescriptionBody>
-    <PackageTags>OrchardCore;Lombiq;AspNetCore;GDPR;Privacy</PackageTags>
-    <RepositoryUrl>https://github.com/Lombiq/Orchard-Privacy</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/Lombiq/Orchard-Privacy/blob/dev/Smartent.Orchard.Privacy.Samples/Readme.md</PackageProjectUrl>
+    <DescriptionBody>Sample content that demonstrates the features of Smartent Orchard Privacy module for Orchard Core.</DescriptionBody>
+    <PackageTags>OrchardCore;Smartent;AspNetCore;GDPR;Privacy</PackageTags>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(NuGetBuild)' == 'true'">

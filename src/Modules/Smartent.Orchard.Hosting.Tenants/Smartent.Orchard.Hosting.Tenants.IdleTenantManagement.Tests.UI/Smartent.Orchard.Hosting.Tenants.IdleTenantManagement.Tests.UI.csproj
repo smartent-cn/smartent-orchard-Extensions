@@ -10,12 +10,12 @@
   <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Smartent.Build.OrchardCore.Tests.UI.Library.Sdk" Version="2.1.1-alpha.9.osoe-344" />
 
   <PropertyGroup>
-    <Title>Lombiq Hosting - Tenants Idle Tenant Management for Orchard Core - UI Test Extensions</Title>
+    <Title>Smartent Orchard Hosting - Tenants Idle Tenant Management for Orchard Core - UI Test Extensions</Title>
     <CopyrightYear>2022</CopyrightYear>
     <DescriptionBody>Extension methods that test tenants idle management for Orchard Core.</DescriptionBody>
-    <PackageTags>OrchardCore;Lombiq;AspNetCore;Multitenancy;SaaS</PackageTags>
-     <RepositoryUrl>https://github.com/Lombiq/Hosting-Tenants</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/Lombiq/Hosting-Tenants/blob/dev/Smartent.Orchard.Hosting.Tenants.IdleTenantManagement.Tests.UI/Readme.md</PackageProjectUrl>
+    <PackageTags>OrchardCore;Smartent;AspNetCore;Multitenancy;SaaS</PackageTags>
+     <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules</PackageProjectUrl>
   </PropertyGroup>
 
   <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../Build/Smartent.Build.OrchardCore.Tests.UI.Library.Sdk/Sdk/Import.targets" />

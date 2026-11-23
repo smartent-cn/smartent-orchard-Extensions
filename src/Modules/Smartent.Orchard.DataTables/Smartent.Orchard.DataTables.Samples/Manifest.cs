@@ -1,11 +1,11 @@
 using OrchardCore.Modules.Manifest;
 
 [assembly: Module(
-    Name = "Lombiq Data Tables - Samples",
-    Author = "Lombiq Technologies",
-    Website = "https://github.com/Lombiq/Orchard-Data-Tables",
+    Name = "Smartent Orchard Data Tables - Samples",
+    Author = "Smartent",
+    Website = "https://gitee.com/smartent/smartent-training-demo-modules",
     Version = "0.0.1",
-    Description = "Samples for Lombiq Data Tables.",
+    Description = "Samples for Smartent Orchard Data Tables.",
     Category = "Development",
     Dependencies = [Smartent.Orchard.DataTables.Constants.FeatureIds.DataTables]
 )]

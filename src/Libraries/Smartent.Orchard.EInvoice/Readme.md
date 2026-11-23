@@ -1,6 +1,6 @@
 # Smartent.Orchard.EInvoice | EU eInvoice Validator
 
-> **路径 | Path**: `src/Libraries/Smartent.Orchard.EInvoice/`（原 `Lombiq.EInvoiceValidator`，`PackageId` = `Smartent.Orchard.EInvoice`）
+> **路径 | Path**: `src/Libraries/Smartent.Orchard.EInvoice/`（原 `Smartent.EInvoiceValidator`，`PackageId` = `Smartent.Orchard.EInvoice`）
 
 ## 前端依赖 | Frontend (LibMan / Node)
 
@@ -16,9 +16,9 @@ npm install agent-base@9.0.0 asynckit@0.5.0 axios@1.21.0 saxon-js@2.7.0 xslt3@2.
 
 ---
 
-# Lombiq eInvoice Validator（历史英文说明）
+# Smartent eInvoice Validator（历史英文说明）
 
-[![Lombiq EInvoiceValidator NuGet](https://img.shields.io/nuget/v/Lombiq.EInvoiceValidator?label=Lombiq.EInvoiceValidator)](https://www.nuget.org/packages/Lombiq.EInvoiceValidator/) [![Lombiq EInvoiceValidator Sample NuGet](https://img.shields.io/nuget/v/Lombiq.EInvoiceValidator.Sample?label=Lombiq.EInvoiceValidator.Sample)](https://www.nuget.org/packages/Lombiq.EInvoiceValidator.Sample/)
+[![Smartent EInvoiceValidator NuGet](https://img.shields.io/nuget/v/Smartent.EInvoiceValidator?label=Smartent.EInvoiceValidator)](https://www.nuget.org/packages/Smartent.EInvoiceValidator/) [![Smartent EInvoiceValidator Sample NuGet](https://img.shields.io/nuget/v/Smartent.EInvoiceValidator.Sample?label=Smartent.EInvoiceValidator.Sample)](https://www.nuget.org/packages/Smartent.EInvoiceValidator.Sample/)
 
 ## About
 
@@ -32,10 +32,10 @@ Do you want to quickly try out this project and see it in action? Check it out i
 
 ## Projects
 
-- The main library for validating eInvoices: [`Lombiq.EInvoiceValidator`](./Lombiq.EInvoiceValidator).
-- A sample console application demonstrating how to use the library: [`Lombiq.EInvoiceValidator.Sample`](./Lombiq.EInvoiceValidator.Sample).
-- A benchmark project to measure the performance of the validation process: [`Lombiq.EInvoiceValidator.Benchmark`](./Lombiq.EInvoiceValidator.Benchmark).
-- Unit tests for the library: [`Lombiq.EInvoiceValidator.Tests`](./Lombiq.EInvoiceValidator.Tests).
+- The main library for validating eInvoices: [`Smartent.EInvoiceValidator`](./Smartent.EInvoiceValidator).
+- A sample console application demonstrating how to use the library: [`Smartent.EInvoiceValidator.Sample`](./Smartent.EInvoiceValidator.Sample).
+- A benchmark project to measure the performance of the validation process: [`Smartent.EInvoiceValidator.Benchmark`](./Smartent.EInvoiceValidator.Benchmark).
+- Unit tests for the library: [`Smartent.EInvoiceValidator.Tests`](./Smartent.EInvoiceValidator.Tests).
 
 ## Prerequisites
 
@@ -45,7 +45,7 @@ You can install Node.js (LTS version recommended) from [here](https://nodejs.org
 
 ## Getting Started
 
-These samples don't contain the common setup necessary before you can use the validation methods. For those, and to see them in action, check out our sample project: [`Lombiq.EInvoiceValidator.Sample`](./Lombiq.EInvoiceValidator.Sample/Program.cs).
+These samples don't contain the common setup necessary before you can use the validation methods. For those, and to see them in action, check out our sample project: [`Smartent.EInvoiceValidator.Sample`](./Smartent.EInvoiceValidator.Sample/Program.cs).
 
 1. Add the NuGet package to your project or use it as a submodule in your solution.
 2. Perform full validation (schema + schematron)
@@ -160,6 +160,6 @@ The validation artifacts (XSD and schematron files) are included in the NuGet pa
 
 ## Contributing and support
 
-Bug reports, feature requests, comments, questions, code contributions and love letters are warmly welcome. You can send them to us via GitHub issues and pull requests. Please adhere to our [open-source guidelines](https://lombiq.com/open-source-guidelines) while doing so.
+Bug reports, feature requests, comments, questions, code contributions and love letters are warmly welcome. You can send them to us via GitHub issues and pull requests. Please adhere to our [open-source guidelines](https://gitee.com/smartent/open-source-guidelines) while doing so.
 
-This project is developed by [Lombiq Technologies](https://lombiq.com/). Commercial-grade support is available through Lombiq.
+This project is developed by [Smartent](https://gitee.com/smartent/). Commercial-grade support is available through Smartent.

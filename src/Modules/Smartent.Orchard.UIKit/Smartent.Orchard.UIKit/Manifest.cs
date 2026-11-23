@@ -2,23 +2,23 @@ using OrchardCore.Modules.Manifest;
 using static Smartent.Orchard.UIKit.FeatureIds;
 
 [assembly: Module(
-    Name = "Lombiq UI Kit",
-    Author = "Lombiq Technologies",
+    Name = "Smartent Orchard UI Kit",
+    Author = "Smartent",
     Version = "0.0.1",
     Description = "Module for reusable shapes containing text editors, dropdown editors, and potentially more complex editors.",
-    Website = "https://github.com/Lombiq/Orchard-UIKit"
+    Website = "https://gitee.com/smartent/smartent-training-demo-modules"
 )]
 
 [assembly: Feature(
     Id = Base,
-    Name = "Lombiq UI Kit",
+    Name = "Smartent Orchard UI Kit",
     Category = "Development",
     Description = "Module for reusable shapes containing text editors, dropdown editors, and potentially more complex editors."
 )]
 
 [assembly: Feature(
     Id = Showcase,
-    Name = "Lombiq UI Kit - Showcase page",
+    Name = "Smartent Orchard UI Kit - Showcase page",
     Category = "Development",
     Description = "You can reach the showcase page under /UIKitShowcase",
     Dependencies = ["Smartent.Orchard.UIKit"]

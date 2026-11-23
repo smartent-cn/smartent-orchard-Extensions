@@ -1,4 +1,4 @@
-# Lombiq Helpful Libraries - Orchard Core Libraries - GraphQL for Orchard Core
+# Smartent Helpful Libraries - Orchard Core Libraries - GraphQL for Orchard Core
 
 Contains supplementary types for using GraphQL in Orchard Core.
 

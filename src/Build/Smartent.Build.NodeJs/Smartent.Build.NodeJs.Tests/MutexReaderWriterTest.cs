@@ -1,4 +1,4 @@
-using Lombiq.NodeJs.Extensions.CustomExecTasks;
+using Smartent.NodeJs.Extensions.CustomExecTasks;
 using Shouldly;
 using System;
 using System.Globalization;
@@ -8,7 +8,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Lombiq.NodeJs.Extensions.Tests;
+namespace Smartent.NodeJs.Extensions.Tests;
 
 public class MutexReaderWriterTest
 {

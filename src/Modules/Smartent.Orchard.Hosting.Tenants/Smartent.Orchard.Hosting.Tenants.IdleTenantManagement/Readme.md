@@ -1,4 +1,4 @@
-# Lombiq Hosting - Idle Tenant Management for Orchard Core
+# Smartent Orchard Hosting - Idle Tenant Management for Orchard Core
 
 ## About
 

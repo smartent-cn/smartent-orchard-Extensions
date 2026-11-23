@@ -1,8 +1,8 @@
-# Lombiq Content Editors for Orchard Core - Samples
+# Smartent Orchard Content Editors for Orchard Core - Samples
 
 ## About
 
-Example Orchard Core module that teaches you how to use the Lombiq Content Editors for Orchard Core module.
+Example Orchard Core module that teaches you how to use the Smartent Orchard Content Editors for Orchard Core module.
 
 For general details about and usage instructions see the [root Readme](../Readme.md).
 

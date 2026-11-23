@@ -9,7 +9,7 @@ namespace Smartent.Orchard.Extensions.Cms.Tests.UI.Extensions;
 public static class LucideTestCaseUITestContextExtensions
 {
     /// <summary>
-    /// Tests the Lombiq Helpful Extensions - Lucide feature.
+    /// Tests the Smartent Orchard Extensions - Lucide feature.
     /// </summary>
     public static async Task TestLucideFeatureAsync(this UITestContext context)
     {

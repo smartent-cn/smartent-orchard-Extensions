@@ -1,4 +1,4 @@
-# Lombiq Data Tables for Orchard Core
+# Smartent Orchard Data Tables
 
 [![Smartent.Orchard.DataTables NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.DataTables?label=Smartent.Orchard.DataTables)](https://www.nuget.org/packages/Smartent.Orchard.DataTables/) [![Smartent.Orchard.DataTables.Samples NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.DataTables?label=Smartent.Orchard.DataTables.Samples)](https://www.nuget.org/packages/Smartent.Orchard.DataTables.Samples/) [![Smartent.Orchard.DataTables.Tests.UI NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.DataTables?label=Smartent.Orchard.DataTables.Tests.UI)](https://www.nuget.org/packages/Smartent.Orchard.DataTables.Tests.UI/)
 
@@ -6,7 +6,7 @@
 
 An Orchard Core wrapper around the [DataTables](https://datatables.net/) library for displaying tabular data from custom data sources.
 
-Note that this module has an Orchard 1 version in the [dev-orchard-1 branch](https://github.com/Lombiq/Orchard-Data-Tables/tree/dev-orchard-1).
+Note that this module has an Orchard 1 version in the [dev-orchard-1 branch](https://gitee.com/smartent/smartent-training-demo-modules
 
 Do you want to quickly try out this project and see it in action? Check it out in our [Open-Source Orchard Core Extensions](https://github.com/smartent-cn/smartent-orchard-Extensions) full Orchard Core solution and also see our other useful Orchard Core-related open-source projects!
 
@@ -20,13 +20,13 @@ In the most basic form you can use [DOM sourced data](https://datatables.net/exa
 
 ### Asynchronous Content With a Custom Provider
 
-The `Lombiq_DataTable` shape can display sortable, searchable, paginated data, but you must make your own data provider by extending `DataTableDataProviderBase` or either of the abstract base classes provided by us (`JsonResultDataTableDataProvider`, `IndexBasedDataTableDataProvider`). The latter is for complex database queries that would take a long time to calculate on demand, are tied to one or more content items and can be indexed ahead of time.
+The `Smartent_Orchard_DataTables_DataTable` shape can display sortable, searchable, paginated data, but you must make your own data provider by extending `DataTableDataProviderBase` or either of the abstract base classes provided by us (`JsonResultDataTableDataProvider`, `IndexBasedDataTableDataProvider`). The latter is for complex database queries that would take a long time to calculate on demand, are tied to one or more content items and can be indexed ahead of time.
 
 Once you have your data provider, it must be registered using `services.AddDataTableDataProvider<TProvider>()`, or if it's index-based then using `services.AddIndexBasedDataTableProvider<TIndex, TGenerator, TMigration, TProvider>()`.
 
 If you need an admin page with just one data table you don't need to define a view, just link to `/Admin/DataTable/{providerName}/{queryId?}`.
 
-You can find an example using [LinqToDb](https://github.com/Lombiq/Helpful-Libraries/blob/dev/Lombiq.HelpfulLibraries.LinqToDb/Readme.md) queries do display a table of deleted content items at [DeletedContentItemDataTableDataProvider.cs](Smartent.Orchard.DataTables/Services/DeletedContentItemDataTableDataProvider.cs).
+You can find an example using [LinqToDb](https://gitee.com/smartent/smartent-training-demo-modules queries do display a table of deleted content items at [DeletedContentItemDataTableDataProvider.cs](Smartent.Orchard.DataTables/Services/DeletedContentItemDataTableDataProvider.cs).
 
 If you want a display a table of deleted content items, we already happen to have a provider for that called [`DeletedContentItemDataTableDataProvider`](Smartent.Orchard.DataTables/Services/DeletedContentItemDataTableDataProvider.cs).
 
@@ -34,7 +34,7 @@ If you want a display a table of deleted content items, we already happen to hav
 
 ### With Shape
 
-For configuring the setup logic or global customization you can override the `Lombiq.DataTable.Resources` shape, for example in your theme. This is displayed before the `Lombiq.DataTable` shape, but after the basic configurations have been initialized (note: not applicable to the `<datatable>` tag helper).
+For configuring the setup logic or global customization you can override the `Smartent.Orchard.DataTables.DataTable.Resources` shape, for example in your theme. This is displayed before the `Smartent.Orchard.DataTables.DataTable` shape, but after the basic configurations have been initialized (note: not applicable to the `<datatable>` tag helper).
 
 Here you can edit the `window.dataTableResources` object. It contains the following properties:
 
@@ -85,6 +85,6 @@ If you get the IntelliSense-only error _TS6053 File "(...)/types/types.d.ts" not
 
 ## Contributing and support
 
-Bug reports, feature requests, comments, questions, code contributions and love letters are warmly welcome. You can send them to us via GitHub issues and pull requests. Please adhere to our [open-source guidelines](https://lombiq.com/open-source-guidelines) while doing so.
+Bug reports, feature requests, comments, questions, code contributions and love letters are warmly welcome. You can send them to us via GitHub issues and pull requests. Please adhere to our [open-source guidelines](https://gitee.com/smartent/open-source-guidelines) while doing so.
 
-This project is developed by [Lombiq Technologies](https://lombiq.com/). Commercial-grade support is available through Lombiq.
+This project is developed by [Smartent](https://gitee.com/smartent/). Commercial-grade support is available through Smartent.

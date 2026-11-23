@@ -1,4 +1,4 @@
-# Lombiq .NET Analyzers for .NET Framework
+# Smartent .NET Analyzers for .NET Framework
 
 ## About
 

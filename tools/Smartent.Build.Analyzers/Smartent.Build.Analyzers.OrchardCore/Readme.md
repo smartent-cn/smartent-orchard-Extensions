@@ -1,4 +1,4 @@
-# Lombiq .NET Analyzers for Orchard Core
+# Smartent .NET Analyzers for Orchard Core
 
 ## About
 

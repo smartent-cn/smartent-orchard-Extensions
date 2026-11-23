@@ -88,7 +88,7 @@ Add the project or package reference, then import `Smartent.Core.Primitives.*` o
 
 - **Orchard 版本**：本包 **不** 依赖 Orchard；仅需与仓库 `net10.0` / 中央包版本策略一致。
 - **扩展点**：新增扩展类请放在与现有相同的文件夹（`Extensions`/`Utilities` 等），并遵守 [csharp 规范](../../../../docs/standards/csharp.md)（公共 API 中文 XML）。
-- **Smartent 定制**：从 Lombiq `HelpfulLibraries.Common` 迁入；后续拆包在 Platform 层其它项目中进行，**勿** 再向此包塞 Orchard 专用逻辑。
+- **Smartent 定制**：从 Smartent `HelpfulLibraries.Common` 迁入；后续拆包在 Platform 层其它项目中进行，**勿** 再向此包塞 Orchard 专用逻辑。
 
 ### English
 
@@ -109,5 +109,5 @@ dotnet test src/Test/Smartent.Test.Platform/Smartent.Test.Platform.csproj --filt
 
 ## 来源与许可 | Provenance & License
 
-- 源自 Lombiq [Helpful-Libraries / Common](https://github.com/Lombiq/Helpful-Libraries)，MIT。
+- 源自 Smartent [Helpful-Libraries / Common](https://gitee.com/smartent/smartent-training-demo-modules
 - Smartent 衍生部分 Copyright © Smartent。

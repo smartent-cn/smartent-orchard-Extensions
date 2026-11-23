@@ -1,4 +1,4 @@
-Copyright © 2020, [Lombiq Technologies Ltd.](https://lombiq.com)
+Copyright © 2020, [Smartent](https://gitee.com/smartent)
 
 All rights reserved.
 

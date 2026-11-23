@@ -7,9 +7,9 @@
 
 ## 摘要 | Summary
 
-**中文**：构建前自动执行 `npm install` / `pnpm install` 与自定义 npm 脚本。原 `Lombiq.Npm.Targets`。
+**中文**：构建前自动执行 `npm install` / `pnpm install` 与自定义 npm 脚本。原 `Smartent.Npm.Targets`。
 
-**English**: MSBuild targets for npm/pnpm install and pre-build scripts. Formerly `Lombiq.Npm.Targets`.
+**English**: MSBuild targets for npm/pnpm install and pre-build scripts. Formerly `Smartent.Npm.Targets`.
 
 ---
 

@@ -1,4 +1,4 @@
-# Lombiq Walkthroughs for Orchard Core
+# Smartent Orchard Walkthroughs for Orchard Core
 
 [![Smartent.Orchard.Walkthroughs NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.Walkthroughs?label=Smartent.Orchard.Walkthroughs)](https://www.nuget.org/packages/Smartent.Orchard.Walkthroughs/) [![Smartent.Orchard.Walkthroughs.Tests.UI NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.Walkthroughs.Tests.UI?label=Smartent.Orchard.Walkthroughs.Tests.UI)](https://www.nuget.org/packages/Smartent.Orchard.Walkthroughs.Tests.UI/)
 
@@ -22,4 +22,4 @@ Do you want to quickly try out this project and see it in action? Check it out i
 
 Bug reports, feature requests, comments, questions, code contributions and love letters are warmly welcome. You can send them to us via GitHub issues and pull requests. Please adhere to our open-source guidelines while doing so.
 
-This project is developed by Lombiq Technologies. Commercial-grade support is available through Lombiq.
+This project is developed by Smartent. Commercial-grade support is available through Smartent.

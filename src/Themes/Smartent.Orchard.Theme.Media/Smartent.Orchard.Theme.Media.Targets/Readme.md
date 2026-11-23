@@ -1,10 +1,10 @@
-# Lombiq Hosting - Media Theme MSBuild Targets
+# Smartent Orchard Hosting - Media Theme MSBuild Targets
 
 [![Smartent.Orchard.Theme.Media.Targets NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.Theme.Media.Targets?label=Smartent.Orchard.Theme.Media.Targets)](https://www.nuget.org/packages/Smartent.Orchard.Theme.Media.Targets/)
 
 ## About
 
-Provides automatic Media Theme package creation in the project. This way you don't have to manage changes in your Media Theme recipe, or folder structure. The targets reuses the `media-theme-deployer` dotnet tool, what will be automatically installed locally to the project, then it will create the deployment zip file. Please read the [Smartent.Orchard.Theme.Media Readme](https://github.com/Lombiq/Hosting-Media-Theme/blob/dev/Readme.md) for more information about this deployer tool.
+Provides automatic Media Theme package creation in the project. This way you don't have to manage changes in your Media Theme recipe, or folder structure. The targets reuses the `media-theme-deployer` dotnet tool, what will be automatically installed locally to the project, then it will create the deployment zip file. Please read the [Smartent.Orchard.Theme.Media Readme](https://gitee.com/smartent/smartent-training-demo-modules for more information about this deployer tool.
 
 When the zip is ready it is unzipped and its files are moved to the project relative _Recipe/\_MediaTheme/_ path. The Recipe is moved directly to the project relative _Recipe_ folder.
 
@@ -46,10 +46,10 @@ Add a dotnet-tools.json file into the .config folder in your module:
 }
 ```
 
-To have a successful run you must follow the required shape templates name convention as it is also required for the [Media Theme Deployer](https://github.com/Lombiq/Hosting-Media-Theme/blob/dev/Readme.md#limitations).
+To have a successful run you must follow the required shape templates name convention as it is also required for the [Media Theme Deployer](https://gitee.com/smartent/smartent-training-demo-modules
 
 ## Contributing and support
 
-Bug reports, feature requests, comments, questions, code contributions and love letters are warmly welcome. You can send them to us via GitHub issues and pull requests. Please adhere to our [open-source guidelines](https://lombiq.com/open-source-guidelines) while doing so.
+Bug reports, feature requests, comments, questions, code contributions and love letters are warmly welcome. You can send them to us via GitHub issues and pull requests. Please adhere to our [open-source guidelines](https://gitee.com/smartent/open-source-guidelines) while doing so.
 
-This project is developed by [Lombiq Technologies](https://lombiq.com/). Commercial-grade support is available through Lombiq.
+This project is developed by [Smartent](https://gitee.com/smartent/). Commercial-grade support is available through Smartent.

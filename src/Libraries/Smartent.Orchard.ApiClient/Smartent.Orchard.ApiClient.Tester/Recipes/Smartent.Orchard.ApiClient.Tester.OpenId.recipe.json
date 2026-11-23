@@ -1,9 +1,9 @@
 {
   "name": "Smartent.Orchard.ApiClient.Tester.OpenId",
-  "displayName": "Lombiq API Client for Orchard Core - Tester App - OpenId",
-  "description": "Set up the OpenId server and application to allow access to the web APIs from the Tester App of Lombiq API Client for Orchard Core.",
-  "author": "Lombiq Technologies",
-  "website": "https://github.com/Lombiq/Orchard-Core-API-Client",
+  "displayName": "Smartent API Client for Orchard Core - Tester App - OpenId",
+  "description": "Set up the OpenId server and application to allow access to the web APIs from the Tester App of Smartent API Client for Orchard Core.",
+  "author": "Smartent",
+  "website": "https://gitee.com/smartent/smartent-training-demo-modules",
   "version": "1.0",
   "issetuprecipe": false,
   "categories": [ "test" ],

@@ -7,7 +7,7 @@ This project contains the following pipeline steps for JavaScript files:
 - Clean output folder
 - Watch for changes and re-run pipeline
 
-> Looking for something similar for .NET? Check out our [.NET Analyzers project](https://github.com/Lombiq/.NET-Analyzers).
+> Looking for something similar for .NET? Check out our [.NET Analyzers project](https://gitee.com/smartent/smartent-training-demo-modules
 
 ## Configuration
 
@@ -24,7 +24,7 @@ The scripts pipeline needs a `source` and a `target` path. The default configura
 
 In case you want to stick to the defaults, the `scripts` node can be omitted completely; otherwise, you need to specify both, `source` and a `target` paths.
 
-To see the different configurations of default and custom paths in action, please check out our dedicated [Samples](../../Lombiq.NodeJs.Extensions.Samples/Readme.md) and [NuGet Samples](../../Lombiq.NodeJs.Extensions.Samples.NuGet/Readme.md) projects.
+To see the different configurations of default and custom paths in action, please check out our dedicated [Samples](../../Smartent.NodeJs.Extensions.Samples/Readme.md) and [NuGet Samples](../../Smartent.NodeJs.Extensions.Samples.NuGet/Readme.md) projects.
 
 ## Generated files
 
@@ -62,10 +62,10 @@ The `build:scripts` script is a wrapper to execute the `lint:scripts` and `compi
 
 The rules are found in 2 files:
 
-- _.eslintrc.lombiq-base.js_: This file contains Lombiq overrides for the [airbnb-base](https://www.npmjs.com/package/eslint-config-airbnb-base) rules. You can find the file [here](../config/.eslintrc.lombiq-base.js).
-- _.eslintrc.js_: In this file you can override the above Lombiq rules, or define your own [ESLint configuration](https://eslint.org/docs/latest/user-guide/configuring/configuration-files) altogether.
+- _.eslintrc.smartent-base.js_: This file contains Smartent overrides for the [airbnb-base](https://www.npmjs.com/package/eslint-config-airbnb-base) rules. You can find the file [here](../config/.eslintrc.smartent-base.js).
+- _.eslintrc.js_: In this file you can override the above Smartent rules, or define your own [ESLint configuration](https://eslint.org/docs/latest/user-guide/configuring/configuration-files) altogether.
 
-The _.eslintrc.js_ file will automatically be created in your project during the first build. Please open it and adjust the path to _.eslintrc.lombiq-base.js_ according to your solution's directory structure.
+The _.eslintrc.js_ file will automatically be created in your project during the first build. Please open it and adjust the path to _.eslintrc.smartent-base.js_ according to your solution's directory structure.
 
 ### Using a solution-wide configuration
 

@@ -1,7 +1,7 @@
 name: Run .NET tests
 description: >
-  Runs .NET unit and UI tests (with the Lombiq UI Testing Toolbox for Orchard Core:
-  https://github.com/Lombiq/UI-Testing-Toolbox), generates a test report and uploads UI testing failure dumps to
+  Runs .NET unit and UI tests (with the Smartent UI Testing for Orchard Core:
+  https://gitee.com/smartent/smartent-training-demo-modules generates a test report and uploads UI testing failure dumps to
   artifacts.
 
 inputs:

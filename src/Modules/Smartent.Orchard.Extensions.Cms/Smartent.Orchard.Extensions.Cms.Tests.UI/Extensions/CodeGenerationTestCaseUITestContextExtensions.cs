@@ -13,11 +13,11 @@ namespace Smartent.Orchard.Extensions.Cms.Tests.UI.Extensions;
 public static class CodeGenerationTestCaseUITestContextExtensions
 {
     /// <summary>
-    /// Tests the Lombiq Helpful Extensions - Code Generation Helpful Extensions feature.
+    /// Tests the Smartent Orchard Extensions - Code Generation Helpful Extensions feature.
     /// </summary>
     /// <remarks>
     /// <para>
-    /// Added originally to cover the fix for <see href="https://github.com/Lombiq/Helpful-Extensions/issues/85">
+    /// Added originally to cover the fix for <see href="https://gitee.com/smartent/smartent-training-demo-modules">
     /// Fix content type code generation button not working</see>.
     /// </para>
     /// </remarks>

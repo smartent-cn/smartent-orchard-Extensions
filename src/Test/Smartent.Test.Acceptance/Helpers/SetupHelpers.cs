@@ -15,7 +15,7 @@ public static class SetupHelpers
         var homepageUri = await context.GoToSetupAndSetupOrchardCoreAsync(
             new OrchardCoreSetupParameters(context)
             {
-                SiteName = "Lombiq's OSOCE - UI Testing - With Blog Setup",
+                SiteName = "Smartent's OSOCE - UI Testing - With Blog Setup",
                 RecipeId = "Blog",
                 TablePrefix = "OSOCE_blog",
                 SiteTimeZoneValue = "Europe/Budapest",

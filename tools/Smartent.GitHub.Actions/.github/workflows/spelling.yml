@@ -61,11 +61,11 @@ on:
         default: |
           cspell:filetypes/filetypes.txt
           cspell:software-terms/dict/softwareTerms.txt
-          lombiq-lgha:dictionaries/Lombiq.common.txt
+          smartent-lgha:dictionaries/Smartent.common.txt
       additional-configuration-source-prefixes:
         description: >
           JSON map of prefixes for additional configuration file (for now, only dictionary) URLs. "cspell" and
-          "lombiq-lgha" are available by default, but can be overridden.
+          "smartent-lgha" are available by default, but can be overridden.
         type: string
       additional-dictionaries:
         description: Space delimited list of URLs (or `prefix:`+path) to additional word lists

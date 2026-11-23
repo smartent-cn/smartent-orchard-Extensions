@@ -81,7 +81,7 @@ public class ActionsLiquidFilter : ILiquidFilter
 
     private async ValueTask<FluidValue> FromObjectAsync(ActionsDescriptor descriptor, string title, string returnUrl)
     {
-        IShape shape = await _shapeFactory.New.Lombiq_Datatables_Actions(
+        IShape shape = await _shapeFactory.New.Smartent_Orchard_DataTables_Datatables_Actions(
             ButtonTitle: title,
             ExportLinks: descriptor.GetAllMenuItems(_hca.HttpContext, _linkGenerator, _actionsDescriptorStringLocalizer, returnUrl));
         var content = await _displayHelper.ShapeExecuteAsync(shape);

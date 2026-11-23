@@ -1,8 +1,8 @@
 {
   "name": "Smartent.Demo.Tests.FeaturesGuard",
-  "displayName": "Lombiq's Open-Source Orchard Core Extensions",
-  "description": "Lombiq's Open-Source Orchard Core Extensions setup recipe for automated UI test execution.",
-  "author": "Lombiq Technologies",
+  "displayName": "Smartent's Open-Source Orchard Core Extensions",
+  "description": "Smartent's Open-Source Orchard Core Extensions setup recipe for automated UI test execution.",
+  "author": "Smartent",
   "website": "https://github.com/smartent-cn/smartent-orchard-Extensions",
   "version": "1.0",
   "issetuprecipe": false,

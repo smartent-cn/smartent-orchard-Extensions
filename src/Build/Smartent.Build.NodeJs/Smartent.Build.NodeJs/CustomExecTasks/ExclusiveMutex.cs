@@ -2,7 +2,7 @@ using System;
 using System.Diagnostics;
 using System.Threading;
 
-namespace Lombiq.NodeJs.Extensions.CustomExecTasks
+namespace Smartent.NodeJs.Extensions.CustomExecTasks
 {
     public class ExclusiveMutex
     {

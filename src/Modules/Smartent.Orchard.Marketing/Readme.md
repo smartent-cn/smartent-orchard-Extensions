@@ -1,4 +1,4 @@
-# Lombiq Marketing for Orchard Core
+# Smartent Orchard Marketing for Orchard Core
 
 [![Smartent.Orchard.Marketing NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.Marketing?label=Smartent.Orchard.Marketing)](https://www.nuget.org/packages/Smartent.Orchard.Marketing/)
 [![Smartent.Orchard.Marketing.Pirsch NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.Marketing.Pirsch?label=Smartent.Orchard.Marketing.Pirsch)](https://www.nuget.org/packages/Smartent.Orchard.Marketing.Pirsch/)
@@ -9,7 +9,7 @@
 
 Marketing-related features, URL shortener, Pirsch analytics integration, and more. It's also available on all sites of [DotNest, the Orchard Core SaaS](https://dotnest.com/).
 
-Do you want to quickly try out this project and see it in action? Check it out in our [Open-Source Orchard Core Extensions](https://github.com/Lombiq/Open-Source-Orchard-Core-Extensions) full Orchard Core solution and also see our other useful Orchard Core-related open-source projects!
+Do you want to quickly try out this project and see it in action? Check it out in our [Open-Source Orchard Core Extensions](https://gitee.com/smartent/smartent-training-demo-modules full Orchard Core solution and also see our other useful Orchard Core-related open-source projects!
 
 Check out a demo video of this module [here](https://www.youtube.com/watch?v=RUDKOZKfXrY).
 
@@ -39,6 +39,6 @@ Read more here: [Smartent.Orchard.Marketing.Tests.UI/Readme.md](./Smartent.Orcha
 
 ## Contributing and support
 
-Bug reports, feature requests, comments, questions, code contributions and love letters are warmly welcome. You can send them to us via GitHub issues and pull requests. Please adhere to our [open-source guidelines](https://lombiq.com/open-source-guidelines) while doing so.
+Bug reports, feature requests, comments, questions, code contributions and love letters are warmly welcome. You can send them to us via GitHub issues and pull requests. Please adhere to our [open-source guidelines](https://gitee.com/smartent/open-source-guidelines) while doing so.
 
-This project is developed by [Lombiq Technologies](https://lombiq.com/). Commercial-grade support is available through Lombiq.
+This project is developed by [Smartent](https://gitee.com/smartent/). Commercial-grade support is available through Smartent.

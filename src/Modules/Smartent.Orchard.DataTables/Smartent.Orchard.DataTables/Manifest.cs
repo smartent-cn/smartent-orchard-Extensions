@@ -2,16 +2,16 @@ using OrchardCore.Modules.Manifest;
 using static Smartent.Orchard.DataTables.Constants.FeatureIds;
 
 [assembly: Module(
-    Name = "Lombiq Data Tables",
-    Author = "Lombiq Technologies",
+    Name = "Smartent Orchard Data Tables",
+    Author = "Smartent",
     Version = "0.0.1",
     Description = "Module for displaying data using jQuery Data Tables.",
-    Website = "https://github.com/Lombiq/Orchard-Data-Tables"
+    Website = "https://gitee.com/smartent/smartent-training-demo-modules"
 )]
 
 [assembly: Feature(
     Id = DataTables,
-    Name = "Lombiq Data Tables",
+    Name = "Smartent Orchard Data Tables",
     Category = "Content",
     Description = "Displays data using jQuery Data Tables.",
     Dependencies =

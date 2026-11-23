@@ -10,12 +10,12 @@
   <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Smartent.Build.OrchardCore.Module.Sdk" Version="2.1.1" />
 
   <PropertyGroup>
-    <Title>Lombiq Email Client for Orchard Core</Title>
+    <Title>Smartent Orchard Email Client for Orchard Core</Title>
     <CopyrightYear>2025</CopyrightYear>
     <DescriptionBody>With the help of this module, you can do advanced email operations such as downloading them using IMAP.</DescriptionBody>
-    <PackageTags>OrchardCore;Lombiq;AspNetCore;Email;IMAP</PackageTags>
-    <RepositoryUrl>https://github.com/Lombiq/Orchard-Email-Client</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/Lombiq/Orchard-Email-Client/blob/dev/Readme.md</PackageProjectUrl>
+    <PackageTags>OrchardCore;Smartent;AspNetCore;Email;IMAP</PackageTags>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>

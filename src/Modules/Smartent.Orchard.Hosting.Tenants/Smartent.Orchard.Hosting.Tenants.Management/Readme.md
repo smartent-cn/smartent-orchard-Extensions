@@ -1,4 +1,4 @@
-# Lombiq Hosting - Tenants Management for Orchard Core
+# Smartent Orchard Hosting - Tenants Management for Orchard Core
 
 [![Smartent.Orchard.Hosting.Tenants.Management NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.Hosting.Tenants.Management?label=Smartent.Orchard.Hosting.Tenants.Management)](https://www.nuget.org/packages/Smartent.Orchard.Hosting.Tenants.Management/)
 

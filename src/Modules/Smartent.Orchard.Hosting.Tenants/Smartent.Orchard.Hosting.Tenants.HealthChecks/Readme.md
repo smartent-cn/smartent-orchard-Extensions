@@ -1,4 +1,4 @@
-# Lombiq Hosting - Tenants Health Checks for Orchard Core
+# Smartent Orchard Hosting - Tenants Health Checks for Orchard Core
 
 [![Smartent.Orchard.Hosting.Tenants.Smartent.Orchard.Hosting.Tenants.HealthChecks NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.Hosting.Tenants.Smartent.Orchard.Hosting.Tenants.HealthChecks?label=Smartent.Orchard.Hosting.Tenants.Smartent.Orchard.Hosting.Tenants.HealthChecks)](https://www.nuget.org/packages/Smartent.Orchard.Hosting.Tenants.Smartent.Orchard.Hosting.Tenants.HealthChecks/)
 

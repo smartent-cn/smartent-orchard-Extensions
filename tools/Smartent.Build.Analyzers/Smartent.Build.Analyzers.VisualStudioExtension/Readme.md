@@ -1,4 +1,4 @@
-# Lombiq .NET Analyzers for Visual Studio Extensions
+# Smartent .NET Analyzers for Visual Studio Extensions
 
 ## About
 

@@ -10,7 +10,7 @@ on:
 jobs:
   lint:
     name: Lint Assets
-    uses: Lombiq/NodeJs-Extensions/.github/workflows/lint.yml@dev
+    uses: Smartent/NodeJs-Extensions/.github/workflows/lint.yml@dev
     with:
       scripts: Smartent.Orchard.UIKit
       styles-css: Smartent.Orchard.UIKit

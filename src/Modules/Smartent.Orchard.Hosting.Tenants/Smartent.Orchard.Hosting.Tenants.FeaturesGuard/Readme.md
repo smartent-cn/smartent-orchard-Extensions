@@ -1,4 +1,4 @@
-# Lombiq Hosting - Tenants Features Guard for Orchard Core
+# Smartent Orchard Hosting - Tenants Features Guard for Orchard Core
 
 [![Smartent.Orchard.Hosting.Tenants.FeaturesGuard NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.Hosting.Tenants.FeaturesGuard?label=Smartent.Orchard.Hosting.Tenants.FeaturesGuard)](https://www.nuget.org/packages/Smartent.Orchard.Hosting.Tenants.FeaturesGuard/)
 

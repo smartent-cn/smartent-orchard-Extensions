@@ -15,7 +15,7 @@ By default, the markdown pipeline is disabled. You need to provide a valid `sour
 ```
 
 > [!NOTE]
-> Files in some special folders aren't linted. See the current configuration [here](https://github.com/Lombiq/NodeJs-Extensions/blob/dev/Lombiq.NodeJs.Extensions/scripts/lint-markdown.js#L47).
+> Files in some special folders aren't linted. See the current configuration [here](https://gitee.com/smartent/smartent-training-demo-modules
 
 ### Linting the solution directory
 
@@ -23,7 +23,7 @@ You can use the special value `_solution_` as the source to lint every _md_ file
 
 This is useful to catch files not covered by an individual project, such as the root _Readme_. However, it can cause duplicate warnings for files in other projects that use `Smartent.Build.NodeJs`. We suggest setting this value in the solution's "entry" project such as your Web project (e.g. `Smartent.NuGet.Web.csproj` under `NuGetVerify/`).
 
-> ℹ When using Lombiq Node.js Extensions from a submodule, solution-wide Markdown analysis can more easily be achieved by adding the [Lombiq.NodeJs.Extensions.SolutionMarkdownAnalysis](../../Lombiq.NodeJs.Extensions.SolutionMarkdownAnalysis/Readme.md) project to your solution as well.
+> ℹ When using Smartent Node.js Extensions from a submodule, solution-wide Markdown analysis can more easily be achieved by adding the [Smartent.NodeJs.Extensions.SolutionMarkdownAnalysis](../../Smartent.NodeJs.Extensions.SolutionMarkdownAnalysis/Readme.md) project to your solution as well.
 
 ### Disabling linting rules
 
@@ -64,5 +64,5 @@ The difference between the two scripts is that `build:markdown` validates the `s
 Many markdownlint [warnings](https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md) (error codes starting with MD00) can be auto-fixed. The MSBuild warning include “An automatic fix is available with markdownlint-cli.” when this is applicable.
 
 1. Install [markdownlint-cli](https://github.com/igorshubovych/markdownlint-cli), e.g. by typing `pnpm install -g markdownlint-cli`
-2. Locate or download our [markdownlint configuration file](../config/lombiq.markdownlint.json).
-3. Execute `markdownlint --fix --config path\to\lombiq.markdownlint.json path\to\file.md`
+2. Locate or download our [markdownlint configuration file](../config/smartent.markdownlint.json).
+3. Execute `markdownlint --fix --config path\to\smartent.markdownlint.json path\to\file.md`

@@ -1,9 +1,9 @@
 {
   "name": "Smartent.Orchard.Extensions.Cms.ContentSets.Samples",
-  "displayName": "Lombiq Helpful Extensions - Content Sets - Sample",
+  "displayName": "Smartent Orchard Extensions - Content Sets - Sample",
   "description": "Sample content type, content items and workflow for the Content Sets feature.",
-  "author": "Lombiq Technologies",
-  "website": "https://github.com/Lombiq/Helpful-Extensions/",
+  "author": "Smartent",
+  "website": "https://gitee.com/smartent/smartent-training-demo-modules",
   "version": "1.0",
   "issetuprecipe": false,
   "categories": [

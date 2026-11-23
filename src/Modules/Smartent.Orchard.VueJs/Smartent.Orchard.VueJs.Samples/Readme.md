@@ -1,11 +1,11 @@
-# Lombiq Vue.js module for Orchard Core - Samples
+# Smartent Orchard Vue.js module for Orchard Core - Samples
 
 > [!WARNING]
 > The current latest version of `Smartent.Orchard.VueJs.Samples` is deprecated. It will keep working for the foreseeable future, but won't receive any updates besides security fixes.
 
 ## About
 
-Example Orchard Core module that makes use of Lombiq Vue.js module for Orchard Core. For general details about and usage instructions see the [parent project's Readme](../Smartent.Orchard.VueJs/Readme.md).
+Example Orchard Core module that makes use of Smartent Orchard Vue.js module for Orchard Core. For general details about and usage instructions see the [parent project's Readme](../Smartent.Orchard.VueJs/Readme.md).
 
 Vue.js is a progressive framework for building user interfaces, mostly single-page applications. What if you want to build an SPA only for one feature or build multiple SPAs in one Orchard Core module? Here's an example of how to organize your Vue apps and components to keep them reusable and also have all the features we like in Orchard Core such as shape overrides and localization. Besides applications using separate JavaScript and HTML files, it supports [Single File Components](https://vuejs.org/guide/scaling-up/sfc.html) too, which encapsulate the template and logic of a single reusable component into a single file.
 
@@ -27,6 +27,6 @@ You may have noticed that the _package.json_ contains `vue` even though it's not
 
 ## Contributing and support
 
-Bug reports, feature requests, comments, questions, code contributions and love letters are warmly welcome. You can send them to us via GitHub issues and pull requests. Please adhere to our [open-source guidelines](https://lombiq.com/open-source-guidelines) while doing so.
+Bug reports, feature requests, comments, questions, code contributions and love letters are warmly welcome. You can send them to us via GitHub issues and pull requests. Please adhere to our [open-source guidelines](https://gitee.com/smartent/open-source-guidelines) while doing so.
 
-This project is developed by [Lombiq Technologies](https://lombiq.com/). Commercial-grade support is available through Lombiq.
+This project is developed by [Smartent](https://gitee.com/smartent/). Commercial-grade support is available through Smartent.

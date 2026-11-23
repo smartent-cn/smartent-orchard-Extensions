@@ -11,7 +11,7 @@ const findRecursively = require('./find-recursively');
 const { handleErrorObject, handleWarningObject } = require('./handle-error');
 
 const markdownlintConfig = JSON.parse(
-    fs.readFileSync(path.resolve(__dirname, '..', 'config', 'lombiq.markdownlint.json'), 'utf-8'));
+    fs.readFileSync(path.resolve(__dirname, '..', 'config', 'smartent.markdownlint.json'), 'utf-8'));
 
 const textLintConfig = {
     exclude: [

@@ -10,11 +10,11 @@
   <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Smartent.Build.OrchardCore.Module.Sdk" Version="2.1.1-alpha.9.osoe-344" />
 
   <PropertyGroup>
-    <Title>Lombiq Content Editors for Orchard Core</Title>
+    <Title>Smartent Orchard Content Editors for Orchard Core</Title>
     <CopyrightYear>2021</CopyrightYear>
     <DescriptionBody>Module for managing advanced content editing processes based on editor groups and asynchronous operations.</DescriptionBody>
-    <PackageTags>OrchardCore;Lombiq;AspNetCore;Editor;ContentEditor;AsyncEditor</PackageTags>
-    <RepositoryUrl>https://github.com/Lombiq/Orchard-Content-Editors</RepositoryUrl>
+    <PackageTags>OrchardCore;Smartent;AspNetCore;Editor;ContentEditor;AsyncEditor</PackageTags>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>

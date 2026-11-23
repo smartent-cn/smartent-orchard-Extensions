@@ -2,22 +2,22 @@ using OrchardCore.Modules.Manifest;
 using static Smartent.Orchard.Privacy.Constants.FeatureNames;
 
 [assembly: Module(
-    Name = "Lombiq Privacy",
-    Author = "Lombiq Technologies",
-    Website = "https://lombiq.com",
+    Name = "Smartent Orchard Privacy",
+    Author = "Smartent",
+    Website = "https://gitee.com/smartent",
     Version = "0.0.1"
 )]
 
 [assembly: Feature(
     Id = Module,
-    Name = "Lombiq Privacy",
+    Name = "Smartent Orchard Privacy",
     Description = "Various data protection/privacy-related, GDPR-ready features.",
     Category = "Privacy"
 )]
 
 [assembly: Feature(
     Id = ConsentBanner,
-    Name = "Lombiq Privacy - Consent banner",
+    Name = "Smartent Orchard Privacy - Consent banner",
     Description = "Adds the ability to show a privacy consent banner.",
     Category = "Privacy",
     Dependencies = [Module, "OrchardCore.CustomSettings"]
@@ -25,7 +25,7 @@ using static Smartent.Orchard.Privacy.Constants.FeatureNames;
 
 [assembly: Feature(
     Id = RegistrationConsent,
-    Name = "Lombiq Privacy - Registration consent",
+    Name = "Smartent Orchard Privacy - Registration consent",
     Description = "Adds a privacy consent checkbox to the registration form.",
     Category = "Privacy",
     Dependencies = [Module, "OrchardCore.CustomSettings", "OrchardCore.Users.Registration"]
@@ -33,7 +33,7 @@ using static Smartent.Orchard.Privacy.Constants.FeatureNames;
 
 [assembly: Feature(
     Id = ExternalRegistrationConsent,
-    Name = "Lombiq Privacy - External Registration consent",
+    Name = "Smartent Orchard Privacy - External Registration consent",
     Description = "Adds a privacy consent checkbox to the external registration form.",
     Category = "Privacy",
     Dependencies = [
@@ -45,7 +45,7 @@ using static Smartent.Orchard.Privacy.Constants.FeatureNames;
 
 [assembly: Feature(
     Id = FormConsent,
-    Name = "Lombiq Privacy - Form consent",
+    Name = "Smartent Orchard Privacy - Form consent",
     Description = "Provides the Privacy Consent Checkbox widget that can be used on any form.",
     Category = "Privacy",
     Dependencies = [Module, "OrchardCore.CustomSettings", "OrchardCore.Forms"]

@@ -8,12 +8,12 @@
   <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Smartent.Build.OrchardCore.Module.Sdk" Version="2.1.1" />
 
   <PropertyGroup>
-    <Title>Lombiq UI Testing Toolbox - Shortcuts</Title>
+    <Title>Smartent UI Testing - Shortcuts</Title>
     <CopyrightYear>2020</CopyrightYear>
     <DescriptionBody>Provides some useful shortcuts for common operations that UI tests might want to do or check, e.g. turning features on or off, or logging in users.</DescriptionBody>
-    <PackageTags>OrchardCore;Lombiq;AspNetCore;Selenium;Atata;Shouldly;xUnit;Axe;AccessibilityTesting;UITesting;Testing;Automation</PackageTags>
-    <RepositoryUrl>https://github.com/Lombiq/UI-Testing-Toolbox</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/Lombiq/UI-Testing-Toolbox/tree/dev/Smartent.Test.UI.Shortcuts</PackageProjectUrl>
+    <PackageTags>OrchardCore;Smartent;AspNetCore;Selenium;Atata;Shouldly;xUnit;Axe;AccessibilityTesting;UITesting;Testing;Automation</PackageTags>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>

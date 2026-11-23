@@ -5,7 +5,7 @@ obj/
 bin/
 artifacts/
 # Ignore generated vendor assets, keep custom wwwroot source files trackable.
-Lombiq.HelpfulExtensions/wwwroot/vendors/*
+Smartent.Orchard.Extensions.Cms/wwwroot/vendors/*
 node_modules/
 *.user
 .pnpm-debug.log

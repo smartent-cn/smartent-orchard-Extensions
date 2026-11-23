@@ -1,4 +1,4 @@
-# Lombiq Hosting - Tenants Environment Robots for Orchard Core
+# Smartent Orchard Hosting - Tenants Environment Robots for Orchard Core
 
 [![Smartent.Orchard.Hosting.Tenants.EnvironmentRobots NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.Hosting.Tenants.EnvironmentRobots?label=Smartent.Orchard.Hosting.Tenants.EnvironmentRobots)](https://www.nuget.org/packages/Smartent.Orchard.Hosting.Tenants.EnvironmentRobots/)
 

@@ -21,7 +21,7 @@ public static partial class TestCaseUITestContextExtensions
     private static partial Regex WhitespaceRegex { get; }
 
     /// <summary>
-    /// Tests basic functionality of the "Lombiq Hosting - Tenants Health Checks" feature.
+    /// Tests basic functionality of the "Smartent Orchard Hosting - Tenants Health Checks" feature.
     /// </summary>
     /// <param name="tenantSetupRecipeId">The ID of the setup recipe used when setting up additional tenants.</param>
     public static async Task TestHealthChecksAsync(this UITestContext context, string tenantSetupRecipeId)

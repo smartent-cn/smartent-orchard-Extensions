@@ -1,8 +1,8 @@
 {
   "name": "Smartent.Orchard.Theme.Base.Native.Samples",
-  "displayName": "Lombiq Base Theme - Native CSS - Samples",
-  "description": "Sample consumer project for the Lombiq Base Theme - Native CSS theme.",
-  "author": "Lombiq Technologies",
+  "displayName": "Smartent Orchard Theme Base - Native CSS - Samples",
+  "description": "Sample consumer project for the Smartent Orchard Theme Base - Native CSS theme.",
+  "author": "Smartent",
   "website": "https://github.com/smartent-cn/smartent-orchard-Extensions",
   "version": "1.0",
   "issetuprecipe": false,

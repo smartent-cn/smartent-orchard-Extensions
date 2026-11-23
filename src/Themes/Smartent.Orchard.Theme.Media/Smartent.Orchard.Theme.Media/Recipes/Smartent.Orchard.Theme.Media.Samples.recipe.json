@@ -1,9 +1,9 @@
 {
   "name": "Smartent.Orchard.Theme.Media.Samples",
-  "displayName": "Lombiq Hosting - Media Theme - Samples",
+  "displayName": "Smartent Orchard Hosting - Media Theme - Samples",
   "description": "Sample content and configuration for testing and demonstration of the Media Theme functionality.",
-  "author": "Lombiq Technologies",
-  "website": "https://github.com/Lombiq/Hosting-Media-Theme",
+  "author": "Smartent",
+  "website": "https://gitee.com/smartent/smartent-training-demo-modules",
   "version": "1.0",
   "issetuprecipe": false,
   "categories": [

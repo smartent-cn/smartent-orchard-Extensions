@@ -257,7 +257,7 @@ public static class SqlQueryMonitoringTestCases
         {
             const string tenantName = "SqlMonitorTest";
             const string tenantUrlPrefix = "sql-monitor-test";
-            const string tenantDisplayName = "Lombiq's OSOCE - SQL Monitoring Tenant";
+            const string tenantDisplayName = "Smartent's OSOCE - SQL Monitoring Tenant";
             const string tenantAdminName = "tenantSqlMonitorAdmin";
 
             await context.SignInDirectlyAsync();

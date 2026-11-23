@@ -15,11 +15,11 @@ namespace Smartent.Orchard.Extensions.Cms.Tests.UI.Extensions;
 public static class FlowsTestCaseUITestContextExtensions
 {
     /// <summary>
-    /// Tests the Lombiq Helpful Extensions - Flows Helpful Extensions feature.
+    /// Tests the Smartent Orchard Extensions - Flows Helpful Extensions feature.
     /// </summary>
     /// <remarks>
     /// <para>
-    /// Added originally to cover the fix for <see href="https://github.com/Lombiq/Helpful-Extensions/issues/76">
+    /// Added originally to cover the fix for <see href="https://gitee.com/smartent/smartent-training-demo-modules">
     /// Flow 'Additional Styling Part' flyout not activating</see>.
     /// </para>
     /// </remarks>

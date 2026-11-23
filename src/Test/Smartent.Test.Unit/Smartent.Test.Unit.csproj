@@ -14,11 +14,11 @@
   <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Smartent.Build.Library.Sdk" Version="2.1.1" />
 
   <PropertyGroup>
-    <Title>Lombiq Testing Toolbox for Orchard Core</Title>
+    <Title>Smartent Orchard Testing Toolbox for Orchard Core</Title>
     <CopyrightYear>2020</CopyrightYear>
     <DescriptionBody>General and unit testing extensions and helpers, mostly for ASP.NET Core and Orchard Core.</DescriptionBody>
-    <PackageTags>OrchardCore;Lombiq;AspNetCore;Moq;xUnit;UnitTesting;Testing</PackageTags>
-    <RepositoryUrl>https://github.com/Lombiq/Testing-Toolbox</RepositoryUrl>
+    <PackageTags>OrchardCore;Smartent;AspNetCore;Moq;xUnit;UnitTesting;Testing</PackageTags>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>

@@ -200,6 +200,7 @@ node_modules/
 !**/wwwroot/favicon.ico
 !**/wwwroot/.placeholder
 !src/Build/Smartent.Build.Tailwind.Samples/wwwroot/css/site.css
+!src/Build/Smartent.Build.Tailwind/cli/**
 
 src/*.Web/Localization
 /.editorconfig

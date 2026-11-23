@@ -14,7 +14,7 @@ public static class UITestContextExtensions
         context
             .Get(By.ClassName("navbar-brand"))
             .Text
-            .ShouldBe("Lombiq's OSOCE - UI Testing");
+            .ShouldBe("Smartent's OSOCE - UI Testing");
 
         // Are we logged out?
         (await context.GetCurrentUserNameAsync()).ShouldBeNullOrEmpty();

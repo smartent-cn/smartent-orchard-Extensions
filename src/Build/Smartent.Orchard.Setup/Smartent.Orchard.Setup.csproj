@@ -12,7 +12,7 @@
   <PropertyGroup>
     <Title>Smartent Orchard Setup Extensions</Title>
     <CopyrightYear>2020</CopyrightYear>
-    <DescriptionBody>Orchard Core 应用安装与启动配置扩展（原 Lombiq.SetupExtensions）。</DescriptionBody>
+    <DescriptionBody>Orchard Core 应用安装与启动配置扩展（原 Smartent.SetupExtensions）。</DescriptionBody>
     <PackageTags>OrchardCore;Smartent;AspNetCore;Setup</PackageTags>
     <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
     <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules/tree/master/src/Build/Smartent.Orchard.Setup</PackageProjectUrl>

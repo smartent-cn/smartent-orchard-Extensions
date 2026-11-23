@@ -10,11 +10,11 @@
   <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Smartent.Build.OrchardCore.Module.Sdk" Version="2.1.1-alpha.9.osoe-344" />
 
   <PropertyGroup>
-    <Title>Lombiq Audit Trail Extensions for Orchard Core</Title>
+    <Title>Smartent Orchard Audit Trail Extensions for Orchard Core</Title>
     <CopyrightYear>2021</CopyrightYear>
     <DescriptionBody>A module with additional features for the Audit Trail module in Orchard Core.</DescriptionBody>
-    <PackageTags>OrchardCore;Lombiq;AspNetCore;AuditTrail</PackageTags>
-    <RepositoryUrl>https://github.com/Lombiq/Audit-Trail-Extensions</RepositoryUrl>
+    <PackageTags>OrchardCore;Smartent;AspNetCore;AuditTrail</PackageTags>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>

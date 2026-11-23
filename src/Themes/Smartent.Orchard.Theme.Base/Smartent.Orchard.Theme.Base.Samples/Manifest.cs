@@ -5,11 +5,11 @@ using Smartent.Orchard.Theme.Base.Core.Attributes;
 // is automatically set to the constant at Smartent.Orchard.Theme.Base.Constants.FeatureIds.BaseTheme from the Smartent.Orchard.Theme.Base
 // project and it has some additional properties.
 [assembly: DerivedTheme(
-    Name = "Lombiq Base Theme - Sass - Samples",
-    Author = "Lombiq Technologies",
+    Name = "Smartent Orchard Theme Base - Sass - Samples",
+    Author = "Smartent",
     Version = "0.0.1",
-    Website = "https://github.com/Lombiq/Orchard-Base-Theme",
-    Description = "A sample theme that builds on Lombiq Base Theme (Sass version).",
+    Website = "https://gitee.com/smartent/smartent-training-demo-modules",
+    Description = "A sample theme that builds on Smartent Orchard Theme Base (Sass version).",
     // This is a new property in DerivedTheme. By setting it to a static resource you can define a default icon for this
     // theme. You can define other "link" resources too, using the LinkJson property. They should be valid Json strings.
     // For example:
@@ -21,7 +21,7 @@ using Smartent.Orchard.Theme.Base.Core.Attributes;
 // - Reference the project in your web app.
 // - Enable the "Smartent.Orchard.Theme.Base.Samples" feature in your setup recipe.
 // - Set the site theme to "Smartent.Orchard.Theme.Base.Samples" in your setup recipe.
-// You can see these in the "Smartent.Demo.Web.csproj" and the "Lombiq.OSOCE.Tests.recipe.json" files in the
-// https://github.com/Lombiq/Open-Source-Orchard-Core-Extensions/ repository.
+// You can see these in the "Smartent.Demo.Web.csproj" and the "Smartent.Demo.Tests.recipe.json" files in the
+// https://gitee.com/smartent/smartent-training-demo-modules repository.
 
 // NEXT STATION: package.json

@@ -1,4 +1,4 @@
-# Lombiq Helpful Libraries - ASP.NET Core Libraries - Extensions
+# Smartent Helpful Libraries - ASP.NET Core Libraries - Extensions
 
 - `ConfigurationSectionExtensions`: Provides shortcuts for `IConfigurationSection` operations.
 - `CookieHttpContextExtensions`: Provides shortcuts for some cookie-related operations.

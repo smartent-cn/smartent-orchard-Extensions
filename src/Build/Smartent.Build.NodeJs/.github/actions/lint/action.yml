@@ -36,7 +36,7 @@ runs:
       run: |
         '${{ github.action_path }}' >> $Env:GITHUB_PATH
 
-        $LombiqNodeJsExtensions = $(Resolve-Path '${{ github.action_path }}/../../../Lombiq.NodeJs.Extensions').Path
+        $LombiqNodeJsExtensions = $(Resolve-Path '${{ github.action_path }}/../../../Smartent.NodeJs.Extensions').Path
         Write-Output "LOMBIQ_NODEJS_EXTENSIONS=$LombiqNodeJsExtensions"
         "LOMBIQ_NODEJS_EXTENSIONS=$LombiqNodeJsExtensions" >> $Env:GITHUB_ENV
         "LOMBIQ_NODEJS_EXTENSIONS_GITHUB_ACTIONS=true" >> $Env:GITHUB_ENV
@@ -44,7 +44,7 @@ runs:
         "LOMBIQ_NODEJS_EXTENSIONS_WARN_AS_ERROR=true" >> $Env:GITHUB_ENV
 
         # Make sure to keep the version number in sync with the matching command in
-        # Lombiq.NodeJs.Extensions/build/NodeJsExtensionsNpmPackage.targets.
+        # Smartent.NodeJs.Extensions/build/NodeJsExtensionsNpmPackage.targets.
         corepack enable
         corepack prepare pnpm@8.15.9+sha1.aa4bc353b5f59fe1f1df5d802ce049ddf7f3c60e --activate
 

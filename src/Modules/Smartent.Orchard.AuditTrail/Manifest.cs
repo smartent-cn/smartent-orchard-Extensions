@@ -2,16 +2,16 @@ using OrchardCore.Modules.Manifest;
 using static Smartent.Orchard.AuditTrail.Constants.FeatureIds;
 
 [assembly: Module(
-    Name = "Lombiq Audit Trail Extensions",
-    Author = "Lombiq Technologies",
+    Name = "Smartent Orchard Audit Trail Extensions",
+    Author = "Smartent",
     Version = "0.0.1",
     Description = "Module with additional functionality to the stock Audit Trail.",
-    Website = "https://github.com/Lombiq/Audit-Trail-Extensions"
+    Website = "https://gitee.com/smartent/smartent-training-demo-modules"
 )]
 
 [assembly: Feature(
     Id = Default,
-    Name = "Lombiq Audit Trail Extensions",
+    Name = "Smartent Orchard Audit Trail Extensions",
     Category = "Content",
     Description = "Module with additional functionality to the stock Audit Trail.",
     Dependencies =

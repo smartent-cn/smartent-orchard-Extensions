@@ -9,12 +9,12 @@
   <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Smartent.Build.OrchardCore.Module.Sdk" Version="2.1.1" />
 
   <PropertyGroup>
-    <Title>Lombiq Chart.js for Orchard Core - Samples</Title>
+    <Title>Smartent Orchard Chart.js for Orchard Core - Samples</Title>
     <CopyrightYear>2021</CopyrightYear>
-    <DescriptionBody>Sample content that demonstrates the features of Lombiq Chart.js module for Orchard Core.</DescriptionBody>
-    <PackageTags>OrchardCore;Lombiq;AspNetCore;Chart.js</PackageTags>
-    <RepositoryUrl>https://github.com/Lombiq/Orchard-Chart.js</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/Lombiq/Orchard-Chart.js/blob/dev/Smartent.Orchard.ChartJs.Samples/Readme.md</PackageProjectUrl>
+    <DescriptionBody>Sample content that demonstrates the features of Smartent Orchard Chart.js module for Orchard Core.</DescriptionBody>
+    <PackageTags>OrchardCore;Smartent;AspNetCore;Chart.js</PackageTags>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>

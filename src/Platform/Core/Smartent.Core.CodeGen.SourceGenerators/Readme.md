@@ -1,4 +1,4 @@
-# Lombiq HelpfulLibraries - Source Generators
+# Smartent HelpfulLibraries - Source Generators
 
 ## About
 
@@ -35,8 +35,8 @@ For general details about and on using the Helpful Libraries see the [root Readm
 
     ```xml
     <PropertyGroup>
-        <SourceGeneratorLocation>$(SolutionDir)src\Libraries\Lombiq.HelpfulLibraries\Smartent.Core.CodeGen.SourceGenerators\bin\Debug\netstandard2.0\Smartent.Core.CodeGen.SourceGenerators.dll</SourceGeneratorLocation>
-        <SourceGeneratorLocation Condition=" '$(Configuration)' != 'Debug' ">$(SolutionDir)src\Libraries\Lombiq.HelpfulLibraries\Smartent.Core.CodeGen.SourceGenerators\bin\Release\netstandard2.0\Smartent.Core.CodeGen.SourceGenerators.dll</SourceGeneratorLocation>
+        <SourceGeneratorLocation>$(SolutionDir)src\Libraries\Smartent.HelpfulLibraries\Smartent.Core.CodeGen.SourceGenerators\bin\Debug\netstandard2.0\Smartent.Core.CodeGen.SourceGenerators.dll</SourceGeneratorLocation>
+        <SourceGeneratorLocation Condition=" '$(Configuration)' != 'Debug' ">$(SolutionDir)src\Libraries\Smartent.HelpfulLibraries\Smartent.Core.CodeGen.SourceGenerators\bin\Release\netstandard2.0\Smartent.Core.CodeGen.SourceGenerators.dll</SourceGeneratorLocation>
     </PropertyGroup> 
 
     <Target Name="CustomBeforeCompile" BeforeTargets="Compile">

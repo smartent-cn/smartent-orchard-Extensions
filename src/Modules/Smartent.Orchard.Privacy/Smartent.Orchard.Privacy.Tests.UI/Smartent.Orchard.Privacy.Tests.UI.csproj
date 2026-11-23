@@ -10,12 +10,12 @@
   <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Smartent.Build.OrchardCore.Tests.UI.Library.Sdk" Version="2.1.1-alpha.9.osoe-344" />
 
   <PropertyGroup>
-    <Title>Lombiq Privacy for Orchard Core - UI Test Extensions</Title>
+    <Title>Smartent Orchard Privacy for Orchard Core - UI Test Extensions</Title>
     <CopyrightYear>2018</CopyrightYear>
-    <DescriptionBody>Extensions to aid in UI testing Lombiq Privacy for Orchard Core.</DescriptionBody>
-    <PackageTags>OrchardCore;Lombiq;AspNetCore;Privacy</PackageTags>
-    <RepositoryUrl>https://github.com/Lombiq/Orchard-Privacy</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/Lombiq/Orchard-Privacy/tree/dev/Smartent.Orchard.Privacy.Tests.UI</PackageProjectUrl>
+    <DescriptionBody>Extensions to aid in UI testing Smartent Orchard Privacy for Orchard Core.</DescriptionBody>
+    <PackageTags>OrchardCore;Smartent;AspNetCore;Privacy</PackageTags>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>

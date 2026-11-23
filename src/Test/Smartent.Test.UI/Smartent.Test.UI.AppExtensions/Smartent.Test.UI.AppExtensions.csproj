@@ -8,11 +8,11 @@
   <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Smartent.Build.Library.Sdk" Version="2.1.1" />
 
   <PropertyGroup>
-    <Title>Lombiq UI Testing Toolbox - App Extensions</Title>
+    <Title>Smartent UI Testing - App Extensions</Title>
     <CopyrightYear>2020</CopyrightYear>
     <DescriptionBody>UI testing-related configuration extensions for the web app under test.</DescriptionBody>
-    <PackageTags>OrchardCore;Lombiq;AspNetCore;Selenium;Atata;Shouldly;xUnit;Axe;AccessibilityTesting;UITesting;Testing;Automation</PackageTags>
-    <RepositoryUrl>https://github.com/Lombiq/UI-Testing-Toolbox</RepositoryUrl>
+    <PackageTags>OrchardCore;Smartent;AspNetCore;Selenium;Atata;Shouldly;xUnit;Axe;AccessibilityTesting;UITesting;Testing;Automation</PackageTags>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(NuGetBuild)' != 'true'">
@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(NuGetBuild)' == 'true'">
-    <PackageReference Include="Smartent.Orchard.Platform" Version="$(PackageVersionLombiqHelpfulLibraries)" />
+    <PackageReference Include="Smartent.Orchard.Platform" Version="$(PackageVersionSmartentPlatform)" />
   </ItemGroup>
 
   <!-- Security Updates for Orchard Core - make sure to check if these are still necessary -->

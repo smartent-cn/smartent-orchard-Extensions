@@ -8,8 +8,8 @@ public static class ResourceNames
     public const string Bootstrap = "bootstrap";
 
     public const string UriJs = nameof(UriJs);
-    public const string LombiqDataTables = nameof(LombiqDataTables);
-    public const string LombiqDataTablesBefore = nameof(LombiqDataTablesBefore);
+    public const string SmartentOrchardDataTables = nameof(SmartentOrchardDataTables);
+    public const string SmartentOrchardDataTablesBefore = nameof(SmartentOrchardDataTablesBefore);
     public const string ICantBelieveItsNotDataTable = nameof(ICantBelieveItsNotDataTable);
 
     public static class DataTables

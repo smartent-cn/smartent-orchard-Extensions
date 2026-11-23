@@ -3,7 +3,7 @@
   <Import Project="../Directory.Build.props" />
 
   <PropertyGroup>
-    <Title>Smartent MSBuild SDK - Orchard Core Theme (Lombiq.MSBuild.OrchardCore.Theme.Sdk)</Title>
+    <Title>Smartent MSBuild SDK - Orchard Core Theme (Smartent.MSBuild.OrchardCore.Theme.Sdk)</Title>
     <Description>MSBuild SDK for Orchard Core themes.</Description>
     <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules/tree/master/src/Build/Smartent.Build.OrchardCore.Theme.Sdk</PackageProjectUrl>
     <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>

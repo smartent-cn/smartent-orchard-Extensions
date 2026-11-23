@@ -2,16 +2,16 @@ using OrchardCore.Modules.Manifest;
 using static Smartent.Orchard.Walkthroughs.Constants.FeatureIds;
 
 [assembly: Module(
-    Name = "Lombiq Walkthroughs",
-    Author = "Lombiq Technologies",
+    Name = "Smartent Orchard Walkthroughs",
+    Author = "Smartent",
     Version = "0.0.1",
     Description = "Module for enabling the walkthroughs.",
-    Website = "https://github.com/Lombiq/"
+    Website = "https://gitee.com/smartent/smartent-training-demo-modules"
 )]
 
 [assembly: Feature(
     Id = Default,
-    Name = "Lombiq Walkthroughs",
+    Name = "Smartent Orchard Walkthroughs",
     Category = "Content",
     Description = "Module for enabling the walkthroughs.",
     Dependencies =

@@ -1,10 +1,10 @@
-# Lombiq Hosting - Azure Application Insights for Orchard Core
+# Smartent Orchard Hosting - Azure Application Insights for Orchard Core
 
 [![Smartent.Orchard.Hosting.ApplicationInsights NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.Hosting.ApplicationInsights?label=Smartent.Orchard.Hosting.ApplicationInsights)](https://www.nuget.org/packages/Smartent.Orchard.Hosting.ApplicationInsights/) [![Smartent.Orchard.Hosting.ApplicationInsights.Tests.UI NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.Hosting.ApplicationInsights.Tests.UI?label=Smartent.Orchard.Hosting.ApplicationInsights.Tests.UI)](https://www.nuget.org/packages/Smartent.Orchard.Hosting.ApplicationInsights.Tests.UI/)
 
 ## About
 
-This [Orchard Core](https://orchardcore.net/) module enables easy integration of [Azure Application Insights](https://docs.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview) telemetry into Orchard. Just install the module, configure the instrumentation key from a configuration source (like the _appsettings.json_ file) as normally for AAI, and use the `AddOrchardCoreApplicationInsightsTelemetry()` extension method in your Web project's _Program.cs_ file and collected data will start appearing in the Azure Portal. Check out the module's demo [here](https://www.youtube.com/watch?v=NKKR4R3UPog), and the Orchard Harvest 2023 conference talk about automated QA in Orchard Core [here](https://youtu.be/CHdhwD2NHBU). Note that this module has an Orchard 1 version in the [dev-orchard-1 branch](https://github.com/Lombiq/Orchard-Azure-Application-Insights/tree/dev-orchard-1).
+This [Orchard Core](https://orchardcore.net/) module enables easy integration of [Azure Application Insights](https://docs.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview) telemetry into Orchard. Just install the module, configure the instrumentation key from a configuration source (like the _appsettings.json_ file) as normally for AAI, and use the `AddOrchardCoreApplicationInsightsTelemetry()` extension method in your Web project's _Program.cs_ file and collected data will start appearing in the Azure Portal. Check out the module's demo [here](https://www.youtube.com/watch?v=NKKR4R3UPog), and the Orchard Harvest 2023 conference talk about automated QA in Orchard Core [here](https://youtu.be/CHdhwD2NHBU). Note that this module has an Orchard 1 version in the [dev-orchard-1 branch](https://gitee.com/smartent/smartent-training-demo-modules
 
 What kind of data is collected from the telemetry and available for inspection in the Azure Portal?
 
@@ -14,10 +14,10 @@ What kind of data is collected from the telemetry and available for inspection i
 
 And all of this can be configured in depth. Extended configuration for built-in AAI features is also available, like being able to turn SQL query command text collection on or off.
 
-We at [Lombiq](https://lombiq.com/) also used this module for the following projects:
+We at [Smartent](https://gitee.com/smartent/) also used this module for the following projects:
 
-- The new [City of Santa Monica website](https://santamonica.gov/) when migrating it from Orchard 1 to Orchard Core ([see case study](https://lombiq.com/blog/helping-the-city-of-santa-monica-with-orchard-core-consulting)).
-- The new [Lombiq website](https://lombiq.com/) when migrating it from Orchard 1 to Orchard Core ([see case study](https://lombiq.com/blog/how-we-renewed-and-migrated-lombiq-com-from-orchard-1-to-orchard-core)).
+- The new [City of Santa Monica website](https://santamonica.gov/) when migrating it from Orchard 1 to Orchard Core ([see case study](https://gitee.com/smartent/blog/helping-the-city-of-santa-monica-with-orchard-core-consulting)).
+- The new [Smartent website](https://gitee.com/smartent/) when migrating it from Orchard 1 to Orchard Core ([see case study](https://gitee.com/smartent/blog/how-we-renewed-and-migrated-lombiq-com-from-orchard-1-to-orchard-core)).
 - It also makes [DotNest, the Orchard Core SaaS](https://dotnest.com/) better.
 
 Do you want to quickly try out this project and see it in action? Check it out in our [Open-Source Orchard Core Extensions](https://github.com/smartent-cn/smartent-orchard-Extensions) full Orchard Core solution and also see our other useful Orchard Core-related open-source projects!
@@ -67,7 +67,7 @@ builder.Services
 
 Note that due to how the Application Insights .NET SDK works, telemetry can only be collected for the whole app at once; collecting telemetry separately for each tenant is not supported.
 
-You can also use `ConfigureAzureHostingDefaultsWithApplicationInsightsTelemetry` instead; this sets up all the recommended hosting configuration with `ConfigureAzureHostingDefaults` from [Lombiq Helpful Libraries - Orchard Core Libraries](https://github.com/Lombiq/Helpful-Libraries/blob/dev/Smartent.Orchard.Platform/Readme.md).
+You can also use `ConfigureAzureHostingDefaultsWithApplicationInsightsTelemetry` instead; this sets up all the recommended hosting configuration with `ConfigureAzureHostingDefaults` from [Smartent Helpful Libraries - Orchard Core Libraries](https://gitee.com/smartent/smartent-training-demo-modules
 
 When using the full CMS approach of Orchard Core (i.e. not decoupled or headless) then the client-side tracking script will be automatically injected as a head script. Otherwise, you can create it with `ITrackingScriptFactory`.
 
@@ -100,7 +100,7 @@ See the [`ApplicationInsightsOptions` class](Smartent.Orchard.Hosting.Applicatio
 
 Note that while telemetry from background tasks is collected in form of dependency operations it'll be collected even if `EnableDependencyTrackingTelemetryModule` is `false`.
 
-If you use the security defaults from [Lombiq Helpful Libraries - Orchard Core Libraries - Security](https://github.com/Lombiq/Helpful-Libraries/blob/dev/Smartent.Orchard.Platform/Docs/Security.md), then the security headers necessary to use Application Insight's client-side tracking will automatically be added.
+If you use the security defaults from [Smartent Helpful Libraries - Orchard Core Libraries - Security](https://gitee.com/smartent/smartent-training-demo-modules then the security headers necessary to use Application Insight's client-side tracking will automatically be added.
 
 ### Entra Authentication for the Live Metrics control channel
 
@@ -165,7 +165,7 @@ Depending on what data you configure Application Insights to collect, and your j
 
 The client-side tracking script will not use cookies if `ITrackingConsentFeature` is used and no consent was given.
 
-To help with asking users for consent, check out our [Lombiq Privacy for Orchard Core](https://github.com/Lombiq/Orchard-Privacy) module.
+To help with asking users for consent, check out our [Smartent Orchard Privacy for Orchard Core](https://gitee.com/smartent/smartent-training-demo-modules module.
 
 ### Profiling
 
@@ -187,6 +187,6 @@ The [`Smartent.Orchard.Hosting.ApplicationInsights.Tests.UI` project](Smartent.O
 
 ## Contributing and support
 
-Bug reports, feature requests, comments, questions, code contributions and love letters are warmly welcome. You can send them to us via GitHub issues and pull requests. Please adhere to our [open-source guidelines](https://lombiq.com/open-source-guidelines) while doing so.
+Bug reports, feature requests, comments, questions, code contributions and love letters are warmly welcome. You can send them to us via GitHub issues and pull requests. Please adhere to our [open-source guidelines](https://gitee.com/smartent/open-source-guidelines) while doing so.
 
-This project is developed by [Lombiq Technologies](https://lombiq.com/). Commercial-grade support is available through Lombiq.
+This project is developed by [Smartent](https://gitee.com/smartent/). Commercial-grade support is available through Smartent.

@@ -1,3 +1,0 @@
-<Project>
-  <Import Project="../Smartent.Build.Npm.Targets.props"/>
-</Project>

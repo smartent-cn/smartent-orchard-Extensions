@@ -1,9 +1,9 @@
 {
   "name": "Smartent.Orchard.Theme.Base.StylingDemo",
-  "displayName": "Lombiq Orchard Core Base Theme - Styling Demo",
+  "displayName": "Smartent Orchard Core Base Theme - Styling Demo",
   "description": "Adds a sample Page that contains HTML Widgets with content that features various Bootstrap utility classes.",
-  "author": "Lombiq Technologies",
-  "website": "https://github.com/Lombiq/Orchard-Base-Theme",
+  "author": "Smartent",
+  "website": "https://gitee.com/smartent/smartent-training-demo-modules",
   "version": "1.0",
   "categories": [ "content", "demo" ],
   "tags": [],

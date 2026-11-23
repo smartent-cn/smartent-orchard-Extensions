@@ -1,4 +1,4 @@
-Copyright © 2013, [Lombiq Technologies Ltd.](https://lombiq.com)
+Copyright © 2013, [Smartent](https://gitee.com/smartent)
 
 All rights reserved.
 

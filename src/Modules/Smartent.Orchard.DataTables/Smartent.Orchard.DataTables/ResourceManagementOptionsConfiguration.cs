@@ -87,7 +87,7 @@ public partial class ResourceManagementOptionsConfiguration : IConfigureOptions<
             .SetVersion("1.0");
 
         _manifest
-            .DefineScript(ResourceNames.LombiqDataTables)
+            .DefineScript(ResourceNames.SmartentOrchardDataTables)
             .SetDependencies(
                 ResourceNames.JQuery,
                 ResourceNames.UriJs,
@@ -95,7 +95,7 @@ public partial class ResourceManagementOptionsConfiguration : IConfigureOptions<
                 ResourceNames.DataTables.Bootstrap5,
                 ResourceNames.DataTables.Buttons,
                 ResourceNames.DataTables.Bootstrap5Buttons)
-            .SetUrl(Js + "lombiq-datatables.js")
+            .SetUrl(Js + "smartent-datatables.js")
             .SetVersion("1.0");
 
         _manifest

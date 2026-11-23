@@ -14,7 +14,7 @@ public class TenantTests : UITestBase
 {
     private const string TestTenantName = "Test";
     private const string TestTenantUrlPrefix = "test";
-    private const string TestTenantDisplayName = "Lombiq's OSOCE - Test Tenant";
+    private const string TestTenantDisplayName = "Smartent's OSOCE - Test Tenant";
 
     public TenantTests(ITestOutputHelper testOutputHelper)
         : base(testOutputHelper)

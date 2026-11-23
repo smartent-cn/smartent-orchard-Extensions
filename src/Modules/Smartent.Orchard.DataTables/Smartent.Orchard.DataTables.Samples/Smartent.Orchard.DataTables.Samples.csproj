@@ -9,12 +9,12 @@
   <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Smartent.Build.OrchardCore.Module.Sdk" Version="2.1.1" />
 
   <PropertyGroup>
-    <Title>Lombiq Data Tables for Orchard Core - Samples</Title>
+    <Title>Smartent Orchard Data Tables for Orchard Core - Samples</Title>
     <CopyrightYear>2020</CopyrightYear>
-    <DescriptionBody>Sample content that demonstrates the features of Lombiq Data Tables for Orchard Core.</DescriptionBody>
-    <PackageTags>OrchardCore;Lombiq;AspNetCore;DataTables;Vue.js</PackageTags>
-    <RepositoryUrl>https://github.com/Lombiq/Orchard-Data-Tables</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/Lombiq/Orchard-Data-Tables/blob/dev/Smartent.Orchard.DataTables.Samples/Readme.md</PackageProjectUrl>
+    <DescriptionBody>Sample content that demonstrates the features of Smartent Orchard Data Tables for Orchard Core.</DescriptionBody>
+    <PackageTags>OrchardCore;Smartent;AspNetCore;DataTables;Vue.js</PackageTags>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules</PackageProjectUrl>
     <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
   </PropertyGroup>
 

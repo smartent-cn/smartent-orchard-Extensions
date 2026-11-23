@@ -4,7 +4,7 @@
 
 | 目录 | 说明 |
 |------|------|
-| `Smartent.Demo.Platform.Samples/` | 原 `Lombiq.HelpfulLibraries.Samples`（LinqToYesSql、路由等示例） |
+| `Smartent.Demo.Platform.Samples/` | 原 `Smartent.HelpfulLibraries.Samples`（LinqToYesSql、路由等示例） |
 
 Feature Id：`Smartent.Demo.Platform.Samples`。
 

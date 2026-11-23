@@ -1,4 +1,4 @@
-# Lombiq Hosting - Media Theme for Orchard Core
+# Smartent Orchard Hosting - Media Theme for Orchard Core
 
 [![Smartent.Orchard.Theme.Media NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.Theme.Media?label=Smartent.Orchard.Theme.Media)](https://www.nuget.org/packages/Smartent.Orchard.Theme.Media/) [![Smartent.Orchard.Theme.Media.Bridge NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.Theme.Media.Bridge?label=Smartent.Orchard.Theme.Media.Bridge)](https://www.nuget.org/packages/Smartent.Orchard.Theme.Media.Bridge/) [![Smartent.Orchard.Theme.Media.Deployer NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.Theme.Media.Deployer?label=Smartent.Orchard.Theme.Media.Deployer)](https://www.nuget.org/packages/Smartent.Orchard.Theme.Media.Deployer/) [![Smartent.Orchard.Theme.Media.Tests.UI NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.Theme.Media.Tests.UI?label=Smartent.Orchard.Theme.Media.Tests.UI)](https://www.nuget.org/packages/Smartent.Orchard.Theme.Media.Tests.UI/)[![Smartent.Orchard.Theme.Media.Targets NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.Theme.Media.Targets?label=Smartent.Orchard.Theme.Media.Targets)](https://www.nuget.org/packages/Smartent.Orchard.Theme.Media.Targets/)
 
@@ -6,7 +6,7 @@
 
 The Media Theme feature will allow developers to host their themes in the Orchard Core Media Library, including templates and assets. This is useful in SaaS scenarios where you can't allow everyone to develop full Orchard themes, but still want to make the usual Orchard theming experience available to all users. Media Theme allows full theming of sites running on [DotNest](https://dotnest.com/), the Orchard SaaS, too. Watch a demo video of it from the Orchard Community Meeting [here](https://www.youtube.com/watch?v=bKXFo_U0TwA).
 
-We at [Lombiq](https://lombiq.com/) also used this SDK for the new [Show Orchard website](https://showorchard.com/) when migrating it from Orchard 1 DotNest to DotNest Core (see [case study](https://dotnest.com/blog/show-orchard-case-study-migrating-an-orchard-1-dotnest-site-to-orchard-core) and the [theme's source code](https://github.com/Lombiq/Show-Orchard-Theme)).
+We at [Smartent](https://gitee.com/smartent/) also used this SDK for the new [Show Orchard website](https://showorchard.com/) when migrating it from Orchard 1 DotNest to DotNest Core (see [case study](https://dotnest.com/blog/show-orchard-case-study-migrating-an-orchard-1-dotnest-site-to-orchard-core) and the [theme's source code](https://gitee.com/smartent/smartent-training-demo-modules
 
 Do you want to quickly try out this project and see it in action? Check it out in our [Open-Source Orchard Core Extensions](https://github.com/smartent-cn/smartent-orchard-Extensions) full Orchard Core solution and also see our other useful Orchard Core-related open-source projects!
 
@@ -58,7 +58,7 @@ These use Orchard's resource manager and thus will also include a browser/proxy 
 
 Media Theme will translate this special _~/mediatheme_ path to either your local theme asset path or Media Library if the file exists. This way, you don't need to update your asset URLs in your templates one-by-one when deploying them. The `~` notation of virtual paths also comes in handy if you want to work with multiple tenants using URL prefixes locally, i.e. develop multiple Media Themes for multiple sites from the same solution.
 
-If you are developing a theme for your [DotNest](https://dotnest.com) site you can use the [DotNest Core SDK](https://github.com/Lombiq/DotNest-Core-SDK) that has everything prepared for you right away.
+If you are developing a theme for your [DotNest](https://dotnest.com) site you can use the [DotNest Core SDK](https://gitee.com/smartent/smartent-training-demo-modules that has everything prepared for you right away.
 
 ### Deployment (import/export)
 
@@ -110,7 +110,7 @@ on:
 jobs:
   deploy-media-theme:
     name: Deploy Media Theme to DotNest
-    uses: Lombiq/Hosting-Media-Theme/.github/workflows/deploy-media-theme.yml@dev
+    uses: Smartent/Hosting-Media-Theme/.github/workflows/deploy-media-theme.yml@dev
     secrets:
       URL: ${{ secrets.MY_THEME_DEPLOYMENT_URL }}
       CLIENT_NAME: ${{ secrets.MY_THEME_DEPLOYMENT_CLIENT_NAME }}
@@ -136,9 +136,9 @@ media-theme-deploy @switches
 
 ## Contributing and support
 
-Bug reports, feature requests, comments, questions, code contributions and love letters are warmly welcome. You can send them to us via GitHub issues and pull requests. Please adhere to our [open-source guidelines](https://lombiq.com/open-source-guidelines) while doing so.
+Bug reports, feature requests, comments, questions, code contributions and love letters are warmly welcome. You can send them to us via GitHub issues and pull requests. Please adhere to our [open-source guidelines](https://gitee.com/smartent/open-source-guidelines) while doing so.
 
-This project is developed by [Lombiq Technologies](https://lombiq.com/). Commercial-grade support is available through Lombiq.
+This project is developed by [Smartent](https://gitee.com/smartent/). Commercial-grade support is available through Smartent.
 
 ### Publishing and using a version of the Deployer during local development
 

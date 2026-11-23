@@ -1,3 +1,3 @@
-# Lombiq MSBuild SDK - Base
+# Smartent MSBuild SDK - Base
 
-Base SDK for other Lombiq MSBuild SDKs. Don't use this directly.
+Base SDK for other Smartent MSBuild SDKs. Don't use this directly.

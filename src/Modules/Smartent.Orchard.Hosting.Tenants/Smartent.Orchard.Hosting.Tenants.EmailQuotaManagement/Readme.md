@@ -1,4 +1,4 @@
-# Lombiq Hosting - Tenants Email Quota Management for Orchard Core
+# Smartent Orchard Hosting - Tenants Email Quota Management for Orchard Core
 
 [![Smartent.Orchard.Hosting.Tenants.EmailQuotaManagement NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.Hosting.Tenants.EmailQuotaManagement?label=Smartent.Orchard.Hosting.Tenants.EmailQuotaManagement)](https://www.nuget.org/packages/Smartent.Orchard.Hosting.Tenants.EmailQuotaManagement/)
 

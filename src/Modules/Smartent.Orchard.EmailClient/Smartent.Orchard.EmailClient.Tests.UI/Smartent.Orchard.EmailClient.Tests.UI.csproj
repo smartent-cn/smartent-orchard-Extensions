@@ -10,12 +10,12 @@
   <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Smartent.Build.OrchardCore.Tests.UI.Library.Sdk" Version="2.1.1" />
 
   <PropertyGroup>
-    <Title>Lombiq Email Client for Orchard Core - UI Test Extensions</Title>
+    <Title>Smartent Orchard Email Client for Orchard Core - UI Test Extensions</Title>
     <CopyrightYear>2025</CopyrightYear>
-    <DescriptionBody>Extension methods that test various features in Lombiq Email Client for Orchard Core.</DescriptionBody>
-    <PackageTags>OrchardCore;Lombiq;AspNetCore;Email;IMAP;Shouldly;xUnit;UITesting;Testing</PackageTags>
-    <RepositoryUrl>https://github.com/Lombiq/Orchard-Email-Client</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/Lombiq/Orchard-Email-Client/blob/dev/Smartent.Orchard.EmailClient.Tests.UI/Readme.md</PackageProjectUrl>
+    <DescriptionBody>Extension methods that test various features in Smartent Orchard Email Client for Orchard Core.</DescriptionBody>
+    <PackageTags>OrchardCore;Smartent;AspNetCore;Email;IMAP;Shouldly;xUnit;UITesting;Testing</PackageTags>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>

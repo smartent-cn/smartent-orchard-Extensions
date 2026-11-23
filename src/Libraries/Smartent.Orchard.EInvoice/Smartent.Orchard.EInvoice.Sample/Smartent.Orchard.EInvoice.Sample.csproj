@@ -8,12 +8,12 @@
   <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Smartent.Build.Library.Sdk" Version="2.1.1-alpha.9.osoe-344" />
 
   <PropertyGroup>
-    <Title>Lombiq eInvoice Validator Sample</Title>
+    <Title>Smartent Orchard eInvoice Validator Sample</Title>
     <CopyrightYear>2025</CopyrightYear>
-    <DescriptionBody>Sample console application to showcase the Lombiq eInvoice Validator. See the project website for detailed documentation.</DescriptionBody>
-    <PackageTags>OrchardCore;Lombiq;AspNetCore;EN16931;eInvoice;XML;UBL;CII</PackageTags>
-    <RepositoryUrl>https://github.com/Lombiq/eInvoice-Validator</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/Lombiq/eInvoice-Validator/Lombiq.EInvoiceValidator.Sample/Readme.md</PackageProjectUrl>
+    <DescriptionBody>Sample console application to showcase the Smartent eInvoice Validator. See the project website for detailed documentation.</DescriptionBody>
+    <PackageTags>OrchardCore;Smartent;AspNetCore;EN16931;eInvoice;XML;UBL;CII</PackageTags>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>

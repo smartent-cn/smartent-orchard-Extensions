@@ -50,7 +50,7 @@ public sealed class PersonsAdminMenu : INavigationProvider
                 .Action(
                     nameof(AdminController.Index),
                     typeof(AdminController).ControllerName(),
-                    new { area = $"{nameof(Lombiq)}.{nameof(TrainingDemo)}" })
+                    new { area = $"{nameof(Smartent)}.{nameof(TrainingDemo)}" })
             )
             // Add another menu item that will display multiple Person items. However, branch this item to two different
             // third-level items!
@@ -61,7 +61,7 @@ public sealed class PersonsAdminMenu : INavigationProvider
                     .Action(
                         nameof(AdminController.PersonListNewest),
                         typeof(AdminController).ControllerName(),
-                        new { area = $"{nameof(Lombiq)}.{nameof(TrainingDemo)}" })
+                        new { area = $"{nameof(Smartent)}.{nameof(TrainingDemo)}" })
                     // This means that the first child menu item will point to our Person List dashboard and be shown
                     // only to users having the AccessPersonListDashboard permission. WARNING: this doesn't mean others
                     // won't be able to access it directly: we have to check in the controller too!
@@ -76,7 +76,7 @@ public sealed class PersonsAdminMenu : INavigationProvider
                     .Action(
                         nameof(AdminController.PersonListOldest),
                         typeof(AdminController).ControllerName(),
-                        new { area = $"{nameof(Lombiq)}.{nameof(TrainingDemo)}" })
+                        new { area = $"{nameof(Smartent)}.{nameof(TrainingDemo)}" })
                     .Permission(PersonPermissions.AccessPersonListDashboard)
                     .LocalNav())));
 

@@ -1,4 +1,4 @@
-# Lombiq Hosting - Tenants Media Storage Management for Orchard Core
+# Smartent Orchard Hosting - Tenants Media Storage Management for Orchard Core
 
 [![Smartent.Orchard.Hosting.Tenants.MediaStorageManagement NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.Hosting.Tenants.MediaStorageManagement?label=Smartent.Orchard.Hosting.Tenants.MediaStorageManagement)](https://www.nuget.org/packages/Smartent.Orchard.Hosting.Tenants.MediaStorageManagement/)
 

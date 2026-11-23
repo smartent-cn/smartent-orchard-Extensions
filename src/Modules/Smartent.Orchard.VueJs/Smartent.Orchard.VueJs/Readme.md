@@ -1,4 +1,4 @@
-# Lombiq Vue.js module for Orchard Core
+# Smartent Orchard Vue.js module for Orchard Core
 
 [![Smartent.Orchard.VueJs NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.VueJs?label=Smartent.Orchard.VueJs)](https://www.nuget.org/packages/Smartent.Orchard.VueJs/) [![Smartent.Orchard.VueJs.Samples NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.VueJs.Samples?label=Smartent.Orchard.VueJs.Samples)](https://www.nuget.org/packages/Smartent.Orchard.VueJs.Samples/) [![Smartent.Orchard.VueJs.Tests.UI NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.VueJs.Tests.UI?label=Smartent.Orchard.VueJs.Tests.UI)](https://www.nuget.org/packages/Smartent.Orchard.VueJs.Tests.UI/)
 
@@ -9,11 +9,11 @@
 
 [Orchard Core](http://orchardproject.net/) module that contains [Vue.js](https://vuejs.org/) and commonly used Vue.js components to be used in other Vue.js apps as dependencies. Provides extensibility to create Vue.js component templates as Orchard Core shapes making them able to override in themes or modules.
 
-We at [Lombiq](https://lombiq.com/) also used this module for the following projects:
+We at [Smartent](https://gitee.com/smartent/) also used this module for the following projects:
 
-- The multi-tenant church community management system [Kast](https://www.kast.io/) ([see case study](https://lombiq.com/blog/helping-kast-build-a-multi-tenant-platform-on-orchard-core)).
-- The new [Lombiq website](https://lombiq.com/) when migrating it from Orchard 1 to Orchard Core ([see case study](https://lombiq.com/blog/how-we-renewed-and-migrated-lombiq-com-from-orchard-1-to-orchard-core)).
-- The new client portal for [WTW](https://www.wtwco.com/) ([see case study](https://lombiq.com/blog/lombiq-s-journey-with-wtw-s-client-portal)).
+- The multi-tenant church community management system [Kast](https://www.kast.io/) ([see case study](https://gitee.com/smartent/blog/helping-kast-build-a-multi-tenant-platform-on-orchard-core)).
+- The new [Smartent website](https://gitee.com/smartent/) when migrating it from Orchard 1 to Orchard Core ([see case study](https://gitee.com/smartent/blog/how-we-renewed-and-migrated-lombiq-com-from-orchard-1-to-orchard-core)).
+- The new client portal for [WTW](https://www.wtwco.com/) ([see case study](https://gitee.com/smartent/blog/lombiq-s-journey-with-wtw-s-client-portal)).
 
 If you just want to see the whole thing in action, check out the [Samples project](Smartent.Orchard.VueJs.Samples/Readme.md). Do you want to quickly try it out? Check it out in our [Open-Source Orchard Core Extensions](https://github.com/smartent-cn/smartent-orchard-Extensions) full Orchard Core solution and also see our other useful Orchard Core-related open-source projects!
 
@@ -22,7 +22,7 @@ If you just want to see the whole thing in action, check out the [Samples projec
 
 ## Prerequisites
 
-1. This project relies on [Lombiq Node.js Extensions](https://github.com/Lombiq/NodeJs-Extensions/), please see its prerequisites [here](https://github.com/Lombiq/NodeJs-Extensions/#prerequisites).
+1. This project relies on [Smartent Node.js Extensions](https://gitee.com/smartent/smartent-training-demo-modules please see its prerequisites [here](https://gitee.com/smartent/smartent-training-demo-modules
 2. If you are importing this project as a submodule, include the following entries at the beginning and end of your csproj file. If you are using the NuGet package, this is not necessary:
 
     ```xml
@@ -180,11 +180,11 @@ Also if your app still uses the `<vue-component>` tag helper directly, consider 
 
 This module has the following dependencies:
 
-- [Lombiq Helpful Libraries for Orchard Core](https://github.com/Lombiq/Helpful-Libraries)
-- [Lombiq Node.js Extensions](https://gihub.com/Lombiq/NodeJs-Extensions)
+- [Smartent Helpful Libraries for Orchard Core](https://gitee.com/smartent/smartent-training-demo-modules
+- [Smartent Node.js Extensions](https://gihub.com/Smartent/NodeJs-Extensions)
 
 ## Contributing and support
 
-Bug reports, feature requests, comments, questions, code contributions and love letters are warmly welcome. You can send them to us via GitHub issues and pull requests. Please adhere to our [open-source guidelines](https://lombiq.com/open-source-guidelines) while doing so.
+Bug reports, feature requests, comments, questions, code contributions and love letters are warmly welcome. You can send them to us via GitHub issues and pull requests. Please adhere to our [open-source guidelines](https://gitee.com/smartent/open-source-guidelines) while doing so.
 
-This project is developed by [Lombiq Technologies](https://lombiq.com/). Commercial-grade support is available through Lombiq.
+This project is developed by [Smartent](https://gitee.com/smartent/). Commercial-grade support is available through Smartent.

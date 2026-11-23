@@ -1,4 +1,4 @@
-# Lombiq Helpful Libraries - ASP.NET Core Libraries - Middlewares
+# Smartent Helpful Libraries - ASP.NET Core Libraries - Middlewares
 
 Contains ASP.NET Core middlewares and middleware-related services.
 

@@ -1,4 +1,4 @@
-# Lombiq Base Theme for Orchard Core
+# Smartent Orchard Theme Base for Orchard Core
 
 [![Smartent.Orchard.Theme.Base NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.Theme.Base?label=Smartent.Orchard.Theme.Base)](https://www.nuget.org/packages/Smartent.Orchard.Theme.Base/) [![Smartent.Orchard.Theme.Base.Samples NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.Theme.Base?label=Smartent.Orchard.Theme.Base.Samples)](https://www.nuget.org/packages/Smartent.Orchard.Theme.Base.Samples/) [![Smartent.Orchard.Theme.Base.Tests.UI NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.Theme.Base?label=Smartent.Orchard.Theme.Base.Tests.UI)](https://www.nuget.org/packages/Smartent.Orchard.Theme.Base.Tests.UI/)
 
@@ -11,17 +11,17 @@ A common base theme for our Orchard Core themes using Bootstrap v5.3.6. It can c
 
 You can find a sample module with a commented walkthrough in this repository. Check it out [here](Smartent.Orchard.Theme.Base.Samples/Readme.md)!
 
-We at [Lombiq](https://lombiq.com/) also used this theme for the following projects:
+We at [Smartent](https://gitee.com/smartent/) also used this theme for the following projects:
 
-- The new [Lombiq website](https://lombiq.com/) when migrating it from Orchard 1 to Orchard Core ([see case study](https://lombiq.com/blog/how-we-renewed-and-migrated-lombiq-com-from-orchard-1-to-orchard-core)).
+- The new [Smartent website](https://gitee.com/smartent/) when migrating it from Orchard 1 to Orchard Core ([see case study](https://gitee.com/smartent/blog/how-we-renewed-and-migrated-lombiq-com-from-orchard-1-to-orchard-core)).
 - The new [Show Orchard website](https://showorchard.com/) when migrating it from Orchard 1 DotNest to DotNest Core ([see case study](https://dotnest.com/blog/show-orchard-case-study-migrating-an-orchard-1-dotnest-site-to-orchard-core)).
-- The new [Git-hg Mirror website](https://githgmirror.com/) when migrating it from Orchard 1 to Orchard Core ([see case study](https://lombiq.com/blog/git-hg-mirror-is-running-on-orchard-core)).
-- The new [Hastlayer website](https://hastlayer.com/) when migrating it from Orchard 1 to Orchard Core ([see case study](https://lombiq.com/blog/modernization-and-orchard-core-migration-of-hastlayer-com)).
+- The new [Git-hg Mirror website](https://githgmirror.com/) when migrating it from Orchard 1 to Orchard Core ([see case study](https://gitee.com/smartent/blog/git-hg-mirror-is-running-on-orchard-core)).
+- The new [Hastlayer website](https://hastlayer.com/) when migrating it from Orchard 1 to Orchard Core ([see case study](https://gitee.com/smartent/blog/modernization-and-orchard-core-migration-of-hastlayer-com)).
 - The new [Orchard Dojo website](https://orcharddojo.net/) when migrating it from Orchard 1 to Orchard Core ([see case study](https://orcharddojo.net/blog/another-lombiq-site-was-improved-orchard-dojo)).
 
 This theme is also available on all sites of [DotNest, the Orchard Core SaaS](https://dotnest.com/).
 
-Do you want to quickly try out this project and see it in action? Check it out in our [Open-Source Orchard Core Extensions](https://github.com/Lombiq/Open-Source-Orchard-Core-Extensions) full Orchard Core solution and also see our other useful Orchard Core-related open-source projects!
+Do you want to quickly try out this project and see it in action? Check it out in our [Open-Source Orchard Core Extensions](https://gitee.com/smartent/smartent-training-demo-modules full Orchard Core solution and also see our other useful Orchard Core-related open-source projects!
 
 ## Demo video
 
@@ -37,7 +37,7 @@ The version of Bootstrap used by Orchard Core is not necessarily the same as the
 
 Besides the style and layout, the Sass-based theme also automatically includes a minimalist helper script that eases transition away from jQuery, which hasn't really been necessary since Internet Explorer died back in 2022. The script gives you the `window.helper` object. You can use `helper.ready(($) => {})` in your scripts, where `$(querySelector, baseElement)` returns a JavaScript `Array` of `Element`s. We opted to not include it in the native CSS version of the theme, and should be considered a legacy feature.
 
-If you use Sass, your styles will be automatically linted during compilation. If you use CSS, there is no linting by default. We suggest using our GitHub workflow to enable linting for unprocessed CSS and JS. You can learn more about either approach in the documentation of [Lombiq Node.js Extensions](https://github.com/Lombiq/NodeJs-Extensions/).
+If you use Sass, your styles will be automatically linted during compilation. If you use CSS, there is no linting by default. We suggest using our GitHub workflow to enable linting for unprocessed CSS and JS. You can learn more about either approach in the documentation of [Smartent Node.js Extensions](https://gitee.com/smartent/smartent-training-demo-modules
 
 ## Liquid
 
@@ -51,11 +51,11 @@ The following Liquid features are made available:
 
 ## Recipes
 
-- Lombiq Orchard Core Base Theme - Layers and Zones: Sets up all the supported zones and some common layers. Automatically executed when you first enable the theme.
-- Lombiq Orchard Core Base Theme - Styling Demo: Creates a Demo Page that can be helpful to see how your theme's stylesheet behaves on various HTML elements.
+- Smartent Orchard Core Base Theme - Layers and Zones: Sets up all the supported zones and some common layers. Automatically executed when you first enable the theme.
+- Smartent Orchard Core Base Theme - Styling Demo: Creates a Demo Page that can be helpful to see how your theme's stylesheet behaves on various HTML elements.
 
 ## Contributing and support
 
-Bug reports, feature requests, comments, questions, code contributions and love letters are warmly welcome. You can send them to us via GitHub issues and pull requests. Please adhere to our [open-source guidelines](https://lombiq.com/open-source-guidelines) while doing so.
+Bug reports, feature requests, comments, questions, code contributions and love letters are warmly welcome. You can send them to us via GitHub issues and pull requests. Please adhere to our [open-source guidelines](https://gitee.com/smartent/open-source-guidelines) while doing so.
 
-This project is developed by [Lombiq Technologies](https://lombiq.com/). Commercial-grade support is available through Lombiq.
+This project is developed by [Smartent](https://gitee.com/smartent/). Commercial-grade support is available through Smartent.

@@ -1,4 +1,4 @@
-# Lombiq Marketing - URL Shortener for Orchard Core
+# Smartent Orchard Marketing - URL Shortener for Orchard Core
 
 [![Smartent.Orchard.Marketing.UrlShortener NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.Marketing.UrlShortener?label=Smartent.Orchard.Marketing.UrlShortener)](https://www.nuget.org/packages/Smartent.Orchard.Marketing.UrlShortener/)
 

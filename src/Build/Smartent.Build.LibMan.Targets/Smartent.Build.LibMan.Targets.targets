@@ -11,13 +11,13 @@
 
   <Target Name="AddVendors" AfterTargets="LibraryManagerRestore">
     <ItemGroup>
-      <Content Include="$(LombiqMSBuildLibManTarget)\**">
+      <Content Include="$(SmartentMSBuildLibManTarget)\**">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
         <Pack>true</Pack>
         <PackageCopyToOutput>true</PackageCopyToOutput>
       </Content>
-      <EmbeddedResource Include="$(LombiqMSBuildLibManTarget)\**" />
+      <EmbeddedResource Include="$(SmartentMSBuildLibManTarget)\**" />
     </ItemGroup>
   </Target>
 

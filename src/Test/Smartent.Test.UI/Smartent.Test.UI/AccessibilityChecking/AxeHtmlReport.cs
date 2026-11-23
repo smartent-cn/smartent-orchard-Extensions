@@ -40,7 +40,7 @@ public enum AxeReportTypes
 /// </para>
 /// <para>
 /// Maybe at one point we can have an Orchard Core shape template-based, customizable report:
-/// https://github.com/Lombiq/UI-Testing-Toolbox/issues/799.
+/// https://gitee.com/smartent/smartent-training-demo-modules
 /// </para>
 /// <para>
 /// Original license:

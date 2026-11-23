@@ -9,7 +9,7 @@ using Xunit;
 
 namespace Smartent.Test.UI.Samples.Tests;
 
-// When you enable the "Shift Time - Shortcuts - Lombiq UI Testing Toolbox" feature, it replaces Orchard Core's stock
+// When you enable the "Shift Time - Shortcuts - Smartent UI Testing" feature, it replaces Orchard Core's stock
 // ICLock implementation with the custom TimeShiftingClock class. You can use the
 // ~/Smartent.Test.UI.Samples/TimeShift/Set?days=... action to update the TimeShiftingClock.Shift property for the current
 // tenant, which will trick any service that uses IClock into thinking you are in the future. This can be used to test

@@ -9,7 +9,7 @@ namespace Smartent.Orchard.Extensions.Cms.Tests.UI.Extensions;
 public static class TrumbowygBlogPostsTestCaseUITestContextExtensions
 {
     /// <summary>
-    /// Tests the Lombiq Helpful Extensions - Trumbowyg code snippet - Blog Posts feature, and thus also the Lombiq Helpful
+    /// Tests the Smartent Orchard Extensions - Trumbowyg code snippet - Blog Posts feature, and thus also the Smartent Helpful
     /// Extensions - Trumbowyg code snippet one.
     /// </summary>
     public static async Task TestTrumbowygBlogPostsFeatureAsync(this UITestContext context)

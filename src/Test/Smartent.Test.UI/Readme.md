@@ -1,4 +1,4 @@
-# Lombiq UI Testing Toolbox for Orchard Core
+# Smartent UI Testing for Orchard Core
 
 [![Smartent.Test.UI NuGet](https://img.shields.io/nuget/v/Smartent.Test.UI?label=Smartent.Test.UI)](https://www.nuget.org/packages/Smartent.Test.UI/) [![Smartent.Test.UI.AppExtensions NuGet](https://img.shields.io/nuget/v/Smartent.Test.UI.AppExtensions?label=Smartent.Test.UI.AppExtensions)](https://www.nuget.org/packages/Smartent.Test.UI.AppExtensions/) [![Smartent.Test.UI.Shortcuts NuGet](https://img.shields.io/nuget/v/Smartent.Test.UI.Shortcuts?label=Smartent.Test.UI.Shortcuts)](https://www.nuget.org/packages/Smartent.Test.UI.Shortcuts/) [![Latest version of 'Smartent.Test.UI' @ Cloudsmith](https://api-prd.cloudsmith.io/v1/badges/version/lombiq/open-source-orchard-core-extensions/nuget/Smartent.Test.UI/latest/xsp=True/?render=true&show_latest=true)](https://cloudsmith.io/~lombiq/repos/open-source-orchard-core-extensions/packages/detail/nuget/Smartent.Test.UI/latest/xsp=True/)
 
@@ -22,7 +22,7 @@ Highlights:
 - Detect duplicate SQL queries and oversized result sets to catch SELECT N+1 issues and missing filters, [see more here](Smartent.Test.UI/Docs/SqlQueryMonitoring.md), and a [demo video here](https://www.youtube.com/watch?v=YBdzXsREkxI).
 - Reliability is built in, so you won't get false negatives.
 - Use shortcuts for common Orchard Core operations like logging in or enabling features instead of going through the UI so you only test what you want, and it's also faster.
-- Ready to use GitHub Actions workflows for CI builds and support for test grouping and error annotations in [Lombiq GitHub Actions](https://github.com/features/actions). This feature is automatically enabled if a GitHub environment is detected.
+- Ready to use GitHub Actions workflows for CI builds and support for test grouping and error annotations in [Smartent GitHub Actions](https://github.com/features/actions). This feature is automatically enabled if a GitHub environment is detected.
 - Support for [TeamCity test metadata reporting](https://www.jetbrains.com/help/teamcity/reporting-test-metadata.html) so you can see the important details and metrics of a test at a glance in a TeamCity CI/CD server.
 - Visual verification testing: You can make the test fail if the look of the app changes. Demo video [here](https://www.youtube.com/watch?v=a-1zKjxTKkk).
 - If your app uses a camera, a fake video capture source in Chrome is supported. [Here's a demo video of the feature](https://www.youtube.com/watch?v=sGcD0eJ2ytc), and check out the docs [here](Smartent.Test.UI/Docs/FakeVideoCaptureSource.md).
@@ -33,16 +33,16 @@ Highlights:
 - Test a headless app with a separate frontend. See a demo video [here](https://youtu.be/eK2C9BW98sM?si=Ehd_bbieXKOwm7vc&t=225).
 - Write Selenium tests not just in .NET but also in JavaScript. See a demo video [here](https://youtu.be/eK2C9BW98sM?si=m0TXkBVRsFGD8lfr&t=415).
 
-See a demo video of the project [here](https://www.youtube.com/watch?v=mEUg6-pad-E), and the Orchard Harvest 2023 conference talk about automated QA in Orchard Core [here](https://youtu.be/CHdhwD2NHBU). We also had an Orchard Harvest 2024 talk about security scanning [here](https://www.youtube.com/watch?v=FsOpo8EA4wE). Also, see our [Testing Toolbox](https://github.com/Lombiq/Testing-Toolbox) for similar features for lower-level tests.
+See a demo video of the project [here](https://www.youtube.com/watch?v=mEUg6-pad-E), and the Orchard Harvest 2023 conference talk about automated QA in Orchard Core [here](https://youtu.be/CHdhwD2NHBU). We also had an Orchard Harvest 2024 talk about security scanning [here](https://www.youtube.com/watch?v=FsOpo8EA4wE). Also, see our [Testing Toolbox](https://gitee.com/smartent/smartent-training-demo-modules for similar features for lower-level tests.
 
-Looking not just for dynamic testing but also static code analysis? Check out our [.NET Analyzers project](https://github.com/Lombiq/.NET-Analyzers).
+Looking not just for dynamic testing but also static code analysis? Check out our [.NET Analyzers project](https://gitee.com/smartent/smartent-training-demo-modules
 
-We at [Lombiq](https://lombiq.com/) also used this module for the following projects:
+We at [Smartent](https://gitee.com/smartent/) also used this module for the following projects:
 
-- The new [City of Santa Monica website](https://santamonica.gov/) when migrating it from Orchard 1 to Orchard Core ([see case study](https://lombiq.com/blog/helping-the-city-of-santa-monica-with-orchard-core-consulting)).
-- The new [Smithsonian Folkways Recordings website](https://folkways.si.edu/) when migrating it from Orchard 1 to Orchard Core ([see case study](https://lombiq.com/blog/smithsonian-folkways-recordings-now-upgraded-to-orchard-core)).
-- The new [Lombiq website](https://lombiq.com/) when migrating it from Orchard 1 to Orchard Core ([see case study](https://lombiq.com/blog/how-we-renewed-and-migrated-lombiq-com-from-orchard-1-to-orchard-core)).
-- The new client portal for [WTW](https://www.wtwco.com/) ([see case study](https://lombiq.com/blog/lombiq-s-journey-with-wtw-s-client-portal)).
+- The new [City of Santa Monica website](https://santamonica.gov/) when migrating it from Orchard 1 to Orchard Core ([see case study](https://gitee.com/smartent/blog/helping-the-city-of-santa-monica-with-orchard-core-consulting)).
+- The new [Smithsonian Folkways Recordings website](https://folkways.si.edu/) when migrating it from Orchard 1 to Orchard Core ([see case study](https://gitee.com/smartent/blog/smithsonian-folkways-recordings-now-upgraded-to-orchard-core)).
+- The new [Smartent website](https://gitee.com/smartent/) when migrating it from Orchard 1 to Orchard Core ([see case study](https://gitee.com/smartent/blog/how-we-renewed-and-migrated-lombiq-com-from-orchard-1-to-orchard-core)).
+- The new client portal for [WTW](https://www.wtwco.com/) ([see case study](https://gitee.com/smartent/blog/lombiq-s-journey-with-wtw-s-client-portal)).
 - It also makes [DotNest, the Orchard Core SaaS](https://dotnest.com/) better.
 
 Do you want to quickly try out this project and see it in action? Check it out in our [Open-Source Orchard Core Extensions](https://github.com/smartent-cn/smartent-orchard-Extensions) full Orchard Core solution and also see our other useful Orchard Core-related open-source projects!
@@ -66,6 +66,6 @@ Do you want to quickly try out this project and see it in action? Check it out i
 
 ## Contributing and support
 
-Bug reports, feature requests, comments, questions, code contributions and love letters are warmly welcome. You can send them to us via GitHub issues and pull requests. Please adhere to our [open-source guidelines](https://lombiq.com/open-source-guidelines) while doing so.
+Bug reports, feature requests, comments, questions, code contributions and love letters are warmly welcome. You can send them to us via GitHub issues and pull requests. Please adhere to our [open-source guidelines](https://gitee.com/smartent/open-source-guidelines) while doing so.
 
-This project is developed by [Lombiq Technologies](https://lombiq.com/). Commercial-grade support is available through Lombiq.
+This project is developed by [Smartent](https://gitee.com/smartent/). Commercial-grade support is available through Smartent.

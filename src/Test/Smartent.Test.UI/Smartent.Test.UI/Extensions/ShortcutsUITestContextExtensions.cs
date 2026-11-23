@@ -753,7 +753,7 @@ public static class ShortcutsUITestContextExtensions
         context.ExecuteJsonRecipeSiteSettingsAsync(new Dictionary<string, object> { [typeof(T).Name] = setting });
 
     /// <summary>
-    /// Enabled the "Shift Time - Shortcuts - Lombiq UI Testing Toolbox" feature directly.
+    /// Enabled the "Shift Time - Shortcuts - Smartent UI Testing" feature directly.
     /// </summary>
     public static Task EnableTimeShiftingAsync(this UITestContext context) => context.EnableFeatureDirectlyAsync(ShiftTime);
 

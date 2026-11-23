@@ -2,16 +2,16 @@ using OrchardCore.Modules.Manifest;
 using static Smartent.Orchard.ChartJs.Constants.FeatureIds;
 
 [assembly: Module(
-    Name = "Lombiq Chart.js",
-    Author = "Lombiq Technologies",
+    Name = "Smartent Orchard Chart.js",
+    Author = "Smartent",
     Version = "0.0.1",
     Description = "Module for displaying data using Chart.js.",
-    Website = "https://github.com/Lombiq/Orchard-Chart.js"
+    Website = "https://gitee.com/smartent/smartent-training-demo-modules"
 )]
 
 [assembly: Feature(
     Id = Default,
-    Name = "Lombiq Chart.js",
+    Name = "Smartent Orchard Chart.js",
     Category = "Content",
     Description = "Module for displaying data using Chart.js.",
     Dependencies =

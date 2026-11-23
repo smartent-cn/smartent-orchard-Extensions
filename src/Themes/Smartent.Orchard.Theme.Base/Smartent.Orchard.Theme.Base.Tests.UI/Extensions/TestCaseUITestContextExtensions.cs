@@ -54,7 +54,7 @@ public static class TestCaseUITestContextExtensions
     public static async Task TestBaseThemeDependencyIsEnabledAsync(this UITestContext context)
     {
         await context.GoToFeaturesAsync();
-        context.Exists(By.Id("btn-disable-Lombiq_HelpfulExtensions_Widgets"));
+        context.Exists(By.Id("btn-disable-Smartent_Orchard_Extensions_Widgets"));
     }
 
     public static void TestBlogRecipeMenuItemsAddedToMainMenu(this UITestContext context)

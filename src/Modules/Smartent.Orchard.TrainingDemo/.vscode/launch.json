@@ -5,13 +5,13 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Lombiq.TrainingDemo.Web .NET Core Launch (web)",
+            "name": "Smartent.TrainingDemo.Web .NET Core Launch (web)",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/Lombiq.TrainingDemo.Web/bin/Debug/net8.0/Lombiq.TrainingDemo.Web.dll",
+            "program": "${workspaceFolder}/Smartent.TrainingDemo.Web/bin/Debug/net8.0/Smartent.TrainingDemo.Web.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/Lombiq.TrainingDemo.Web",
+            "cwd": "${workspaceFolder}/Smartent.TrainingDemo.Web",
             "stopAtEntry": false,
             "serverReadyAction": {
                 "action": "openExternally",
@@ -23,8 +23,8 @@
             "sourceFileMap": {
                 "/Views": "${workspaceFolder}/Views"
             },
-            "launchSettingsFilePath": "${workspaceFolder}/Lombiq.TrainingDemo.Web/Properties/launchSettings.json",
-            "launchSettingsProfile": "Lombiq.TrainingDemo.Web"
+            "launchSettingsFilePath": "${workspaceFolder}/Smartent.TrainingDemo.Web/Properties/launchSettings.json",
+            "launchSettingsProfile": "Smartent.TrainingDemo.Web"
         }
     ]
 }

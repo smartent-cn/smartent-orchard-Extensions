@@ -50,7 +50,7 @@ public sealed class OrchardApplicationFactory<TStartup> : WebApplicationFactory<
             // Moving host startup out of the xUnit synchronization context to a new thread, to avoid potential
             // deadlocks and thus dotnet test getting randomly stuck due to sync-over-async code in
             // WebApplicationFactory. See ASP.NET Core issue: https://github.com/dotnet/aspnetcore/issues/43353. See our
-            // issue for more details about the whole topic: https://github.com/Lombiq/UI-Testing-Toolbox/issues/228.
+            // issue for more details about the whole topic: https://gitee.com/smartent/smartent-training-demo-modules
             // Solution taken from:
             // https://www.strathweb.com/2021/05/the-curious-case-of-asp-net-core-integration-test-deadlock/.
 

@@ -11,7 +11,7 @@ using System.Diagnostics.CodeAnalysis;
 namespace Smartent.Orchard.ContentEditors.Samples.Navigation;
 
 // This is the navigation provider for the Content Editors Samples module. It adds menu items to a navigation with an ID
-// of "MainMenu". If you are using the Lombiq Base Theme then this navigation is rendered in the header. If you are
+// of "MainMenu". If you are using the Smartent Orchard Theme Base then this navigation is rendered in the header. If you are
 // using the OSOCE app then this theme is enabled by default.
 public class ContentEditorsSamplesNavigationProvider : MainMenuNavigationProviderBase
 {

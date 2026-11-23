@@ -1,4 +1,4 @@
-# Lombiq Helpful Libraries - ASP.NET Core Libraries - MVC
+# Smartent Helpful Libraries - ASP.NET Core Libraries - MVC
 
 - `ActionResultHelpers`: For returning common specialized `IActionResult`s from `Controller`s, such as `ZipFile`.
 - Attributes for controllers:

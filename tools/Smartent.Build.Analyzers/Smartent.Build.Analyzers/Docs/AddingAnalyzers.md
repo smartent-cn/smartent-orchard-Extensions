@@ -2,7 +2,7 @@
 
 ## Selecting which analyzer project/package to use
 
-Lombiq .NET Analyzers is split into multiple projects/packages so you can select the one most suitable for your application. Depending on your use case, select one of the following:
+Smartent .NET Analyzers is split into multiple projects/packages so you can select the one most suitable for your application. Depending on your use case, select one of the following:
 
 - [`Smartent.Build.Analyzers`](../Readme.md): General .NET projects.
 - [`Smartent.Build.Analyzers.NetFx`](../../Smartent.Build.Analyzers.NetFx/Readme.md): General .NET Framework projects.
@@ -14,7 +14,7 @@ You only need to reference a single project; e.g., even though Orchard Core apps
 
 ## How to add the analyzers to SDK-style projects from NuGet
 
-If you don't want to stay on the cutting-edge version, nor do you intend to contribute to Lombiq .NET Analyzers, you can use one of the NuGet packages. Install the package suitable for your project, as described above. Check for the latest version number [on NuGet](https://www.nuget.org/packages/Smartent.Build.Analyzers/).
+If you don't want to stay on the cutting-edge version, nor do you intend to contribute to Smartent .NET Analyzers, you can use one of the NuGet packages. Install the package suitable for your project, as described above. Check for the latest version number [on NuGet](https://www.nuget.org/packages/Smartent.Build.Analyzers/).
 
 ```csproj
 <PackageReference Include="Smartent.Build.Analyzers" Version="<latest version>">
@@ -28,14 +28,14 @@ You can also add the package to all projects inside a folder at once [from a _Di
 
 ## How to add the analyzers to SDK-style projects from a Git submodule
 
-Use this approach if you always want to use the very latest version, or if you'd like to contribute to Lombiq .NET Analyzers.
+Use this approach if you always want to use the very latest version, or if you'd like to contribute to Smartent .NET Analyzers.
 
 1. Add to the following to the _.gitmodules_ file (we use the _tools_ subfolder for the submodule's folder here but feel free to use something else):
 
    ```gitmodules
    [submodule "Smartent.Build.Analyzers"]
        path = tools/Smartent.Build.Analyzers
-       url = https://github.com/Lombiq/.NET-Analyzers.git
+       url = https://gitee.com/smartent/smartent-training-demo-modules
        branch = dev
    ```
 
@@ -69,7 +69,7 @@ For at least Visual Studio and JetBrains Rider you don't need any further setup 
 
 ## How to add the analyzers to individual non-SDK-style .NET Framework projects (not solutions)
 
-The key difference compared to .NET projects is that for non-SDK-style .NET Framework projects, you need to add Lombiq .NET Analyzers to each project.
+The key difference compared to .NET projects is that for non-SDK-style .NET Framework projects, you need to add Smartent .NET Analyzers to each project.
 
 1. Same as above - add the .NET-Analyzers repository as a Git submodule to your repository or add the NuGet package in the next step.
 2. Create a _Directory.Build.props_ file in a common root folder of your projects, or in every project folder you want to target, next to the _.csproj_ file with the following content, either referencing `Smartent.Build.Analyzers.NetFx` or `Smartent.Build.Analyzers.Orchard1`:

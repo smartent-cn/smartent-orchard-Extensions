@@ -1,8 +1,8 @@
-# Lombiq Training Demo for Orchard Core
+# Smartent Orchard Training Demo for Orchard Core
 
 ## About
 
-Demo [Orchard Core](https://orchardcore.net/) module for training purposes guiding you to become an Orchard developer. Note that this module also has an Orchard 1.x version in the [dev-orchard-1 branch of the repository](https://github.com/Lombiq/Orchard-Training-Demo-Module/tree/dev-orchard-1).
+Demo [Orchard Core](https://orchardcore.net/) module for training purposes guiding you to become an Orchard developer. Note that this module also has an Orchard 1.x version in the [dev-orchard-1 branch of the repository](https://gitee.com/smartent/smartent-training-demo-modules
 
 If you prefer tutorial videos more then check out the [Dojo Course 3, the complete Orchard Core tutorial series](https://orcharddojo.net/orchard-training/dojo-course-3-the-full-orchard-core-tutorial).
 
@@ -22,9 +22,9 @@ Before you dive deep into this module it'd be best if you make sure that you hav
 
 The module comes with its own standalone solution and web app. So, to run it, simply do the following:
 
-1. Clone the latest `dev` branch of this repository or [download the source](https://github.com/Lombiq/Orchard-Training-Demo-Module/archive/refs/heads/dev.zip).
+1. Clone the latest `dev` branch of this repository or [download the source](https://gitee.com/smartent/smartent-training-demo-modules
 2. Open the solution in your favorite IDE, like [Visual Studio](https://visualstudio.microsoft.com/), [Visual Studio Code](https://code.visualstudio.com/) or [Rider](https://www.jetbrains.com/rider/).
-3. Make sure the `Lombiq.TrainingDemo.Web` project is the startup project (it should be; not needed for VS Code).
+3. Make sure the `Smartent.TrainingDemo.Web` project is the startup project (it should be; not needed for VS Code).
 4. Start the app.
    - In Visual Studio and VS Code, you can do this with <kbd>Ctrl</kbd> + <kbd>F5</kbd>.
    - From the .NET CLI, run `dotnet run` in the _Lombiq.TrainingDemo.Web_ folder and then open <https://localhost:5001/> in a browser.
@@ -32,38 +32,38 @@ The module comes with its own standalone solution and web app. So, to run it, si
 
 Once the app is running:
 
-- Head over to the **[StartLearningHere.md](Lombiq.TrainingDemo/StartLearningHere.md)** file and start exploring all the great things you can do in Orchard Core.
-- If you are brave enough to not follow any guide or you want to start the guide from somewhere else then go to the **[Map.cs](Lombiq.TrainingDemo/Map.cs)** file and jump to any class you are interested in. [StartLearningHere.md](Lombiq.TrainingDemo/StartLearningHere.md) also has training sections linked so you can go to a broader section.
+- Head over to the **[StartLearningHere.md](Smartent.TrainingDemo/StartLearningHere.md)** file and start exploring all the great things you can do in Orchard Core.
+- If you are brave enough to not follow any guide or you want to start the guide from somewhere else then go to the **[Map.cs](Smartent.TrainingDemo/Map.cs)** file and jump to any class you are interested in. [StartLearningHere.md](Smartent.TrainingDemo/StartLearningHere.md) also has training sections linked so you can go to a broader section.
 - If you'd like to clean out comments from code files so you can just see the essence, then use the [Comment Remover VS extension](https://marketplace.visualstudio.com/items?itemName=MadsKristensen.CommentRemover) to quickly do it.
 - Take a look at the Recipes menu in the Admin screen to load in additional sample content. This is not included by default to reduce clutter.
-- This module uses [Lombiq Helpful Libraries for Orchard Core](https://github.com/Lombiq/Helpful-Libraries) to make a few things simpler. But don't worry, we'll explain it.
+- This module uses [Smartent Helpful Libraries for Orchard Core](https://gitee.com/smartent/smartent-training-demo-modules to make a few things simpler. But don't worry, we'll explain it.
 
 ## Further resources
 
 Some further reading if you're hungry for more knowledge.
 
 - You can also follow the [Dojo Course 3 tutorial series](https://orcharddojo.net/orchard-training/dojo-course-3-the-full-orchard-core-tutorial) if you like to learn from videos.
-- This module is not about showing you how to create an Orchard Core application from scratch. For that, we recommend you use the `Initialize-OrchardCoreSolution` script from our [Utility Scripts project](https://github.com/Lombiq/Utility-Scripts).
-- Keep in mind that your best living reference for how to do something in Orchard is [the official repo](https://github.com/OrchardCMS/OrchardCore) and our [Open-Source Orchard Core Extensions](https://github.com/smartent-cn/smartent-orchard-Extensions) (OSOCE) solution. Clone both and keep the solutions open when you’re working on something so you can quickly look up anything. As a bonus, OSOCE also contains all of Lombiq's open-source Orchard themes and modules! Check it out for what we've already solved for you.
-- You can also take a look at our [Walkthroughs](https://github.com/Lombiq/Orchard-Walkthroughs) module, for step-by-step walkthroughs, which are guided by pop-up windows right there in the UI. You can also click "Guided walkthrough" button on the [homepage of DotNest, the Orchard Core SaaS](https://dotnest.com/), and you'll get a site set up with the Walkthroughs module, without touching Orchard's setup screen.
+- This module is not about showing you how to create an Orchard Core application from scratch. For that, we recommend you use the `Initialize-OrchardCoreSolution` script from our [Utility Scripts project](https://gitee.com/smartent/smartent-training-demo-modules
+- Keep in mind that your best living reference for how to do something in Orchard is [the official repo](https://github.com/OrchardCMS/OrchardCore) and our [Open-Source Orchard Core Extensions](https://github.com/smartent-cn/smartent-orchard-Extensions) (OSOCE) solution. Clone both and keep the solutions open when you’re working on something so you can quickly look up anything. As a bonus, OSOCE also contains all of Smartent's open-source Orchard themes and modules! Check it out for what we've already solved for you.
+- You can also take a look at our [Walkthroughs](https://gitee.com/smartent/smartent-training-demo-modules module, for step-by-step walkthroughs, which are guided by pop-up windows right there in the UI. You can also click "Guided walkthrough" button on the [homepage of DotNest, the Orchard Core SaaS](https://dotnest.com/), and you'll get a site set up with the Walkthroughs module, without touching Orchard's setup screen.
 - Be sure to check out the [Orchard Dojo Library for Orchard Core](https://orcharddojo.net/orchard-resources/CoreLibrary/) for a wealth of Orchard Core guidelines, best practices, development utilities (like scripts and snippets), and more as well!
-- This project utilizes several [GitHub Actions](https://docs.github.com/en/actions) workflows, like [Build and Test Orchard Core solution](https://github.com/Lombiq/GitHub-Actions/blob/dev/Docs/Workflows/BuildDotNetCoreOrchardCore/BuildAndTestOrchardCoreSolution.md) to provide CI builds. We recommend using such workflows from our [Lombiq GitHub Actions project](https://github.com/Lombiq/GitHub-Actions) for automation.
+- This project utilizes several [GitHub Actions](https://docs.github.com/en/actions) workflows, like [Build and Test Orchard Core solution](https://gitee.com/smartent/smartent-training-demo-modules to provide CI builds. We recommend using such workflows from our [Smartent GitHub Actions project](https://gitee.com/smartent/smartent-training-demo-modules for automation.
 - If you're ready to make a jump to fully automated Quality Assurance beyond unit testing as demonstrated here, check out the following projects:
-  - [Lombiq .NET Analyzers](https://github.com/Lombiq/.NET-Analyzers): Orchard Core-optimized static code analysis of all C# code during editing and build.
-  - [Lombiq Testing Toolbox for Orchard Core](https://github.com/Lombiq/Testing-Toolbox): Helps you write unit tests for Orchard Core projects.
-  - [Lombiq UI Testing Toolbox for Orchard Core](https://github.com/Lombiq/UI-Testing-Toolbox): Web UI testing toolbox for Orchard Core applications. Everything you need to do UI testing with Selenium for an Orchard app is there, including accessibility checks and security scanning.
-  - [Lombiq GitHub Actions](https://github.com/Lombiq/GitHub-Actions): Ready-to-use, developer-friendly GitHub Actions CI/CD workflows that build Orchard Core projects, run static code analysis, execute unit/UI tests, and provide reports and artifacts. Automation for deploying and operating Azure-hosted apps is also included, as well as linting for CSS, JS, Markdown, and YAML.
-  - [Lombiq PowerShell Analyzers](https://github.com/Lombiq/PowerShell-Analyzers): Static code analysis for PowerShell scripts, even if the scripts are part of an Orchard Core solution.
-  - [Lombiq Hosting - Azure Application Insights for Orchard Core](https://github.com/Lombiq/Orchard-Azure-Application-Insights): Orchard Core module that enables easy integration of Azure Application Insights into Orchard. Detailed telemetry is collected about the app, enriched with Orchard-specific data points.
+  - [Smartent .NET Analyzers](https://gitee.com/smartent/smartent-training-demo-modules Orchard Core-optimized static code analysis of all C# code during editing and build.
+  - [Smartent UI Testing Toolbox for Orchard Core](https://gitee.com/smartent/smartent-training-demo-modules Helps you write unit tests for Orchard Core projects.
+  - [Smartent UI Testing for Orchard Core](https://gitee.com/smartent/smartent-training-demo-modules Web UI testing toolbox for Orchard Core applications. Everything you need to do UI testing with Selenium for an Orchard app is there, including accessibility checks and security scanning.
+  - [Smartent GitHub Actions](https://gitee.com/smartent/smartent-training-demo-modules Ready-to-use, developer-friendly GitHub Actions CI/CD workflows that build Orchard Core projects, run static code analysis, execute unit/UI tests, and provide reports and artifacts. Automation for deploying and operating Azure-hosted apps is also included, as well as linting for CSS, JS, Markdown, and YAML.
+  - [Smartent PowerShell Analyzers](https://gitee.com/smartent/smartent-training-demo-modules Static code analysis for PowerShell scripts, even if the scripts are part of an Orchard Core solution.
+  - [Smartent Orchard Hosting - Azure Application Insights for Orchard Core](https://gitee.com/smartent/smartent-training-demo-modules Orchard Core module that enables easy integration of Azure Application Insights into Orchard. Detailed telemetry is collected about the app, enriched with Orchard-specific data points.
 
 ## Contributing and support
 
-Bug reports, feature requests, comments, questions, code contributions and love letters are warmly welcome. You can send them to us via GitHub issues and pull requests. Please adhere to our [open-source guidelines](https://lombiq.com/open-source-guidelines) while doing so.
+Bug reports, feature requests, comments, questions, code contributions and love letters are warmly welcome. You can send them to us via GitHub issues and pull requests. Please adhere to our [open-source guidelines](https://gitee.com/smartent/open-source-guidelines) while doing so.
 
 When adding new tutorials please keep in mind the following:
 
 - Insert tutorial steps into the existing flow, either at the end or between two existing ones. Use "NEXT STATION" comments to indicate the next file the reader should check out.
-- If it's a new training section then indicate as such by an "END OF TRAINING SECTION" comment at the end and add it to the list under [StartLearningHere.md](Lombiq.TrainingDemo/StartLearningHere.md).
+- If it's a new training section then indicate as such by an "END OF TRAINING SECTION" comment at the end and add it to the list under [StartLearningHere.md](Smartent.TrainingDemo/StartLearningHere.md).
 - Add pointers to its classes/files in _Map.cs_.
 
-This project is developed by [Lombiq Technologies](https://lombiq.com/). Commercial-grade support is available through Lombiq.
+This project is developed by [Smartent](https://gitee.com/smartent/). Commercial-grade support is available through Smartent.

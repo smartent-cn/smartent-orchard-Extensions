@@ -8,7 +8,7 @@ namespace Microsoft.Extensions.DependencyInjection;
 public static class HostingDefaultsOrchardCoreBuilderExtensions
 {
     /// <summary>
-    /// Lombiq-recommended opinionated default configuration for features of a standard Orchard Core application. If
+    /// Smartent-recommended opinionated default configuration for features of a standard Orchard Core application. If
     /// any of the configuration values exist, they won't be overridden, so e.g. appsettings.json configuration will
     /// take precedence.
     /// </summary>
@@ -98,7 +98,7 @@ public static class HostingDefaultsOrchardCoreBuilderExtensions
     }
 
     /// <summary>
-    /// Lombiq-recommended opinionated default configuration for features of an Orchard Core application hosted in
+    /// Smartent-recommended opinionated default configuration for features of an Orchard Core application hosted in
     /// Azure. If any of the configuration values exist, they won't be overridden, so e.g. appsettings.json
     /// configuration will take precedence.
     /// </summary>

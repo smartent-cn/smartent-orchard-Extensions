@@ -14,11 +14,11 @@
   <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Smartent.Build.Library.Sdk" Version="2.1.1" />
 
   <PropertyGroup>
-    <Title>Lombiq UI Testing Toolbox for Orchard Core</Title>
+    <Title>Smartent UI Testing for Orchard Core</Title>
     <CopyrightYear>2020</CopyrightYear>
     <DescriptionBody>Web UI testing toolbox mostly for Orchard Core applications. Everything you need to do UI testing with Selenium for an Orchard app is here.</DescriptionBody>
-    <PackageTags>OrchardCore;Lombiq;AspNetCore;Selenium;Atata;Shouldly;xUnit;Axe;AccessibilityTesting;UITesting;Testing;Automation;ZAP;Zed Attack Proxy;Security;Scanning;OWASP</PackageTags>
-    <RepositoryUrl>https://github.com/Lombiq/UI-Testing-Toolbox</RepositoryUrl>
+    <PackageTags>OrchardCore;Smartent;AspNetCore;Selenium;Atata;Shouldly;xUnit;Axe;AccessibilityTesting;UITesting;Testing;Automation;ZAP;Zed Attack Proxy;Security;Scanning;OWASP</PackageTags>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
@@ -68,10 +68,10 @@
   <Choose>
     <When Condition="'$(NuGetBuild)' == 'true'">
       <ItemGroup>
-        <PackageReference Include="Smartent.Test.Unit" Version="$(PackageVersionLombiqTests)" />
-        <PackageReference Include="Smartent.Core.Cli" Version="$(PackageVersionLombiqHelpfulLibraries)" />
-        <PackageReference Include="Smartent.Orchard.Platform" Version="$(PackageVersionLombiqHelpfulLibraries)" />
-        <PackageReference Include="Smartent.Orchard.Http.Refit" Version="$(PackageVersionLombiqHelpfulLibraries)" />
+        <PackageReference Include="Smartent.Test.Unit" Version="$(PackageVersionSmartentTests)" />
+        <PackageReference Include="Smartent.Core.Cli" Version="$(PackageVersionSmartentPlatform)" />
+        <PackageReference Include="Smartent.Orchard.Platform" Version="$(PackageVersionSmartentPlatform)" />
+        <PackageReference Include="Smartent.Orchard.Http.Refit" Version="$(PackageVersionSmartentPlatform)" />
       </ItemGroup>
     </When>
     <Otherwise>

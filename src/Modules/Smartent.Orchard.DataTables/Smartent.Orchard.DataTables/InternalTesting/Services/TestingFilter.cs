@@ -5,7 +5,7 @@ using OrchardCore.DisplayManagement;
 using OrchardCore.DisplayManagement.Layout;
 using System.Threading.Tasks;
 
-namespace Smartent.Orchard.DataTables.LombiqTests.Services;
+namespace Smartent.Orchard.DataTables.InternalTesting.Services;
 
 public sealed class TestingFilter : IAsyncResultFilter
 {
@@ -26,7 +26,7 @@ public sealed class TestingFilter : IAsyncResultFilter
             return;
         }
 
-        IShape testingHeader = await _shapeFactory.New.Lombiq_Datatable_Testing_Header();
+        IShape testingHeader = await _shapeFactory.New.Smartent_Orchard_DataTables_Datatable_Testing_Header();
         await _layoutAccessor.AddShapeToZoneAsync("Header", testingHeader);
 
         await next();

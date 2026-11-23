@@ -9,7 +9,7 @@ namespace Smartent.Orchard.Extensions.Cms.Tests.UI.Extensions;
 public static class LiquidTestCaseUITestContextExtensions
 {
     /// <summary>
-    /// Tests the Lombiq Helpful Extensions - Liquid feature.
+    /// Tests the Smartent Orchard Extensions - Liquid feature.
     /// </summary>
     public static async Task TestLiquidFeatureAsync(this UITestContext context)
     {

@@ -13,7 +13,7 @@ namespace Smartent.Orchard.Extensions.Cms.Tests.UI.Extensions;
 public static class WidgetsTestCaseUITestContextExtensions
 {
     /// <summary>
-    /// Tests the Lombiq Helpful Extensions - Helpful Widgets feature.
+    /// Tests the Smartent Orchard Extensions - Helpful Widgets feature.
     /// </summary>
     public static async Task TestWidgetsFeatureAsync(this UITestContext context)
     {

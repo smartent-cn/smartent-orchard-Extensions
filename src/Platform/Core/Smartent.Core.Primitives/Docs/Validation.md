@@ -1,4 +1,4 @@
-# Lombiq Helpful Libraries - Common Libraries - Validation
+# Smartent Helpful Libraries - Common Libraries - Validation
 
 ## Attributes
 

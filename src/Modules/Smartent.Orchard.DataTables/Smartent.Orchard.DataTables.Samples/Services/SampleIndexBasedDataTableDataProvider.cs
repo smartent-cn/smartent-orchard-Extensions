@@ -52,7 +52,7 @@ public class SampleIndexBasedDataTableDataProvider : IndexBasedDataTableDataProv
             // Here we demonstrate export links. This is the way to return a cell with link text that still correctly
             // sorts and works in the Excel export too.
             var name = new ExportLink(
-                url: "https://lombiq.com",
+                url: "https://gitee.com/smartent",
                 text: row.Name,
                 attributes: new Dictionary<string, string>
                 {

@@ -1,8 +1,8 @@
-﻿# Lombiq eInvoice Validator Sample
+﻿# Smartent eInvoice Validator Sample
 
 ## About
 
-This is a sample console application to demonstrate how to use the Lombiq eInvoice Validator library. It shows how to validate EN 16931 CII and UBL invoices. The samples are from [CEN/TC 434 - EN-16931 - Validation artifacts](https://github.com/ConnectingEurope/eInvoicing-EN16931) repository.
+This is a sample console application to demonstrate how to use the Smartent eInvoice Validator library. It shows how to validate EN 16931 CII and UBL invoices. The samples are from [CEN/TC 434 - EN-16931 - Validation artifacts](https://github.com/ConnectingEurope/eInvoicing-EN16931) repository.
 
 ## How to use
 
@@ -14,6 +14,6 @@ The sample invoices are located in the `SampleInvoices` folder. They include bot
 
 ## Contributing and support
 
-Bug reports, feature requests, comments, questions, code contributions and love letters are warmly welcome. You can send them to us via GitHub issues and pull requests. Please adhere to our [open-source guidelines](https://lombiq.com/open-source-guidelines) while doing so.
+Bug reports, feature requests, comments, questions, code contributions and love letters are warmly welcome. You can send them to us via GitHub issues and pull requests. Please adhere to our [open-source guidelines](https://gitee.com/smartent/open-source-guidelines) while doing so.
 
-This project is developed by [Lombiq Technologies](https://lombiq.com/). Commercial-grade support is available through Lombiq.
+This project is developed by [Smartent](https://gitee.com/smartent/). Commercial-grade support is available through Smartent.

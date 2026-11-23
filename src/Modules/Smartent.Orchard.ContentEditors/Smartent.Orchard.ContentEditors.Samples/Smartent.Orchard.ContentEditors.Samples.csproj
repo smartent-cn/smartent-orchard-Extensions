@@ -10,12 +10,12 @@
   <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Smartent.Build.OrchardCore.Module.Sdk" Version="2.1.1-alpha.9.osoe-344" />
 
   <PropertyGroup>
-    <Title>Lombiq Content Editors for Orchard Core - Samples</Title>
+    <Title>Smartent Orchard Content Editors for Orchard Core - Samples</Title>
     <CopyrightYear>2021</CopyrightYear>
-    <DescriptionBody>Sample content that demonstrates the features of Lombiq Content Editors for Orchard Core.</DescriptionBody>
-    <PackageTags>OrchardCore;Lombiq;AspNetCore;Editor;ContentEditor;AsyncEditor;Sample;Example;Training</PackageTags>
-    <RepositoryUrl>https://github.com/Lombiq/Orchard-Content-Editors</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/Lombiq/Orchard-Content-Editors/tree/dev/Smartent.Orchard.ContentEditors.Samples</PackageProjectUrl>
+    <DescriptionBody>Sample content that demonstrates the features of Smartent Orchard Content Editors for Orchard Core.</DescriptionBody>
+    <PackageTags>OrchardCore;Smartent;AspNetCore;Editor;ContentEditor;AsyncEditor;Sample;Example;Training</PackageTags>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>

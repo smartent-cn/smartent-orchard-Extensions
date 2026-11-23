@@ -10,7 +10,7 @@ namespace Smartent.Orchard.Hosting.BuildVersion.Tests.UI.Extensions;
 public static class TestCaseUITestContextExtensions
 {
     /// <summary>
-    /// Tests the Lombiq Hosting - Build Version Display for Orchard Core feature.
+    /// Tests the Smartent Orchard Hosting - Build Version Display for Orchard Core feature.
     /// </summary>
     /// <remarks>
     /// <para>

@@ -17,7 +17,7 @@ public static class TestCaseUITestContextExtensions
     /// <param name="context">The UI Test context.</param>
     /// <param name="goToUrl">
     /// If set to <see langword="true"/>, it will navigate to <c>~/UIKitShowcase</c> directly, otherwise use the main
-    /// menu from Lombiq Helpful Extensions.
+    /// menu from Smartent Orchard Extensions.
     /// </param>
     /// <param name="validateScreenshot">
     /// If set to <see langword="true"/>, it will create a screenshot of the whole showcase page, which is used for

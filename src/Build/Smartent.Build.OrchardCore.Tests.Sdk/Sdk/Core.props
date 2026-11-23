@@ -1,7 +1,6 @@
 <Project>
   <PropertyGroup>
     <SmartentSdkName>OrchardCore.Tests</SmartentSdkName>
-    <LombiqSdkName>$(SmartentSdkName)</LombiqSdkName>
     <OutputType>Exe</OutputType>
     <UseMicrosoftTestingPlatformRunner>true</UseMicrosoftTestingPlatformRunner>
   </PropertyGroup>
@@ -27,7 +26,7 @@
 
   <ItemGroup Condition="'$(FromNuGet)' == 'true'">
     <PackageReference Include="Smartent.Test.Unit">
-      <Version Condition="'$(ManagePackageVersionsCentrally)' != 'true'">$(PackageVersionLombiqTests)</Version>
+      <Version Condition="'$(ManagePackageVersionsCentrally)' != 'true'">$(PackageVersionSmartentTests)</Version>
     </PackageReference>
   </ItemGroup>
   

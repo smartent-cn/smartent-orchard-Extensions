@@ -9,13 +9,13 @@
   <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Smartent.Build.OrchardCore.Tests.UI.Library.Sdk" Version="2.1.1" />
 
   <PropertyGroup>
-    <Title>Lombiq Helpful Extensions for Orchard Core - UI Test Extensions</Title>
-    <Authors>Lombiq Technologies</Authors>
+    <Title>Smartent Orchard Extensions for Orchard Core - UI Test Extensions</Title>
+    <Authors>Smartent</Authors>
     <CopyrightYear>2013</CopyrightYear>
-    <DescriptionBody>Extension methods that test various features in Lombiq Helpful Extensions for Orchard Core.</DescriptionBody>
-    <PackageTags>OrchardCore;Lombiq;AspNetCore;CodeGeneration;ShapeTracing;Widgets</PackageTags>
-    <RepositoryUrl>https://github.com/Lombiq/Helpful-Extensions</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/Lombiq/Helpful-Extensions/tree/dev/Smartent.Orchard.Extensions.Cms.Tests.UI</PackageProjectUrl>
+    <DescriptionBody>Extension methods that test various features in Smartent Orchard Extensions for Orchard Core.</DescriptionBody>
+    <PackageTags>OrchardCore;Smartent;AspNetCore;CodeGeneration;ShapeTracing;Widgets</PackageTags>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>

@@ -5,7 +5,7 @@
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
     <!-- Test value for Lombiq.Hosting.BuildVersionDisplay. Intentionally different than the value in its props file. -->
     <BuildVersionDisplay_BuildUrl>
-      https://github.com/Lombiq/Open-Source-Orchard-Core-Extensions/actions/runs/456
+      https://gitee.com/smartent/smartent-training-demo-modules
     </BuildVersionDisplay_BuildUrl>
     <MarkdownAnalysis>solution</MarkdownAnalysis>
     <ExecDotnetPostcleanCommand>false</ExecDotnetPostcleanCommand>

@@ -1,10 +1,10 @@
 using OrchardCore.Modules.Manifest;
 
 [assembly: Module(
-    Name = "Lombiq Helpful Libraries - Samples",
-    Author = "Lombiq Technologies",
-    Website = "https://github.com/Lombiq/Helpful-Libraries",
+    Name = "Smartent Helpful Libraries - Samples",
+    Author = "Smartent",
+    Website = "https://gitee.com/smartent/smartent-training-demo-modules",
     Version = "0.0.1",
-    Description = "Samples for Lombiq Helpful Libraries.",
+    Description = "Samples for Smartent Helpful Libraries.",
     Category = "Development"
 )]

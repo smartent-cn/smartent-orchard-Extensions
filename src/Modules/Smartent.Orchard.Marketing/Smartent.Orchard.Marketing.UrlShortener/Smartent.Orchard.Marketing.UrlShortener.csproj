@@ -12,12 +12,12 @@
   <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Smartent.Build.OrchardCore.Module.Sdk" Version="2.1.1-alpha.9.osoe-344" />
 
   <PropertyGroup>
-    <Title>Lombiq Marketing - URL Shortener for Orchard Core</Title>
+    <Title>Smartent Orchard Marketing - URL Shortener for Orchard Core</Title>
     <CopyrightYear>2026</CopyrightYear>
     <Description>Create short URLs that redirect to long URLs and provide extensibility for handling a redirect event.</Description>
-    <PackageTags>OrchardCore;Lombiq;AspNetCore;Marketing;UrlShortener;ShortUrl;Redirect</PackageTags>
-    <RepositoryUrl>https://github.com/Lombiq/Orchard-Marketing</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/Lombiq/Orchard-Marketing/blob/dev/Smartent.Orchard.Marketing.UrlShortener/Readme.md</PackageProjectUrl>
+    <PackageTags>OrchardCore;Smartent;AspNetCore;Marketing;UrlShortener;ShortUrl;Redirect</PackageTags>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>

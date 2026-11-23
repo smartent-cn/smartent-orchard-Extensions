@@ -3,7 +3,7 @@ module.exports = {
     root: true,
 
     // The following path may have to be adjusted to your directory structure.
-    extends: './node_modules/nodejs-extensions/config/.eslintrc.lombiq-base.js',
+    extends: './node_modules/nodejs-extensions/config/.eslintrc.smartent-base.js',
 
     // Add custom rules and overrides here.
     rules: {

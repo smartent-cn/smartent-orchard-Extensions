@@ -28,4 +28,4 @@ ffmpeg -y -i test.mp4 -vf "scale=480:720" test.mjpeg
 
 ## Sample
 
-You can find a usage example under [Lombiq Vue.js module for Orchard Core - UI Test Extensions](https://github.com/Lombiq/Orchard-Vue.js/tree/dev/Lombiq.VueJs.Tests.UI).
+You can find a usage example under [Smartent Orchard Vue.js module for Orchard Core - UI Test Extensions](https://gitee.com/smartent/smartent-training-demo-modules

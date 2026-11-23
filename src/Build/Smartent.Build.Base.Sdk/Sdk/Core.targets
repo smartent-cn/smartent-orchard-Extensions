@@ -1,11 +1,11 @@
 <Project>
   <PropertyGroup Condition="'$(IsSmartentProject)' == 'true'">
-    <Authors Condition="'$(Authors)' == ''">Lombiq Technologies</Authors>
+    <Authors Condition="'$(Authors)' == ''">Smartent</Authors>
     <CopyrightYear Condition="'$(CopyrightYear)' == ''">20XX</CopyrightYear>
-    <Copyright Condition="'$(Copyright)' == ''">Copyright © $(CopyrightYear), Lombiq Technologies Ltd.</Copyright>
+    <Copyright Condition="'$(Copyright)' == ''">Copyright © $(CopyrightYear), Smartent</Copyright>
     <Description Condition="'$(Description)' == ''">$(Title): $(DescriptionBody) See the project website for detailed documentation.</Description>
     <PackageIcon Condition="Exists('NuGetIcon.png')">NuGetIcon.png</PackageIcon>
-    <PackageTags Condition="'$(PackageTags)' == ''">OrchardCore;Lombiq;AspNetCore</PackageTags>
+    <PackageTags Condition="'$(PackageTags)' == ''">OrchardCore;Smartent;AspNetCore</PackageTags>
     <PackageProjectUrl Condition="'$(PackageProjectUrl)' == ''">$(RepositoryUrl)</PackageProjectUrl>
   </PropertyGroup>
   

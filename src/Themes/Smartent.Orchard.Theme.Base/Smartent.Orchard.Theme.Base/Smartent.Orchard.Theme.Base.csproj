@@ -12,14 +12,14 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <Title>Lombiq Base Theme for Orchard Core (Sass)</Title>
-    <Authors>Lombiq Technologies</Authors>
-    <Copyright>Copyright © 2021, Lombiq Technologies Ltd.</Copyright>
-    <Description>Warning: this project is deprecated. New releases are provided as-is, primarily for internal and legacy use, with no support. Consider using Smartent.Orchard.Theme.Base.Native instead!&#13;Lombiq Base Theme for Orchard Core: Orchard Core theme that contains a layout, zones and Bootstrap Sass base for your stylesheets. Set it as your theme's BaseTheme.</Description>
+    <Title>Smartent Orchard Theme Base for Orchard Core (Sass)</Title>
+    <Authors>Smartent</Authors>
+    <Copyright>Copyright © 2021, Smartent</Copyright>
+    <Description>Warning: this project is deprecated. New releases are provided as-is, primarily for internal and legacy use, with no support. Consider using Smartent.Orchard.Theme.Base.Native instead!&#13;Smartent Orchard Theme Base for Orchard Core: Orchard Core theme that contains a layout, zones and Bootstrap Sass base for your stylesheets. Set it as your theme's BaseTheme.</Description>
     <PackageIcon>NuGetIcon.png</PackageIcon>
-    <PackageTags>OrchardCore;Lombiq;AspNetCore;Sass;Theming</PackageTags>
-    <RepositoryUrl>https://github.com/Lombiq/Orchard-Base-Theme</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/Lombiq/Orchard-Base-Theme</PackageProjectUrl>
+    <PackageTags>OrchardCore;Smartent;AspNetCore;Sass;Theming</PackageTags>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules</PackageProjectUrl>
     <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
   </PropertyGroup>
 

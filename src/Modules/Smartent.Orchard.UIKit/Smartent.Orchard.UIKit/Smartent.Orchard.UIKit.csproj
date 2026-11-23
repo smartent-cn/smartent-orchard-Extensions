@@ -4,7 +4,7 @@
     <AssemblyName>Smartent.Orchard.UIKit</AssemblyName>
     <PackageId>Smartent.Orchard.UIKit</PackageId>
     <!-- This is disabled, because restoring Slick via LibMan is flaky, see 
-    https://github.com/Lombiq/GitHub-Actions/issues/549. So, we keep the library in the repository. Uncomment this
+    https://gitee.com/smartent/smartent-training-demo-modules So, we keep the library in the repository. Uncomment this
     temporarily while updating the Slick snapshot locally. It's not enabled locally either because we don't gain
     anything by it except for the rare cases of updates, but since LibMan touches the files, they'll show up as changed
     in Git (at least in Git Extensions), even though their contents didn't change. -->
@@ -15,11 +15,11 @@
   <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Smartent.Build.OrchardCore.Module.Sdk" Version="2.1.1" />
 
   <PropertyGroup>
-    <Title>Lombiq UI Kit for Orchard Core</Title>
+    <Title>Smartent Orchard UI Kit for Orchard Core</Title>
     <CopyrightYear>2021</CopyrightYear>
     <DescriptionBody>This module contains reusable shapes like text editors, custom-style checkboxes, dropdown editors, and in the future potentially more complex editors.</DescriptionBody>
-    <PackageTags>OrchardCore;Lombiq;AspNetCore;UI;UIKit;front-end</PackageTags>
-    <RepositoryUrl>https://github.com/Lombiq/Orchard-UIKit</RepositoryUrl>
+    <PackageTags>OrchardCore;Smartent;AspNetCore;UI;UIKit;front-end</PackageTags>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(NuGetBuild)' != 'true'">
@@ -27,7 +27,7 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(NuGetBuild)' == 'true'">
-    <PackageReference Include="Smartent.Test.UI.AppExtensions" Version="$(PackageVersionLombiqTestsUI) " />
+    <PackageReference Include="Smartent.Test.UI.AppExtensions" Version="$(PackageVersionSmartentTestsUI) " />
   </ItemGroup>
 
   <!-- Security Updates for Orchard Core - make sure to check if these are still necessary -->

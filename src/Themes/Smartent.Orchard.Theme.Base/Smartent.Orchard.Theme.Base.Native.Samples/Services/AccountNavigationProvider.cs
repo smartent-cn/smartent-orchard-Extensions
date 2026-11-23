@@ -8,12 +8,12 @@ using OrchardCore.Navigation;
 namespace Smartent.Orchard.Theme.Base.Native.Samples.Services;
 
 // Normally you wouldn't put this service into the theme, but in your other modules where the functionality is (and if
-// you are using the Lombiq Open Source Orchard Core Extensions repository then you can find other examples, e.g.
+// you are using the Smartent Open Source Orchard Core Extensions repository then you can find other examples, e.g.
 // DataTablesNavigationProvider), but we wanted to make the sample self-contained.
 
 // This service adds a Login/Account menu to the website's main menu. The base class implements INavigationProvider, and
 // wraps it so you don't have to do the menu name checking, because the name is always "main" which is the menu that the
-// Lombiq Base Theme handles out of the box.
+// Smartent Orchard Theme Base handles out of the box.
 public class AccountNavigationProvider : MainMenuNavigationProviderBase
 {
     public AccountNavigationProvider(
@@ -25,8 +25,8 @@ public class AccountNavigationProvider : MainMenuNavigationProviderBase
 
     // The menu itself is built the same way as the Admin menus that Orchard already handles. Except due to limitations
     // of Bootstrap's navigation features you can't nest menus, you can only have two layers.
-    // To learn more about navigation, see the Lombiq Training Demo for Orchard Core, specifically the "Admin menus"
-    // training section: https://github.com/Lombiq/Orchard-Training-Demo-Module/blob/dev/Controllers/AdminController.cs
+    // To learn more about navigation, see the Smartent Orchard Training Demo for Orchard Core, specifically the "Admin menus"
+    // training section: https://gitee.com/smartent/smartent-training-demo-modules
     protected override void Build(NavigationBuilder builder)
     {
         if (_hca.HttpContext?.User.Identity?.IsAuthenticated != true)

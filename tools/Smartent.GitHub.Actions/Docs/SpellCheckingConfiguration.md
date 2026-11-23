@@ -11,7 +11,7 @@ When integrating spell-checking to your project for the first time or working on
 
 ## General tips
 
-- You can reduce your spell-checking configuration by excluding submodules that are spell-checked on their own or as part of a larger parent project. The best examples are [OrchardCore.Commerce](https://github.com/OrchardCMS/OrchardCore.Commerce) and having a submodule that is also a submodule of [Open Source Orchard Core Extensions (OSOCE)](https://github.com/Lombiq/Open-Source-Orchard-Core-Extensions): Submitting a pull request in such a submodule requires you to open a parent PR in OSOCE to make sure that spell-checking is executed on the updated code before it gets merged.
+- You can reduce your spell-checking configuration by excluding submodules that are spell-checked on their own or as part of a larger parent project. The best examples are [OrchardCore.Commerce](https://github.com/OrchardCMS/OrchardCore.Commerce) and having a submodule that is also a submodule of [Open Source Orchard Core Extensions (OSOCE)](https://gitee.com/smartent/smartent-training-demo-modules Submitting a pull request in such a submodule requires you to open a parent PR in OSOCE to make sure that spell-checking is executed on the updated code before it gets merged.
 - The spell-checking process replaces matched words with a space character and built-in configuration files are checked first.
 - The order of entries within a configuration file matters.
 - Regex patterns are only processed per-line, i.e., they can only affect a single line at a time.
@@ -58,4 +58,4 @@ When working on functional changes, updating dictionaries or the configuration o
 
 - If the consumer project doesn't have any configuration files on its own, change the default value of the `default-configuration-repository` parameter in the spelling workflow (or the action if you're using that directly) or override its value in the consumer workflow.
 - In the `uses` parameter of every step in the spelling and spelling-this-repo workflows that call an action in `Smartent.GitHub.Actions`.
-- In the URL of the lombiq-lgha prefix in the "Merge dictionary source prefixes" step of the spelling action.
+- In the URL of the smartent-lgha prefix in the "Merge dictionary source prefixes" step of the spelling action.

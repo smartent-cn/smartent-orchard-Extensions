@@ -23,10 +23,10 @@ public static class TestCaseUITestContextExtensions
     public static async Task TestConditionallyEnabledFeaturesAsync(this UITestContext context, string setupRecipeId)
     {
         // For a comprehensive summary of the feature activation and deactivation rules, see:
-        // https://github.com/Lombiq/Hosting-Tenants/blob/dev/Smartent.Orchard.Hosting.Tenants.FeaturesGuard/Readme.md
+        // https://gitee.com/smartent/smartent-training-demo-modules
         await SetUpNewTenantAndGoToFeaturesListAsync(context, setupRecipeId);
 
-        // Lombiq's features that are set to always remain enabled from Manifest should have no disable button.
+        // Smartent's features that are set to always remain enabled from Manifest should have no disable button.
         context.Missing(By.XPath("//a[@id='btn-disable-Lombiq_Hosting_Tenants_Admin_Login_SubTenant']"));
         context.Missing(By.XPath("//a[@id='btn-disable-DotNest_Hosting_Tenants']"));
         context.Missing(By.XPath("//a[@id='btn-disable-DotNest_TenantsAdmin_Subtenant']"));

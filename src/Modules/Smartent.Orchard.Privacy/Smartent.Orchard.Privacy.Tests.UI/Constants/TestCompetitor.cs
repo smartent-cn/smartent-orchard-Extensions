@@ -4,5 +4,5 @@ public static class TestCompetitor
 {
     public const string FullName = "Jane Doe";
     public const string Age = "23";
-    public const string Email = "jane.doe@lombiq.com";
+    public const string Email = "jane.doe@gitee.com/smartent";
 }

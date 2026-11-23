@@ -1,4 +1,4 @@
-# Lombiq Helpful Libraries - ASP.NET Core Libraries - Security
+# Smartent Helpful Libraries - ASP.NET Core Libraries - Security
 
 ## `Content-Security-Policy`
 
@@ -12,4 +12,4 @@
 
 There is a similar section for security extensions related to Orchard Core [here](../../Smartent.Orchard.Platform/Docs/Security.md).
 
-These extensions provide additional security and can resolve issues reported by the [ZAP security scanner](https://github.com/Lombiq/UI-Testing-Toolbox/blob/dev/Smartent.Test.UI/Docs/SecurityScanning.md).
+These extensions provide additional security and can resolve issues reported by the [ZAP security scanner](https://gitee.com/smartent/smartent-training-demo-modules

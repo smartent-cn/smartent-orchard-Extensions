@@ -14,7 +14,7 @@ This project contains the following pipeline steps for SCSS files:
 > The linting step is available for native CSS files as well.
 
 > [!TIP]
-> Looking for something similar for .NET? Check out our [.NET Analyzers project](https://github.com/Lombiq/.NET-Analyzers).
+> Looking for something similar for .NET? Check out our [.NET Analyzers project](https://gitee.com/smartent/smartent-training-demo-modules
 
 ## Configuration
 
@@ -31,7 +31,7 @@ The styles pipeline needs a `source` and a `target` path. The default configurat
 
 In case you want to stick to the defaults, the `styles` node can be omitted completely; otherwise, you need to specify both, `source` and a `target` paths.
 
-To see the different configurations of default and custom paths in action, please check out our dedicated [Samples](../../Lombiq.NodeJs.Extensions.Samples/Readme.md) and [NuGet Samples](../../Lombiq.NodeJs.Extensions.Samples.NuGet/Readme.md) projects.
+To see the different configurations of default and custom paths in action, please check out our dedicated [Samples](../../Smartent.NodeJs.Extensions.Samples/Readme.md) and [NuGet Samples](../../Smartent.NodeJs.Extensions.Samples.NuGet/Readme.md) projects.
 
 ## Generated files
 
@@ -71,12 +71,12 @@ To lint CSS files, use the `lint:styles-css` script instead.
 
 The rules are found in 4 files:
 
-- _.stylelintrc.lombiq-base.js_: These rules are Lombiq overrides for [stylelint-config-standard-scss](https://www.npmjs.com/package/stylelint-config-standard-scss). You can find the file [here](../config/.stylelintrc.lombiq-base.js).
-- _.stylelintrc.js_: In this file you can override the above Lombiq rules, or define your own [Stylelint configuration](https://stylelint.io/user-guide/configure/) altogether.
-- _.prettierrc.lombiq-base.js_: These rules are the Lombiq defaults for styling SCSS files. You can find the file [here](../config/.prettierrc.lombiq-base.js).
-- _.prettierrc.js_: In this file you can override the above Lombiq rules, or define your own [Prettier configuration](https://prettier.io/docs/en/configuration.html) altogether.
+- _.stylelintrc.smartent-base.js_: These rules are Smartent overrides for [stylelint-config-standard-scss](https://www.npmjs.com/package/stylelint-config-standard-scss). You can find the file [here](../config/.stylelintrc.smartent-base.js).
+- _.stylelintrc.js_: In this file you can override the above Smartent rules, or define your own [Stylelint configuration](https://stylelint.io/user-guide/configure/) altogether.
+- _.prettierrc.smartent-base.js_: These rules are the Smartent defaults for styling SCSS files. You can find the file [here](../config/.prettierrc.smartent-base.js).
+- _.prettierrc.js_: In this file you can override the above Smartent rules, or define your own [Prettier configuration](https://prettier.io/docs/en/configuration.html) altogether.
 
-The _.stylelintrc.js_ and _prettierrc.js_ files will automatically be created in your project during the first build. Please open it and adjust the path to _.stylelintrc.lombiq-base.js_ and _.prettierrc.lombiq-base.js_ according to your solution's directory structure.
+The _.stylelintrc.js_ and _prettierrc.js_ files will automatically be created in your project during the first build. Please open it and adjust the path to _.stylelintrc.smartent-base.js_ and _.prettierrc.smartent-base.js_ according to your solution's directory structure.
 
 ### Initiate Prettier auto-fix
 

@@ -14,7 +14,7 @@ namespace Smartent.Test.UI.Samples.Tests;
 // fellow open-source project we can recommend. And you can use it right from UI tests, on the same app that's run for
 // the tests! This is useful to find all kinds of security issues with your app. In this sample we'll see how, but be
 // sure to also check out the corresponding documentation page:
-// https://github.com/Lombiq/UI-Testing-Toolbox/blob/dev/Smartent.Test.UI/Docs/SecurityScanning.md.
+// https://gitee.com/smartent/smartent-training-demo-modules
 
 // Most common alerts can be resolved by using the OrchardCoreBuilder.ConfigureSecurityDefaultsWithStaticFiles()
 // extension method from Smartent.Orchard.Platform. We use it in this in our
@@ -51,7 +51,7 @@ public class SecurityScanningTests : UITestBase
             var homepageUri = await context.GoToSetupAndSetupOrchardCoreAsync(
                 new OrchardCoreSetupParameters(context)
                 {
-                    SiteName = "Lombiq's OSOCE - UI Testing",
+                    SiteName = "Smartent's OSOCE - UI Testing",
                     RecipeId = "Blog",
                     TablePrefix = "OSOCE",
                     SiteTimeZoneValue = "Europe/Budapest",
@@ -123,7 +123,7 @@ public class SecurityScanningTests : UITestBase
                     .SignIn(),
                 sarifLog => sarifLog.Runs[0].Results.Count.ShouldBe(0)));
 
-    // Let's get low-level into ZAP's configuration now. While the .NET configuration API of the Lombiq UI Testing
+    // Let's get low-level into ZAP's configuration now. While the .NET configuration API of the Smartent UI Testing
     // Toolbox covers the most important ways to configure ZAP, sometimes you need more. For this, you have complete
     // control over ZAP's configuration via its Automation Framework (see
     // https://www.zaproxy.org/docs/automate/automation-framework/ and https://www.youtube.com/watch?v=PnCbIAnauD8 for

@@ -1,9 +1,9 @@
 ﻿{
   "name": "Smartent.Orchard.EmailClient.Samples",
-  "displayName": "Lombiq Email Client - Samples",
-  "description": "Sample feature utilizing the Lombiq Email Client feature.",
-  "author": "Lombiq Technologies",
-  "website": "https://github.com/Lombiq/Orchard-Chart.js",
+  "displayName": "Smartent Orchard Email Client - Samples",
+  "description": "Sample feature utilizing the Smartent Orchard Email Client feature.",
+  "author": "Smartent",
+  "website": "https://gitee.com/smartent/smartent-training-demo-modules",
   "version": "1.0",
   "issetuprecipe": false,
   "categories": [

@@ -1,15 +1,15 @@
 using OrchardCore.Modules.Manifest;
 
 [assembly: Module(
-    Name = "Lombiq UI Testing Toolbox - Testing Module",
-    Author = "Lombiq Technologies",
-    Website = "https://github.com/Lombiq/UI-Testing-Toolbox",
+    Name = "Smartent UI Testing - Testing Module",
+    Author = "Smartent",
+    Website = "https://gitee.com/smartent/smartent-training-demo-modules",
     Version = "0.0.1"
 )]
 
 [assembly: Feature(
     Id = "Smartent.Test.UI.TestingModule",
-    Name = "Lombiq UI Testing Toolbox - Testing Module",
+    Name = "Smartent UI Testing - Testing Module",
     Category = "Development",
     Description = "Contains features that are useful for testing the UI Testing Toolbox itself."
 )]

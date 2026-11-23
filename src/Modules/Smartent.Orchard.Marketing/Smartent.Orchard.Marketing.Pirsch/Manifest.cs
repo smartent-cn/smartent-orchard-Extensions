@@ -3,16 +3,16 @@ using OrchardCore.Modules.Manifest;
 using MarketingFeatureIds = Smartent.Orchard.Marketing.Constants.FeatureIds;
 
 [assembly: Module(
-    Name = "Lombiq Marketing - Pirsch analytics",
-    Author = "Lombiq Technologies",
+    Name = "Smartent Orchard Marketing - Pirsch analytics",
+    Author = "Smartent",
     Version = "0.0.1",
     Description = "Integrate the basics of Pirsch analytics into Orchard Core.",
-    Website = "https://github.com/Lombiq/Orchard-Marketing"
+    Website = "https://gitee.com/smartent/smartent-training-demo-modules"
 )]
 
 [assembly: Feature(
     Id = FeatureIds.Base,
-    Name = "Lombiq Marketing - Pirsch analytics",
+    Name = "Smartent Orchard Marketing - Pirsch analytics",
     Category = "Marketing",
     Description = "Integrate the basics of Pirsch analytics into Orchard Core.",
     Dependencies =

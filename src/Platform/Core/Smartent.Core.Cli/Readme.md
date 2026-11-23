@@ -22,7 +22,7 @@
 | 可执行文件扩展名等 | OS helpers | `Helpers/OperatingSystemHelper.cs` |
 | 启动 .NET 托管应用等扩展 | `Command` extensions | `Extensions/CommandExtensions.cs` |
 
-更多背景见仓库内 [Helpful Libraries Readme](../../../../src/Libraries/Lombiq.HelpfulLibraries/Readme.md)。
+更多背景见仓库内 [Helpful Libraries Readme](../../../../src/Libraries/Smartent.HelpfulLibraries/Readme.md)。
 
 ---
 

@@ -1,9 +1,9 @@
 {
   "name": "Smartent.Orchard.ChartJs.Samples.Content",
-  "displayName": "Lombiq Chart.js - Sample Content - Income/Expense",
-  "description": "Sample content for testing and demonstration of the Lombiq Chart.js module.",
-  "author": "Lombiq Technologies",
-  "website": "https://github.com/Lombiq/Orchard-Chart.js",
+  "displayName": "Smartent Orchard Chart.js - Sample Content - Income/Expense",
+  "description": "Sample content for testing and demonstration of the Smartent Orchard Chart.js module.",
+  "author": "Smartent",
+  "website": "https://gitee.com/smartent/smartent-training-demo-modules",
   "version": "1.0",
   "issetuprecipe": false,
   "categories": [
@@ -149,7 +149,8 @@
                 "PublishedUtc": null,
                 "CreatedUtc": null,
                 "Owner": null,
-                "Author": "[js: parameters('AdminUsername')]",                "TitlePart": {
+                "Author": "[js: parameters('AdminUsername')]",
+                "TitlePart": {
                   "Title": "Recreation"
                 },
                 "AutoroutePart": {

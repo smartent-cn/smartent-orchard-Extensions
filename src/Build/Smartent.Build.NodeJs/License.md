@@ -1,4 +1,4 @@
-Copyright © 2022, [Lombiq Technologies Ltd.](https://lombiq.com)
+Copyright © 2022, [Smartent](https://gitee.com/smartent)
 
 All rights reserved.
 

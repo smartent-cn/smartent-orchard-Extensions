@@ -3,15 +3,15 @@ using OrchardCore.Modules.Manifest;
 using static Smartent.Orchard.Extensions.Cms.FeatureIds;
 
 [assembly: Module(
-    Name = "Lombiq Helpful Extensions",
-    Author = "Lombiq Technologies",
+    Name = "Smartent Orchard Extensions",
+    Author = "Smartent",
     Version = "0.0.1",
-    Website = "https://github.com/Lombiq/Helpful-Extensions"
+    Website = "https://gitee.com/smartent/smartent-training-demo-modules"
 )]
 
 [assembly: Feature(
     Id = CodeGeneration,
-    Name = "Lombiq Helpful Extensions - Code Generation Helpful Extensions",
+    Name = "Smartent Orchard Extensions - Code Generation Helpful Extensions",
     Category = "Development",
     Description = "Generates migrations from content type definitions.",
     Dependencies =
@@ -22,7 +22,7 @@ using static Smartent.Orchard.Extensions.Cms.FeatureIds;
 
 [assembly: Feature(
     Id = ContentSets,
-    Name = "Lombiq Helpful Extensions - Content Sets",
+    Name = "Smartent Orchard Extensions - Content Sets",
     Category = "Development",
     Description = "Create arbitrary collections of content items.",
     Dependencies =
@@ -33,7 +33,7 @@ using static Smartent.Orchard.Extensions.Cms.FeatureIds;
 
 [assembly: Feature(
     Id = Flows,
-    Name = "Lombiq Helpful Extensions - Flows Helpful Extensions",
+    Name = "Smartent Orchard Extensions - Flows Helpful Extensions",
     Category = "Content",
     Description = "Adds additional styling capabilities to Flow Part.",
     Dependencies =
@@ -44,7 +44,7 @@ using static Smartent.Orchard.Extensions.Cms.FeatureIds;
 
 [assembly: Feature(
     Id = Widgets,
-    Name = "Lombiq Helpful Extensions - Helpful Widgets",
+    Name = "Smartent Orchard Extensions - Helpful Widgets",
     Category = "Content",
     Description = "Adds helpful widgets such as Container or Liquid widgets.",
     Dependencies =
@@ -57,7 +57,7 @@ using static Smartent.Orchard.Extensions.Cms.FeatureIds;
 
 [assembly: Feature(
     Id = ContentTypes,
-    Name = "Lombiq Helpful Extensions - Helpful Content Types",
+    Name = "Smartent Orchard Extensions - Helpful Content Types",
     Category = "Content",
     Description = "Adds helpful content types such as Page.",
     Dependencies =
@@ -70,28 +70,28 @@ using static Smartent.Orchard.Extensions.Cms.FeatureIds;
 
 [assembly: Feature(
     Id = Security,
-    Name = "Lombiq Helpful Extensions - Security Helpful Extensions",
+    Name = "Smartent Orchard Extensions - Security Helpful Extensions",
     Category = "Security",
     Description = "Adds a content type definition setting and authorization handler for richer security options."
 )]
 
 [assembly: Feature(
     Id = ShapeTracing,
-    Name = "Lombiq Helpful Extensions - Shape Tracing Helpful Extensions",
+    Name = "Smartent Orchard Extensions - Shape Tracing Helpful Extensions",
     Category = "Development",
     Description = "Adds a dump of metadata to the output about every shape."
 )]
 
 [assembly: Feature(
     Id = FeatureIds.Shortcodes,
-    Name = "Lombiq Helpful Extensions - Shortcode Extensions",
+    Name = "Smartent Orchard Extensions - Shortcode Extensions",
     Category = "Content",
     Description = "Adds new shortcodes which can be used in HTML and Markdown templates."
 )]
 
 [assembly: Feature(
     Id = Emails,
-    Name = "Lombiq Helpful Extensions - Emails",
+    Name = "Smartent Orchard Extensions - Emails",
     Category = "Messaging",
     Description = "Adds shape-based email template rendering and helpful email sending services.",
     Dependencies =
@@ -102,14 +102,14 @@ using static Smartent.Orchard.Extensions.Cms.FeatureIds;
 
 [assembly: Feature(
     Id = TargetBlank,
-    Name = "Lombiq Helpful Extensions - Target Blank",
+    Name = "Smartent Orchard Extensions - Target Blank",
     Category = "Content",
     Description = "Turns all external links into target=\"_blank\"."
 )]
 
 [assembly: Feature(
     Id = SiteTexts,
-    Name = "Lombiq Helpful Extensions - Site Texts",
+    Name = "Smartent Orchard Extensions - Site Texts",
     Category = "Content",
     Description =
         "Adds a content type that lets the users with admin dashboard access customize string/HTML resources on the " +
@@ -123,7 +123,7 @@ using static Smartent.Orchard.Extensions.Cms.FeatureIds;
 
 [assembly: Feature(
     Id = OrchardRecipeMigration,
-    Name = "Lombiq Helpful Extensions - Orchard 1 Recipe Migration",
+    Name = "Smartent Orchard Extensions - Orchard 1 Recipe Migration",
     Category = "Development",
     Description =
         "Convert Orchard 1's export XML files into Orchard Core recipes. This feature contains the basics like " +
@@ -137,7 +137,7 @@ using static Smartent.Orchard.Extensions.Cms.FeatureIds;
 
 [assembly: Feature(
     Id = ResetPasswordActivity,
-    Name = "Lombiq Helpful Extensions - Reset password workflow activity",
+    Name = "Smartent Orchard Extensions - Reset password workflow activity",
     Category = "Security",
     Description = "Adds generate reset password token activity.",
     Dependencies =
@@ -149,14 +149,14 @@ using static Smartent.Orchard.Extensions.Cms.FeatureIds;
 
 [assembly: Feature(
     Id = Trumbowyg,
-    Name = "Lombiq Helpful Extensions - Trumbowyg code snippet",
+    Name = "Smartent Orchard Extensions - Trumbowyg code snippet",
     Category = "Content",
     Description = "Adds an option for inserting code snippets in the Trumbowyg editor."
 )]
 
 [assembly: Feature(
     Id = TrumbowygBlogPosts,
-    Name = "Lombiq Helpful Extensions - Trumbowyg code snippet - Blog Posts",
+    Name = "Smartent Orchard Extensions - Trumbowyg code snippet - Blog Posts",
     Category = "Content",
     Description = "Adds an option for inserting code snippets in the Trumbowyg editor of Blog Post content items.",
     Dependencies = [Trumbowyg]
@@ -164,21 +164,21 @@ using static Smartent.Orchard.Extensions.Cms.FeatureIds;
 
 [assembly: Feature(
     Id = GoogleTag,
-    Name = "Lombiq Helpful Extensions - Google Tag",
+    Name = "Smartent Orchard Extensions - Google Tag",
     Category = "Content",
     Description = "Adds a shape along with Razor and Liquid tag helpers for Google Analytics."
 )]
 
 [assembly: Feature(
     Id = Liquid,
-    Name = "Lombiq Helpful Extensions - Liquid Tags",
+    Name = "Smartent Orchard Extensions - Liquid Tags",
     Category = "Liquid",
     Description = "Adds various Liquid tags and filters."
 )]
 
 [assembly: Feature(
     Id = Lucide,
-    Name = "Lombiq Helpful Extensions - Lucide",
+    Name = "Smartent Orchard Extensions - Lucide",
     Category = "Content",
     Description = "Adds the Lucide icon library as a resource and a TextField editor for picking Lucide icons.",
     Dependencies =
@@ -190,7 +190,7 @@ using static Smartent.Orchard.Extensions.Cms.FeatureIds;
 
 [assembly: Feature(
     Id = SimpleIcons,
-    Name = "Lombiq Helpful Extensions - Simple Icons",
+    Name = "Smartent Orchard Extensions - Simple Icons",
     Category = "Content",
     Description = "Adds the Simple Icons icon library as a resource and the <simple-icon> tag helper.",
     Dependencies =

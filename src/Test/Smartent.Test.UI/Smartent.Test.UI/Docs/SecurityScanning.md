@@ -2,7 +2,7 @@
 
 ## Overview
 
-You can create detailed security scans of your app with [Zed Attack Proxy (ZAP)](https://www.zaproxy.org/) right from the Lombiq UI Testing Toolbox, with nice reports. ZAP is the world's most widely used web app security scanner, and a fellow open-source project we can recommend. See a demo video of this feature [here](https://www.youtube.com/watch?v=iUYivLkFbY4), and an Orchard Harvest 2024 talk [here](https://www.youtube.com/watch?v=FsOpo8EA4wE).
+You can create detailed security scans of your app with [Zed Attack Proxy (ZAP)](https://www.zaproxy.org/) right from the Smartent UI Testing, with nice reports. ZAP is the world's most widely used web app security scanner, and a fellow open-source project we can recommend. See a demo video of this feature [here](https://www.youtube.com/watch?v=iUYivLkFbY4), and an Orchard Harvest 2024 talk [here](https://www.youtube.com/watch?v=FsOpo8EA4wE).
 
 ![Sample ZAP security scan report](Attachments/ZapReportScreenshot.png)
 
@@ -11,7 +11,7 @@ You can create detailed security scans of your app with [Zed Attack Proxy (ZAP)]
 - Since we use [ZAP's Automation Framework](https://www.zaproxy.org/docs/automate/automation-framework/) for configuration, you have complete and detailed control over how the scans are configured, but you can also start with a simple configuration available in the .NET API.
 - [SARIF](https://sarifweb.azurewebsites.net/) reports are available to integrate with other InfoSec tools.
 
-## Working with ZAP in the Lombiq UI Testing Toolbox
+## Working with ZAP in the Smartent UI Testing
 
 - We recommend you first check out the [related samples in the `Smartent.Test.UI.Samples` project](../../Smartent.Test.UI.Samples/Tests/SecurityScanningTests.cs).
 - If you're new to ZAP, you can start learning by checking out [ZAP's getting started guide](https://www.zaproxy.org/getting-started/), as well as the [ZAP Chat Videos](https://www.zaproxy.org/zap-chat/). The [documentation on ZAP's Automation Framework](https://www.zaproxy.org/docs/automate/automation-framework/) and the [ZAP Chat 06 Automation Introduction video](https://www.youtube.com/watch?v=PnCbIAnauD8) (as well as the subsequent videos about it in the series) will help you understand what we use under the hood to instruct ZAP, and will allow you to use your completely custom Automation Framework plans too.
@@ -25,13 +25,13 @@ On Windows-based GitHub runners the security tests always fail with the followin
 
 > The `docker.exe pull softwaresecurityproject/zap-stable:2.14.0 --quiet` command failed with the output below. no matching manifest for windows/amd64 10.0.20348 in the manifest list entries.
 
-This is because the Docker installation is configured to use Windows images, while the [ZAP docker image](https://hub.docker.com/r/softwaresecurityproject/zap-stable/tags) is only available for Linux. If you rely on our [Lombiq GitHub Actions](https://github.com/Lombiq/GitHub-Actions) then you can configure it like this to disable a test, in this case `SecurityScanningTests`:
+This is because the Docker installation is configured to use Windows images, while the [ZAP docker image](https://hub.docker.com/r/softwaresecurityproject/zap-stable/tags) is only available for Linux. If you rely on our [Smartent GitHub Actions](https://gitee.com/smartent/smartent-training-demo-modules then you can configure it like this to disable a test, in this case `SecurityScanningTests`:
 
 ```yaml
   build-and-test:
     name: Build and Test
-    # See https://github.com/Lombiq/GitHub-Actions/blob/dev/.github/workflows/build-and-test-orchard-core.yml.
-    uses: Lombiq/GitHub-Actions/.github/workflows/build-and-test-orchard-core.yml@dev
+    # See https://gitee.com/smartent/smartent-training-demo-modules
+    uses: Smartent/GitHub-Actions/.github/workflows/build-and-test-orchard-core.yml@dev
     with:
       machine-types: '["windows-2025"]'
       test-filter: "FullyQualifiedName!~SecurityScanningTests"
@@ -39,7 +39,7 @@ This is because the Docker installation is configured to use Windows images, whi
 
 ## Troubleshooting
 
-- Most common alerts in Orchard Core can be resolved by [using the extension method in Lombiq Helpful Libraries](https://github.com/Lombiq/Helpful-Libraries/blob/dev/Smartent.Orchard.Platform/Docs/Security.md) like this: `orchardCoreBuilder.ConfigureSecurityDefaults(allowInlineStyle: true)`.
+- Most common alerts in Orchard Core can be resolved by [using the extension method in Smartent Helpful Libraries](https://gitee.com/smartent/smartent-training-demo-modules like this: `orchardCoreBuilder.ConfigureSecurityDefaults(allowInlineStyle: true)`.
 - If you're unsure what happens in a scan, run the [ZAP desktop app](https://www.zaproxy.org/download/) and load the Automation Framework plan's YAML file into it. If you use the default scans, then these will be available under the build output directory (like _bin/Debug_) under _SecurityScanning/AutomationFrameworkPlans_. Then, you can open and run them as demonstrated [in this video](https://youtu.be/PnCbIAnauD8?si=u0vi63Uvv9wZINzb&t=1173).
 - If an alert is a false positive, follow [the official docs](https://www.zaproxy.org/faq/how-do-i-handle-a-false-positive/). You can use the [`alertFilter` job](https://www.zaproxy.org/docs/desktop/addons/alert-filters/automation/) to ignore alerts in very specific conditions. You can also access this via the .NET configuration API via `SecurityScanConfiguration.MarkScanRuleAsFalsePositiveForUrlWithRegex()`. For less common filters (e.g., filters other than by URL), you can use the `SecurityScanConfiguration.ModifyZapPlan()` and `YamlDocument.AddFalsePositiveRuleFilter()` extension methods to configure the action filter YAML node directly (see `SecurityScanWithCustomConfigurationShouldPass` test in the sample).
 - ZAP didn't find everything in your app? By default, ZAP has a crawl depth of 5 for its standard spider and 10 for its AJAX spider. Set `maxDepth` (and `maxChildren`) [for `spider`](https://www.zaproxy.org/docs/desktop/addons/automation-framework/job-spider/) and `maxCrawlDepth` [for `spiderAjax`](https://www.zaproxy.org/docs/desktop/addons/ajax-spider/automation/).

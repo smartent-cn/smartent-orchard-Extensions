@@ -10,11 +10,11 @@
   <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Smartent.Build.OrchardCore.Module.Sdk" Version="2.1.1" />
 
   <PropertyGroup>
-    <Title>Lombiq Data Tables for Orchard Core</Title>
+    <Title>Smartent Orchard Data Tables for Orchard Core</Title>
     <CopyrightYear>2020</CopyrightYear>
     <DescriptionBody>An Orchard Core wrapper around the DataTables (https://datatables.net/) library for displaying tabular data from custom data sources. It lets you replace HTML tables with a tag helper or create asynchronous, sortable, searchable server-side generated tables. It also includes a pure Vue.js module that works similarly to DataTables.</DescriptionBody>
-    <PackageTags>OrchardCore;Lombiq;AspNetCore;DataTables;Vue.js</PackageTags>
-    <RepositoryUrl>https://github.com/Lombiq/Orchard-Data-Tables</RepositoryUrl>
+    <PackageTags>OrchardCore;Smartent;AspNetCore;DataTables;Vue.js</PackageTags>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
@@ -28,7 +28,7 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(NuGetBuild)' == 'true'">
-    <PackageReference Include="Smartent.Orchard.Platform.Data.LinqToYesSql" Version="$(PackageVersionLombiqHelpfulLibraries)" />
+    <PackageReference Include="Smartent.Orchard.Platform.Data.LinqToYesSql" Version="$(PackageVersionSmartentPlatform)" />
   </ItemGroup>
 
   <!-- Security Updates for Orchard Core - make sure to check if these are still necessary -->

@@ -10,10 +10,10 @@
   <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Smartent.Build.OrchardCore.Module.Sdk" Version="2.1.1-alpha.9.osoe-344" />
 
   <PropertyGroup>
-    <Title>Lombiq Login as Anybody for Orchard Core</Title>
+    <Title>Smartent Orchard Login as Anybody for Orchard Core</Title>
     <CopyrightYear>2015</CopyrightYear>
     <DescriptionBody>An Orchard Core module that allows administrator users to log in as any user.</DescriptionBody>
-    <RepositoryUrl>https://github.com/Lombiq/Orchard-Login-as-Anybody</RepositoryUrl>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>

@@ -3,7 +3,7 @@ using System;
 using System.IO;
 using System.Threading.Tasks;
 
-namespace Lombiq.HelpfulLibraries.Libraries.AspNetCore;
+namespace Smartent.HelpfulLibraries.Libraries.AspNetCore;
 
 /// <summary>
 /// An  <see cref="IAsyncDisposable"/> that replaces the <see cref="HttpContext"/>'s response stream at creation

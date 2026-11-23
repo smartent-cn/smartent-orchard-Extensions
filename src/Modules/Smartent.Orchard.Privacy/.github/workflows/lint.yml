@@ -10,6 +10,6 @@ on:
 jobs:
   lint:
     name: Lint Assets
-    uses: Lombiq/NodeJs-Extensions/.github/workflows/lint.yml@dev
+    uses: Smartent/NodeJs-Extensions/.github/workflows/lint.yml@dev
     with:
       styles-css: Smartent.Orchard.Privacy

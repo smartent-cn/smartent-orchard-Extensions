@@ -1,8 +1,8 @@
 # Smartent.Test.Platform | Smartent 平台层测试
 
-**中文**：覆盖 `Smartent.Core.*` 与 `Smartent.Orchard.Platform.*` 的 xUnit 用例（原 `Lombiq.HelpfulLibraries.Tests`）。
+**中文**：覆盖 `Smartent.Core.*` 与 `Smartent.Orchard.Platform.*` 的 xUnit 用例（原 `Smartent.HelpfulLibraries.Tests`）。
 
-**English**: xUnit tests for Smartent Core and Orchard Platform packages (formerly Lombiq HelpfulLibraries.Tests).
+**English**: xUnit tests for Smartent Core and Orchard Platform packages (formerly Smartent HelpfulLibraries.Tests).
 
 ## 运行 | Run
 

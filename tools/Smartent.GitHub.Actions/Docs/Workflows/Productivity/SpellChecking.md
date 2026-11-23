@@ -49,7 +49,7 @@ jobs:
         {
           "other-project": "https://raw.githubusercontent.com/Other/Project/dev/.github/actions/spelling/",
         }
-      # Use this parameter to list the external dictionary files to use, but beware that check-spelling only accepts flat lists of words (so, for example patterns.txt can't be referenced like this). The order doesn't matter, but sorting it alphabetically makes it easier to maintain. The "cspell" and "lombiq-lgha" prefixes are available by default - see the spelling action for their exact path.
+      # Use this parameter to list the external dictionary files to use, but beware that check-spelling only accepts flat lists of words (so, for example patterns.txt can't be referenced like this). The order doesn't matter, but sorting it alphabetically makes it easier to maintain. The "cspell" and "smartent-lgha" prefixes are available by default - see the spelling action for their exact path.
       additional-dictionaries: |
         cspell:csharp/csharp.txt
         other-project:my-dictionary.txt

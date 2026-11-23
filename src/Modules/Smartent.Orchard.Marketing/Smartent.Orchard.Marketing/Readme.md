@@ -1,10 +1,10 @@
-# Lombiq Marketing for Orchard Core
+# Smartent Orchard Marketing for Orchard Core
 
 [![Smartent.Orchard.Marketing NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.Marketing?label=Smartent.Orchard.Marketing)](https://www.nuget.org/packages/Smartent.Orchard.Marketing/)
 
 ## About
 
-This module contains the shared pieces for the Lombiq Marketing modules.
+This module contains the shared pieces for the Smartent Orchard Marketing modules.
 
 ## Documentation
 

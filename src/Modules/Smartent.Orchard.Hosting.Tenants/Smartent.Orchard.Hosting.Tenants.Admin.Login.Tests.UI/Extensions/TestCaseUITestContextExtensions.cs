@@ -16,10 +16,10 @@ public static class TestCaseUITestContextExtensions
         const string tenantName = "test";
         const string tenantUserName = "tenantAdmin";
 
-        // Enable "Lombiq Hosting - Tenants Admin Login" feature (which indirectly enables the "Tenants" feature too).
+        // Enable "Smartent Orchard Hosting - Tenants Admin Login" feature (which indirectly enables the "Tenants" feature too).
         await context.EnableFeatureDirectlyAsync(FeatureNames.Module);
 
-        // Create a tenant and turn on the "Lombiq Hosting - Tenants Admin Login Sub-tenant" feature in it.
+        // Create a tenant and turn on the "Smartent Orchard Hosting - Tenants Admin Login Sub-tenant" feature in it.
         await context.CreateAndSwitchToTenantAsync(
             name: tenantName,
             urlPrefix: tenantName,

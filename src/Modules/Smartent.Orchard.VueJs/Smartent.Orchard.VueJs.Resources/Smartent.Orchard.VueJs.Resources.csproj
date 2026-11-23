@@ -10,12 +10,12 @@
   <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Smartent.Build.OrchardCore.Module.Sdk" Version="2.1.1-alpha.9.osoe-344" />
 
   <PropertyGroup>
-    <Title>Lombiq Vue.js module for Orchard Core - Resources</Title>
+    <Title>Smartent Orchard Vue.js module for Orchard Core - Resources</Title>
     <CopyrightYear>2019</CopyrightYear>
     <DescriptionBody>Adds some Vue.js 3 packages to Orchard Core as ES Modules.</DescriptionBody>
-    <PackageTags>OrchardCore;Lombiq;AspNetCore;Vue.js</PackageTags>
-    <RepositoryUrl>https://github.com/Lombiq/Orchard-Vue.js</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/Lombiq/Orchard-Vue.js/blob/dev/Smartent.Orchard.VueJs.Resources/Readme.md</PackageProjectUrl>
+    <PackageTags>OrchardCore;Smartent;AspNetCore;Vue.js</PackageTags>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules</PackageProjectUrl>
   </PropertyGroup>
 
   <!-- Security Updates for Orchard Core - make sure to check if these are still necessary -->

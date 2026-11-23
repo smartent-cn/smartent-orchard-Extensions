@@ -11,12 +11,12 @@
   <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Smartent.Build.OrchardCore.Module.Sdk" Version="2.1.1-alpha.9.osoe-344" />
 
   <PropertyGroup>
-    <Title>Lombiq Marketing - Pirsch for Orchard Core</Title>
+    <Title>Smartent Orchard Marketing - Pirsch for Orchard Core</Title>
     <CopyrightYear>2026</CopyrightYear>
     <DescriptionBody>Pirsch analytics integration with client-side tracking, first-party proxying, and server-side hit reporting.</DescriptionBody>
-    <PackageTags>OrchardCore;Lombiq;AspNetCore;Marketing;Analytics;Tracking;Pirsch</PackageTags>
-    <RepositoryUrl>https://github.com/Lombiq/Orchard-Marketing</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/Lombiq/Orchard-Marketing/blob/dev/Smartent.Orchard.Marketing.Pirsch/Readme.md</PackageProjectUrl>
+    <PackageTags>OrchardCore;Smartent;AspNetCore;Marketing;Analytics;Tracking;Pirsch</PackageTags>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>

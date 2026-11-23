@@ -17,14 +17,14 @@
   </ItemGroup>
 
   <PropertyGroup>
-    <Title>Lombiq Vue.js module for Orchard Core - Samples</Title>
-    <Authors>Lombiq Technologies</Authors>
-    <Copyright>Copyright © 2019, Lombiq Technologies Ltd.</Copyright>
-    <Description>Lombiq Vue.js module for Orchard Core - Samples: Sample content that demonstrates the features of Lombiq Vue.js module for Orchard Core.</Description>
+    <Title>Smartent Orchard Vue.js module for Orchard Core - Samples</Title>
+    <Authors>Smartent</Authors>
+    <Copyright>Copyright © 2019, Smartent</Copyright>
+    <Description>Smartent Orchard Vue.js module for Orchard Core - Samples: Sample content that demonstrates the features of Smartent Orchard Vue.js module for Orchard Core.</Description>
     <PackageIcon>NuGetIcon.png</PackageIcon>
-    <PackageTags>OrchardCore;Lombiq;AspNetCore;Vue.js</PackageTags>
-    <RepositoryUrl>https://github.com/Lombiq/Orchard-Vue.js</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/Lombiq/Orchard-Vue.js/blob/dev/Smartent.Orchard.VueJs.Samples/Readme.md</PackageProjectUrl>
+    <PackageTags>OrchardCore;Smartent;AspNetCore;Vue.js</PackageTags>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules</PackageProjectUrl>
     <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
   </PropertyGroup>
 

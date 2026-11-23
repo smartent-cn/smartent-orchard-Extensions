@@ -4,7 +4,7 @@ using static Smartent.Orchard.Hosting.Tenants.Management.Constants.FeatureNames;
 
 namespace Smartent.Orchard.Hosting.Tenants.Management.Extensions;
 
-public static class LombiqHostingTenantsManagementExtensions
+public static class HostingTenantsManagementExtensions
 {
     /// <summary>
     /// Registers Smartent.Orchard.Hosting.Tenants.Management.HideRecipesFromSetup as a setup feature and hides recipes from the

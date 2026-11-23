@@ -2,7 +2,7 @@
 
 namespace OpenQA.Selenium;
 
-// Move this to Lombiq UI Testing Toolbox in dev.
+// Move this to Smartent UI Testing in dev.
 public static class BasicWebElementExtensions
 {
     /// <summary>

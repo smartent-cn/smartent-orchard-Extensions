@@ -1,6 +1,6 @@
-# Lombiq UI Testing Toolbox - Samples
+# Smartent UI Testing - Samples
 
-Example UI testing project. The whole project is heavily documented to teach you how to write UI tests with the UI Testing Toolbox. It guides you through this process just like the [Lombiq Training Demo for Orchard Core](https://github.com/Lombiq/Orchard-Training-Demo-Module) teaches Orchard Core and Orchard 1 development.
+Example UI testing project. The whole project is heavily documented to teach you how to write UI tests with the UI Testing Toolbox. It guides you through this process just like the [Smartent Orchard Training Demo for Orchard Core](https://gitee.com/smartent/smartent-training-demo-modules teaches Orchard Core and Orchard 1 development.
 
 You can find further UI testing examples in [the test project of Open-Source Orchard Core Extensions](https://github.com/smartent-cn/smartent-orchard-Extensions/tree/dev/test/Smartent.Test.Acceptance).
 
@@ -9,8 +9,8 @@ For general details about and on using the Toolbox see the [root Readme](../Read
 ## Tutorial
 
 1. Be sure to read the [root Readme](../Readme.md) first to understand how the UI Testing Toolbox works and how you can use it with an Orchard Core app.
-2. The web app under test also needs a bit of configuration. For an example of this, check out [the `Program` class of Lombiq's Open-Source Orchard Core Extensions](https://github.com/smartent-cn/smartent-orchard-Extensions/blob/dev/src/Smartent.Demo.Web/Program.cs). This project assumes it's running in that solution, so it depends on `Smartent.Demo.Web` to be present at the correct path to be able to build it.
-3. Note that the project includes an _xunit.runner.json_ file. This is [xUnit's configuration file](https://xunit.net/docs/configuration-files). You don't necessarily need to include one if you're OK with [the default one](https://github.com/Lombiq/UI-Testing-Toolbox/blob/dev/Smartent.Test.UI/xunit.runner.json).
+2. The web app under test also needs a bit of configuration. For an example of this, check out [the `Program` class of Smartent's Open-Source Orchard Core Extensions](https://github.com/smartent-cn/smartent-orchard-Extensions/blob/dev/src/Smartent.Demo.Web/Program.cs). This project assumes it's running in that solution, so it depends on `Smartent.Demo.Web` to be present at the correct path to be able to build it.
+3. Note that the project includes an _xunit.runner.json_ file. This is [xUnit's configuration file](https://xunit.net/docs/configuration-files). You don't necessarily need to include one if you're OK with [the default one](https://gitee.com/smartent/smartent-training-demo-modules
 4. Now that we have the basics out of the way start the tutorial in the [_GlobalSuppressions.cs_](GlobalSuppressions.cs) file.
 
 ## Training sections
@@ -38,4 +38,4 @@ For general details about and on using the Toolbox see the [root Readme](../Read
 
 ## Adding new tutorials
 
-Follow the practices of the [Lombiq Training Demo for Orchard Core](https://github.com/Lombiq/Orchard-Training-Demo-Module#contributing-and-support).
+Follow the practices of the [Smartent Orchard Training Demo for Orchard Core](https://gitee.com/smartent/smartent-training-demo-modules

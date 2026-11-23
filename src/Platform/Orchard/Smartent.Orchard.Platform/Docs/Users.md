@@ -1,4 +1,4 @@
-# Lombiq Helpful Libraries - Orchard Core Libraries - Users for Orchard Core
+# Smartent Helpful Libraries - Orchard Core Libraries - Users for Orchard Core
 
 ## `AdminPermissionBase`
 

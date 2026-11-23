@@ -11,12 +11,12 @@
   <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Smartent.Build.OrchardCore.Module.Sdk" Version="2.1.1-alpha.9.osoe-344" />
 
   <PropertyGroup>
-    <Title>Lombiq Marketing for Orchard Core</Title>
+    <Title>Smartent Orchard Marketing for Orchard Core</Title>
     <CopyrightYear>2026</CopyrightYear>
     <DescriptionBody>Shared marketing abstractions, short URL hit handling, and client-side tracking composition.</DescriptionBody>
-    <PackageTags>OrchardCore;Lombiq;AspNetCore;Marketing;Analytics;Tracking;UrlShortener</PackageTags>
-    <RepositoryUrl>https://github.com/Lombiq/Orchard-Marketing</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/Lombiq/Orchard-Marketing/blob/dev/Smartent.Orchard.Marketing/Readme.md</PackageProjectUrl>
+    <PackageTags>OrchardCore;Smartent;AspNetCore;Marketing;Analytics;Tracking;UrlShortener</PackageTags>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules</PackageProjectUrl>
   </PropertyGroup>
 
   <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../Build/Smartent.Build.OrchardCore.Module.Sdk/Sdk/Import.targets" />

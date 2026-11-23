@@ -11,12 +11,12 @@
   <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Smartent.Build.OrchardCore.Theme.Sdk" Version="2.1.1" />
 
   <PropertyGroup>
-    <Title>Lombiq Base Theme for Orchard Core (Native CSS)</Title>
+    <Title>Smartent Orchard Theme Base for Orchard Core (Native CSS)</Title>
     <CopyrightYear>2021</CopyrightYear>
     <DescriptionBody>Orchard Core theme that contains a layout, zones and Bootstrap CSS base for your stylesheets. Set it as your theme's BaseTheme.</DescriptionBody>
-    <PackageTags>OrchardCore;Lombiq;AspNetCore;Css;Theming</PackageTags>
-    <RepositoryUrl>https://github.com/Lombiq/Orchard-Base-Theme</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/Lombiq/Orchard-Base-Theme/blob/dev/Smartent.Orchard.Theme.Base.Native/Readme.md</PackageProjectUrl>
+    <PackageTags>OrchardCore;Smartent;AspNetCore;Css;Theming</PackageTags>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>

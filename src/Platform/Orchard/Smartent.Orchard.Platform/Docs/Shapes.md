@@ -1,4 +1,4 @@
-# Lombiq Helpful Libraries - Orchard Core Libraries - Shapes for Orchard Core
+# Smartent Helpful Libraries - Orchard Core Libraries - Shapes for Orchard Core
 
 ## Extensions
 

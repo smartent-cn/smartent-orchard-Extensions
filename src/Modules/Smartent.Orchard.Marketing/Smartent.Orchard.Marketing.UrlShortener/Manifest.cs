@@ -2,16 +2,16 @@ using Smartent.Orchard.Marketing.UrlShortener.Constants;
 using OrchardCore.Modules.Manifest;
 
 [assembly: Module(
-    Name = "Lombiq Marketing - URL Shortener",
-    Author = "Lombiq Technologies",
+    Name = "Smartent Orchard Marketing - URL Shortener",
+    Author = "Smartent",
     Version = "0.0.1",
     Description = "Create short URLs that redirect to long URLs.",
-    Website = "https://github.com/Lombiq/Orchard-Marketing"
+    Website = "https://gitee.com/smartent/smartent-training-demo-modules"
 )]
 
 [assembly: Feature(
     Id = FeatureIds.Base,
-    Name = "Lombiq Marketing - URL Shortener",
+    Name = "Smartent Orchard Marketing - URL Shortener",
     Category = "Marketing",
     Description = "Adds a Short URL content type for managing short redirects.",
     Dependencies = [

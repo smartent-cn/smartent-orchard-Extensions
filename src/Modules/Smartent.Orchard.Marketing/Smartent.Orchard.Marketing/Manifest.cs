@@ -2,16 +2,16 @@ using Smartent.Orchard.Marketing.Constants;
 using OrchardCore.Modules.Manifest;
 
 [assembly: Module(
-    Name = "Lombiq Marketing",
-    Author = "Lombiq Technologies",
+    Name = "Smartent Orchard Marketing",
+    Author = "Smartent",
     Version = "0.0.1",
     Description = "Contains the common abstractions and services used by the other marketing modules",
-    Website = "https://github.com/Lombiq/Orchard-Marketing"
+    Website = "https://gitee.com/smartent/smartent-training-demo-modules"
 )]
 
 [assembly: Feature(
     Id = FeatureIds.Base,
-    Name = "Lombiq Marketing",
+    Name = "Smartent Orchard Marketing",
     Category = "Marketing",
     Description = "Contains the common abstractions and services used by the other marketing modules"
 )]

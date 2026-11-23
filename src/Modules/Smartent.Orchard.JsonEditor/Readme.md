@@ -1,4 +1,4 @@
-# Lombiq JSON Editor for Orchard Core
+# Smartent Orchard JSON Editor for Orchard Core
 
 [![Smartent.Orchard.JsonEditor NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.JsonEditor?label=Smartent.Orchard.JsonEditor)](https://www.nuget.org/packages/Smartent.Orchard.JsonEditor/) [![Smartent.Orchard.JsonEditor.Tests.UI NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.JsonEditor.Tests.UI?label=Smartent.Orchard.JsonEditor.Tests.UI)](https://www.nuget.org/packages/Smartent.Orchard.JsonEditor.Tests.UI/)
 
@@ -55,6 +55,6 @@ This still requires edit permission to the content item, so the security is the 
 
 ## Contributing and support
 
-Bug reports, feature requests, comments, questions, code contributions and love letters are warmly welcome. You can send them to us via GitHub issues and pull requests. Please adhere to our [open-source guidelines](https://lombiq.com/open-source-guidelines) while doing so.
+Bug reports, feature requests, comments, questions, code contributions and love letters are warmly welcome. You can send them to us via GitHub issues and pull requests. Please adhere to our [open-source guidelines](https://gitee.com/smartent/open-source-guidelines) while doing so.
 
-This project is developed by [Lombiq Technologies](https://lombiq.com/). Commercial-grade support is available through Lombiq.
+This project is developed by [Smartent](https://gitee.com/smartent/). Commercial-grade support is available through Smartent.

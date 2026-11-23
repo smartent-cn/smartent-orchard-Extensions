@@ -45,8 +45,8 @@ public abstract class UITestBase : OrchardCoreUITestBase<Program>
             // be used to set configuration for configuration providers, see the docs:
             // https://docs.orchardcore.net/en/latest/docs/reference/core/Configuration/. We can set e.g. Orchard's
             // AdminUrlPrefix like below, but this is just setting the default, so it's only an example. A more useful
-            // example is enabling offline operation of the Lombiq Hosting - Azure Application Insights for Orchard Core
-            // module (see the UI test project in https://github.com/Lombiq/Orchard-Azure-Application-Insights).
+            // example is enabling offline operation of the Smartent Orchard Hosting - Azure Application Insights for Orchard Core
+            // module (see the UI test project in https://gitee.com/smartent/smartent-training-demo-modules
             configuration.OrchardCoreConfiguration.BeforeAppStart +=
                 (_, argumentsBuilder) =>
                 {

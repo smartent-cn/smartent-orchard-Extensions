@@ -1,9 +1,9 @@
 {
   "name": "Smartent.Orchard.Extensions.Cms.Liquid.Sample",
-  "displayName": "Lombiq Helpful Extensions - Liquid - Sample",
+  "displayName": "Smartent Orchard Extensions - Liquid - Sample",
   "description": "Sample Page content items to test the Liquid feature.",
-  "author": "Lombiq Technologies",
-  "website": "https://github.com/Lombiq/Helpful-Extensions/",
+  "author": "Smartent",
+  "website": "https://gitee.com/smartent/smartent-training-demo-modules",
   "version": "1.0",
   "issetuprecipe": false,
   "categories": [

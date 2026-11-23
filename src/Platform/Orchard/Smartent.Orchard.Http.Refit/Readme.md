@@ -7,7 +7,7 @@
 
 ## 摘要 | Summary
 
-**中文**：基于 [Refit](https://github.com/reactiveui/refit) 的 HTTP API 客户端辅助（如 `RefitHelper`、`SimpleTextResponse`）。原 `Lombiq.HelpfulLibraries.Refit`。
+**中文**：基于 [Refit](https://github.com/reactiveui/refit) 的 HTTP API 客户端辅助（如 `RefitHelper`、`SimpleTextResponse`）。原 `Smartent.HelpfulLibraries.Refit`。
 
 **English**: Refit HTTP client helpers for Orchard-related libraries and modules.
 
@@ -27,5 +27,5 @@
 
 ```powershell
 dotnet build src/Platform/Orchard/Smartent.Orchard.Http.Refit/Smartent.Orchard.Http.Refit.csproj
-dotnet build src/Libraries/Lombiq.OrchardCoreApiClient/Lombiq.OrchardCoreApiClient/Lombiq.OrchardCoreApiClient.csproj
+dotnet build src/Libraries/Smartent.OrchardCoreApiClient/Smartent.OrchardCoreApiClient/Smartent.OrchardCoreApiClient.csproj
 ```

@@ -2,8 +2,8 @@
   "name": "Smartent.Orchard.TrainingDemo.Content.Sample.Person",
   "displayName": "Training Demo - Sample Content - Person",
   "description": "Randomly generated sample Person content items.",
-  "author": "Lombiq Technologies",
-  "website": "https://github.com/Lombiq/Orchard-Training-Demo-Module",
+  "author": "Smartent",
+  "website": "https://gitee.com/smartent/smartent-training-demo-modules",
   "version": "1.0",
   "issetuprecipe": false,
   "categories": [

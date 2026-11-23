@@ -1,6 +1,6 @@
 # Scripts to Copy Additional Assets
 
-Lombiq Node.js Extensions offer the ability to copy additional assets to your _wwwroot_ or any other folder during the build of your project, and clean them when your project is cleaned.
+Smartent Node.js Extensions offer the ability to copy additional assets to your _wwwroot_ or any other folder during the build of your project, and clean them when your project is cleaned.
 
 Your assets will automatically be copied during project build once you provide a valid [configuration](#configuration).
 

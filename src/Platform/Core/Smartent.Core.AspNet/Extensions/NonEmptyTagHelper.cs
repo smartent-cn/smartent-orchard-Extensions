@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Razor.TagHelpers;
 using System.Collections;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Lombiq.HelpfulLibraries.Libraries.AspNetCore;
+namespace Smartent.HelpfulLibraries.Libraries.AspNetCore;
 
 /// <summary>
 /// An attribute tag helper that conditionally hides its element if the provided <see cref="ICollection"/> is <see
@@ -43,7 +43,7 @@ namespace Lombiq.HelpfulLibraries.Libraries.AspNetCore;
 /// </example>
 /// <remarks>
 /// <para>
-/// Make sure to include <c>@addTagHelper *, Lombiq.HelpfulLibraries</c> in your _ViewImports.cshtml file.
+/// Make sure to include <c>@addTagHelper *, Smartent.HelpfulLibraries</c> in your _ViewImports.cshtml file.
 /// </para>
 /// </remarks>
 [HtmlTargetElement("*", Attributes = "if-not-empty")]

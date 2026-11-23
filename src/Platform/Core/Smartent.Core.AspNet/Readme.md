@@ -80,7 +80,7 @@ Register security defaults and CSP providers per `Docs/Security.md`; use `Fronte
 
 - æ°å¢ CSP Providerï¼å®ç?`IContentSecurityPolicyProvider` å¹¶å¨ DI ä¸­æ³¨åã?
 - ä¸?Orchard `ResourceManagement` èç¨æ¶ï¼æ³¨æèæ¬ nonce/hash ä¸æ¨¡åå è½½é¡ºåºã?
-- è?Lombiq `HelpfulLibraries.AspNetCore` è¿å¥ï¼å½åç©ºé?`Smartent.Core.AspNet.*`ã?
+- è?Smartent `HelpfulLibraries.AspNetCore` è¿å¥ï¼å½åç©ºé?`Smartent.Core.AspNet.*`ã?
 
 ### English
 
@@ -92,7 +92,7 @@ Extend via new CSP providers and documented DI registration patterns.
 
 ```powershell
 dotnet build src/Platform/Core/Smartent.Core.AspNet/Smartent.Core.AspNet.csproj
-dotnet build src/Libraries/Lombiq.HelpfulLibraries/Smartent.Orchard.Platform/Smartent.Orchard.Platform.csproj
+dotnet build src/Libraries/Smartent.HelpfulLibraries/Smartent.Orchard.Platform/Smartent.Orchard.Platform.csproj
 ```
 
 相关单元/集成测试见 `Smartent.Test.Platform` 与依赖模块的测试。
@@ -101,5 +101,5 @@ dotnet build src/Libraries/Lombiq.HelpfulLibraries/Smartent.Orchard.Platform/Sma
 
 ## æ¥æºä¸è®¸å?| Provenance & License
 
-- æºèª Lombiq Helpful-Libraries / AspNetCoreï¼MITã? 
+- æºèª Smartent Helpful-Libraries / AspNetCoreï¼MITã? 
 - Smartent è¡çé¨å Copyright Â© Smartentã

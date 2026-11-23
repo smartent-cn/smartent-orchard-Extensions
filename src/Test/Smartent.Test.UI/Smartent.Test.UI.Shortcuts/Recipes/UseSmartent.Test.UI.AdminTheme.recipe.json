@@ -1,9 +1,9 @@
 {
   "name": "UseSmartent.Test.UI.AdminTheme",
   "displayName": "Use UI Testing Admin Theme",
-  "description": "Use the \"Lombiq UI Testing Toolbox - Admin Theme\" admin theme.",
-  "author": "Lombiq Technologies",
-  "website": "https://lombiq.com/",
+  "description": "Use the \"Smartent UI Testing - Admin Theme\" admin theme.",
+  "author": "Smartent",
+  "website": "https://gitee.com/smartent/",
   "version": "1.0",
   "categories": [ "lombiq" ],
   "tags": [],

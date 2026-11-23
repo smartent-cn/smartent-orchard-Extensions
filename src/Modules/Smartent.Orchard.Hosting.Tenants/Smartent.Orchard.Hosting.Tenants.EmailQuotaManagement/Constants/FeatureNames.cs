@@ -2,7 +2,7 @@ namespace Smartent.Orchard.Hosting.Tenants.EmailQuotaManagement.Constants;
 
 public static class FeatureNames
 {
-    private const string Module = "Lombiq.Hosting";
+    private const string Module = "Smartent.Hosting";
 
     public const string Tenants = Module + "." + nameof(Tenants);
 

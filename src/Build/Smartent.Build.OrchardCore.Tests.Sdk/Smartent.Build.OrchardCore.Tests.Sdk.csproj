@@ -3,7 +3,7 @@
   <Import Project="../Directory.Build.props" />
 
   <PropertyGroup>
-    <Title>Smartent MSBuild SDK - Unit Testing (Lombiq.MSBuild.OrchardCore.Tests.Sdk)</Title>
+    <Title>Smartent MSBuild SDK - Unit Testing (Smartent.MSBuild.OrchardCore.Tests.Sdk)</Title>
     <Description>MSBuild SDK for unit tests using Smartent.Test.Unit.</Description>
     <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules/tree/master/src/Build/Smartent.Build.OrchardCore.Tests.Sdk</PackageProjectUrl>
     <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>

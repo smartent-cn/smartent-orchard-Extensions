@@ -1,5 +1,5 @@
 {
-  "extends": "../../../src/Build/Smartent.Build.NodeJs/Smartent.Build.NodeJs/config/.eslintrc.lombiq-base.js",
+  "extends": "../../../src/Build/Smartent.Build.NodeJs/Smartent.Build.NodeJs/config/.eslintrc.smartent-base.js",
 
   "rules": {
     // Add overriding rules here like this:

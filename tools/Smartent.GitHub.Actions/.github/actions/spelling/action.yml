@@ -28,7 +28,7 @@ inputs:
     default: |
       cspell:filetypes/filetypes.txt
       cspell:software-terms/dict/softwareTerms.txt
-      lombiq-lgha:dictionaries/Lombiq.common.txt
+      smartent-lgha:dictionaries/Smartent.common.txt
   additional-configuration-source-prefixes:
     description: >
       JSON map of prefixes for configuration file (for now, only dictionary) URLs.
@@ -121,16 +121,13 @@ runs:
 
         Merge-SpellCheckingDictionaryFile @mergeParameters
 
-    # The branch name in the 'lombiq-lgha' prefix needs to be wired in to 'dev' (since that's the default branch of this
-    # repository) and updated manually when working in a different branch, because the referenced branch name (when
-    # called from a workflow) of this action is not exposed by GitHub, only the branch name of the workflow that
-    # triggered the run, see https://docs.github.com/en/actions/learn-github-actions/contexts.
+    # The 'smartent-lgha' prefix resolves dictionaries bundled with this vendored action (Smartent.GitHub.Actions).
     - name: Merge configuration source prefixes
       id: merge-configuration-source-prefixes
       shell: pwsh
       run: |
         $defaultPrefixes = @{
-          'lombiq-lgha' = 'https://raw.githubusercontent.com/Lombiq/GitHub-Actions/dev/.github/actions/spelling/'
+          'smartent-lgha' = "file://$((Resolve-Path '${{ github.action_path }}').Path.Replace('\', '/'))/"
           'cspell' = 'https://raw.githubusercontent.com/check-spelling/cspell-dicts/v20230509/dictionaries/'
         }
 
@@ -206,7 +203,7 @@ runs:
           cspell:sql/src/sql.txt
           cspell:sql/src/tsql.txt
           cspell:typescript/dict/typescript.txt
-          lombiq-lgha:dictionaries/Liquid.txt
-          lombiq-lgha:dictionaries/Lombiq.common.txt
-          lombiq-lgha:dictionaries/Lombiq.people.txt
-          lombiq-lgha:dictionaries/Security.txt
+          smartent-lgha:dictionaries/Liquid.txt
+          smartent-lgha:dictionaries/Smartent.common.txt
+          smartent-lgha:dictionaries/Smartent.people.txt
+          smartent-lgha:dictionaries/Security.txt

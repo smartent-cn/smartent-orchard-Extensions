@@ -1,10 +1,10 @@
 {
   // This is necessary to be in a separate recipe, because otherwise the widget and layer setup from
-  // Lombiq.BaseTheme.LayersAndZones.recipe would be superseded by the default config.
+  // Smartent.BaseTheme.LayersAndZones.recipe would be superseded by the default config.
   "name": "Smartent.Demo.BaseTheme",
   "displayName": "Switch to Smartent.Orchard.Theme.Base.Samples",
   "description": "Switch to Smartent.Orchard.Theme.Base.Samples theme for tests.",
-  "author": "Lombiq Technologies",
+  "author": "Smartent",
   "website": "https://github.com/smartent-cn/smartent-orchard-Extensions",
   "version": "1.0",
   "issetuprecipe": false,

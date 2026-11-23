@@ -1,14 +1,16 @@
-# Lombiq Tailwind MSBuild Targets
+# Smartent Tailwind MSBuild Targets
 
-[![Lombiq.Tailwind.Targets NuGet](https://img.shields.io/nuget/v/Lombiq.Tailwind.Targets?label=Lombiq.Tailwind.Targets)](https://www.nuget.org/packages/Lombiq.Tailwind.Targets/)
+[![Smartent.Tailwind.Targets NuGet](https://img.shields.io/nuget/v/Smartent.Tailwind.Targets?label=Smartent.Tailwind.Targets)](https://www.nuget.org/packages/Smartent.Tailwind.Targets/)
 
 ## About
+
+**中文**：Windows x64 的 Tailwind CLI（v4.3.5）已入库至 `cli/tailwindcss-windows-x64-v4_3_5.exe`，构建时优先使用，无需从 GitHub 下载。
 
 Provides automatic Tailwind CSS compilation before building a .NET project. This allows you to keep your Tailwind input
 CSS in source control while generating the final output into _wwwroot_ on build. These operations are optimized by
 running only if the corresponding inputs have changed.
 
-If you need an Orchard Core example, check out the `Lombiq.Tailwind.Targets.Samples` theme in this repository.
+If you need an Orchard Core example, check out the `Smartent.Tailwind.Targets.Samples` theme in this repository.
 
 Do you want to quickly try out this project and see it in action? Check it out in our
 [Open-Source Orchard Core Extensions](https://github.com/smartent-cn/smartent-orchard-Extensions) full Orchard Core
@@ -16,19 +18,23 @@ solution and also see our other useful Orchard Core-related open-source projects
 
 ## How to use
 
-Install the [NuGet package](https://www.nuget.org/packages/Lombiq.Tailwind.Targets/). If you use the project from a
+Install the [NuGet package](https://www.nuget.org/packages/Smartent.Tailwind.Targets/). If you use the project from a
 submodule, add the following lines to the csproj file where the Tailwind input CSS file lives. Make sure that the paths
 are pointing to the _Lombiq.Tailwind.Targets.props_ and _Lombiq.Tailwind.Targets.targets_ files of this project.
 
 ```xml
-<Import Project="path\to\Lombiq.Tailwind.Targets\Lombiq.Tailwind.Targets\Lombiq.Tailwind.Targets.props" />
-<Import Project="path\to\Lombiq.Tailwind.Targets\Lombiq.Tailwind.Targets\Lombiq.Tailwind.Targets.targets" />
+<Import Project="path\to\Smartent.Tailwind.Targets\Smartent.Tailwind.Targets\Smartent.Tailwind.Targets.props" />
+<Import Project="path\to\Smartent.Tailwind.Targets\Smartent.Tailwind.Targets\Smartent.Tailwind.Targets.targets" />
 ```
 
 Create a Tailwind input CSS file (for Tailwind v4 this typically contains `@import "tailwindcss";` and `@source`
 directives). By default the CLI is downloaded from GitHub releases. On Windows, the targets use `curl.exe`; on
 Linux/macOS they use `curl`. You can override the download command with `TailwindDownloadCommand` or disable it and point
 `TailwindCliPath` to a pre-downloaded binary.
+
+This repository vendors the Windows x64 CLI at `cli/tailwindcss-windows-x64-v4_3_5.exe` (Tailwind **v4.3.5**). When that
+file is present, MSBuild uses it automatically and skips GitHub download—useful on restricted networks. Add matching
+`cli/tailwindcss-{os}-{arch}-v4_3_5` binaries for other platforms if needed.
 
 ## Useful properties
 
@@ -87,8 +93,8 @@ to scan their templates.
 ## Contributing and support
 
 Bug reports, feature requests, comments, questions, code contributions and love letters are warmly welcome. You can send
-them to us via GitHub issues and pull requests. Please adhere to our [open-source guidelines](https://lombiq.com/open-source-guidelines)
+them to us via GitHub issues and pull requests. Please adhere to our [open-source guidelines](https://gitee.com/smartent/open-source-guidelines)
 while doing so.
 
-This project is developed by [Lombiq Technologies](https://lombiq.com/). Commercial-grade support is available through
-Lombiq.
+This project is developed by [Smartent](https://gitee.com/smartent/). Commercial-grade support is available through
+Smartent.

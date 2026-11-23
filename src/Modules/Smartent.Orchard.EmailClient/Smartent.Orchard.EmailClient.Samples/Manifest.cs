@@ -2,11 +2,11 @@ using OrchardCore.Modules.Manifest;
 using static Smartent.Orchard.EmailClient.Constants.FeatureIds;
 
 [assembly: Module(
-    Name = "Lombiq Email Client - Samples",
-    Author = "Lombiq Technologies",
-    Website = "https://github.com/Lombiq/Orchard-Email-Client",
+    Name = "Smartent Orchard Email Client - Samples",
+    Author = "Smartent",
+    Website = "https://gitee.com/smartent/smartent-training-demo-modules",
     Version = "0.0.1",
-    Description = "Samples for Lombiq Email Client.",
+    Description = "Samples for Smartent Orchard Email Client.",
     Category = "Email",
     Dependencies = [
         Imap,

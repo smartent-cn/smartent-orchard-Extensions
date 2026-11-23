@@ -1,9 +1,9 @@
 {
   "name": "Smartent.Test.UI.Tests.UI.WorkflowShortcutsTests",
-  "displayName": "Lombiq UI Testing Toolbox - UI Tests - WorkflowShortcutsTests",
+  "displayName": "Smartent UI Testing - UI Tests - WorkflowShortcutsTests",
   "description": "Test recipe for WorkflowShortcutsTests.",
-  "author": "Lombiq Technologies",
-  "website": "https://github.com/Lombiq/UI-Testing-Toolbox",
+  "author": "Smartent",
+  "website": "https://gitee.com/smartent/smartent-training-demo-modules",
   "version": "1.0",
   "issetuprecipe": false,
   "categories": [

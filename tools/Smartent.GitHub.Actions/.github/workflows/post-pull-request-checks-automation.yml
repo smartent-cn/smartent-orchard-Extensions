@@ -21,17 +21,17 @@ on:
         required: true
         description: >
           Configure as explained under
-          https://github.com/Lombiq/GitHub-Actions/blob/dev/Docs/Workflows/Productivity/CreateJiraIssuesForCommunityActivities.md.
+          https://gitee.com/smartent/smartent-training-demo-modules
       JIRA_USER_EMAIL:
         required: true
         description: >
           Configure as explained under
-          https://github.com/Lombiq/GitHub-Actions/blob/dev/Docs/Workflows/Productivity/CreateJiraIssuesForCommunityActivities.md.
+          https://gitee.com/smartent/smartent-training-demo-modules
       JIRA_API_TOKEN:
         required: true
         description: >
           Configure as explained under
-          https://github.com/Lombiq/GitHub-Actions/blob/dev/Docs/Workflows/Productivity/CreateJiraIssuesForCommunityActivities.md.
+          https://gitee.com/smartent/smartent-training-demo-modules
 
     inputs:
       merge-method:

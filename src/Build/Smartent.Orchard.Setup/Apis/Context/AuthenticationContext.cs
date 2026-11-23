@@ -84,5 +84,5 @@ internal sealed class AlwaysLoggedInIdentity : IIdentity
 
     public bool IsAuthenticated => true;
 
-    public string Name => "Lombiq Technologies";
+    public string Name => "Smartent";
 }

@@ -5,7 +5,7 @@
     <RootNamespace>Smartent.Orchard.EInvoice</RootNamespace>
     <AssemblyName>Smartent.Orchard.EInvoice</AssemblyName>
     <PackageId>Smartent.Orchard.EInvoice</PackageId>
-    <LombiqMSBuildLibManTarget>node_modules</LombiqMSBuildLibManTarget>
+    <SmartentMSBuildLibManTarget>node_modules</SmartentMSBuildLibManTarget>
   </PropertyGroup>
 
   <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../Build/Smartent.Build.Library.Sdk/Sdk/Import.props" />

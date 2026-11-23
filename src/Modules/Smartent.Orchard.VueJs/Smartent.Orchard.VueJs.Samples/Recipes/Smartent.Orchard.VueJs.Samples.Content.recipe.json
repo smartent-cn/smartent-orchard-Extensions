@@ -1,9 +1,9 @@
 {
   "name": "Smartent.Orchard.VueJs.Samples.Content",
-  "displayName": "Lombiq Vue.js - Sample Content - Virtual business card",
-  "description": "Sample content for testing and demonstration of the Lombiq Vue.js module.",
-  "author": "Lombiq Technologies",
-  "website": "https://github.com/Lombiq/Orchard-Chart.js",
+  "displayName": "Smartent Orchard Vue.js - Sample Content - Virtual business card",
+  "description": "Sample content for testing and demonstration of the Smartent Orchard Vue.js module.",
+  "author": "Smartent",
+  "website": "https://gitee.com/smartent/smartent-training-demo-modules",
   "version": "1.0",
   "issetuprecipe": false,
   "categories": [

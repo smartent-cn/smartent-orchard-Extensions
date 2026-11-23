@@ -9,12 +9,12 @@
   <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Smartent.Build.OrchardCore.Tests.UI.Library.Sdk" Version="2.1.1" />
 
   <PropertyGroup>
-    <Title>Lombiq UI Kit for Orchard Core - UI Test Extensions</Title>
+    <Title>Smartent Orchard UI Kit for Orchard Core - UI Test Extensions</Title>
     <CopyrightYear>2022</CopyrightYear>
-    <DescriptionBody>Extensions to aid in UI testing Lombiq UI Kit for Orchard Core.</DescriptionBody>
-    <PackageTags>OrchardCore;Lombiq;AspNetCore;UIKit</PackageTags>
-    <RepositoryUrl>https://github.com/Lombiq/Orchard-UIKit</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/Lombiq/Orchard-UIKit/blob/dev/Smartent.Orchard.UIKit.Tests.UI/Readme.md</PackageProjectUrl>
+    <DescriptionBody>Extensions to aid in UI testing Smartent Orchard UI Kit for Orchard Core.</DescriptionBody>
+    <PackageTags>OrchardCore;Smartent;AspNetCore;UIKit</PackageTags>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>

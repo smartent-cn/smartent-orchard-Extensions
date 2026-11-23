@@ -1,4 +1,4 @@
-namespace Lombiq.NodeJs.Extensions.CustomExecTasks
+namespace Smartent.NodeJs.Extensions.CustomExecTasks
 {
     public enum MutexAccess
     {

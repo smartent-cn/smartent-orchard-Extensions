@@ -1,4 +1,4 @@
-# Lombiq PowerShell Analyzers
+# Smartent PowerShell Analyzers
 
 [![Smartent.Build.Analyzers.PowerShell NuGet](https://img.shields.io/nuget/v/Smartent.Build.Analyzers.PowerShell?label=Smartent.Build.Analyzers.PowerShell)](https://www.nuget.org/packages/Smartent.Build.Analyzers.PowerShell/)
 
@@ -6,7 +6,7 @@
 
 PowerShell static code analysis via [PSScriptAnalyzer](https://github.com/PowerShell/PSScriptAnalyzer) and [custom analyzer rules](Smartent.Build.Analyzers.PowerShell/Rules/CustomRules.md), accompanied by [Lombiq's recommended configuration for it](Smartent.Build.Analyzers.PowerShell/PSScriptAnalyzerSettings.psd1). Use it from the CLI, in GitHub Actions, or integrated into MSBuild builds. Demo video [here](https://www.youtube.com/watch?v=GqUvneHxZ8g).
 
-Looking for .NET static code analysis? Check out our [.NET Analyzers project](https://github.com/Lombiq/.NET-Analyzers).
+Looking for .NET static code analysis? Check out our [.NET Analyzers project](https://gitee.com/smartent/smartent-training-demo-modules
 
 Do you want to quickly try out this project and see it in action? Check it out in our [Open-Source Orchard Core Extensions](https://github.com/smartent-cn/smartent-orchard-Extensions) full Orchard Core solution and also see our other useful Orchard Core-related open-source projects!
 
@@ -112,9 +112,9 @@ Check out [the official documentation](https://learn.microsoft.com/en-us/powersh
 
 ## Contributing and support
 
-Bug reports, feature requests, comments, questions, code contributions and love letters are warmly welcome. You can send them to us via GitHub issues and pull requests. Please adhere to our [open-source guidelines](https://lombiq.com/open-source-guidelines) while doing so.
+Bug reports, feature requests, comments, questions, code contributions and love letters are warmly welcome. You can send them to us via GitHub issues and pull requests. Please adhere to our [open-source guidelines](https://gitee.com/smartent/open-source-guidelines) while doing so.
 
-This project is developed by [Lombiq Technologies](https://lombiq.com/). Commercial-grade support is available through Lombiq.
+This project is developed by [Smartent](https://gitee.com/smartent/). Commercial-grade support is available through Lombiq.
 
 ### Publishing a new NuGet package
 

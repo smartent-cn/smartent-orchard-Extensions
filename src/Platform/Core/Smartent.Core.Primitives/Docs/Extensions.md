@@ -1,4 +1,4 @@
-# Lombiq Helpful Libraries - Common Libraries - Extensions
+# Smartent Helpful Libraries - Common Libraries - Extensions
 
 - `ArrayExtensions`: Adds useful extensions to arrays. For example, `Exists()` is a fluid alternative to `Array.Exists()`.
 - `CollectionExtensions`: Adds `ICollection<T>` extensions. For example, `CartesianProduct()` for producing all pairs of two collections, or `RemoveAll()` to filter an existing collection in-place.

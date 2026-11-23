@@ -4,12 +4,12 @@ using OrchardCore.Modules.Manifest;
 [assembly: Module(
     // Display name of the module. Will be displayed on the Modules page of the Dashboard if the module has just one
     // feature (see below).
-    Name = "Lombiq Training Demo",
+    Name = "Smartent Orchard Training Demo",
 #pragma warning restore SA1114 // Parameter list should follow declaration
     // Your name, company or any name that identifies the developers working on the project.
-    Author = "Lombiq Technologies",
+    Author = "Smartent",
     // Optionally you can add a website URL (e.g. your company's website, GitHub repository URL).
-    Website = "https://github.com/Lombiq/Orchard-Training-Demo-Module",
+    Website = "https://gitee.com/smartent/smartent-training-demo-modules",
     // Version of the module.
     Version = "0.0.1",
     // Short description of the module.
@@ -30,7 +30,7 @@ using OrchardCore.Modules.Manifest;
     Id = "Smartent.Orchard.TrainingDemo",
 #pragma warning restore SA1114 // Parameter list should follow declaration
     // Display name of the feature, displayed on the Modules page of the Dashboard.
-    Name = "Lombiq Training Demo",
+    Name = "Smartent Orchard Training Demo",
     // Features are categorized on the Dashboard so it's a good idea to put similar features/modules together into a
     // separate section.
     Category = "Training",
@@ -70,7 +70,7 @@ using OrchardCore.Modules.Manifest;
     // We commonly suffix the base feature/module ID and name for sub-features.
     Id = "Smartent.Orchard.TrainingDemo.Middlewares",
 #pragma warning restore SA1114 // Parameter list should follow declaration
-    Name = "Lombiq Training Demo - Middlewares",
+    Name = "Smartent Orchard Training Demo - Middlewares",
     Category = "Training",
     Description = "Demonstrates how to write middlewares in a separate feature.",
     // It's usual for sub-features to depend on the base feature but this is not mandatory.

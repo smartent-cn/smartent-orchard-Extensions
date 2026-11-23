@@ -1,6 +1,6 @@
 # Markdown Linting
 
-This workflow uses [`markdownlint-cli2`](https://github.com/DavidAnson/markdownlint-cli2) through its wrapper action for linting markdown files according to an optional configuration file. Such a configuration file includes a set of rules that are checked against when linting the files and can be found in `../../../.github/actions/markdown-lint/lombiq.markdownlint.json` and is used by default.
+This workflow uses [`markdownlint-cli2`](https://github.com/DavidAnson/markdownlint-cli2) through its wrapper action for linting markdown files according to an optional configuration file. Such a configuration file includes a set of rules that are checked against when linting the files and can be found in `../../../.github/actions/markdown-lint/smartent.markdownlint.json` and is used by default.
 
 You would typically consume the corresponding GHA workflow for markdown linting like this:
 

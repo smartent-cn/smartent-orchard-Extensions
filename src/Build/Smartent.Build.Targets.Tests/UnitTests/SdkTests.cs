@@ -58,8 +58,8 @@ public class SdkTests
                 "Smartent MSBuild SDK Sample",
                 "Smartent.Build.Sdk.NuGet.Samples",
                 "BSD-3-Clause",
-                "Copyright © 2026, Lombiq Technologies Ltd.",
-                "OrchardCore Lombiq AspNetCore",
+                "Copyright © 2026, Smartent",
+                "OrchardCore Smartent AspNetCore",
                 "https://gitee.com/smartent/smartent-training-demo-modules",
             ]);
 

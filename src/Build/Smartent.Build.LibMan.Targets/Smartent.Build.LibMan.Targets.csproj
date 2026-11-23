@@ -13,8 +13,6 @@
   <ItemGroup>
     <None Include="Smartent.Build.LibMan.Targets.props" Pack="true" PackagePath="" />
     <None Include="Smartent.Build.LibMan.Targets.targets" Pack="true" PackagePath="" />
-    <None Include="Lombiq.MSBuild.LibMan.Targets.props" Pack="true" PackagePath="" />
-    <None Include="Lombiq.MSBuild.LibMan.Targets.targets" Pack="true" PackagePath="" />
     <None Include="libman.json" Pack="true" PackagePath="" />
   </ItemGroup>
 

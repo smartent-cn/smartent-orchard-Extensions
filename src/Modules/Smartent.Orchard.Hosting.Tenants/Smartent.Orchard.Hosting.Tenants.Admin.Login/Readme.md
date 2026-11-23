@@ -1,4 +1,4 @@
-# Lombiq Hosting - Tenants Admin Login for Orchard Core
+# Smartent Orchard Hosting - Tenants Admin Login for Orchard Core
 
 [![Smartent.Orchard.Hosting.Tenants.Admin.Login NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.Hosting.Tenants.Admin.Login?label=Smartent.Orchard.Hosting.Tenants.Admin.Login)](https://www.nuget.org/packages/Smartent.Orchard.Hosting.Tenants.Admin.Login/)
 

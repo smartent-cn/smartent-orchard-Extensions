@@ -1,7 +1,6 @@
 <Project>
   <PropertyGroup>
     <SmartentSdkName>OrchardCore.Module</SmartentSdkName>
-    <LombiqSdkName>$(SmartentSdkName)</LombiqSdkName>
     <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
   </PropertyGroup>
 

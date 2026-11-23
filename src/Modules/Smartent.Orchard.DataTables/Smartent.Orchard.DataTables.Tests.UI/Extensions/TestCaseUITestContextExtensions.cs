@@ -94,7 +94,7 @@ public static class TestCaseUITestContextExtensions
     /// </summary>
     /// <param name="checkMainMenu">
     /// Set to <see langword="false"/> if you don't want to check that the sample's main menu item is properly displayed
-    /// (needs Lombiq Base Theme for Orchard Core as the site theme).
+    /// (needs Smartent Orchard Theme Base for Orchard Core as the site theme).
     /// </param>
     public static Task TestDataTableRecipeDataAsync(this UITestContext context, bool checkMainMenu) =>
         context.TestDataTableRecipeDataAsync(checkMainMenu

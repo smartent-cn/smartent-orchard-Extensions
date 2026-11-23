@@ -14,7 +14,7 @@
 
   <PropertyGroup>
     <Title>Smartent Node.js MSBuild Extensions</Title>
-    <Description>Smartent Build NodeJs：通过 MSBuild 集成 SCSS/JS 的 npm 构建管线（原 Lombiq.NodeJs.Extensions）。</Description>
+    <Description>Smartent Build NodeJs：通过 MSBuild 集成 SCSS/JS 的 npm 构建管线（原 Smartent.NodeJs.Extensions）。</Description>
     <PackageIcon>NuGetIcon.png</PackageIcon>
     <PackageTags>Smartent;Npm;Pnpm;Node.js;MSBuild;Watch</PackageTags>
     <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>

@@ -1,4 +1,4 @@
-# Lombiq Helpful Libraries - Orchard Core Libraries - Contents for Orchard Core
+# Smartent Helpful Libraries - Orchard Core Libraries - Contents for Orchard Core
 
 ## Constants
 

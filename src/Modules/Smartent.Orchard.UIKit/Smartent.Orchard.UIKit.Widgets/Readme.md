@@ -1,10 +1,10 @@
-# Lombiq UI Kit - Widgets for Orchard Core
+# Smartent Orchard UI Kit - Widgets for Orchard Core
 
 [![Smartent.Orchard.UIKit Widgets NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.UIKit?label=Smartent.Orchard.UIKit.Widgets)](https://www.nuget.org/packages/Smartent.Orchard.UIKit.Widgets/) [![Smartent.Orchard.UIKit.Tests.UI NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.UIKit.Tests.UI?label=Smartent.Orchard.UIKit.Widgets.Tests.UI)](https://www.nuget.org/packages/Smartent.Orchard.UIKit.widgets.Tests.UI/)
 
 ## About
 
-This module contains widgets that are based on the reusable shapes from [Lombiq UI Kit](../Smartent.Orchard.UIKit).
+This module contains widgets that are based on the reusable shapes from [Smartent Orchard UI Kit](../Smartent.Orchard.UIKit).
 
 Available widgets:
 
@@ -45,7 +45,7 @@ To configure the global settings (for all carousels widgets) go to `Content`->`C
 
 #### Samples
 
-To quickly see the carousel widget in action, go to `Configuration`->`Recipes` and find `Lombiq UI Kit - Widgets - Sample Content - Carousel Widget` recipe. This recipe will add a new page called `Carousel Widget Example` which will contain the carousel widget.
+To quickly see the carousel widget in action, go to `Configuration`->`Recipes` and find `Smartent Orchard UI Kit - Widgets - Sample Content - Carousel Widget` recipe. This recipe will add a new page called `Carousel Widget Example` which will contain the carousel widget.
 
 Please note that, like mentioned above, the carousel widget doesn't have any styles so you might need to make some CSS adjustments (depending on the theme).
 
@@ -103,6 +103,6 @@ You can also specify the display type and group ID, for additional customization
 
 ## Contributing and support
 
-Bug reports, feature requests, comments, questions, code contributions and love letters are warmly welcome. You can send them to us via GitHub issues and pull requests. Please adhere to our [open-source guidelines](https://lombiq.com/open-source-guidelines) while doing so.
+Bug reports, feature requests, comments, questions, code contributions and love letters are warmly welcome. You can send them to us via GitHub issues and pull requests. Please adhere to our [open-source guidelines](https://gitee.com/smartent/open-source-guidelines) while doing so.
 
-This project is developed by [Lombiq Technologies](https://lombiq.com/). Commercial-grade support is available through Lombiq.
+This project is developed by [Smartent](https://gitee.com/smartent/). Commercial-grade support is available through Smartent.

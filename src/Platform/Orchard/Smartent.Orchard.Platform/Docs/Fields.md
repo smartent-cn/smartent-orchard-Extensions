@@ -1,4 +1,4 @@
-# Lombiq Helpful Libraries - Orchard Core Libraries - Fields for Orchard Core
+# Smartent Helpful Libraries - Orchard Core Libraries - Fields for Orchard Core
 
 Extensions and services working with or related to Orchard Core's `ContentField`s.
 

@@ -29,7 +29,7 @@ This is good enough for launching new apps, but e.g. MSBuild doesn't use a login
 3. Copy the new lines at the bottom of _~/.bashrc_ created by the NVM installer and append them to the end of the _~/.xsessionrc_.
 4. Save everything, log out and log back it.
 
-If everything went well, you can now successfully build your `Lombiq.NodeJs.Extensions`-using project, as your IDE will already be in an NVM-enabled environment when you start it up. You can skip the rest of this guide.
+If everything went well, you can now successfully build your `Smartent.NodeJs.Extensions`-using project, as your IDE will already be in an NVM-enabled environment when you start it up. You can skip the rest of this guide.
 
 ### Further troubleshooting
 

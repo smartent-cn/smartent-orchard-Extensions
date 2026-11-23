@@ -1,4 +1,4 @@
-# Lombiq Helpful Libraries - Orchard Core Libraries - Navigation for Orchard Core
+# Smartent Helpful Libraries - Orchard Core Libraries - Navigation for Orchard Core
 
 ## NavigationProviderBase
 
@@ -10,4 +10,4 @@ An abstract base class derived from `NavigationProviderBase` for creating home p
 
 ## Extensions
 
-- `NavigationItemBuilderExtensions`: Adds extension methods for building menu [`TypedRoute`](https://github.com/Lombiq/Helpful-Libraries/blob/dev/Smartent.Orchard.Platform/Mvc/TypedRoute.cs) style.
+- `NavigationItemBuilderExtensions`: Adds extension methods for building menu [`TypedRoute`](https://gitee.com/smartent/smartent-training-demo-modules style.

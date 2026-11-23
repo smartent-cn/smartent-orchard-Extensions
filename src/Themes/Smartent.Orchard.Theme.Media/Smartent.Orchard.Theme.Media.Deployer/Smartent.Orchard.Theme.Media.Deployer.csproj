@@ -16,11 +16,11 @@
   <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Smartent.Build.Library.Sdk" Version="2.1.1" />
 
   <PropertyGroup>
-    <Title>Lombiq Hosting - Media Theme Deployer for Orchard Core</Title>
+    <Title>Smartent Orchard Hosting - Media Theme Deployer for Orchard Core</Title>
     <CopyrightYear>2022</CopyrightYear>
     <DescriptionBody>A tool to easily export Media Themes. See the project website for detailed documentation.</DescriptionBody>
-    <PackageTags>OrchardCore;Lombiq;AspNetCore;Media;Deployer</PackageTags>
-    <RepositoryUrl>https://github.com/Lombiq/Hosting-Media-Theme</RepositoryUrl>
+    <PackageTags>OrchardCore;Smartent;AspNetCore;Media;Deployer</PackageTags>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>

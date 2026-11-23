@@ -1,7 +1,6 @@
 <Project>
   <PropertyGroup>
     <SmartentSdkName>OrchardCore.Tests.UI</SmartentSdkName>
-    <LombiqSdkName>$(SmartentSdkName)</LombiqSdkName>
   </PropertyGroup>
   
   <ItemGroup Condition="'$(FromNuGet)' != 'true'">
@@ -10,7 +9,7 @@
 
   <ItemGroup Condition="'$(FromNuGet)' == 'true'">
     <PackageReference Include="Smartent.Test.UI">
-      <Version Condition="'$(ManagePackageVersionsCentrally)' != 'true'">$(PackageVersionLombiqTestsUI)</Version>
+      <Version Condition="'$(ManagePackageVersionsCentrally)' != 'true'">$(PackageVersionSmartentTestsUI)</Version>
     </PackageReference>
   </ItemGroup>
 </Project>

@@ -2,9 +2,9 @@ using Smartent.Orchard.Extensions.Cms;
 using OrchardCore.Modules.Manifest;
 
 [assembly: Module(
-    Name = "Lombiq Hosting - Media Theme Bridge",
-    Author = "Lombiq Technologies",
-    Website = "https://github.com/Lombiq/Hosting-Media-Theme",
+    Name = "Smartent Orchard Hosting - Media Theme Bridge",
+    Author = "Smartent",
+    Website = "https://gitee.com/smartent/smartent-training-demo-modules",
     Version = "0.0.1",
     Description = "Provides the processing logic for the Media Theme.",
     Category = "Hosting",

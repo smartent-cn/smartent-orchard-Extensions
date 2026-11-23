@@ -7,9 +7,9 @@
 
 ## 摘要 | Summary
 
-**中文**：Orchard Core 单元/集成测试辅助（如 `OrchardServicesExtensions`、Moq.AutoMock）。原 `Lombiq.HelpfulLibraries.OrchardCore.Testing`。
+**中文**：Orchard Core 单元/集成测试辅助（如 `OrchardServicesExtensions`、Moq.AutoMock）。原 `Smartent.HelpfulLibraries.OrchardCore.Testing`。
 
-**English**: Test helpers for Orchard Core apps (e.g. `OrchardServicesExtensions`, Moq.AutoMock). Formerly `Lombiq.HelpfulLibraries.OrchardCore.Testing`.
+**English**: Test helpers for Orchard Core apps (e.g. `OrchardServicesExtensions`, Moq.AutoMock). Formerly `Smartent.HelpfulLibraries.OrchardCore.Testing`.
 
 ---
 

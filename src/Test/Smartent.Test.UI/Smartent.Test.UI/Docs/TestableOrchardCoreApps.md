@@ -1,8 +1,8 @@
 # Making an Orchard Core app testable
 
-Tips on making specific features testable are under the ["Creating tests" page](CreatingTests.md) but here are some tips for the whole Orchard Core app you want to test. For an example of a UI-tested Orchard Core application see [Lombiq's Open-Source Orchard Core Extensions](https://github.com/smartent-cn/smartent-orchard-Extensions).
+Tips on making specific features testable are under the ["Creating tests" page](CreatingTests.md) but here are some tips for the whole Orchard Core app you want to test. For an example of a UI-tested Orchard Core application see [Smartent's Open-Source Orchard Core Extensions](https://github.com/smartent-cn/smartent-orchard-Extensions).
 
-**Note** that certain features of the Lombiq UI Testing Toolbox need to be enabled from test code in addition to making the app testable. Check out `OrchardCoreUITestExecutorConfiguration` for that part of the configuration; this page is only about changes necessary in the app.
+**Note** that certain features of the Smartent UI Testing need to be enabled from test code in addition to making the app testable. Check out `OrchardCoreUITestExecutorConfiguration` for that part of the configuration; this page is only about changes necessary in the app.
 
 - Create recipes with test content, and import them by starting with a UI testing-specific setup recipe.
   - While you can run tests from an existing database, using recipes to create a test environment (that almost entirely doubles as a development environment) is more reliable. Keep in mind, that the data you test shouldn't change randomly, you can't assert on data coming from the export of a production app which is updated all the time.
@@ -100,7 +100,7 @@ Tips on making specific features testable are under the ["Creating tests" page](
 
   This enforces consistent date formats regardless of the host machine's settings, see [the corresponding issue](https://github.com/OrchardCMS/OrchardCore/issues/11228).
 
-- Some features send out e-mails. You can test them with the Lombiq UI Testing Toolbox's built-in feature to run an isolated local SMTP server with a web UI. The `OrchardCore.Email` feature will be automatically enabled, as well as the rest of the configuration applied.
+- Some features send out e-mails. You can test them with the Smartent UI Testing's built-in feature to run an isolated local SMTP server with a web UI. The `OrchardCore.Email` feature will be automatically enabled, as well as the rest of the configuration applied.
 - If you want the site to use Azure Blob Storage then you have to do the following:
   - The `OrchardCore.Media.Azure` feature will be automatically enabled, as well as the rest of the configuration applied.
   - It's recommended that you use the [Azurite emulator](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azurite) as the storage for tests, not a real Azure Blob Storage resource. This is used by the UI Testing Toolbox by default. Be sure that it's running when the tests are executing. You'll need at least v3.25.0 of Azurite (you can check this with `azurite -v`, otherwise you'll get "The API version 2022-11-02 is not supported by Azurite." exceptions).

@@ -1,4 +1,4 @@
-# Lombiq Hosting - Tenant Maintenance for Orchard Core
+# Smartent Orchard Hosting - Tenant Maintenance for Orchard Core
 
 [![Smartent.Orchard.Hosting.Tenants.Maintenance NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.Hosting.Tenants.Maintenance?label=Smartent.Orchard.Hosting.Tenants.Maintenance)](https://www.nuget.org/packages/Smartent.Orchard.Hosting.Tenants.Maintenance/)
 
@@ -146,7 +146,7 @@ The following configuration should be used to allow the maintenance to run:
       "ChangeUserSensitiveContent": {
         "IsEnabled": true,
         "TenantNames": "Default, Tenant1, Tenant2",
-        "EmailExcludePattern": ".+@(lombiq.com|example.com|foo.com)$",
+        "EmailExcludePattern": ".+@(gitee.com/smartent|example.com|foo.com)$",
         "TargetEmailDomainName": "foo.com"
       }
     }

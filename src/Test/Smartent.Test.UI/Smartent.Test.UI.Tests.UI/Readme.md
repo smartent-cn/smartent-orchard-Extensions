@@ -1,4 +1,4 @@
-# Lombiq UI Testing Toolbox - UI Tests
+# Smartent UI Testing - UI Tests
 
 UI test project that tests the UI Testing Toolbox itself. The project is intentionally not published on NuGet, since it's only needed for the UI Testing Toolbox.
 
