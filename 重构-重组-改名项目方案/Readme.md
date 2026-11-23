@@ -283,6 +283,7 @@ Legacy 的 `src/` 在终态 **应不存在**（或仅保留无意义占位说明
 | [projects/M7-Batch-NuGetTest-PackageIds.md](projects/M7-Batch-NuGetTest-PackageIds.md) | M7#1：`NuGetTest` → `NuGetVerify`、包 ID |
 | [projects/M7-Batch-LocalNuGetFeed.md](projects/M7-Batch-LocalNuGetFeed.md) | M7#3–#4：本地 feed、Monorepo sln、CI |
 | [projects/M7-Batch-6-FeedHygiene.md](projects/M7-Batch-6-FeedHygiene.md) | M7#6：core pack 列表、NodeJs Samples、`-CorePack` |
+| [projects/M7-Batch-7-FullSlnValidation.md](projects/M7-Batch-7-FullSlnValidation.md) | M7#7：feed 校验脚本、全 sln 还原流程 |
 | [projects/M7-Batch-NuGetVerify-Feed.md](projects/M7-Batch-NuGetVerify-Feed.md) | M7：包版本同步脚本（占位） |
 
 ### 12.1 迁入项目时的文档义务

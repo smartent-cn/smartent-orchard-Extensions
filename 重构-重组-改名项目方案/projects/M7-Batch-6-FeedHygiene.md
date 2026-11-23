@@ -19,6 +19,10 @@ dotnet build NuGetVerify/Smartent.NuGet.Monorepo.sln -c Release
 ./scripts/Pack-SmartentLocalFeed.ps1
 ```
 
+## 后续
+
+- 批次 #7：`scripts/Verify-SmartentLocalFeed.ps1`、全 sln 流程见 [M7-Batch-7-FullSlnValidation.md](M7-Batch-7-FullSlnValidation.md)
+
 ## 未决
 
 - Gitee Packages + CI secret；全 sln 绿仍依赖 `-Full` pack

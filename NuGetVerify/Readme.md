@@ -18,9 +18,15 @@
 # Monorepo CI 等价
 dotnet build NuGetVerify/Smartent.NuGet.Monorepo.sln -c Release
 
-# 全量 sln（耗时长，需本地 feed）
+# Core 本地 feed 冒烟
+./scripts/Pack-SmartentLocalFeed.ps1
+./scripts/Verify-SmartentLocalFeed.ps1
+
+# 全量 sln（耗时长，需 -Full pack）
 Copy-Item NuGetVerify/NuGet.config.local.example NuGetVerify/NuGet.config.local
 ./scripts/Build-NuGetVerify-WithLocalFeed.ps1
 ```
+
+独立检出时 `Lombiq.HelpfulLibraries.OrchardCore` / `Lombiq.Analyzers.OrchardCore` 仍从 nuget.org 还原（见 `重构-重组-改名项目方案/M6-PackageId-Exceptions.md`）。
 
 See also [M3-HelpfulLibraries-MetaPackage.md](../重构-重组-改名项目方案/projects/M3-HelpfulLibraries-MetaPackage.md) and [scripts/README.md](../scripts/README.md).

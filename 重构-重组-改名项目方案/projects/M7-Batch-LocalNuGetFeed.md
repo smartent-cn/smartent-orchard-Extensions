@@ -20,6 +20,8 @@
 ```powershell
 ./scripts/Pack-SmartentLocalFeed.ps1
 dotnet build NuGetVerify/Smartent.NuGet.Monorepo.sln -c Release
+./scripts/Pack-SmartentLocalFeed.ps1
+./scripts/Verify-SmartentLocalFeed.ps1
 # 全量 NuGetVerify Web：
 # Copy-Item NuGetVerify/NuGet.config.local.example NuGetVerify/NuGet.config.local
 # ./scripts/Build-NuGetVerify-WithLocalFeed.ps1
