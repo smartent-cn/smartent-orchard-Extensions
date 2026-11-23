@@ -11,12 +11,12 @@ using System.Threading.Tasks;
 using System.Xml;
 using Xunit;
 
-namespace Lombiq.MSBuild.Targets.Tests.UnitTests;
+namespace Smartent.Build.Targets.Tests.UnitTests;
 
 public class SdkTests
 {
     private CancellationToken Token => TestContext.Current.CancellationToken;
-    
+
     [Fact]
     public async Task NuGetPropertiesShouldBePopulatedAsync()
     {
@@ -29,7 +29,7 @@ public class SdkTests
 
         var path = Path.Join(
             Path.GetRelativePath(Environment.CurrentDirectory, rawPath.Replace('/', Path.DirectorySeparatorChar)),
-            "Lombiq.MSBuild.Sdk.NuGet.Samples.csproj");
+            "Smartent.Build.Sdk.NuGet.Samples.csproj");
 
         await CliProgram.DotNet.ExecuteAsync(Token, "pack", path, "--output", nameof(NuGetPropertiesShouldBePopulatedAsync));
 
@@ -39,12 +39,12 @@ public class SdkTests
         {
             await using var nupkg = directoryInfo.GetFiles("*.nupkg").ShouldHaveSingleItem().OpenRead();
             await using var zip = new ZipArchive(nupkg);
-            await using var nuspec = await zip.GetEntry("Lombiq.MSBuild.Sdk.NuGet.Samples.nuspec").ShouldNotBeNull().OpenAsync(Token);
-        
+            await using var nuspec = await zip.GetEntry("Smartent.Build.Sdk.NuGet.Samples.nuspec").ShouldNotBeNull().OpenAsync(Token);
+
             var xml = new XmlDocument();
             xml.Load(nuspec);
             var elements = xml.SelectNodes("//*").CastWhere<XmlElement>().ToLookup(element => element.Name);
-        
+
             var metadata = new[]
             {
                 elements["title"],
@@ -55,20 +55,20 @@ public class SdkTests
                 elements["projectUrl"],
             };
             metadata.Select(results => results.SingleOrDefault()?.InnerText).ToArray().ShouldBe([
-                "Lombiq MSBuild SDK Sample",
-                "Lombiq.MSBuild.Sdk.NuGet.Samples",
+                "Smartent MSBuild SDK Sample",
+                "Smartent.Build.Sdk.NuGet.Samples",
                 "BSD-3-Clause",
                 "Copyright © 2026, Lombiq Technologies Ltd.",
                 "OrchardCore Lombiq AspNetCore",
-                "https://github.com/Lombiq/MSBuild-Targets/",
+                "https://gitee.com/smartent/smartent-training-demo-modules",
             ]);
-        
+
             elements["frameworkReference"]
                 .Single()
                 .Attributes!["name"]!
                 .Value
                 .ShouldBe("Microsoft.AspNetCore.App");
-        
+
             var dependencies = elements["dependency"].Select(node => node.Attributes["id"]?.Value ?? string.Empty).ToList();
             dependencies.ShouldContain("Smartent.Orchard.Platform");
             dependencies.ShouldContain("OrchardCore.Module.Targets");

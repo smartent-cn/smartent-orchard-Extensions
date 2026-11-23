@@ -1,9 +1,9 @@
-using Lombiq.MSBuild.Targets.Samples;
+using Smartent.Build.Targets.Samples;
 using Shouldly;
 using System.IO;
 using Xunit;
 
-namespace Lombiq.MSBuild.Targets.Tests.UnitTests;
+namespace Smartent.Build.Targets.Tests.UnitTests;
 
 public class LibManTests
 {

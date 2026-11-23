@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- Importing Smartent.Build.LibMan.Targets detects libman.json and applies Orchard Core fixes. -->
+  <Import Project="..\Smartent.Build.LibMan.Targets\Smartent.Build.LibMan.Targets.props"
+          Condition="'$(NuGetBuild)' != 'true'"/>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Web.LibraryManager.Build" Version="3.0.114" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(NuGetBuild)' == 'true'">
+    <PackageReference Include="Smartent.Build.LibMan.Targets" Version="2.1.1" />
+    <PackageReference Include="Smartent.Core.CodeGen.Attributes" Version="13.0.0" OutputItemType="Analyzer" ReferenceOutputAssembly="true" />
+    <PackageReference Include="Smartent.Core.CodeGen.SourceGenerators" Version="13.0.0" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="wwwroot\vendors\async\dist\async.min.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <Import Project="..\Smartent.Build.LibMan.Targets\Smartent.Build.LibMan.Targets.targets"
+          Condition="'$(NuGetBuild)' != 'true'"/>
+
+</Project>

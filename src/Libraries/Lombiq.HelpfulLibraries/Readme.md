@@ -1,51 +1,5 @@
-# Lombiq Helpful Libraries
+# Legacy: Lombiq.HelpfulLibraries
 
-> **Smartent 单仓**：可发布运行时包已迁至 [`Smartent-src/Platform/`](../../../Smartent-src/Platform/) 与 [`Smartent-src/Libraries/`](../../../Smartent-src/Libraries/)。本目录保留 **Legacy 元包** `Lombiq.HelpfulLibraries`（见 [M3-HelpfulLibraries-MetaPackage.md](../../../重构-重组-改名项目方案/projects/M3-HelpfulLibraries-MetaPackage.md)）。
+**中文**：平台库已迁入 [`Smartent-src/Platform/`](../../../Smartent-src/Platform/Orchard/README.md) 与 [`Smartent-src/Test/`](../../../Smartent-src/Test/README.md)。过渡期 **元包已移除**；新代码请直接引用各 `Smartent.*` 包。
 
-[![Lombiq.HelpfulLibraries NuGet](https://img.shields.io/nuget/v/Lombiq.HelpfulLibraries?label=Lombiq.HelpfulLibraries)](https://www.nuget.org/packages/Lombiq.HelpfulLibraries/) [![Smartent.Core.AspNet NuGet](https://img.shields.io/nuget/v/Smartent.Core.AspNet?label=Smartent.Core.AspNet)](https://www.nuget.org/packages/Smartent.Core.AspNet/) [![Lombiq.HelpfulLibraries.Attributes NuGet](https://img.shields.io/nuget/v/Lombiq.HelpfulLibraries.Attributes?label=Lombiq.HelpfulLibraries.Attributes)](https://www.nuget.org/packages/Lombiq.HelpfulLibraries.Attributes/) [![Lombiq.HelpfulLibraries.Cli NuGet](https://img.shields.io/nuget/v/Lombiq.HelpfulLibraries.Cli?label=Lombiq.HelpfulLibraries.Cli)](https://www.nuget.org/packages/Lombiq.HelpfulLibraries.Cli/) [![Lombiq.HelpfulLibraries.Common NuGet](https://img.shields.io/nuget/v/Lombiq.HelpfulLibraries.Common?label=Lombiq.HelpfulLibraries.Common)](https://www.nuget.org/packages/Lombiq.HelpfulLibraries.Common/) [![Lombiq.HelpfulLibraries.LinqToDb NuGet](https://img.shields.io/nuget/v/Lombiq.HelpfulLibraries.LinqToDb?label=Lombiq.HelpfulLibraries.LinqToDb)](https://www.nuget.org/packages/Lombiq.HelpfulLibraries.LinqToDb/) [![Smartent.Orchard.Platform NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.Platform?label=Smartent.Orchard.Platform)](https://www.nuget.org/packages/Smartent.Orchard.Platform/) [![Smartent.Test.OrchardCore NuGet](https://img.shields.io/nuget/v/Smartent.Test.OrchardCore?label=Smartent.Test.OrchardCore)](https://www.nuget.org/packages/Smartent.Test.OrchardCore/) [![Lombiq.HelpfulLibraries.Refit NuGet](https://img.shields.io/nuget/v/Lombiq.HelpfulLibraries.Refit?label=Lombiq.HelpfulLibraries.Refit)](https://www.nuget.org/packages/Lombiq.HelpfulLibraries.Refit/) [![Lombiq.HelpfulLibraries.RestEase NuGet](https://img.shields.io/nuget/v/Lombiq.HelpfulLibraries.RestEase?label=Lombiq.HelpfulLibraries.RestEase)](https://www.nuget.org/packages/Lombiq.HelpfulLibraries.RestEase/) [![Lombiq.HelpfulLibraries.SourceGenerators NuGet](https://img.shields.io/nuget/v/Lombiq.HelpfulLibraries.SourceGenerators?label=Lombiq.HelpfulLibraries.SourceGenerators)](https://www.nuget.org/packages/Lombiq.HelpfulLibraries.SourceGenerators/) [![Latest version of 'Lombiq.HelpfulLibraries' @ Cloudsmith](https://api-prd.cloudsmith.io/v1/badges/version/lombiq/open-source-orchard-core-extensions/nuget/Lombiq.HelpfulLibraries/latest/xsp=True/?render=true&show_latest=true)](https://cloudsmith.io/~lombiq/repos/open-source-orchard-core-extensions/packages/detail/nuget/Lombiq.HelpfulLibraries/latest/xsp=True/)
-
-## About
-
-Various useful libraries that can be handy when developing for .NET, ASP.NET Core, and [Orchard Core](https://orchardcore.net/), to be used from your own projects.
-
-We at [Lombiq](https://lombiq.com/) also used this library for the following projects:
-
-- The new [City of Santa Monica website](https://santamonica.gov/) when migrating it from Orchard 1 to Orchard Core ([see case study](https://lombiq.com/blog/helping-the-city-of-santa-monica-with-orchard-core-consulting)).
-- The new [Smithsonian Folkways Recordings website](https://folkways.si.edu/) when migrating it from Orchard 1 to Orchard Core ([see case study](https://lombiq.com/blog/smithsonian-folkways-recordings-now-upgraded-to-orchard-core)).
-- The new [Lombiq website](https://lombiq.com/) when migrating it from Orchard 1 to Orchard Core ([see case study](https://lombiq.com/blog/how-we-renewed-and-migrated-lombiq-com-from-orchard-1-to-orchard-core)).
-- The new [Ik wil een taart website](https://ikwileentaart.nl/) ([see case study](https://dotnest.com/blog/revamping-ik-wil-een-taart-migrating-an-old-version-of-orchard-core-website-with-custom-theme-and-commerce-logic-to-dotnest)).
-- The new client portal for [WTW](https://www.wtwco.com/) ([see case study](https://lombiq.com/blog/lombiq-s-journey-with-wtw-s-client-portal)).
-- The new [Git-hg Mirror website](https://githgmirror.com/) when migrating it from Orchard 1 to Orchard Core ([see case study](https://lombiq.com/blog/git-hg-mirror-is-running-on-orchard-core)).
-- The new [Hastlayer website](https://hastlayer.com/) when migrating it from Orchard 1 to Orchard Core ([see case study](https://lombiq.com/blog/modernization-and-orchard-core-migration-of-hastlayer-com)).
-- The new [Orchard Dojo website](https://orcharddojo.net/) when migrating it from Orchard 1 to Orchard Core ([see case study](https://orcharddojo.net/blog/another-lombiq-site-was-improved-orchard-dojo)).
-
-Do you want to quickly try out this project and see it in action? Check it out in our [Open-Source Orchard Core Extensions](https://github.com/Lombiq/Open-Source-Orchard-Core-Extensions) full Orchard Core solution and also see our other useful Orchard Core-related open-source projects!
-
-Note that this project has an Orchard 1 version in the [dev-orchard-1 branch](https://github.com/Lombiq/Helpful-Libraries/tree/dev-orchard-1).
-
-## Documentation
-
-Helpful Libraries consists of the following independent libraries (all in their own projects/packages). Use the one specific to your use-case, or most of them at once by depending on `Lombiq.HelpfulLibraries`.
-
-- [ASP.NET Core Libraries (Smartent.Core.AspNet)](../../../../Smartent-src/Platform/Core/Smartent.Core.AspNet/Readme.md)ï¼å AspNetCoreï¼å·²è¿åºï¼?
-- [Command Line Libraries (Smartent.Core.Cli)](../../../../Smartent-src/Platform/Core/Smartent.Core.Cli/Readme.md)ï¼å Cliï¼å·²è¿åºï¼?
-- [Core Primitives (Smartent.Core.Primitives)](../../../../Smartent-src/Platform/Core/Smartent.Core.Primitives/Readme.md)ï¼å Commonï¼å·²è¿åºï¼?
-- [LINQ to YesSql / linq2db (Smartent.Orchard.Platform.Data.LinqToYesSql)](../../../../Smartent-src/Platform/Orchard/Smartent.Orchard.Platform.Data.LinqToYesSql/Readme.md)ï¼å·²è¿åºï¼?
-- [Orchard Core Libraries (Smartent.Orchard.Platform)](../../../../Smartent-src/Platform/Orchard/Smartent.Orchard.Platform/Readme.md)（原 OrchardCore，已迁出）
-- [Testing (Smartent.Test.OrchardCore)](../../../../Smartent-src/Test/Smartent.Test.OrchardCore/Readme.md)（原 OrchardCore.Testing，已迁出）
-- [RestEase Libraries for Orchard Core](Lombiq.HelpfulLibraries.RestEase/Readme.md) (Not included in `Lombiq.HelpfulLibraries`, we suggest the Refit libraries instead.)
-- [Refitï¼Smartent.Orchard.Http.Refitï¼](../../../../Smartent-src/Platform/Orchard/Smartent.Orchard.Http.Refit/Readme.md)ï¼å·²è¿åºï¼?
-- [Source Generators (Smartent.Core.CodeGen.SourceGenerators)](../../../../Smartent-src/Platform/Core/Smartent.Core.CodeGen.SourceGenerators/Readme.md)ï¼å·²è¿åºï¼?
-- [Attributes (Smartent.Core.CodeGen.Attributes)](../../../../Smartent-src/Platform/Core/Smartent.Core.CodeGen.Attributes/Readme.md)ï¼å·²è¿åºï¼?
-
-Public APIs are always documented so please always read method comments.
-
-Check out the [`Smartent.Demo.Platform.Samples` project](Smartent.Demo.Platform.Samples) for various examples in the form of an Orchard Core module. We also have a [corresponding UI test project](Smartent.Demo.Platform.Samples.Tests.UI) that tests these samples.
-
-Note: The `Lombiq.HelpfulLibraries.sln` file exists to provide centralized building of the independent library projects but otherwise you don't need to use it.
-
-## Contributing and support
-
-Bug reports, feature requests, comments, questions, code contributions and love letters are warmly welcome. You can send them to us via GitHub issues and pull requests. Please adhere to our [open-source guidelines](https://lombiq.com/open-source-guidelines) while doing so.
-
-This project is developed by [Lombiq Technologies](https://lombiq.com/). Commercial-grade support is available through Lombiq.
+**English**: Use individual `Smartent.Core.*` and `Smartent.Orchard.Platform.*` packages. See [Legacy-to-Smartent-src-Mapping.md](../../../docs/migration/Legacy-to-Smartent-src-Mapping.md).

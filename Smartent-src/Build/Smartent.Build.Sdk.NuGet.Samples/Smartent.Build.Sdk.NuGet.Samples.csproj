@@ -3,18 +3,19 @@
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
     <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
-    <!-- 单体仓 pack 测试走 ProjectReference，产出 nuspec 依赖 Smartent.Orchard.Platform。 -->
     <FromNuGet>false</FromNuGet>
     <IsLombiqProject>true</IsLombiqProject>
-    <Title>Lombiq MSBuild SDK Sample</Title>
+    <RootNamespace>Smartent.Build.Sdk.NuGet.Samples</RootNamespace>
+    <AssemblyName>Smartent.Build.Sdk.NuGet.Samples</AssemblyName>
+    <Title>Smartent MSBuild SDK Sample</Title>
     <CopyrightYear>2026</CopyrightYear>
     <DescriptionBody>Example Description.</DescriptionBody>
-    <RepositoryUrl>https://github.com/Lombiq/MSBuild-Targets/</RepositoryUrl>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
     <OrchardCoreVersion>3.0.1</OrchardCoreVersion>
     <PackageVersionSmartentPlatform>13.1.0</PackageVersionSmartentPlatform>
   </PropertyGroup>
 
-  <Import Project="../../../../Smartent-src/Build/Smartent.Build.OrchardCore.Module.Sdk/Sdk/Import.props" />
-  <Import Project="../../../../Smartent-src/Build/Smartent.Build.OrchardCore.Module.Sdk/Sdk/Import.targets" />
+  <Import Project="../Smartent.Build.OrchardCore.Module.Sdk/Sdk/Import.props" />
+  <Import Project="../Smartent.Build.OrchardCore.Module.Sdk/Sdk/Import.targets" />
 
 </Project>
