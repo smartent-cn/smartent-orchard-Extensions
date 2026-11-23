@@ -24,4 +24,4 @@
 ## 未决
 
 - Gitee API token / CI secrets
-- `Lombiq.MSBuild.*` PackageId → `Smartent.Build.*` 改名批次（可与发布并行规划）
+- ~~`Smartent.Build.*` Sdk PackageId~~（已完成，见 [M7-Batch-11-SdkPackageIdRename.md](M7-Batch-11-SdkPackageIdRename.md)）

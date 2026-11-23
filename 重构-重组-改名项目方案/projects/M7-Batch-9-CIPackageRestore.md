@@ -9,7 +9,8 @@
 |----|------|
 | `.github/workflows/smartent-local-feed-smoke.yml` | dev / 手动：core pack + verify + 独立还原冒烟 |
 | `.github/workflows/build-and-test-windows.yml` | NuGet 作业 `Smartent.NuGet.Monorepo.sln` |
-| `ForceStandaloneNuGetVerify` | 关闭 monorepo Sdk，测本地 feed 上的 `Smartent.*` |
+| `ForceStandaloneNuGetVerify` | 产品包走 feed；**单体仓内** Sdk 仍用仓库 Import（见 `NuGetVerify/Directory.Build.props`） |
+| `Seed-LocalFeedSdkToNuGetCache.ps1` | 可选：Sdk nupkg 写入包缓存 |
 | `Test-NuGetVerifyCorePackageRestore.ps1` | Tests / TestModule / TestTheme 独立 `dotnet restore` |
 | `feed-core-pack-versions.ps1` | core pack 版本与 `NuGetVerify/Directory.Packages.props` 对齐 |
 | `Assert-FeedCorePackVersions.ps1` | 批次 #12：pack 前版本 drift 检测 |

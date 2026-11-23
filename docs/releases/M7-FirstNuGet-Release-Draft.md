@@ -15,7 +15,7 @@
 
 ## 发布前清单
 
-- [ ] `Invoke-M7CoreFeedGate.ps1` 绿
+- [x] `Invoke-M7CoreFeedGate.ps1` 绿（本地；CI 见 `smartent-local-feed-smoke.yml`）
 - [ ] `Export-FeedManifestSummary.ps1` 与产品清单一致
 - [ ] Gitee `NuGet.config` 源已启用（[M7-Batch-15](../../重构-重组-改名项目方案/projects/M7-Batch-15-GiteeNuGetConfig.md)）
 - [ ] （可选）`Build-NuGetVerify-WithLocalFeed.ps1` 全 sln 绿
