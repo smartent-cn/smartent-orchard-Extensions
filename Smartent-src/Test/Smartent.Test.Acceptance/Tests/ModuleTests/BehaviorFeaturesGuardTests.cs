@@ -35,5 +35,5 @@ public class BehaviorFeaturesGuardTests : UITestBase
         });
 
     private static Task BeforeTestAsync(UITestContext context) =>
-        context.ExecuteRecipeDirectlyAsync("Lombiq.OSOCE.Tests.FeaturesGuard");
+        context.ExecuteRecipeDirectlyAsync("Smartent.Demo.Tests.FeaturesGuard");
 }

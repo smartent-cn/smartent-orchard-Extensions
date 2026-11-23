@@ -1,6 +1,7 @@
 <Project>
   <PropertyGroup>
-    <LombiqSdkName>OrchardCore.Tests</LombiqSdkName>
+    <SmartentSdkName>OrchardCore.Tests</SmartentSdkName>
+    <LombiqSdkName>$(SmartentSdkName)</LombiqSdkName>
     <OutputType>Exe</OutputType>
     <UseMicrosoftTestingPlatformRunner>true</UseMicrosoftTestingPlatformRunner>
   </PropertyGroup>
@@ -21,7 +22,7 @@
   </ItemGroup>
   
   <ItemGroup Condition="'$(FromNuGet)' != 'true'">
-    <ProjectReference Include="$(LombiqSolutionRootPath)/Smartent-src/Test/Smartent.Test.Unit/Smartent.Test.Unit.csproj" />
+    <ProjectReference Include="$(SmartentSolutionRootPath)/Smartent-src/Test/Smartent.Test.Unit/Smartent.Test.Unit.csproj" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(FromNuGet)' == 'true'">

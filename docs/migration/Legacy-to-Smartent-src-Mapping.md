@@ -39,12 +39,12 @@
 
 | Legacy 路径 | 原因 |
 |-------------|------|
-| `src/Utilities/Lombiq.MSBuild.Targets/` | **shim**：`Directory.Build.props` 转发 `Smartent-src/Build/`；各 Sdk 子目录为 Readme |
-| `src/Libraries/Lombiq.HelpfulLibraries/` | **仅剩** Readme / CI 残留；元包 **已删** |
-| `src/Utilities/Lombiq.Tailwind.Targets/` | 仅文档/残留；源码在 `Smartent-src/Build/Smartent.Build.Tailwind` |
+| ~~`src/Utilities/Lombiq.MSBuild.Targets/`~~ | **已删**（2026-11-23）；MSBuild 在 `Smartent-src/Build/` |
+| ~~`src/Libraries/Lombiq.HelpfulLibraries/`~~ | **已删**（2026-11-23） |
+| ~~`src/Utilities/Lombiq.Tailwind.Targets/`~~ | **已删**（2026-11-23）；源码在 `Smartent-src/Build/Smartent.Build.Tailwind` |
 | `tools/Smartent.Build.Analyzers/*` | 未迁入 `Smartent-src`；主 sln 仍引用 |
 
-`src/Modules/**`、`src/Themes/**`：**已删**（2026-11-24 batch 3）；`test/Lombiq.*` 指针已删。
+`src/` 现仅保留 [`src/README.md`](../../src/README.md) 指针说明。`src/Modules/**`、`src/Themes/**`：**已删**（2026-11-24 batch 3）；`test/Lombiq.*` 指针已删。
 
 ---
 

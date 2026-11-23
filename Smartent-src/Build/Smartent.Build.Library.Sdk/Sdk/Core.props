@@ -1,5 +1,6 @@
 <Project>
   <PropertyGroup>
-    <LombiqSdkName>Library</LombiqSdkName>
+    <SmartentSdkName>Library</SmartentSdkName>
+    <LombiqSdkName>$(SmartentSdkName)</LombiqSdkName>
   </PropertyGroup>
 </Project>

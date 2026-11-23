@@ -1,5 +1,5 @@
 {
-  "name": "Lombiq.OrchardCoreApiClient.Tester.OpenId",
+  "name": "Smartent.Orchard.ApiClient.Tester.OpenId",
   "displayName": "Lombiq API Client for Orchard Core - Tester App - OpenId",
   "description": "Set up the OpenId server and application to allow access to the web APIs from the Tester App of Lombiq API Client for Orchard Core.",
   "author": "Lombiq Technologies",

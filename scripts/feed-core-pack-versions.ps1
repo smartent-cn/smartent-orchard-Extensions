@@ -14,5 +14,7 @@ function Get-SmartentFeedCorePackProjects {
         @{ Rel = 'Smartent-src/Build/Smartent.Build.Npm.Targets/Smartent.Build.Npm.Targets.csproj'; Version = '1.5.3'; PackageId = 'Smartent.Build.Npm.Targets' }
         @{ Rel = 'Smartent-src/Build/Smartent.Build.NodeJs/Smartent.Build.NodeJs/Smartent.Build.NodeJs.csproj'; Version = '3.0.0'; PackageId = 'Smartent.Build.NodeJs' }
         @{ Rel = 'Smartent-src/Modules/Smartent.Orchard.TrainingDemo/Smartent.Orchard.TrainingDemo/Smartent.Orchard.TrainingDemo.csproj'; Version = '1.0.0'; PackageId = 'Smartent.Orchard.TrainingDemo' }
+        @{ Rel = 'tools/Smartent.Build.Analyzers/Smartent.Build.Analyzers/Smartent.Build.Analyzers.csproj'; Version = '7.0.1-alpha.0.osoe-1333'; PackageId = 'Smartent.Build.Analyzers' }
+        @{ Rel = 'tools/Smartent.Build.Analyzers/Smartent.Build.Analyzers.OrchardCore/Smartent.Build.Analyzers.OrchardCore.csproj'; Version = '7.0.1-alpha.0.osoe-1333'; PackageId = 'Smartent.Build.Analyzers.OrchardCore' }
     )
 }

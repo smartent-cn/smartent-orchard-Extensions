@@ -21,7 +21,7 @@
 
   <ItemGroup>
     <Content Include=".htmlvalidate.json" CopyToOutputDirectory="PreserveNewest" />
-    <Content Include="Recipes\Lombiq.OSOCE.Tests.Elasticsearch.recipe.json" CopyToOutputDirectory="PreserveNewest" ExcludeFromSingleFile="true" CopyToPublishDirectory="PreserveNewest" />
+    <Content Include="Recipes\Smartent.Test.UI.Samples.Elasticsearch.recipe.json" CopyToOutputDirectory="PreserveNewest" ExcludeFromSingleFile="true" CopyToPublishDirectory="PreserveNewest" />
     <Content Include="Tests\CustomZapAutomationFrameworkPlan.yml" CopyToOutputDirectory="PreserveNewest" />
     <Content Include="xunit.runner.json" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>

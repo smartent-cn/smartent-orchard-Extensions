@@ -30,6 +30,6 @@ Copy-Item NuGetVerify/NuGet.config.local.example NuGetVerify/NuGet.config.local
 ./scripts/Build-NuGetVerify-WithLocalFeed.ps1
 ```
 
-独立检出：平台与测试基础设施从 **SmartentLocal**（`Smartent.Orchard.Platform`、`Smartent.Test.Unit`）；`Smartent.Build.Analyzers.OrchardCore` 仍从 nuget.org（见 `M6-PackageId-Exceptions.md`）。
+独立检出：平台与测试基础设施从 **SmartentLocal**；`Smartent.Build.Analyzers` / `Smartent.Build.Analyzers.OrchardCore` 由 `Pack-SmartentLocalFeed.ps1` 写入本地 feed（见 `scripts/feed-core-pack-versions.ps1`）。
 
 See also [M3-HelpfulLibraries-MetaPackage.md](../重构-重组-改名项目方案/projects/M3-HelpfulLibraries-MetaPackage.md) and [scripts/README.md](../scripts/README.md).

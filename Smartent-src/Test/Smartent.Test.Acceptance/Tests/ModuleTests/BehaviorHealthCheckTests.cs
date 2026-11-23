@@ -20,5 +20,5 @@ public class BehaviorHealthCheckTests : UITestBase
 
     [Fact]
     public Task UnhealthyTenantsShouldBeListed() =>
-        RunAsync(context => context.TestHealthChecksAsync("Lombiq.OSOCE.BasicOrchardFeaturesTests"));
+        RunAsync(context => context.TestHealthChecksAsync("Smartent.Demo.BasicOrchardFeaturesTests"));
 }

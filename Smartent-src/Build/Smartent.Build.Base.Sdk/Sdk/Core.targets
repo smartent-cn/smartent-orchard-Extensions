@@ -1,5 +1,5 @@
 <Project>
-  <PropertyGroup Condition="'$(IsLombiqProject)' == 'true'">
+  <PropertyGroup Condition="'$(IsSmartentProject)' == 'true'">
     <Authors Condition="'$(Authors)' == ''">Lombiq Technologies</Authors>
     <CopyrightYear Condition="'$(CopyrightYear)' == ''">20XX</CopyrightYear>
     <Copyright Condition="'$(Copyright)' == ''">Copyright © $(CopyrightYear), Lombiq Technologies Ltd.</Copyright>
@@ -10,7 +10,7 @@
   </PropertyGroup>
   
   <!-- Must be separate, because PackageLicenseExpression can't accept a Condition attribute. -->
-  <PropertyGroup Condition="'$(IsLombiqProject)' == 'true' AND '$(PackageLicenseExpression)' == ''">
+  <PropertyGroup Condition="'$(IsSmartentProject)' == 'true' AND '$(PackageLicenseExpression)' == ''">
     <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
   </PropertyGroup>
 

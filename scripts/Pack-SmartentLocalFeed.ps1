@@ -63,6 +63,14 @@ foreach ($entry in $coreProjects) {
     $rel = $entry.Rel
     $proj = Join-Path $repoRoot $rel
     if (-not (Test-Path $proj)) { throw "Missing project: $proj" }
+    if ($rel -like 'tools/Smartent.Build.Analyzers/*' -and $entry.Version) {
+        $convert = Join-Path $repoRoot 'tools/Smartent.Build.Analyzers/ConvertTo-Nuspec.ps1'
+        if (Test-Path $convert) {
+            Push-Location (Join-Path $repoRoot 'tools/Smartent.Build.Analyzers')
+            & powershell -NoProfile -File $convert -Version $entry.Version
+            Pop-Location
+        }
+    }
     $packArgs = @('pack', $proj, '-c', 'Release', '--output', $OutputPath, '/p:ContinuousIntegrationBuild=true')
     if ($entry.Version) { $packArgs += "/p:Version=$($entry.Version)" }
     Write-Output "Packing $rel ..."

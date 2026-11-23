@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Smartent.Orchard.ApiClient.Tests.UI/Smartent.Orchard.ApiClient.Tests.UI.csproj" />
+  <Project Path="Smartent.Orchard.ApiClient/Smartent.Orchard.ApiClient.csproj" />
+</Solution>

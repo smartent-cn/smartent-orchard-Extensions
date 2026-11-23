@@ -25,7 +25,7 @@ public static class SetupHelpers
     // otherwise. Notably, it turns off CDN usage and configures culture settings to make test execution consistent
     // regardless of the host settings. If you use a setup recipe for local development then you can execute that from
     // this test recipe too.
-    public const string RecipeId = "Lombiq.OSOCE.Tests";
+    public const string RecipeId = "Smartent.Demo.Tests";
 
     // Because we pass this method to UITestBase.ExecuteTestAfterSetupAsync() by reference, it can't have optional
     // parameters. These shortcut methods are necessary so .NET can identify which setup method is used. An alternative

@@ -267,7 +267,7 @@ public static class SqlQueryMonitoringTestCases
                 new OrchardCoreSetupParameters
                 {
                     SiteName = tenantDisplayName,
-                    RecipeId = "Lombiq.OSOCE.Tests",
+                    RecipeId = "Smartent.Demo.Tests",
                     TablePrefix = tenantUrlPrefix,
                     UserName = tenantAdminName,
                 });

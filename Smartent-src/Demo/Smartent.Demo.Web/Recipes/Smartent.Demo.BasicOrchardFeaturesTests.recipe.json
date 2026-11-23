@@ -1,5 +1,5 @@
 {
-  "name": "Lombiq.OSOCE.BasicOrchardFeaturesTests",
+  "name": "Smartent.Demo.BasicOrchardFeaturesTests",
   "displayName": "TEST: Basic Orchard Features",
   "description": "Setup recipe for automated UI test execution, checking the basic Orchard features. See the BasicOrchardFeaturesTests test.",
   "author": "Lombiq Technologies",
@@ -18,7 +18,7 @@
       "Values": [
         {
           "executionid": "Smartent.Demo.Web",
-          "name": "Lombiq.OSOCE.Tests"
+          "name": "Smartent.Demo.Tests"
         }
       ]
     },

@@ -1,6 +1,7 @@
 <Project>
   <PropertyGroup>
-    <LombiqSdkName>OrchardCore.Module</LombiqSdkName>
+    <SmartentSdkName>OrchardCore.Module</SmartentSdkName>
+    <LombiqSdkName>$(SmartentSdkName)</LombiqSdkName>
     <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
   </PropertyGroup>
 
@@ -21,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(FromNuGet)' != 'true'">
-    <ProjectReference Include="$(LombiqSolutionRootPath)/Smartent-src/Platform/Orchard/Smartent.Orchard.Platform/Smartent.Orchard.Platform.csproj" />
+    <ProjectReference Include="$(SmartentSolutionRootPath)/Smartent-src/Platform/Orchard/Smartent.Orchard.Platform/Smartent.Orchard.Platform.csproj" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(FromNuGet)' == 'true'">

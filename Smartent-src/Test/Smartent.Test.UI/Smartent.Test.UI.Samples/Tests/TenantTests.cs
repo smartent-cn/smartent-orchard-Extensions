@@ -38,7 +38,7 @@ public class TenantTests : UITestBase
                     new OrchardCoreSetupParameters
                     {
                         SiteName = TestTenantDisplayName,
-                        RecipeId = "Lombiq.OSOCE.Tests",
+                        RecipeId = "Smartent.Demo.Tests",
                         TablePrefix = TestTenantUrlPrefix,
                         UserName = tenantAdminName,
                     });

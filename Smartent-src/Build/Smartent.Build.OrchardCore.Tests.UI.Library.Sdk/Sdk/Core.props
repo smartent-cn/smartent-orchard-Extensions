@@ -1,10 +1,11 @@
 <Project>
   <PropertyGroup>
-    <LombiqSdkName>OrchardCore.Tests.UI.Library</LombiqSdkName>
+    <SmartentSdkName>OrchardCore.Tests.UI.Library</SmartentSdkName>
+    <LombiqSdkName>$(SmartentSdkName)</LombiqSdkName>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(FromNuGet)' != 'true'">
-    <ProjectReference Include="$(LombiqSolutionRootPath)/Smartent-src/Test/Smartent.Test.UI/Smartent.Test.UI/Smartent.Test.UI.csproj" />
+    <ProjectReference Include="$(SmartentSolutionRootPath)/Smartent-src/Test/Smartent.Test.UI/Smartent.Test.UI/Smartent.Test.UI.csproj" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(FromNuGet)' == 'true'">

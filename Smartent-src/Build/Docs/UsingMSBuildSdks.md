@@ -51,7 +51,7 @@ All of our MSBuild SDK projects share these features and configurations:
 
 - Link and pack _Readme.md_ and _NuGetIcon.png_ files, if they exist.
 - Link and pack _../Readme.md_ as _Readme.md_ if it doesn't exist in the project directory. This is useful for the primary project of a repository.
-- If the project has `<IsLombiqProject>true</IsLombiqProject>` property, then a lot of NuGet properties are provided with appropriate defaults to reduce boilerplate:
+- If the project has `<IsSmartentProject>true</IsSmartentProject>` (or legacy `<IsLombiqProject>true</IsLombiqProject>`), then a lot of NuGet properties are provided with appropriate defaults to reduce boilerplate:
   - Authors: Defaults to `Lombiq Technologies`.
   - Copyright: Use the `<CopyrightYear>` property to make it `Copyright © $(CopyrightYear), Lombiq Technologies Ltd.`.
   - Description: Use the `<DescriptionBody>` property to make it `$(Title): $(DescriptionBody)`.
@@ -60,7 +60,7 @@ All of our MSBuild SDK projects share these features and configurations:
   - PackageProjectUrl: Defaults to the value of `<RepositoryUrl>`, so you don't have to enter both if they are the same.
   - PackageLicenseExpression: Defaults to `BSD-3-Clause`.
 - When you import the SDK via the _Import.props_ file, it tries to automatically set these values if they are not yet initialized:
-  - LombiqSolutionRootPath: Path of the directory where the solution file and the _src_ directory should be.
+  - SmartentSolutionRootPath: Repository root (alias `LombiqSolutionRootPath` for compatibility).
   - SmartentSrcPath: Path of the repository `Smartent-src/` tree (Core/Platform/Build).
   - SmartentPlatformPath / `SmartentSrcPath`: 平台库在 _Smartent-src/Platform_（NuGet：`Smartent.Orchard.Platform`）。
   - LombiqAnalyzersPath: Path of the _tools/Smartent.Build.Analyzers_ directory where the [.NET Analyzers](https://github.com/Lombiq/.NET-Analyzers/) submodule should be.

@@ -1,26 +1,27 @@
 <Project>
   <PropertyGroup>
-    <IsLombiqProject Condition="$(MSBuildProjectName.StartsWith('Lombiq.'))">true</IsLombiqProject>
-    <LombiqSdkName>Base</LombiqSdkName>
+    <IsSmartentProject Condition="'$(IsSmartentProject)' == '' AND ($(MSBuildProjectName.StartsWith('Smartent.')) OR $(MSBuildProjectName.StartsWith('Lombiq.')))">true</IsSmartentProject>
+    <IsLombiqProject Condition="'$(IsLombiqProject)' == '' AND '$(IsSmartentProject)' == 'true'">true</IsLombiqProject>
+    <SmartentSdkName>Base</SmartentSdkName>
+    <LombiqSdkName>$(SmartentSdkName)</LombiqSdkName>
     <DefaultItemExcludes>$(DefaultItemExcludes);.git*</DefaultItemExcludes>
     <OrchardCoreVersion Condition="'$(OrchardCoreVersion)' == '' AND '$(ManagePackageVersionsCentrally)' != 'true'">3.0.1</OrchardCoreVersion>
     <UseLibMan Condition="'$(UseLibMan)' == '' AND Exists('libman.json') AND !Exists('.disable-libman')">true</UseLibMan>
   </PropertyGroup>
   
   <PropertyGroup>
-    <PackageVersionLombiqHelpfulLibraries Condition="'$(PackageVersionLombiqHelpfulLibraries)' == ''"
-      >13.1.0</PackageVersionLombiqHelpfulLibraries>
-    <!-- Smartent platform/Core NuGet 对齐版本（与 PackageVersionLombiqHelpfulLibraries 同期，M7 前可合并命名）。 -->
     <PackageVersionSmartentPlatform Condition="'$(PackageVersionSmartentPlatform)' == ''"
-      >$(PackageVersionLombiqHelpfulLibraries)</PackageVersionSmartentPlatform>
-    <PackageVersionLombiqTests Condition="'$(PackageVersionLombiqTests)' == ''"
-      >6.0.1</PackageVersionLombiqTests>
-    <PackageVersionLombiqTestsUI Condition="'$(PackageVersionLombiqTestsUI)' == ''"
-      >16.0.0</PackageVersionLombiqTestsUI>
+      >13.1.0</PackageVersionSmartentPlatform>
+    <PackageVersionLombiqHelpfulLibraries Condition="'$(PackageVersionLombiqHelpfulLibraries)' == ''"
+      >$(PackageVersionSmartentPlatform)</PackageVersionLombiqHelpfulLibraries>
     <PackageVersionSmartentTests Condition="'$(PackageVersionSmartentTests)' == ''"
-      >$(PackageVersionLombiqTests)</PackageVersionSmartentTests>
+      >6.0.1</PackageVersionSmartentTests>
+    <PackageVersionLombiqTests Condition="'$(PackageVersionLombiqTests)' == ''"
+      >$(PackageVersionSmartentTests)</PackageVersionLombiqTests>
     <PackageVersionSmartentTestsUI Condition="'$(PackageVersionSmartentTestsUI)' == ''"
-      >$(PackageVersionLombiqTestsUI)</PackageVersionSmartentTestsUI>
+      >16.0.0</PackageVersionSmartentTestsUI>
+    <PackageVersionLombiqTestsUI Condition="'$(PackageVersionLombiqTestsUI)' == ''"
+      >$(PackageVersionSmartentTestsUI)</PackageVersionLombiqTestsUI>
   </PropertyGroup>
 
   <Import Project="$(MSBuildThisFileDirectory)LibManIntegration.props" Condition="'$(UseLibMan)' == 'true'" />

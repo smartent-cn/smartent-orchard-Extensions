@@ -1,6 +1,7 @@
 <Project>
   <PropertyGroup>
-    <LombiqSdkName>OrchardCore.Theme</LombiqSdkName>
+    <SmartentSdkName>OrchardCore.Theme</SmartentSdkName>
+    <LombiqSdkName>$(SmartentSdkName)</LombiqSdkName>
   </PropertyGroup>
   
   <ItemGroup>

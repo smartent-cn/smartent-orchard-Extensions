@@ -149,7 +149,7 @@
       "Values": [
         {
           "executionid": "Smartent.Demo.Web",
-          "name": "Lombiq.OSOCE.Tests"
+          "name": "Smartent.Demo.Tests"
         }
       ]
     }

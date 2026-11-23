@@ -27,7 +27,9 @@ $requiredPackageIds = @(
     'Smartent.Core.AspNet',
     'Smartent.Test.Unit',
     'Smartent.Orchard.EInvoice',
-    'Smartent.Orchard.EInvoice.Sample'
+    'Smartent.Orchard.EInvoice.Sample',
+    'Smartent.Build.Analyzers',
+    'Smartent.Build.Analyzers.OrchardCore'
 )
 
 $nupkgs = Get-ChildItem -Path $OutputPath -Filter '*.nupkg' -File | ForEach-Object { $_.Name }

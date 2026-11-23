@@ -46,7 +46,7 @@ public class BehaviorMediaThemeTests : UITestBase
             new OrchardCoreSetupParameters
             {
                 SiteName = "Media Theme Test Tenant",
-                RecipeId = "Lombiq.OSOCE.Tests",
+                RecipeId = "Smartent.Demo.Tests",
                 TablePrefix = TestTenantName,
                 UserName = "admin",
             });

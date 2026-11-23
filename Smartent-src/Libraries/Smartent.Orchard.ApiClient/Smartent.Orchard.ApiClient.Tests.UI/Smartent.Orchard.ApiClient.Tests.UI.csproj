@@ -20,11 +20,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Recipes\Lombiq.OrchardCoreApiClient.Tests.UI.OpenId.recipe.json" />
+    <None Remove="Recipes\Smartent.Orchard.ApiClient.Tests.UI.OpenId.recipe.json" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Recipes\Lombiq.OrchardCoreApiClient.Tests.UI.OpenId.recipe.json">
+    <Content Include="Recipes\Smartent.Orchard.ApiClient.Tests.UI.OpenId.recipe.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <PackageCopyToOutput>true</PackageCopyToOutput>
     </Content>

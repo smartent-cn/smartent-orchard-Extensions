@@ -4,7 +4,7 @@
     <TargetFramework>net10.0</TargetFramework>
     <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
     <FromNuGet>false</FromNuGet>
-    <IsLombiqProject>true</IsLombiqProject>
+    <IsSmartentProject>true</IsSmartentProject>
     <RootNamespace>Smartent.Build.Sdk.NuGet.Samples</RootNamespace>
     <AssemblyName>Smartent.Build.Sdk.NuGet.Samples</AssemblyName>
     <Title>Smartent MSBuild SDK Sample</Title>

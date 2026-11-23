@@ -1,5 +1,5 @@
 {
-  "name": "Lombiq.OSOCE.Tests",
+  "name": "Smartent.Demo.Tests",
   "displayName": "TEST: Lombiq's Open-Source Orchard Core Extensions",
   "description": "Lombiq's Open-Source Orchard Core Extensions setup recipe for automated UI test execution.",
   "author": "Lombiq Technologies",
@@ -179,7 +179,7 @@
       "Values": [
         {
           "executionid": "Smartent.Demo.Web",
-          "name": "Lombiq.OSOCE.BaseTheme"
+          "name": "Smartent.Demo.BaseTheme"
         },
         {
           "executionid": "Smartent.Demo.Web",

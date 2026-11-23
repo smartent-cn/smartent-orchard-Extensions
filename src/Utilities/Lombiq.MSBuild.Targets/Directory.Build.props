@@ -1,4 +1,0 @@
-<Project>
-  <!-- Shim：Legacy Samples/Tests 与 Smartent Build Sdk 共用 Smartent-src/Build/Directory.Build.props -->
-  <Import Project="$(MSBuildThisFileDirectory)../../../Smartent-src/Build/Directory.Build.props" />
-</Project>

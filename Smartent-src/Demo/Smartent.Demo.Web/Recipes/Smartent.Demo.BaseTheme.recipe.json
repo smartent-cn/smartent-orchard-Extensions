@@ -1,7 +1,7 @@
 {
   // This is necessary to be in a separate recipe, because otherwise the widget and layer setup from
   // Lombiq.BaseTheme.LayersAndZones.recipe would be superseded by the default config.
-  "name": "Lombiq.OSOCE.BaseTheme",
+  "name": "Smartent.Demo.BaseTheme",
   "displayName": "Switch to Lombiq.BaseTheme.Native.Sample",
   "description": "Switch to Lombiq.BaseTheme.Native.Sample.",
   "author": "Lombiq Technologies",
