@@ -160,6 +160,8 @@ glob:*.user
 build/
 !src/Build/
 !src/Build/**
+!src/Modules/**/build/
+!src/Modules/**/build/**
 src/Build/**/[Bb]in/
 src/Build/**/[Oo]bj/
 src/Build/**/_temp_/
