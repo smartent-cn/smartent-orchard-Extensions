@@ -37,7 +37,7 @@
                 'Meziantou.Analyzer',
             ],
             matchFileNames: [
-                'Lombiq.Analyzers.NetFx/AnalyzerPackages.props',
+                'Smartent.Build.Analyzers.NetFx/AnalyzerPackages.props',
             ],
             enabled: false,
         },

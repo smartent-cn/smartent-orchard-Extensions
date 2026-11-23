@@ -9,7 +9,7 @@
 |----|------|
 | `scripts/Verify-SmartentLocalFeed.ps1` | core feed 必备 PackageId 校验；写出 `feed-manifest.txt` |
 | `scripts/Pack-SmartentLocalFeed.ps1` | 默认 pack 后自动 verify（`-SkipVerify` 可跳过） |
-| `NuGet.config.local.example` | `Lombiq.Analyzers.*` 固定 nuget.org |
+| `NuGet.config.local.example` | `Smartent.Build.Analyzers.*` 固定 nuget.org |
 | 全量 sln | `Build-NuGetVerify-WithLocalFeed.ps1`（`-Full` pack，非 `-CorePack`） |
 
 ## 验证

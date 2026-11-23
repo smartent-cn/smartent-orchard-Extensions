@@ -1,10 +1,10 @@
 # Lombiq PowerShell Analyzers
 
-[![Lombiq.Analyzers.PowerShell NuGet](https://img.shields.io/nuget/v/Lombiq.Analyzers.PowerShell?label=Lombiq.Analyzers.PowerShell)](https://www.nuget.org/packages/Lombiq.Analyzers.PowerShell/)
+[![Smartent.Build.Analyzers.PowerShell NuGet](https://img.shields.io/nuget/v/Smartent.Build.Analyzers.PowerShell?label=Smartent.Build.Analyzers.PowerShell)](https://www.nuget.org/packages/Smartent.Build.Analyzers.PowerShell/)
 
 ## About
 
-PowerShell static code analysis via [PSScriptAnalyzer](https://github.com/PowerShell/PSScriptAnalyzer) and [custom analyzer rules](Lombiq.Analyzers.PowerShell/Rules/CustomRules.md), accompanied by [Lombiq's recommended configuration for it](Lombiq.Analyzers.PowerShell/PSScriptAnalyzerSettings.psd1). Use it from the CLI, in GitHub Actions, or integrated into MSBuild builds. Demo video [here](https://www.youtube.com/watch?v=GqUvneHxZ8g).
+PowerShell static code analysis via [PSScriptAnalyzer](https://github.com/PowerShell/PSScriptAnalyzer) and [custom analyzer rules](Smartent.Build.Analyzers.PowerShell/Rules/CustomRules.md), accompanied by [Lombiq's recommended configuration for it](Smartent.Build.Analyzers.PowerShell/PSScriptAnalyzerSettings.psd1). Use it from the CLI, in GitHub Actions, or integrated into MSBuild builds. Demo video [here](https://www.youtube.com/watch?v=GqUvneHxZ8g).
 
 Looking for .NET static code analysis? Check out our [.NET Analyzers project](https://github.com/Lombiq/.NET-Analyzers).
 
@@ -42,10 +42,10 @@ You can invoke it from an _action.yml_ file like this:
 ```yaml
     - name: Analyze PowerShell scripts
       shell: powershell # Run analysis from Windows PowerShell.
-      run: <path-to-submodule>/Lombiq.Analyzers.PowerShell/Invoke-Analyzer.ps1 -ForGitHubAction
+      run: <path-to-submodule>/Smartent.Build.Analyzers.PowerShell/Invoke-Analyzer.ps1 -ForGitHubAction
     - name: Analyze PowerShell scripts
       shell: pwsh # Run analysis from PowerShell Core.
-      run: <path-to-submodule>/Lombiq.Analyzers.PowerShell/Invoke-Analyzer.ps1 -ForGitHubAction
+      run: <path-to-submodule>/Smartent.Build.Analyzers.PowerShell/Invoke-Analyzer.ps1 -ForGitHubAction
 ```
 
 The `-ForGitHubAction` switch enables displaying the results using [error workflow commands](https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#setting-an-error-message). These create file annotations pointing to the exact script path and line number provided by PSScriptAnalyzer. You can review the results in the workflow summary page. If the violating files aren't in a submodule then they will be marked in the related pull request's Files tab as well.
@@ -75,10 +75,10 @@ This way you associate the analyzer with a .NET project and MSBuild automaticall
 If this project is included via a submodule, edit the _csproj_ file of your primary project(s) and add the following:
 
 ```xml
-<Import Project="path\to\Lombiq.Analyzers.PowerShell\Lombiq.Analyzers.PowerShell.targets" />
+<Import Project="path\to\Smartent.Build.Analyzers.PowerShell\Smartent.Build.Analyzers.PowerShell.targets" />
 ```
 
-You don't need to `<ProjectReference>` _Lombiq.Analyzers.PowerShell.csproj_.
+You don't need to `<ProjectReference>` _Smartent.Build.Analyzers.PowerShell.csproj_.
 
 If you include the project as a NuGet package, it will work as-is.
 
@@ -108,7 +108,7 @@ Suppressing a specific line or range (like `#pragma warning disable` in C#) is n
 
 ### Implementing custom analyzer rules
 
-Check out [the official documentation](https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/create-custom-rule) for instructions and [CommunityAnalyzerRules](https://github.com/PowerShell/PSScriptAnalyzer/blob/master/Tests/Engine/CommunityAnalyzerRules/CommunityAnalyzerRules.psm1) for additional inspiration. Custom rule modules should be placed in the `Lombiq.Analyzers.PowerShell\Rules` folder to be automatically detected by the `Invoke-Analyzer` script.
+Check out [the official documentation](https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/create-custom-rule) for instructions and [CommunityAnalyzerRules](https://github.com/PowerShell/PSScriptAnalyzer/blob/master/Tests/Engine/CommunityAnalyzerRules/CommunityAnalyzerRules.psm1) for additional inspiration. Custom rule modules should be placed in the `Smartent.Build.Analyzers.PowerShell\Rules` folder to be automatically detected by the `Invoke-Analyzer` script.
 
 ## Contributing and support
 
@@ -118,4 +118,4 @@ This project is developed by [Lombiq Technologies](https://lombiq.com/). Commerc
 
 ### Publishing a new NuGet package
 
-When publishing a new version of the NuGet package, even if it's just a pre-release, also update the package references under _TestSolutions\Lombiq.Analyzers.PowerShell.PackageReference_ to the new version. This is necessary to test the analyzers in the context of a consuming project.
+When publishing a new version of the NuGet package, even if it's just a pre-release, also update the package references under _TestSolutions\Smartent.Build.Analyzers.PowerShell.PackageReference_ to the new version. This is necessary to test the analyzers in the context of a consuming project.

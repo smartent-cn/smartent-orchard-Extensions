@@ -1,4 +1,4 @@
-﻿namespace Lombiq.Analyzers.ProjectReference;
+namespace Smartent.Build.Analyzers.ProjectReference;
 
 // This file has intentional analyzer violations. Only edit the one in the TestSolutions directory. Any copy in the
 // subdirectories will be copied over during build. Copying is necessary so the source files are in a directory with an

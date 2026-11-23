@@ -5,7 +5,7 @@
 
 ## 范围
 
-- `NuGetVerify/Directory.Packages.props`：`Smartent.*` 中央版本；Lombiq 例外仅 `Lombiq.Analyzers.OrchardCore`（2026-11-24 已去掉 `HelpfulLibraries.OrchardCore` / `Lombiq.Tests`）。
+- `NuGetVerify/Directory.Packages.props`：`Smartent.*` 中央版本；Lombiq 例外仅 `Smartent.Build.Analyzers.OrchardCore`（2026-11-24 已去掉 `HelpfulLibraries.OrchardCore` / `Lombiq.Tests`）。
 - `Smartent.NuGet.Web`、`Smartent.NuGet.Tests.UI`：`PackageReference` → `Smartent.*`。
 - 目录 `NuGetTest` → `NuGetVerify`；sln `Smartent.NuGet.sln`；工程/Recipe 前缀 `Smartent.NuGet.*`。
 

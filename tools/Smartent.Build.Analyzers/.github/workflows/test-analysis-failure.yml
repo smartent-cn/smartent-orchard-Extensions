@@ -13,7 +13,7 @@ jobs:
     uses: Lombiq/GitHub-Actions/.github/workflows/test-analysis-failure.yml@dev
     with:
       machine-types: '["ubuntu-24.04", "windows-2025"]'
-      build-directory: TestSolutions/Lombiq.Analyzers.PackageReference
+      build-directory: TestSolutions/Smartent.Build.Analyzers.PackageReference
       timeout-minutes: 30
       build-expected-code-analysis-errors: |
         IDE0044: Make field readonly.
@@ -26,7 +26,7 @@ jobs:
     uses: Lombiq/GitHub-Actions/.github/workflows/test-analysis-failure.yml@dev
     with:
       machine-types: '["ubuntu-24.04", "windows-2025"]'
-      build-directory: TestSolutions/Lombiq.Analyzers.ProjectReference
+      build-directory: TestSolutions/Smartent.Build.Analyzers.ProjectReference
       timeout-minutes: 30
       build-expected-code-analysis-errors: |
         IDE0044: Make field readonly.

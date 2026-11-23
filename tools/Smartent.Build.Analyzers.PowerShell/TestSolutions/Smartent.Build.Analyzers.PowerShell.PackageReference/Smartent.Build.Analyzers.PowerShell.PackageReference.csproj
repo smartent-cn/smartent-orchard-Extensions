@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <!-- This is only needed, because the script normally excludes the directory this solution resides it -->
+    <PowerShellAnalyzersArguments>-ForMsBuild -IncludeTestSolutions</PowerShellAnalyzersArguments>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Smartent.Build.Analyzers.PowerShell" Version="1.4.1" />
+  </ItemGroup>
+
+  <Target Name="CopyFiles" BeforeTargets="PrepareForBuild">
+    <Copy SourceFiles="..\Violate-Analyzers.ps1" DestinationFolder="$(MSBuildThisFileDirectory)" />
+  </Target>
+
+</Project>

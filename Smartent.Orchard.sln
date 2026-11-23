@@ -82,7 +82,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Orchard.VueJs.Samp
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{BF1EDFA5-0129-416C-B9ED-8CE68A3FD526}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lombiq.Analyzers", "tools\Smartent.Build.Analyzers\Lombiq.Analyzers\Lombiq.Analyzers.csproj", "{C7A251AA-1BD5-47D8-A61B-50D8C493223A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Build.Analyzers", "tools\Smartent.Build.Analyzers\Smartent.Build.Analyzers\Smartent.Build.Analyzers.csproj", "{C7A251AA-1BD5-47D8-A61B-50D8C493223A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Orchard.DataTables", "Smartent-src\Modules\Smartent.Orchard.DataTables\Smartent.Orchard.DataTables\Smartent.Orchard.DataTables.csproj", "{E5F0E0AD-421C-4F7F-B27C-5BCCCE3C9B08}"
 EndProject
@@ -202,13 +202,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Orchard.Hosting.Te
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Orchard.Hosting.Tenants.EmailQuotaManagement.Tests.UI", "Smartent-src\Modules\Smartent.Orchard.Hosting.Tenants\Smartent.Orchard.Hosting.Tenants.EmailQuotaManagement.Tests.UI\Smartent.Orchard.Hosting.Tenants.EmailQuotaManagement.Tests.UI.csproj", "{818CA6CB-ED8F-4396-AEBE-F69619C75DA7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lombiq.Analyzers.OrchardCore", "tools\Smartent.Build.Analyzers\Lombiq.Analyzers.OrchardCore\Lombiq.Analyzers.OrchardCore.csproj", "{047F454E-8760-4F75-8519-32C9C2FE9F99}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Build.Analyzers.OrchardCore", "tools\Smartent.Build.Analyzers\Smartent.Build.Analyzers.OrchardCore\Smartent.Build.Analyzers.OrchardCore.csproj", "{047F454E-8760-4F75-8519-32C9C2FE9F99}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lombiq.Analyzers.NetFx", "tools\Smartent.Build.Analyzers\Lombiq.Analyzers.NetFx\Lombiq.Analyzers.NetFx.csproj", "{CDC5202B-EB66-4EE0-9FFC-A0B0FDA793E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Build.Analyzers.NetFx", "tools\Smartent.Build.Analyzers\Smartent.Build.Analyzers.NetFx\Smartent.Build.Analyzers.NetFx.csproj", "{CDC5202B-EB66-4EE0-9FFC-A0B0FDA793E8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lombiq.Analyzers.Orchard1", "tools\Smartent.Build.Analyzers\Lombiq.Analyzers.Orchard1\Lombiq.Analyzers.Orchard1.csproj", "{CC788E1F-E9C2-482E-BA10-9D3FFAA9CADD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Build.Analyzers.Orchard1", "tools\Smartent.Build.Analyzers\Smartent.Build.Analyzers.Orchard1\Smartent.Build.Analyzers.Orchard1.csproj", "{CC788E1F-E9C2-482E-BA10-9D3FFAA9CADD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lombiq.Analyzers.VisualStudioExtension", "tools\Smartent.Build.Analyzers\Lombiq.Analyzers.VisualStudioExtension\Lombiq.Analyzers.VisualStudioExtension.csproj", "{7870C9C9-14CF-48EA-8379-7CA3D513A022}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Build.Analyzers.VisualStudioExtension", "tools\Smartent.Build.Analyzers\Smartent.Build.Analyzers.VisualStudioExtension\Smartent.Build.Analyzers.VisualStudioExtension.csproj", "{7870C9C9-14CF-48EA-8379-7CA3D513A022}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Orchard.Hosting.Tenants.Management.Tests.UI", "Smartent-src\Modules\Smartent.Orchard.Hosting.Tenants\Smartent.Orchard.Hosting.Tenants.Management.Tests.UI\Smartent.Orchard.Hosting.Tenants.Management.Tests.UI.csproj", "{C312CD69-7F9B-4430-B99F-CCF2D48A301A}"
 EndProject
@@ -228,7 +228,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Core.CodeGen.Attri
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Orchard.Theme.Media.Bridge.Tests.UI", "Smartent-src\Themes\Smartent.Orchard.Theme.Media\Smartent.Orchard.Theme.Media.Bridge.Tests.UI\Smartent.Orchard.Theme.Media.Bridge.Tests.UI.csproj", "{3677F48D-591D-4701-86E9-8CB89C92EEAC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lombiq.Analyzers.PowerShell", "tools\Smartent.Build.Analyzers.PowerShell\Lombiq.Analyzers.PowerShell\Lombiq.Analyzers.PowerShell.csproj", "{5263074A-CD3E-4B84-B7EE-5228847984B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Build.Analyzers.PowerShell", "tools\Smartent.Build.Analyzers.PowerShell\Smartent.Build.Analyzers.PowerShell\Smartent.Build.Analyzers.PowerShell.csproj", "{5263074A-CD3E-4B84-B7EE-5228847984B9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartent.Orchard.UIKit.Widgets", "Smartent-src\Modules\Smartent.Orchard.UIKit\Smartent.Orchard.UIKit.Widgets\Smartent.Orchard.UIKit.Widgets.csproj", "{12660638-EFFE-4861-ABD5-B8DF4B44C171}"
 EndProject

@@ -1,8 +1,8 @@
 # Lombiq .NET Analyzers
 
-> **Smartent 单仓说明**：开发期通过 `tools/Smartent.Build.Analyzers` 与 NuGet 包 `Lombiq.Analyzers.*` 接入；待发布目标为 `Smartent.Build.Analyzers*`（见 [M6-PackageId-Exceptions.md](../../重构-重组-改名项目方案/M6-PackageId-Exceptions.md)）。MSBuild 属性 `SmartentAnalyzersPath` 与 `LombiqAnalyzersPath` 同源。
+> **Smartent 单仓说明**：开发期通过 `tools/Smartent.Build.Analyzers` 与 NuGet 包 `Smartent.Build.Analyzers.*` 接入；待发布目标为 `Smartent.Build.Analyzers*`（见 [M6-PackageId-Exceptions.md](../../重构-重组-改名项目方案/M6-PackageId-Exceptions.md)）。MSBuild 属性 `SmartentAnalyzersPath` 与 `LombiqAnalyzersPath` 同源。
 
-[![Lombiq.Analyzers NuGet](https://img.shields.io/nuget/v/Lombiq.Analyzers?label=Lombiq.Analyzers)](https://www.nuget.org/packages/Lombiq.Analyzers/) [![Lombiq.Analyzers.NetFx NuGet](https://img.shields.io/nuget/v/Lombiq.Analyzers.NetFx?label=Lombiq.Analyzers.NetFx)](https://www.nuget.org/packages/Lombiq.Analyzers.NetFx/) [![Lombiq.Analyzers.OrchardCore NuGet](https://img.shields.io/nuget/v/Lombiq.Analyzers.OrchardCore?label=Lombiq.Analyzers.OrchardCore)](https://www.nuget.org/packages/Lombiq.Analyzers.OrchardCore/) [![Lombiq.Analyzers.Orchard1 NuGet](https://img.shields.io/nuget/v/Lombiq.Analyzers.Orchard1?label=Lombiq.Analyzers.Orchard1)](https://www.nuget.org/packages/Lombiq.Analyzers.Orchard1/) [![Lombiq.Analyzers.VisualStudioExtension NuGet](https://img.shields.io/nuget/v/Lombiq.Analyzers.VisualStudioExtension?label=Lombiq.Analyzers.VisualStudioExtension)](https://www.nuget.org/packages/Lombiq.Analyzers.VisualStudioExtension/)
+[![Smartent.Build.Analyzers NuGet](https://img.shields.io/nuget/v/Smartent.Build.Analyzers?label=Smartent.Build.Analyzers)](https://www.nuget.org/packages/Smartent.Build.Analyzers/) [![Smartent.Build.Analyzers.NetFx NuGet](https://img.shields.io/nuget/v/Smartent.Build.Analyzers.NetFx?label=Smartent.Build.Analyzers.NetFx)](https://www.nuget.org/packages/Smartent.Build.Analyzers.NetFx/) [![Smartent.Build.Analyzers.OrchardCore NuGet](https://img.shields.io/nuget/v/Smartent.Build.Analyzers.OrchardCore?label=Smartent.Build.Analyzers.OrchardCore)](https://www.nuget.org/packages/Smartent.Build.Analyzers.OrchardCore/) [![Smartent.Build.Analyzers.Orchard1 NuGet](https://img.shields.io/nuget/v/Smartent.Build.Analyzers.Orchard1?label=Smartent.Build.Analyzers.Orchard1)](https://www.nuget.org/packages/Smartent.Build.Analyzers.Orchard1/) [![Smartent.Build.Analyzers.VisualStudioExtension NuGet](https://img.shields.io/nuget/v/Smartent.Build.Analyzers.VisualStudioExtension?label=Smartent.Build.Analyzers.VisualStudioExtension)](https://www.nuget.org/packages/Smartent.Build.Analyzers.VisualStudioExtension/)
 
 ## About
 
@@ -34,7 +34,7 @@ We added and configured analyzers which are widely used and complement each othe
 - [.NET code quality analysis](https://docs.microsoft.com/en-us/dotnet/fundamentals/code-analysis/overview#code-quality-analysis)
 - [AsyncFixer](https://www.nuget.org/packages/AsyncFixer)
 - [DotNetAnalyzers.DocumentationAnalyzers](https://www.nuget.org/packages/DotNetAnalyzers.DocumentationAnalyzers/)
-- [Meziantou.Analyzer](https://www.nuget.org/packages/Meziantou.Analyzer/) (Note: not used directly in `Lombiq.Analyzers`, different versions of the package are used in `Lombiq.Analyzers.OrchardCore` and `Lombiq.Analyzers.NetFx`)
+- [Meziantou.Analyzer](https://www.nuget.org/packages/Meziantou.Analyzer/) (Note: not used directly in `Smartent.Build.Analyzers`, different versions of the package are used in `Smartent.Build.Analyzers.OrchardCore` and `Smartent.Build.Analyzers.NetFx`)
 - [Microsoft.CodeAnalysis.NetAnalyzers](https://www.nuget.org/packages/Microsoft.CodeAnalysis.NetAnalyzers)
 - [Microsoft.VisualStudio.Threading.Analyzers](https://www.nuget.org/packages/microsoft.visualstudio.threading.analyzers)
 - [SecurityCodeScan.VS2019](https://www.nuget.org/packages/SecurityCodeScan.VS2019/)
@@ -45,10 +45,10 @@ Furthermore, the project also includes an _.editorconfig_ file with additional c
 
 ## Guides
 
-- [Adding analyzers to your project](Lombiq.Analyzers/Docs/AddingAnalyzers.md)
-- [Using the analyzers during development](Lombiq.Analyzers/Docs/UsingAnalyzersDuringDevelopment.md)
-- [Using the analyzers during command line builds](Lombiq.Analyzers/Docs/UsingAnalyzersDuringCommandLineBuilds.md)
-- [Configuring analyzers](Lombiq.Analyzers/Docs/ConfiguringAnalyzers.md)
+- [Adding analyzers to your project](Smartent.Build.Analyzers/Docs/AddingAnalyzers.md)
+- [Using the analyzers during development](Smartent.Build.Analyzers/Docs/UsingAnalyzersDuringDevelopment.md)
+- [Using the analyzers during command line builds](Smartent.Build.Analyzers/Docs/UsingAnalyzersDuringCommandLineBuilds.md)
+- [Configuring analyzers](Smartent.Build.Analyzers/Docs/ConfiguringAnalyzers.md)
 
 ## Contributing and support
 
@@ -58,7 +58,7 @@ This project is developed by [Lombiq Technologies](https://lombiq.com/). Commerc
 
 ### Publishing a new NuGet package
 
-When publishing a new version of the NuGet package, even if it's just a pre-release, also update the package references under _TestSolutions\Lombiq.Analyzers.PackageReferences_ to the new version. This is necessary to run the tests there.
+When publishing a new version of the NuGet package, even if it's just a pre-release, also update the package references under _TestSolutions\Smartent.Build.Analyzers.PackageReferences_ to the new version. This is necessary to run the tests there.
 
 ### Upgrading to a new version of the .NET SDK
 
@@ -66,7 +66,7 @@ When a new version of the .NET SDK comes out then to the following:
 
 - Change the `LangVersion` and `AnalysisLevel` elements in the _Build.props_ file to opt in to new language features and analyzers. This does not concern non-SDK-style .NET Framework projects.
 - Wait for all analyzers to support the new SDK (primarily the new language features). Then update all packages to latest.
-- Check if there are new [code analysis categories](https://docs.microsoft.com/en-us/dotnet/fundamentals/code-analysis/categories) that we need to surface warnings for by default in the _Lombiq.Analyzers.globalconfig_ file.
+- Check if there are new [code analysis categories](https://docs.microsoft.com/en-us/dotnet/fundamentals/code-analysis/categories) that we need to surface warnings for by default in the _Smartent.Build.Analyzers.globalconfig_ file.
 
 ### Adding a new analyzer
 

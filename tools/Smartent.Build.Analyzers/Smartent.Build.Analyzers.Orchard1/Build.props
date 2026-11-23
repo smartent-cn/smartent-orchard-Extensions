@@ -1,0 +1,7 @@
+<Project>
+  <ItemGroup>
+    <GlobalAnalyzerConfigFiles Include="$(MSBuildThisFileDirectory)Smartent.Build.Analyzers.Orchard1.globalconfig" />
+    <GlobalAnalyzerConfigFiles Include="$(MSBuildThisFileDirectory)../Smartent.Build.Analyzers.OrchardCore/Smartent.Build.Analyzers.OrchardCore.globalconfig" />
+  </ItemGroup>
+  <Import Project="$(MSBuildThisFileDirectory)../Smartent.Build.Analyzers.NetFx/Build.props" Condition="'$(NuGetBuild)' != 'true'" />
+</Project>

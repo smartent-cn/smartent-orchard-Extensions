@@ -47,7 +47,7 @@
 | 平台库 | `src/Libraries/Lombiq.HelpfulLibraries` | 改名、拆包（重点）、减依赖 |
 | 其它库 | `Lombiq.OrchardCoreApiClient`、`Lombiq.EInvoiceValidator` | 改名、依赖梳理 |
 | 工具链 | `src/Utilities/Lombiq.MSBuild.Targets`、`Npm.Targets`、`NodeJs.Extensions`、`SetupExtensions`、`Tailwind.Targets` | 改名、SDK 包名 |
-| 分析器 | `tools/Smartent.Build.Analyzers*`（包 Id 仍为 `Lombiq.Analyzers.*`） | M1 目录已改名 |
+| 分析器 | `tools/Smartent.Build.Analyzers*` / 包 `Smartent.Build.Analyzers.*` | M1/M4 已 Smartent 化 |
 | Orchard 模块 | `src/Modules/Lombiq.*` | 改名、模块 Id 策略、减引用 |
 | 主题 | `src/Themes/Lombiq.*` | 同上 |
 | 演示宿主 | `src/Smartent.Demo.Web` | 改名、引用更新 |

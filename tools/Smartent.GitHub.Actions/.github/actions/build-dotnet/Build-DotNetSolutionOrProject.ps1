@@ -1,4 +1,4 @@
-﻿param (
+param (
     [string] $Configuration,
     [string] $SolutionOrProject,
     [string] $Verbosity,
@@ -56,7 +56,7 @@ if (Test-Path src/Utilities/Lombiq.Gulp.Extensions/Lombiq.Gulp.Extensions.csproj
     Write-Output '::endgroup::'
 }
 
-# This prepares the solution or project with the Lombiq.Analyzers files. The output and exit code are discarded because
+# This prepares the solution or project with the Smartent.Build.Analyzers files. The output and exit code are discarded because
 # they will be in error if there is a project without the LombiqNetAnalyzers target. Then there is nothing to do, and
 # the target will still run on the projects that have it.
 dotnet msbuild '-target:Restore;LombiqNetAnalyzers' $SolutionOrProject | Out-Null || bash -c 'true'

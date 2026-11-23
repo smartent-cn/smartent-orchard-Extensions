@@ -91,9 +91,9 @@ Note that this solution also has an Orchard 1 counterpart, [Lombiq's Open-Source
 
 ### Tools
 
-- [`Lombiq.Analyzers`](https://github.com/Lombiq/.NET-Analyzers): .NET code analyzers and code convention settings for [Lombiq](https://lombiq.com) projects, predominantly for [Orchard Core](https://orchardcore.net/) apps but also any .NET apps. We use these to enforce common standards across all our .NET projects, including e.g. all of our [open-source Orchard Core extensions](https://github.com/Lombiq/Open-Source-Orchard-Core-Extensions).
-- [`Lombiq.Analyzers.PowerShell`](https://github.com/Lombiq/PowerShell-Analyzers): PowerShell static code analysis via [PSScriptAnalyzer](https://github.com/PowerShell/PSScriptAnalyzer) and Lombiq's recommended configuration for it. Use it from the CLI, in GitHub Actions, or integrated into MSBuild builds.
-- [`Lombiq.GitHub.Actions`](https://github.com/Lombiq/GitHub-Actions): Some common workflows and actions for GitHub Actions shared between Lombiq projects, e.g. to build and test Orchard Core apps, publish packages to NuGet, verify that a Git submodule pull request has a corresponding superproject one. These can be invoked from any other repository's build.
+- [`Smartent.Build.Analyzers`](https://github.com/Lombiq/.NET-Analyzers): .NET code analyzers and code convention settings for [Lombiq](https://lombiq.com) projects, predominantly for [Orchard Core](https://orchardcore.net/) apps but also any .NET apps. We use these to enforce common standards across all our .NET projects, including e.g. all of our [open-source Orchard Core extensions](https://github.com/Lombiq/Open-Source-Orchard-Core-Extensions).
+- [`Smartent.Build.Analyzers.PowerShell`](https://github.com/Lombiq/PowerShell-Analyzers): PowerShell static code analysis via [PSScriptAnalyzer](https://github.com/PowerShell/PSScriptAnalyzer) and Lombiq's recommended configuration for it. Use it from the CLI, in GitHub Actions, or integrated into MSBuild builds.
+- [`Smartent.GitHub.Actions`](https://github.com/Lombiq/GitHub-Actions): Some common workflows and actions for GitHub Actions shared between Lombiq projects, e.g. to build and test Orchard Core apps, publish packages to NuGet, verify that a Git submodule pull request has a corresponding superproject one. These can be invoked from any other repository's build.
 
 ## Samples and Recipes
 

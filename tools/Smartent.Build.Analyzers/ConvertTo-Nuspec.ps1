@@ -1,4 +1,4 @@
-﻿param($Version)
+param($Version)
 
 function Read-Xml([string]$File) { [xml](Get-Content $File) }
 
@@ -15,11 +15,11 @@ function Add-Dependency($Xml, $Id, $Version)
 }
 
 $packages = @(
-    'Lombiq.Analyzers',
-    'Lombiq.Analyzers.NetFx',
-    'Lombiq.Analyzers.OrchardCore',
-    'Lombiq.Analyzers.Orchard1',
-    'Lombiq.Analyzers.VisualStudioExtension'
+    'Smartent.Build.Analyzers',
+    'Smartent.Build.Analyzers.NetFx',
+    'Smartent.Build.Analyzers.OrchardCore',
+    'Smartent.Build.Analyzers.Orchard1',
+    'Smartent.Build.Analyzers.VisualStudioExtension'
 )
 
 # Iterate through the packages to replace

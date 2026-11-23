@@ -22,10 +22,10 @@ runs:
       if: runner.os == 'Windows' && inputs.run-windows-powershell == 'true'
       shell: powershell
       run: |
-        & (Resolve-Path '${{github.action_path}}\..\..\..\Lombiq.Analyzers.PowerShell\Invoke-Analyzer.ps1').Path -ForGitHubActions
+        & (Resolve-Path '${{github.action_path}}\..\..\..\Smartent.Build.Analyzers.PowerShell\Invoke-Analyzer.ps1').Path -ForGitHubActions
 
     - name: PowerShell Core (7+) Static Code Analysis
       if: (success() || failure()) && inputs.run-powershell-core == 'true' # Even if the above fails, let's check both.
       shell: pwsh
       run: |
-        & (Resolve-Path '${{github.action_path}}\..\..\..\Lombiq.Analyzers.PowerShell\Invoke-Analyzer.ps1').Path -ForGitHubActions
+        & (Resolve-Path '${{github.action_path}}\..\..\..\Smartent.Build.Analyzers.PowerShell\Invoke-Analyzer.ps1').Path -ForGitHubActions

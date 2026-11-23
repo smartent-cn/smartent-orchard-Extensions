@@ -11,7 +11,7 @@
     <PackageVersion Include="Smartent.Build.OrchardCore.Theme.Sdk" Version="2.1.1" />
     <PackageVersion Include="Smartent.Build.OrchardCore.Tests.Sdk" Version="2.1.1" />
     <!-- M6/M7 例外：分析器等仍 Lombiq，见 M6-PackageId-Exceptions.md -->
-    <PackageVersion Include="Lombiq.Analyzers.OrchardCore" Version="7.0.1-alpha.0.osoe-1333" />
+    <PackageVersion Include="Smartent.Build.Analyzers.OrchardCore" Version="7.0.1-alpha.0.osoe-1333" />
     <PackageVersion Include="Smartent.Core.AspNet" Version="13.1.0" />
     <PackageVersion Include="Smartent.Core.Primitives" Version="13.1.0" />
     <PackageVersion Include="Smartent.Orchard.Http.Refit" Version="13.1.0" />

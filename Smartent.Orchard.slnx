@@ -176,11 +176,11 @@
   </Folder>
   <Folder Name="/tools/">
     <Project Path="Smartent-src/Themes/Smartent.Orchard.Theme.Media/Smartent.Orchard.Theme.Media.Deployer/Smartent.Orchard.Theme.Media.Deployer.csproj" />
-    <Project Path="tools/Smartent.Build.Analyzers.PowerShell/Lombiq.Analyzers.PowerShell/Lombiq.Analyzers.PowerShell.csproj" />
-    <Project Path="tools/Smartent.Build.Analyzers/Lombiq.Analyzers.NetFx/Lombiq.Analyzers.NetFx.csproj" />
-    <Project Path="tools/Smartent.Build.Analyzers/Lombiq.Analyzers.Orchard1/Lombiq.Analyzers.Orchard1.csproj" />
-    <Project Path="tools/Smartent.Build.Analyzers/Lombiq.Analyzers.OrchardCore/Lombiq.Analyzers.OrchardCore.csproj" />
-    <Project Path="tools/Smartent.Build.Analyzers/Lombiq.Analyzers.VisualStudioExtension/Lombiq.Analyzers.VisualStudioExtension.csproj" />
-    <Project Path="tools/Smartent.Build.Analyzers/Lombiq.Analyzers/Lombiq.Analyzers.csproj" />
+    <Project Path="tools/Smartent.Build.Analyzers.PowerShell/Smartent.Build.Analyzers.PowerShell/Smartent.Build.Analyzers.PowerShell.csproj" />
+    <Project Path="tools/Smartent.Build.Analyzers/Smartent.Build.Analyzers.NetFx/Smartent.Build.Analyzers.NetFx.csproj" />
+    <Project Path="tools/Smartent.Build.Analyzers/Smartent.Build.Analyzers.Orchard1/Smartent.Build.Analyzers.Orchard1.csproj" />
+    <Project Path="tools/Smartent.Build.Analyzers/Smartent.Build.Analyzers.OrchardCore/Smartent.Build.Analyzers.OrchardCore.csproj" />
+    <Project Path="tools/Smartent.Build.Analyzers/Smartent.Build.Analyzers.VisualStudioExtension/Smartent.Build.Analyzers.VisualStudioExtension.csproj" />
+    <Project Path="tools/Smartent.Build.Analyzers/Smartent.Build.Analyzers/Smartent.Build.Analyzers.csproj" />
   </Folder>
 </Solution>

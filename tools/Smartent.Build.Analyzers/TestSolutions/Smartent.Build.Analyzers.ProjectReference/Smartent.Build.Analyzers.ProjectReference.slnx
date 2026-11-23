@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="../Directory.Build.props" />
+    <File Path="../AnalyzerViolations.cs" />
+  </Folder>
+  <Project Path="../../Smartent.Build.Analyzers.OrchardCore/Smartent.Build.Analyzers.OrchardCore.csproj" />
+  <Project Path="../../Smartent.Build.Analyzers/Smartent.Build.Analyzers.csproj" />
+  <Project Path="Smartent.Build.Analyzers.ProjectReference.csproj" />
+</Solution>

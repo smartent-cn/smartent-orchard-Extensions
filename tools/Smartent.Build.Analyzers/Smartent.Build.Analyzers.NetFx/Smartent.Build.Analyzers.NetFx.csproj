@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <DefaultItemExcludes>$(DefaultItemExcludes);.git*;</DefaultItemExcludes>
+  </PropertyGroup>
+
+  <!-- This project is built with an externally generated .nuspec file so NuGet-related properties are not needed here.
+       The package properties can be updated in the Smartent.Build.Analyzers.NetFx.nuspec.template file. The dependencies are
+       created from the AnalyzerPackages.props file, although if needed further dependencies can be added to
+       Smartent.Build.Analyzers.NetFx.nuspec.template as well.
+       -->
+
+  <ItemGroup>
+    <!-- Note how these files need to be linked form Smartent.Build.Analyzers, without a dependency so .NET Framework projects
+    don't get .NET configs from its Build.props. -->
+    <None Include="..\Smartent.Build.Analyzers\.editorconfig" Link=".editorconfig" Pack="true" PackagePath=""  />
+    <None Include="..\Smartent.Build.Analyzers\Smartent.Build.Analyzers.globalconfig" Link="Smartent.Build.Analyzers.globalconfig" Pack="true" PackagePath=""  />
+    <None Include="..\Smartent.Build.Analyzers\SonarLint.xml" Link="SonarLint.xml" Pack="true" PackagePath=""  />
+    <None Include="..\Smartent.Build.Analyzers\stylecop.json" Link="stylecop.json" Pack="true" PackagePath=""  />
+    <None Include="Readme.md" Link="Readme.md" />
+    <None Include="NuGetIcon.png" Pack="true" PackagePath="" />
+    <None Include="build\**" Pack="true" PackagePath="build\" />
+    <None Include=".editorconfig" Pack="true" PackagePath="" />
+    <None Include="*.props" Pack="true" PackagePath="" />
+    <None Include="*.globalconfig" Pack="true" PackagePath="" />
+    <None Include="*.xml" Pack="true" PackagePath="" />
+    <None Include="*.json" Pack="true" PackagePath="" />
+  </ItemGroup>
+
+</Project>

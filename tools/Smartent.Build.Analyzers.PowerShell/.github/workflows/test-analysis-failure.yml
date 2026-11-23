@@ -13,7 +13,7 @@ jobs:
     uses: Lombiq/GitHub-Actions/.github/workflows/test-analysis-failure.yml@dev
     with:
       machine-types: "['ubuntu-24.04', 'windows-2025']"
-      build-directory: TestSolutions/Lombiq.Analyzers.PowerShell.PackageReference
+      build-directory: TestSolutions/Smartent.Build.Analyzers.PowerShell.PackageReference
       timeout-minutes: 30
       build-expected-code-analysis-errors: |
         MSB3073: The command exited with non-zero code.
@@ -39,7 +39,7 @@ jobs:
     uses: Lombiq/GitHub-Actions/.github/workflows/test-analysis-failure.yml@dev
     with:
       machine-types: "['ubuntu-24.04', 'windows-2025']"
-      build-directory: TestSolutions/Lombiq.Analyzers.PowerShell.ProjectReference
+      build-directory: TestSolutions/Smartent.Build.Analyzers.PowerShell.ProjectReference
       timeout-minutes: 30
       build-expected-code-analysis-errors: |
         MSB3073: The command exited with non-zero code.

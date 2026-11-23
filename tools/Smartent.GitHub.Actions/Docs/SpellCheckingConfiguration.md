@@ -52,10 +52,10 @@ When using custom dictionary files on top of external ones (such as the ones fro
 - _Merge-SpellCheckingDictionaryFile.ps1_: Use this to maintain your _excludes.txt_ file by adding the entries from another file, while still keeping your own. To just remove duplicates and sort the entries alphabetically in a single configuration file, pass in the same file for both parameters.
 - _Optimize-SpellCheckingDictionaryFile.ps1_: Use this to remove entries from your dictionary files that are already present in an external one you're referencing.
 
-## Working with a non-dev branch of `Lombiq.GitHub.Actions`
+## Working with a non-dev branch of `Smartent.GitHub.Actions`
 
 When working on functional changes, updating dictionaries or the configuration of the spelling action/workflow, the following branch references (from `dev` to the new branch) have to be updated to be able correctly test the changes in a consumer project:
 
 - If the consumer project doesn't have any configuration files on its own, change the default value of the `default-configuration-repository` parameter in the spelling workflow (or the action if you're using that directly) or override its value in the consumer workflow.
-- In the `uses` parameter of every step in the spelling and spelling-this-repo workflows that call an action in `Lombiq.GitHub.Actions`.
+- In the `uses` parameter of every step in the spelling and spelling-this-repo workflows that call an action in `Smartent.GitHub.Actions`.
 - In the URL of the lombiq-lgha prefix in the "Merge dictionary source prefixes" step of the spelling action.
