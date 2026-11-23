@@ -11,6 +11,7 @@
       <package pattern="*" />
       <package pattern="OrchardCore.*" />
       <package pattern="OrchardCore.Translations.*" />
+      <package pattern="Lombiq.Analyzers.*" />
     </packageSource>
     <packageSource key="SmartentLocal">
       <package pattern="Smartent.*" />

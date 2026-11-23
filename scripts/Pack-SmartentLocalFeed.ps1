@@ -2,6 +2,7 @@
 # Packs packable Smartent projects into a local feed for NuGetVerify PackageReference restores.
 param(
     [switch]$Full,
+    [switch]$SkipVerify,
     [string]$OutputPath = ''
 )
 
@@ -21,6 +22,10 @@ if ($Full) {
 }
 
 $coreProjects = @(
+    'Smartent-src/Platform/Core/Smartent.Core.Primitives/Smartent.Core.Primitives.csproj',
+    'Smartent-src/Test/Smartent.Test.Unit/Smartent.Test.Unit.csproj',
+    'Smartent-src/Libraries/Smartent.Orchard.EInvoice/Smartent.Orchard.EInvoice/Smartent.Orchard.EInvoice.csproj',
+    'Smartent-src/Libraries/Smartent.Orchard.EInvoice/Smartent.Orchard.EInvoice.Sample/Smartent.Orchard.EInvoice.Sample.csproj',
     'Smartent-src/Platform/Orchard/Smartent.Orchard.Platform/Smartent.Orchard.Platform.csproj',
     'Smartent-src/Build/Lombiq.MSBuild.OrchardCore.Module.Sdk/Lombiq.MSBuild.OrchardCore.Module.Sdk.csproj',
     'Smartent-src/Build/Lombiq.MSBuild.OrchardCore.Theme.Sdk/Lombiq.MSBuild.OrchardCore.Theme.Sdk.csproj',
@@ -39,3 +44,9 @@ foreach ($rel in $coreProjects) {
 }
 
 Write-Output 'Core feed ready. Use -Full to pack the entire Smartent.Orchard.sln for NuGetVerify Web.'
+
+if (-not $SkipVerify) {
+    $verifyScript = Join-Path $PSScriptRoot 'Verify-SmartentLocalFeed.ps1'
+    & $verifyScript -OutputPath $OutputPath
+    exit $LASTEXITCODE
+}
