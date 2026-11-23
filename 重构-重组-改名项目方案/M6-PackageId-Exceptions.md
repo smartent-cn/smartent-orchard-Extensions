@@ -14,7 +14,7 @@
 |------------------|------|-------------|
 | ~~`Lombiq.MSBuild.*` Sdk / LibMan~~ | **已收口** | `Smartent.Build.*`（M7#11，版本 **2.1.1** 本地 feed） |
 | `Lombiq.Analyzers` / `Lombiq.Analyzers.OrchardCore` / `Lombiq.Analyzers.PowerShell` | 开发期分析器；NuGet 上仍 Lombiq 品牌 | `Smartent.Build.Analyzers*`（可选，M1/M4） |
-| `Lombiq.HelpfulLibraries.OrchardCore` | 仅 **NuGetVerify 独立检出** + 旧 Module.Sdk 2.1.1 还原 | 移除（新 Sdk + Smartent 包上源后） |
+| ~~`Lombiq.HelpfulLibraries.OrchardCore`~~ | **已移除** 中央版本 | `Smartent.Orchard.Platform` @ 本地 feed / Gitee |
 | `Lombiq.Tests` | **NuGetVerify** 独立模式 + nuget.org **Tests.Sdk 2.1.1** 传递引用 | 本地 feed 用 `Smartent.Test.Unit`；上源后统一 Smartent |
 
 ## 非发布 / 不纳入扫描

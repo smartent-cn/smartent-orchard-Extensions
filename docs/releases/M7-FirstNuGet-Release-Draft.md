@@ -45,7 +45,7 @@ $env:GITEE_NUGET_API_KEY = '<token>'
 |-----------|------|
 | ~~`Lombiq.MSBuild.*` Sdk~~ | 已 **Smartent.Build.***（2.1.1）；见 M7#11 |
 | `Lombiq.Analyzers.*` | 可选 `Smartent.Build.Analyzers.*` |
-| `Lombiq.HelpfulLibraries.OrchardCore` | NuGetVerify 独立检出过渡包，发布后面移除 |
+| ~~`Lombiq.HelpfulLibraries.OrchardCore`~~ | **已移除**；NuGetVerify 使用 `Smartent.Orchard.Platform` |
 
 ## License / 版权
 
