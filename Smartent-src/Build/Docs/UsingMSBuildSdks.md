@@ -62,10 +62,10 @@ All of our MSBuild SDK projects share these features and configurations:
 - When you import the SDK via the _Import.props_ file, it tries to automatically set these values if they are not yet initialized:
   - LombiqSolutionRootPath: Path of the directory where the solution file and the _src_ directory should be.
   - SmartentSrcPath: Path of the repository `Smartent-src/` tree (Core/Platform/Build).
-  - LombiqHelpfulLibrariesPath: Legacy samples/meta still under _src/Libraries/Lombiq.HelpfulLibraries_ (transition only).
+  - SmartentPlatformPath / `SmartentSrcPath`: 平台库在 _Smartent-src/Platform_（NuGet：`Smartent.Orchard.Platform`）。
   - LombiqAnalyzersPath: Path of the _tools/Lombiq.Analyzers_ directory where the [.NET Analyzers](https://github.com/Lombiq/.NET-Analyzers/) submodule should be.
 - If you import the SDK via the `<Sdk>` element or the _Sdk.props_ file, it sets the `<FromNuGet>true</FromNuGet>` property.
 
 ## LibMan Integration
 
-If the project importing this SDK has a _libman.json_ file in the project root, then [Lombiq.MSBuild.LibMan.Targets](../../../../Smartent-src/Build/Smartent.Build.LibMan.Targets/Readme.md) is automatically imported and all of its features can be used. To disable this feature, also include a _.disable-libman_ file in the project root. It can be empty, only file existence is checked.
+If the project importing this SDK has a _libman.json_ file in the project root, then [Smartent.Build.LibMan.Targets](../Smartent.Build.LibMan.Targets/Readme.md) is automatically imported and all of its features can be used. To disable this feature, also include a _.disable-libman_ file in the project root. It can be empty, only file existence is checked.

@@ -296,6 +296,7 @@ Legacy 的 `src/` 在终态 **应不存在**（或仅保留无意义占位说明
 | [projects/M7-Batch-16-CoreFeedExpansion.md](projects/M7-Batch-16-CoreFeedExpansion.md) | M7#16：LibMan core pack、manifest 摘要 |
 | [projects/M7-Batch-17-ReleaseReadiness.md](projects/M7-Batch-17-ReleaseReadiness.md) | M7#17：发布就绪文档、SmartentLocal 源、门禁 |
 | [projects/M7-Batch-18-PostLegacyBatch3-5.md](projects/M7-Batch-18-PostLegacyBatch3-5.md) | M7#18：Legacy batch 3–5 后文档、Targets.Tests 门禁 |
+| [projects/M7-Batch-19-NuGetVerify-Lombiq-Cleanup.md](projects/M7-Batch-19-NuGetVerify-Lombiq-Cleanup.md) | M7#19：NuGetVerify 去掉 Lombiq 平台/测试中央版本 |
 | [projects/M7-Batch-NuGetVerify-Feed.md](projects/M7-Batch-NuGetVerify-Feed.md) | M7：包版本同步脚本（占位） |
 
 ### 12.1 迁入项目时的文档义务

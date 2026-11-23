@@ -14,7 +14,7 @@
 | `Test-NuGetVerifyCorePackageRestore.ps1` | Tests / TestModule / TestTheme 独立 `dotnet restore` |
 | `feed-core-pack-versions.ps1` | core pack 版本与 `NuGetVerify/Directory.Packages.props` 对齐 |
 | `Assert-FeedCorePackVersions.ps1` | 批次 #12：pack 前版本 drift 检测 |
-| `NuGetVerify/Directory.Packages.props` | 独立 Tests.Sdk：`Lombiq.Tests` 中央版本（M6 例外） |
+| `NuGetVerify/Directory.Packages.props` | 独立 Tests.Sdk：`Smartent.Test.Unit` @ SmartentLocal（无 `Lombiq.Tests` 中央版本） |
 
 ## 验证
 

@@ -10,7 +10,6 @@
     <packageSource key="SmartentLocal">
       <package pattern="Smartent.*" />
       <package pattern="Smartent.Build.*" />
-      <package pattern="Lombiq.MSBuild.*" />
     </packageSource>
     <packageSource key="nuget.org">
       <package pattern="*" />

@@ -12,8 +12,10 @@ on:
       - scripts/Verify-SmartentLocalFeed.ps1
       - scripts/Test-NuGetVerifyCorePackageRestore.ps1
       - scripts/Invoke-M7CoreFeedGate.ps1
+      - scripts/Invoke-M7FullNuGetVerifyGate.ps1
       - scripts/feed-core-pack-versions.ps1
       - scripts/Assert-FeedCorePackVersions.ps1
+      - NuGetVerify/Directory.Packages.props
 
 jobs:
   feed-smoke:

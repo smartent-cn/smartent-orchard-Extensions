@@ -10,7 +10,7 @@
 | [feed-full-verify-supplemental.ps1](feed-full-verify-supplemental.ps1) | `-Full` 后固定 supplemental 列表（Marketing、VueJs.Resources 等） |
 | [Test-NuGetVerifyCorePackageRestore.ps1](Test-NuGetVerifyCorePackageRestore.ps1) | core feed + `ForceStandaloneNuGetVerify` 还原 Tests/Module/Theme |
 | [Invoke-M7CoreFeedGate.ps1](Invoke-M7CoreFeedGate.ps1) | 上述 + Monorepo sln 构建 + `Smartent.Build.Targets.Tests`（`-SkipPack` / `-WhatIf`） |
-| [Invoke-M7FullNuGetVerifyGate.ps1](Invoke-M7FullNuGetVerifyGate.ps1) | Core gate + 全 `Smartent.NuGet.sln`（`-SkipPack` 仅验证已有 feed） |
+| [Invoke-M7FullNuGetVerifyGate.ps1](Invoke-M7FullNuGetVerifyGate.ps1) | Core gate + 全 `Smartent.NuGet.sln`（`-SkipPack` 需 `NuGet.config.local` + 已 pack feed） |
 | [Assert-FeedCorePackVersions.ps1](Assert-FeedCorePackVersions.ps1) | 校验 core pack 版本与 `NuGetVerify/Directory.Packages.props` |
 | [List-SmartentPackableProjects.ps1](List-SmartentPackableProjects.ps1) | 列出 `Smartent-src` 中带 `PackageId` 的工程 |
 | [Export-FeedManifestSummary.ps1](Export-FeedManifestSummary.ps1) | 汇总 `feed-manifest.txt`（Smartent/Lombiq 计数） |

@@ -2,7 +2,7 @@
 
 > 对应 [阶段检查表.md](阶段检查表.md) M6：`无待发布 PackageId 含 Lombiq.`（已文档化例外）
 
-最后扫描：2026-11-24（M7#11 + Legacy batch 4–5：MSBuild 样例/测试在 `Smartent-src/Build/`；元包已删）
+最后扫描：2026-11-24（NuGetVerify 中央版本已无 Lombiq 平台/测试包；仅 `Lombiq.Analyzers.OrchardCore`）
 
 ## Smartent-src 可发布包
 
@@ -15,7 +15,7 @@
 | ~~`Lombiq.MSBuild.*` Sdk / LibMan~~ | **已收口** | `Smartent.Build.*`（M7#11，版本 **2.1.1** 本地 feed） |
 | `Lombiq.Analyzers` / `Lombiq.Analyzers.OrchardCore` / `Lombiq.Analyzers.PowerShell` | 开发期分析器；NuGet 上仍 Lombiq 品牌 | `Smartent.Build.Analyzers*`（可选，M1/M4） |
 | ~~`Lombiq.HelpfulLibraries.OrchardCore`~~ | **已移除** 中央版本 | `Smartent.Orchard.Platform` @ 本地 feed / Gitee |
-| `Lombiq.Tests` | **NuGetVerify** 独立模式 + nuget.org **Tests.Sdk 2.1.1** 传递引用 | 本地 feed 用 `Smartent.Test.Unit`；上源后统一 Smartent |
+| ~~`Lombiq.Tests`~~ | **已移除** 中央版本 | `Smartent.Build.OrchardCore.Tests.Sdk` → `Smartent.Test.Unit` |
 
 ## 非发布 / 不纳入扫描
 
@@ -33,4 +33,4 @@ rg '<PackageId>Lombiq\.' Smartent-src --glob '*.csproj'
 rg '<PackageId>Lombiq\.' --glob '*.csproj'
 ```
 
-复检结果（2026-11-24）：`rg '<PackageId>Lombiq\.' --glob '*.csproj'` **0 匹配**；`Smartent-src` 可发布面均为 `Smartent.*`。例外仅为 `tools/Lombiq.Analyzers*` 与 NuGetVerify 中央版本中的过渡 ID（见上表）。
+复检结果（2026-11-24）：`rg '<PackageId>Lombiq\.' --glob '*.csproj'` **0 匹配**；`NuGetVerify/Directory.Packages.props` 中 Lombiq 仅 **分析器** 一行。
