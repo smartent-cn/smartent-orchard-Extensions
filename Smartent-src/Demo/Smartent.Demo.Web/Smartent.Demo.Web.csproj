@@ -55,7 +55,7 @@
     <ProjectReference Include="..\..\Themes\Smartent.Orchard.Theme.Media\Smartent.Orchard.Theme.Media.Tests.Theme\Smartent.Orchard.Theme.Media.Tests.Theme.csproj" />
     <ProjectReference Include="..\..\Themes\Smartent.Orchard.Theme.Media\Smartent.Orchard.Theme.Media\Smartent.Orchard.Theme.Media.csproj" />
     <ProjectReference Include="..\..\Themes\Smartent.Orchard.Theme.Media\Smartent.Orchard.Theme.Media.Bridge\Smartent.Orchard.Theme.Media.Bridge.csproj" />
-    <ProjectReference Include="..\..\..\src\Utilities\Lombiq.MSBuild.Targets\Lombiq.MSBuild.Sdk.Samples\Lombiq.MSBuild.Sdk.Samples.csproj" />
+    <ProjectReference Include="..\..\Build\Smartent.Build.Sdk.Samples\Smartent.Build.Sdk.Samples.csproj" />
     <ProjectReference Include="..\..\Build\Smartent.Build.Tailwind.Samples\Smartent.Build.Tailwind.Samples.csproj" />
     <ProjectReference Include="..\..\Build\Smartent.Orchard.Setup\Smartent.Orchard.Setup.csproj" />
   </ItemGroup>

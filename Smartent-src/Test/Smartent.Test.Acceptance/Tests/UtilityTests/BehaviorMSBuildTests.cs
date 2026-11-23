@@ -1,4 +1,4 @@
-using Lombiq.MSBuild.Targets.Tests.UI.Extensions;
+using Smartent.Build.Targets.Tests.UI.Extensions;
 using System.Threading.Tasks;
 using Xunit;
 

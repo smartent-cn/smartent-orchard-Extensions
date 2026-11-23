@@ -1,0 +1,14 @@
+<Project>
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <Import Project="../Smartent.Build.OrchardCore.Tests.UI.Library.Sdk/Sdk/Import.props" />
+
+  <ItemGroup>
+    <ProjectReference Include="../Smartent.Build.Sdk.Samples/Smartent.Build.Sdk.Samples.csproj" />
+  </ItemGroup>
+
+  <Import Project="../Smartent.Build.OrchardCore.Tests.UI.Library.Sdk/Sdk/Import.targets" />
+</Project>

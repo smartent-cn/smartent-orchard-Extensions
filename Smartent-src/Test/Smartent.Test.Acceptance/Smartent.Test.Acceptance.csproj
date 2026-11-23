@@ -43,7 +43,7 @@
     <ProjectReference Include="..\..\Themes\Smartent.Orchard.Theme.Base\Smartent.Orchard.Theme.Base.Tests.UI\Smartent.Orchard.Theme.Base.Tests.UI.csproj" />
     <ProjectReference Include="..\..\Themes\Smartent.Orchard.Theme.Media\Smartent.Orchard.Theme.Media.Bridge.Tests.UI\Smartent.Orchard.Theme.Media.Bridge.Tests.UI.csproj" />
     <ProjectReference Include="..\..\Themes\Smartent.Orchard.Theme.Media\Smartent.Orchard.Theme.Media.Tests.UI\Smartent.Orchard.Theme.Media.Tests.UI.csproj" />
-    <ProjectReference Include="..\..\..\src\Utilities\Lombiq.MSBuild.Targets\Lombiq.MSBuild.Targets.Tests.UI\Lombiq.MSBuild.Targets.Tests.UI.csproj" />
+    <ProjectReference Include="..\..\Build\Smartent.Build.Targets.Tests.UI\Smartent.Build.Targets.Tests.UI.csproj" />
     <ProjectReference Include="..\Smartent.Test.UI\Smartent.Test.UI.Samples\Smartent.Test.UI.Samples.csproj" />
     <ProjectReference Include="..\Smartent.Test.UI\Smartent.Test.UI.Tests.UI\Smartent.Test.UI.Tests.UI.csproj" />
   </ItemGroup>
