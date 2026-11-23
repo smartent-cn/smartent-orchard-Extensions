@@ -8,7 +8,7 @@ Various modules that help you build a multi-tenant web application with [Orchard
 
 We at [Smartent](https://gitee.com/smartent/) also used these modules for the following projects:
 
-- The new [Smartent website](https://gitee.com/smartent/) when migrating it from Orchard 1 to Orchard Core ([see case study](https://gitee.com/smartent/blog/how-we-renewed-and-migrated-lombiq-com-from-orchard-1-to-orchard-core)).
+- The new [Smartent website](https://gitee.com/smartent/) when migrating it from Orchard 1 to Orchard Core ([see case study](https://gitee.com/smartent/blog/how-we-renewed-and-migrated-orchard-site-from-orchard-1-to-orchard-core)).
 - The new [Git-hg Mirror website](https://githgmirror.com/) when migrating it from Orchard 1 to Orchard Core ([see case study](https://gitee.com/smartent/blog/git-hg-mirror-is-running-on-orchard-core)).
 - They also make [DotNest, the Orchard SaaS](https://dotnest.com/) better.
 

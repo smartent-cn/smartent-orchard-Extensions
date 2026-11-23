@@ -17,18 +17,14 @@ These can be invoked from any other repository's build.
 
 [Check out the Orchard Harvest 2025 conference talk about the project](https://www.youtube.com/watch?v=kB6qjEDrpdk&list=PLpCsCyd254FodB6zUxTUj7g3hGIeEotvB&index=3) on the Orchard Core YouTube channel, and the [Orchard Harvest 2023 talk about automated QA in Orchard Core](https://youtu.be/CHdhwD2NHBU) that utilizes GitHub Actions as well.
 
-We at [Lombiq](https://gitee.com/smartent/) also used these workflows for the following projects:
-
-- The new [Lombiq website](https://gitee.com/smartent/) when migrating it from Orchard 1 to Orchard Core ([see case study](https://gitee.com/smartent/blog/how-we-renewed-and-migrated-lombiq-com-from-orchard-1-to-orchard-core)).
-- The new client portal for [WTW](https://www.wtwco.com/) ([see case study](https://gitee.com/smartent/blog/lombiq-s-journey-with-wtw-s-client-portal)).
-- They also make [DotNest, the Orchard SaaS](https://dotnest.com/) better.
+We use these workflows for Smartent Orchard training demos, client portals, and Orchard Core product sites built on this monorepo.
 
 ## Documentation
 
 <!-- textlint-disable doubled-spaces -->
 
 > [!NOTE]
-> The code samples in the documentation reference the latest versions of the workflows and actions from the `dev` branch with `@dev`. This allows you to always use the latest versions, and get updates immediately. If instead you prefer stability, reference a specific version instead, like `@1.2.0`. You can see the versions available under [Releases](https://gitee.com/smartent/smartent-training-demo-modules
+> The code samples in the documentation reference the latest versions of the workflows and actions from the `dev` branch with `@dev`. This allows you to always use the latest versions, and get updates immediately. If instead you prefer stability, reference a specific version instead, like `@1.2.0`. When this tree is vendored under `tools/Smartent.GitHub.Actions`, align workflow refs with your target branch in this repository.
 
 <!-- textlint-enable doubled-spaces -->
 
@@ -39,7 +35,7 @@ We at [Lombiq](https://gitee.com/smartent/) also used these workflows for the fo
 
 Bug reports, feature requests, comments, questions, code contributions and love letters are warmly welcome. You can send them to us via GitHub issues and pull requests. Please adhere to our [open-source guidelines](https://gitee.com/smartent/open-source-guidelines) while doing so.
 
-This project is developed by [Smartent](https://gitee.com/smartent/). Commercial-grade support is available through Lombiq.
+This project is developed by [Smartent](https://gitee.com/smartent/). Commercial-grade support is available through Smartent.
 
 ### Default .NET version
 
@@ -57,25 +53,23 @@ Build workflows also enable [corepack](https://github.com/nodejs/corepack) to al
 
 ### Reference validation
 
-To ensure that when changing actions or workflows their references to other actions/workflows are up-to-date (i.e. instead of `@dev` they reference each other with `@current-branch`) the [Validate GitHub Actions Refs workflow](https://gitee.com/smartent/smartent-training-demo-modules will fail if references are incorrect. This is the case also if after a pull request approve that references don't point to the target branch; before merging, that should be fixed, otherwise merging via the merge queue will fail.
+To ensure that when changing actions or workflows their references to other actions/workflows are up-to-date (i.e. instead of `@dev` they reference each other with `@current-branch`) the **Validate GitHub Actions Refs** workflow (`.github/workflows/validate-this-gha-refs.yml` in this folder) will fail if references are incorrect. This is the case also if after a pull request approve that references don't point to the target branch; before merging, that should be fixed, otherwise merging via the merge queue will fail.
 
 ### Versioning, Tags and Releases
 
-To release versions of Lombiq GitHub Actions, and allow consumers to reference a specific version of a reusable workflow or composite action (e.g. `@v1.0.0`), we employ some automation to do this in a consistent and predictable way.
+To release versions of Smartent GitHub Actions, and allow consumers to reference a specific version of a reusable workflow or composite action (e.g. `@v1.0.0`), we employ automation to do this in a consistent and predictable way.
 
-See [issue #284 "Introduce versioning and releases (OSOE-735)"](https://gitee.com/smartent/smartent-training-demo-modules for additional details on why we do this.
-
-New versions of Lombiq GitHub Actions are automatically tagged using the [Tag Version (this repo)](https://gitee.com/smartent/smartent-training-demo-modules workflow. This workflow is triggered for release branches with a name that matches the `release/**` pattern (e.g. `release/v1.0.0`, `release/v2.1.0-alpha`, etc.).
+New versions are automatically tagged using the **Tag Version (this repo)** workflow (`.github/workflows/tag-version-this-repo.yml`). This workflow is triggered for release branches with a name that matches the `release/**` pattern (e.g. `release/v1.0.0`, `release/v2.1.0-alpha`, etc.).
 
 To create a new release, create a new branch following the above naming convention at the commit to be released and push it. This is similar to how you would add a release tag in other repos, and don't push anything else to the release branch.
 
 When you push your new release branch, the following things happen automatically:
 
-1. The [Tag Version (this repo)](https://gitee.com/smartent/smartent-training-demo-modules workflow runs and calls the reusable workflow [Tag Version](https://gitee.com/smartent/smartent-training-demo-modules
-2. The [Tag Version](https://gitee.com/smartent/smartent-training-demo-modules workflow calls the [Set GitHub Actions References](https://gitee.com/smartent/smartent-training-demo-modules reusable action.
-3. The [Set GitHub Actions References](https://gitee.com/smartent/smartent-training-demo-modules action recursively searches all files in the `.github` folder to find each call to a GitHub Action or Workflow contained in this repository.
+1. The **Tag Version (this repo)** workflow runs and calls the reusable workflow **Tag Version** (`.github/workflows/tag-version.yml`).
+2. The **Tag Version** workflow calls the **Set GitHub Actions References** reusable action (`.github/actions/set-gha-refs/action.yml`).
+3. The **Set GitHub Actions References** action recursively searches all files in the `.github` folder to find each call to a GitHub Action or Workflow contained in this repository.
 4. By default, references to called actions and workflows targeting the release branch (see above) are string replaced with the version name (e.g. `v1.0`).
-   - Additionally, the [Set GitHub Actions References](https://gitee.com/smartent/smartent-training-demo-modules action has a parameter called [additional-pattern-include-list](https://gitee.com/smartent/smartent-training-demo-modules which allows for replacing `release/v1.0` under special circumstances such as for the [spelling action explicit file reference](https://gitee.com/smartent/smartent-training-demo-modules scenario.
+   - Additionally, the **Set GitHub Actions References** action parameter `additional-pattern-include-list` allows replacing `release/v1.0` under special circumstances (see `.github/actions/spelling/action.yml`).
 5. The [stefanzweifel/git-auto-commit-action](https://github.com/stefanzweifel/git-auto-commit-action) action is used to automatically:
    - Commit the updated files to the `release/v1.0` branch.
    - Create a new git tag using the release name (e.g. `v1.0`).

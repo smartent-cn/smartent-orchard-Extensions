@@ -1,6 +1,6 @@
 <Project>
 
-  <!-- Based on https://gitee.com/smartent/smartent-training-demo-modules -->
+  <!-- Based on https://gitee.com/smartent/smartent-orchard-Extensions -->
   <PropertyGroup>
     <NpmTargetsRoot>$(MSBuildThisFileDirectory)/..</NpmTargetsRoot>
     <NpmTargetsAssemblyName>Smartent.Build.Npm.Targets.dll</NpmTargetsAssemblyName>

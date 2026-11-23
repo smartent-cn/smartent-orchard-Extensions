@@ -18,7 +18,7 @@ Use .NET SDK 10 or later and select Microsoft Testing Platform in the solution's
 }
 ```
 
-1. Build the solution with `dotnet build` in Release mode. We recommend using our [.NET Analyzers](https://gitee.com/smartent/smartent-training-demo-modules for static code analysis and applying the code analysis switches on this step and during the `dotnet publish` ones later.
+1. Build the solution with `dotnet build` in Release mode. We recommend using our [.NET Analyzers](https://gitee.com/smartent/smartent-orchard-Extensions) for static code analysis and applying the code analysis switches on this step and during the `dotnet publish` ones later.
 2. Publish the web app's project with `dotnet publish` in Release mode, optionally also with [ReadyToRun](https://docs.microsoft.com/en-us/dotnet/core/deploying/ready-to-run). Note that since the web app shouldn't really reference your UI test projects this doesn't publish those. Remove or don't publish the _refs_ folder. That way, Razor Runtime Compilation will be switched off, which removes an unnecessary and slow step when executing UI tests.
 3. Publish the UI test project(s) with `dotnet publish` in Release mode.
 4. Run the UI tests with `dotnet test --project path/to/Tests.csproj --configuration Release --no-build`. To run a solution, use `--solution path/to/Solution.slnx`. Note that by default, the app will run in the Development environment, which is what we need for testing.

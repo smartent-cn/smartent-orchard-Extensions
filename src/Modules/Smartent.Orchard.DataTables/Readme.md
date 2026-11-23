@@ -26,7 +26,7 @@ Once you have your data provider, it must be registered using `services.AddDataT
 
 If you need an admin page with just one data table you don't need to define a view, just link to `/Admin/DataTable/{providerName}/{queryId?}`.
 
-You can find an example using [LinqToDb](https://gitee.com/smartent/smartent-training-demo-modules queries do display a table of deleted content items at [DeletedContentItemDataTableDataProvider.cs](Smartent.Orchard.DataTables/Services/DeletedContentItemDataTableDataProvider.cs).
+You can find an example using [LinqToDb](https://gitee.com/smartent/smartent-orchard-Extensions) queries do display a table of deleted content items at [DeletedContentItemDataTableDataProvider.cs](Smartent.Orchard.DataTables/Services/DeletedContentItemDataTableDataProvider.cs).
 
 If you want a display a table of deleted content items, we already happen to have a provider for that called [`DeletedContentItemDataTableDataProvider`](Smartent.Orchard.DataTables/Services/DeletedContentItemDataTableDataProvider.cs).
 

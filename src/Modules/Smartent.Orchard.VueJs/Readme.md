@@ -9,7 +9,7 @@ This project contains modules related to using [Vue.js](https://vuejs.org/) in [
 - [Smartent.Orchard.VueJs.Resources](Smartent.Orchard.VueJs.Resources/Readme.md): adds Vue.js packages to the Orchard Core resource manager in the form of [JavaScript modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules).
 - [Smartent.Orchard.VueJs](Smartent.Orchard.VueJs/Readme.md): (⚠️ deprecated) Vue.js Single File Component compiler for Orchard Core.
 
-Do you want to quickly try out this project and see it in action? Check it out in our [Open-Source Orchard Core Extensions](https://gitee.com/smartent/smartent-training-demo-modules full Orchard Core solution and also see our other useful Orchard Core-related open-source projects!
+Do you want to quickly try out this project and see it in action? Check it out in our [Open-Source Orchard Core Extensions](https://gitee.com/smartent/smartent-orchard-Extensions) full Orchard Core solution and also see our other useful Orchard Core-related open-source projects!
 
 ## Contributing and support
 

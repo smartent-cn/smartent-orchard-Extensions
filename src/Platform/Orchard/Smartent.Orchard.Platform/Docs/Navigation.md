@@ -10,4 +10,4 @@ An abstract base class derived from `NavigationProviderBase` for creating home p
 
 ## Extensions
 
-- `NavigationItemBuilderExtensions`: Adds extension methods for building menu [`TypedRoute`](https://gitee.com/smartent/smartent-training-demo-modules style.
+- `NavigationItemBuilderExtensions`: Adds extension methods for building menu [`TypedRoute`](https://gitee.com/smartent/smartent-orchard-Extensions) style.

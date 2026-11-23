@@ -36,7 +36,7 @@ Adds prettified code snippet inserting functionality to Trumbowyg editor by usin
 - yaml
 - yml
 
-Then you need to link the Trumbowyg and Prism styles and scripts where you want it to be used. E.g. if you want to add it to BlogPost content type you can do it with the help of [Smartent.Orchard.Platform](https://gitee.com/smartent/smartent-training-demo-modules in a IResourceFilterProvider:
+Then you need to link the Trumbowyg and Prism styles and scripts where you want it to be used. E.g. if you want to add it to BlogPost content type you can do it with the help of [Smartent.Orchard.Platform](https://gitee.com/smartent/smartent-orchard-Extensions) in a IResourceFilterProvider:
 
 ```csharp
 using Smartent.Orchard.Platform.ResourceManagement;

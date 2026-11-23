@@ -21,7 +21,7 @@ We at [Smartent](https://gitee.com/smartent/) also used this theme for the follo
 
 This theme is also available on all sites of [DotNest, the Orchard Core SaaS](https://dotnest.com/).
 
-Do you want to quickly try out this project and see it in action? Check it out in our [Open-Source Orchard Core Extensions](https://gitee.com/smartent/smartent-training-demo-modules full Orchard Core solution and also see our other useful Orchard Core-related open-source projects!
+Do you want to quickly try out this project and see it in action? Check it out in our [Open-Source Orchard Core Extensions](https://gitee.com/smartent/smartent-orchard-Extensions) full Orchard Core solution and also see our other useful Orchard Core-related open-source projects!
 
 ## Demo video
 

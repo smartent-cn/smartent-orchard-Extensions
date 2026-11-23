@@ -4,7 +4,7 @@
     <AssemblyName>Smartent.Orchard.UIKit</AssemblyName>
     <PackageId>Smartent.Orchard.UIKit</PackageId>
     <!-- This is disabled, because restoring Slick via LibMan is flaky, see 
-    https://gitee.com/smartent/smartent-training-demo-modules So, we keep the library in the repository. Uncomment this
+    https://gitee.com/smartent/smartent-orchard-Extensions. So, we keep the library in the repository. Uncomment this
     temporarily while updating the Slick snapshot locally. It's not enabled locally either because we don't gain
     anything by it except for the rare cases of updates, but since LibMan touches the files, they'll show up as changed
     in Git (at least in Git Extensions), even though their contents didn't change. -->

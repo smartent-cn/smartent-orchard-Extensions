@@ -4,7 +4,7 @@
 
 ## About
 
-Provides automatic Media Theme package creation in the project. This way you don't have to manage changes in your Media Theme recipe, or folder structure. The targets reuses the `media-theme-deployer` dotnet tool, what will be automatically installed locally to the project, then it will create the deployment zip file. Please read the [Smartent.Orchard.Theme.Media Readme](https://gitee.com/smartent/smartent-training-demo-modules for more information about this deployer tool.
+Provides automatic Media Theme package creation in the project. This way you don't have to manage changes in your Media Theme recipe, or folder structure. The targets reuses the `media-theme-deployer` dotnet tool, what will be automatically installed locally to the project, then it will create the deployment zip file. Please read the [Smartent.Orchard.Theme.Media Readme](https://gitee.com/smartent/smartent-orchard-Extensions) for more information about this deployer tool.
 
 When the zip is ready it is unzipped and its files are moved to the project relative _Recipe/\_MediaTheme/_ path. The Recipe is moved directly to the project relative _Recipe_ folder.
 

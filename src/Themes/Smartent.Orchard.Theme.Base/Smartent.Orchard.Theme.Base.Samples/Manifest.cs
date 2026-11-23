@@ -22,6 +22,6 @@ using Smartent.Orchard.Theme.Base.Core.Attributes;
 // - Enable the "Smartent.Orchard.Theme.Base.Samples" feature in your setup recipe.
 // - Set the site theme to "Smartent.Orchard.Theme.Base.Samples" in your setup recipe.
 // You can see these in the "Smartent.Demo.Web.csproj" and the "Smartent.Demo.Tests.recipe.json" files in the
-// https://gitee.com/smartent/smartent-training-demo-modules repository.
+// https://gitee.com/smartent/smartent-orchard-Extensions repository.
 
 // NEXT STATION: package.json

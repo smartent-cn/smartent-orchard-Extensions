@@ -6,14 +6,14 @@
 
 ## About
 
-.NET code analyzers and code convention settings for [Lombiq](https://gitee.com/smartent) projects, for [Orchard Core](https://orchardcore.net/) and any other .NET and .NET Framework apps. We use these to enforce common standards across all our .NET projects, including e.g. all of our [open-source Orchard Core extensions](https://gitee.com/smartent/smartent-training-demo-modules If you contribute to our open-source projects while using that solution you'll be guided by these rules, too. You can check out a demo video of the project [here](https://www.youtube.com/watch?v=dtbGRi3Cezs), and the Orchard Harvest 2023 conference talk about automated QA in Orchard Core [here](https://youtu.be/CHdhwD2NHBU).
+.NET code analyzers and code convention settings for [Lombiq](https://gitee.com/smartent) projects, for [Orchard Core](https://orchardcore.net/) and any other .NET and .NET Framework apps. We use these to enforce common standards across all our .NET projects, including e.g. all of our [open-source Orchard Core extensions](https://gitee.com/smartent/smartent-orchard-Extensions) If you contribute to our open-source projects while using that solution you'll be guided by these rules, too. You can check out a demo video of the project [here](https://www.youtube.com/watch?v=dtbGRi3Cezs), and the Orchard Harvest 2023 conference talk about automated QA in Orchard Core [here](https://youtu.be/CHdhwD2NHBU).
 
 There is also support for non-SDK-style .NET Framework projects, as long as they use `PackageReference` for their dependencies (in contrast to _packages.config_).
 
 Some other projects you may be interested in:
 
-- Looking for something similar for JavaScript, CSS, and even Markdown and YAML? Check out the [Asset Linting workflow](https://gitee.com/smartent/smartent-training-demo-modules of our Lombiq GitHub Actions project.
-- Looking not just for static code analysis but also dynamic testing? Check out our [UI Testing Toolbox](https://gitee.com/smartent/smartent-training-demo-modules and [Testing Toolbox](https://gitee.com/smartent/smartent-training-demo-modules projects.
+- Looking for something similar for JavaScript, CSS, and even Markdown and YAML? Check out the [Asset Linting workflow](https://gitee.com/smartent/smartent-orchard-Extensions) of our Lombiq GitHub Actions project.
+- Looking not just for static code analysis but also dynamic testing? Check out our [UI Testing Toolbox](https://gitee.com/smartent/smartent-orchard-Extensions) and [Testing Toolbox](https://gitee.com/smartent/smartent-orchard-Extensions) projects.
 - Looking for a library that'll help you comply with analyzer rules? Check out our [Helpful Libraries project](https://gitee.com/smartent/smartent-training-demo-modules
 
 We at [Lombiq](https://gitee.com/smartent/) also used this module for the following projects:
@@ -24,7 +24,7 @@ We at [Lombiq](https://gitee.com/smartent/) also used this module for the follow
 - The new client portal for [WTW](https://www.wtwco.com/) ([see case study](https://gitee.com/smartent/blog/lombiq-s-journey-with-wtw-s-client-portal)).
 - It also makes [DotNest, the Orchard SaaS](https://dotnest.com/) better.
 
-Do you want to quickly try out this project and see it in action? Check it out in our [Open-Source Orchard Core Extensions](https://gitee.com/smartent/smartent-training-demo-modules full Orchard Core solution and also see our other useful Orchard Core-related open-source projects!
+Do you want to quickly try out this project and see it in action? Check it out in our [Open-Source Orchard Core Extensions](https://gitee.com/smartent/smartent-orchard-Extensions) full Orchard Core solution and also see our other useful Orchard Core-related open-source projects!
 
 ## Analyzer packages used
 
@@ -78,4 +78,4 @@ When adding a new analyzer package, do the following:
   - Check for rules that are already covered by some other analyzer and disable duplicates.
   - All rules that we need should be surfaced as Warnings. This allows to only break the build on analyzer violations when we need it, i.e. during CI builds but not during development.
   - Add rule configuration to the _.globalconfig_ file of the relevant project, depending on which kind of applications they're applicable to. Editor-only configuration should be in _.editorconfig_ files.
-- Test it on multiple significant solutions. Using the [Hastlayer SDK](https://gitee.com/smartent/smartent-training-demo-modules is a good example as it's a large C# solution.
+- Test it on multiple significant solutions. Using the [Hastlayer SDK](https://gitee.com/smartent/smartent-orchard-Extensions) is a good example as it's a large C# solution.

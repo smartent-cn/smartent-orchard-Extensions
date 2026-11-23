@@ -6,13 +6,13 @@
 
 This project provides several MSBuild-integrated frontend asset pipelines - for building and linting SCSS, JS, Markdown and other arbitrary files. It uses static configuration from your _package.json_ with sensible defaults to free you from managing NPM packages and scripts yourself.
 
-It makes use of our [NPM MSBuild Targets](https://gitee.com/smartent/smartent-training-demo-modules project, which can make NPM package management in your project a lot easier, too.
+It makes use of our [NPM MSBuild Targets](https://gitee.com/smartent/smartent-orchard-Extensions) project, which can make NPM package management in your project a lot easier, too.
 
 If you're interested in an overview of the rationale behind this project, and a glimpse at its inner workings, see [our blog post](https://orcharddojo.net/blog/delivering-a-node-js-asset-pipeline-as-a-nuget-package). Check out a demo video [here](https://www.youtube.com/watch?v=TINyWlItbpU), and the Orchard Harvest 2023 conference talk about automated QA in Orchard Core [here](https://youtu.be/CHdhwD2NHBU).
 
 We at [Smartent](https://gitee.com/smartent/) also used this module for the following projects:
 
-- The new [Smartent website](https://gitee.com/smartent/) when migrating it from Orchard 1 to Orchard Core ([see case study](https://gitee.com/smartent/blog/how-we-renewed-and-migrated-lombiq-com-from-orchard-1-to-orchard-core)).
+- The new [Smartent website](https://gitee.com/smartent/) when migrating it from Orchard 1 to Orchard Core ([see case study](https://gitee.com/smartent/blog/how-we-renewed-and-migrated-orchard-site-from-orchard-1-to-orchard-core)).
 - The new [Ik wil een taart website](https://ikwileentaart.nl/) ([see case study](https://dotnest.com/blog/revamping-ik-wil-een-taart-migrating-an-old-version-of-orchard-core-website-with-custom-theme-and-commerce-logic-to-dotnest)).
 - The new [Show Orchard website](https://showorchard.com/) when migrating it from Orchard 1 DotNest to DotNest Core ([see case study](https://dotnest.com/blog/show-orchard-case-study-migrating-an-orchard-1-dotnest-site-to-orchard-core)).
 - The new [Git-hg Mirror website](https://githgmirror.com/) when migrating it from Orchard 1 to Orchard Core ([see case study](https://gitee.com/smartent/blog/git-hg-mirror-is-running-on-orchard-core)).
@@ -20,7 +20,7 @@ We at [Smartent](https://gitee.com/smartent/) also used this module for the foll
 - The new [Orchard Dojo website](https://orcharddojo.net/) when migrating it from Orchard 1 to Orchard Core ([see case study](https://orcharddojo.net/blog/another-lombiq-site-was-improved-orchard-dojo)).
 - It also makes [DotNest, the Orchard Core SaaS](https://dotnest.com/) better.
 
-Do you want to quickly try out this project and see it in action? Check it out, together with its accompanying [samples](Smartent.NodeJs.Extensions.Samples/Readme.md) [projects](Smartent.NodeJs.Extensions.Samples.NuGet/Readme.md), in our [Open-Source Orchard Core Extensions](https://gitee.com/smartent/smartent-training-demo-modules full Orchard Core solution. You will find our other useful Orchard Core-related open-source projects there, too.
+Do you want to quickly try out this project and see it in action? Check it out, together with its accompanying [samples](Smartent.NodeJs.Extensions.Samples/Readme.md) [projects](Smartent.NodeJs.Extensions.Samples.NuGet/Readme.md), in our [Open-Source Orchard Core Extensions](https://gitee.com/smartent/smartent-orchard-Extensions) full Orchard Core solution. You will find our other useful Orchard Core-related open-source projects there, too.
 
 ## Prerequisites
 
@@ -35,9 +35,9 @@ This project can be consumed as a `git` submodule or as a `NuGet` package.
 
 ### As a Git submodule
 
-In the case of using `Smartent.NodeJs.Extensions` as a git submodule, it is recommended to put it into a folder named _Lombiq.NodeJs.Extensions_ under the _src/Utilities_ folder, but you are free to use a different location (in that case you'll need to adjust the paths in the linter configuration files, see the docs on [ESLint](Smartent.NodeJs.Extensions/Docs/JavaScript.md#eslint-rules) and [Stylelint](Smartent.NodeJs.Extensions/Docs/Styles.md#stylelint-rules) configuration). You need to add [`Smartent.Npm.Targets`](https://gitee.com/smartent/smartent-training-demo-modules to the same folder, though.
+In the case of using `Smartent.Build.NodeJs` as a git submodule, it is recommended to put it into a folder named _Smartent.Build.NodeJs_ under the _src/Build_ folder, but you are free to use a different location (in that case you'll need to adjust the paths in the linter configuration files, see the docs on [ESLint](Smartent.Build.NodeJs/Docs/JavaScript.md#eslint-rules) and [Stylelint](Smartent.Build.NodeJs/Docs/Styles.md#stylelint-rules) configuration). You need to add [`Smartent.Build.Npm.Targets`](https://gitee.com/smartent/smartent-orchard-Extensions) to the same folder, though.
 
-Then, add a project reference to _Lombiq.NodeJs.Extensions/Smartent.NodeJs.Extensions.csproj_ and the following `Import` statements to your project file:
+Then, add a project reference to _Smartent.Build.NodeJs/Smartent.Build.NodeJs/Smartent.Build.NodeJs.csproj_ and the following `Import` statements to your project file:
 
 ```xml
 <!-- At the top: -->

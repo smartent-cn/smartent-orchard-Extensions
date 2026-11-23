@@ -34,6 +34,6 @@ public sealed class ManagePersonsPermissionCheckerTaskDisplayDriver :
 // END OF TRAINING SECTION: Workflows
 
 // This is the end of the training. It is always hard to say goodbye so... don't do it. Let us know your thoughts about
-// this module or Orchard Core itself on GitHub (https://gitee.com/smartent/smartent-training-demo-modules or send us an
+// this module or Orchard Core itself on GitHub (https://gitee.com/smartent/smartent-orchard-Extensions) or send us an
 // email to crew@gitee.com/smartent instead. If you feel like you need some more training on developing Orchard Core web
 // applications, don't hesitate to contact us!

@@ -58,7 +58,7 @@ These use Orchard's resource manager and thus will also include a browser/proxy 
 
 Media Theme will translate this special _~/mediatheme_ path to either your local theme asset path or Media Library if the file exists. This way, you don't need to update your asset URLs in your templates one-by-one when deploying them. The `~` notation of virtual paths also comes in handy if you want to work with multiple tenants using URL prefixes locally, i.e. develop multiple Media Themes for multiple sites from the same solution.
 
-If you are developing a theme for your [DotNest](https://dotnest.com) site you can use the [DotNest Core SDK](https://gitee.com/smartent/smartent-training-demo-modules that has everything prepared for you right away.
+If you are developing a theme for your [DotNest](https://dotnest.com) site you can use the [DotNest Core SDK](https://gitee.com/smartent/smartent-orchard-Extensions) that has everything prepared for you right away.
 
 ### Deployment (import/export)
 

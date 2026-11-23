@@ -2,7 +2,7 @@
 
 ## Migrating to Microsoft Testing Platform
 
-Use [`Smartent.MSBuild.OrchardCore.Tests.UI.Sdk`](https://gitee.com/smartent/smartent-training-demo-modules for executable UI test projects. Move reusable UI test libraries to [`Smartent.MSBuild.OrchardCore.Tests.UI.Library.Sdk`](https://gitee.com/smartent/smartent-training-demo-modules which preserves library output without a test runner. Update both local imports and NuGet SDK references.
+Use [`Smartent.MSBuild.OrchardCore.Tests.UI.Sdk`](https://gitee.com/smartent/smartent-orchard-Extensions) for executable UI test projects. Move reusable UI test libraries to [`Smartent.MSBuild.OrchardCore.Tests.UI.Library.Sdk`](https://gitee.com/smartent/smartent-orchard-Extensions) which preserves library output without a test runner. Update both local imports and NuGet SDK references.
 
 Upgrade `xunit.v3` to 4.0.0 or later in all test projects, remove `Microsoft.NET.Test.Sdk` and `xunit.runner.visualstudio`, and enable `<UseMicrosoftTestingPlatformRunner>true</UseMicrosoftTestingPlatformRunner>`. The updated Smartent test SDK handles these project settings and adds the reporting and hang dump extensions.
 

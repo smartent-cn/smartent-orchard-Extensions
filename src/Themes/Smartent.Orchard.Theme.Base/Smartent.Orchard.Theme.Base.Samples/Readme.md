@@ -9,13 +9,13 @@ Example Orchard Core theme that makes use of Smartent Orchard Theme Base for Orc
 
 For general details about and usage instructions see the [root Readme](../Readme.md).
 
-Do you want to quickly try out this project and see it in action? Check it out in our [Open-Source Orchard Core Extensions](https://gitee.com/smartent/smartent-training-demo-modules full Orchard Core solution and also see our other useful Orchard Core-related open-source projects!
+Do you want to quickly try out this project and see it in action? Check it out in our [Open-Source Orchard Core Extensions](https://gitee.com/smartent/smartent-orchard-Extensions) full Orchard Core solution and also see our other useful Orchard Core-related open-source projects!
 
 ## Training sections
 
-This module doesn't cover Orchard Core basics. Instead, sometimes we reference the [Smartent Orchard Training Demo for Orchard Core](https://gitee.com/smartent/smartent-training-demo-modules which does. The [Open-Source Orchard Core Extensions](https://gitee.com/smartent/smartent-training-demo-modules repository includes both the Training Demo and this project.
+This module doesn't cover Orchard Core basics. Instead, sometimes we reference the [Smartent Orchard Training Demo for Orchard Core](https://gitee.com/smartent/smartent-orchard-Extensions) which does. The [Open-Source Orchard Core Extensions](https://gitee.com/smartent/smartent-orchard-Extensions) repository includes both the Training Demo and this project.
 
-If you need help with setting up SCSS compilation, read the documentation of [Smartent Node.js Extensions](https://gitee.com/smartent/smartent-training-demo-modules first. Also check out the [package.json](package.json) file in this project.
+If you need help with setting up SCSS compilation, read the documentation of [Smartent Node.js Extensions](https://gitee.com/smartent/smartent-orchard-Extensions) first. Also check out the [package.json](package.json) file in this project.
 
 You can start with any of the top-level sections, but the indented sections should be followed in sequence.
 

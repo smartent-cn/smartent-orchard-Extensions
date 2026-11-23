@@ -20,7 +20,7 @@ solution and also see our other useful Orchard Core-related open-source projects
 
 Install the [NuGet package](https://www.nuget.org/packages/Smartent.Tailwind.Targets/). If you use the project from a
 submodule, add the following lines to the csproj file where the Tailwind input CSS file lives. Make sure that the paths
-are pointing to the _Lombiq.Tailwind.Targets.props_ and _Lombiq.Tailwind.Targets.targets_ files of this project.
+are pointing to the _Smartent.Build.Tailwind.props_ and _Smartent.Build.Tailwind.targets_ files of this project.
 
 ```xml
 <Import Project="path\to\Smartent.Tailwind.Targets\Smartent.Tailwind.Targets\Smartent.Tailwind.Targets.props" />

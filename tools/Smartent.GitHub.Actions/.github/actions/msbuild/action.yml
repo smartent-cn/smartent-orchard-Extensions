@@ -71,7 +71,7 @@ runs:
       working-directory: ${{ inputs.directory }}
       # The BuildVersionDisplay parameters are added to automatically support displaying the branch name and commit hash
       # as a link to the workflow run in the Orchard Dashboard of an Orchard 1 application that has the
-      # Lombiq.Hosting.Deployments module (https://gitee.com/smartent/smartent-training-demo-modules enabled.
+      # Lombiq.Hosting.Deployments module (https://gitee.com/smartent/smartent-orchard-Extensions) enabled.
       run: |
         $givenSwitches = @'
             -p:BuildVersionDisplay_BuildText=${{ github.sha }}_${{ github.head_ref }}

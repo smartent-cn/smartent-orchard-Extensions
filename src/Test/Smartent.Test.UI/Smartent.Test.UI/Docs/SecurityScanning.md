@@ -25,7 +25,7 @@ On Windows-based GitHub runners the security tests always fail with the followin
 
 > The `docker.exe pull softwaresecurityproject/zap-stable:2.14.0 --quiet` command failed with the output below. no matching manifest for windows/amd64 10.0.20348 in the manifest list entries.
 
-This is because the Docker installation is configured to use Windows images, while the [ZAP docker image](https://hub.docker.com/r/softwaresecurityproject/zap-stable/tags) is only available for Linux. If you rely on our [Smartent GitHub Actions](https://gitee.com/smartent/smartent-training-demo-modules then you can configure it like this to disable a test, in this case `SecurityScanningTests`:
+This is because the Docker installation is configured to use Windows images, while the [ZAP docker image](https://hub.docker.com/r/softwaresecurityproject/zap-stable/tags) is only available for Linux. If you rely on our [Smartent GitHub Actions](https://gitee.com/smartent/smartent-orchard-Extensions) then you can configure it like this to disable a test, in this case `SecurityScanningTests`:
 
 ```yaml
   build-and-test:
@@ -39,7 +39,7 @@ This is because the Docker installation is configured to use Windows images, whi
 
 ## Troubleshooting
 
-- Most common alerts in Orchard Core can be resolved by [using the extension method in Smartent Helpful Libraries](https://gitee.com/smartent/smartent-training-demo-modules like this: `orchardCoreBuilder.ConfigureSecurityDefaults(allowInlineStyle: true)`.
+- Most common alerts in Orchard Core can be resolved by [using the extension method in Smartent Helpful Libraries](https://gitee.com/smartent/smartent-orchard-Extensions) like this: `orchardCoreBuilder.ConfigureSecurityDefaults(allowInlineStyle: true)`.
 - If you're unsure what happens in a scan, run the [ZAP desktop app](https://www.zaproxy.org/download/) and load the Automation Framework plan's YAML file into it. If you use the default scans, then these will be available under the build output directory (like _bin/Debug_) under _SecurityScanning/AutomationFrameworkPlans_. Then, you can open and run them as demonstrated [in this video](https://youtu.be/PnCbIAnauD8?si=u0vi63Uvv9wZINzb&t=1173).
 - If an alert is a false positive, follow [the official docs](https://www.zaproxy.org/faq/how-do-i-handle-a-false-positive/). You can use the [`alertFilter` job](https://www.zaproxy.org/docs/desktop/addons/alert-filters/automation/) to ignore alerts in very specific conditions. You can also access this via the .NET configuration API via `SecurityScanConfiguration.MarkScanRuleAsFalsePositiveForUrlWithRegex()`. For less common filters (e.g., filters other than by URL), you can use the `SecurityScanConfiguration.ModifyZapPlan()` and `YamlDocument.AddFalsePositiveRuleFilter()` extension methods to configure the action filter YAML node directly (see `SecurityScanWithCustomConfigurationShouldPass` test in the sample).
 - ZAP didn't find everything in your app? By default, ZAP has a crawl depth of 5 for its standard spider and 10 for its AJAX spider. Set `maxDepth` (and `maxChildren`) [for `spider`](https://www.zaproxy.org/docs/desktop/addons/automation-framework/job-spider/) and `maxCrawlDepth` [for `spiderAjax`](https://www.zaproxy.org/docs/desktop/addons/ajax-spider/automation/).

@@ -8,7 +8,7 @@
 
 Targets for [Microsoft Library Manager](https://github.com/aspnet/LibraryManager) integration. Include this project via NuGet or import its Props and Targets files to ensure the vendor assets in your _libman.json_ are fetched before build and included during publishing.
 
-This target reduces [configuration boilerplate related to code generation](https://gitee.com/smartent/smartent-training-demo-modules and applies necessary workarounds (e.g. issues with deployment mentioned [here](https://github.com/aspnet/LibraryManager/issues/799)).
+This target reduces [configuration boilerplate related to code generation](https://gitee.com/smartent/smartent-orchard-Extensions) and applies necessary workarounds (e.g. issues with deployment mentioned [here](https://github.com/aspnet/LibraryManager/issues/799)).
 
 For general details about and usage instructions see the [root Readme](../Readme.md).
 

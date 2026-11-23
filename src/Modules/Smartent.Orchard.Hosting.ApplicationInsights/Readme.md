@@ -17,7 +17,7 @@ And all of this can be configured in depth. Extended configuration for built-in 
 We at [Smartent](https://gitee.com/smartent/) also used this module for the following projects:
 
 - The new [City of Santa Monica website](https://santamonica.gov/) when migrating it from Orchard 1 to Orchard Core ([see case study](https://gitee.com/smartent/blog/helping-the-city-of-santa-monica-with-orchard-core-consulting)).
-- The new [Smartent website](https://gitee.com/smartent/) when migrating it from Orchard 1 to Orchard Core ([see case study](https://gitee.com/smartent/blog/how-we-renewed-and-migrated-lombiq-com-from-orchard-1-to-orchard-core)).
+- The new [Smartent website](https://gitee.com/smartent/) when migrating it from Orchard 1 to Orchard Core ([see case study](https://gitee.com/smartent/blog/how-we-renewed-and-migrated-orchard-site-from-orchard-1-to-orchard-core)).
 - It also makes [DotNest, the Orchard Core SaaS](https://dotnest.com/) better.
 
 Do you want to quickly try out this project and see it in action? Check it out in our [Open-Source Orchard Core Extensions](https://github.com/smartent-cn/smartent-orchard-Extensions) full Orchard Core solution and also see our other useful Orchard Core-related open-source projects!
@@ -100,7 +100,7 @@ See the [`ApplicationInsightsOptions` class](Smartent.Orchard.Hosting.Applicatio
 
 Note that while telemetry from background tasks is collected in form of dependency operations it'll be collected even if `EnableDependencyTrackingTelemetryModule` is `false`.
 
-If you use the security defaults from [Smartent Helpful Libraries - Orchard Core Libraries - Security](https://gitee.com/smartent/smartent-training-demo-modules then the security headers necessary to use Application Insight's client-side tracking will automatically be added.
+If you use the security defaults from [Smartent Helpful Libraries - Orchard Core Libraries - Security](https://gitee.com/smartent/smartent-orchard-Extensions) then the security headers necessary to use Application Insight's client-side tracking will automatically be added.
 
 ### Entra Authentication for the Live Metrics control channel
 
@@ -165,7 +165,7 @@ Depending on what data you configure Application Insights to collect, and your j
 
 The client-side tracking script will not use cookies if `ITrackingConsentFeature` is used and no consent was given.
 
-To help with asking users for consent, check out our [Smartent Orchard Privacy for Orchard Core](https://gitee.com/smartent/smartent-training-demo-modules module.
+To help with asking users for consent, check out our [Smartent Orchard Privacy for Orchard Core](https://gitee.com/smartent/smartent-orchard-Extensions) module.
 
 ### Profiling
 

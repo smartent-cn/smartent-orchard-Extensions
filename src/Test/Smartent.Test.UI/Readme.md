@@ -33,7 +33,7 @@ Highlights:
 - Test a headless app with a separate frontend. See a demo video [here](https://youtu.be/eK2C9BW98sM?si=Ehd_bbieXKOwm7vc&t=225).
 - Write Selenium tests not just in .NET but also in JavaScript. See a demo video [here](https://youtu.be/eK2C9BW98sM?si=m0TXkBVRsFGD8lfr&t=415).
 
-See a demo video of the project [here](https://www.youtube.com/watch?v=mEUg6-pad-E), and the Orchard Harvest 2023 conference talk about automated QA in Orchard Core [here](https://youtu.be/CHdhwD2NHBU). We also had an Orchard Harvest 2024 talk about security scanning [here](https://www.youtube.com/watch?v=FsOpo8EA4wE). Also, see our [Testing Toolbox](https://gitee.com/smartent/smartent-training-demo-modules for similar features for lower-level tests.
+See a demo video of the project [here](https://www.youtube.com/watch?v=mEUg6-pad-E), and the Orchard Harvest 2023 conference talk about automated QA in Orchard Core [here](https://youtu.be/CHdhwD2NHBU). We also had an Orchard Harvest 2024 talk about security scanning [here](https://www.youtube.com/watch?v=FsOpo8EA4wE). Also, see our [Testing Toolbox](https://gitee.com/smartent/smartent-orchard-Extensions) for similar features for lower-level tests.
 
 Looking not just for dynamic testing but also static code analysis? Check out our [.NET Analyzers project](https://gitee.com/smartent/smartent-training-demo-modules
 

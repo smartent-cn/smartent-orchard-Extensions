@@ -4,7 +4,7 @@ The `test-dotnet` action and modern .NET build-and-test workflows now default to
 
 1. Use .NET SDK 10 or later and set `"test": { "runner": "Microsoft.Testing.Platform" }` in the solution's _global.json_. Preserve any existing SDK settings.
 2. Upgrade xUnit projects to `xunit.v3` 4.0.0 or later, set `<UseMicrosoftTestingPlatformRunner>true</UseMicrosoftTestingPlatformRunner>`, and remove `Microsoft.NET.Test.Sdk` and `xunit.runner.visualstudio`. All test projects in the solution must support MTP.
-3. Reference `Microsoft.Testing.Extensions.GitHubActionsReport` and `Microsoft.Testing.Extensions.TrxReport` 2.4.0 or later in each test project. Add `Microsoft.Testing.Extensions.HangDump` at the same version if using `blame-hang-timeout`. The updated Lombiq test SDK includes these packages. The SDKs in [Lombiq MSBuild Targets](https://gitee.com/smartent/smartent-training-demo-modules set all of these up.
+3. Reference `Microsoft.Testing.Extensions.GitHubActionsReport` and `Microsoft.Testing.Extensions.TrxReport` 2.4.0 or later in each test project. Add `Microsoft.Testing.Extensions.HangDump` at the same version if using `blame-hang-timeout`. The updated Lombiq test SDK includes these packages. The SDKs in [Lombiq MSBuild Targets](https://gitee.com/smartent/smartent-orchard-Extensions) set all of these up.
 
 The action uses `--report-gh` for annotations and job summaries, and `--report-trx` for downloadable results. It disables assembly log groups to preserve the UI Testing Toolbox's per-test groups. Report filenames distinguish assemblies, target frameworks, and architectures.
 

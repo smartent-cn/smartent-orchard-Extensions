@@ -1,6 +1,6 @@
 # Smartent UI Testing - Samples
 
-Example UI testing project. The whole project is heavily documented to teach you how to write UI tests with the UI Testing Toolbox. It guides you through this process just like the [Smartent Orchard Training Demo for Orchard Core](https://gitee.com/smartent/smartent-training-demo-modules teaches Orchard Core and Orchard 1 development.
+Example UI testing project. The whole project is heavily documented to teach you how to write UI tests with the UI Testing Toolbox. It guides you through this process just like the [Smartent Orchard Training Demo for Orchard Core](https://gitee.com/smartent/smartent-orchard-Extensions) teaches Orchard Core and Orchard 1 development.
 
 You can find further UI testing examples in [the test project of Open-Source Orchard Core Extensions](https://github.com/smartent-cn/smartent-orchard-Extensions/tree/dev/test/Smartent.Test.Acceptance).
 

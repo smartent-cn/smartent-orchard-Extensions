@@ -25,7 +25,7 @@ h1. Checklist
 * [Issue completion checklist|https://example.com/checklist]
 ```
 
-All three templates are optional and if not provided, defaults from [the `Initialize-IssueTemplates` script](https://gitee.com/smartent/smartent-training-demo-modules will be used.
+All three templates are optional and if not provided, defaults from [the `Initialize-IssueTemplates` script](https://gitee.com/smartent/smartent-orchard-Extensions) will be used.
 
 ## Setup
 

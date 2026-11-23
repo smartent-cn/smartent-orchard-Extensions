@@ -5,9 +5,9 @@ obj/
 bin/
 artifacts/
 # Ignore all vendors except slick, to keep it cached until https://github.com/aspnet/LibraryManager/issues/820 is fixed.
-**/Lombiq.UIKit/wwwroot/vendors/*
-!**/Lombiq.UIKit/wwwroot/vendors/slick/
-!**/Lombiq.UIKit/wwwroot/vendors/slick/**
+**/Smartent.Orchard.UIKit/wwwroot/vendors/*
+!**/Smartent.Orchard.UIKit/wwwroot/vendors/slick/
+!**/Smartent.Orchard.UIKit/wwwroot/vendors/slick/**
 node_modules/
 *.user
 .pnpm-debug.log

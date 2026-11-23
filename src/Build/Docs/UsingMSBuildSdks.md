@@ -43,7 +43,7 @@ If you want to use a local copy rather than NuGet, you can import these files by
 > [!IMPORTANT]
 > Make sure to import the _Sdk.props_ and _Sdk.targets_ files for NuGet, but the _Import.props_ and _Import.targets_ files for submodule. They both reference the same [code files](Sdk/Core.props), but there are slight differences accounted in these different consumable files.
 
-You can mix the latter two approaches if you need to support both NuGet and submodule use. We do this in our projects (for example [here](https://gitee.com/smartent/smartent-training-demo-modules because `<Sdk Condition="..." Name="...">` is not supported by .NET, so the two cases can only be toggled using imports.
+You can mix the latter two approaches if you need to support both NuGet and submodule use. We do this in our projects (for example [here](https://gitee.com/smartent/smartent-orchard-Extensions) because `<Sdk Condition="..." Name="...">` is not supported by .NET, so the two cases can only be toggled using imports.
 
 ## Common Features
 
@@ -63,7 +63,7 @@ All of our MSBuild SDK projects share these features and configurations:
   - SmartentSolutionRootPath: Repository root (alias `LombiqSolutionRootPath` for compatibility).
   - SmartentSrcPath: Path of the repository `src/` tree (Core/Platform/Build).
   - SmartentPlatformPath / `SmartentSrcPath`: 平台库在 _src/Platform_（NuGet：`Smartent.Orchard.Platform`）。
-  - LombiqAnalyzersPath: Path of the _tools/Smartent.Build.Analyzers_ directory where the [.NET Analyzers](https://gitee.com/smartent/smartent-training-demo-modules submodule should be.
+  - LombiqAnalyzersPath: Path of the _tools/Smartent.Build.Analyzers_ directory where the [.NET Analyzers](https://gitee.com/smartent/smartent-orchard-Extensions) submodule should be.
 - If you import the SDK via the `<Sdk>` element or the _Sdk.props_ file, it sets the `<FromNuGet>true</FromNuGet>` property.
 
 ## LibMan Integration

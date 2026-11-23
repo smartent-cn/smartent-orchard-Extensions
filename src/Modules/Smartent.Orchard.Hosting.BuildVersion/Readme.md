@@ -8,7 +8,7 @@
 
 ![Screenshot of Build Version Display on the Orchard Core dashboard](Smartent.Orchard.Hosting.BuildVersion/Docs/Attachments/Screenshot.png)
 
-We at [Smartent](https://gitee.com/smartent/) also used this module for the new [Smartent website](https://gitee.com/smartent/) when migrating it from Orchard 1 to Orchard Core ([see case study](https://gitee.com/smartent/blog/how-we-renewed-and-migrated-lombiq-com-from-orchard-1-to-orchard-core)). It also makes [DotNest, the Orchard Core SaaS](https://dotnest.com/) better.
+We at [Smartent](https://gitee.com/smartent/) also used this module for the new [Smartent website](https://gitee.com/smartent/) when migrating it from Orchard 1 to Orchard Core ([see case study](https://gitee.com/smartent/blog/how-we-renewed-and-migrated-orchard-site-from-orchard-1-to-orchard-core)). It also makes [DotNest, the Orchard Core SaaS](https://dotnest.com/) better.
 
 Do you want to quickly try out this project and see it in action? Check it out in our [Open-Source Orchard Core Extensions](https://github.com/smartent-cn/smartent-orchard-Extensions) full Orchard Core solution and also see our other useful Orchard Core-related open-source projects!
 
@@ -22,7 +22,7 @@ Optionally, a link to the CI build's page can be display as well. During `dotnet
 dotnet build .\MyApp.sln -p:BuildVersionDisplay_BuildUrl=https://github.com/smartent-cn/smartent-orchard-Extensions/actions/runs/123
 ```
 
-The [Deploy to Azure App Service workflow](https://gitee.com/smartent/smartent-training-demo-modules also takes care of this.
+The [Deploy to Azure App Service workflow](https://gitee.com/smartent/smartent-orchard-Extensions) also takes care of this.
 
 ## Contributing and support
 

@@ -55,8 +55,16 @@ REPLACEMENTS = [
     ('<add key="Lombiq"', '<add key="SmartentLegacyFeed"'),
 ]
 
-GITHUB_LOMBIQ_RE = re.compile(r"https://github\.com/Lombiq/[^\s\"'<>]+")
-WEBSITE_GITEE = "https://gitee.com/smartent/smartent-training-demo-modules"
+GITHUB_LOMBIQ_RE = re.compile(r"https://github\.com/Lombiq/[^\s\"'<>)\]]+")
+GITEE_ORCHARD_EXTENSIONS = "https://gitee.com/smartent/smartent-orchard-Extensions"
+GITEE_TRAINING_DEMO = "https://gitee.com/smartent/smartent-training-demo-modules"
+
+
+def map_lombiq_github_url(url: str) -> str:
+    lower = url.lower()
+    if "training-demo" in lower or "orchard-training" in lower:
+        return GITEE_TRAINING_DEMO
+    return GITEE_ORCHARD_EXTENSIONS
 
 
 def should_skip(rel: str, name: str) -> bool:
@@ -100,7 +108,7 @@ def transform(content: str, rel: str) -> str:
     for old, rep in REPLACEMENTS:
         new = new.replace(old, rep)
 
-    new = GITHUB_LOMBIQ_RE.sub(WEBSITE_GITEE, new)
+    new = GITHUB_LOMBIQ_RE.sub(lambda m: map_lombiq_github_url(m.group(0)), new)
 
     if rel.endswith("License.md"):
         new = re.sub(

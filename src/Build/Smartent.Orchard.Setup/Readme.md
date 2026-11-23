@@ -50,7 +50,7 @@ When starting the application, the `AuthorizeOrchardApiRequests` setting has to 
 
 Example: `dotnet Smartent.AwesomeApp.dll --AuthorizeOrchardApiRequests true`.
 
-You can use [the Reset-OrchardCoreApp script from the Utility Scripts project](https://gitee.com/smartent/smartent-training-demo-modules to quickly reset and reinstall a local Orchard Core app configured with this.
+You can use [the Reset-OrchardCoreApp script from the Utility Scripts project](https://gitee.com/smartent/smartent-orchard-Extensions) to quickly reset and reinstall a local Orchard Core app configured with this.
 
 ## Contribution and support
 
