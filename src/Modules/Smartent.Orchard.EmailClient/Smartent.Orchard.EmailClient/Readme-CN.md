@@ -10,13 +10,13 @@ With the help of this module, you can do advanced email operations such as downl
 
 ## 适用场景
 
-Smartent demo 仓库中的 Orchard Core 扩展模块。
+在 Orchard 后台集成 IMAP/同步邮件时使用。
 
 ## 快速开始
 
 1. 在宿主（如 `Smartent.Demo.Web`）中添加：`<ProjectReference Include="src/Modules/Smartent.Orchard.EmailClient/Smartent.Orchard.EmailClient/Smartent.Orchard.EmailClient.csproj" />`。
 2. 构建：`dotnet build src/Modules/Smartent.Orchard.EmailClient/Smartent.Orchard.EmailClient/Smartent.Orchard.EmailClient.csproj`。
-3. 运行站点，在 **配置 → 功能** 中启用 **`Default`** 及上表依赖。
+3. 运行站点，在 **配置 → 功能** 中启用 **`Smartent.Orchard.EmailClient`** 及上表依赖。
 4. 需要时从 **工具 → 配方** 执行：`Smartent.Orchard.EmailClient.Samples/Recipes/Smartent.Orchard.EmailClient.Samples.recipe.json`。
 5. Demo 宿主：`dotnet run --project src/Demo/Smartent.Demo.Web/Smartent.Demo.Web.csproj`。
 
@@ -24,7 +24,7 @@ Smartent demo 仓库中的 Orchard Core 扩展模块。
 
 | Feature Id | 名称 | 依赖 |
 |------------|------|------|
-| `Default` | Smartent Orchard Email Client - Base | — |
+| `Smartent.Orchard.EmailClient` | Smartent Orchard Email Client - Base | — |
 | `Imap` | Smartent Orchard Email Client - IMAP | — |
 | `EmailSync` | Smartent Orchard Email Client - Email Sync | — |
 
@@ -38,7 +38,7 @@ Smartent demo 仓库中的 Orchard Core 扩展模块。
 
 ## 使用方式（站点/运营）
 
-启用功能后通过 Orchard 后台及模块菜单使用。
+启用功能后在模块设置中配置邮箱；Samples 提供演示。
 
 ## 使用方式（开发）
 
@@ -62,8 +62,8 @@ Smartent demo 仓库中的 Orchard Core 扩展模块。
 
 ## 注意事项与常见坑
 
-- 每租户仅启用必要 Feature。
-- 升级 Orchard Core 前先跑 `*.Tests` / `*.Tests.UI`。
+- 凭证放入 User Secrets，勿提交仓库。
+- 公共 IMAP 有频率限制。
 
 ## 测试
 

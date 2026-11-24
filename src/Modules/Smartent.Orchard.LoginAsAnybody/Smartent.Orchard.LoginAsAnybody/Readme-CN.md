@@ -16,7 +16,7 @@ An Orchard Core module that allows administrator users to log in as any user.
 
 1. 在宿主（如 `Smartent.Demo.Web`）中添加：`<ProjectReference Include="src/Modules/Smartent.Orchard.LoginAsAnybody/Smartent.Orchard.LoginAsAnybody/Smartent.Orchard.LoginAsAnybody.csproj" />`。
 2. 构建：`dotnet build src/Modules/Smartent.Orchard.LoginAsAnybody/Smartent.Orchard.LoginAsAnybody/Smartent.Orchard.LoginAsAnybody.csproj`。
-3. 运行站点，在 **配置 → 功能** 中启用 **`LoginAsAnybody`** 及上表依赖。
+3. 运行站点，在 **配置 → 功能** 中启用 **`Smartent.Orchard.LoginAsAnybody`** 及上表依赖。
 4. 需要时从 **工具 → 配方** 执行：`见 Samples 目录`。
 5. Demo 宿主：`dotnet run --project src/Demo/Smartent.Demo.Web/Smartent.Demo.Web.csproj`。
 
@@ -24,7 +24,7 @@ An Orchard Core module that allows administrator users to log in as any user.
 
 | Feature Id | 名称 | 依赖 |
 |------------|------|------|
-| `LoginAsAnybody` | Smartent Orchard Login as Anybody | OrchardCore.Users |
+| `Smartent.Orchard.LoginAsAnybody` | Smartent Orchard Login as Anybody | OrchardCore.Users |
 
 在后台 **配置 → 功能** 中启用（除明确为宿主级模块外，均按**租户**生效）。
 

@@ -2,5 +2,4 @@
 
 > 上级：[docs/Readme-CN.md](Readme-CN.md)
 
-- 每租户仅启用必要 Feature。
-- 升级 Orchard Core 前先跑 `*.Tests` / `*.Tests.UI`。
+- 功能面大，建议逐项启用，避免无用依赖。

@@ -10,7 +10,7 @@ Module for managing advanced content editing processes based on editor groups an
 
 ## 适用场景
 
-Smartent demo 仓库中的 Orchard Core 扩展模块。
+需要自定义后台内容编辑器（下拉、链接、宏等）时使用。
 
 ## 快速开始
 
@@ -36,7 +36,7 @@ Smartent demo 仓库中的 Orchard Core 扩展模块。
 
 ## 使用方式（站点/运营）
 
-启用功能后通过 Orchard 后台及模块菜单使用。
+在内容定义中为 Part 挂载编辑器；参考 Samples 配方。
 
 ## 使用方式（开发）
 
@@ -60,8 +60,7 @@ Smartent demo 仓库中的 Orchard Core 扩展模块。
 
 ## 注意事项与常见坑
 
-- 每租户仅启用必要 Feature。
-- 升级 Orchard Core 前先跑 `*.Tests` / `*.Tests.UI`。
+- 编辑器按租户配置；每环境单独部署配方。
 
 ## 测试
 

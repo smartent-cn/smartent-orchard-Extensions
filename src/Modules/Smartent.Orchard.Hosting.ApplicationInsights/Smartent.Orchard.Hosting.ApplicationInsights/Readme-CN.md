@@ -10,7 +10,7 @@ This Orchard Core module enables easy integration of Azure Application Insights 
 
 ## 适用场景
 
-Smartent demo 仓库中的 Orchard Core 扩展模块。
+多租户宿主将 Orchard 遥测发往 Azure Application Insights 时使用。
 
 ## 快速开始
 
@@ -40,7 +40,7 @@ Smartent demo 仓库中的 Orchard Core 扩展模块。
 
 ## 使用方式（开发）
 
-通过 DI、Handler、Shape 及 Samples 中的 Recipe 扩展。
+配置 `OrchardCore:Smartent_Orchard_Hosting_ApplicationInsights`（连接字符串见模块 Readme）。
 
 ### 引用
 
@@ -60,8 +60,8 @@ Smartent demo 仓库中的 Orchard Core 扩展模块。
 
 ## 注意事项与常见坑
 
-- 每租户仅启用必要 Feature。
-- 升级 Orchard Core 前先跑 `*.Tests` / `*.Tests.UI`。
+- 密钥为敏感信息，分环境配置。
+- 采样可能掩盖偶发错误，调试时可调高采样。
 
 ## 测试
 

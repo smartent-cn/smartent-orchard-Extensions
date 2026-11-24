@@ -2,7 +2,7 @@
 
 > Parent: [docs/README.md](README.md)
 
-Extend via DI, handlers, shapes, and optional recipes in the Samples project.
+Resource names use `Smartent*` prefix (e.g. `SmartentDropdownScript`); optional `Smartent.Orchard.UIKit.Widgets`.
 
 ### References
 

@@ -2,7 +2,7 @@
 
 > 上级：[docs/Readme-CN.md](Readme-CN.md)
 
-通过 DI、Handler、Shape 及 Samples 中的 Recipe 扩展。
+按需启用子 Feature；Recipe 迁移见项目内 `Extensions/OrchardRecipeMigration` 文档。
 
 ### 引用
 

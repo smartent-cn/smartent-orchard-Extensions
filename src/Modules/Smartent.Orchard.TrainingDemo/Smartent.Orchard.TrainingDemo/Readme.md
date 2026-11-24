@@ -10,7 +10,7 @@ Smartent.Orchard.TrainingDemo
 
 ## When to use
 
-Orchard Core extension module in the Smartent demo monorepo.
+Training exercises and sample controllers for learning Orchard Core (demo only).
 
 ## Quick start
 
@@ -45,7 +45,7 @@ Use Orchard admin and module-specific menus after enabling features.
 
 ## Usage (developers)
 
-Extend via DI, handlers, shapes, and optional recipes in the Samples project.
+Configuration section: `OrchardCore:Smartent_TrainingDemo` only (no Lombiq fallback).
 
 ### References
 
@@ -67,8 +67,7 @@ Extend via DI, handlers, shapes, and optional recipes in the Samples project.
 
 ## Pitfalls & cautions
 
-- Enable only required features per tenant.
-- Test with `*.Tests` / `*.Tests.UI` before upgrading Orchard Core.
+- Not for production sites; disable in live environments.
 
 ## Tests
 

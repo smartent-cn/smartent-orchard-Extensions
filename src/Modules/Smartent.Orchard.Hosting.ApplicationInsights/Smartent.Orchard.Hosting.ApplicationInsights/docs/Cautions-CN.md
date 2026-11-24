@@ -2,5 +2,5 @@
 
 > 上级：[docs/Readme-CN.md](Readme-CN.md)
 
-- 每租户仅启用必要 Feature。
-- 升级 Orchard Core 前先跑 `*.Tests` / `*.Tests.UI`。
+- 密钥为敏感信息，分环境配置。
+- 采样可能掩盖偶发错误，调试时可调高采样。

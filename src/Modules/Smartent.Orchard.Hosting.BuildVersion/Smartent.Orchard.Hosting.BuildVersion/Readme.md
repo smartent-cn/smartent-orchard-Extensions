@@ -10,7 +10,7 @@ Orchard Core module to display the build version (i.e. .NET assembly version or 
 
 ## When to use
 
-Orchard Core extension module in the Smartent demo monorepo.
+Display build/deployment version on pages or layouts for support and staging visibility.
 
 ## Quick start
 
@@ -36,7 +36,7 @@ No dedicated `appsettings` section in this package; configuration is optional or
 
 ## Usage (site owners & admins)
 
-Use Orchard admin and module-specific menus after enabling features.
+Enable feature; widget/shape uses DOM id `smartent-hosting-build-version-display-build-version`.
 
 ## Usage (developers)
 
@@ -60,8 +60,7 @@ Extend via DI, handlers, shapes, and optional recipes in the Samples project.
 
 ## Pitfalls & cautions
 
-- Enable only required features per tenant.
-- Test with `*.Tests` / `*.Tests.UI` before upgrading Orchard Core.
+- Do not expose internal CI metadata to public sites without review.
 
 ## Tests
 

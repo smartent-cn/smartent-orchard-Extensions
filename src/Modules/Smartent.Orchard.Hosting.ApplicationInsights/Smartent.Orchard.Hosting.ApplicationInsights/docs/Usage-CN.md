@@ -2,7 +2,7 @@
 
 > 上级：[docs/Readme-CN.md](Readme-CN.md)
 
-通过 DI、Handler、Shape 及 Samples 中的 Recipe 扩展。
+配置 `OrchardCore:Smartent_Orchard_Hosting_ApplicationInsights`（连接字符串见模块 Readme）。
 
 ### 引用
 

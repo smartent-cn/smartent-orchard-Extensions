@@ -2,5 +2,4 @@
 
 > 上级：[docs/Readme-CN.md](Readme-CN.md)
 
-- 每租户仅启用必要 Feature。
-- 升级 Orchard Core 前先跑 `*.Tests` / `*.Tests.UI`。
+- 编辑器按租户配置；每环境单独部署配方。

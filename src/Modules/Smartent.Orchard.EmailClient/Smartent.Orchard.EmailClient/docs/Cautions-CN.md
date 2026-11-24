@@ -2,5 +2,5 @@
 
 > 上级：[docs/Readme-CN.md](Readme-CN.md)
 
-- 每租户仅启用必要 Feature。
-- 升级 Orchard Core 前先跑 `*.Tests` / `*.Tests.UI`。
+- 凭证放入 User Secrets，勿提交仓库。
+- 公共 IMAP 有频率限制。

@@ -16,7 +16,7 @@ An Orchard Core wrapper around the DataTables (https://datatables.net/) library 
 
 1. 在宿主（如 `Smartent.Demo.Web`）中添加：`<ProjectReference Include="src/Modules/Smartent.Orchard.DataTables/Smartent.Orchard.DataTables/Smartent.Orchard.DataTables.csproj" />`。
 2. 构建：`dotnet build src/Modules/Smartent.Orchard.DataTables/Smartent.Orchard.DataTables/Smartent.Orchard.DataTables.csproj`。
-3. 运行站点，在 **配置 → 功能** 中启用 **`DataTables`** 及上表依赖。
+3. 运行站点，在 **配置 → 功能** 中启用 **`Smartent.Orchard.DataTables`** 及上表依赖。
 4. 需要时从 **工具 → 配方** 执行：`Smartent.Orchard.DataTables.Samples/Recipes/Smartent.Orchard.DataTables.Samples.Content.recipe.json`。
 5. Demo 宿主：`dotnet run --project src/Demo/Smartent.Demo.Web/Smartent.Demo.Web.csproj`。
 
@@ -24,7 +24,7 @@ An Orchard Core wrapper around the DataTables (https://datatables.net/) library 
 
 | Feature Id | 名称 | 依赖 |
 |------------|------|------|
-| `DataTables` | Smartent Orchard Data Tables | OrchardCore.Contents, OrchardCore.ResourceManagement, OrchardCore.Queries |
+| `Smartent.Orchard.DataTables` | Smartent Orchard Data Tables | OrchardCore.Contents, OrchardCore.ResourceManagement, OrchardCore.Queries |
 
 在后台 **配置 → 功能** 中启用（除明确为宿主级模块外，均按**租户**生效）。
 

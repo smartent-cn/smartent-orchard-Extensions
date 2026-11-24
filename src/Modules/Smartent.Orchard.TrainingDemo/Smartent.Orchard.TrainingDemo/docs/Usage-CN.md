@@ -2,7 +2,7 @@
 
 > 上级：[docs/Readme-CN.md](Readme-CN.md)
 
-通过 DI、Handler、Shape 及 Samples 中的 Recipe 扩展。
+配置节：`OrchardCore:Smartent_TrainingDemo`（无遗留节）。
 
 ### 引用
 

@@ -2,5 +2,4 @@
 
 > Parent: [docs/README.md](README.md)
 
-- Enable only required features per tenant.
-- Test with `*.Tests` / `*.Tests.UI` before upgrading Orchard Core.
+- Do not expose internal CI metadata to public sites without review.

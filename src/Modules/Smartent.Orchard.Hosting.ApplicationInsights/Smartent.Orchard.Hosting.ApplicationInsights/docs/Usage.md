@@ -2,7 +2,7 @@
 
 > Parent: [docs/README.md](README.md)
 
-Extend via DI, handlers, shapes, and optional recipes in the Samples project.
+Set `OrchardCore:Smartent_Orchard_Hosting_ApplicationInsights` (connection string / instrumentation key per docs).
 
 ### References
 

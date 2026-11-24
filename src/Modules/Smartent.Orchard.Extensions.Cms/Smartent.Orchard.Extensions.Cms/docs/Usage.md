@@ -2,7 +2,7 @@
 
 > Parent: [docs/README.md](README.md)
 
-Extend via DI, handlers, shapes, and optional recipes in the Samples project.
+Enable selected features only; see `Extensions/OrchardRecipeMigration` docs in-project.
 
 ### References
 

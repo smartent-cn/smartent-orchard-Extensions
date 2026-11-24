@@ -10,7 +10,7 @@ This module contains reusable shapes like text editors, custom-style checkboxes,
 
 ## When to use
 
-Orchard Core extension module in the Smartent demo monorepo.
+Bootstrap-based shapes, admin editors, cards, carousels, and widget pack.
 
 ## Quick start
 
@@ -41,7 +41,7 @@ Use Orchard admin and module-specific menus after enabling features.
 
 ## Usage (developers)
 
-Extend via DI, handlers, shapes, and optional recipes in the Samples project.
+Resource names use `Smartent*` prefix (e.g. `SmartentDropdownScript`); optional `Smartent.Orchard.UIKit.Widgets`.
 
 ### References
 
@@ -61,8 +61,8 @@ Extend via DI, handlers, shapes, and optional recipes in the Samples project.
 
 ## Pitfalls & cautions
 
-- Enable only required features per tenant.
-- Test with `*.Tests` / `*.Tests.UI` before upgrading Orchard Core.
+- Override shapes in theme with correct resource dependencies.
+- Slick carousel requires jQuery and vendor scripts from module.
 
 ## Tests
 

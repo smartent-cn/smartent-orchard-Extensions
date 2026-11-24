@@ -2,7 +2,7 @@
 
 > Parent: [docs/README.md](README.md)
 
-Extend via DI, handlers, shapes, and optional recipes in the Samples project.
+Configuration section: `OrchardCore:Smartent_TrainingDemo` only (no Lombiq fallback).
 
 ### References
 

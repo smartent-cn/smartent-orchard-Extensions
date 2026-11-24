@@ -10,13 +10,13 @@ With the help of this module, you can do advanced email operations such as downl
 
 ## When to use
 
-Orchard Core extension module in the Smartent demo monorepo.
+IMAP/sync email inside Orchard admin for support or editorial workflows.
 
 ## Quick start
 
 1. Add `<ProjectReference Include="src/Modules/Smartent.Orchard.EmailClient/Smartent.Orchard.EmailClient/Smartent.Orchard.EmailClient.csproj" />` to your host (e.g. `Smartent.Demo.Web`).
 2. Build: `dotnet build src/Modules/Smartent.Orchard.EmailClient/Smartent.Orchard.EmailClient/Smartent.Orchard.EmailClient.csproj`.
-3. Run the site, open **Configuration → Features**, enable **`Default`** (and dependencies listed above).
+3. Run the site, open **Configuration → Features**, enable **`Smartent.Orchard.EmailClient`** (and dependencies listed above).
 4. Apply setup recipe if needed: `Smartent.Orchard.EmailClient.Samples/Recipes/Smartent.Orchard.EmailClient.Samples.recipe.json` from **Tools → Recipes**.
 5. For demo host: `dotnet run --project src/Demo/Smartent.Demo.Web/Smartent.Demo.Web.csproj`.
 
@@ -24,7 +24,7 @@ Orchard Core extension module in the Smartent demo monorepo.
 
 | Feature Id | Name | Depends on |
 |------------|------|------------|
-| `Default` | Smartent Orchard Email Client - Base | — |
+| `Smartent.Orchard.EmailClient` | Smartent Orchard Email Client - Base | — |
 | `Imap` | Smartent Orchard Email Client - IMAP | — |
 | `EmailSync` | Smartent Orchard Email Client - Email Sync | — |
 
@@ -38,7 +38,7 @@ No dedicated `appsettings` section in this package; configuration is optional or
 
 ## Usage (site owners & admins)
 
-Use Orchard admin and module-specific menus after enabling features.
+Configure account under module settings after enabling feature; use Samples for demo mailboxes.
 
 ## Usage (developers)
 
@@ -62,8 +62,8 @@ Extend via DI, handlers, shapes, and optional recipes in the Samples project.
 
 ## Pitfalls & cautions
 
-- Enable only required features per tenant.
-- Test with `*.Tests` / `*.Tests.UI` before upgrading Orchard Core.
+- Store credentials in secrets, not `appsettings` committed to git.
+- Rate limits apply on public IMAP providers.
 
 ## Tests
 

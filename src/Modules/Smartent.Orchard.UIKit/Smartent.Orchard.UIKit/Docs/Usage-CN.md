@@ -2,7 +2,7 @@
 
 > 上级：[docs/Readme-CN.md](Readme-CN.md)
 
-通过 DI、Handler、Shape 及 Samples 中的 Recipe 扩展。
+资源名前缀 `Smartent*`；可选子模块 `Smartent.Orchard.UIKit.Widgets`。
 
 ### 引用
 

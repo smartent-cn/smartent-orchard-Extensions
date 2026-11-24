@@ -10,13 +10,13 @@ Orchard Core module for displaying a JSON Editor like on (https://jsoneditoronli
 
 ## 适用场景
 
-Smartent demo 仓库中的 Orchard Core 扩展模块。
+后台编辑 JSON 字段时需要结构化编辑器而非纯文本框。
 
 ## 快速开始
 
 1. 在宿主（如 `Smartent.Demo.Web`）中添加：`<ProjectReference Include="src/Modules/Smartent.Orchard.JsonEditor/Smartent.Orchard.JsonEditor/Smartent.Orchard.JsonEditor.csproj" />`。
 2. 构建：`dotnet build src/Modules/Smartent.Orchard.JsonEditor/Smartent.Orchard.JsonEditor/Smartent.Orchard.JsonEditor.csproj`。
-3. 运行站点，在 **配置 → 功能** 中启用 **`Default`** 及上表依赖。
+3. 运行站点，在 **配置 → 功能** 中启用 **`Smartent.Orchard.JsonEditor`** 及上表依赖。
 4. 需要时从 **工具 → 配方** 执行：`Smartent.Orchard.JsonEditor/Recipes/JsonEditor.Sample.recipe.json`。
 5. Demo 宿主：`dotnet run --project src/Demo/Smartent.Demo.Web/Smartent.Demo.Web.csproj`。
 
@@ -24,7 +24,7 @@ Smartent demo 仓库中的 Orchard Core 扩展模块。
 
 | Feature Id | 名称 | 依赖 |
 |------------|------|------|
-| `Default` | Smartent Orchard JSON Editor | OrchardCore.Contents, OrchardCore.ResourceManagement |
+| `Smartent.Orchard.JsonEditor` | Smartent Orchard JSON Editor | OrchardCore.Contents, OrchardCore.ResourceManagement |
 | `ContentEditor` | Smartent JSON Content Editor | — |
 
 在后台 **配置 → 功能** 中启用（除明确为宿主级模块外，均按**租户**生效）。
@@ -37,7 +37,7 @@ Smartent demo 仓库中的 Orchard Core 扩展模块。
 
 ## 使用方式（站点/运营）
 
-启用功能后通过 Orchard 后台及模块菜单使用。
+通过迁移或 Samples 配方为字段挂载 JSON 编辑器。
 
 ## 使用方式（开发）
 
@@ -61,8 +61,7 @@ Smartent demo 仓库中的 Orchard Core 扩展模块。
 
 ## 注意事项与常见坑
 
-- 每租户仅启用必要 Feature。
-- 升级 Orchard Core 前先跑 `*.Tests` / `*.Tests.UI`。
+- 大 JSON 可能拖慢后台；服务端须做校验。
 
 ## 测试
 

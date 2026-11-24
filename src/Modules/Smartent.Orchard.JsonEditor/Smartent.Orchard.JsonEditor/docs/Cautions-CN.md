@@ -2,5 +2,4 @@
 
 > 上级：[docs/Readme-CN.md](Readme-CN.md)
 
-- 每租户仅启用必要 Feature。
-- 升级 Orchard Core 前先跑 `*.Tests` / `*.Tests.UI`。
+- 大 JSON 可能拖慢后台；服务端须做校验。

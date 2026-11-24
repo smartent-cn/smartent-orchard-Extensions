@@ -10,7 +10,7 @@ Orchard Core module containing some handy extensions (e.g. useful content types 
 
 ## 适用场景
 
-Smartent demo 仓库中的 Orchard Core 扩展模块。
+需要额外 CMS 小组件、配方及 Recipe 迁移辅助时使用。
 
 ## 快速开始
 
@@ -58,7 +58,7 @@ Smartent demo 仓库中的 Orchard Core 扩展模块。
 
 ## 使用方式（开发）
 
-通过 DI、Handler、Shape 及 Samples 中的 Recipe 扩展。
+按需启用子 Feature；Recipe 迁移见项目内 `Extensions/OrchardRecipeMigration` 文档。
 
 ### 引用
 
@@ -81,8 +81,7 @@ Smartent demo 仓库中的 Orchard Core 扩展模块。
 
 ## 注意事项与常见坑
 
-- 每租户仅启用必要 Feature。
-- 升级 Orchard Core 前先跑 `*.Tests` / `*.Tests.UI`。
+- 功能面大，建议逐项启用，避免无用依赖。
 
 ## 测试
 

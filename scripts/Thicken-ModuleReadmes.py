@@ -20,6 +20,26 @@ CONFIG_CONST = re.compile(
     r'public\s+(?:const|static\s+readonly)\s+string\s+(\w+)\s*=\s*"([^"]+)"'
 )
 
+MODULE_FAMILIES_ORDER: list[str] = [
+    "Smartent.Orchard.AuditTrail",
+    "Smartent.Orchard.ChartJs",
+    "Smartent.Orchard.ContentEditors",
+    "Smartent.Orchard.DataTables",
+    "Smartent.Orchard.EmailClient",
+    "Smartent.Orchard.Extensions.Cms",
+    "Smartent.Orchard.Hosting.ApplicationInsights",
+    "Smartent.Orchard.Hosting.BuildVersion",
+    "Smartent.Orchard.Hosting.Tenants",
+    "Smartent.Orchard.JsonEditor",
+    "Smartent.Orchard.LoginAsAnybody",
+    "Smartent.Orchard.Marketing",
+    "Smartent.Orchard.Privacy",
+    "Smartent.Orchard.TrainingDemo",
+    "Smartent.Orchard.UIKit",
+    "Smartent.Orchard.VueJs",
+    "Smartent.Orchard.Walkthroughs",
+]
+
 # Optional human-authored overlays (EN / CN tuples per section key).
 PROFILES: dict[str, dict[str, tuple[str, str]]] = {
     "Smartent.Orchard.AuditTrail": {
@@ -150,6 +170,138 @@ PROFILES: dict[str, dict[str, tuple[str, str]]] = {
             "- 须记录并审计所有模拟登录行为。",
         ),
     },
+    "Smartent.Orchard.ContentEditors": {
+        "when": (
+            "Custom admin content editors (dropdowns, links, macros) beyond stock Orchard editors.",
+            "需要自定义后台内容编辑器（下拉、链接、宏等）时使用。",
+        ),
+        "admin": (
+            "Attach editors to content parts via content definition; see Samples recipes.",
+            "在内容定义中为 Part 挂载编辑器；参考 Samples 配方。",
+        ),
+        "cautions": (
+            "- Editors are tenant-specific; deploy recipes per environment.",
+            "- 编辑器按租户配置；每环境单独部署配方。",
+        ),
+    },
+    "Smartent.Orchard.EmailClient": {
+        "when": (
+            "IMAP/sync email inside Orchard admin for support or editorial workflows.",
+            "在 Orchard 后台集成 IMAP/同步邮件时使用。",
+        ),
+        "admin": (
+            "Configure account under module settings after enabling feature; use Samples for demo mailboxes.",
+            "启用功能后在模块设置中配置邮箱；Samples 提供演示。",
+        ),
+        "cautions": (
+            "- Store credentials in secrets, not `appsettings` committed to git.\n"
+            "- Rate limits apply on public IMAP providers.",
+            "- 凭证放入 User Secrets，勿提交仓库。\n"
+            "- 公共 IMAP 有频率限制。",
+        ),
+    },
+    "Smartent.Orchard.Extensions.Cms": {
+        "when": (
+            "Extra CMS widgets, recipes, and Orchard recipe migration helpers (Helpful Extensions successor).",
+            "需要额外 CMS 小组件、配方及 Recipe 迁移辅助时使用。",
+        ),
+        "dev": (
+            "Enable selected features only; see `Extensions/OrchardRecipeMigration` docs in-project.",
+            "按需启用子 Feature；Recipe 迁移见项目内 `Extensions/OrchardRecipeMigration` 文档。",
+        ),
+        "cautions": (
+            "- Large surface area—enable features incrementally to avoid unused dependencies.",
+            "- 功能面大，建议逐项启用，避免无用依赖。",
+        ),
+    },
+    "Smartent.Orchard.Hosting.ApplicationInsights": {
+        "when": (
+            "Send Orchard telemetry to Azure Application Insights on multi-tenant hosts.",
+            "多租户宿主将 Orchard 遥测发往 Azure Application Insights 时使用。",
+        ),
+        "dev": (
+            "Set `OrchardCore:Smartent_Orchard_Hosting_ApplicationInsights` (connection string / instrumentation key per docs).",
+            "配置 `OrchardCore:Smartent_Orchard_Hosting_ApplicationInsights`（连接字符串见模块 Readme）。",
+        ),
+        "cautions": (
+            "- Keys are secrets; use environment-specific configuration.\n"
+            "- Sampling may hide rare errors—increase when debugging.",
+            "- 密钥为敏感信息，分环境配置。\n"
+            "- 采样可能掩盖偶发错误，调试时可调高采样。",
+        ),
+    },
+    "Smartent.Orchard.Hosting.BuildVersion": {
+        "when": (
+            "Display build/deployment version on pages or layouts for support and staging visibility.",
+            "在页面或布局展示构建/部署版本，便于支持与预发识别。",
+        ),
+        "admin": (
+            "Enable feature; widget/shape uses DOM id `smartent-hosting-build-version-display-build-version`.",
+            "启用功能；部件 DOM id 为 `smartent-hosting-build-version-display-build-version`。",
+        ),
+        "cautions": (
+            "- Do not expose internal CI metadata to public sites without review.",
+            "- 公开站点展示版本信息前请评估是否泄露内部信息。",
+        ),
+    },
+    "Smartent.Orchard.JsonEditor": {
+        "when": (
+            "Edit JSON fields in admin with a structured editor instead of raw textarea.",
+            "后台编辑 JSON 字段时需要结构化编辑器而非纯文本框。",
+        ),
+        "admin": (
+            "Add JSON editor to content fields via migration or recipe in Samples.",
+            "通过迁移或 Samples 配方为字段挂载 JSON 编辑器。",
+        ),
+        "cautions": (
+            "- Large JSON payloads may slow admin UI; validate schema server-side.",
+            "- 大 JSON 可能拖慢后台；服务端须做校验。",
+        ),
+    },
+    "Smartent.Orchard.TrainingDemo": {
+        "when": (
+            "Training exercises and sample controllers for learning Orchard Core (demo only).",
+            "Orchard Core 培训练习与示例控制器（仅演示）。",
+        ),
+        "dev": (
+            "Configuration section: `OrchardCore:Smartent_TrainingDemo` only (no Lombiq fallback).",
+            "配置节：`OrchardCore:Smartent_TrainingDemo`（无遗留节）。",
+        ),
+        "cautions": (
+            "- Not for production sites; disable in live environments.",
+            "- 不可用于生产；正式环境请禁用。",
+        ),
+    },
+    "Smartent.Orchard.UIKit": {
+        "when": (
+            "Bootstrap-based shapes, admin editors, cards, carousels, and widget pack.",
+            "需要 Bootstrap Shape、后台编辑器、卡片、轮播及 Widgets 子模块时使用。",
+        ),
+        "dev": (
+            "Resource names use `Smartent*` prefix (e.g. `SmartentDropdownScript`); optional `Smartent.Orchard.UIKit.Widgets`.",
+            "资源名前缀 `Smartent*`；可选子模块 `Smartent.Orchard.UIKit.Widgets`。",
+        ),
+        "cautions": (
+            "- Override shapes in theme with correct resource dependencies.\n"
+            "- Slick carousel requires jQuery and vendor scripts from module.",
+            "- 主题覆盖 Shape 时保持资源依赖完整。\n"
+            "- Slick 轮播依赖 jQuery 与模块自带脚本。",
+        ),
+    },
+    "Smartent.Orchard.Walkthroughs": {
+        "when": (
+            "Guided on-site walkthroughs (Shepherd.js-style) for onboarding editors.",
+            "站点内向导式新手引导（类 Shepherd）时使用。",
+        ),
+        "admin": (
+            "Import `Smartent.Orchard.Walkthroughs.Setup.recipe.json` then configure walks in admin.",
+            "导入 `Smartent.Orchard.Walkthroughs.Setup.recipe.json` 后在后台配置引导。",
+        ),
+        "cautions": (
+            "- Walkthrough scripts run in admin/front UI; test after theme changes.",
+            "- 引导脚本运行于前后台，换主题后须回归测试。",
+        ),
+    },
 }
 
 
@@ -178,6 +330,29 @@ def parse_features(manifest_text: str) -> list[dict[str, str]]:
             }
         )
     return features
+
+
+def resolve_feature_ids(project_dir: Path, features: list[dict[str, str]]) -> list[dict[str, str]]:
+    fid_paths = list(project_dir.glob("Constants/FeatureIds.cs")) + list(
+        project_dir.rglob("Constants/FeatureIds.cs")
+    )
+    if not fid_paths:
+        return features
+    text = read(fid_paths[0])
+    literals = dict(re.findall(r'public\s+const\s+string\s+(\w+)\s*=\s*"([^"]+)"', text))
+    aliases = dict(re.findall(r"public\s+const\s+string\s+(\w+)\s*=\s*(\w+)\s*;", text))
+    const_map = {**literals}
+    for _ in range(5):
+        for name, target in aliases.items():
+            if target in const_map and name not in const_map:
+                const_map[name] = const_map[target]
+    resolved: list[dict[str, str]] = []
+    for f in features:
+        fid = f["Id"]
+        if fid in const_map:
+            f = {**f, "Id": const_map[fid]}
+        resolved.append(f)
+    return resolved
 
 
 def feature_table(features: list[dict[str, str]]) -> tuple[str, str]:
@@ -302,7 +477,7 @@ def thicken_module(module_root: Path) -> bool:
             if m.parent.name == package_id or m.parent.name.endswith(".Samples"):
                 manifest = read(m)
                 break
-    features = parse_features(manifest)
+    features = resolve_feature_ids(project_dir, parse_features(manifest))
     ft_en, ft_cn = feature_table(features)
     keys = find_config_keys(project_dir)
     if module_root.name == "Smartent.Orchard.Hosting.Tenants":
@@ -438,14 +613,42 @@ def thicken_hosting_tenant_packages() -> int:
     return count
 
 
+def write_family_docs_redirect(family: Path, main: Path) -> None:
+    """When csproj lives in a subfolder, keep family-level Docs-Index pointing at it."""
+    if family == main.parent or not main.is_file():
+        return
+    rel = main.parent.relative_to(family).as_posix()
+    en = (
+        f"# Documentation index — {family.name}\n\n"
+        f"> Main project docs: [{rel}/Docs-Index.md]({rel}/Docs-Index.md)\n\n"
+        f"| | |\n|---|---|\n"
+        f"| Overview | [Readme.md](Readme.md) · [Readme-CN.md](Readme-CN.md) |\n"
+        f"| Topics | [{rel}/docs/README.md]({rel}/docs/README.md) |\n"
+    )
+    cn = (
+        f"# 文档索引 — {family.name}\n\n"
+        f"> 主工程文档：[{rel}/Docs-Index-CN.md]({rel}/Docs-Index-CN.md)\n\n"
+        f"| | |\n|---|---|\n"
+        f"| 总览 | [Readme.md](Readme.md) · [Readme-CN.md](Readme-CN.md) |\n"
+        f"| 分主题 | [{rel}/docs/Readme-CN.md]({rel}/docs/Readme-CN.md) |\n"
+    )
+    (family / "Docs-Index.md").write_text(en, encoding="utf-8", newline="\n")
+    (family / "Docs-Index-CN.md").write_text(cn, encoding="utf-8", newline="\n")
+
+
 def main() -> None:
-    roots = sorted(p for p in MODULES.iterdir() if p.is_dir())
     done = 0
-    for root in roots:
+    for name in MODULE_FAMILIES_ORDER:
+        root = MODULES / name
+        if not root.is_dir():
+            continue
+        main = main_csproj(root)
         if thicken_module(root):
             done += 1
+        if main:
+            write_family_docs_redirect(root, main)
     tenants = thicken_hosting_tenant_packages()
-    print(f"Thickened {done} module families and {tenants} Hosting.Tenants packages.")
+    print(f"Thickened {done} module families (ordered) and {tenants} Hosting.Tenants packages.")
 
 
 if __name__ == "__main__":

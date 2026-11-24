@@ -16,7 +16,7 @@ Development/staging only: impersonate users for support or QA.
 
 1. Add `<ProjectReference Include="src/Modules/Smartent.Orchard.LoginAsAnybody/Smartent.Orchard.LoginAsAnybody/Smartent.Orchard.LoginAsAnybody.csproj" />` to your host (e.g. `Smartent.Demo.Web`).
 2. Build: `dotnet build src/Modules/Smartent.Orchard.LoginAsAnybody/Smartent.Orchard.LoginAsAnybody/Smartent.Orchard.LoginAsAnybody.csproj`.
-3. Run the site, open **Configuration → Features**, enable **`LoginAsAnybody`** (and dependencies listed above).
+3. Run the site, open **Configuration → Features**, enable **`Smartent.Orchard.LoginAsAnybody`** (and dependencies listed above).
 4. Apply setup recipe if needed: `see Samples folder` from **Tools → Recipes**.
 5. For demo host: `dotnet run --project src/Demo/Smartent.Demo.Web/Smartent.Demo.Web.csproj`.
 
@@ -24,7 +24,7 @@ Development/staging only: impersonate users for support or QA.
 
 | Feature Id | Name | Depends on |
 |------------|------|------------|
-| `LoginAsAnybody` | Smartent Orchard Login as Anybody | OrchardCore.Users |
+| `Smartent.Orchard.LoginAsAnybody` | Smartent Orchard Login as Anybody | OrchardCore.Users |
 
 Enable in **Configuration → Features** (per tenant unless the module is host-only).
 

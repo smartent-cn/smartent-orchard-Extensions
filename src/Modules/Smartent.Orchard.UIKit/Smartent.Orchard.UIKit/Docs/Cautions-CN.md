@@ -2,5 +2,5 @@
 
 > 上级：[docs/Readme-CN.md](Readme-CN.md)
 
-- 每租户仅启用必要 Feature。
-- 升级 Orchard Core 前先跑 `*.Tests` / `*.Tests.UI`。
+- 主题覆盖 Shape 时保持资源依赖完整。
+- Slick 轮播依赖 jQuery 与模块自带脚本。

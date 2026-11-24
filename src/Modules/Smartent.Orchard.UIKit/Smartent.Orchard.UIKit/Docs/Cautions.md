@@ -2,5 +2,5 @@
 
 > Parent: [docs/README.md](README.md)
 
-- Enable only required features per tenant.
-- Test with `*.Tests` / `*.Tests.UI` before upgrading Orchard Core.
+- Override shapes in theme with correct resource dependencies.
+- Slick carousel requires jQuery and vendor scripts from module.

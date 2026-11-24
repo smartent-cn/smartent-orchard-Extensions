@@ -10,7 +10,7 @@ Orchard Core module to display the build version (i.e. .NET assembly version or 
 
 ## 适用场景
 
-Smartent demo 仓库中的 Orchard Core 扩展模块。
+在页面或布局展示构建/部署版本，便于支持与预发识别。
 
 ## 快速开始
 
@@ -36,7 +36,7 @@ Smartent demo 仓库中的 Orchard Core 扩展模块。
 
 ## 使用方式（站点/运营）
 
-启用功能后通过 Orchard 后台及模块菜单使用。
+启用功能；部件 DOM id 为 `smartent-hosting-build-version-display-build-version`。
 
 ## 使用方式（开发）
 
@@ -60,8 +60,7 @@ Smartent demo 仓库中的 Orchard Core 扩展模块。
 
 ## 注意事项与常见坑
 
-- 每租户仅启用必要 Feature。
-- 升级 Orchard Core 前先跑 `*.Tests` / `*.Tests.UI`。
+- 公开站点展示版本信息前请评估是否泄露内部信息。
 
 ## 测试
 

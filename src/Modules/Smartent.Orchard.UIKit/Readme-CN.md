@@ -10,7 +10,7 @@ This module contains reusable shapes like text editors, custom-style checkboxes,
 
 ## 适用场景
 
-Smartent demo 仓库中的 Orchard Core 扩展模块。
+需要 Bootstrap Shape、后台编辑器、卡片、轮播及 Widgets 子模块时使用。
 
 ## 快速开始
 
@@ -41,7 +41,7 @@ Smartent demo 仓库中的 Orchard Core 扩展模块。
 
 ## 使用方式（开发）
 
-通过 DI、Handler、Shape 及 Samples 中的 Recipe 扩展。
+资源名前缀 `Smartent*`；可选子模块 `Smartent.Orchard.UIKit.Widgets`。
 
 ### 引用
 
@@ -61,8 +61,8 @@ Smartent demo 仓库中的 Orchard Core 扩展模块。
 
 ## 注意事项与常见坑
 
-- 每租户仅启用必要 Feature。
-- 升级 Orchard Core 前先跑 `*.Tests` / `*.Tests.UI`。
+- 主题覆盖 Shape 时保持资源依赖完整。
+- Slick 轮播依赖 jQuery 与模块自带脚本。
 
 ## 测试
 

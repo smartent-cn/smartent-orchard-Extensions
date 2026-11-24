@@ -10,7 +10,7 @@ Smartent.Orchard.TrainingDemo
 
 ## 适用场景
 
-Smartent demo 仓库中的 Orchard Core 扩展模块。
+Orchard Core 培训练习与示例控制器（仅演示）。
 
 ## 快速开始
 
@@ -45,7 +45,7 @@ Smartent demo 仓库中的 Orchard Core 扩展模块。
 
 ## 使用方式（开发）
 
-通过 DI、Handler、Shape 及 Samples 中的 Recipe 扩展。
+配置节：`OrchardCore:Smartent_TrainingDemo`（无遗留节）。
 
 ### 引用
 
@@ -67,8 +67,7 @@ Smartent demo 仓库中的 Orchard Core 扩展模块。
 
 ## 注意事项与常见坑
 
-- 每租户仅启用必要 Feature。
-- 升级 Orchard Core 前先跑 `*.Tests` / `*.Tests.UI`。
+- 不可用于生产；正式环境请禁用。
 
 ## 测试
 

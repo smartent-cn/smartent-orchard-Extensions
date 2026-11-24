@@ -10,7 +10,7 @@ Orchard Core module containing some handy extensions (e.g. useful content types 
 
 ## When to use
 
-Orchard Core extension module in the Smartent demo monorepo.
+Extra CMS widgets, recipes, and Orchard recipe migration helpers (Helpful Extensions successor).
 
 ## Quick start
 
@@ -58,7 +58,7 @@ Use Orchard admin and module-specific menus after enabling features.
 
 ## Usage (developers)
 
-Extend via DI, handlers, shapes, and optional recipes in the Samples project.
+Enable selected features only; see `Extensions/OrchardRecipeMigration` docs in-project.
 
 ### References
 
@@ -81,8 +81,7 @@ Extend via DI, handlers, shapes, and optional recipes in the Samples project.
 
 ## Pitfalls & cautions
 
-- Enable only required features per tenant.
-- Test with `*.Tests` / `*.Tests.UI` before upgrading Orchard Core.
+- Large surface area—enable features incrementally to avoid unused dependencies.
 
 ## Tests
 

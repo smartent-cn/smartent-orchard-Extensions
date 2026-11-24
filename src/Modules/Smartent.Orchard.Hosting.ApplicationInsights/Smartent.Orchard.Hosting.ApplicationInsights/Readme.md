@@ -10,7 +10,7 @@ This Orchard Core module enables easy integration of Azure Application Insights 
 
 ## When to use
 
-Orchard Core extension module in the Smartent demo monorepo.
+Send Orchard telemetry to Azure Application Insights on multi-tenant hosts.
 
 ## Quick start
 
@@ -40,7 +40,7 @@ Use Orchard admin and module-specific menus after enabling features.
 
 ## Usage (developers)
 
-Extend via DI, handlers, shapes, and optional recipes in the Samples project.
+Set `OrchardCore:Smartent_Orchard_Hosting_ApplicationInsights` (connection string / instrumentation key per docs).
 
 ### References
 
@@ -60,8 +60,8 @@ Extend via DI, handlers, shapes, and optional recipes in the Samples project.
 
 ## Pitfalls & cautions
 
-- Enable only required features per tenant.
-- Test with `*.Tests` / `*.Tests.UI` before upgrading Orchard Core.
+- Keys are secrets; use environment-specific configuration.
+- Sampling may hide rare errors—increase when debugging.
 
 ## Tests
 

@@ -16,7 +16,7 @@ Use when you need version-style access to content history via Audit Trail events
 
 1. Add `<ProjectReference Include="src/Modules/Smartent.Orchard.AuditTrail/Smartent.Orchard.AuditTrail.csproj" />` to your host (e.g. `Smartent.Demo.Web`).
 2. Build: `dotnet build src/Modules/Smartent.Orchard.AuditTrail/Smartent.Orchard.AuditTrail.csproj`.
-3. Run the site, open **Configuration → Features**, enable **`Default`** (and dependencies listed above).
+3. Run the site, open **Configuration → Features**, enable **`Smartent.Orchard.AuditTrail`** (and dependencies listed above).
 4. Apply setup recipe if needed: `see Samples folder` from **Tools → Recipes**.
 5. For demo host: `dotnet run --project src/Demo/Smartent.Demo.Web/Smartent.Demo.Web.csproj`.
 
@@ -24,7 +24,7 @@ Use when you need version-style access to content history via Audit Trail events
 
 | Feature Id | Name | Depends on |
 |------------|------|------------|
-| `Default` | Smartent Orchard Audit Trail Extensions | OrchardCore.Contents, OrchardCore.AuditTrail |
+| `Smartent.Orchard.AuditTrail` | Smartent Orchard Audit Trail Extensions | OrchardCore.Contents, OrchardCore.AuditTrail |
 
 Enable in **Configuration → Features** (per tenant unless the module is host-only).
 

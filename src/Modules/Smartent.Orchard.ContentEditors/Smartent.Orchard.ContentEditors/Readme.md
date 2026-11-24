@@ -10,7 +10,7 @@ Module for managing advanced content editing processes based on editor groups an
 
 ## When to use
 
-Orchard Core extension module in the Smartent demo monorepo.
+Custom admin content editors (dropdowns, links, macros) beyond stock Orchard editors.
 
 ## Quick start
 
@@ -36,7 +36,7 @@ No dedicated `appsettings` section in this package; configuration is optional or
 
 ## Usage (site owners & admins)
 
-Use Orchard admin and module-specific menus after enabling features.
+Attach editors to content parts via content definition; see Samples recipes.
 
 ## Usage (developers)
 
@@ -60,8 +60,7 @@ Extend via DI, handlers, shapes, and optional recipes in the Samples project.
 
 ## Pitfalls & cautions
 
-- Enable only required features per tenant.
-- Test with `*.Tests` / `*.Tests.UI` before upgrading Orchard Core.
+- Editors are tenant-specific; deploy recipes per environment.
 
 ## Tests
 

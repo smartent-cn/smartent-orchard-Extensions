@@ -4,6 +4,6 @@
 
 1. Add `<ProjectReference Include="src/Modules/Smartent.Orchard.JsonEditor/Smartent.Orchard.JsonEditor/Smartent.Orchard.JsonEditor.csproj" />` to your host (e.g. `Smartent.Demo.Web`).
 2. Build: `dotnet build src/Modules/Smartent.Orchard.JsonEditor/Smartent.Orchard.JsonEditor/Smartent.Orchard.JsonEditor.csproj`.
-3. Run the site, open **Configuration → Features**, enable **`Default`** (and dependencies listed above).
+3. Run the site, open **Configuration → Features**, enable **`Smartent.Orchard.JsonEditor`** (and dependencies listed above).
 4. Apply setup recipe if needed: `Smartent.Orchard.JsonEditor/Recipes/JsonEditor.Sample.recipe.json` from **Tools → Recipes**.
 5. For demo host: `dotnet run --project src/Demo/Smartent.Demo.Web/Smartent.Demo.Web.csproj`.

@@ -2,5 +2,5 @@
 
 > Parent: [docs/README.md](README.md)
 
-- Enable only required features per tenant.
-- Test with `*.Tests` / `*.Tests.UI` before upgrading Orchard Core.
+- Keys are secrets; use environment-specific configuration.
+- Sampling may hide rare errors—increase when debugging.

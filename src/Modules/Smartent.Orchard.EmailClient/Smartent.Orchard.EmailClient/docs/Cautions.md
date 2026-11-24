@@ -2,5 +2,5 @@
 
 > Parent: [docs/README.md](README.md)
 
-- Enable only required features per tenant.
-- Test with `*.Tests` / `*.Tests.UI` before upgrading Orchard Core.
+- Store credentials in secrets, not `appsettings` committed to git.
+- Rate limits apply on public IMAP providers.

@@ -10,13 +10,13 @@ Orchard Core module to teach you the fundamentals of using the CMS features with
 
 ## When to use
 
-Orchard Core extension module in the Smartent demo monorepo.
+Guided on-site walkthroughs (Shepherd.js-style) for onboarding editors.
 
 ## Quick start
 
 1. Add `<ProjectReference Include="src/Modules/Smartent.Orchard.Walkthroughs/Smartent.Orchard.Walkthroughs/Smartent.Orchard.Walkthroughs.csproj" />` to your host (e.g. `Smartent.Demo.Web`).
 2. Build: `dotnet build src/Modules/Smartent.Orchard.Walkthroughs/Smartent.Orchard.Walkthroughs/Smartent.Orchard.Walkthroughs.csproj`.
-3. Run the site, open **Configuration → Features**, enable **`Default`** (and dependencies listed above).
+3. Run the site, open **Configuration → Features**, enable **`Smartent.Orchard.Walkthroughs`** (and dependencies listed above).
 4. Apply setup recipe if needed: `Smartent.Orchard.Walkthroughs/Recipes/Smartent.Orchard.Walkthroughs.Setup.recipe.json` from **Tools → Recipes**.
 5. For demo host: `dotnet run --project src/Demo/Smartent.Demo.Web/Smartent.Demo.Web.csproj`.
 
@@ -24,7 +24,7 @@ Orchard Core extension module in the Smartent demo monorepo.
 
 | Feature Id | Name | Depends on |
 |------------|------|------------|
-| `Default` | Smartent Orchard Walkthroughs | OrchardCore.Contents, OrchardCore.ResourceManagement |
+| `Smartent.Orchard.Walkthroughs` | Smartent Orchard Walkthroughs | OrchardCore.Contents, OrchardCore.ResourceManagement |
 
 Enable in **Configuration → Features** (per tenant unless the module is host-only).
 
@@ -36,7 +36,7 @@ No dedicated `appsettings` section in this package; configuration is optional or
 
 ## Usage (site owners & admins)
 
-Use Orchard admin and module-specific menus after enabling features.
+Import `Smartent.Orchard.Walkthroughs.Setup.recipe.json` then configure walks in admin.
 
 ## Usage (developers)
 
@@ -60,8 +60,7 @@ Extend via DI, handlers, shapes, and optional recipes in the Samples project.
 
 ## Pitfalls & cautions
 
-- Enable only required features per tenant.
-- Test with `*.Tests` / `*.Tests.UI` before upgrading Orchard Core.
+- Walkthrough scripts run in admin/front UI; test after theme changes.
 
 ## Tests
 
