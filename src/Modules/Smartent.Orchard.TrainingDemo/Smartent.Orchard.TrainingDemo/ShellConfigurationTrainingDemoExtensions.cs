@@ -7,10 +7,8 @@ namespace Smartent.Orchard.TrainingDemo;
 public static class ShellConfigurationTrainingDemoExtensions
 {
     /// <summary>
-    /// 返回 <c>Smartent_TrainingDemo</c> 根节；若不存在则回退 <c>Lombiq_TrainingDemo</c>。
+    /// 返回 <c>Smartent_TrainingDemo</c> 根配置节。
     /// </summary>
     public static IConfigurationSection GetTrainingDemoSection(this IShellConfiguration configuration) =>
-        configuration.GetSection(TrainingDemoConfigurationKeys.Section).Exists()
-            ? configuration.GetSection(TrainingDemoConfigurationKeys.Section)
-            : configuration.GetSection(TrainingDemoConfigurationKeys.LegacySection);
+        configuration.GetSection(TrainingDemoConfigurationKeys.Section);
 }

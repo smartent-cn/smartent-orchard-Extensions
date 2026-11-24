@@ -12,7 +12,7 @@
     var originalRenderMode = ViewContext.CheckBoxHiddenInputRenderMode;
     ViewContext.CheckBoxHiddenInputRenderMode = CheckBoxHiddenInputRenderMode.None;
     
-    var labelShape = await Factory.CreateAsync("Lombiq_Privacy_ConsentCheckbox_Text");
+    var labelShape = await Factory.CreateAsync("Smartent_Orchard_Privacy_ConsentCheckbox_Text");
     var labelHtml = (await Orchard.DisplayHelper.ShapeExecuteAsync(labelShape)).Html();
 }
 

@@ -14,7 +14,7 @@
         : viewModel.ButtonContainerId;
 }
 
-<style asp-name="@ResourceNames.LombiqUiKitEditorStyle"></style>
+<style asp-name="@ResourceNames.SmartentUiKitEditorStyle"></style>
 
 <div id="@UiKitEditorViewModel.WithUniqueFallback(viewModel.DropdownContainerId, DropdownBlockName)"
      class="@UiKitEditorBlockName @DropdownBlockName @viewModel.BlockClassName"
@@ -58,4 +58,4 @@
     @viewModel.GenerateHintAfter()
 </div>
 
-<script asp-name="@ResourceNames.LombiqDropdownScript" at="Foot"></script>
+<script asp-name="@ResourceNames.SmartentDropdownScript" at="Foot"></script>

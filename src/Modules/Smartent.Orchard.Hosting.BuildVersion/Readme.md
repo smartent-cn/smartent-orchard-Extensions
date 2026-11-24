@@ -1,4 +1,6 @@
 # Smartent Orchard Hosting - Build Version Display for Orchard Core
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
+
 
 [![Smartent.Orchard.Hosting.BuildVersion NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.Hosting.BuildVersion?label=Smartent.Orchard.Hosting.BuildVersion)](https://www.nuget.org/packages/Smartent.Orchard.Hosting.BuildVersion/) [![Smartent.Orchard.Hosting.BuildVersion.Tests.UI NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.Hosting.BuildVersion.Tests.UI?label=Smartent.Orchard.Hosting.BuildVersion.Tests.UI)](https://www.nuget.org/packages/Smartent.Orchard.Hosting.BuildVersion.Tests.UI/)
 

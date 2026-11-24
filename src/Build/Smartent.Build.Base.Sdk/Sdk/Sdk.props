@@ -2,7 +2,6 @@
   <PropertyGroup>
     <FromNuGet>true</FromNuGet>
     <SmartentMSBuildLibManTargetsPath>$(MSBuildThisFileDirectory)../../Smartent.Build.LibMan.Targets</SmartentMSBuildLibManTargetsPath>
-    <LombiqMSBuildLibManTargetsPath Condition="'$(LombiqMSBuildLibManTargetsPath)' == ''">$(SmartentMSBuildLibManTargetsPath)</LombiqMSBuildLibManTargetsPath>
   </PropertyGroup>
   
   <Import Project="$(MSBuildThisFileDirectory)Core.props" />

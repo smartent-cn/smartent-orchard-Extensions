@@ -19,7 +19,7 @@ public sealed class Startup : StartupBase
     {
         services.BindAndConfigureSection<UpdateEnabledFeaturesMaintenanceOptions>(
             _shellConfiguration,
-            "Lombiq_Hosting_Tenants_Maintenance:UpdateEnabledFeatures");
+            "Smartent_Orchard_Hosting_Tenants_Maintenance:UpdateEnabledFeatures");
 
         services.AddScoped<IMaintenanceProvider, UpdateEnabledFeaturesMaintenanceProvider>();
     }

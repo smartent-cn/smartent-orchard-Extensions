@@ -5,7 +5,7 @@
  */
 
 function getProjectDirectory() {
-    return process.env.npm_config_local_prefix ?? process.env.LOMBIQ_NODEJS_EXTENSIONS_PROJECT_DIRECTORY;
+    return process.env.npm_config_local_prefix ?? process.env.SMARTENT_NODEJS_EXTENSIONS_PROJECT_DIRECTORY;
 }
 
 module.exports = getProjectDirectory;

@@ -1,4 +1,6 @@
 # Smartent MSBuild SDK - Unit Testing
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
+
 
 This MSBuild SDK can be used for unit testing with the [Smartent.Test.Unit](https://gitee.com/smartent/smartent-orchard-Extensions) library. See [Using MSBuild SDKs](../Docs/UsingMSBuildSdks.md) for information on how to use it.
 

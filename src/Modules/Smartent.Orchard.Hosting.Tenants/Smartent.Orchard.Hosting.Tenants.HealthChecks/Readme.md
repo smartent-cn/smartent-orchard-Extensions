@@ -1,4 +1,6 @@
 # Smartent Orchard Hosting - Tenants Health Checks for Orchard Core
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
+
 
 [![Smartent.Orchard.Hosting.Tenants.Smartent.Orchard.Hosting.Tenants.HealthChecks NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.Hosting.Tenants.Smartent.Orchard.Hosting.Tenants.HealthChecks?label=Smartent.Orchard.Hosting.Tenants.Smartent.Orchard.Hosting.Tenants.HealthChecks)](https://www.nuget.org/packages/Smartent.Orchard.Hosting.Tenants.Smartent.Orchard.Hosting.Tenants.HealthChecks/)
 
@@ -29,7 +31,7 @@ Then in the _appsettings.json_ file:
 ```json
 {
   "OrchardCore": {
-    "Lombiq_Hosting_Tenants_HealthChecks": {
+    "Smartent_Orchard_Hosting_Tenants_HealthChecks": {
       "IsEnabled": true
     }
   }

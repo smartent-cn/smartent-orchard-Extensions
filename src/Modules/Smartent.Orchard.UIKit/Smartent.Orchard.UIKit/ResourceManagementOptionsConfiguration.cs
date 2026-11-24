@@ -13,11 +13,11 @@ public class ResourceManagementOptionsConfiguration : ResourceManagementOptionsC
         context.DefineVendorStyle(Slick, ("slick/slick.min.css", "slick/slick.css"));
         context.DefineVendorStyle(SlickTheme, ("slick/slick-theme.min.css", "slick/slick-theme.css"), Slick);
 
-        context.DefineScript(LombiqDropdownScript, "dropdown-editor.js");
-        context.DefineScript(LombiqTextBoxScript, "textbox-editor.js");
-        context.DefineScript(LombiqSlickCarousel, "slick-carousel.js", Slick);
+        context.DefineScript(SmartentDropdownScript, "dropdown-editor.js");
+        context.DefineScript(SmartentTextBoxScript, "textbox-editor.js");
+        context.DefineScript(SmartentSlickCarousel, "slick-carousel.js", Slick);
 
-        context.DefineStyle(LombiqUiKitEditorStyle, "ui-kit-editor.css");
-        context.DefineStyle(LombiqShowcaseStyle, "showcase.css");
+        context.DefineStyle(SmartentUiKitEditorStyle, "ui-kit-editor.css");
+        context.DefineStyle(SmartentShowcaseStyle, "showcase.css");
     }
 }

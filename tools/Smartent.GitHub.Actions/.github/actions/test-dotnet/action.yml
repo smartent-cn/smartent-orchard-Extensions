@@ -99,7 +99,7 @@ runs:
         Initialize-ArtifactNameSuffix '${{ inputs.build-directory }}'
 
         Set-XUnitMaxParallelThreads -MaxParallelThreads ${{ inputs.xunit-max-parallel-threads }}
-        Set-GitHubEnv 'Lombiq_Tests_UI__OrchardCoreUITestExecutorConfiguration__RetryIntervalSeconds' ${{ inputs.ui-test-retry-interval-seconds }}
+        Set-GitHubEnv 'Smartent_Test_UI__OrchardCoreUITestExecutorConfiguration__RetryIntervalSeconds' ${{ inputs.ui-test-retry-interval-seconds }}
 
     - name: Install dotnet-dump
       uses: Lombiq/GitHub-Actions/.github/actions/install-dotnet-tool@dev

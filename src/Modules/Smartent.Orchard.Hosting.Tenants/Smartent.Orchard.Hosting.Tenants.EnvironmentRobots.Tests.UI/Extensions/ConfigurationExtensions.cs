@@ -13,7 +13,7 @@ public static class ConfigurationExtensions
             {
                 argumentsBuilder
                     .AddWithValue(
-                        "OrchardCore:Lombiq_Hosting_Tenants_EnvironmentRobots:EnvironmentRobotsOptions:IsProduction",
+                        "OrchardCore:Smartent_Orchard_Hosting_Tenants_EnvironmentRobots:EnvironmentRobotsOptions:IsProduction",
                         value: isProduction);
 
                 return Task.CompletedTask;

@@ -1,4 +1,6 @@
 # Smartent Orchard Vue.js module for Orchard Core - Samples
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
+
 
 > [!WARNING]
 > The current latest version of `Smartent.Orchard.VueJs.Samples` is deprecated. It will keep working for the foreseeable future, but won't receive any updates besides security fixes.

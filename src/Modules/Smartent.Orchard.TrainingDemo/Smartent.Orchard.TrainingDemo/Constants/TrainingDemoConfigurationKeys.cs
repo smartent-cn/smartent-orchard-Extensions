@@ -5,9 +5,6 @@ namespace Smartent.Orchard.TrainingDemo.Constants;
 /// </summary>
 public static class TrainingDemoConfigurationKeys
 {
-    /// <summary>当前推荐节名。</summary>
+    /// <summary>配置节根名称。</summary>
     public const string Section = "Smartent_TrainingDemo";
-
-    /// <summary>Legacy 节名（仍支持读取）。</summary>
-    public const string LegacySection = "Lombiq_TrainingDemo";
 }

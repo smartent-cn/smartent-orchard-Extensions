@@ -1,4 +1,6 @@
 # Smartent Orchard Vue.js module for Orchard Core - Resources
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
+
 
 ## About
 

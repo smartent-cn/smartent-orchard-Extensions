@@ -1,4 +1,6 @@
 # Smartent eInvoice Validator Benchmark
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
+
 
 ## About
 

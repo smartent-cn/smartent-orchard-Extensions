@@ -5,7 +5,7 @@ const { exec } = require('child_process');
 
 const panic = require('./handle-error').handleErrorObjectAndExit;
 
-const npmMissingError = 'PNPM is not installed. Please check the prerequisites for Lombiq Node.js Extensions at ' +
+const npmMissingError = 'PNPM is not installed. Please check the prerequisites for Smartent.Build.NodeJs at ' +
     'https://gitee.com/smartent/smartent-orchard-Extensions';
 
 function writeLine(message, stream = 'stdout') {
@@ -62,7 +62,7 @@ if (args.length < 2) panic('USAGE: node scripts/run-pnpm-script <project-path> <
 // Initialize variables.
 const [projectPath, script] = args;
 const packageJsonPath = path.join(projectPath, 'package.json');
-process.env.LOMBIQ_NODEJS_EXTENSIONS_PROJECT_DIRECTORY = projectPath;
+process.env.SMARTENT_NODEJS_EXTENSIONS_PROJECT_DIRECTORY = projectPath;
 
 function callScriptInLibrary(scriptToExecute) {
     return call('npm explore nodejs-extensions -- pnpm ' + scriptToExecute);

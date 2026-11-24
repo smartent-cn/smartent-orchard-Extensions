@@ -2,7 +2,7 @@ namespace Smartent.Test.UI.Constants;
 
 public static class ConfigurationKeys
 {
-    public const string BaseKey = "Lombiq_Tests_UI";
+    public const string BaseKey = "Smartent_Test_UI";
     private const string Prefix = BaseKey + ":";
 
     public const string IsUITesting = Prefix + nameof(IsUITesting);

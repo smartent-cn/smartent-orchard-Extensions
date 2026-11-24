@@ -1,4 +1,6 @@
 # Smartent UI Testing - Shortcuts
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
+
 
 Provides some useful shortcuts for common operations that UI tests might want to do or check, e.g. turning features on or off, or logging in users. This way, UI tests needn't use multi-step UI processes to do these operations (and thus implicitly be coupled with and tests those features).
 

@@ -1,4 +1,6 @@
 # Smartent Node.js Extensions - Solution-wide Markdown Analysis
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
+
 
 Add this project to your solution to enable [markdown analysis](../Smartent.NodeJs.Extensions/Docs/Markdown.md) solution-wide, including files in the repository root.
 

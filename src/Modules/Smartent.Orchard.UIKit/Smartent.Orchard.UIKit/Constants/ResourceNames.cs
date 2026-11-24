@@ -2,12 +2,12 @@ namespace Smartent.Orchard.UIKit.Constants;
 
 public static class ResourceNames
 {
-    public const string LombiqDropdownScript = nameof(LombiqDropdownScript);
-    public const string LombiqTextBoxScript = nameof(LombiqTextBoxScript);
-    public const string LombiqSlickCarousel = nameof(LombiqSlickCarousel);
+    public const string SmartentDropdownScript = nameof(SmartentDropdownScript);
+    public const string SmartentTextBoxScript = nameof(SmartentTextBoxScript);
+    public const string SmartentSlickCarousel = nameof(SmartentSlickCarousel);
 
-    public const string LombiqShowcaseStyle = nameof(LombiqShowcaseStyle);
-    public const string LombiqUiKitEditorStyle = nameof(LombiqUiKitEditorStyle);
+    public const string SmartentShowcaseStyle = nameof(SmartentShowcaseStyle);
+    public const string SmartentUiKitEditorStyle = nameof(SmartentUiKitEditorStyle);
 
     public const string Slick = nameof(Slick);
     public const string SlickTheme = nameof(SlickTheme);

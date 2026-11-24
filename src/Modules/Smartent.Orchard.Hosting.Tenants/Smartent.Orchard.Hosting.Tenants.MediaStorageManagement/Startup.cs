@@ -22,9 +22,9 @@ public sealed class Startup : StartupBase
     {
         var maximumStorageQuotaBytes =
             _shellConfiguration.GetValue<long?>(
-                "Lombiq_Hosting_Tenants_MediaStorageManagement:MaximumStorageQuotaBytes") ??
+                "Smartent_Orchard_Hosting_Tenants_MediaStorageManagement:MaximumStorageQuotaBytes") ??
             _shellConfiguration.GetValue<long?>(
-                "Lombiq_Hosting_Tenants_MediaStorageManagement:Media_Storage_Management_Options:MaximumSpace");
+                "Smartent_Orchard_Hosting_Tenants_MediaStorageManagement:Media_Storage_Management_Options:MaximumSpace");
         services.Configure<MediaStorageManagementOptions>(options =>
             options.MaximumStorageQuotaBytes = maximumStorageQuotaBytes ?? MaximumStorageQuotaBytes);
 

@@ -44,7 +44,7 @@ public abstract class CloudflareRemoteUITestBase : RemoteUITestBase
     /// </para>
     /// <para>
     /// You can configure the API token by overriding this property in your test class and setting it from any custom
-    /// environment value, or by setting the default <c>Lombiq_Tests_UI__CloudflareApiToken</c> environment variable. We
+    /// environment value, or by setting the default <c>Smartent_Test_UI__CloudflareApiToken</c> environment variable. We
     /// don't recommend hard-coding the token.
     /// </para>
     /// </remarks>

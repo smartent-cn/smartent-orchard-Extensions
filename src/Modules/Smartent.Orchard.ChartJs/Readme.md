@@ -1,4 +1,6 @@
 # Smartent Orchard Chart.js for Orchard Core
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
+
 
 [![Smartent.Orchard.ChartJs NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.ChartJs?label=Smartent.Orchard.ChartJs)](https://www.nuget.org/packages/Smartent.Orchard.ChartJs/) [![Smartent.Orchard.ChartJs.Samples NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.ChartJs.Samples?label=Smartent.Orchard.ChartJs.Samples)](https://www.nuget.org/packages/Smartent.Orchard.ChartJs.Samples/) [![Smartent.Orchard.ChartJs.Tests.UI NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.ChartJs.Tests.UI?label=Smartent.Orchard.ChartJs.Tests.UI)](https://www.nuget.org/packages/Smartent.Orchard.ChartJs.Tests.UI/)
 

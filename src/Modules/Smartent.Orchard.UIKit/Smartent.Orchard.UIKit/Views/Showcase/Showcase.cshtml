@@ -49,7 +49,7 @@
     };
 }
 
-<style asp-name="@ResourceNames.LombiqShowcaseStyle"></style>
+<style asp-name="@ResourceNames.SmartentShowcaseStyle"></style>
 <zone Name="Title"><h1>@RenderTitleSegments(T["UI Kit showcase"])</h1></zone>
 <div class="showcaseContainer">
     <div class="showcaseContainer__item">
@@ -293,7 +293,7 @@
         @{
             // This array has mixed type contents
             var links = new object[] { ("~/", T["Home"]), ("https://orchardcore.net/", "Orchard Core") };
-            var list = new object[] { "Raw Text", new HtmlString("<a href=\"https://lombiq.com/\">Html Content</a>") };
+            var list = new object[] { "Raw Text", new HtmlString("<a href=\"https://gitee.com/smartent/\">Html Content</a>") };
         }
 
         @* Normally the card takes up all horizontal space, but you can use Bootstrap's grid markup to manage the layout
@@ -301,7 +301,7 @@
         <div class="row">
             <div class="col-sm-6 mb-3 mb-sm-0">
                 <shape type="BootstrapCard"
-                       Image="~/Smartent.Orchard.UIKit/lombiq-logo-small.svg"
+                       Image="~/Smartent.Orchard.UIKit/smartent-logo-small.svg"
                        prop-Alt="@T["Top Image"]"
                        prop-Title="@T["Hello World!"]"
                        prop-Subtitle="@T["Do you like this card?"]"
@@ -335,7 +335,7 @@
                 @* This instance has the image below due to the prop-ImageBottom="true" property. *@
                 <shape type="BootstrapCard"
                        prop-ImageBottom="true"
-                       Image="~/Smartent.Orchard.UIKit/lombiq-logo-small.svg"
+                       Image="~/Smartent.Orchard.UIKit/smartent-logo-small.svg"
                        prop-Alt="@T["Bottom Image"]"
                        prop-Title="@T["Hello World!"]"
                        prop-Subtitle="@T["Do you like this card?"]"

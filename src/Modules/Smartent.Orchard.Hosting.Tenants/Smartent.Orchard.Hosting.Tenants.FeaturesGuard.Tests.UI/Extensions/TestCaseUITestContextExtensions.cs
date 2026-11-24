@@ -27,7 +27,7 @@ public static class TestCaseUITestContextExtensions
         await SetUpNewTenantAndGoToFeaturesListAsync(context, setupRecipeId);
 
         // Smartent's features that are set to always remain enabled from Manifest should have no disable button.
-        context.Missing(By.XPath("//a[@id='btn-disable-Lombiq_Hosting_Tenants_Admin_Login_SubTenant']"));
+        context.Missing(By.XPath("//a[@id='btn-disable-Smartent_Orchard_Hosting_Tenants_Admin_Login_SubTenant']"));
         context.Missing(By.XPath("//a[@id='btn-disable-DotNest_Hosting_Tenants']"));
         context.Missing(By.XPath("//a[@id='btn-disable-DotNest_TenantsAdmin_Subtenant']"));
 
@@ -87,7 +87,7 @@ public static class TestCaseUITestContextExtensions
     {
         // When ChartJs gets disabled but UIKit is enabled, Twitter should remain enabled.
         await disableFeature("Smartent.Orchard.ChartJs");
-        context.Exists(By.XPath("//a[@id='btn-disable-Lombiq_UIKit']"));
+        context.Exists(By.XPath("//a[@id='btn-disable-Smartent_Orchard_UIKit']"));
         context.Exists(By.XPath("//a[@id='btn-disable-OrchardCore_Twitter']"));
 
         // When either UIKit or ChartJs is enabled, it should not be possible to disable Twitter.
@@ -96,7 +96,7 @@ public static class TestCaseUITestContextExtensions
 
         // When UIKit gets disabled and ChartJs is also disabled, Twitter should get disabled.
         await disableFeature("Smartent.Orchard.UIKit");
-        context.Exists(By.XPath("//a[@id='btn-enable-Lombiq_ChartJs']"));
+        context.Exists(By.XPath("//a[@id='btn-enable-Smartent_Orchard_ChartJs']"));
         context.Exists(By.XPath("//a[@id='btn-enable-OrchardCore_Twitter']"));
 
         // When UIKit is enabled, Twitter should get enabled.

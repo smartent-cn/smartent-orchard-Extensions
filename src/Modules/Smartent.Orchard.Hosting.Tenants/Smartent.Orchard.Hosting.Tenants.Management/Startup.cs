@@ -22,7 +22,7 @@ public sealed class ForbiddenTenantNamesStartup : StartupBase
     {
         services.Configure<ForbiddenTenantsOptions>(options =>
             _shellConfiguration
-                .GetSection("Lombiq_Hosting_Tenants_Management:Forbidden_Tenants_Options")
+                .GetSection("Smartent_Orchard_Hosting_Tenants_Management:Forbidden_Tenants_Options")
                 .Bind(options));
 
         services.Configure<MvcOptions>(options =>

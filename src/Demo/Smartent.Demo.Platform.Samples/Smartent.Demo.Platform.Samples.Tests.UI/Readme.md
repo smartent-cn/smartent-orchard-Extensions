@@ -1,4 +1,6 @@
 # Smartent Helpful Libraries for Orchard Core - Samples - UI Test Extensions
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
+
 
 UI tests verifying Smartent Helpful Libraries Samples behavior, and thus testing some Smartent Helpful Libraries features at a high level.
 

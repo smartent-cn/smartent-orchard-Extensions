@@ -81,8 +81,8 @@ public static class ScrollingUITestContextExtensions
     public static void HideScrollbar(this UITestContext context)
     {
         var hideScrollbar = @"
-    if (!window.$Lombiq_Tests_UI_Scrolling_Context) {
-        window.$Lombiq_Tests_UI_Scrolling_Context = {
+    if (!window.$Smartent_Test_UI_Scrolling_Context) {
+        window.$Smartent_Test_UI_Scrolling_Context = {
             original: {
                 style: {
                     overflow: document.body.style.overflow,
@@ -90,9 +90,9 @@ public static class ScrollingUITestContextExtensions
             },
         };
     }
-    if (!window.$Lombiq_Tests_UI_Scrolling_Context.hidden) {
+    if (!window.$Smartent_Test_UI_Scrolling_Context.hidden) {
         document.body.style.overflow = 'hidden';
-        window.$Lombiq_Tests_UI_Scrolling_Context.hidden = true;
+        window.$Smartent_Test_UI_Scrolling_Context.hidden = true;
     }
 ";
         context.Driver.ExecuteScript(hideScrollbar);
@@ -104,12 +104,12 @@ public static class ScrollingUITestContextExtensions
     public static void RestoreHiddenScrollbar(this UITestContext context)
     {
         var showScrollbar = @"
-    if (!window.$Lombiq_Tests_UI_Scrolling_Context || !window.$Lombiq_Tests_UI_Scrolling_Context.hidden) {
+    if (!window.$Smartent_Test_UI_Scrolling_Context || !window.$Smartent_Test_UI_Scrolling_Context.hidden) {
         return;
     }
 
-    window.$Lombiq_Tests_UI_Scrolling_Context.hidden = false;
-    document.body.style.overflow = window.$Lombiq_Tests_UI_Scrolling_Context.original.style.overflow;
+    window.$Smartent_Test_UI_Scrolling_Context.hidden = false;
+    document.body.style.overflow = window.$Smartent_Test_UI_Scrolling_Context.original.style.overflow;
 ";
         context.Driver.ExecuteScript(showScrollbar);
     }
@@ -120,11 +120,11 @@ public static class ScrollingUITestContextExtensions
     public static bool GetIsScrollbarHidden(this UITestContext context)
     {
         var scrollbarState = @"
-    if (!window.$Lombiq_Tests_UI_Scrolling_Context) {
+    if (!window.$Smartent_Test_UI_Scrolling_Context) {
         return false;
     }
 
-    return !!window.$Lombiq_Tests_UI_Scrolling_Context.hidden;
+    return !!window.$Smartent_Test_UI_Scrolling_Context.hidden;
 ";
 
         return (bool)context.Driver.ExecuteScript(scrollbarState);

@@ -24,7 +24,7 @@ public sealed class Startup : StartupBase
     {
         var options = new EnvironmentRobotsOptions();
         var configSection = _shellConfiguration
-            .GetSection("Lombiq_Hosting_Tenants_EnvironmentRobots:EnvironmentRobotsOptions");
+            .GetSection("Smartent_Orchard_Hosting_Tenants_EnvironmentRobots:EnvironmentRobotsOptions");
         configSection.Bind(options);
         services.Configure<EnvironmentRobotsOptions>(configSection);
 

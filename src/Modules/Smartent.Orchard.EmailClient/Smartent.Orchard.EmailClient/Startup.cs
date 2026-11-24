@@ -28,7 +28,7 @@ public class ImapStartup : StartupBase
         services.AddScoped<INavigationProvider, ImapAdminMenu>();
         services.AddSiteDisplayDriver<ImapSettingsDisplayDriver>();
 
-        services.Configure<ImapSettings>(_shellConfiguration.GetSection("Lombiq_EmailClient_Imap"));
+        services.Configure<ImapSettings>(_shellConfiguration.GetSection("Smartent_Orchard_EmailClient_Imap"));
         services.AddTransient<IConfigureOptions<ImapSettings>, ImapSettingsConfiguration>();
 
         services.AddScoped<IEmailClient, ImapEmailClient>();
@@ -48,7 +48,7 @@ public class EmailSyncStartup : StartupBase
         services.AddScoped<INavigationProvider, EmailSyncAdminMenu>();
         services.AddSiteDisplayDriver<EmailSyncSettingsDisplayDriver>();
 
-        services.Configure<EmailSyncSettings>(_shellConfiguration.GetSection("Lombiq_EmailClient_EmailSync"));
+        services.Configure<EmailSyncSettings>(_shellConfiguration.GetSection("Smartent_Orchard_EmailClient_EmailSync"));
         services.AddTransient<IConfigureOptions<EmailSyncSettings>, EmailSyncSettingsConfiguration>();
 
         services.AddScoped<IEmailSyncService, EmailSyncService>();

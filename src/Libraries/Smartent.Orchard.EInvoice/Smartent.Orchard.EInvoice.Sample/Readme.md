@@ -1,3 +1,6 @@
+
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
+
 ﻿# Smartent eInvoice Validator Sample
 
 ## About

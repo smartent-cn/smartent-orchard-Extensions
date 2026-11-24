@@ -1,4 +1,6 @@
 # Smartent Orchard Email Client
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
+
 
 [![Smartent.Orchard.EmailClient NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.EmailClient?label=Smartent.Orchard.EmailClient)](https://www.nuget.org/packages/Smartent.Orchard.EmailClient/) [![Smartent.Orchard.EmailClient.Tests.UI NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.EmailClient.Tests.UI?label=Smartent.Orchard.EmailClient.Tests.UI)](https://www.nuget.org/packages/Smartent.Orchard.EmailClient.Tests.UI/)
 
@@ -18,7 +20,7 @@ To fetch emails from an IMAP server, enable the `Smartent.Orchard.EmailClient.Im
 
 ```json
 {
-    "Lombiq_EmailClient_Imap": {
+    "Smartent_Orchard_EmailClient_Imap": {
         "Host": "imap.example.com",
         "Port": 993,
         "UseSsl": true, 
@@ -37,7 +39,7 @@ To sync emails periodically, enable the `Smartent.Orchard.EmailClient.EmailSync`
 
 ```json
 {
-    "Lombiq_EmailClient_EmailSync": {
+    "Smartent_Orchard_EmailClient_EmailSync": {
         "SubjectFilter": "important"
     }
 }

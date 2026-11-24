@@ -1,4 +1,6 @@
-# src — 产品代码树
+# src — Product code tree
+
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
 
 本目录是 **Smartent 产品代码唯一根目录**（原 `Smartent-src`，2026-11 收口）。仓库根 Legacy `src/` 指针已删除；说明见 [src-old/README.md](../src-old/README.md)。
 
@@ -39,7 +41,7 @@
 
 ## 文档与规范
 
-- 每个迁入项目的目录须含 **中英文** `Readme.md`：引用、用法、功能、升级扩展、测试（模板见 `docs/templates/PROJECT_README.template.md`）。  
+- 每个迁入项目的 csproj 目录须含 **`Readme.md`（英文）** 与 **`Readme-CN.md`（中文）**（模板见 `docs/templates/PROJECT_README.en.template.md`、`PROJECT_README.cn.template.md`；批量补齐：`scripts/Ensure-BilingualProjectReadmes.py`）。  
 - 代码公共 API：**中文** XML 注释（见 `docs/standards/csharp.md`）。  
 - 带 `package.json` 的项目须按 `docs/standards/frontend-dependencies.md` 写明前端依赖。  
 - 测试通过后再提交（见 `docs/standards/workflow-commits.md`）。

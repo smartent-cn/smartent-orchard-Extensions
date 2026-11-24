@@ -1,4 +1,6 @@
 # Smartent.Build.Npm.Targets
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
+
 
 > **状态 | Status**：已迁入 src（M4）  
 > **路径 | Path**：`src/Build/Smartent.Build.Npm.Targets`

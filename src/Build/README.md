@@ -1,5 +1,7 @@
 # src/Build
 
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
+
 MSBuild SDK、前端构建与 Orchard 安装相关工程目录。
 
 ## 命名策略 | Naming

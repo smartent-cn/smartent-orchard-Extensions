@@ -25,7 +25,7 @@ public static class TestCaseUITestContextExtensions
     {
         await context.SignInDirectlyAndGoToDashboardAsync();
 
-        var container = context.Get(By.Id("lombiq-hosting-build-version-display-build-version"));
+        var container = context.Get(By.Id("smartent-hosting-build-version-display-build-version"));
         var listItems = container.GetAll(By.TagName("li"));
 
         var orchardVersion = typeof(OrchardCore.IOrchardHelper).Assembly.GetName().Version.ToString();

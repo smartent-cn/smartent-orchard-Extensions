@@ -1,0 +1,78 @@
+# Smartent.Build.Sdk.Samples
+
+> **Status**: Training/demo monorepo · **中文说明**: [Readme-CN.md](Readme-CN.md)  
+> **Path**: `src/Build/Smartent.Build.Sdk.Samples`
+
+## Summary
+
+Smartent.Build.Sdk.Samples
+
+## Features
+
+**Implements**
+
+- - Smartent.Build.Sdk.Samples
+
+**Out of scope**
+
+- - Demonstration content only; not for production sites.
+
+## References
+
+### Monorepo (development)
+
+```xml
+<ProjectReference Include="src/Build/Smartent.Build.Sdk.Samples/Smartent.Build.Sdk.Samples.csproj" />
+```
+
+### NuGet (when published; version is indicative)
+
+```xml
+<PackageReference Include="Smartent.Build.Sdk.Samples" Version="1.0.0" />
+```
+
+### Orchard features (if applicable)
+
+- Enable in host: `（见 Manifest / Module.cs）`
+- Related modules: see Dependencies
+
+## Usage
+
+1. Reference this project from your web app or module solution.
+2. Enable together with the parent module in `Smartent.Demo.Web` or your sample host.
+
+## Dependencies
+
+### .NET / Orchard
+
+| Dependency | Type | Purpose |
+|------------|------|---------|
+| — | — | No direct PackageReference (may use central props) |
+
+### Frontend (if applicable)
+
+See [frontend-dependencies standard](../../docs/standards/frontend-dependencies.md). Run `pnpm`/`npm` scripts only when this folder has `package.json`.
+
+| npm package | Version | Purpose | Build |
+|-------------|---------|---------|-------|
+| | — | — | — | — | | | | |
+
+## Upgrade & extension
+
+- **Orchard**: Aligns with repository `OrchardCoreVersion` / central package management.
+- **Extension points**: Public APIs documented with Chinese XML comments in source.
+- **Customization**: Prefer configuration keys under `Smartent_*` / `Smartent_Orchard_*`; this demo repo does not read legacy `Lombiq_*` sections.
+
+## Tests
+
+```powershell
+dotnet build "src/Build/Smartent.Build.Sdk.Samples/Smartent.Build.Sdk.Samples.csproj"
+dotnet test "src/Build/Smartent.Build.Sdk.Samples/Smartent.Build.Sdk.Samples.csproj"
+```
+
+UI tests: filter `*.Tests.UI.csproj` in the solution.
+
+## Provenance & license
+
+- Migrated from Lombiq OSOCE lineage; Smartent package IDs and namespaces.
+- License: MIT (see repository root `License.md`).

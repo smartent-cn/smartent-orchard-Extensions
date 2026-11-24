@@ -1,4 +1,6 @@
 # Smartent.Orchard.Platform.Data.LinqToYesSql
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
+
 
 > **状态 | Status**：已迁入 src（M3）  
 > **路径 | Path**：`src/Platform/Orchard/Smartent.Orchard.Platform.Data.LinqToYesSql`

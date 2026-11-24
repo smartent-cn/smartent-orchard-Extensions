@@ -1,4 +1,6 @@
 # Smartent.Test.Platform | Smartent 平台层测试
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
+
 
 **中文**：覆盖 `Smartent.Core.*` 与 `Smartent.Orchard.Platform.*` 的 xUnit 用例（原 `Smartent.HelpfulLibraries.Tests`）。
 

@@ -1,4 +1,6 @@
 # Smartent.Core.Cli | Smartent Core Cli
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
+
 
 > **状态 | Status**：已迁入 src（M2）  
 > **路径 | Path**：`src/Platform/Core/Smartent.Core.Cli`

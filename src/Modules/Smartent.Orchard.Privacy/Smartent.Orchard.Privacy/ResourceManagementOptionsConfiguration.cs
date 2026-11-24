@@ -11,7 +11,7 @@ public class ResourceManagementOptionsConfiguration : IConfigureOptions<Resource
     static ResourceManagementOptionsConfiguration() =>
         _manifest
             .DefineStyle(ConsentBanner)
-            .SetUrl("~/Smartent.Orchard.Privacy/css/lombiq-privacy-consent-banner.css");
+            .SetUrl("~/Smartent.Orchard.Privacy/css/smartent-privacy-consent-banner.css");
 
     public void Configure(ResourceManagementOptions options) => options.ResourceManifests.Add(_manifest);
 }

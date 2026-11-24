@@ -38,7 +38,7 @@ public class ExternalRegistrationCheckboxInjectionFilter : IAsyncResultFilter
         var layout = await _layoutAccessor.GetLayoutAsync();
         var afterRegisterZone = layout.Zones["AfterRegister"];
         var shape = await _shapeFactory.CreateAsync<PrivacyRegistrationConsentCheckboxViewModel>(
-            "Lombiq_Privacy_RegistrationCheckbox",
+            "Smartent_Orchard_Privacy_RegistrationCheckbox",
             viewModel => viewModel.RegistrationCheckbox = false);
 
         await afterRegisterZone.AddAsync(shape);

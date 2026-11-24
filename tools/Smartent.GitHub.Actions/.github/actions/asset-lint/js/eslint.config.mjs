@@ -6,7 +6,7 @@ import { configs, plugins } from 'eslint-config-airbnb-extended';
 import { defineConfig } from 'eslint/config';
 import globals from 'globals';
 
-const lombiqConfig = defineConfig([{
+const smartentConfig = defineConfig([{
     name: "Lombiq custom configuration",
 
     settings: {
@@ -178,7 +178,7 @@ const lombiqConfig = defineConfig([{
     },
 }]);
 
-const lombiqRules = lombiqConfig[0].rules;
+const smartentRules = lombiqConfig[0].rules;
 
 // Forwards compatibility for Stylistic for rules that exist with or without the "@stylistic/" prefix.
 [
@@ -194,7 +194,7 @@ const lombiqRules = lombiqConfig[0].rules;
   'prefer-template',
   'wrap-iife',
 ]
-    .forEach((key) => lombiqRules["@stylistic/" + key] = lombiqRules[key]);
+    .forEach((key) => smartentRules["@stylistic/" + key] = smartentRules[key]);
 
 const ignores = [
   '**/bin',
@@ -238,7 +238,7 @@ export default [
   // Node Config
   ...nodeConfig,
   // Our custom config, based on Lombiq.NodeJs.Extensions.
-  ...lombiqConfig,
+  ...smartentConfig,
   // Additional custom configuration in the solution root.
   ...custom,
 ];

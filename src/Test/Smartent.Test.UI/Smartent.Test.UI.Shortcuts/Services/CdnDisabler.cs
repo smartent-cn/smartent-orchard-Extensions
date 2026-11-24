@@ -18,7 +18,7 @@ internal sealed class CdnDisabler : ModularTenantEvents
 
     public override async Task ActivatedAsync()
     {
-        if (_shellConfiguration.GetValue<bool>("Lombiq_Tests_UI:DontDisableUseCdn"))
+        if (_shellConfiguration.GetValue<bool>("Smartent_Test_UI:DontDisableUseCdn"))
         {
             return;
         }

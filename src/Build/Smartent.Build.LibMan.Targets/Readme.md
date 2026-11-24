@@ -1,4 +1,6 @@
 # Smartent MSBuild Targets - Library Manager for Orchard Core Modules
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
+
 
 **中文**：Library Manager 集成 MSBuild 目标；**PackageId** `Smartent.Build.LibMan.Targets`（**2.1.1** core feed）。
 

@@ -1,4 +1,6 @@
 # Smartent Orchard Hosting - Tenants Features Guard for Orchard Core
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
+
 
 [![Smartent.Orchard.Hosting.Tenants.FeaturesGuard NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.Hosting.Tenants.FeaturesGuard?label=Smartent.Orchard.Hosting.Tenants.FeaturesGuard)](https://www.nuget.org/packages/Smartent.Orchard.Hosting.Tenants.FeaturesGuard/)
 
@@ -36,7 +38,7 @@ _appsettings.json_ config example:
 ```json
 {
   "OrchardCore": {
-    "Lombiq_Hosting_Tenants_FeaturesGuard": {
+    "Smartent_Orchard_Hosting_Tenants_FeaturesGuard": {
       "ConditionallyEnabledFeaturesOptions": {
         "ConditionallyEnabledFeatures": {
           "EnableFeatureIfOtherFeatureIsEnabled": {

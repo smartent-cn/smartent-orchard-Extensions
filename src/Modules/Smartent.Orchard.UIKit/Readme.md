@@ -1,4 +1,6 @@
 # Smartent Orchard UI Kit for Orchard Core
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
+
 
 [![Smartent.Orchard.UIKit NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.UIKit?label=Smartent.Orchard.UIKit)](https://www.nuget.org/packages/Smartent.Orchard.UIKit/) [![Smartent.Orchard.UIKit.Tests.UI NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.UIKit.Tests.UI?label=Smartent.Orchard.UIKit.Tests.UI)](https://www.nuget.org/packages/Smartent.Orchard.UIKit.Tests.UI/)
 

@@ -9,6 +9,6 @@ namespace Smartent.Orchard.Privacy.Drivers;
 public sealed class RegistrationCheckboxDriver : DisplayDriver<RegisterUserForm>
 {
     public override IDisplayResult Edit(RegisterUserForm model, BuildEditorContext context) =>
-        Initialize<PrivacyRegistrationConsentCheckboxViewModel>("Lombiq_Privacy_RegistrationCheckbox", _ => { })
+        Initialize<PrivacyRegistrationConsentCheckboxViewModel>("Smartent_Orchard_Privacy_RegistrationCheckbox", _ => { })
             .Location(CommonLocationNames.Content + ":after");
 }

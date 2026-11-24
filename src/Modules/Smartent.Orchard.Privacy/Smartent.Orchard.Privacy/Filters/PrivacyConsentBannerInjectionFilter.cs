@@ -36,7 +36,7 @@ public sealed class PrivacyConsentBannerInjectionFilter : IAsyncResultFilter
 
         var layout = await _layoutAccessor.GetLayoutAsync();
         var contentZone = layout.Zones["Content"];
-        await contentZone.AddAsync(await _shapeFactory.CreateAsync("Lombiq_Privacy_ConsentBanner"));
+        await contentZone.AddAsync(await _shapeFactory.CreateAsync("Smartent_Orchard_Privacy_ConsentBanner"));
 
         await next();
     }

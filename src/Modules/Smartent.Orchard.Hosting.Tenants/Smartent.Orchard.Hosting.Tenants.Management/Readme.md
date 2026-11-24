@@ -1,4 +1,6 @@
 # Smartent Orchard Hosting - Tenants Management for Orchard Core
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
+
 
 [![Smartent.Orchard.Hosting.Tenants.Management NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.Hosting.Tenants.Management?label=Smartent.Orchard.Hosting.Tenants.Management)](https://www.nuget.org/packages/Smartent.Orchard.Hosting.Tenants.Management/)
 
@@ -20,7 +22,7 @@ With this module, you can specify a list of host names that cannot be used to cr
 
 ```json
 "OrchardCore": {
-  "Lombiq_Hosting_Tenants_Management": {
+  "Smartent_Orchard_Hosting_Tenants_Management": {
     "Forbidden_Tenants_Options": {
       "RequestUrlHosts": [
         "forbidden.hostname1.net",

@@ -1,4 +1,6 @@
 # Smartent MSBuild SDK - UI Testing Libraries
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
+
 
 This SDK configures reusable libraries containing Orchard Core UI test methods and helpers. It supplies the [Smartent.Test.UI](https://gitee.com/smartent/smartent-orchard-Extensions) dependency and keeps the output as a library, without adding an executable test runner.
 

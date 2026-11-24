@@ -1,4 +1,6 @@
 # Smartent UI Testing - UI Tests
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
+
 
 UI test project that tests the UI Testing Toolbox itself. The project is intentionally not published on NuGet, since it's only needed for the UI Testing Toolbox.
 

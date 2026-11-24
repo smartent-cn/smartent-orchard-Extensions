@@ -11,10 +11,10 @@ public static class MaintenanceOrchardCoreUITestExecutorConfigurationExtensions
             {
                 argumentsBuilder
                     .AddWithValue(
-                        "OrchardCore:Lombiq_Hosting_Tenants_Maintenance:UpdateSiteUrl:IsEnabled",
+                        "OrchardCore:Smartent_Orchard_Hosting_Tenants_Maintenance:UpdateSiteUrl:IsEnabled",
                         value: true)
                     .AddWithValue(
-                        "OrchardCore:Lombiq_Hosting_Tenants_Maintenance:UpdateSiteUrl:DefaultTenantSiteUrl",
+                        "OrchardCore:Smartent_Orchard_Hosting_Tenants_Maintenance:UpdateSiteUrl:DefaultTenantSiteUrl",
                         value: "https://test.com");
 
                 return Task.CompletedTask;
@@ -26,10 +26,10 @@ public static class MaintenanceOrchardCoreUITestExecutorConfigurationExtensions
             {
                 argumentsBuilder
                     .AddWithValue(
-                        "OrchardCore:Lombiq_Hosting_Tenants_Maintenance:AddAdministratorRoleToUsersWithRole:IsEnabled",
+                        "OrchardCore:Smartent_Orchard_Hosting_Tenants_Maintenance:AddAdministratorRoleToUsersWithRole:IsEnabled",
                         value: true)
                     .AddWithValue(
-                        "OrchardCore:Lombiq_Hosting_Tenants_Maintenance:AddAdministratorRoleToUsersWithRole:Role",
+                        "OrchardCore:Smartent_Orchard_Hosting_Tenants_Maintenance:AddAdministratorRoleToUsersWithRole:Role",
                         value: "Editor");
 
                 return Task.CompletedTask;
@@ -41,10 +41,10 @@ public static class MaintenanceOrchardCoreUITestExecutorConfigurationExtensions
         {
             argumentsBuilder
                 .AddWithValue(
-                    "OrchardCore:Lombiq_Hosting_Tenants_Maintenance:ChangeUserSensitiveContent:IsEnabled",
+                    "OrchardCore:Smartent_Orchard_Hosting_Tenants_Maintenance:ChangeUserSensitiveContent:IsEnabled",
                     value: true)
                 .AddWithValue(
-                    "OrchardCore:Lombiq_Hosting_Tenants_Maintenance:ChangeUserSensitiveContent:TenantNames",
+                    "OrchardCore:Smartent_Orchard_Hosting_Tenants_Maintenance:ChangeUserSensitiveContent:TenantNames",
                     value: "Default");
 
             return Task.CompletedTask;

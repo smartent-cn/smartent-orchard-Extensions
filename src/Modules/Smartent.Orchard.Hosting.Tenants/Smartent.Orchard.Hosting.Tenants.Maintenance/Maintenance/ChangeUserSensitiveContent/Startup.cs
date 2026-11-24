@@ -20,7 +20,7 @@ public sealed class Startup : StartupBase
     {
         services.BindAndConfigureSection<ChangeUserSensitiveContentMaintenanceOptions>(
             _shellConfiguration,
-            "Lombiq_Hosting_Tenants_Maintenance:ChangeUserSensitiveContent");
+            "Smartent_Orchard_Hosting_Tenants_Maintenance:ChangeUserSensitiveContent");
 
         services.AddScoped<IMaintenanceProvider, ChangeUserSensitiveContentMaintenanceProvider>();
         services.AddSingleton<IChangeUserSensitiveContentQueue, ChangeUserSensitiveContentQueue>();

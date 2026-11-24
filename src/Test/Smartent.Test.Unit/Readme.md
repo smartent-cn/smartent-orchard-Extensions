@@ -1,4 +1,6 @@
 # Smartent UI Testing Toolbox for Orchard Core
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
+
 
 [![Smartent.Test.Unit NuGet](https://img.shields.io/nuget/v/Smartent.Test.Unit?label=Smartent.Test.Unit)](https://www.nuget.org/packages/Smartent.Test.Unit/)
 

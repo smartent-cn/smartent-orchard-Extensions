@@ -37,7 +37,7 @@ public static class ApplicationInsightsInitializerExtensions
 
         logLevelSection.AddValueIfKeyNotExists("Default", "Warning");
 
-        var ocAppInsightsSection = webApplicationBuilder.Configuration.GetSection("OrchardCore:Lombiq_Hosting_Azure_ApplicationInsights");
+        var ocAppInsightsSection = webApplicationBuilder.Configuration.GetSection("OrchardCore:Smartent_Orchard_Hosting_ApplicationInsights");
 
         ocAppInsightsSection
             .AddValueIfKeyNotExists("EnableUserNameCollection", "true")
@@ -79,7 +79,7 @@ public static class ApplicationInsightsInitializerExtensions
 
         var applicationInsightsOptions = new ApplicationInsightsOptions();
         var applicationInsightsConfigSection = configurationManager
-            .GetSection("OrchardCore:Lombiq_Hosting_Azure_ApplicationInsights");
+            .GetSection("OrchardCore:Smartent_Orchard_Hosting_ApplicationInsights");
         applicationInsightsConfigSection.Bind(applicationInsightsOptions);
 
         services.Configure<TelemetryConfiguration>(config =>

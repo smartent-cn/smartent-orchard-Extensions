@@ -1,4 +1,6 @@
 # Smartent Orchard Marketing - Pirsch analytics for Orchard Core
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
+
 
 [![Smartent.Orchard.Marketing.Pirsch NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.Marketing.Pirsch?label=Smartent.Orchard.Marketing.Pirsch)](https://www.nuget.org/packages/Smartent.Orchard.Marketing.Pirsch/)
 
@@ -27,7 +29,7 @@ It supports these scenarios:
 
 Pirsch settings can come from appsettings or from the Orchard admin. If both are set, the admin settings take precedence.
 
-> **配置节名**：请使用 `Smartent_Marketing`；仍支持 Legacy `Lombiq_Marketing`（见 `MarketingConfigurationKeys`）。
+> **配置节名**：请使用 `Smartent_Marketing`；仍支持 Legacy `Smartent_Marketing`（见 `MarketingConfigurationKeys`）。
 
 To use the module, follow these steps:
 

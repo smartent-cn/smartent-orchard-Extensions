@@ -1,4 +1,6 @@
 # Smartent Orchard Training Demo for Orchard Core
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
+
 
 ## About
 

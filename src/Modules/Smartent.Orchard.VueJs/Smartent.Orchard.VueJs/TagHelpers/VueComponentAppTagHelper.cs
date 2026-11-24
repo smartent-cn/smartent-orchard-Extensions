@@ -55,7 +55,7 @@ public class VueComponentAppTagHelper : VueComponentTagHelper
             Attributes =
             {
                 ["id"] = string.IsNullOrWhiteSpace(Id) ? $"{Name}_{Guid.NewGuid():D}" : Id,
-                ["class"] = $"{Class} lombiq-vue".Trim(),
+                ["class"] = $"{Class} smartent-vue".Trim(),
                 ["data-vue"] = JsonSerializer.Serialize(new { Name, Model }, _jsonSerializerOptions),
                 ["data-plugins"] = Plugins ?? string.Empty,
             },

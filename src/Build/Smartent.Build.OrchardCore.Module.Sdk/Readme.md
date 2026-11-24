@@ -1,4 +1,6 @@
 # Smartent MSBuild SDK - Orchard Core Module
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
+
 
 ## About
 

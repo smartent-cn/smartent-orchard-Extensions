@@ -1,4 +1,6 @@
 # Smartent Orchard Hosting - Tenants Media Storage Management for Orchard Core
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
+
 
 [![Smartent.Orchard.Hosting.Tenants.MediaStorageManagement NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.Hosting.Tenants.MediaStorageManagement?label=Smartent.Orchard.Hosting.Tenants.MediaStorageManagement)](https://www.nuget.org/packages/Smartent.Orchard.Hosting.Tenants.MediaStorageManagement/)
 
@@ -20,7 +22,7 @@ With this module, you can specify how much space would you like to limit each te
 
 ```json
 "OrchardCore": {
-  "Lombiq_Hosting_Tenants_MediaStorageManagement": {
+  "Smartent_Orchard_Hosting_Tenants_MediaStorageManagement": {
     "MaximumStorageQuotaBytes": 2147483648
   }  
 }
@@ -31,7 +33,7 @@ Tenant based configuration can be defined as the following, for more details rea
 ```json
 "OrchardCore": {
   "TenantName": {
-    "Lombiq_Hosting_Tenants_MediaStorageManagement": {
+    "Smartent_Orchard_Hosting_Tenants_MediaStorageManagement": {
       "MaximumStorageQuotaBytes": 2147483648
     }
   }

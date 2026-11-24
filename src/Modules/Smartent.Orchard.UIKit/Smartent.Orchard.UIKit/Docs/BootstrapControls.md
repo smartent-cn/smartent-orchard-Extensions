@@ -36,7 +36,7 @@ Displays a [card](https://getbootstrap.com/docs/5.3/components/card/). All prope
 
 ```cshtml
 <shape type="BootstrapCard"
-       Image="~/Smartent.Orchard.UIKit/lombiq-logo-small.svg"
+       Image="~/Smartent.Orchard.UIKit/smartent-logo-small.svg"
        prop-Alt="@T["My Top Image"]"
        prop-Title="@T["Hello World!"]"
        prop-Subtitle="@T["Do you like this card?"]"

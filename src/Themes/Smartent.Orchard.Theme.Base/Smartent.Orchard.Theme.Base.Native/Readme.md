@@ -1,4 +1,6 @@
 # Smartent Orchard Theme Base for Orchard Core - Native CSS
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
+
 
 ## About
 

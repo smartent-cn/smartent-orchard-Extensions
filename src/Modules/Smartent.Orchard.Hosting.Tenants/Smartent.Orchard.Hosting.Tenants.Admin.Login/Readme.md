@@ -1,4 +1,6 @@
 # Smartent Orchard Hosting - Tenants Admin Login for Orchard Core
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
+
 
 [![Smartent.Orchard.Hosting.Tenants.Admin.Login NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.Hosting.Tenants.Admin.Login?label=Smartent.Orchard.Hosting.Tenants.Admin.Login)](https://www.nuget.org/packages/Smartent.Orchard.Hosting.Tenants.Admin.Login/)
 

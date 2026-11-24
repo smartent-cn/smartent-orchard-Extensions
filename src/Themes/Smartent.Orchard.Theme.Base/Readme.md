@@ -1,4 +1,6 @@
 # Smartent Orchard Theme Base for Orchard Core
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
+
 
 [![Smartent.Orchard.Theme.Base.Native NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.Theme.Base.Native?label=Smartent.Orchard.Theme.Base.Native)](https://www.nuget.org/packages/Smartent.Orchard.Theme.Base.Native/)
 [![Smartent.Orchard.Theme.Base.Native.Samples NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.Theme.Base.Native.Samples?label=Smartent.Orchard.Theme.Base.Native.Samples)](https://www.nuget.org/packages/Smartent.Orchard.Theme.Base.Native.Samples/)

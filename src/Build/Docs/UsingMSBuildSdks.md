@@ -51,7 +51,7 @@ All of our MSBuild SDK projects share these features and configurations:
 
 - Link and pack _Readme.md_ and _NuGetIcon.png_ files, if they exist.
 - Link and pack _../Readme.md_ as _Readme.md_ if it doesn't exist in the project directory. This is useful for the primary project of a repository.
-- If the project has `<IsSmartentProject>true</IsSmartentProject>` (or legacy `<IsLombiqProject>true</IsLombiqProject>`), then a lot of NuGet properties are provided with appropriate defaults to reduce boilerplate:
+- If the project has `<IsSmartentProject>true</IsSmartentProject>`, then a lot of NuGet properties are provided with appropriate defaults to reduce boilerplate:
   - Authors: Defaults to `Smartent`.
   - Copyright: Use the `<CopyrightYear>` property to make it `Copyright © $(CopyrightYear), Smartent`.
   - Description: Use the `<DescriptionBody>` property to make it `$(Title): $(DescriptionBody)`.

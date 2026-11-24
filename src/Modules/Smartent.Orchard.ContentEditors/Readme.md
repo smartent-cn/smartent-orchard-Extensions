@@ -1,4 +1,6 @@
 # Smartent Orchard Content Editors for Orchard Core
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
+
 
 [![Smartent.Orchard.ContentEditors NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.ContentEditors?label=Smartent.Orchard.ContentEditors)](https://www.nuget.org/packages/Smartent.Orchard.ContentEditors/) [![Smartent.Orchard.ContentEditors.Samples NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.ContentEditors.Samples?label=Smartent.Orchard.ContentEditors.Samples)](https://www.nuget.org/packages/Smartent.Orchard.ContentEditors.Samples/) [![Smartent.Orchard.ContentEditors.Tests.UI NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.ContentEditors.Tests.UI?label=Smartent.Orchard.ContentEditors.Tests.UI)](https://www.nuget.org/packages/Smartent.Orchard.ContentEditors.Tests.UI/)
 

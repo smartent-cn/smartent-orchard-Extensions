@@ -36,7 +36,7 @@ public sealed class ShutDownIdleTenantsStartup : StartupBase
         // Idle Minutes Settings
         services.Configure<IdleShutdownOptions>(options =>
             _shellConfiguration
-                .GetSection("Lombiq_Hosting_Tenants_IdleTenantManagement:IdleShutdownOptions")
+                .GetSection("Smartent_Orchard_Hosting_Tenants_IdleTenantManagement:IdleShutdownOptions")
                 .Bind(options));
     }
 }

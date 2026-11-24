@@ -1,6 +1,6 @@
 import { By, until } from 'selenium-webdriver';
 
-// This dependency is copied into the build directory by Lombiq.Tests.UI.
+// This dependency is copied into the build directory by Smartent.Test.UI.
 import { runTest, shouldContainText, navigate } from '../ui-testing-toolkit.mjs';
 
 // This function automatically handles the command line arguments and sets up a Chrome driver.
@@ -20,7 +20,7 @@ await runTest(async (driver, startUrl) => {
 
     // And another one to navigate and safely wait for the page to load.
     await navigate(driver, startUrl);
-    await driver.findElement(By.xpath("id('footer')//a[@href='https://lombiq.com/']"));
+    await driver.findElement(By.xpath("id('footer')//a[@href='https://gitee.com/smartent/']"));
 });
 
 // END OF TRAINING SECTION: Executing tests written in JavaScript.

@@ -22,7 +22,7 @@ catch {
 
 function handleErrorObjectForGitHub(type, code, message, path, line, column) {
     const parameters = ['title=' + code];
-    const gitHubActionsRoot = process.env.LOMBIQ_NODEJS_EXTENSIONS_GITHUB_ACTIONS_ROOT;
+    const gitHubActionsRoot = process.env.SMARTENT_NODEJS_EXTENSIONS_GITHUB_ACTIONS_ROOT;
 
     let updatedMessage = message?.trim() ? message : code;
 
@@ -58,7 +58,7 @@ function handleErrorObjectInner(error, type, defaultCode) {
     }
 
     // Check if warnings should be replaced with errors.
-    if (type !== 'error' && process.env.LOMBIQ_NODEJS_EXTENSIONS_WARN_AS_ERROR?.toLowerCase() === 'true') {
+    if (type !== 'error' && process.env.SMARTENT_NODEJS_EXTENSIONS_WARN_AS_ERROR?.toLowerCase() === 'true') {
         return handleErrorObjectInner(error, 'error', defaultCode);
     }
 
@@ -67,7 +67,7 @@ function handleErrorObjectInner(error, type, defaultCode) {
     const line = 'line' in error && error.line !== undefined ? error.line : 1;
     const column = 'column' in error && error.column !== undefined ? error.column : 1;
 
-    if (process.env.LOMBIQ_NODEJS_EXTENSIONS_GITHUB_ACTIONS?.toLowerCase() === 'true') {
+    if (process.env.SMARTENT_NODEJS_EXTENSIONS_GITHUB_ACTIONS?.toLowerCase() === 'true') {
         handleErrorObjectForGitHub(type, code, message, error.path, line, column);
         return error;
     }

@@ -1,4 +1,6 @@
 # Smartent UI Testing - App Extensions
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
+
 
 UI testing-related configuration extensions for the web app under test.
 

@@ -1,4 +1,6 @@
 # Smartent Orchard Chart.js for Orchard Core - UI Test Extensions
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
+
 
 ## About
 

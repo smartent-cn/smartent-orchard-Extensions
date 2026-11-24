@@ -1,4 +1,6 @@
 # Smartent Orchard Data Tables
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
+
 
 [![Smartent.Orchard.DataTables NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.DataTables?label=Smartent.Orchard.DataTables)](https://www.nuget.org/packages/Smartent.Orchard.DataTables/) [![Smartent.Orchard.DataTables.Samples NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.DataTables?label=Smartent.Orchard.DataTables.Samples)](https://www.nuget.org/packages/Smartent.Orchard.DataTables.Samples/) [![Smartent.Orchard.DataTables.Tests.UI NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.DataTables?label=Smartent.Orchard.DataTables.Tests.UI)](https://www.nuget.org/packages/Smartent.Orchard.DataTables.Tests.UI/)
 
@@ -42,11 +44,11 @@ Here you can edit the `window.dataTableResources` object. It contains the follow
 
 ### With Events
 
-You can use all the regular DataTables [events](https://datatables.net/manual/events), but we've also implemented some custom ones. While DataTables events use the `.dt` namespace, these use the `.lombiqdt` namespace to avoid future conflict. They target the same DataTable element.
+You can use all the regular DataTables [events](https://datatables.net/manual/events), but we've also implemented some custom ones. While DataTables events use the `.dt` namespace, these use the `.smartentdt` namespace to avoid future conflict. They target the same DataTable element.
 
-- `popstate.lombiqdt`: fired after a history back/forward between different states of the table. The event is `{ plugin: jQueryPlugin, state: { providerName, data, order }, cancel: false }`. Change `cancel` to `true` if you don't want to load this history.
-- `createstate.lombiqdt`: fired before a new DataTable history state is placed. The event is `{ plugin, state }` and you can alter the `state` object from the event handler.
-- `preXhr.lombiqdt`: fired inside the `options.ajax` function right before the web request is sent out. The event is `{ plugin, requestData, isHistory }`. You can change `requestData` here.
+- `popstate.smartentdt`: fired after a history back/forward between different states of the table. The event is `{ plugin: jQueryPlugin, state: { providerName, data, order }, cancel: false }`. Change `cancel` to `true` if you don't want to load this history.
+- `createstate.smartentdt`: fired before a new DataTable history state is placed. The event is `{ plugin, state }` and you can alter the `state` object from the event handler.
+- `preXhr.smartentdt`: fired inside the `options.ajax` function right before the web request is sent out. The event is `{ plugin, requestData, isHistory }`. You can change `requestData` here.
 
 ## Vue.js Alternative
 

@@ -3,7 +3,7 @@ const path = require('path');
 
 /**
  * Resolves node_modules/.nx/scripts whether the helpers run from the module project directory or from a copied
- * lombiq-vuejs package under a consumer's node_modules (e.g. Smartent.Orchard.VueJs.Samples).
+ * smartent-vuejs package under a consumer's node_modules (e.g. Smartent.Orchard.VueJs.Samples).
  */
 function getNxScriptsPath() {
     let dir = __dirname;

@@ -28,7 +28,7 @@ public class DemoSettingsConfiguration : IConfigureOptions<DemoSettings>
         ////    }
         ////  },
         ////  "OrchardCore": {
-        ////    "Lombiq_TrainingDemo": {
+        ////    "Smartent_TrainingDemo": {
         ////      "Message": "This comes from appsettings!"
         ////    }
         ////  }

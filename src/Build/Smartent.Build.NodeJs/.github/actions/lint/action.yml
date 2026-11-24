@@ -36,26 +36,26 @@ runs:
       run: |
         '${{ github.action_path }}' >> $Env:GITHUB_PATH
 
-        $LombiqNodeJsExtensions = $(Resolve-Path '${{ github.action_path }}/../../../Smartent.NodeJs.Extensions').Path
-        Write-Output "LOMBIQ_NODEJS_EXTENSIONS=$LombiqNodeJsExtensions"
-        "LOMBIQ_NODEJS_EXTENSIONS=$LombiqNodeJsExtensions" >> $Env:GITHUB_ENV
-        "LOMBIQ_NODEJS_EXTENSIONS_GITHUB_ACTIONS=true" >> $Env:GITHUB_ENV
-        "LOMBIQ_NODEJS_EXTENSIONS_GITHUB_ACTIONS_ROOT=$PWD" >> $Env:GITHUB_ENV
-        "LOMBIQ_NODEJS_EXTENSIONS_WARN_AS_ERROR=true" >> $Env:GITHUB_ENV
+        $SmartentBuildNodeJs = $(Resolve-Path '${{ github.action_path }}/../../Smartent.Build.NodeJs').Path
+        Write-Output "SMARTENT_NODEJS_EXTENSIONS=$SmartentBuildNodeJs"
+        "SMARTENT_NODEJS_EXTENSIONS=$SmartentBuildNodeJs" >> $Env:GITHUB_ENV
+        "SMARTENT_NODEJS_EXTENSIONS_GITHUB_ACTIONS=true" >> $Env:GITHUB_ENV
+        "SMARTENT_NODEJS_EXTENSIONS_GITHUB_ACTIONS_ROOT=$PWD" >> $Env:GITHUB_ENV
+        "SMARTENT_NODEJS_EXTENSIONS_WARN_AS_ERROR=true" >> $Env:GITHUB_ENV
 
         # Make sure to keep the version number in sync with the matching command in
-        # Smartent.NodeJs.Extensions/build/NodeJsExtensionsNpmPackage.targets.
+        # Smartent.Build.NodeJs/build/NodeJsExtensionsNpmPackage.targets.
         corepack enable
         corepack prepare pnpm@8.15.9+sha1.aa4bc353b5f59fe1f1df5d802ce049ddf7f3c60e --activate
 
-        cd $LombiqNodeJsExtensions
+        cd $SmartentBuildNodeJs
         pnpm install --prefer-offline --no-frozen-lockfile
         pnpm link --global
 
     - name: Execute Linting
       shell: pwsh
       run: |
-        $library = $Env:LOMBIQ_NODEJS_EXTENSIONS
+        $library = $Env:SMARTENT_NODEJS_EXTENSIONS
 
         Invoke-NodeJsLinter -LibraryPath $library -Type scripts -Paths '${{ inputs.scripts }}'
         Invoke-NodeJsLinter -LibraryPath $library -Type styles -Paths '${{ inputs.styles-scss }}'

@@ -1,4 +1,6 @@
 # Smartent UI Testing for Orchard Core
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
+
 
 [![Smartent.Test.UI NuGet](https://img.shields.io/nuget/v/Smartent.Test.UI?label=Smartent.Test.UI)](https://www.nuget.org/packages/Smartent.Test.UI/) [![Smartent.Test.UI.AppExtensions NuGet](https://img.shields.io/nuget/v/Smartent.Test.UI.AppExtensions?label=Smartent.Test.UI.AppExtensions)](https://www.nuget.org/packages/Smartent.Test.UI.AppExtensions/) [![Smartent.Test.UI.Shortcuts NuGet](https://img.shields.io/nuget/v/Smartent.Test.UI.Shortcuts?label=Smartent.Test.UI.Shortcuts)](https://www.nuget.org/packages/Smartent.Test.UI.Shortcuts/) [![Latest version of 'Smartent.Test.UI' @ Cloudsmith](https://api-prd.cloudsmith.io/v1/badges/version/lombiq/open-source-orchard-core-extensions/nuget/Smartent.Test.UI/latest/xsp=True/?render=true&show_latest=true)](https://cloudsmith.io/~lombiq/repos/open-source-orchard-core-extensions/packages/detail/nuget/Smartent.Test.UI/latest/xsp=True/)
 

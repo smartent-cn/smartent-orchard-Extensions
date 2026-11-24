@@ -1,4 +1,6 @@
 # Smartent Orchard Audit Trail Extensions for Orchard Core
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
+
 
 [![Smartent.Orchard.AuditTrail NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.AuditTrail?label=Smartent.Orchard.AuditTrail)](https://www.nuget.org/packages/Smartent.Orchard.AuditTrail/)
 

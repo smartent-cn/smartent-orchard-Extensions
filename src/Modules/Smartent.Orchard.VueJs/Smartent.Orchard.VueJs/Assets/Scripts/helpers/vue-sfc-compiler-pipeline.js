@@ -11,7 +11,7 @@ const { getVueComponents } = require('./get-vue-files');
 const { executeFunctionByCommandLineArgument, leaveNodeModule } = require('./process-helpers');
 const tryOpenJson = require('./try-open-json');
 
-// If this script is invoked from "npm explore lombiq-vuejs" then we have to navigate back to the current project root.
+// If this script is invoked from "npm explore smartent-vuejs" then we have to navigate back to the current project root.
 leaveNodeModule();
 
 const defaultOptions = {

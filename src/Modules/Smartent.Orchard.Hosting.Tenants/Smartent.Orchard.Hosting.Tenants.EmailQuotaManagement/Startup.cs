@@ -29,7 +29,7 @@ public sealed class Startup : StartupBase
         services.AddSingleton<IBackgroundTask, EmailQuotaResetBackgroundTask>();
 
         services.Configure<EmailQuotaOptions>(options =>
-            options.EmailQuotaPerMonth = _shellConfiguration.GetValue<int?>("Lombiq_Hosting_Tenants_EmailQuotaManagement:EmailQuotaPerMonth")
+            options.EmailQuotaPerMonth = _shellConfiguration.GetValue<int?>("Smartent_Orchard_Hosting_Tenants_EmailQuotaManagement:EmailQuotaPerMonth")
                 ?? DefaultEmailQuota);
 
         services.Configure<MvcOptions>(options =>

@@ -1,4 +1,6 @@
 # Smartent Orchard Hosting - Tenants Idle Tenant Management for Orchard Core - UI Test Extensions
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
+
 
 ## About
 

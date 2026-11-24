@@ -1,4 +1,6 @@
 # Smartent Orchard Hosting - Azure Application Insights for Orchard Core
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
+
 
 [![Smartent.Orchard.Hosting.ApplicationInsights NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.Hosting.ApplicationInsights?label=Smartent.Orchard.Hosting.ApplicationInsights)](https://www.nuget.org/packages/Smartent.Orchard.Hosting.ApplicationInsights/) [![Smartent.Orchard.Hosting.ApplicationInsights.Tests.UI NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.Hosting.ApplicationInsights.Tests.UI?label=Smartent.Orchard.Hosting.ApplicationInsights.Tests.UI)](https://www.nuget.org/packages/Smartent.Orchard.Hosting.ApplicationInsights.Tests.UI/)
 
@@ -71,7 +73,7 @@ When using the full CMS approach of Orchard Core (i.e. not decoupled or headless
 
 ### Advanced configuration
 
-The module has its own configuration for further options. These need to come from an ASP.NET Core configuration source as well but on the contrary to the basic settings for built-in AAI options these need to be put under the `OrchardCore` section, into `Lombiq_Hosting_Azure_ApplicationInsights`:
+The module has its own configuration for further options. These need to come from an ASP.NET Core configuration source as well but on the contrary to the basic settings for built-in AAI options these need to be put under the `OrchardCore` section, into `Smartent_Orchard_Hosting_ApplicationInsights`:
 
 ```json5
 {
@@ -85,7 +87,7 @@ The module has its own configuration for further options. These need to come fro
     }
   },
   "OrchardCore": {
-    "Lombiq_Hosting_Azure_ApplicationInsights": {
+    "Smartent_Orchard_Hosting_ApplicationInsights": {
       "EnableUserNameCollection": true,
       "EnableLoggingTestMiddleware": true
     }
@@ -108,12 +110,12 @@ To [secure the Live Metrics control channel](https://learn.microsoft.com/en-us/a
 
 > �?This section is required if you have disabled `Local Authentication` on your AAI resource, see [the docs](https://learn.microsoft.com/en-us/azure/azure-monitor/app/azure-ad-authentication?WT.mc_id=Portal-AppInsightsExtension&tabs=net#disable-local-authentication).
 
-If you want to use Entra Authentication for Application Insights, or if you have disabled `Local Authentication` on your AAI resource, you will have to set the `EntraAuthenticationType` option to the authentication type you want to use (`ManagedIdentity` or `ServicePrincipal`) in the `Lombiq_Hosting_Azure_ApplicationInsights` section of your configuration like below.
+If you want to use Entra Authentication for Application Insights, or if you have disabled `Local Authentication` on your AAI resource, you will have to set the `EntraAuthenticationType` option to the authentication type you want to use (`ManagedIdentity` or `ServicePrincipal`) in the `Smartent_Orchard_Hosting_ApplicationInsights` section of your configuration like below.
 
 ```json5
 {
     "OrchardCore": {
-        "Lombiq_Hosting_Azure_ApplicationInsights": {
+        "Smartent_Orchard_Hosting_ApplicationInsights": {
             "EntraAuthenticationType": "ManagedIdentity"
         }
     }
@@ -134,12 +136,12 @@ Once Entra Authentication is set up and the `ConnectionString` has been properly
 
 Using a Service Principal is the only way to authenticate using Entra authentication if you are using a non-Azure (or local) environment.
 
-If you want to use the Service Principal method for your Application Insights resource, you should set the `EntraAuthenticationType` option to `ServicePrincipal` in the `Lombiq_Hosting_Azure_ApplicationInsights` section of your configuration. To securely control the Live Metrics stream with Entra ID you will also have to provide the credentials of the service principal; to set this up, [see the docs](https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal) (you'll need to use the [client secret authentication option](https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal#option-3-create-a-new-client-secret)).
+If you want to use the Service Principal method for your Application Insights resource, you should set the `EntraAuthenticationType` option to `ServicePrincipal` in the `Smartent_Orchard_Hosting_ApplicationInsights` section of your configuration. To securely control the Live Metrics stream with Entra ID you will also have to provide the credentials of the service principal; to set this up, [see the docs](https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal) (you'll need to use the [client secret authentication option](https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal#option-3-create-a-new-client-secret)).
 
 ```json5
 {
   "OrchardCore": {
-    "Lombiq_Hosting_Azure_ApplicationInsights": {
+    "Smartent_Orchard_Hosting_ApplicationInsights": {
         "EntraAuthenticationType": "ServicePrincipal",
         "ServicePrincipalCredentials": {
             "TenantId": "your service principal tenant id",
@@ -167,12 +169,12 @@ To help with asking users for consent, check out our [Smartent Orchard Privacy f
 
 ### Profiling
 
-Support for [Application Insights Profiler for ASP.NET Core](https://github.com/microsoft/ApplicationInsights-Profiler-AspNetCore) is built in. This means that you can just launch the [Application Insights Profiler](https://learn.microsoft.com/en-us/azure/azure-monitor/optimization-insights/code-optimizations-profiler-overview) from the Azure Portal if you'd like to profile the app. To enable this, you first need to set the `EnableProfiler` option to `true` in the `Lombiq_Hosting_Azure_ApplicationInsights` section of your configuration like below.
+Support for [Application Insights Profiler for ASP.NET Core](https://github.com/microsoft/ApplicationInsights-Profiler-AspNetCore) is built in. This means that you can just launch the [Application Insights Profiler](https://learn.microsoft.com/en-us/azure/azure-monitor/optimization-insights/code-optimizations-profiler-overview) from the Azure Portal if you'd like to profile the app. To enable this, you first need to set the `EnableProfiler` option to `true` in the `Smartent_Orchard_Hosting_ApplicationInsights` section of your configuration like below.
 
 ```json5
 {
   "OrchardCore": {
-    "Lombiq_Hosting_Azure_ApplicationInsights": {
+    "Smartent_Orchard_Hosting_ApplicationInsights": {
         "EnableProfiler": true
     }
   }

@@ -26,7 +26,7 @@ public sealed class ShortUrlMigration : DataMigration
                 .WithSettings(new TextFieldSettings
                 {
                     Hint = "The name of the website, social media platform, newsletter, or other campaign source " +
-                        "where the link is shared. E.g.: lombiq-newsletter, linkedin, youtube, x, partner-site, google.",
+                        "where the link is shared. E.g.: smartent-newsletter, linkedin, youtube, x, partner-site, google.",
                 }))
             .WithField(part => part.UtmMedium, field => field
                 .WithDisplayName("UTM Medium")
@@ -40,7 +40,7 @@ public sealed class ShortUrlMigration : DataMigration
                 .WithSettings(new TextFieldSettings
                 {
                     Hint = "The name of the specific campaign, identifying all links shared during the campaign. " +
-                        "E.g.: summer-sale-2026, lombiq-newsletter-2026-03-31.",
+                        "E.g.: summer-sale-2026, smartent-newsletter-2026-03-31.",
                 }))
             .WithField(part => part.UtmContent, field => field
                 .WithDisplayName("UTM Content")

@@ -89,7 +89,7 @@ public class ResourceManagerDecorator(
     {
         #region CustomCode
         var displayedTheme = themeManager.GetThemeAsync().GetAwaiter().GetResult();
-        var currentThemeUsesLombiqBaseTheme = displayedTheme?.Id == "Smartent.Orchard.Theme.Base" ||
+        var currentThemeUsesSmartentBaseTheme = displayedTheme?.Id == "Smartent.Orchard.Theme.Base" ||
             (displayedTheme?.Manifest.ModuleInfo is ThemeAttribute themeAttribute &&
             themeAttribute.BaseTheme?.EqualsOrdinalIgnoreCase("Smartent.Orchard.Theme.Base") == true);
         #endregion
@@ -106,7 +106,7 @@ public class ResourceManagerDecorator(
             }
 
             #region CustomCode
-            if (context.Resource.Name.EqualsOrdinalIgnoreCase("bootstrap") && currentThemeUsesLombiqBaseTheme)
+            if (context.Resource.Name.EqualsOrdinalIgnoreCase("bootstrap") && currentThemeUsesSmartentBaseTheme)
             {
                 continue;
             }

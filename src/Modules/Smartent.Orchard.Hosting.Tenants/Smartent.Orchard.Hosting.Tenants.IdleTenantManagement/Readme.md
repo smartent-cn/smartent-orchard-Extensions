@@ -1,4 +1,6 @@
 # Smartent Orchard Hosting - Idle Tenant Management for Orchard Core
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
+
 
 ## About
 
@@ -26,7 +28,7 @@ public void ConfigureServices(IServiceCollection services) =>
 {
   "OrchardCore": {
     "Default": {
-      "Lombiq_Hosting_Tenants_IdleTenantManagement": {
+      "Smartent_Orchard_Hosting_Tenants_IdleTenantManagement": {
         "IdleShutdownOptions": {
           "MaxIdleMinutes": 0
         }

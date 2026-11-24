@@ -25,13 +25,13 @@ Note also that some projects' _xunit.runner.json_ files may include the flag [`s
 Certain test execution parameters can be configured externally too, the ones retrieved via the `TestConfigurationManager` class. All configuration options are basic key-value pairs and can be provided in one of the two ways:
 
 - Key-value pairs in a _TestConfiguration.json_ file. Note that this file needs to be in the folder where the UI tests execute. By default this is the build output folder of the given test project, i.e. where the projects's DLL is generated (e.g. _bin/Debug/net10.0_).
-- Environment variables: Their names should be prefixed with `Lombiq_Tests_UI`, followed by the config with a `__` as it is with [(ASP).NET configuration](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/), e.g. `Lombiq_Tests_UI__OrchardCoreUITestExecutorConfiguration__MaxRetryCount` (instead of the double underscore you can also use a `:` on certain platforms like Windows). Keep in mind that you can set these just for the current session too. Configuration in environment variables will take precedence over the _TestConfiguration.json_ file. When you're setting environment variables while trying out test execution keep in mind that you'll have to restart the app after changing any environment variable.
+- Environment variables: Their names should be prefixed with `Smartent_Test_UI`, followed by the config with a `__` as it is with [(ASP).NET configuration](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/), e.g. `Smartent_Test_UI__OrchardCoreUITestExecutorConfiguration__MaxRetryCount` (instead of the double underscore you can also use a `:` on certain platforms like Windows). Keep in mind that you can set these just for the current session too. Configuration in environment variables will take precedence over the _TestConfiguration.json_ file. When you're setting environment variables while trying out test execution keep in mind that you'll have to restart the app after changing any environment variable.
 
 Here's a full _TestConfiguration.json_ file example, something appropriate during development when you have a fast machine (probably faster then the one used to execute these tests) and want tests to fail fast instead of being reliable:
 
 ```json
 {
-  "Lombiq_Tests_UI": {
+  "Smartent_Test_UI": {
     "AgentIndex": 3,
     "TimeoutConfiguration": {
       "RetryTimeoutSeconds": 5,
@@ -56,7 +56,7 @@ Recommendations and notes for such configuration:
 
 - This will execute tests in headless mode, so no browser windows will be opened (for browsers that support it). If you want to troubleshoot a failing test then disable headless mode.
 - We encourage you to experiment with a `RetryTimeoutSeconds` value suitable for your hardware. Higher, paradoxically, is usually less safe.
-- If you have several UI test projects it can be cumbersome to maintain a _TestConfiguration.json_ file for each. Instead you can set the value of the `LOMBIQ_UI_TESTING_TOOLBOX_SHARED_TEST_CONFIGURATION` environment variable to the absolute path of a central configuration file and then each project will look it up. If you place an individual _TestConfiguration.json_ into a test directory it will still take precedence in case you need special configuration for just that one.
+- If you have several UI test projects it can be cumbersome to maintain a _TestConfiguration.json_ file for each. Instead you can set the value of the `SMARTENT_UI_TESTING_TOOLBOX_SHARED_TEST_CONFIGURATION` environment variable to the absolute path of a central configuration file and then each project will look it up. If you place an individual _TestConfiguration.json_ into a test directory it will still take precedence in case you need special configuration for just that one.
 
 ### HTML validation configuration
 
@@ -178,12 +178,12 @@ You can use [Docker Desktop](https://www.docker.com/products/docker-desktop/) or
 
 ### Extending TestConfiguration.json
 
-SQL Server on Linux only has SQL Authentication and you still have to tell the toolbox about your backup paths. Add the following properties to your `Lombiq_Tests_UI`. Adjust the Password field of the connection string and `HostSnapshotPath` property as needed.
+SQL Server on Linux only has SQL Authentication and you still have to tell the toolbox about your backup paths. Add the following properties to your `Smartent_Test_UI`. Adjust the Password field of the connection string and `HostSnapshotPath` property as needed.
 
 ```json
 {
   "SqlServerDatabaseConfiguration": {
-    "ConnectionStringTemplate": "Server=.;Database=LombiqUITestingToolbox_{{id}};User Id=sa;Password=Password1!;Connection Timeout=60;ConnectRetryCount=15;ConnectRetryInterval=5;TrustServerCertificate=True;Encrypt=False"
+    "ConnectionStringTemplate": "Server=.;Database=SmartentUITestingToolbox_{{id}};User Id=sa;Password=Password1!;Connection Timeout=60;ConnectRetryCount=15;ConnectRetryInterval=5;TrustServerCertificate=True;Encrypt=False"
   },
   "DockerConfiguration": {
     "ContainerSnapshotPath": "/data/Snapshots",

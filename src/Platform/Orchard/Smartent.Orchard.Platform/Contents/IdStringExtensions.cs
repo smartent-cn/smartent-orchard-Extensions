@@ -5,7 +5,7 @@ public static class IdStringExtensions
     /// <summary>
     /// Converts a string into a valid Content Item ID by turning it into lower-case, removing any non-alphanumeric
     /// characters, and finally padding the rest with zeroes so it has the expected length of 26 characters. This way
-    /// <c>~Smartent: Technologies</c> can be used to get the ID <c>lombiqtechnologies00000000</c>, which can be used in
+    /// <c>~Smartent: Technologies</c> can be used to get the ID <c>smartenttechnologies000000</c>, which can be used in
     /// recipes without complication. (The example's leading tilde makes it easier to identify as a potential ID even if
     /// it's not immediately passed to this method.)
     /// </summary>

@@ -1,4 +1,6 @@
 # Smartent.Orchard.Http.RestEase
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
+
 
 ## 功能 | Purpose
 

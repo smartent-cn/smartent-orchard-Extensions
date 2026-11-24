@@ -1,4 +1,6 @@
 # Smartent Orchard Hosting - Media Theme MSBuild Targets
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
+
 
 [![Smartent.Orchard.Theme.Media.Targets NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.Theme.Media.Targets?label=Smartent.Orchard.Theme.Media.Targets)](https://www.nuget.org/packages/Smartent.Orchard.Theme.Media.Targets/)
 
@@ -36,7 +38,7 @@ Add a dotnet-tools.json file into the .config folder in your module:
   "version": 1,
   "isRoot": true,
   "tools": {
-    "lombiq.hosting.mediatheme.deployer": {
+    "smartent.hosting.mediatheme.deployer": {
       "version": "3.0.1",
       "commands": [
         "media-theme-deploy"

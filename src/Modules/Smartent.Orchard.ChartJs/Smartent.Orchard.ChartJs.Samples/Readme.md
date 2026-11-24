@@ -1,4 +1,6 @@
 # Smartent Orchard Chart.js for Orchard Core - Samples
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
+
 
 ## About
 

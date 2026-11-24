@@ -1,6 +1,8 @@
-# Demo | 演示
+# Demo
 
-`src/Demo/` 存放平台能力演示模块（非生产功能包）。
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
+
+`src/Demo/` hosts the training web app and sample modules (not standalone production products).
 
 | 目录 | 说明 |
 |------|------|

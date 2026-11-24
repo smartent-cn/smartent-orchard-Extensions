@@ -1,4 +1,6 @@
 # Smartent Orchard Vue.js module for Orchard Core
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
+
 
 [![Smartent.Orchard.VueJs NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.VueJs?label=Smartent.Orchard.VueJs)](https://www.nuget.org/packages/Smartent.Orchard.VueJs/) [![Smartent.Orchard.VueJs.Samples NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.VueJs.Samples?label=Smartent.Orchard.VueJs.Samples)](https://www.nuget.org/packages/Smartent.Orchard.VueJs.Samples/) [![Smartent.Orchard.VueJs.Tests.UI NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.VueJs.Tests.UI?label=Smartent.Orchard.VueJs.Tests.UI)](https://www.nuget.org/packages/Smartent.Orchard.VueJs.Tests.UI/)
 
@@ -43,10 +45,10 @@ If you just want to see the whole thing in action, check out the [Samples projec
     {
       "private": true,
       "scripts": {
-        "build": "npm explore nodejs-extensions -- pnpm build && npm explore lombiq-vuejs -- pnpm build",
-        "compile": "npm explore nodejs-extensions -- pnpm compile && npm explore lombiq-vuejs -- pnpm compile",
-        "clean": "npm explore nodejs-extensions -- pnpm clean && npm explore lombiq-vuejs -- pnpm clean",
-        "watch": "npm explore nodejs-extensions -- pnpm watch && npm explore lombiq-vuejs -- pnpm watch"
+        "build": "npm explore nodejs-extensions -- pnpm build && npm explore smartent-vuejs -- pnpm build",
+        "compile": "npm explore nodejs-extensions -- pnpm compile && npm explore smartent-vuejs -- pnpm compile",
+        "clean": "npm explore nodejs-extensions -- pnpm clean && npm explore smartent-vuejs -- pnpm clean",
+        "watch": "npm explore nodejs-extensions -- pnpm watch && npm explore smartent-vuejs -- pnpm watch"
       }
     }
     ```

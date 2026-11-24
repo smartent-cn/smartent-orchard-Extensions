@@ -19,7 +19,7 @@ public sealed class Startup : StartupBase
     {
         services.BindAndConfigureSection<AddAdministratorRoleToUsersWithRoleMaintenanceOptions>(
             _shellConfiguration,
-            "Lombiq_Hosting_Tenants_Maintenance:AddAdministratorRoleToUsersWithRole");
+            "Smartent_Orchard_Hosting_Tenants_Maintenance:AddAdministratorRoleToUsersWithRole");
 
         services.AddScoped<IMaintenanceProvider, AddAdministratorRoleToUsersWithRoleMaintenanceProvider>();
     }

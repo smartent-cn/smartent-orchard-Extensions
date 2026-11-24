@@ -33,12 +33,12 @@ else
     $server = '.'
     $connectionSecurity = 'User Id=sa;Password=Password1!'
 
-    $Env:Lombiq_Tests_UI__DockerConfiguration__ContainerName = 'uitt-sqlserver'
+    $Env:Smartent_Test_UI__DockerConfiguration__ContainerName = 'uitt-sqlserver'
 }
 
 $connectionString = @(
     "Server=$server"
-    'Database=LombiqUITestingToolbox_{{id}}'
+    'Database=SmartentUITestingToolbox_{{id}}'
     $connectionSecurity
     'Connection Timeout=60'
     'ConnectRetryCount=15'
@@ -47,8 +47,8 @@ $connectionString = @(
     'TrustServerCertificate=True'
 ) -join ';'
 
-$Env:Lombiq_Tests_UI__SqlServerDatabaseConfiguration__ConnectionStringTemplate = $connectionString
-$Env:Lombiq_Tests_UI__BrowserConfiguration__Headless = 'true'
+$Env:Smartent_Test_UI__SqlServerDatabaseConfiguration__ConnectionStringTemplate = $connectionString
+$Env:Smartent_Test_UI__BrowserConfiguration__Headless = 'true'
 
 # Running dotnet test on individual projects when the whole solution is not built can have unforseen effects. It's the
 # safest to build the solution or project target explicitly, then run "dotnet test" with the "--no-build" switch.

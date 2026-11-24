@@ -1,4 +1,6 @@
 # Smartent Tailwind MSBuild Targets
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
+
 
 [![Smartent.Tailwind.Targets NuGet](https://img.shields.io/nuget/v/Smartent.Tailwind.Targets?label=Smartent.Tailwind.Targets)](https://www.nuget.org/packages/Smartent.Tailwind.Targets/)
 

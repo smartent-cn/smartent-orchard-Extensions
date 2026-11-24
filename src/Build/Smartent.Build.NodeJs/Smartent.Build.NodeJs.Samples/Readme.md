@@ -1,4 +1,6 @@
 # Smartent Node.js Extensions - Samples
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
+
 
 Example project that makes use of Smartent Node.js Extensions as a submodule.
 

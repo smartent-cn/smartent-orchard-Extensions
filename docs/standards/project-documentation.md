@@ -6,15 +6,21 @@
 
 | 位置 | 文件名 | 是否必须中英文 |
 |------|--------|----------------|
-| `src/**` 下每个 **可构建 csproj 目录** | `Readme.md` | **必须** |
-| Legacy `src/**` 在迁入完成前 | 原 `Readme.md` | 迁入时在 Smartent 副本中补全双语 |
-| 仅测试/样例、不单独发布 | 可合并到父项目 Readme | 须在父文档列出子项目 |
+| `src/**` 下每个 **可构建 csproj 目录** | `Readme.md`（**英文**）+ `Readme-CN.md`（**中文**） | **必须** |
+| Legacy `src/**` 在迁入完成前 | 原 `Readme.md` | 迁入时在 Smartent 副本中补全双文件 |
+| 仅测试/样例、不单独发布 | 可合并到父项目 Readme | 须在父文档 `Readme-CN.md` 列出子项目 |
 
-模板：[PROJECT_README.template.md](../templates/PROJECT_README.template.md)
+模板（双文件）：
+
+- 英文：[PROJECT_README.en.template.md](../templates/PROJECT_README.en.template.md)
+- 中文：[PROJECT_README.cn.template.md](../templates/PROJECT_README.cn.template.md)
+- 合并版（旧）：[PROJECT_README.template.md](../templates/PROJECT_README.template.md)
+
+批量补齐：`python scripts/Ensure-BilingualProjectReadmes.py`（生成后须人工校对技术细节）。
 
 ### 必备章节（顺序建议固定）
 
-1. **标题与一句话摘要**（中文段 + English section）  
+1. **标题与一句话摘要**（英文在 `Readme.md`，中文在 `Readme-CN.md`；文首互相链接）  
 2. **功能说明 | Features** — 实现了什么，不做什么（边界）  
 3. **引用方式 | References** — monorepo `ProjectReference` 路径示例 + 未来 NuGet `PackageReference` 示例  
 4. **使用方式 | Usage** — 启用哪些 Orchard Feature、配置项、Recipe、示例代码或管理端路径  
@@ -49,11 +55,11 @@
 
 ### 代码与文档语言分工
 
-- **项目 Readme**：中英文对照（可先完整中文块，再完整 English block）。  
+- **项目文档**：`Readme.md` = English；`Readme-CN.md` = 中文；文首交叉链接。  
 - **代码公共 API**：中文 XML 文档（见 [csharp.md](csharp.md)）。
 
 ---
 
 ## English
 
-Every buildable project under `src/` must have a bilingual `Readme.md` using the template sections: features, references (ProjectReference + PackageReference), usage, dependencies, upgrade/extension notes, tests, provenance. Update README in the same PR when dependencies or public API change.
+Every buildable project under `src/` must have **`Readme.md` (English)** and **`Readme-CN.md` (Chinese)** using the EN/CN templates: features, references, usage, dependencies, upgrade/extension, tests, provenance. Cross-link at the top of each file. Update both in the same PR when dependencies or public API change. Run `scripts/Ensure-BilingualProjectReadmes.py` for scaffolding; human review required.

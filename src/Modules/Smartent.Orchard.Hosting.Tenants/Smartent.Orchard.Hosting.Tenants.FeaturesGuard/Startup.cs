@@ -24,7 +24,7 @@ public sealed class Startup : StartupBase
 
         services.Configure<ConditionallyEnabledFeaturesOptions>(options =>
             _shellConfiguration
-                .GetSection("Lombiq_Hosting_Tenants_FeaturesGuard:ConditionallyEnabledFeaturesOptions:ConditionallyEnabledFeatures")
+                .GetSection("Smartent_Orchard_Hosting_Tenants_FeaturesGuard:ConditionallyEnabledFeaturesOptions:ConditionallyEnabledFeatures")
                 .Bind(options));
     }
 }

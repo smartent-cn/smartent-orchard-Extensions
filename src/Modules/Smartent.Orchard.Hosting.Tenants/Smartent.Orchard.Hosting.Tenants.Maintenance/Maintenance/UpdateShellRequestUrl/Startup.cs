@@ -19,7 +19,7 @@ public sealed class Startup : StartupBase
     {
         services.BindAndConfigureSection<UpdateShellRequestUrlMaintenanceOptions>(
             _shellConfiguration,
-            "Lombiq_Hosting_Tenants_Maintenance:UpdateShellRequestUrl");
+            "Smartent_Orchard_Hosting_Tenants_Maintenance:UpdateShellRequestUrl");
 
         services.AddScoped<IMaintenanceProvider, UpdateShellRequestUrlsMaintenanceProvider>();
     }

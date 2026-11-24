@@ -1,4 +1,6 @@
 # Smartent Orchard Hosting - Media Theme - Test Theme
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
+
 
 A theme only used for testing that demonstrates the local development version of a Media Theme.
 

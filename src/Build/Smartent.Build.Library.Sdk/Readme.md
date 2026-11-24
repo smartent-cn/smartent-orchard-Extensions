@@ -1,4 +1,6 @@
 # Smartent MSBuild SDK - Library
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
+
 
 ## About
 

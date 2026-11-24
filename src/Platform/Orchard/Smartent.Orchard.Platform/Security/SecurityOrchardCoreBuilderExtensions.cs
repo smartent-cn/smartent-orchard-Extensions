@@ -105,7 +105,7 @@ public static class SecurityOrchardCoreBuilderExtensions
     ///             all ~/Admin pages, required by the Monaco text editor widely used in the admin. You can opt out by
     ///             setting <see cref="ContentSecurityPolicyHeaderOptions.EnableMonacoContentSecurityPolicyProvider"/>
     ///             to <see langword="false"/> in the
-    ///             <c>OrchardCore:Lombiq_HelpfulLibraries_OrchardCore_ContentSecurityPolicy</c> app setting.
+    ///             <c>OrchardCore:Smartent_Orchard_Platform_ContentSecurityPolicy</c> app setting.
     ///         </description>
     ///     </item>
     ///     <item>
@@ -149,7 +149,7 @@ public static class SecurityOrchardCoreBuilderExtensions
         bool useStaticFiles)
     {
         builder.ApplicationServices.ConfigureFromShellConfiguration<ContentSecurityPolicyHeaderOptions>(
-            "Lombiq_HelpfulLibraries_OrchardCore_ContentSecurityPolicy");
+            "Smartent_Orchard_Platform_ContentSecurityPolicy");
 
         builder.ApplicationServices.AddInlineStartup(
             services => services

@@ -1,4 +1,6 @@
 # Smartent Orchard Hosting - Tenants Email Quota Management for Orchard Core
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
+
 
 [![Smartent.Orchard.Hosting.Tenants.EmailQuotaManagement NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.Hosting.Tenants.EmailQuotaManagement?label=Smartent.Orchard.Hosting.Tenants.EmailQuotaManagement)](https://www.nuget.org/packages/Smartent.Orchard.Hosting.Tenants.EmailQuotaManagement/)
 
@@ -25,7 +27,7 @@ Also a warning message is always shown with the current email quota status on th
 
 ```json
 "OrchardCore": {
-  "Lombiq_Hosting_Tenants_EmailQuotaManagement": {
+  "Smartent_Orchard_Hosting_Tenants_EmailQuotaManagement": {
     "EmailQuotaPerMonth": 42069
   }
 }
@@ -36,7 +38,7 @@ Tenant based configuration can be defined as the following, for more details rea
 ```json
 "OrchardCore": {
   "TenantName": {
-    "Lombiq_Hosting_Tenants_EmailQuotaManagement": {
+    "Smartent_Orchard_Hosting_Tenants_EmailQuotaManagement": {
       "EmailQuotaPerMonth": 42069
     }
   }

@@ -1,4 +1,6 @@
 # Smartent Orchard Marketing for Orchard Core - UI Test Extensions
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
+
 
 [![Smartent.Orchard.Marketing.Tests.UI NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.Marketing.Tests.UI?label=Smartent.Orchard.Marketing.Tests.UI)](https://www.nuget.org/packages/Smartent.Orchard.Marketing.Tests.UI/)
 

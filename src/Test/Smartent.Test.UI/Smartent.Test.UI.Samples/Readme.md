@@ -1,4 +1,6 @@
 # Smartent UI Testing - Samples
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
+
 
 Example UI testing project. The whole project is heavily documented to teach you how to write UI tests with the UI Testing Toolbox. It guides you through this process just like the [Smartent Orchard Training Demo for Orchard Core](https://gitee.com/smartent/smartent-orchard-Extensions) teaches Orchard Core and Orchard 1 development.
 

@@ -7,11 +7,8 @@ namespace Smartent.Orchard.Marketing;
 public static class ShellConfigurationMarketingExtensions
 {
     /// <summary>
-    /// 返回 <c>Smartent_Marketing:{relativePath}</c>；若不存在则回退 <c>Lombiq_Marketing:{relativePath}</c>。
+    /// 返回 <c>Smartent_Marketing:{relativePath}</c> 配置节。
     /// </summary>
-    public static IConfigurationSection GetMarketingSection(this IShellConfiguration configuration, string relativePath)
-    {
-        var primary = configuration.GetSection($"{MarketingConfigurationKeys.Section}:{relativePath}");
-        return primary.Exists() ? primary : configuration.GetSection($"{MarketingConfigurationKeys.LegacySection}:{relativePath}");
-    }
+    public static IConfigurationSection GetMarketingSection(this IShellConfiguration configuration, string relativePath) =>
+        configuration.GetSection($"{MarketingConfigurationKeys.Section}:{relativePath}");
 }

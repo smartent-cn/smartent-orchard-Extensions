@@ -14,7 +14,7 @@ public static class EmailQuotaManagementExtensions
             {
                 argumentsBuilder
                     .AddWithValue(
-                        "OrchardCore:Lombiq_Hosting_Tenants_EmailQuotaManagement:EmailQuotaPerMonth",
+                        "OrchardCore:Smartent_Orchard_Hosting_Tenants_EmailQuotaManagement:EmailQuotaPerMonth",
                         maximumEmails);
 
                 return Task.CompletedTask;

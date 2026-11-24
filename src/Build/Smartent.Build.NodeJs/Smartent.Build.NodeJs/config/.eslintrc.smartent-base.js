@@ -13,7 +13,7 @@ module.exports = {
 
     // Here we can define our own rules overriding the base rules
     'rules': {
-        // Lombiq rules
+        // Smartent rules
         'max-len': [
             'warn',
             // 150 characters is a hard limit but the soft limit is at 120.

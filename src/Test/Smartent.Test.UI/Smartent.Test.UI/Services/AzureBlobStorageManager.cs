@@ -20,11 +20,11 @@ public class AzureBlobStorageConfiguration
 
     /// <summary>
     /// Gets or sets the Azure Blob Storage container name where all the test apps' files will be stored in subfolders.
-    /// Defaults to <c>"LombiqUITestingToolbox"</c>. Ff you want to clean up residual files after an interrupted test
+    /// Defaults to <c>"smartentuitestingtoolbox"</c>. Ff you want to clean up residual files after an interrupted test
     /// execution you can just delete the container (it'll be created if it doesn't exist). This configuration will be
     /// automatically passed to the tested app.
     /// </summary>
-    public string ContainerName { get; set; } = "lombiquitestingtoolbox";
+    public string ContainerName { get; set; } = "smartentuitestingtoolbox";
 }
 
 public class AzureBlobStorageRunningContext

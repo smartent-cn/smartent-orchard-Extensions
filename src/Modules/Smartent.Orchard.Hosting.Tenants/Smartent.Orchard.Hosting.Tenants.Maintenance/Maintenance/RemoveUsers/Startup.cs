@@ -19,7 +19,7 @@ public sealed class Startup : StartupBase
     {
         services.BindAndConfigureSection<RemoveUsersMaintenanceOptions>(
             _shellConfiguration,
-            "Lombiq_Hosting_Tenants_Maintenance:RemoveUsers");
+            "Smartent_Orchard_Hosting_Tenants_Maintenance:RemoveUsers");
 
         services.AddScoped<IMaintenanceProvider, RemoveUsersMaintenanceProvider>();
     }

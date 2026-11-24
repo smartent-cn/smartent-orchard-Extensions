@@ -1,4 +1,6 @@
 # Smartent Orchard Hosting - Tenant Maintenance for Orchard Core
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
+
 
 [![Smartent.Orchard.Hosting.Tenants.Maintenance NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.Hosting.Tenants.Maintenance?label=Smartent.Orchard.Hosting.Tenants.Maintenance)](https://www.nuget.org/packages/Smartent.Orchard.Hosting.Tenants.Maintenance/)
 
@@ -31,7 +33,7 @@ The following configuration options are available to set the role:
 ```json
 {
   "OrchardCore": {
-    "Lombiq_Hosting_Tenants_Maintenance": {
+    "Smartent_Orchard_Hosting_Tenants_Maintenance": {
       "AddAdministratorRoleToUsersWithRole": {
         "IsEnabled": true,
         "RoleName": "NameOfTheRole"
@@ -58,7 +60,7 @@ The following configuration options are available to set the site URL:
 ```json
 {
   "OrchardCore": {
-    "Lombiq_Hosting_Tenants_Maintenance": {
+    "Smartent_Orchard_Hosting_Tenants_Maintenance": {
       "UpdateSiteUrl": {
         "IsEnabled": true,
         "SiteUrl": "https://domain.com/{TenantName}",
@@ -76,7 +78,7 @@ Defining each tenant's URL separately is also an option, in this case, you have 
 ```json
 {
   "OrchardCore": {
-    "Lombiq_Hosting_Tenants_Maintenance": {
+    "Smartent_Orchard_Hosting_Tenants_Maintenance": {
       "UpdateSiteUrl": {
         "IsEnabled": true,
         "DefaultTenantSiteUrl": "https://domain.com",
@@ -99,7 +101,7 @@ The following configuration options are available to set the shell request URLs:
 ```json
 {
   "OrchardCore": {
-    "Lombiq_Hosting_Tenants_Maintenance": {
+    "Smartent_Orchard_Hosting_Tenants_Maintenance": {
       "UpdateShellRequestUrl": {
         "IsEnabled": true,
         "DefaultShellRequestUrl": "domain.com",
@@ -123,7 +125,7 @@ The following configuration should be used to allow the maintenance to run:
 ```json
 {
   "OrchardCore": {
-    "Lombiq_Hosting_Tenants_Maintenance": {
+    "Smartent_Orchard_Hosting_Tenants_Maintenance": {
       "RemoveUsers": {
         "IsEnabled": true,
         "EmailDomain": "example.com"
@@ -142,7 +144,7 @@ The following configuration should be used to allow the maintenance to run:
 ```json
 {
   "OrchardCore": {
-    "Lombiq_Hosting_Tenants_Maintenance": {
+    "Smartent_Orchard_Hosting_Tenants_Maintenance": {
       "ChangeUserSensitiveContent": {
         "IsEnabled": true,
         "TenantNames": "Default, Tenant1, Tenant2",
@@ -167,7 +169,7 @@ The following configuration should be used to allow the maintenance to run and f
 ```json
 {
   "OrchardCore": {
-    "Lombiq_Hosting_Tenants_Maintenance": {
+    "Smartent_Orchard_Hosting_Tenants_Maintenance": {
       "ElasticsearchIndicesOptions": {
           "DeleteMaintenanceIsEnabled": true,
           "RebuildMaintenanceIsEnabled": true,
@@ -187,7 +189,7 @@ The following configuration options are available to set the enabled features:
 ```json
 {
   "OrchardCore": {
-    "Lombiq_Hosting_Tenants_Maintenance": {
+    "Smartent_Orchard_Hosting_Tenants_Maintenance": {
       "UpdateEnabledFeatures": {
         "IsEnabled": true,
         "EnableFeatures": "OrchardCore.Admin, OrchardCore.Alias, OrchardCore.AuditTrail",
@@ -221,7 +223,7 @@ You can initialize the configuration with the following app settings:
 ```json
 {
   "OrchardCore": {
-    "Lombiq_Hosting_Tenants_Maintenance": {
+    "Smartent_Orchard_Hosting_Tenants_Maintenance": {
       "StaggeredTenantWakeUp": {
         "BatchIntervalSeconds": 5,
         "BatchSize": 5,
@@ -242,7 +244,7 @@ Enable it with:
 ```json
 {
   "OrchardCore": {
-    "Lombiq_Hosting_Tenants_Maintenance": {
+    "Smartent_Orchard_Hosting_Tenants_Maintenance": {
       "PurgeMediaCache": {
         "IsEnabled": true
       }

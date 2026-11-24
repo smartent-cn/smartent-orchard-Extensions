@@ -1,4 +1,6 @@
 # Smartent Orchard UI Kit - Widgets for Orchard Core
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
+
 
 [![Smartent.Orchard.UIKit Widgets NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.UIKit?label=Smartent.Orchard.UIKit.Widgets)](https://www.nuget.org/packages/Smartent.Orchard.UIKit.Widgets/) [![Smartent.Orchard.UIKit.Tests.UI NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.UIKit.Tests.UI?label=Smartent.Orchard.UIKit.Widgets.Tests.UI)](https://www.nuget.org/packages/Smartent.Orchard.UIKit.widgets.Tests.UI/)
 
@@ -73,7 +75,7 @@ You can also use the `ButtonWidget` shape which can be directly configured, for 
 Displays a Bootstrap [card](https://getbootstrap.com/docs/5.3/components/card/) with a media field for the cap image and several flow parts for the header, body and footer areas.
 
 > [!NOTE]
-> You can also use this card in other templates, with the related [`BootstrapCard` shape](../Smartent.Orchard.UIKit/Docs/BootstrapControls.md#bootstrapcard) in _Lombiq,UIKit_. It has even more customization options too.
+> You can also use this card in other templates, with the related [`BootstrapCard` shape](../Smartent.Orchard.UIKit/Docs/BootstrapControls.md#bootstrapcard) in _Smartent,UIKit_. It has even more customization options too.
 
 ### Image Link Widget
 

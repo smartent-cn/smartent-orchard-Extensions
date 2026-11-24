@@ -1,4 +1,6 @@
 # Smartent Setup Extensions for Orchard Core
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
+
 
 [![Smartent.SetupExtensions NuGet](https://img.shields.io/nuget/v/Smartent.SetupExtensions?label=Smartent.SetupExtensions)](https://www.nuget.org/packages/Smartent.SetupExtensions/)
 

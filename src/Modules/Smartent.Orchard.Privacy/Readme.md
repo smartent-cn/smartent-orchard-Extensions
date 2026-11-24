@@ -1,4 +1,6 @@
 # Smartent Orchard Privacy for Orchard Core
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
+
 
 [![Smartent.Orchard.Privacy NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.Privacy?label=Smartent.Orchard.Privacy)](https://www.nuget.org/packages/Smartent.Orchard.Privacy/) [![Smartent.Orchard.Privacy.Samples NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.Privacy.Samples?label=Smartent.Orchard.Privacy.Samples)](https://www.nuget.org/packages/Smartent.Orchard.Privacy.Samples/) [![Smartent.Orchard.Privacy.Tests.UI NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.Privacy.Tests.UI?label=Smartent.Orchard.Privacy.Tests.UI)](https://www.nuget.org/packages/Smartent.Orchard.Privacy.Tests.UI/)
 

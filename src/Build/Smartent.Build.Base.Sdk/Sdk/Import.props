@@ -9,18 +9,13 @@
   <PropertyGroup>
     <SmartentSolutionRootPath Condition="'$(SmartentSolutionRootPath)' == ''"
       >$([MSBuild]::MakeRelative('$(MSBuildProjectDirectory)', '$(MSBuildThisFileDirectory)../../../..'))</SmartentSolutionRootPath>
-    <LombiqSolutionRootPath Condition="'$(LombiqSolutionRootPath)' == '' AND '$(SmartentSolutionRootPath)' != ''"
-      >$(SmartentSolutionRootPath)</LombiqSolutionRootPath>
     <SmartentSrcPath Condition="'$(SmartentSrcPath)' == '' AND '$(SmartentSolutionRootPath)' != ''"
       >$([MSBuild]::MakeRelative('$(MSBuildProjectDirectory)', '$(SmartentSolutionRootPath)/src'))</SmartentSrcPath>
     <SmartentPlatformPath Condition="'$(SmartentPlatformPath)' == '' AND '$(SmartentSrcPath)' != ''"
       >$(SmartentSrcPath)/Platform/Orchard</SmartentPlatformPath>
     <SmartentAnalyzersPath Condition="'$(SmartentAnalyzersPath)' == '' AND '$(SmartentSolutionRootPath)' != ''"
       >$([MSBuild]::MakeRelative('$(MSBuildProjectDirectory)', '$(SmartentSolutionRootPath)/tools/Smartent.Build.Analyzers'))</SmartentAnalyzersPath>
-    <LombiqAnalyzersPath Condition="'$(LombiqAnalyzersPath)' == '' AND '$(SmartentAnalyzersPath)' != ''"
-      >$(SmartentAnalyzersPath)</LombiqAnalyzersPath>
     <SmartentMSBuildLibManTargetsPath>$(MSBuildThisFileDirectory)../../Smartent.Build.LibMan.Targets</SmartentMSBuildLibManTargetsPath>
-    <LombiqMSBuildLibManTargetsPath Condition="'$(LombiqMSBuildLibManTargetsPath)' == ''">$(SmartentMSBuildLibManTargetsPath)</LombiqMSBuildLibManTargetsPath>
   </PropertyGroup>
 
   <Import Project="$(MSBuildThisFileDirectory)Core.props" />

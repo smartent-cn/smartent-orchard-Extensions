@@ -19,7 +19,7 @@ public sealed class Startup : StartupBase
     {
         services.BindAndConfigureSection<PurgeMediaCacheMaintenanceOptions>(
             _shellConfiguration,
-            "Lombiq_Hosting_Tenants_Maintenance:PurgeMediaCache");
+            "Smartent_Orchard_Hosting_Tenants_Maintenance:PurgeMediaCache");
 
         services.AddScoped<IMaintenanceProvider, PurgeMediaCacheMaintenanceProvider>();
     }

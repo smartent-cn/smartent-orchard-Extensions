@@ -1,4 +1,6 @@
 # Smartent Orchard Vue.js module for Orchard Core
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
+
 
 [![Smartent.Orchard.VueJs.Resources NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.VueJs.Resources?label=Smartent.Orchard.VueJs.Resources)](https://www.nuget.org/packages/Smartent.Orchard.VueJs.Resources/)
 

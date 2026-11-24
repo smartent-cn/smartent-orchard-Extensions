@@ -25,7 +25,7 @@ public sealed class DeleteElasticsearchIndicesStartup : StartupBase
     {
         services.BindAndConfigureSection<ElasticsearchIndicesMaintenanceOptions>(
             _shellConfiguration,
-            "Lombiq_Hosting_Tenants_Maintenance:ElasticsearchIndicesOptions");
+            "Smartent_Orchard_Hosting_Tenants_Maintenance:ElasticsearchIndicesOptions");
 
         services.AddScoped<IMaintenanceProvider, DeleteElasticsearchIndicesMaintenanceProvider>();
         services.AddScoped<IMaintenanceProvider, RebuildElasticsearchIndexesMaintenanceProvider>();
@@ -48,7 +48,7 @@ public sealed class DeleteElasticsearchIndicesBeforeSetupStartup : StartupBase
     {
         services.BindAndConfigureSection<ElasticsearchIndicesMaintenanceOptions>(
             _shellConfiguration,
-            "Lombiq_Hosting_Tenants_Maintenance:ElasticsearchIndicesOptions");
+            "Smartent_Orchard_Hosting_Tenants_Maintenance:ElasticsearchIndicesOptions");
 
         // After the setup, the Elasticsearch module can be loaded the regular way.
         if (!_shellSettings.IsUninitialized()) return;

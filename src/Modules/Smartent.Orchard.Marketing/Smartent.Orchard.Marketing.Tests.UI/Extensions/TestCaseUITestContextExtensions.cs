@@ -17,7 +17,7 @@ namespace Smartent.Orchard.Marketing.Tests.UI.Extensions;
 public static class TestCaseUITestContextExtensions
 {
     private const string TestPirschScript = "<script defer=\"\" id=\"pianjs\" data-code=\"test\" data-dev=\"test\"></script>";
-    private const string TestPirschDataDev = "lombiq-marketing";
+    private const string TestPirschDataDev = "smartent-marketing";
 
     public static async Task TestShortUrlManagementAsync(this UITestContext context)
     {

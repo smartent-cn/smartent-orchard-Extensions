@@ -1,4 +1,6 @@
 # Smartent Helpful Libraries for Orchard Core - Samples
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
+
 
 Example Orchard Core module that makes use of Smartent Helpful Libraries.
 

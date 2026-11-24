@@ -1,4 +1,6 @@
 # Smartent Orchard Extensions for Orchard Core
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
+
 
 [![Smartent.Orchard.Extensions.Cms NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.Extensions.Cms?label=Smartent.Orchard.Extensions.Cms)](https://www.nuget.org/packages/Smartent.Orchard.Extensions.Cms/) [![Smartent.Orchard.Extensions.Cms UI Test Extensions NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.Extensions.Cms.Tests.UI?label=Smartent.Orchard.Extensions.Cms.Tests.UI)](https://www.nuget.org/packages/Smartent.Orchard.Extensions.Cms.Tests.UI/)
 

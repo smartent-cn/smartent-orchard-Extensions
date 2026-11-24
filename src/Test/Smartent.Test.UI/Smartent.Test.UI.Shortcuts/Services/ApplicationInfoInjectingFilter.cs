@@ -29,7 +29,7 @@ public sealed class ApplicationInfoInjectingFilter : IAsyncResultFilter
 
     public async Task OnResultExecutionAsync(ResultExecutingContext context, ResultExecutionDelegate next)
     {
-        if (context.IsNotFullViewRendering() || !_shellConfiguration.GetValue("Lombiq_Tests_UI:InjectApplicationInfo", defaultValue: false))
+        if (context.IsNotFullViewRendering() || !_shellConfiguration.GetValue("Smartent_Test_UI:InjectApplicationInfo", defaultValue: false))
         {
             await next();
             return;

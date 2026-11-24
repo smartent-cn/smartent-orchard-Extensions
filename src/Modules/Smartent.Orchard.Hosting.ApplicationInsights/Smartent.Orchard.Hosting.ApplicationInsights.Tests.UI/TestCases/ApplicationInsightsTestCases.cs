@@ -36,7 +36,7 @@ public static class ApplicationInsightsTestCases
                     {
                         argumentsBuilder
                             .AddWithValue(
-                                "OrchardCore:Lombiq_Hosting_Azure_ApplicationInsights:EnableOfflineOperation",
+                                "OrchardCore:Smartent_Orchard_Hosting_ApplicationInsights:EnableOfflineOperation",
                                 value: true);
 
                         return Task.CompletedTask;
@@ -60,7 +60,7 @@ public static class ApplicationInsightsTestCases
                 {
                     argumentsBuilder
                         .AddWithValue(
-                            "OrchardCore:Lombiq_Hosting_Azure_ApplicationInsights:EnableOfflineOperation",
+                            "OrchardCore:Smartent_Orchard_Hosting_ApplicationInsights:EnableOfflineOperation",
                             value: true);
 
                     return Task.CompletedTask;

@@ -34,7 +34,7 @@ public sealed class Startup : StartupBase
 
         services.BindAndConfigureSection<StaggeredTenantWakeUpOptions>(
             _shellConfiguration,
-            "Lombiq_Hosting_Tenants_Maintenance:StaggeredTenantWakeUp");
+            "Smartent_Orchard_Hosting_Tenants_Maintenance:StaggeredTenantWakeUp");
 
         services.AddContentPart<StaggeredTenantWakeUpPart>().WithMigration<StaggeredTenantWakeUpMigrations>();
 

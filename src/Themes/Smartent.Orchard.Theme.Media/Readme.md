@@ -1,4 +1,6 @@
 # Smartent Orchard Hosting - Media Theme for Orchard Core
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
+
 
 [![Smartent.Orchard.Theme.Media NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.Theme.Media?label=Smartent.Orchard.Theme.Media)](https://www.nuget.org/packages/Smartent.Orchard.Theme.Media/) [![Smartent.Orchard.Theme.Media.Bridge NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.Theme.Media.Bridge?label=Smartent.Orchard.Theme.Media.Bridge)](https://www.nuget.org/packages/Smartent.Orchard.Theme.Media.Bridge/) [![Smartent.Orchard.Theme.Media.Deployer NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.Theme.Media.Deployer?label=Smartent.Orchard.Theme.Media.Deployer)](https://www.nuget.org/packages/Smartent.Orchard.Theme.Media.Deployer/) [![Smartent.Orchard.Theme.Media.Tests.UI NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.Theme.Media.Tests.UI?label=Smartent.Orchard.Theme.Media.Tests.UI)](https://www.nuget.org/packages/Smartent.Orchard.Theme.Media.Tests.UI/)[![Smartent.Orchard.Theme.Media.Targets NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.Theme.Media.Targets?label=Smartent.Orchard.Theme.Media.Targets)](https://www.nuget.org/packages/Smartent.Orchard.Theme.Media.Targets/)
 

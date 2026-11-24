@@ -1,4 +1,6 @@
 # Smartent Orchard Training Demo for Orchard Core - Tests
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
+
 
 Hello and again, welcome to the Training Demo module! This time we'll take a quick glimpse at unit testing.
 

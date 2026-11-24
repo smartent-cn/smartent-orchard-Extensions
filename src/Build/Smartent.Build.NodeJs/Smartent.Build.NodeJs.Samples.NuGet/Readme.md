@@ -1,4 +1,6 @@
 # Smartent Build Node.js — NuGet 样例 | NuGet sample
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
+
 
 **中文**：通过 **NuGet 包形态** 引用 Node.js 构建扩展时的示例工程；在 **本 monorepo** 内通过 `ProjectReference` 使用 `Smartent.Build.NodeJs`，并列入 `NuGetVerify/Smartent.NuGet.Monorepo.sln`。
 

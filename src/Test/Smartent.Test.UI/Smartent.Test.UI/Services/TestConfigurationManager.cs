@@ -74,7 +74,7 @@ public static class TestConfigurationManager
     private static IConfiguration BuildConfiguration()
     {
         var sharedTestConfigurationPath =
-            Environment.GetEnvironmentVariable("LOMBIQ_UI_TESTING_TOOLBOX_SHARED_TEST_CONFIGURATION");
+            Environment.GetEnvironmentVariable("SMARTENT_UI_TESTING_TOOLBOX_SHARED_TEST_CONFIGURATION");
 
         var builder = new ConfigurationBuilder()
             .AddJsonFile("TestConfiguration.json", optional: true, reloadOnChange: false);
