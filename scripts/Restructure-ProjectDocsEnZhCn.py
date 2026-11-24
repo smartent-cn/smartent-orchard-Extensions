@@ -11,6 +11,27 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 SRC = ROOT / "src"
 
+# Keep in sync with scripts/Thicken-ModuleReadmes.py MODULE_FAMILIES_ORDER
+MODULE_FAMILY_DIRS: tuple[str, ...] = (
+    "Smartent.Orchard.AuditTrail",
+    "Smartent.Orchard.ChartJs",
+    "Smartent.Orchard.ContentEditors",
+    "Smartent.Orchard.DataTables",
+    "Smartent.Orchard.EmailClient",
+    "Smartent.Orchard.Extensions.Cms",
+    "Smartent.Orchard.Hosting.ApplicationInsights",
+    "Smartent.Orchard.Hosting.BuildVersion",
+    "Smartent.Orchard.Hosting.Tenants",
+    "Smartent.Orchard.JsonEditor",
+    "Smartent.Orchard.LoginAsAnybody",
+    "Smartent.Orchard.Marketing",
+    "Smartent.Orchard.Privacy",
+    "Smartent.Orchard.TrainingDemo",
+    "Smartent.Orchard.UIKit",
+    "Smartent.Orchard.VueJs",
+    "Smartent.Orchard.Walkthroughs",
+)
+
 TOPIC_BASES = ("QuickStart", "Usage", "Configuration", "Cautions")
 LEGACY_CN_SUFFIX = "-CN.md"
 
@@ -26,14 +47,21 @@ def project_docs_dir(project_dir: Path) -> Path | None:
 def normalize_docs_case(project_dir: Path) -> Path:
     docs = project_dir / "docs"
     legacy = project_dir / "Docs"
+    if legacy.is_dir() and docs.is_dir() and legacy.resolve() == docs.resolve():
+        docs.mkdir(exist_ok=True)
+        return docs
     if legacy.is_dir() and not docs.is_dir():
         legacy.rename(docs)
     elif legacy.is_dir() and docs.is_dir():
         for item in legacy.iterdir():
             dest = docs / item.name
-            if item.is_file() and not dest.exists():
-                shutil.move(str(item), str(dest))
-            elif item.is_dir() and item.name in ("en", "zh-cn"):
+            if item.is_file():
+                if not dest.exists():
+                    shutil.move(str(item), str(dest))
+                continue
+            if not item.is_dir():
+                continue
+            if item.name in ("en", "zh-cn"):
                 for f in item.rglob("*"):
                     if f.is_file():
                         rel = f.relative_to(item)
@@ -41,6 +69,17 @@ def normalize_docs_case(project_dir: Path) -> Path:
                         target.parent.mkdir(parents=True, exist_ok=True)
                         if not target.exists():
                             shutil.move(str(f), str(target))
+                continue
+            if not dest.exists():
+                shutil.move(str(item), str(dest))
+                continue
+            for f in item.rglob("*"):
+                if f.is_file():
+                    rel = f.relative_to(item)
+                    target = dest / rel
+                    target.parent.mkdir(parents=True, exist_ok=True)
+                    if not target.exists():
+                        shutil.move(str(f), str(target))
         shutil.rmtree(legacy, ignore_errors=True)
     docs.mkdir(exist_ok=True)
     return docs
@@ -53,13 +92,13 @@ def migrate_mixed_layout(docs: Path) -> None:
     zh.mkdir(exist_ok=True)
 
     for path in list(docs.iterdir()):
-        if path.is_dir() and path.name in ("en", "zh-cn"):
+        if path.is_dir() and path.name in ("en", "zh-cn", "Attachments"):
             continue
         if not path.is_file():
             continue
         name = path.name
         if name.endswith(LEGACY_CN_SUFFIX):
-            target = zh / name[: -len(LEGACY_CN_SUFFIX)] + ".md"
+            target = zh / f"{name[: -len(LEGACY_CN_SUFFIX)]}.md"
             if not target.exists() or path.stat().st_mtime > target.stat().st_mtime:
                 shutil.copy2(path, target)
             path.unlink(missing_ok=True)
@@ -87,6 +126,10 @@ def find_project_dirs() -> list[Path]:
         if ".Tests" in stem or stem.endswith(".Tester") or "Benchmark" in stem:
             continue
         dirs.add(csproj.parent.resolve())
+    for name in MODULE_FAMILY_DIRS:
+        family = (SRC / "Modules" / name).resolve()
+        if family.is_dir() and (family / "Readme.md").is_file():
+            dirs.add(family)
     return sorted(dirs)
 
 

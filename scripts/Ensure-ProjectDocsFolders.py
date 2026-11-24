@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import re
+import shutil
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -13,6 +14,26 @@ REPO_INDEX_CN = ROOT / "docs" / "src-projects" / "Readme-CN.md"
 TPL = ROOT / "docs" / "templates"
 
 AREA_ORDER = ("Build", "Demo", "Libraries", "Modules", "Platform", "Themes")
+
+MODULE_FAMILY_DIRS: tuple[str, ...] = (
+    "Smartent.Orchard.AuditTrail",
+    "Smartent.Orchard.ChartJs",
+    "Smartent.Orchard.ContentEditors",
+    "Smartent.Orchard.DataTables",
+    "Smartent.Orchard.EmailClient",
+    "Smartent.Orchard.Extensions.Cms",
+    "Smartent.Orchard.Hosting.ApplicationInsights",
+    "Smartent.Orchard.Hosting.BuildVersion",
+    "Smartent.Orchard.Hosting.Tenants",
+    "Smartent.Orchard.JsonEditor",
+    "Smartent.Orchard.LoginAsAnybody",
+    "Smartent.Orchard.Marketing",
+    "Smartent.Orchard.Privacy",
+    "Smartent.Orchard.TrainingDemo",
+    "Smartent.Orchard.UIKit",
+    "Smartent.Orchard.VueJs",
+    "Smartent.Orchard.Walkthroughs",
+)
 
 
 def load(name: str) -> str:
@@ -85,9 +106,49 @@ def topic_stub_cn(title: str, body_cn: str) -> str:
     return f"# {title}\n\n> 索引：[README.md](README.md) · 入口：[../Readme-CN.md](../Readme-CN.md)\n\n{body}\n"
 
 
-def ensure_project_dir(project_dir: Path, package_id: str) -> None:
+def normalize_docs_case(project_dir: Path) -> Path:
     docs = project_dir / "docs"
+    legacy = project_dir / "Docs"
+    if legacy.is_dir() and docs.is_dir() and legacy.resolve() == docs.resolve():
+        docs.mkdir(exist_ok=True)
+        return docs
+    if legacy.is_dir() and not docs.is_dir():
+        legacy.rename(docs)
+    elif legacy.is_dir() and docs.is_dir():
+        for item in legacy.iterdir():
+            dest = docs / item.name
+            if item.is_file():
+                if not dest.exists():
+                    shutil.move(str(item), str(dest))
+                continue
+            if not item.is_dir():
+                continue
+            if item.name in ("en", "zh-cn"):
+                for f in item.rglob("*"):
+                    if f.is_file():
+                        rel = f.relative_to(item)
+                        target = docs / item.name / rel
+                        target.parent.mkdir(parents=True, exist_ok=True)
+                        if not target.exists():
+                            shutil.move(str(f), str(target))
+                continue
+            if not dest.exists():
+                shutil.move(str(item), str(dest))
+                continue
+            for f in item.rglob("*"):
+                if f.is_file():
+                    rel = f.relative_to(item)
+                    target = dest / rel
+                    target.parent.mkdir(parents=True, exist_ok=True)
+                    if not target.exists():
+                        shutil.move(str(f), str(target))
+        shutil.rmtree(legacy, ignore_errors=True)
     docs.mkdir(exist_ok=True)
+    return docs
+
+
+def ensure_project_dir(project_dir: Path, package_id: str) -> None:
+    docs = normalize_docs_case(project_dir)
 
     readme_en = (project_dir / "Readme.md").read_text(encoding="utf-8") if (project_dir / "Readme.md").is_file() else ""
     readme_cn = (project_dir / "Readme-CN.md").read_text(encoding="utf-8") if (project_dir / "Readme-CN.md").is_file() else ""
@@ -150,7 +211,8 @@ def ensure_project_dir(project_dir: Path, package_id: str) -> None:
     (en / "Cautions.md").write_text(topic_stub_en("Pitfalls & cautions", caut_en), encoding="utf-8", newline="\n")
     (zh / "Cautions.md").write_text(topic_stub_cn("注意事项与常见坑", caut_cn), encoding="utf-8", newline="\n")
 
-    for legacy in docs.glob("*-CN.md"):
+    for base in ("QuickStart", "Usage", "Configuration", "Cautions"):
+        legacy = docs / f"{base}-CN.md"
         legacy.unlink(missing_ok=True)
     for topic in ("QuickStart.md", "Usage.md", "Configuration.md", "Cautions.md"):
         p = docs / topic
@@ -208,7 +270,7 @@ def write_repo_index(projects: list[Path]) -> None:
         "",
         "**排除**：`src/Test/` 全文、`*.Tests*`、`*.Tests.UI*`、`*.Tester*`、Benchmark。",
         "",
-        "批量生成：`python scripts/Ensure-ProjectDocsFolders.py`",
+        "批量生成：`python scripts/Restructure-ProjectDocsEnZhCn.py`",
         "",
     ]
     for area in list(AREA_ORDER) + [k for k in sorted(by_area) if k not in AREA_ORDER]:
@@ -251,6 +313,11 @@ def main() -> None:
             continue
         seen.add(pdir)
         ensure_project_dir(pdir, csproj.stem)
+    for name in MODULE_FAMILY_DIRS:
+        family = (SRC / "Modules" / name).resolve()
+        if family.is_dir() and (family / "Readme.md").is_file() and family not in seen:
+            seen.add(family)
+            ensure_project_dir(family, name)
     write_repo_index(projects)
     print(f"Ensured docs/ for {len(seen)} project directories ({len(projects)} csproj files, tests excluded).")
 

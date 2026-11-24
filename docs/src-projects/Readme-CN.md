@@ -6,7 +6,7 @@
 
 **排除**：`src/Test/` 全文、`*.Tests*`、`*.Tests.UI*`、`*.Tester*`、Benchmark。
 
-批量生成：`python scripts/Ensure-ProjectDocsFolders.py`
+批量生成：`python scripts/Restructure-ProjectDocsEnZhCn.py`
 
 ## Build
 

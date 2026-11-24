@@ -1,8 +1,13 @@
 # 文档索引 — Smartent.Orchard.LoginAsAnybody
 
-> 主工程文档：[Smartent.Orchard.LoginAsAnybody/Docs-Index-CN.md](Smartent.Orchard.LoginAsAnybody/Docs-Index-CN.md)
+> **English**: [Docs-Index.md](Docs-Index.md)
 
-| | |
-|---|---|
-| 总览 | [Readme.md](Readme.md) · [Readme-CN.md](Readme-CN.md) |
-| 分主题 | [Smartent.Orchard.LoginAsAnybody/docs/Readme-CN.md](Smartent.Orchard.LoginAsAnybody/docs/Readme-CN.md) |
+| 文档 | 说明 |
+|------|------|
+| [Readme.md](Readme.md) | 项目总览（英文） |
+| [Readme-CN.md](Readme-CN.md) | 项目总览（中文） |
+| [docs/Readme-CN.md](docs/Readme-CN.md) | 文档入口 |
+| [docs/en/README.md](docs/en/README.md) | English topics |
+| [docs/zh-cn/README.md](docs/zh-cn/README.md) | 中文分主题 |
+
+全仓库项目文档索引：[../../../docs/src-projects/zh-cn/README.md](../../../docs/src-projects/zh-cn/README.md)

@@ -12,8 +12,8 @@
 | 模块捷径 | [docs/modules/README.md](../modules/README.md) | 指向 src-projects |
 | 家族根 | `Readme.md`、`Readme-CN.md` | 模块总览（加厚模板） |
 | 家族根 | `Docs-Index.md`、`Docs-Index-CN.md` | 指向 `docs/` 与总览 |
-| 分主题 | `docs/README.md`、`docs/Readme-CN.md` | 本模块专题索引 |
-| 分主题 | `docs/QuickStart*`、`Usage*`、`Configuration*`、`Cautions*` | 怎么用、注意什么 |
+| 分主题 | `docs/README.md`、`docs/Readme-CN.md` | 语言入口（链到 `en/`、`zh-cn/`） |
+| 分主题 | `docs/en/`、`docs/zh-cn/` | `QuickStart`、`Usage`、`Configuration`、`Cautions`（**不得**在 `docs/` 根混放 `-CN` 后缀文件） |
 
 顺序固定：**AuditTrail → … → Walkthroughs**（与 [src/Modules/README.md](../../src/Modules/README.md) 一致）。
 
@@ -23,13 +23,13 @@
 |------|------|
 | 模块总览 EN/CN | [MODULE_README.en.template.md](../templates/MODULE_README.en.template.md)、[MODULE_README.cn.template.md](../templates/MODULE_README.cn.template.md) |
 | 家族根索引 | [MODULE_ROOT_DOCS_INDEX.en.template.md](../templates/MODULE_ROOT_DOCS_INDEX.en.template.md)、[.cn.template.md](../templates/MODULE_ROOT_DOCS_INDEX.cn.template.md) |
-| `docs/` 目录索引 | [MODULE_DOCS_FOLDER_README.en.template.md](../templates/MODULE_DOCS_FOLDER_README.en.template.md)、[.cn.template.md](../templates/MODULE_DOCS_FOLDER_README.cn.template.md) |
+| 语言入口 / 子目录索引 | [PROJECT_DOCS_GATEWAY.*](../templates/)、[PROJECT_DOCS_LOCALE_INDEX.*](../templates/) |
 
 ### 脚本
 
 ```powershell
-python scripts/Thicken-ModuleReadmes.py      # 加厚模块 Readme（Modules）
-python scripts/Ensure-ProjectDocsFolders.py  # 全 src 非测试项目的 docs/
+python scripts/Complete-ModuleDocumentationPass.py  # 加厚 + en/zh-cn 布局 + 状态表
+python scripts/Restructure-ProjectDocsEnZhCn.py     # 全 src 非测试项目 + 17 模块家族根的 docs/en、docs/zh-cn
 ```
 
 生成后须人工校对；复杂子包（Hosting.Tenants 子项目、Marketing.Pirsch 等）在各自 csproj 目录继续加厚。
@@ -42,4 +42,4 @@ python scripts/Ensure-ProjectDocsFolders.py  # 全 src 非测试项目的 docs/
 
 ## English
 
-Each module family under `src/Modules/` must have root `Docs-Index` files, a `docs/` folder with bilingual topic indexes and QuickStart/Usage/Configuration/Cautions files, and entries in `docs/modules/`. Update docs when features, configuration, or public API change. Run `Ensure-ModuleDocsFolders.py` after adding a new module family.
+Each module family under `src/Modules/` must have root `Docs-Index` files, `docs/en/` and `docs/zh-cn/` topic files (plus gateway `docs/README.md` / `docs/Readme-CN.md`), and entries in `docs/modules/`. Run `Restructure-ProjectDocsEnZhCn.py` after adding a new module family or project.

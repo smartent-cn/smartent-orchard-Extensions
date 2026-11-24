@@ -9,7 +9,7 @@ Every **non-test** project directory under `src/` (with a `.csproj`) **must** ha
 
 **Excluded**: entire `src/Test/`, `*.Tests*`, `*.Tests.UI*`, `*.Tester*`, benchmarks.
 
-Regenerate: `python scripts/Ensure-ProjectDocsFolders.py`
+Regenerate: `python scripts/Restructure-ProjectDocsEnZhCn.py`
 
 ## Build
 
