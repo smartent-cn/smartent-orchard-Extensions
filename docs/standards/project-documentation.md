@@ -20,6 +20,8 @@
 
 ### `docs/` 分主题目录（非测试项目强制）
 
+**目录名一律全小写 `docs/`**（含 `src/Build/docs/` 等）；禁止 `Docs/` 以免 Windows/Git 索引大小写不一致。项目根索引文件名仍为 `Docs-Index.md`（与目录无关）。
+
 适用于 `src/**` 下每个 **含 `.csproj` 的项目目录**。
 
 **排除**：`src/Test/**`；`**/*.Tests*`、`**/*.Tests.UI*`、`**/*.Tester*`、`**/*Benchmark*`（仅这些免 `docs/`）。
@@ -79,4 +81,4 @@ Cursor 规则：`.cursor/rules/project-docs-folder.mdc`
 
 ## English
 
-Every non-test project under `src/` must have **`Readme.md` + `Readme-CN.md`**, plus **`docs/`** and **`Docs-Index`** (see above). Excludes `src/Test/**` and `*.Tests*` projects. Index: `docs/src-projects/`. Run `Ensure-BilingualProjectReadmes.py` and `Ensure-ProjectDocsFolders.py`; human review required.
+Every non-test project under `src/` must have **`Readme.md` + `Readme-CN.md`**, plus lowercase **`docs/`** (never `Docs/`) and **`Docs-Index`** (see above). Excludes `src/Test/**` and `*.Tests*` projects. Index: `docs/src-projects/`. Run `Ensure-BilingualProjectReadmes.py` and `Ensure-ProjectDocsFolders.py`; human review required.

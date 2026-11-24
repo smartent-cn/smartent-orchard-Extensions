@@ -1,6 +1,4 @@
-# 快速开始
+﻿# 蹇€熷紑濮?
+> 绱㈠紩锛歔README.md](README.md) 路 鍏ュ彛锛歔../Readme-CN.md](../Readme-CN.md)
 
-> 索引：[README.md](README.md) · 入口：[../Readme-CN.md](../Readme-CN.md)
-
-1. 在 Web 应用或模块解决方案中引用本项目。
-2. 在 `.csproj` 或 `Directory.Build.props` 中按 `src/Build/Docs/UsingMSBuildSdks.md` 引用 Sdk/targets。
+1. 鍦?Web 搴旂敤鎴栨ā鍧楄В鍐虫柟妗堜腑寮曠敤鏈」鐩€?2. 鍦?`.csproj` 鎴?`Directory.Build.props` 涓寜 `src/Build/docs/UsingMSBuildSdks.md` 寮曠敤 Sdk/targets銆?

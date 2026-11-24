@@ -72,7 +72,7 @@ def role_copy(role: str, meta: dict) -> dict[str, str]:
     orch_cn = "Orchard Core 模块" if role in {"module", "hosting", "theme"} else "—"
 
     usage_en = {
-        "build": "Import the Sdk or targets from your `.csproj` / `Directory.Build.props` per `src/Build/Docs/UsingMSBuildSdks.md`.",
+        "build": "Import the Sdk or targets from your `.csproj` / `Directory.Build.props` per `src/Build/docs/UsingMSBuildSdks.md`.",
         "core": "Reference as a library; no Orchard feature is required.",
         "module": "Add the module to the host (`Program` / `Startup`), enable features in Admin → Configuration → Features, and run Recipes if provided under `Recipes/`.",
         "hosting": "Enable tenant/hosting features and set `OrchardCore:Smartent_Orchard_Hosting_*` sections in `appsettings.json`.",
@@ -86,7 +86,7 @@ def role_copy(role: str, meta: dict) -> dict[str, str]:
     }.get(role, "See parent solution documentation.")
 
     usage_cn = {
-        "build": "在 `.csproj` 或 `Directory.Build.props` 中按 `src/Build/Docs/UsingMSBuildSdks.md` 引用 Sdk/targets。",
+        "build": "在 `.csproj` 或 `Directory.Build.props` 中按 `src/Build/docs/UsingMSBuildSdks.md` 引用 Sdk/targets。",
         "core": "作为类库引用；无需启用 Orchard 功能。",
         "module": "将模块加入宿主，在后台「配置 → 功能」启用，并按需执行 `Recipes/` 下的配方。",
         "hosting": "启用租户/托管相关功能，并在 `appsettings.json` 配置 `OrchardCore:Smartent_Orchard_Hosting_*`。",

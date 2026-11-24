@@ -39,7 +39,7 @@ Smartent.Build.LibMan.Targets：Smartent Orchard Extensions 组件。Smartent MS
 ## 使用方式
 
 1. 在 Web 应用或模块解决方案中引用本项目。
-2. 在 `.csproj` 或 `Directory.Build.props` 中按 `src/Build/Docs/UsingMSBuildSdks.md` 引用 Sdk/targets。
+2. 在 `.csproj` 或 `Directory.Build.props` 中按 `src/Build/docs/UsingMSBuildSdks.md` 引用 Sdk/targets。
 
 ## 依赖说明
 
