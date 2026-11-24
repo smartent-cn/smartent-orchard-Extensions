@@ -8,6 +8,25 @@ import subprocess
 import sys
 from pathlib import Path
 
+
+def fix_git_docs_directory_case(project_dir: Path) -> bool:
+    """On Windows, FS may expose docs/ while the index still has Docs/ — fix with a two-step git mv."""
+    rel_base = project_dir.relative_to(ROOT).as_posix()
+    caps = f"{rel_base}/Docs"
+    listing = subprocess.run(
+        ["git", "ls-files", f"{caps}/"],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    if not listing.stdout.strip():
+        return False
+    tmp = f"{rel_base}/_docs_casefix"
+    subprocess.check_call(["git", "mv", caps, tmp], cwd=ROOT)
+    subprocess.check_call(["git", "mv", tmp, f"{rel_base}/docs"], cwd=ROOT)
+    return True
+
 ROOT = Path(__file__).resolve().parents[1]
 SRC = ROOT / "src"
 
@@ -173,6 +192,7 @@ def main() -> None:
             continue
         docs = normalize_docs_case(project_dir)
         migrate_mixed_layout(docs)
+        fix_git_docs_directory_case(project_dir)
         count += 1
     restructure_repo_docs()
     script = ROOT / "scripts" / "Ensure-ProjectDocsFolders.py"
