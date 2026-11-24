@@ -6,7 +6,7 @@ using OrchardCore.Modules.Manifest;
     Author = "Smartent",
     Version = "0.0.1",
     Description = "Create short URLs that redirect to long URLs.",
-    Website = "https://gitee.com/smartent/smartent-training-demo-modules"
+    Website = "https://gitee.com/smartent/smartent-orchard-Extensions"
 )]
 
 [assembly: Feature(

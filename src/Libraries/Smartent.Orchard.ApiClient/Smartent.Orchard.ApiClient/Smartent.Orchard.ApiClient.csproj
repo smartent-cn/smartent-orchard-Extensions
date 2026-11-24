@@ -14,8 +14,8 @@
     <CopyrightYear>2022</CopyrightYear>
     <DescriptionBody>Orchard Core Web API 通信客户端（Refit / OpenID）。</DescriptionBody>
     <PackageTags>Smartent;OrchardCore;Refit;OpenId;ApiClient</PackageTags>
-    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
-    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules/tree/master/src/Libraries/Smartent.Orchard.ApiClient</PackageProjectUrl>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-orchard-Extensions</RepositoryUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-orchard-Extensions/tree/master/src/Libraries/Smartent.Orchard.ApiClient</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>

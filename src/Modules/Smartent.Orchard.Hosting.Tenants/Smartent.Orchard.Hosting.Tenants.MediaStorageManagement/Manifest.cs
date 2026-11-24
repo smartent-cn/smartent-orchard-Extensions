@@ -4,7 +4,7 @@ using static Smartent.Orchard.Hosting.Tenants.MediaStorageManagement.Constants.F
 [assembly: Module(
     Name = "Smartent Orchard Hosting - Tenants Media Storage Management",
     Author = "Smartent",
-    Website = "https://gitee.com/smartent/smartent-training-demo-modules",
+    Website = "https://gitee.com/smartent/smartent-orchard-Extensions",
     Version = "0.0.1",
     Description = "Ability to configure storage quota for tenants."
 )]

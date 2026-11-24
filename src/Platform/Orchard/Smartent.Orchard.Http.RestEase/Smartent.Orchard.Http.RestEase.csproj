@@ -15,8 +15,8 @@
     <CopyrightYear>2011</CopyrightYear>
     <DescriptionBody>RestEase 类型化 HTTP 客户端注册扩展（建议新代码优先使用 Smartent.Orchard.Http.Refit）。</DescriptionBody>
     <PackageTags>Smartent;OrchardCore;RestEase;REST</PackageTags>
-    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
-    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules/tree/master/src/Platform/Orchard/Smartent.Orchard.Http.RestEase</PackageProjectUrl>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-orchard-Extensions</RepositoryUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-orchard-Extensions/tree/master/src/Platform/Orchard/Smartent.Orchard.Http.RestEase</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>

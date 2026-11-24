@@ -3,7 +3,7 @@
   "displayName": "Smartent Orchard Hosting - Media Theme - Samples",
   "description": "Sample content and configuration for testing and demonstration of the Media Theme functionality.",
   "author": "Smartent",
-  "website": "https://gitee.com/smartent/smartent-training-demo-modules",
+  "website": "https://gitee.com/smartent/smartent-orchard-Extensions",
   "version": "1.0",
   "issetuprecipe": false,
   "categories": [

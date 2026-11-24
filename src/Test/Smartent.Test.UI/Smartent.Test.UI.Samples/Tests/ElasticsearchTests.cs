@@ -13,7 +13,7 @@ namespace Smartent.Test.UI.Samples.Tests;
 // This test demonstrates a simple check of the built-in Orchard Core search feature.
 
 // If you use the Build and Test Orchard Core workflow of Smartent GitHub Actions for CI builds (see
-// https://gitee.com/smartent/smartent-training-demo-modules
+// https://gitee.com/smartent/smartent-orchard-Extensions
 // then you can also utilize Elasticsearch in CI test runs, without needing to do any setup on your own.
 public class ElasticsearchTests : UITestBase
 {

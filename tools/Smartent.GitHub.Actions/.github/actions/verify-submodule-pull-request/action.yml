@@ -9,7 +9,7 @@ inputs:
     description: The title of the current pull request.
   repository:
     required: false
-    default: Lombiq/Open-Source-Orchard-Core-Extensions
+    default: smartent-cn/smartent-orchard-Extensions
     description: The parent repository's full name in "{owner}/{repository}" format.
 
 runs:

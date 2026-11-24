@@ -5,7 +5,7 @@ using static Smartent.Orchard.Extensions.Cms.FeatureIds;
     Name = "Smartent Orchard Theme Base - Core Features",
     Author = "Smartent",
     Version = "0.0.1",
-    Website = "https://gitee.com/smartent/smartent-training-demo-modules",
+    Website = "https://gitee.com/smartent/smartent-orchard-Extensions",
     Description = "All the shared content between the Sass and native CSS versions of the base theme.",
     Dependencies =
     [

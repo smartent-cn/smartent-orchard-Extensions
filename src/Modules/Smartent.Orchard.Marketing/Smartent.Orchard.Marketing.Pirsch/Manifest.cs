@@ -7,7 +7,7 @@ using MarketingFeatureIds = Smartent.Orchard.Marketing.Constants.FeatureIds;
     Author = "Smartent",
     Version = "0.0.1",
     Description = "Integrate the basics of Pirsch analytics into Orchard Core.",
-    Website = "https://gitee.com/smartent/smartent-training-demo-modules"
+    Website = "https://gitee.com/smartent/smartent-orchard-Extensions"
 )]
 
 [assembly: Feature(

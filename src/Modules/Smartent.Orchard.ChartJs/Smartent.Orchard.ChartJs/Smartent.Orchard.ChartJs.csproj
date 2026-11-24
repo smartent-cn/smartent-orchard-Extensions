@@ -13,7 +13,7 @@
     <CopyrightYear>2021</CopyrightYear>
     <DescriptionBody>An Orchard Core wrapper around the Chart.js library for displaying datasets as various charts.</DescriptionBody>
     <PackageTags>OrchardCore;Smartent;AspNetCore;Chart.js;chart</PackageTags>
-    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-orchard-Extensions</RepositoryUrl>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(NuGetBuild)' == 'true'">

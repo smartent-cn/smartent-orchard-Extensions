@@ -2,8 +2,7 @@
 
 Meant to be used with [Orchard Core](https://orchardcore.net/) solutions; this workflow checks out the code, installs dependencies, builds the solution, runs unit and UI tests (with [Smartent UI Testing for Orchard Core](https://gitee.com/smartent/smartent-orchard-Extensions) and publishes artifacts as well as a test report.
 
-For an example of this, see below and the workflow of [Lombiq's Open-Source Orchard Core Extensions](https://gitee.com/smartent/smartent-training-demo-modules
-
+For an example of this, see below and the workflow of [Lombiq's Open-Source Orchard Core Extensions](https://gitee.com/smartent/smartent-orchard-Extensions)
 ```yaml
 name: Build and Test
 

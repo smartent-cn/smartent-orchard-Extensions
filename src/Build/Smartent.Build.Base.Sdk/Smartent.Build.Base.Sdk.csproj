@@ -3,7 +3,7 @@
   <Import Project="../Directory.Build.props" />
 
   <PropertyGroup>
-    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules/tree/master/src/Build/Smartent.Build.Base.Sdk</PackageProjectUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-orchard-Extensions/tree/master/src/Build/Smartent.Build.Base.Sdk</PackageProjectUrl>
     <Title>Smartent MSBuild SDK - Base</Title>
     <Description>Base SDK for other Smartent MSBuild SDKs. Don't use this directly.</Description>
   </PropertyGroup>

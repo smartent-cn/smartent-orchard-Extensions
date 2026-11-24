@@ -15,8 +15,8 @@
     <CopyrightYear>2011</CopyrightYear>
     <DescriptionBody>Orchard Core 单元/集成测试辅助（Moq.AutoMock 等）。</DescriptionBody>
     <PackageTags>Smartent;OrchardCore;Testing;xUnit;Moq</PackageTags>
-    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
-    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules/tree/master/src/Test/Smartent.Test.OrchardCore</PackageProjectUrl>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-orchard-Extensions</RepositoryUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-orchard-Extensions/tree/master/src/Test/Smartent.Test.OrchardCore</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>

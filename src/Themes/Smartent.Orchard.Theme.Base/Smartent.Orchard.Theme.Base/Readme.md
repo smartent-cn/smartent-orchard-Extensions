@@ -37,8 +37,7 @@ The version of Bootstrap used by Orchard Core is not necessarily the same as the
 
 Besides the style and layout, the Sass-based theme also automatically includes a minimalist helper script that eases transition away from jQuery, which hasn't really been necessary since Internet Explorer died back in 2022. The script gives you the `window.helper` object. You can use `helper.ready(($) => {})` in your scripts, where `$(querySelector, baseElement)` returns a JavaScript `Array` of `Element`s. We opted to not include it in the native CSS version of the theme, and should be considered a legacy feature.
 
-If you use Sass, your styles will be automatically linted during compilation. If you use CSS, there is no linting by default. We suggest using our GitHub workflow to enable linting for unprocessed CSS and JS. You can learn more about either approach in the documentation of [Smartent Node.js Extensions](https://gitee.com/smartent/smartent-training-demo-modules
-
+If you use Sass, your styles will be automatically linted during compilation. If you use CSS, there is no linting by default. We suggest using our GitHub workflow to enable linting for unprocessed CSS and JS. You can learn more about either approach in the documentation of [Smartent Node.js Extensions](https://gitee.com/smartent/smartent-orchard-Extensions)
 ## Liquid
 
 The following Liquid features are made available:

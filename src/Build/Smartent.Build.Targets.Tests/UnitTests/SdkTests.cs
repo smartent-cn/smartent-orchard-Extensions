@@ -60,7 +60,7 @@ public class SdkTests
                 "BSD-3-Clause",
                 "Copyright © 2026, Smartent",
                 "OrchardCore Smartent AspNetCore",
-                "https://gitee.com/smartent/smartent-training-demo-modules",
+                "https://gitee.com/smartent/smartent-orchard-Extensions",
             ]);
 
             elements["frameworkReference"]

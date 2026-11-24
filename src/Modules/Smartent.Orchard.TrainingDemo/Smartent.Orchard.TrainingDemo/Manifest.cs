@@ -9,7 +9,7 @@ using OrchardCore.Modules.Manifest;
     // Your name, company or any name that identifies the developers working on the project.
     Author = "Smartent",
     // Optionally you can add a website URL (e.g. your company's website, GitHub repository URL).
-    Website = "https://gitee.com/smartent/smartent-training-demo-modules",
+    Website = "https://gitee.com/smartent/smartent-orchard-Extensions",
     // Version of the module.
     Version = "0.0.1",
     // Short description of the module.

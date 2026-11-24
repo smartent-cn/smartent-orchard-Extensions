@@ -18,8 +18,8 @@
     <Description>Warning: this project is deprecated. New releases are provided as-is, primarily for internal and legacy use, with no support. Consider using Smartent.Orchard.Theme.Base.Native instead!&#13;Smartent Orchard Theme Base for Orchard Core: Orchard Core theme that contains a layout, zones and Bootstrap Sass base for your stylesheets. Set it as your theme's BaseTheme.</Description>
     <PackageIcon>NuGetIcon.png</PackageIcon>
     <PackageTags>OrchardCore;Smartent;AspNetCore;Sass;Theming</PackageTags>
-    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
-    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules</PackageProjectUrl>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-orchard-Extensions</RepositoryUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-orchard-Extensions</PackageProjectUrl>
     <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
   </PropertyGroup>
 

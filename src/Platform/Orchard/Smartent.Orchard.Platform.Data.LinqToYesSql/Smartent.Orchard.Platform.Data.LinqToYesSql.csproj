@@ -15,8 +15,8 @@
     <CopyrightYear>2011</CopyrightYear>
     <DescriptionBody>在 Orchard YesSql 会话上以 LINQ（linq2db）查询数据库的扩展。</DescriptionBody>
     <PackageTags>Smartent;OrchardCore;YesSql;linq2db</PackageTags>
-    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
-    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules/tree/master/src/Platform/Orchard/Smartent.Orchard.Platform.Data.LinqToYesSql</PackageProjectUrl>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-orchard-Extensions</RepositoryUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-orchard-Extensions/tree/master/src/Platform/Orchard/Smartent.Orchard.Platform.Data.LinqToYesSql</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>

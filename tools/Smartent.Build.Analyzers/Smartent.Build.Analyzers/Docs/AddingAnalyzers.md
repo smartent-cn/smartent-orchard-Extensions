@@ -35,7 +35,7 @@ Use this approach if you always want to use the very latest version, or if you'd
    ```gitmodules
    [submodule "Smartent.Build.Analyzers"]
        path = tools/Smartent.Build.Analyzers
-       url = https://gitee.com/smartent/smartent-training-demo-modules
+       url = https://gitee.com/smartent/smartent-orchard-Extensions
        branch = dev
    ```
 

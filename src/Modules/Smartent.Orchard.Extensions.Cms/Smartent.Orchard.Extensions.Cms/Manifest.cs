@@ -6,7 +6,7 @@ using static Smartent.Orchard.Extensions.Cms.FeatureIds;
     Name = "Smartent Orchard Extensions",
     Author = "Smartent",
     Version = "0.0.1",
-    Website = "https://gitee.com/smartent/smartent-training-demo-modules"
+    Website = "https://gitee.com/smartent/smartent-orchard-Extensions"
 )]
 
 [assembly: Feature(

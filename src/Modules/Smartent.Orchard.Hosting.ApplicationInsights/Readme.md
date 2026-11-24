@@ -4,8 +4,7 @@
 
 ## About
 
-This [Orchard Core](https://orchardcore.net/) module enables easy integration of [Azure Application Insights](https://docs.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview) telemetry into Orchard. Just install the module, configure the instrumentation key from a configuration source (like the _appsettings.json_ file) as normally for AAI, and use the `AddOrchardCoreApplicationInsightsTelemetry()` extension method in your Web project's _Program.cs_ file and collected data will start appearing in the Azure Portal. Check out the module's demo [here](https://www.youtube.com/watch?v=NKKR4R3UPog), and the Orchard Harvest 2023 conference talk about automated QA in Orchard Core [here](https://youtu.be/CHdhwD2NHBU). Note that this module has an Orchard 1 version in the [dev-orchard-1 branch](https://gitee.com/smartent/smartent-training-demo-modules
-
+This [Orchard Core](https://orchardcore.net/) module enables easy integration of [Azure Application Insights](https://docs.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview) telemetry into Orchard. Just install the module, configure the instrumentation key from a configuration source (like the _appsettings.json_ file) as normally for AAI, and use the `AddOrchardCoreApplicationInsightsTelemetry()` extension method in your Web project's _Program.cs_ file and collected data will start appearing in the Azure Portal. Check out the module's demo [here](https://www.youtube.com/watch?v=NKKR4R3UPog), and the Orchard Harvest 2023 conference talk about automated QA in Orchard Core [here](https://youtu.be/CHdhwD2NHBU). Note that this module has an Orchard 1 version in the [dev-orchard-1 branch](https://gitee.com/smartent/smartent-orchard-Extensions)
 What kind of data is collected from the telemetry and available for inspection in the Azure Portal?
 
 - All usual AAI data, including e.g. server-side requests, client-side page views, exceptions and other log entries, dependency calls (like web requests and database queries).
@@ -67,8 +66,7 @@ builder.Services
 
 Note that due to how the Application Insights .NET SDK works, telemetry can only be collected for the whole app at once; collecting telemetry separately for each tenant is not supported.
 
-You can also use `ConfigureAzureHostingDefaultsWithApplicationInsightsTelemetry` instead; this sets up all the recommended hosting configuration with `ConfigureAzureHostingDefaults` from [Smartent Helpful Libraries - Orchard Core Libraries](https://gitee.com/smartent/smartent-training-demo-modules
-
+You can also use `ConfigureAzureHostingDefaultsWithApplicationInsightsTelemetry` instead; this sets up all the recommended hosting configuration with `ConfigureAzureHostingDefaults` from [Smartent Helpful Libraries - Orchard Core Libraries](https://gitee.com/smartent/smartent-orchard-Extensions)
 When using the full CMS approach of Orchard Core (i.e. not decoupled or headless) then the client-side tracking script will be automatically injected as a head script. Otherwise, you can create it with `ITrackingScriptFactory`.
 
 ### Advanced configuration

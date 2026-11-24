@@ -8,8 +8,7 @@ We'll guide you on your journey to become an Orchard Core developer. Look for "N
 
 ## Moving forward
 
-We've invested a lot of time creating this module. If you have ideas regarding it or have found mistakes, please let us know on [the project page on GitHub](https://gitee.com/smartent/smartent-training-demo-modules
-
+We've invested a lot of time creating this module. If you have ideas regarding it or have found mistakes, please let us know on [the project page on GitHub](https://gitee.com/smartent/smartent-orchard-Extensions)
 If you'd like to get trained instead of self-learning or you need help in form of mentoring sessions take a look at [Orchard Dojo's trainings](https://orcharddojo.net/orchard-training).
 
 After you complete this tutorial (or even during walking through it) you're encouraged to look at Orchard's built-in modules on how they solve similar tasks. Clone [the official repo](https://github.com/OrchardCMS/OrchardCore) and let it be your tutor :-).
@@ -41,7 +40,7 @@ This demo is heavily inspired by [Sipke Schoorstra's Orchard Harvest session](ht
 - [Content Field display and editor options](Views/ColorField.Option.cshtml)
 - [Resource management](ResourceManagementOptionsConfiguration.cs)
 - [Permissions and authorization](Controllers/AuthorizationController.cs)
-- [Navigation menus](Controllers/AdminController.cs) ([See here for a similar tutorial about theming with Smartent.BaseTheme.Native.](https://gitee.com/smartent/smartent-training-demo-modules
+- [Navigation menus](Controllers/AdminController.cs) ([See here for a similar tutorial about theming with Smartent.BaseTheme.Native.](https://gitee.com/smartent/smartent-orchard-Extensions)
 - [Site settings and `IConfiguration`](Controllers/SiteSettingsController.cs)
 - [Utilizing action and result filters](Filters/ShapeInjectionFilter.cs)
 - [Shape tables](Services/ShapeHidingShapeTableProvider.cs)

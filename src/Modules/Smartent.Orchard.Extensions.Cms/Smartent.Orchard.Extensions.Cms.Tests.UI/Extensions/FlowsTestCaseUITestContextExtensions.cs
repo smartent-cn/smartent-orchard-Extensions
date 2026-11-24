@@ -19,7 +19,7 @@ public static class FlowsTestCaseUITestContextExtensions
     /// </summary>
     /// <remarks>
     /// <para>
-    /// Added originally to cover the fix for <see href="https://gitee.com/smartent/smartent-training-demo-modules">
+    /// Added originally to cover the fix for <see href="https://gitee.com/smartent/smartent-orchard-Extensions">
     /// Flow 'Additional Styling Part' flyout not activating</see>.
     /// </para>
     /// </remarks>

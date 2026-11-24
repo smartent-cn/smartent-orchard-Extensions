@@ -6,7 +6,7 @@ using OrchardCore.Modules.Manifest;
     Author = "Smartent",
     Version = "0.0.1",
     Description = "Contains the common abstractions and services used by the other marketing modules",
-    Website = "https://gitee.com/smartent/smartent-training-demo-modules"
+    Website = "https://gitee.com/smartent/smartent-orchard-Extensions"
 )]
 
 [assembly: Feature(

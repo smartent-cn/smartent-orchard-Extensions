@@ -6,7 +6,7 @@ using static Smartent.Orchard.LoginAsAnybody.Constants.FeatureIds;
     Author = "Smartent",
     Version = "0.0.1",
     Description = "Module that allows administrator users to log in as any user.",
-    Website = "https://gitee.com/smartent/smartent-training-demo-modules"
+    Website = "https://gitee.com/smartent/smartent-orchard-Extensions"
 )]
 
 [assembly: Feature(

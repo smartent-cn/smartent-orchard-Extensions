@@ -15,8 +15,8 @@
     <CopyrightYear>2011</CopyrightYear>
     <DescriptionBody>与 Orchard 无关的通用 .NET 工具、扩展与验证辅助类型，供 Smartent 全栈项目引用。</DescriptionBody>
     <PackageTags>Smartent;Utilities;DependencyInjection;Extensions</PackageTags>
-    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
-    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules/tree/master/src/Platform/Core/Smartent.Core.Primitives</PackageProjectUrl>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-orchard-Extensions</RepositoryUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-orchard-Extensions/tree/master/src/Platform/Core/Smartent.Core.Primitives</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>

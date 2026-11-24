@@ -6,8 +6,7 @@
 
 The Media Theme feature will allow developers to host their themes in the Orchard Core Media Library, including templates and assets. This is useful in SaaS scenarios where you can't allow everyone to develop full Orchard themes, but still want to make the usual Orchard theming experience available to all users. Media Theme allows full theming of sites running on [DotNest](https://dotnest.com/), the Orchard SaaS, too. Watch a demo video of it from the Orchard Community Meeting [here](https://www.youtube.com/watch?v=bKXFo_U0TwA).
 
-We at [Smartent](https://gitee.com/smartent/) also used this SDK for the new [Show Orchard website](https://showorchard.com/) when migrating it from Orchard 1 DotNest to DotNest Core (see [case study](https://dotnest.com/blog/show-orchard-case-study-migrating-an-orchard-1-dotnest-site-to-orchard-core) and the [theme's source code](https://gitee.com/smartent/smartent-training-demo-modules
-
+We at [Smartent](https://gitee.com/smartent/) also used this SDK for the new [Show Orchard website](https://showorchard.com/) when migrating it from Orchard 1 DotNest to DotNest Core (see [case study](https://dotnest.com/blog/show-orchard-case-study-migrating-an-orchard-1-dotnest-site-to-orchard-core) and the [theme's source code](https://gitee.com/smartent/smartent-orchard-Extensions)
 Do you want to quickly try out this project and see it in action? Check it out in our [Open-Source Orchard Core Extensions](https://github.com/smartent-cn/smartent-orchard-Extensions) full Orchard Core solution and also see our other useful Orchard Core-related open-source projects!
 
 ## Documentation

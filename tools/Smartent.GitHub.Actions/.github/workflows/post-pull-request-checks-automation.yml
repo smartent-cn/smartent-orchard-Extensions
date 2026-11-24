@@ -21,17 +21,17 @@ on:
         required: true
         description: >
           Configure as explained under
-          https://gitee.com/smartent/smartent-training-demo-modules
+          https://gitee.com/smartent/smartent-orchard-Extensions
       JIRA_USER_EMAIL:
         required: true
         description: >
           Configure as explained under
-          https://gitee.com/smartent/smartent-training-demo-modules
+          https://gitee.com/smartent/smartent-orchard-Extensions
       JIRA_API_TOKEN:
         required: true
         description: >
           Configure as explained under
-          https://gitee.com/smartent/smartent-training-demo-modules
+          https://gitee.com/smartent/smartent-orchard-Extensions
 
     inputs:
       merge-method:

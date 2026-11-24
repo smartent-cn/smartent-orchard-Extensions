@@ -27,8 +27,8 @@
     <CopyrightYear>2011</CopyrightYear>
     <DescriptionBody>LibMan 资源版本与 JSON 常量等 Roslyn 源生成器。</DescriptionBody>
     <PackageTags>Smartent;OrchardCore;SourceGenerators</PackageTags>
-    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
-    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules/tree/master/src/Platform/Core/Smartent.Core.CodeGen.SourceGenerators</PackageProjectUrl>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-orchard-Extensions</RepositoryUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-orchard-Extensions/tree/master/src/Platform/Core/Smartent.Core.CodeGen.SourceGenerators</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>

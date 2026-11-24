@@ -3,7 +3,7 @@
   "displayName": "Smartent Orchard Extensions - Trumbowyg code snippet - Blog Posts test recipe",
   "description": "Test recipe to prepare the Blog Post content type for Smartent Orchard Extensions - Trumbowyg code snippet - Blog Posts.",
   "author": "Smartent",
-  "website": "https://gitee.com/smartent/smartent-training-demo-modules",
+  "website": "https://gitee.com/smartent/smartent-orchard-Extensions",
   "version": "1.0",
   "issetuprecipe": false,
   "categories": [],

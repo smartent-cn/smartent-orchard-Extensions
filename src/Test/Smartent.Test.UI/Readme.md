@@ -35,8 +35,7 @@ Highlights:
 
 See a demo video of the project [here](https://www.youtube.com/watch?v=mEUg6-pad-E), and the Orchard Harvest 2023 conference talk about automated QA in Orchard Core [here](https://youtu.be/CHdhwD2NHBU). We also had an Orchard Harvest 2024 talk about security scanning [here](https://www.youtube.com/watch?v=FsOpo8EA4wE). Also, see our [Testing Toolbox](https://gitee.com/smartent/smartent-orchard-Extensions) for similar features for lower-level tests.
 
-Looking not just for dynamic testing but also static code analysis? Check out our [.NET Analyzers project](https://gitee.com/smartent/smartent-training-demo-modules
-
+Looking not just for dynamic testing but also static code analysis? Check out our [.NET Analyzers project](https://gitee.com/smartent/smartent-orchard-Extensions)
 We at [Smartent](https://gitee.com/smartent/) also used this module for the following projects:
 
 - The new [City of Santa Monica website](https://santamonica.gov/) when migrating it from Orchard 1 to Orchard Core ([see case study](https://gitee.com/smartent/blog/helping-the-city-of-santa-monica-with-orchard-core-consulting)).

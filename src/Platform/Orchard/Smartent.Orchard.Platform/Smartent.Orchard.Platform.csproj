@@ -15,8 +15,8 @@
     <CopyrightYear>2011</CopyrightYear>
     <DescriptionBody>Orchard Core 开发底座库（原 HelpfulLibraries.OrchardCore）；垂直拆包见 M3 子方案。</DescriptionBody>
     <PackageTags>Smartent;OrchardCore;AspNetCore;YesSql;GraphQL;Liquid</PackageTags>
-    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
-    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules/tree/master/src/Platform/Orchard/Smartent.Orchard.Platform</PackageProjectUrl>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-orchard-Extensions</RepositoryUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-orchard-Extensions/tree/master/src/Platform/Orchard/Smartent.Orchard.Platform</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>

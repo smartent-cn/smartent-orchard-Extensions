@@ -14,8 +14,7 @@ This project contains the following pipeline steps for SCSS files:
 > The linting step is available for native CSS files as well.
 
 > [!TIP]
-> Looking for something similar for .NET? Check out our [.NET Analyzers project](https://gitee.com/smartent/smartent-training-demo-modules
-
+> Looking for something similar for .NET? Check out our [.NET Analyzers project](https://gitee.com/smartent/smartent-orchard-Extensions)
 ## Configuration
 
 The styles pipeline needs a `source` and a `target` path. The default configuration looks like this:

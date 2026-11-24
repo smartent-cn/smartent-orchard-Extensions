@@ -8,7 +8,7 @@
     <PackageId>Smartent.Orchard.TrainingDemo</PackageId>
     <Title>Smartent Orchard Training Demo</Title>
     <Description>Orchard Core 教学演示模块（原 Smartent.TrainingDemo）。</Description>
-    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules/tree/master/src/Modules/Smartent.Orchard.TrainingDemo</PackageProjectUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-orchard-Extensions/tree/master/src/Modules/Smartent.Orchard.TrainingDemo</PackageProjectUrl>
     <PackageTags>OrchardCore;Smartent;training</PackageTags>
     <DefaultItemExcludes>$(DefaultItemExcludes);.git*</DefaultItemExcludes>
     <OrchardCoreVersion>3.0.1</OrchardCoreVersion>

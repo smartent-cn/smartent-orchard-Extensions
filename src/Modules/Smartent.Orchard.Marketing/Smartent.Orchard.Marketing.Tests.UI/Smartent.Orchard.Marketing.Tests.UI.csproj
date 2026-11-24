@@ -15,8 +15,8 @@
     <CopyrightYear>2026</CopyrightYear>
     <DescriptionBody>Extensions to aid in UI testing Smartent Orchard Marketing for Orchard Core.</DescriptionBody>
     <PackageTags>OrchardCore;Smartent;AspNetCore;Marketing;Pirsch;ShortUrl;xUnit;Test;UITest</PackageTags>
-    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
-    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules</PackageProjectUrl>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-orchard-Extensions</RepositoryUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-orchard-Extensions</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>

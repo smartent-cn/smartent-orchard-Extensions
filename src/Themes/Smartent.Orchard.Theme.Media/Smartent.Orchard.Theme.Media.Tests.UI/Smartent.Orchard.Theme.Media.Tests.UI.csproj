@@ -14,8 +14,8 @@
     <CopyrightYear>2022</CopyrightYear>
     <DescriptionBody>Extensions to aid in UI testing Smartent Orchard Hosting - Media Theme for Orchard Core.</DescriptionBody>
     <PackageTags>OrchardCore;Smartent;AspNetCore;Media;Theme</PackageTags>
-    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
-    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules</PackageProjectUrl>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-orchard-Extensions</RepositoryUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-orchard-Extensions</PackageProjectUrl>
   </PropertyGroup>
 
   <!-- Security Updates for Orchard Core - make sure to check if these are still necessary -->

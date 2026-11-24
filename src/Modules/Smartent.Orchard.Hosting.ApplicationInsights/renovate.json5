@@ -1,11 +1,11 @@
 {
     '$schema': 'https://docs.renovatebot.com/renovate-schema.json',
     extends: [
-        'github>Lombiq/Open-Source-Orchard-Core-Extensions:renovate-osoce-orchard-core-submodule.json5',
+        'github>smartent-cn/smartent-orchard-Extensions:renovate-osoce-orchard-core-submodule.json5',
     ],
     packageRules: [
         // Microsoft.ApplicationInsights.AspNetCore v3 needs a manual migration, see:
-        // https://gitee.com/smartent/smartent-training-demo-modules
+        // https://gitee.com/smartent/smartent-orchard-Extensions
         {
             matchPackageNames: ['Microsoft.ApplicationInsights.*'],
             enabled: false,

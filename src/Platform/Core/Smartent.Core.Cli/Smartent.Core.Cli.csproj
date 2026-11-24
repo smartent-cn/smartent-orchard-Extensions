@@ -15,8 +15,8 @@
     <CopyrightYear>2011</CopyrightYear>
     <DescriptionBody>命令行与 CliWrap 辅助类型，供测试工具与 MSBuild 任务等引用。</DescriptionBody>
     <PackageTags>Smartent;cli;CliWrap</PackageTags>
-    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
-    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules/tree/master/src/Platform/Core/Smartent.Core.Cli</PackageProjectUrl>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-orchard-Extensions</RepositoryUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-orchard-Extensions/tree/master/src/Platform/Core/Smartent.Core.Cli</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>

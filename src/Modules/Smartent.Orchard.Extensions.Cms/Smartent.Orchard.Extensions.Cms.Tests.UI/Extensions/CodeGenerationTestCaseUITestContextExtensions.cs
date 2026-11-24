@@ -17,7 +17,7 @@ public static class CodeGenerationTestCaseUITestContextExtensions
     /// </summary>
     /// <remarks>
     /// <para>
-    /// Added originally to cover the fix for <see href="https://gitee.com/smartent/smartent-training-demo-modules">
+    /// Added originally to cover the fix for <see href="https://gitee.com/smartent/smartent-orchard-Extensions">
     /// Fix content type code generation button not working</see>.
     /// </para>
     /// </remarks>

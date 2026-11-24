@@ -14,8 +14,8 @@
     <CopyrightYear>2019</CopyrightYear>
     <DescriptionBody>Adds some Vue.js 3 packages to Orchard Core as ES Modules.</DescriptionBody>
     <PackageTags>OrchardCore;Smartent;AspNetCore;Vue.js</PackageTags>
-    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
-    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules</PackageProjectUrl>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-orchard-Extensions</RepositoryUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-orchard-Extensions</PackageProjectUrl>
   </PropertyGroup>
 
   <!-- Security Updates for Orchard Core - make sure to check if these are still necessary -->

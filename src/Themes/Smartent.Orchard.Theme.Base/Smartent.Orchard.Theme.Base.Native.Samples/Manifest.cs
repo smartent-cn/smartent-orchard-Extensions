@@ -6,7 +6,7 @@ using Smartent.Orchard.Theme.Base.Native.Attributes;
     Name = "Smartent Orchard Theme Base - Native CSS - Samples",
     Author = "Smartent",
     Version = "0.0.1",
-    Website = "https://gitee.com/smartent/smartent-training-demo-modules",
+    Website = "https://gitee.com/smartent/smartent-orchard-Extensions",
     Description = "A sample theme that builds on Smartent Orchard Theme Base (native CSS version).",
     Favicon = "~/Smartent.Orchard.Theme.Base.Native.Samples/icons/favicon.ico"
 )]

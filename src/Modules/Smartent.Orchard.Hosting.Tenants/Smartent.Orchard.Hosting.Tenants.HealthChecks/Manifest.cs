@@ -4,7 +4,7 @@ using OrchardCore.Modules.Manifest;
 [assembly: Module(
     Name = "Smartent Orchard Hosting - Tenants Health Checks",
     Author = "Smartent",
-    Website = "https://gitee.com/smartent/smartent-training-demo-modules",
+    Website = "https://gitee.com/smartent/smartent-orchard-Extensions",
     Version = "0.0.1",
     Description = "Multi-tenancy related health check improvements.",
     Category = "Hosting"

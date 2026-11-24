@@ -2,8 +2,7 @@
 
 There is a similar section for security extensions related to ASP.NET Core [here](../../../../../../src/Platform/Core/Smartent.Core.AspNet/Docs/Security.md). All of the services mentioned in both documents are included in the `ConfigureSecurityDefaults()` and `ConfigureSecurityDefaultsWithStaticFiles()` extensions.
 
-These extensions provide additional security and can resolve issues reported by the [ZAP security scanner](https://gitee.com/smartent/smartent-training-demo-modules
-
+These extensions provide additional security and can resolve issues reported by the [ZAP security scanner](https://gitee.com/smartent/smartent-orchard-Extensions)
 ## Extensions
 
 - `SecurityOrchardCoreBuilderExtensions`: Adds `BuilderExtensions` extensions. For example, the `ConfigureSecurityDefaultsWithStaticFiles()` that provides some default security configuration for Orchard Core.

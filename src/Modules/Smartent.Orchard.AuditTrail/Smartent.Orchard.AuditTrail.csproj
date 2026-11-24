@@ -14,7 +14,7 @@
     <CopyrightYear>2021</CopyrightYear>
     <DescriptionBody>A module with additional features for the Audit Trail module in Orchard Core.</DescriptionBody>
     <PackageTags>OrchardCore;Smartent;AspNetCore;AuditTrail</PackageTags>
-    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-orchard-Extensions</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>

@@ -8,8 +8,7 @@ This Orchard Core module adds [Vue.js 3](https://vuejs.org/) resources to Orchar
 
 This module has the following dependencies:
 
-- [Smartent Helpful Libraries for Orchard Core](https://gitee.com/smartent/smartent-training-demo-modules
-
+- [Smartent Helpful Libraries for Orchard Core](https://gitee.com/smartent/smartent-orchard-Extensions)
 ## Contributing and support
 
 Bug reports, feature requests, comments, questions, code contributions and love letters are warmly welcome. You can send them to us via GitHub issues and pull requests. Please adhere to our [open-source guidelines](https://gitee.com/smartent/open-source-guidelines) while doing so.

@@ -15,8 +15,8 @@
     <CopyrightYear>2011</CopyrightYear>
     <DescriptionBody>ASP.NET Core 扩展：CSP、Mvc 辅助、中间件、本地化等，供 Smartent Web 与 Orchard 模块引用。</DescriptionBody>
     <PackageTags>Smartent;AspNetCore;Security;CSP</PackageTags>
-    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
-    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules/tree/master/src/Platform/Core/Smartent.Core.AspNet</PackageProjectUrl>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-orchard-Extensions</RepositoryUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-orchard-Extensions/tree/master/src/Platform/Core/Smartent.Core.AspNet</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>

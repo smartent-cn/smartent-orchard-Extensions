@@ -15,8 +15,8 @@
     <CopyrightYear>2024</CopyrightYear>
     <DescriptionBody>This module contains widgets based on shapes from Smartent Orchard UI Kit.</DescriptionBody>
     <PackageTags>OrchardCore;Smartent;AspNetCore;UI;UIKit;Widgets;front-end</PackageTags>
-    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
-    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules</PackageProjectUrl>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-orchard-Extensions</RepositoryUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-orchard-Extensions</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>

@@ -7,8 +7,7 @@ This project contains the following pipeline steps for JavaScript files:
 - Clean output folder
 - Watch for changes and re-run pipeline
 
-> Looking for something similar for .NET? Check out our [.NET Analyzers project](https://gitee.com/smartent/smartent-training-demo-modules
-
+> Looking for something similar for .NET? Check out our [.NET Analyzers project](https://gitee.com/smartent/smartent-orchard-Extensions)
 ## Configuration
 
 The scripts pipeline needs a `source` and a `target` path. The default configuration looks like this:

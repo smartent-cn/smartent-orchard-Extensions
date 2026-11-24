@@ -4,7 +4,7 @@
   "displayName": "TEST: Basic Orchard Features",
   "description": "Setup recipe for automated UI test execution, checking the basic Orchard features. See the BasicOrchardFeaturesTests test.",
   "author": "Smartent",
-  "website": "https://gitee.com/smartent/smartent-training-demo-modules",
+  "website": "https://gitee.com/smartent/smartent-orchard-Extensions",
   "version": "1.0",
   "issetuprecipe": true,
   "categories": [

@@ -12,8 +12,8 @@
     <CopyrightYear>2025</CopyrightYear>
     <DescriptionBody>Sample console application to showcase the Smartent eInvoice Validator. See the project website for detailed documentation.</DescriptionBody>
     <PackageTags>OrchardCore;Smartent;AspNetCore;EN16931;eInvoice;XML;UBL;CII</PackageTags>
-    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
-    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules</PackageProjectUrl>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-orchard-Extensions</RepositoryUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-orchard-Extensions</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>

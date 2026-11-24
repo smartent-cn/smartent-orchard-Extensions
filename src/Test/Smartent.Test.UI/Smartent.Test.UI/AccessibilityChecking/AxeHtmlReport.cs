@@ -40,7 +40,7 @@ public enum AxeReportTypes
 /// </para>
 /// <para>
 /// Maybe at one point we can have an Orchard Core shape template-based, customizable report:
-/// https://gitee.com/smartent/smartent-training-demo-modules
+/// https://gitee.com/smartent/smartent-orchard-Extensions
 /// </para>
 /// <para>
 /// Original license:

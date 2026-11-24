@@ -4,7 +4,7 @@
   "displayName": "TEST: Elasticsearch Configuration",
   "description": "Elasticsearch Configuration recipe for automated UI test execution.",
   "author": "Smartent",
-  "website": "https://gitee.com/smartent/smartent-training-demo-modules",
+  "website": "https://gitee.com/smartent/smartent-orchard-Extensions",
   "version": "1.0",
   "issetuprecipe": true,
   "categories": [

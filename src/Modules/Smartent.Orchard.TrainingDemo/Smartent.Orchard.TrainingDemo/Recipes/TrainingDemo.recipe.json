@@ -5,7 +5,7 @@
   "displayName": "Training Demo",
   "description": "Demo Orchard Core site with the Smartent.Orchard.TrainingDemo module enabled.",
   "author": "Smartent",
-  "website": "https://gitee.com/smartent/smartent-training-demo-modules",
+  "website": "https://gitee.com/smartent/smartent-orchard-Extensions",
   "version": "1.0",
   "issetuprecipe": true,
   "categories": [ "training" ],

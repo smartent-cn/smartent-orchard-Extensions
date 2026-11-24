@@ -20,7 +20,7 @@
     <CopyrightYear>2022</CopyrightYear>
     <DescriptionBody>A tool to easily export Media Themes. See the project website for detailed documentation.</DescriptionBody>
     <PackageTags>OrchardCore;Smartent;AspNetCore;Media;Deployer</PackageTags>
-    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-orchard-Extensions</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>

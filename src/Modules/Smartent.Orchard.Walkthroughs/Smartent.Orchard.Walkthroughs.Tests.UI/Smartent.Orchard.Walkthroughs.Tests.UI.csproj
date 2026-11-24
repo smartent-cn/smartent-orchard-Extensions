@@ -14,8 +14,8 @@
     <CopyrightYear>2023</CopyrightYear>
     <DescriptionBody>Extensions to aid in UI testing Smartent Orchard Walkthroughs for Orchard Core.</DescriptionBody>
     <PackageTags>OrchardCore;Smartent;AspNetCore;Walkthroughs;Tutorial</PackageTags>
-    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
-    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules</PackageProjectUrl>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-orchard-Extensions</RepositoryUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-orchard-Extensions</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(NuGetBuild)' != 'true'">

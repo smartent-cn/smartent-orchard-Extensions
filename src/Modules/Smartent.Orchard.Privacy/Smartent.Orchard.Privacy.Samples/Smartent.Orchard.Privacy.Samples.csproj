@@ -14,8 +14,8 @@
     <CopyrightYear>2018</CopyrightYear>
     <DescriptionBody>Sample content that demonstrates the features of Smartent Orchard Privacy module for Orchard Core.</DescriptionBody>
     <PackageTags>OrchardCore;Smartent;AspNetCore;GDPR;Privacy</PackageTags>
-    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
-    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules</PackageProjectUrl>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-orchard-Extensions</RepositoryUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-orchard-Extensions</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(NuGetBuild)' == 'true'">

@@ -15,8 +15,8 @@
     <CopyrightYear>2022</CopyrightYear>
     <DescriptionBody>Smartent Orchard API Client 的 UI 测试扩展。</DescriptionBody>
     <PackageTags>Smartent;OrchardCore;Refit;OpenId;ApiClient;UITesting</PackageTags>
-    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
-    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules/tree/master/src/Libraries/Smartent.Orchard.ApiClient</PackageProjectUrl>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-orchard-Extensions</RepositoryUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-orchard-Extensions/tree/master/src/Libraries/Smartent.Orchard.ApiClient</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>

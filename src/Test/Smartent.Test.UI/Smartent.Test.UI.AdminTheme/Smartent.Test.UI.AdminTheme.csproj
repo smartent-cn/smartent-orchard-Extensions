@@ -12,8 +12,8 @@
     <CopyrightYear>2020</CopyrightYear>
     <DescriptionBody>Adjustments for the stock Orchard Core admin theme to make it more automation-friendly.</DescriptionBody>
     <PackageTags>OrchardCore;Smartent;AspNetCore;Selenium;Atata;Shouldly;xUnit;Axe;AccessibilityTesting;UITesting;Testing;Automation</PackageTags>
-    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
-    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules</PackageProjectUrl>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-orchard-Extensions</RepositoryUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-orchard-Extensions</PackageProjectUrl>
   </PropertyGroup>
 
   <!-- Security Updates for Orchard Core - make sure to check if these are still necessary -->

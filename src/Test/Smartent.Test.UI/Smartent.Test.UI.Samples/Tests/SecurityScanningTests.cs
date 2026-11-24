@@ -14,7 +14,7 @@ namespace Smartent.Test.UI.Samples.Tests;
 // fellow open-source project we can recommend. And you can use it right from UI tests, on the same app that's run for
 // the tests! This is useful to find all kinds of security issues with your app. In this sample we'll see how, but be
 // sure to also check out the corresponding documentation page:
-// https://gitee.com/smartent/smartent-training-demo-modules
+// https://gitee.com/smartent/smartent-orchard-Extensions
 
 // Most common alerts can be resolved by using the OrchardCoreBuilder.ConfigureSecurityDefaultsWithStaticFiles()
 // extension method from Smartent.Orchard.Platform. We use it in this in our

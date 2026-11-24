@@ -6,7 +6,7 @@ const { exec } = require('child_process');
 const panic = require('./handle-error').handleErrorObjectAndExit;
 
 const npmMissingError = 'PNPM is not installed. Please check the prerequisites for Lombiq Node.js Extensions at ' +
-    'https://gitee.com/smartent/smartent-training-demo-modules';
+    'https://gitee.com/smartent/smartent-orchard-Extensions';
 
 function writeLine(message, stream = 'stdout') {
     process[stream].write(message.toString() + EOL);

@@ -15,8 +15,8 @@
     <CopyrightYear>2026</CopyrightYear>
     <DescriptionBody>Shared marketing abstractions, short URL hit handling, and client-side tracking composition.</DescriptionBody>
     <PackageTags>OrchardCore;Smartent;AspNetCore;Marketing;Analytics;Tracking;UrlShortener</PackageTags>
-    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
-    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules</PackageProjectUrl>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-orchard-Extensions</RepositoryUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-orchard-Extensions</PackageProjectUrl>
   </PropertyGroup>
 
   <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../Build/Smartent.Build.OrchardCore.Module.Sdk/Sdk/Import.targets" />

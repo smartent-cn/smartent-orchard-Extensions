@@ -6,7 +6,7 @@ using static Smartent.Orchard.JsonEditor.Constants.FeatureIds;
     Author = "Smartent",
     Version = "0.0.1",
     Description = "Module for displaying a JSON Editor like on jsoneditoronline.org.",
-    Website = "https://gitee.com/smartent/smartent-training-demo-modules"
+    Website = "https://gitee.com/smartent/smartent-orchard-Extensions"
 )]
 
 [assembly: Feature(

@@ -3,7 +3,7 @@
   "displayName": "Walkthroughs",
   "description": "Sets up the site using the Blog setup recipe, and then provides you with walkthroughs of Orchard Core features using interactive tooltips.",
   "author": "Smartent",
-  "website": "https://gitee.com/smartent/smartent-training-demo-modules",
+  "website": "https://gitee.com/smartent/smartent-orchard-Extensions",
   "version": "1.0.0",
   "issetuprecipe": true,
   "categories": [ "walkthroughs" ],

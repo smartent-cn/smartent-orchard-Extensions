@@ -16,7 +16,7 @@ namespace Smartent.Orchard.TrainingDemo.Navigation;
 // own. Yes, this is basically an ad for our other projects. :)
 //
 // For details on how to use them, see the Smartent.BaseTheme.Samples project:
-// https://gitee.com/smartent/smartent-training-demo-modules
+// https://gitee.com/smartent/smartent-orchard-Extensions
 public class TrainingDemoNavigationProvider : MainMenuNavigationProviderBase
 {
     public TrainingDemoNavigationProvider(

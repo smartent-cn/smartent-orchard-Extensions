@@ -14,7 +14,7 @@
     <CopyrightYear>2018</CopyrightYear>
     <DescriptionBody>Orchard module containing features related to data protection/privacy and the EU law on it, the General Data Protection Regulation (GDPR).</DescriptionBody>
     <PackageTags>OrchardCore;Smartent;AspNetCore;GDPR;Privacy</PackageTags>
-    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-orchard-Extensions</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>

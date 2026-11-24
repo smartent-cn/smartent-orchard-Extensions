@@ -13,8 +13,8 @@
     <CopyrightYear>2020</CopyrightYear>
     <DescriptionBody>Sample content that demonstrates the features of Smartent Orchard Data Tables for Orchard Core.</DescriptionBody>
     <PackageTags>OrchardCore;Smartent;AspNetCore;DataTables;Vue.js</PackageTags>
-    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
-    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules</PackageProjectUrl>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-orchard-Extensions</RepositoryUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-orchard-Extensions</PackageProjectUrl>
     <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
   </PropertyGroup>
 

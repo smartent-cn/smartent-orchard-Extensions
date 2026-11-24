@@ -25,12 +25,12 @@ public class BehaviorPrivacyTests : UITestBase
                 await context.TestConsentBannerAsync();
             });
 
-    // This test is for https://gitee.com/smartent/smartent-training-demo-modules
+    // This test is for https://gitee.com/smartent/smartent-orchard-Extensions
     [Fact]
     public Task ConsentBannerShouldWorkWithRazorBasedThemes() =>
         RunAsync(context => context.TestConsentBannerWithThemeAsync("TheTheme"));
 
-    // This test is for https://gitee.com/smartent/smartent-training-demo-modules
+    // This test is for https://gitee.com/smartent/smartent-orchard-Extensions
     [Fact]
     public Task ConsentBannerShouldWorkWithLiquidBasedThemes() =>
         RunAsync(context => context.TestConsentBannerWithThemeAsync("TheBlogTheme"));

@@ -16,8 +16,8 @@
     <Description>Smartent PowerShell Analyzers: PowerShell static code analysis via PSScriptAnalyzer (https://github.com/PowerShell/PSScriptAnalyzer) and Lombiq's recommended configuration for it. Use it from the CLI, in GitHub Actions, or integrated into MSBuild builds. See the project website for detailed documentation.</Description>
     <PackageIcon>NuGetIcon.png</PackageIcon>
     <PackageTags>Lombiq;Powershell;MSBuild</PackageTags>
-    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
-    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules</PackageProjectUrl>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-orchard-Extensions</RepositoryUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-orchard-Extensions</PackageProjectUrl>
     <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
   </PropertyGroup>
 

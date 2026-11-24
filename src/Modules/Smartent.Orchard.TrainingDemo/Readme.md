@@ -2,8 +2,7 @@
 
 ## About
 
-Demo [Orchard Core](https://orchardcore.net/) module for training purposes guiding you to become an Orchard developer. Note that this module also has an Orchard 1.x version in the [dev-orchard-1 branch of the repository](https://gitee.com/smartent/smartent-training-demo-modules
-
+Demo [Orchard Core](https://orchardcore.net/) module for training purposes guiding you to become an Orchard developer. Note that this module also has an Orchard 1.x version in the [dev-orchard-1 branch of the repository](https://gitee.com/smartent/smartent-orchard-Extensions)
 If you prefer tutorial videos more then check out the [Dojo Course 3, the complete Orchard Core tutorial series](https://orcharddojo.net/orchard-training/dojo-course-3-the-full-orchard-core-tutorial).
 
 **If you are interested in training resources and personalized Orchard training please visit [Orchard Dojo](https://orcharddojo.net/).**
@@ -22,7 +21,7 @@ Before you dive deep into this module it'd be best if you make sure that you hav
 
 The module comes with its own standalone solution and web app. So, to run it, simply do the following:
 
-1. Clone the latest `dev` branch of this repository or [download the source](https://gitee.com/smartent/smartent-training-demo-modules
+1. Clone the latest `dev` branch of this repository or [download the source](https://gitee.com/smartent/smartent-orchard-Extensions)
 2. Open the solution in your favorite IDE, like [Visual Studio](https://visualstudio.microsoft.com/), [Visual Studio Code](https://code.visualstudio.com/) or [Rider](https://www.jetbrains.com/rider/).
 3. Make sure the `Smartent.TrainingDemo.Web` project is the startup project (it should be; not needed for VS Code).
 4. Start the app.
@@ -43,7 +42,7 @@ Once the app is running:
 Some further reading if you're hungry for more knowledge.
 
 - You can also follow the [Dojo Course 3 tutorial series](https://orcharddojo.net/orchard-training/dojo-course-3-the-full-orchard-core-tutorial) if you like to learn from videos.
-- This module is not about showing you how to create an Orchard Core application from scratch. For that, we recommend you use the `Initialize-OrchardCoreSolution` script from our [Utility Scripts project](https://gitee.com/smartent/smartent-training-demo-modules
+- This module is not about showing you how to create an Orchard Core application from scratch. For that, we recommend you use the `Initialize-OrchardCoreSolution` script from our [Utility Scripts project](https://gitee.com/smartent/smartent-orchard-Extensions)
 - Keep in mind that your best living reference for how to do something in Orchard is [the official repo](https://github.com/OrchardCMS/OrchardCore) and our [Open-Source Orchard Core Extensions](https://github.com/smartent-cn/smartent-orchard-Extensions) (OSOCE) solution. Clone both and keep the solutions open when you’re working on something so you can quickly look up anything. As a bonus, OSOCE also contains all of Smartent's open-source Orchard themes and modules! Check it out for what we've already solved for you.
 - You can also take a look at our [Walkthroughs](https://gitee.com/smartent/smartent-orchard-Extensions) module, for step-by-step walkthroughs, which are guided by pop-up windows right there in the UI. You can also click "Guided walkthrough" button on the [homepage of DotNest, the Orchard Core SaaS](https://dotnest.com/), and you'll get a site set up with the Walkthroughs module, without touching Orchard's setup screen.
 - Be sure to check out the [Orchard Dojo Library for Orchard Core](https://orcharddojo.net/orchard-resources/CoreLibrary/) for a wealth of Orchard Core guidelines, best practices, development utilities (like scripts and snippets), and more as well!

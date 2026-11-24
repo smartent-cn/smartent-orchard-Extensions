@@ -16,8 +16,8 @@
     <CopyrightYear>2025</CopyrightYear>
     <DescriptionBody>EN 16931 电子发票校验（UBL/CII，含 Schematron）。</DescriptionBody>
     <PackageTags>Smartent;OrchardCore;EN16931;eInvoice</PackageTags>
-    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
-    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules/tree/master/src/Libraries/Smartent.Orchard.EInvoice</PackageProjectUrl>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-orchard-Extensions</RepositoryUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-orchard-Extensions/tree/master/src/Libraries/Smartent.Orchard.EInvoice</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>

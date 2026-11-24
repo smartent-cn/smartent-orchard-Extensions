@@ -5,8 +5,8 @@
   <PropertyGroup>
     <Title>Smartent MSBuild SDK - UI Testing Libraries (Smartent.MSBuild.OrchardCore.Tests.UI.Library.Sdk)</Title>
     <Description>MSBuild SDK for reusable UI test libraries using Smartent.Test.UI.</Description>
-    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules/tree/master/src/Build/Smartent.Build.OrchardCore.Tests.UI.Library.Sdk</PackageProjectUrl>
-    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-orchard-Extensions/tree/master/src/Build/Smartent.Build.OrchardCore.Tests.UI.Library.Sdk</PackageProjectUrl>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-orchard-Extensions</RepositoryUrl>
   </PropertyGroup>
 
 </Project>

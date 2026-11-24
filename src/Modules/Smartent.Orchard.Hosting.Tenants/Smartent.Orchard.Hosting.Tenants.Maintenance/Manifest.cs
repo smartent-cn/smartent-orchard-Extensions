@@ -5,7 +5,7 @@ using static Smartent.Orchard.Hosting.Tenants.Maintenance.Constants.FeatureNames
 [assembly: Module(
     Name = "Smartent Orchard Hosting - Tenants Maintenance",
     Author = "Smartent",
-    Website = "https://gitee.com/smartent/smartent-training-demo-modules",
+    Website = "https://gitee.com/smartent/smartent-orchard-Extensions",
     Version = "0.0.1"
 )]
 

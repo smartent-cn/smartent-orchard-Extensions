@@ -2,6 +2,6 @@
     $schema: 'https://docs.renovatebot.com/renovate-schema.json',
     extends: [
         'github>Smartent/renovate-config:default-dotnet.json5',
-        'github>Lombiq/Open-Source-Orchard-Core-Extensions:renovate-osoce-submodule.json5',
+        'github>smartent-cn/smartent-orchard-Extensions:renovate-osoce-submodule.json5',
     ],
 }

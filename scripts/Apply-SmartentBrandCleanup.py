@@ -23,6 +23,9 @@ TEXT_EXTENSIONS = {
     ".scss", ".css", ".html", ".txt", ".config", ".editorconfig", ".gitattributes", ".gitignore",
 }
 
+GITEE_MONOREPO = "https://gitee.com/smartent/smartent-orchard-Extensions"
+GITHUB_MONOREPO = "https://github.com/smartent-cn/smartent-orchard-Extensions"
+
 REPLACEMENTS = [
     ("PackageVersionLombiqHelpfulLibraries", "PackageVersionSmartentPlatform"),
     ("PackageVersionLombiqTestsUI", "PackageVersionSmartentTestsUI"),
@@ -47,6 +50,11 @@ REPLACEMENTS = [
     ("Lombiq PowerShell Analyzers", "Smartent PowerShell Analyzers"),
     ("Lombiq .NET Analyzers", "Smartent .NET Analyzers"),
     ("Lombiq MSBuild SDK", "Smartent MSBuild SDK"),
+    ("https://gitee.com/smartent/smartent-training-demo-modules", GITEE_MONOREPO),
+    ("https://github.com/smartent-cn/smartent-training-demo-modules", GITHUB_MONOREPO),
+    ("Lombiq.OSOCE.Samples", "Smartent.Demo.Samples"),
+    ("for [Lombiq](https://lombiq.com)", "for [Smartent](https://gitee.com/smartent)"),
+    ("[Lombiq](https://lombiq.com)", "[Smartent](https://gitee.com/smartent)"),
     ("lombiq.markdownlint.json", "smartent.markdownlint.json"),
     ("LombiqSymbolLogoColorWhiteFlaskSquareForNuGetPackages.png", "SmartentSymbolLogoColorWhiteFlaskSquareForNuGetPackages.png"),
     ("'$(SmartentSdkName)' == '' AND '$(LombiqSdkName)' == ''", "'$(SmartentSdkName)' == ''"),
@@ -56,15 +64,10 @@ REPLACEMENTS = [
 ]
 
 GITHUB_LOMBIQ_RE = re.compile(r"https://github\.com/Lombiq/[^\s\"'<>)\]]+")
-GITEE_ORCHARD_EXTENSIONS = "https://gitee.com/smartent/smartent-orchard-Extensions"
-GITEE_TRAINING_DEMO = "https://gitee.com/smartent/smartent-training-demo-modules"
 
 
 def map_lombiq_github_url(url: str) -> str:
-    lower = url.lower()
-    if "training-demo" in lower or "orchard-training" in lower:
-        return GITEE_TRAINING_DEMO
-    return GITEE_ORCHARD_EXTENSIONS
+    return GITHUB_MONOREPO
 
 
 def should_skip(rel: str, name: str) -> bool:

@@ -116,7 +116,7 @@ on:
         type: string
         description: >
           The hostname of the Orchard 1-based application that runs a maintenance based on the Multi Tenancy feature
-          (https://gitee.com/smartent/smartent-training-demo-modules
+          (https://gitee.com/smartent/smartent-orchard-Extensions)
       maintenance-batch-size:
         type: string
         default: '0'

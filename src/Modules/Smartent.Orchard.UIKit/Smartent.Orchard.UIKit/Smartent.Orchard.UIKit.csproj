@@ -19,7 +19,7 @@
     <CopyrightYear>2021</CopyrightYear>
     <DescriptionBody>This module contains reusable shapes like text editors, custom-style checkboxes, dropdown editors, and in the future potentially more complex editors.</DescriptionBody>
     <PackageTags>OrchardCore;Smartent;AspNetCore;UI;UIKit;front-end</PackageTags>
-    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-orchard-Extensions</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(NuGetBuild)' != 'true'">

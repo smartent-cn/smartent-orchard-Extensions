@@ -18,7 +18,7 @@ The built-in converters handle the following O1 content parts:
 - `TitlePart`
 - `IdentityPart`
 - `ListPart`
-- `GraphMetadata` (added by <https://gitee.com/smartent/smartent-training-demo-modules>)
+- `GraphMetadata` (added by <https://gitee.com/smartent/smartent-orchard-Extensions>)
 - `UserPart`
 
 Additionally, if a custom converter fills in the `OrchardIds` content part's `Parent` property on the generated content item, then it also adds it to the parent content item's `ListPart`.

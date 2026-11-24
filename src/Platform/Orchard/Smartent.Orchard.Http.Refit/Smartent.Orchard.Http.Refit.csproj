@@ -15,8 +15,8 @@
     <CopyrightYear>2011</CopyrightYear>
     <DescriptionBody>Refit HTTP 客户端辅助类型，供 Orchard 模块与 ApiClient 等引用。</DescriptionBody>
     <PackageTags>Smartent;OrchardCore;Refit;REST</PackageTags>
-    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
-    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules/tree/master/src/Platform/Orchard/Smartent.Orchard.Http.Refit</PackageProjectUrl>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-orchard-Extensions</RepositoryUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-orchard-Extensions/tree/master/src/Platform/Orchard/Smartent.Orchard.Http.Refit</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>

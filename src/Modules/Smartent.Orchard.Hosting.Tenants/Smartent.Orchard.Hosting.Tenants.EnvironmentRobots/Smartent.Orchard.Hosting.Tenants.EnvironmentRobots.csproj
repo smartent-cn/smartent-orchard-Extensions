@@ -14,8 +14,8 @@
     <CopyrightYear>2023</CopyrightYear>
     <DescriptionBody>This module contains the EnvironmentRobots feature, which prevents search bots from indexing non-production environments by adding a meta tag and a response header with noindex, nofollow values.</DescriptionBody>
     <PackageTags>OrchardCore;Smartent;AspNetCore;Multitenancy;SaaS</PackageTags>
-    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
-    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules</PackageProjectUrl>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-orchard-Extensions</RepositoryUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-orchard-Extensions</PackageProjectUrl>
   </PropertyGroup>
 
   <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../Build/Smartent.Build.OrchardCore.Module.Sdk/Sdk/Import.targets" />

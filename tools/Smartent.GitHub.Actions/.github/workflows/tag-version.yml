@@ -42,7 +42,7 @@ on:
         description: >
           PowerShell string array of repository base URLs to include when evaluating called GHA Workflows and Actions,
           e.g '@("Lombiq/GitHub-Actions")' or '@("Lombiq/GitHub-Actions",
-          "Lombiq/Open-Source-Orchard-Core-Extensions")'. The parameter must be a PowerShell string array.
+          "smartent-cn/smartent-orchard-Extensions")'. The parameter must be a PowerShell string array.
         type: string
       additional-pattern-include-list:
         required: false

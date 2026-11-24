@@ -10,7 +10,7 @@
     <Title>Smartent MSBuild SDK Sample</Title>
     <CopyrightYear>2026</CopyrightYear>
     <DescriptionBody>Example Description.</DescriptionBody>
-    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-orchard-Extensions</RepositoryUrl>
     <OrchardCoreVersion>3.0.1</OrchardCoreVersion>
     <PackageVersionSmartentPlatform>13.1.0</PackageVersionSmartentPlatform>
   </PropertyGroup>

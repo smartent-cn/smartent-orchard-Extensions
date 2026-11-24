@@ -3,7 +3,7 @@
   "displayName": "Smartent Orchard Extensions - Lucide test recipe",
   "description": "Creates a simple content type for testing the Lucide icon picker editor.",
   "author": "Smartent",
-  "website": "https://gitee.com/smartent/smartent-training-demo-modules",
+  "website": "https://gitee.com/smartent/smartent-orchard-Extensions",
   "version": "1.0",
   "issetuprecipe": false,
   "categories": [],

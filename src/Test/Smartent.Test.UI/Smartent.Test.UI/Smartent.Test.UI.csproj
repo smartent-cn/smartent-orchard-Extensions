@@ -18,7 +18,7 @@
     <CopyrightYear>2020</CopyrightYear>
     <DescriptionBody>Web UI testing toolbox mostly for Orchard Core applications. Everything you need to do UI testing with Selenium for an Orchard app is here.</DescriptionBody>
     <PackageTags>OrchardCore;Smartent;AspNetCore;Selenium;Atata;Shouldly;xUnit;Axe;AccessibilityTesting;UITesting;Testing;Automation;ZAP;Zed Attack Proxy;Security;Scanning;OWASP</PackageTags>
-    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-orchard-Extensions</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>

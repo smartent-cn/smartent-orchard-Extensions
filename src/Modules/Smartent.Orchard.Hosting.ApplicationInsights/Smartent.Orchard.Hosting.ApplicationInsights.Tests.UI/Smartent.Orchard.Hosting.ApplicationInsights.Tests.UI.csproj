@@ -15,8 +15,8 @@
     <CopyrightYear>2015</CopyrightYear>
     <DescriptionBody>Extension methods that test various features in Smartent Orchard Hosting - Azure Application Insights for Orchard Core, with the help of Smartent UI Testing for Orchard Core.</DescriptionBody>
     <PackageTags>OrchardCore;Smartent;AspNetCore;ApplicationInsights;Analytics;Telemetry;Monitoring;SmartentHosting;Shouldly;xUnit;UITesting;Testing</PackageTags>
-    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
-    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules</PackageProjectUrl>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-orchard-Extensions</RepositoryUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-orchard-Extensions</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(NuGetBuild)' != 'true'">

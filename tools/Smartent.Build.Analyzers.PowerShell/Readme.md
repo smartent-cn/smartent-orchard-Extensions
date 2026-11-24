@@ -6,8 +6,7 @@
 
 PowerShell static code analysis via [PSScriptAnalyzer](https://github.com/PowerShell/PSScriptAnalyzer) and [custom analyzer rules](Smartent.Build.Analyzers.PowerShell/Rules/CustomRules.md), accompanied by [Lombiq's recommended configuration for it](Smartent.Build.Analyzers.PowerShell/PSScriptAnalyzerSettings.psd1). Use it from the CLI, in GitHub Actions, or integrated into MSBuild builds. Demo video [here](https://www.youtube.com/watch?v=GqUvneHxZ8g).
 
-Looking for .NET static code analysis? Check out our [.NET Analyzers project](https://gitee.com/smartent/smartent-training-demo-modules
-
+Looking for .NET static code analysis? Check out our [.NET Analyzers project](https://gitee.com/smartent/smartent-orchard-Extensions)
 Do you want to quickly try out this project and see it in action? Check it out in our [Open-Source Orchard Core Extensions](https://github.com/smartent-cn/smartent-orchard-Extensions) full Orchard Core solution and also see our other useful Orchard Core-related open-source projects!
 
 ## Documentation

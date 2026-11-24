@@ -14,7 +14,7 @@
     <CopyrightYear>2023</CopyrightYear>
     <DescriptionBody>Orchard Core module to teach you the fundamentals of using the CMS features with step-by-step guides.</DescriptionBody>
     <PackageTags>OrchardCore;Smartent;AspNetCore;Walkthroughs;Tutorial</PackageTags>
-    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-orchard-Extensions</RepositoryUrl>
   </PropertyGroup>
 
   <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../Build/Smartent.Build.OrchardCore.Module.Sdk/Sdk/Import.targets" />

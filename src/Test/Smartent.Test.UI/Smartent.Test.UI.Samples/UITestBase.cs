@@ -46,7 +46,7 @@ public abstract class UITestBase : OrchardCoreUITestBase<Program>
             // https://docs.orchardcore.net/en/latest/docs/reference/core/Configuration/. We can set e.g. Orchard's
             // AdminUrlPrefix like below, but this is just setting the default, so it's only an example. A more useful
             // example is enabling offline operation of the Smartent Orchard Hosting - Azure Application Insights for Orchard Core
-            // module (see the UI test project in https://gitee.com/smartent/smartent-training-demo-modules
+            // module (see the UI test project in https://gitee.com/smartent/smartent-orchard-Extensions
             configuration.OrchardCoreConfiguration.BeforeAppStart +=
                 (_, argumentsBuilder) =>
                 {

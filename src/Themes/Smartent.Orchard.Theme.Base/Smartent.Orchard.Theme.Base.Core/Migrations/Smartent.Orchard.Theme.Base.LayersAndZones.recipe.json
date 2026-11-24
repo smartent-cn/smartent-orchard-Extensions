@@ -3,7 +3,7 @@
   "displayName": "Smartent Orchard Core Base Theme - Layers and Zones",
   "description": "Adds the zones rendered by the base theme to the Layers feature's Widgets menu. Also adds common layers.",
   "author": "Smartent",
-  "website": "https://gitee.com/smartent/smartent-training-demo-modules",
+  "website": "https://gitee.com/smartent/smartent-orchard-Extensions",
   "version": "1.0",
   "categories": [ "settings", "layers", "zones" ],
   "tags": [],

@@ -19,8 +19,7 @@ This module is also available on all sites of [DotNest, the Orchard Core SaaS](h
 
 Do you want to quickly try out this project and see it in action? Check it out in our [Open-Source Orchard Core Extensions](https://github.com/smartent-cn/smartent-orchard-Extensions) full Orchard Core solution and also see our other useful Orchard Core-related open-source projects!
 
-**NOTE:** This module has an Orchard 1 version in the [dev-orchard-1 branch](https://gitee.com/smartent/smartent-training-demo-modules
-
+**NOTE:** This module has an Orchard 1 version in the [dev-orchard-1 branch](https://gitee.com/smartent/smartent-orchard-Extensions)
 ## Features
 
 The module consists of the following independent features:

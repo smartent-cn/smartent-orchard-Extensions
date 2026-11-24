@@ -5,8 +5,8 @@
   <PropertyGroup>
     <Title>Smartent MSBuild SDK - Orchard Core Theme (Smartent.MSBuild.OrchardCore.Theme.Sdk)</Title>
     <Description>MSBuild SDK for Orchard Core themes.</Description>
-    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules/tree/master/src/Build/Smartent.Build.OrchardCore.Theme.Sdk</PackageProjectUrl>
-    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-orchard-Extensions/tree/master/src/Build/Smartent.Build.OrchardCore.Theme.Sdk</PackageProjectUrl>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-orchard-Extensions</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>

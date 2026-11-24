@@ -15,8 +15,8 @@
     <CopyrightYear>2026</CopyrightYear>
     <DescriptionBody>Pirsch analytics integration with client-side tracking, first-party proxying, and server-side hit reporting.</DescriptionBody>
     <PackageTags>OrchardCore;Smartent;AspNetCore;Marketing;Analytics;Tracking;Pirsch</PackageTags>
-    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
-    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules</PackageProjectUrl>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-orchard-Extensions</RepositoryUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-orchard-Extensions</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>

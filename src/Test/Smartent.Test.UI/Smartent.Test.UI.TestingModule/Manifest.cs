@@ -3,7 +3,7 @@ using OrchardCore.Modules.Manifest;
 [assembly: Module(
     Name = "Smartent UI Testing - Testing Module",
     Author = "Smartent",
-    Website = "https://gitee.com/smartent/smartent-training-demo-modules",
+    Website = "https://gitee.com/smartent/smartent-orchard-Extensions",
     Version = "0.0.1"
 )]
 

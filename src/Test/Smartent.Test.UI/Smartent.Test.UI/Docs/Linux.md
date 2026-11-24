@@ -2,8 +2,7 @@
 
 ## Global NPM vs Userspace NPM via Node Version Manager
 
-As Linux has a stricter access policy you may want to install NPM in the userspace so you can still install global packages (e.g. html-validate) without sudoing. The easiest way to do this is via NVM. If you don't have NVM yet, [follow the guide here](https://gitee.com/smartent/smartent-training-demo-modules
-
+As Linux has a stricter access policy you may want to install NPM in the userspace so you can still install global packages (e.g. html-validate) without sudoing. The easiest way to do this is via NVM. If you don't have NVM yet, [follow the guide here](https://gitee.com/smartent/smartent-orchard-Extensions)
 This library configures processes launched by Atata (via `Atata.Cli.ProgramCli`) to use Bash as login shell on non-Windows systems by default, like this:
 
 ```csharp

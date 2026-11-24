@@ -26,7 +26,7 @@ public class AccountNavigationProvider : MainMenuNavigationProviderBase
     // The menu itself is built the same way as the Admin menus that Orchard already handles. Except due to limitations
     // of Bootstrap's navigation features you can't nest menus, you can only have two layers.
     // To learn more about navigation, see the Smartent Orchard Training Demo for Orchard Core, specifically the "Admin menus"
-    // training section: https://gitee.com/smartent/smartent-training-demo-modules
+    // training section: https://gitee.com/smartent/smartent-orchard-Extensions
     protected override void Build(NavigationBuilder builder)
     {
         if (_hca.HttpContext?.User.Identity?.IsAuthenticated != true)

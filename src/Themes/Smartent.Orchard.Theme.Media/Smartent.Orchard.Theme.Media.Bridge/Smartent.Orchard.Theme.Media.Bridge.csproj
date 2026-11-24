@@ -14,7 +14,7 @@
     <CopyrightYear>2022</CopyrightYear>
     <DescriptionBody>Provides the processing logic for the Media Theme.</DescriptionBody>
     <PackageTags>OrchardCore;Smartent;AspNetCore;Media;Module</PackageTags>
-    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-orchard-Extensions</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>

@@ -21,8 +21,7 @@ jobs:
 
 One-off false positives can be ignored by adding `codespell:ignore yourword` to the end of the line (or `codespell:ignore` to ignore the whole line).
 
-For complete configuration of codespell, you can override the default configuration of this workflow by placing a _.codespellrc_ file in the root of your repository. On how to use this, see the [codespell documentation](https://github.com/codespell-project/codespell?tab=readme-ov-file#using-a-config-file). The default configuration is [here](https://gitee.com/smartent/smartent-training-demo-modules
-
+For complete configuration of codespell, you can override the default configuration of this workflow by placing a _.codespellrc_ file in the root of your repository. On how to use this, see the [codespell documentation](https://github.com/codespell-project/codespell?tab=readme-ov-file#using-a-config-file). The default configuration is [here](https://gitee.com/smartent/smartent-orchard-Extensions)
 <!-- textlint-disable doubled-spaces -->
 > [!WARNING]
 > You must use a _.codespellrc_ file, not the other formats or file names supported by codespell.

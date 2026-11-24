@@ -6,7 +6,7 @@ using static Smartent.Orchard.ChartJs.Constants.FeatureIds;
     Author = "Smartent",
     Version = "0.0.1",
     Description = "Module for displaying data using Chart.js.",
-    Website = "https://gitee.com/smartent/smartent-training-demo-modules"
+    Website = "https://gitee.com/smartent/smartent-orchard-Extensions"
 )]
 
 [assembly: Feature(

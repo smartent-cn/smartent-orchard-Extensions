@@ -109,5 +109,5 @@ dotnet test src/Test/Smartent.Test.Platform/Smartent.Test.Platform.csproj --filt
 
 ## 来源与许可 | Provenance & License
 
-- 源自 Smartent [Helpful-Libraries / Common](https://gitee.com/smartent/smartent-training-demo-modules
+- 源自 Smartent [Helpful-Libraries / Common](https://gitee.com/smartent/smartent-orchard-Extensions)
 - Smartent 衍生部分 Copyright © Smartent。

@@ -14,7 +14,7 @@
     <CopyrightYear>2020</CopyrightYear>
     <DescriptionBody>An Orchard Core wrapper around the DataTables (https://datatables.net/) library for displaying tabular data from custom data sources. It lets you replace HTML tables with a tag helper or create asynchronous, sortable, searchable server-side generated tables. It also includes a pure Vue.js module that works similarly to DataTables.</DescriptionBody>
     <PackageTags>OrchardCore;Smartent;AspNetCore;DataTables;Vue.js</PackageTags>
-    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-orchard-Extensions</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>

@@ -6,7 +6,7 @@ using static Smartent.Orchard.UIKit.FeatureIds;
     Author = "Smartent",
     Version = "0.0.1",
     Description = "Module for reusable shapes containing text editors, dropdown editors, and potentially more complex editors.",
-    Website = "https://gitee.com/smartent/smartent-training-demo-modules"
+    Website = "https://gitee.com/smartent/smartent-orchard-Extensions"
 )]
 
 [assembly: Feature(

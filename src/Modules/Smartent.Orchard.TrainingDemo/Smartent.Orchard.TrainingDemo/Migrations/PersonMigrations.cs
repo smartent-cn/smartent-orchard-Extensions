@@ -16,7 +16,7 @@ namespace Smartent.Orchard.TrainingDemo.Migrations;
 // Here's another migrations file but specifically for Person-related operations, including how to define content types
 // and configure content parts. Don't forget to register this class with the service provider (see Startup.cs). You can
 // also generate such migration steps with the Code Generation feature of our Helpful Extensions module, check it out
-// here: https://gitee.com/smartent/smartent-training-demo-modules
+// here: https://gitee.com/smartent/smartent-orchard-Extensions
 public sealed class PersonMigrations : DataMigration
 {
     private readonly IContentDefinitionManager _contentDefinitionManager;

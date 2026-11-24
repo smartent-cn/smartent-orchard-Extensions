@@ -5,8 +5,8 @@
   <PropertyGroup>
     <Title>Smartent MSBuild SDK - Library (Smartent.MSBuild.Library.Sdk)</Title>
     <Description>类库 MSBuild SDK。</Description>
-    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules/tree/master/src/Build/Smartent.Build.Library.Sdk</PackageProjectUrl>
-    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-orchard-Extensions/tree/master/src/Build/Smartent.Build.Library.Sdk</PackageProjectUrl>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-orchard-Extensions</RepositoryUrl>
   </PropertyGroup>
 
 </Project>

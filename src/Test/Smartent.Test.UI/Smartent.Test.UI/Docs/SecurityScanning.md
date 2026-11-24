@@ -30,7 +30,7 @@ This is because the Docker installation is configured to use Windows images, whi
 ```yaml
   build-and-test:
     name: Build and Test
-    # See https://gitee.com/smartent/smartent-training-demo-modules
+    # See https://gitee.com/smartent/smartent-orchard-Extensions
     uses: Smartent/GitHub-Actions/.github/workflows/build-and-test-orchard-core.yml@dev
     with:
       machine-types: '["windows-2025"]'

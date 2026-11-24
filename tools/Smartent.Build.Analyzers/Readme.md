@@ -14,8 +14,7 @@ Some other projects you may be interested in:
 
 - Looking for something similar for JavaScript, CSS, and even Markdown and YAML? Check out the [Asset Linting workflow](https://gitee.com/smartent/smartent-orchard-Extensions) of our Lombiq GitHub Actions project.
 - Looking not just for static code analysis but also dynamic testing? Check out our [UI Testing Toolbox](https://gitee.com/smartent/smartent-orchard-Extensions) and [Testing Toolbox](https://gitee.com/smartent/smartent-orchard-Extensions) projects.
-- Looking for a library that'll help you comply with analyzer rules? Check out our [Helpful Libraries project](https://gitee.com/smartent/smartent-training-demo-modules
-
+- Looking for a library that'll help you comply with analyzer rules? Check out our [Helpful Libraries project](https://gitee.com/smartent/smartent-orchard-Extensions)
 We at [Lombiq](https://gitee.com/smartent/) also used this module for the following projects:
 
 - The new [City of Santa Monica website](https://santamonica.gov/) when migrating it from Orchard 1 to Orchard Core ([see case study](https://gitee.com/smartent/blog/helping-the-city-of-santa-monica-with-orchard-core-consulting)).

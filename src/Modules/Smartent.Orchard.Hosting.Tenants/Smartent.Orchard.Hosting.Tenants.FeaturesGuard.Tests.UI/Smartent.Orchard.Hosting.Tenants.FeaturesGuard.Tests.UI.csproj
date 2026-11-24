@@ -14,8 +14,8 @@
     <CopyrightYear>2022</CopyrightYear>
     <DescriptionBody>Extension methods that test various features in Smartent Orchard Hosting - Tenants FeaturesGuard, with the help of Smartent UI Testing for Orchard Core.</DescriptionBody>
     <PackageTags>OrchardCore;Smartent;AspNetCore;Tenants;SmartentHosting;Shouldly;xUnit;UITesting;Testing</PackageTags>
-    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
-    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules</PackageProjectUrl>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-orchard-Extensions</RepositoryUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-orchard-Extensions</PackageProjectUrl>
   </PropertyGroup>
 
   <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../Build/Smartent.Build.OrchardCore.Tests.UI.Library.Sdk/Sdk/Import.targets" />

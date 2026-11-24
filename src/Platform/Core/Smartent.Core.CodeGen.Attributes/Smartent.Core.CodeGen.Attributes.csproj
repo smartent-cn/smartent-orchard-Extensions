@@ -17,8 +17,8 @@
     <CopyrightYear>2011</CopyrightYear>
     <DescriptionBody>源码生成器配套特性（如 LibMan 资源版本、`ConstantFromJson`）。</DescriptionBody>
     <PackageTags>Smartent;OrchardCore;Attributes;SourceGenerators</PackageTags>
-    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
-    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules/tree/master/src/Platform/Core/Smartent.Core.CodeGen.Attributes</PackageProjectUrl>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-orchard-Extensions</RepositoryUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-orchard-Extensions/tree/master/src/Platform/Core/Smartent.Core.CodeGen.Attributes</PackageProjectUrl>
   </PropertyGroup>
 
   <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../Build/Smartent.Build.Library.Sdk/Sdk/Import.targets" />

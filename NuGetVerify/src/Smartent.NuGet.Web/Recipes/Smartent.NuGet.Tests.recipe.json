@@ -3,7 +3,7 @@
   "displayName": "TEST: Smartent NuGet verification site",
   "description": "Smartent NuGet smoke-test setup recipe for automated UI test execution.",
   "author": "Smartent",
-  "website": "https://gitee.com/smartent/smartent-training-demo-modules",
+  "website": "https://gitee.com/smartent/smartent-orchard-Extensions",
   "version": "1.0",
   "issetuprecipe": true,
   "categories": [

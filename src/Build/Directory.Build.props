@@ -17,8 +17,8 @@
         <Copyright Condition="'$(Copyright)' == ''">Copyright © Smartent</Copyright>
         <PackageIcon>NuGetIcon.png</PackageIcon>
         <PackageTags Condition="'$(PackageTags)' == ''">OrchardCore;Smartent;AspNetCore;MSBuild</PackageTags>
-        <RepositoryUrl Condition="'$(RepositoryUrl)' == ''">https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
-        <PackageProjectUrl Condition="'$(PackageProjectUrl)' == ''">https://gitee.com/smartent/smartent-training-demo-modules/tree/master/src/Build</PackageProjectUrl>
+        <RepositoryUrl Condition="'$(RepositoryUrl)' == ''">https://gitee.com/smartent/smartent-orchard-Extensions</RepositoryUrl>
+        <PackageProjectUrl Condition="'$(PackageProjectUrl)' == ''">https://gitee.com/smartent/smartent-orchard-Extensions/tree/master/src/Build</PackageProjectUrl>
         <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
       </PropertyGroup>
 

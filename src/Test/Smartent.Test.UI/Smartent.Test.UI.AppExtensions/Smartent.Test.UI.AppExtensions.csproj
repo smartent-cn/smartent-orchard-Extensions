@@ -12,7 +12,7 @@
     <CopyrightYear>2020</CopyrightYear>
     <DescriptionBody>UI testing-related configuration extensions for the web app under test.</DescriptionBody>
     <PackageTags>OrchardCore;Smartent;AspNetCore;Selenium;Atata;Shouldly;xUnit;Axe;AccessibilityTesting;UITesting;Testing;Automation</PackageTags>
-    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-orchard-Extensions</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(NuGetBuild)' != 'true'">

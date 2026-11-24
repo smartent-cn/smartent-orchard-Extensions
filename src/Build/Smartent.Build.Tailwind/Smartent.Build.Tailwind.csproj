@@ -16,8 +16,8 @@
     <CopyrightYear>2026</CopyrightYear>
     <DescriptionBody>在 .NET 构建中运行 Tailwind CSS，无需在消费项目中安装 Node.js。</DescriptionBody>
     <PackageTags>Smartent;Tailwind;MSBuild;OrchardCore</PackageTags>
-    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
-    <PackageProjectUrl>https://gitee.com/smartent/smartent-training-demo-modules/tree/master/src/Build/Smartent.Build.Tailwind</PackageProjectUrl>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-orchard-Extensions</RepositoryUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-orchard-Extensions/tree/master/src/Build/Smartent.Build.Tailwind</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>

@@ -12,4 +12,4 @@
 
 There is a similar section for security extensions related to Orchard Core [here](../../Smartent.Orchard.Platform/Docs/Security.md).
 
-These extensions provide additional security and can resolve issues reported by the [ZAP security scanner](https://gitee.com/smartent/smartent-training-demo-modules
+These extensions provide additional security and can resolve issues reported by the [ZAP security scanner](https://gitee.com/smartent/smartent-orchard-Extensions)

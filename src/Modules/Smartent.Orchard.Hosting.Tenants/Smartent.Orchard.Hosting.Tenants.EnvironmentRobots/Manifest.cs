@@ -4,7 +4,7 @@ using OrchardCore.Modules.Manifest;
 [assembly: Module(
     Name = "Smartent Orchard Hosting - Tenants Environment Robots",
     Author = "Smartent",
-    Website = "https://gitee.com/smartent/smartent-training-demo-modules",
+    Website = "https://gitee.com/smartent/smartent-orchard-Extensions",
     Version = "0.0.1",
     Description = "Prevents search bots from indexing non-production environments by adding a meta tag and a response"
         + " header with noindex, nofollow values.",

@@ -5,7 +5,7 @@ using OrchardCore.Modules.Manifest;
     Name = "Smartent Orchard Content Editors",
     Author = "Smartent",
     Version = "0.0.1",
-    Website = "https://gitee.com/smartent/smartent-training-demo-modules"
+    Website = "https://gitee.com/smartent/smartent-orchard-Extensions"
 )]
 
 [assembly: Feature(

@@ -3,7 +3,7 @@
   "displayName": "Smartent Orchard Extensions - Content Sets - Sample",
   "description": "Sample content type, content items and workflow for the Content Sets feature.",
   "author": "Smartent",
-  "website": "https://gitee.com/smartent/smartent-training-demo-modules",
+  "website": "https://gitee.com/smartent/smartent-orchard-Extensions",
   "version": "1.0",
   "issetuprecipe": false,
   "categories": [

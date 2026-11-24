@@ -8,7 +8,7 @@ using Smartent.Orchard.Theme.Base.Core.Attributes;
     Name = "Smartent Orchard Theme Base - Sass - Samples",
     Author = "Smartent",
     Version = "0.0.1",
-    Website = "https://gitee.com/smartent/smartent-training-demo-modules",
+    Website = "https://gitee.com/smartent/smartent-orchard-Extensions",
     Description = "A sample theme that builds on Smartent Orchard Theme Base (Sass version).",
     // This is a new property in DerivedTheme. By setting it to a static resource you can define a default icon for this
     // theme. You can define other "link" resources too, using the LinkJson property. They should be valid Json strings.

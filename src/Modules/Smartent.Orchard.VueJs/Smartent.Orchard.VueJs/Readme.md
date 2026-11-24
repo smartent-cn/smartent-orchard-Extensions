@@ -22,7 +22,7 @@ If you just want to see the whole thing in action, check out the [Samples projec
 
 ## Prerequisites
 
-1. This project relies on [Smartent Node.js Extensions](https://gitee.com/smartent/smartent-orchard-Extensions) please see its prerequisites [here](https://gitee.com/smartent/smartent-training-demo-modules
+1. This project relies on [Smartent Node.js Extensions](https://gitee.com/smartent/smartent-orchard-Extensions) please see its prerequisites [here](https://gitee.com/smartent/smartent-orchard-Extensions)
 2. If you are importing this project as a submodule, include the following entries at the beginning and end of your csproj file. If you are using the NuGet package, this is not necessary:
 
     ```xml
@@ -180,7 +180,7 @@ Also if your app still uses the `<vue-component>` tag helper directly, consider 
 
 This module has the following dependencies:
 
-- [Smartent Helpful Libraries for Orchard Core](https://gitee.com/smartent/smartent-training-demo-modules
+- [Smartent Helpful Libraries for Orchard Core](https://gitee.com/smartent/smartent-orchard-Extensions)
 - [Smartent Node.js Extensions](https://gihub.com/Smartent/NodeJs-Extensions)
 
 ## Contributing and support

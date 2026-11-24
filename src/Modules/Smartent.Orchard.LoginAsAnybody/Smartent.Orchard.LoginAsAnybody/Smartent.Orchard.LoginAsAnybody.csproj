@@ -13,7 +13,7 @@
     <Title>Smartent Orchard Login as Anybody for Orchard Core</Title>
     <CopyrightYear>2015</CopyrightYear>
     <DescriptionBody>An Orchard Core module that allows administrator users to log in as any user.</DescriptionBody>
-    <RepositoryUrl>https://gitee.com/smartent/smartent-training-demo-modules</RepositoryUrl>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-orchard-Extensions</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>

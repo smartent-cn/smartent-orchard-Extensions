@@ -23,7 +23,7 @@ public static class TestCaseUITestContextExtensions
     public static async Task TestConditionallyEnabledFeaturesAsync(this UITestContext context, string setupRecipeId)
     {
         // For a comprehensive summary of the feature activation and deactivation rules, see:
-        // https://gitee.com/smartent/smartent-training-demo-modules
+        // https://gitee.com/smartent/smartent-orchard-Extensions
         await SetUpNewTenantAndGoToFeaturesListAsync(context, setupRecipeId);
 
         // Smartent's features that are set to always remain enabled from Manifest should have no disable button.

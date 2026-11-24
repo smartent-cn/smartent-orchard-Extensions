@@ -48,5 +48,5 @@ runs:
             'a `codespell:ignore yourword` comment at the end of the line (see ' +
             '[the docs](https://github.com/codespell-project/codespell?tab=readme-ov-file#inline-ignore)). If it''s ' +
             'frequent, or whole files/folders, see [the docs]' +
-            '(https://gitee.com/smartent/smartent-training-demo-modules'
+            '(https://gitee.com/smartent/smartent-orchard-Extensions'
         $hint >> $Env:GITHUB_STEP_SUMMARY
