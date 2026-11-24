@@ -14,10 +14,13 @@ alwaysApply: false
 | 位置 | 文件 |
 |------|------|
 | 项目根 | `Docs-Index.md`、`Docs-Index-CN.md` |
-| `docs/` | `README.md`、`Readme-CN.md` |
-| `docs/` | `QuickStart`、`Usage`、`Configuration`、`Cautions`（EN + CN） |
+| `docs/` | `README.md`、`Readme-CN.md`（仅语言入口，**不得**混放正文） |
+| `docs/en/` | 英文 `README.md` + `QuickStart`、`Usage`、`Configuration`、`Cautions` |
+| `docs/zh-cn/` | 中文 `README.md` + 同上四个主题（`.md` 无 `-CN` 后缀） |
 
-总索引：`docs/src-projects/README.md`、`Readme-CN.md`。
+总索引：`docs/src-projects/en/README.md`、`docs/src-projects/zh-cn/README.md`（入口见 `docs/src-projects/README.md`）。
+
+批量创建/迁移：`python scripts/Restructure-ProjectDocsEnZhCn.py`
 
 **排除（无需 docs/）**：`src/Test/**`；`**/*.Tests*`、`**/*.Tests.UI*`、`**/*.Tester*`、`**/*Benchmark*`。
 

@@ -9,7 +9,7 @@ Each folder is an Orchard Core **module family**. Required layout:
 - `Docs-Index.md` / `Docs-Index-CN.md` — links to `docs/`  
 - `docs/` — `QuickStart`, `Usage`, `Configuration`, `Cautions` (EN + CN)
 
-Scripts: `python scripts/Complete-ModuleDocumentationPass.py` (ordered pass) · `python scripts/Thicken-ModuleReadmes.py` · `python scripts/Ensure-ProjectDocsFolders.py`
+Scripts: `python scripts/Complete-ModuleDocumentationPass.py` · `python scripts/Restructure-ProjectDocsEnZhCn.py`
 
 | # | Module family | Overview | Docs index |
 |---|---------------|----------|------------|

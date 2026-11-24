@@ -4,9 +4,10 @@
 
 | Document | Description |
 |----------|-------------|
-| [Readme.md](Readme.md) | Module overview (English) |
-| [Readme-CN.md](Readme-CN.md) | 模块总览（中文） |
-| [docs/README.md](docs/README.md) | Detailed topics index |
-| [docs/Readme-CN.md](docs/Readme-CN.md) | 分主题文档索引 |
+| [Readme.md](Readme.md) | Project overview (English) |
+| [Readme-CN.md](Readme-CN.md) | 项目总览（中文） |
+| [docs/README.md](docs/README.md) | Documentation gateway |
+| [docs/en/README.md](docs/en/README.md) | English topics |
+| [docs/zh-cn/README.md](docs/zh-cn/README.md) | 中文分主题 |
 
-Repository project docs index: [../../../../docs/src-projects/README.md](../../../../docs/src-projects/README.md)
+Repository project docs index: [../../../docs/src-projects/en/README.md](../../../docs/src-projects/en/README.md)

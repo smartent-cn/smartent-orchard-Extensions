@@ -53,8 +53,8 @@ def write_status() -> None:
         for csproj in family.rglob("*.csproj"):
             if ".Tests" in csproj.stem or ".Samples" in csproj.stem:
                 continue
-            if (csproj.parent / "docs" / "README.md").is_file():
-                main_docs = f"`{csproj.parent.relative_to(MODULES).as_posix()}/docs/`"
+            if (csproj.parent / "docs" / "en" / "README.md").is_file():
+                main_docs = f"`{csproj.parent.relative_to(MODULES).as_posix()}/docs/{{en,zh-cn}}/`"
                 break
         lines.append(f"| {i} | `{name}` | {readme} | {main_docs} |")
     out.write_text("\n".join(lines) + "\n", encoding="utf-8", newline="\n")
@@ -62,7 +62,7 @@ def write_status() -> None:
 
 def main() -> None:
     run_script("Thicken-ModuleReadmes.py")
-    run_script("Ensure-ProjectDocsFolders.py")
+    run_script("Restructure-ProjectDocsEnZhCn.py")
     write_status()
     print(f"Completed documentation pass for {len(ORDER)} module families.")
 

@@ -27,12 +27,12 @@
 | 路径 | 说明 |
 |------|------|
 | `Docs-Index.md` / `Docs-Index-CN.md` | 项目根索引 |
-| `docs/README.md` / `docs/Readme-CN.md` | 分主题目录 |
-| `docs/QuickStart*`、`Usage*`、`Configuration*`、`Cautions*` | 怎么用 / 注意什么 |
+| `docs/README.md`、`docs/Readme-CN.md` | 语言入口（链到 `en/`、`zh-cn/`） |
+| `docs/en/`、`docs/zh-cn/` | 各含 `README.md` + QuickStart / Usage / Configuration / Cautions |
 
-模板：`docs/templates/MODULE_DOCS_FOLDER_README.*`、`MODULE_ROOT_DOCS_INDEX.*`（通用项目同款）  
-总索引：[docs/src-projects/README.md](../src-projects/README.md)  
-脚本：`python scripts/Ensure-ProjectDocsFolders.py`  
+模板：`PROJECT_DOCS_GATEWAY.*`、`PROJECT_DOCS_LOCALE_INDEX.*`、`MODULE_ROOT_DOCS_INDEX.*`  
+总索引：[docs/src-projects/README.md](../src-projects/README.md) → `en/` · `zh-cn/`  
+脚本：`python scripts/Restructure-ProjectDocsEnZhCn.py`（迁移 + 全量刷新）· `python scripts/Ensure-ProjectDocsFolders.py`  
 Cursor 规则：`.cursor/rules/project-docs-folder.mdc`
 
 ### 必备章节（顺序建议固定）

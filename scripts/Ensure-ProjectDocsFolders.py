@@ -76,13 +76,13 @@ def extract_flex(md: str, headings: list[str]) -> str:
 
 
 def topic_stub_en(title: str, body_en: str) -> str:
-    body = body_en or "See [Readme.md](../Readme.md)."
-    return f"# {title}\n\n> Parent: [docs/README.md](README.md)\n\n{body}\n"
+    body = body_en or "See [../Readme.md](../../Readme.md)."
+    return f"# {title}\n\n> Index: [README.md](README.md) · Gateway: [../README.md](../README.md)\n\n{body}\n"
 
 
 def topic_stub_cn(title: str, body_cn: str) -> str:
-    body = body_cn or "见 [Readme-CN.md](../Readme-CN.md)。"
-    return f"# {title}\n\n> 上级：[docs/Readme-CN.md](Readme-CN.md)\n\n{body}\n"
+    body = body_cn or "见 [../../Readme-CN.md](../../Readme-CN.md)。"
+    return f"# {title}\n\n> 索引：[README.md](README.md) · 入口：[../Readme-CN.md](../Readme-CN.md)\n\n{body}\n"
 
 
 def ensure_project_dir(project_dir: Path, package_id: str) -> None:
@@ -108,11 +108,26 @@ def ensure_project_dir(project_dir: Path, package_id: str) -> None:
     (project_dir / "Docs-Index.md").write_text(root_en, encoding="utf-8", newline="\n")
     (project_dir / "Docs-Index-CN.md").write_text(root_cn, encoding="utf-8", newline="\n")
 
-    for fname, content in (
-        ("README.md", load("MODULE_DOCS_FOLDER_README.en.template.md").replace("{PackageId}", package_id)),
-        ("Readme-CN.md", load("MODULE_DOCS_FOLDER_README.cn.template.md").replace("{PackageId}", package_id)),
+    en = docs / "en"
+    zh = docs / "zh-cn"
+    en.mkdir(exist_ok=True)
+    zh.mkdir(exist_ok=True)
+
+    for fname, tpl in (
+        ("README.md", "PROJECT_DOCS_GATEWAY.en.template.md"),
+        ("Readme-CN.md", "PROJECT_DOCS_GATEWAY.cn.template.md"),
     ):
-        (docs / fname).write_text(content, encoding="utf-8", newline="\n")
+        (docs / fname).write_text(load(tpl).replace("{PackageId}", package_id), encoding="utf-8", newline="\n")
+    (en / "README.md").write_text(
+        load("PROJECT_DOCS_LOCALE_INDEX.en.template.md").replace("{PackageId}", package_id),
+        encoding="utf-8",
+        newline="\n",
+    )
+    (zh / "README.md").write_text(
+        load("PROJECT_DOCS_LOCALE_INDEX.cn.template.md").replace("{PackageId}", package_id),
+        encoding="utf-8",
+        newline="\n",
+    )
 
     quick_en = extract_flex(readme_en, ["Quick start", "How to use", "Usage"])
     quick_cn = extract_flex(readme_cn, ["快速开始", "使用方式", "How to use"])
@@ -126,14 +141,21 @@ def ensure_project_dir(project_dir: Path, package_id: str) -> None:
     caut_en = extract_flex(readme_en, ["Pitfalls & cautions", "Cautions", "Out of scope", "Upgrade & extension"])
     caut_cn = extract_flex(readme_cn, ["注意事项", "不实现", "升级与扩展"])
 
-    (docs / "QuickStart.md").write_text(topic_stub_en("Quick start", quick_en), encoding="utf-8", newline="\n")
-    (docs / "QuickStart-CN.md").write_text(topic_stub_cn("快速开始", quick_cn), encoding="utf-8", newline="\n")
-    (docs / "Usage.md").write_text(topic_stub_en("Usage", usage_en), encoding="utf-8", newline="\n")
-    (docs / "Usage-CN.md").write_text(topic_stub_cn("使用方式", usage_cn), encoding="utf-8", newline="\n")
-    (docs / "Configuration.md").write_text(topic_stub_en("Configuration", cfg_en), encoding="utf-8", newline="\n")
-    (docs / "Configuration-CN.md").write_text(topic_stub_cn("配置", cfg_cn), encoding="utf-8", newline="\n")
-    (docs / "Cautions.md").write_text(topic_stub_en("Pitfalls & cautions", caut_en), encoding="utf-8", newline="\n")
-    (docs / "Cautions-CN.md").write_text(topic_stub_cn("注意事项与常见坑", caut_cn), encoding="utf-8", newline="\n")
+    (en / "QuickStart.md").write_text(topic_stub_en("Quick start", quick_en), encoding="utf-8", newline="\n")
+    (zh / "QuickStart.md").write_text(topic_stub_cn("快速开始", quick_cn), encoding="utf-8", newline="\n")
+    (en / "Usage.md").write_text(topic_stub_en("Usage", usage_en), encoding="utf-8", newline="\n")
+    (zh / "Usage.md").write_text(topic_stub_cn("使用方式", usage_cn), encoding="utf-8", newline="\n")
+    (en / "Configuration.md").write_text(topic_stub_en("Configuration", cfg_en), encoding="utf-8", newline="\n")
+    (zh / "Configuration.md").write_text(topic_stub_cn("配置", cfg_cn), encoding="utf-8", newline="\n")
+    (en / "Cautions.md").write_text(topic_stub_en("Pitfalls & cautions", caut_en), encoding="utf-8", newline="\n")
+    (zh / "Cautions.md").write_text(topic_stub_cn("注意事项与常见坑", caut_cn), encoding="utf-8", newline="\n")
+
+    for legacy in docs.glob("*-CN.md"):
+        legacy.unlink(missing_ok=True)
+    for topic in ("QuickStart.md", "Usage.md", "Configuration.md", "Cautions.md"):
+        p = docs / topic
+        if p.is_file():
+            p.unlink(missing_ok=True)
 
 
 def write_repo_index(projects: list[Path]) -> None:
@@ -153,12 +175,12 @@ def write_repo_index(projects: list[Path]) -> None:
             if lang == "en":
                 lines.append(
                     f"| `{pkg}` | [Docs-Index.md](../../{rel}/Docs-Index.md) | "
-                    f"[docs](../../{rel}/docs/README.md) |"
+                    f"[en](../../{rel}/docs/en/README.md) · [zh-cn](../../{rel}/docs/zh-cn/README.md) |"
                 )
             else:
                 lines.append(
                     f"| `{pkg}` | [Docs-Index-CN.md](../../{rel}/Docs-Index-CN.md) | "
-                    f"[docs](../../{rel}/docs/Readme-CN.md) |"
+                    f"[zh-cn](../../{rel}/docs/zh-cn/README.md) |"
                 )
         return lines
 
@@ -170,11 +192,11 @@ def write_repo_index(projects: list[Path]) -> None:
         "Every **non-test** project directory under `src/` (with a `.csproj`) **must** have:",
         "",
         "- `Docs-Index.md` / `Docs-Index-CN.md`",
-        "- `docs/` with `QuickStart`, `Usage`, `Configuration`, `Cautions` (EN + CN)",
+        "- `docs/en/` and `docs/zh-cn/` with `QuickStart`, `Usage`, `Configuration`, `Cautions`",
         "",
         "**Excluded**: entire `src/Test/`, `*.Tests*`, `*.Tests.UI*`, `*.Tester*`, benchmarks.",
         "",
-        "Regenerate: `python scripts/Ensure-ProjectDocsFolders.py`",
+        "Regenerate: `python scripts/Restructure-ProjectDocsEnZhCn.py`",
         "",
     ]
     cn: list[str] = [
@@ -182,7 +204,7 @@ def write_repo_index(projects: list[Path]) -> None:
         "",
         "> **English**: [README.md](README.md) · **代码树**: [../../src/Readme-CN.md](../../src/Readme-CN.md)",
         "",
-        "凡 `src/` 下**非测试**项目目录（含 `.csproj`）**必须**具备：`Docs-Index`、`docs/` 分主题文档。",
+        "凡 `src/` 下**非测试**项目目录（含 `.csproj`）**必须**具备：`Docs-Index`、`docs/en/`、`docs/zh-cn/` 分主题文档。",
         "",
         "**排除**：`src/Test/` 全文、`*.Tests*`、`*.Tests.UI*`、`*.Tester*`、Benchmark。",
         "",

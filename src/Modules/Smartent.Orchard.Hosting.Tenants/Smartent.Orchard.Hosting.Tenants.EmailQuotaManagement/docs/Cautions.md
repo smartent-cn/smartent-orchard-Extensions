@@ -1,6 +1,0 @@
-# Pitfalls & cautions
-
-> Parent: [docs/README.md](README.md)
-
-- Misconfiguration can lock tenants or block admin login; test in staging.
-- Secrets (storage, AI keys) belong in user secrets or Key Vault, not git.

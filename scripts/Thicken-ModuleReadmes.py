@@ -623,14 +623,14 @@ def write_family_docs_redirect(family: Path, main: Path) -> None:
         f"> Main project docs: [{rel}/Docs-Index.md]({rel}/Docs-Index.md)\n\n"
         f"| | |\n|---|---|\n"
         f"| Overview | [Readme.md](Readme.md) · [Readme-CN.md](Readme-CN.md) |\n"
-        f"| Topics | [{rel}/docs/README.md]({rel}/docs/README.md) |\n"
+        f"| Topics | [en]({rel}/docs/en/README.md) · [zh-cn]({rel}/docs/zh-cn/README.md) |\n"
     )
     cn = (
         f"# 文档索引 — {family.name}\n\n"
         f"> 主工程文档：[{rel}/Docs-Index-CN.md]({rel}/Docs-Index-CN.md)\n\n"
         f"| | |\n|---|---|\n"
         f"| 总览 | [Readme.md](Readme.md) · [Readme-CN.md](Readme-CN.md) |\n"
-        f"| 分主题 | [{rel}/docs/Readme-CN.md]({rel}/docs/Readme-CN.md) |\n"
+        f"| 分主题 | [zh-cn]({rel}/docs/zh-cn/README.md) |\n"
     )
     (family / "Docs-Index.md").write_text(en, encoding="utf-8", newline="\n")
     (family / "Docs-Index-CN.md").write_text(cn, encoding="utf-8", newline="\n")
