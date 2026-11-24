@@ -18,6 +18,23 @@
 
 批量补齐：`python scripts/Ensure-BilingualProjectReadmes.py`（生成后须人工校对技术细节）。
 
+### `docs/` 分主题目录（非测试项目强制）
+
+适用于 `src/**` 下每个 **含 `.csproj` 的项目目录**。
+
+**排除**：`src/Test/**`；`**/*.Tests*`、`**/*.Tests.UI*`、`**/*.Tester*`、`**/*Benchmark*`（仅这些免 `docs/`）。
+
+| 路径 | 说明 |
+|------|------|
+| `Docs-Index.md` / `Docs-Index-CN.md` | 项目根索引 |
+| `docs/README.md` / `docs/Readme-CN.md` | 分主题目录 |
+| `docs/QuickStart*`、`Usage*`、`Configuration*`、`Cautions*` | 怎么用 / 注意什么 |
+
+模板：`docs/templates/MODULE_DOCS_FOLDER_README.*`、`MODULE_ROOT_DOCS_INDEX.*`（通用项目同款）  
+总索引：[docs/src-projects/README.md](../src-projects/README.md)  
+脚本：`python scripts/Ensure-ProjectDocsFolders.py`  
+Cursor 规则：`.cursor/rules/project-docs-folder.mdc`
+
 ### 必备章节（顺序建议固定）
 
 1. **标题与一句话摘要**（英文在 `Readme.md`，中文在 `Readme-CN.md`；文首互相链接）  
@@ -62,4 +79,4 @@
 
 ## English
 
-Every buildable project under `src/` must have **`Readme.md` (English)** and **`Readme-CN.md` (Chinese)** using the EN/CN templates: features, references, usage, dependencies, upgrade/extension, tests, provenance. Cross-link at the top of each file. Update both in the same PR when dependencies or public API change. Run `scripts/Ensure-BilingualProjectReadmes.py` for scaffolding; human review required.
+Every non-test project under `src/` must have **`Readme.md` + `Readme-CN.md`**, plus **`docs/`** and **`Docs-Index`** (see above). Excludes `src/Test/**` and `*.Tests*` projects. Index: `docs/src-projects/`. Run `Ensure-BilingualProjectReadmes.py` and `Ensure-ProjectDocsFolders.py`; human review required.

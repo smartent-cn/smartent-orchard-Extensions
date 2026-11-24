@@ -14,7 +14,7 @@ Monorepo 内 Orchard 模块/主题通过 **相对路径** 引用 `src/Build/Smar
 
 ## 子项目文档
 
-每个 `Smartent.Build.*` 的 csproj 目录下均有 **`Readme.md` + `Readme-CN.md`**。MSBuild 用法总览见 [Docs/UsingMSBuildSdks.md](Docs/UsingMSBuildSdks.md) 及各 Sdk 目录中文说明。
+每个 `Smartent.Build.*` 的 csproj 目录下均有 **`Readme.md` + `Readme-CN.md`**，以及 **`docs/`** + **`Docs-Index`**（见 [docs/src-projects/Readme-CN.md](../../docs/src-projects/Readme-CN.md)）。MSBuild 用法总览见 [Docs/UsingMSBuildSdks.md](Docs/UsingMSBuildSdks.md) 及各 Sdk 目录中文说明。
 
 ## 测试与样例
 

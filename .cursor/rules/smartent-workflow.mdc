@@ -11,4 +11,5 @@ alwaysApply: true
 - `src/`：迁一删一；引用全部切换前 **不得** 删除 Legacy `src/` 对应目录。
 - 构建通过 **不能** 替代该变更所需的 UI/集成测试。
 - 重构/功能 PR 须同步更新该项目 **中英文** `Readme.md`（`src` 下强制）。
+- `src/**` 非测试项目还须维护 `docs/`、`Docs-Index.md`（见 `project-docs-folder.mdc`）。
 - 读仓库规则时同时参阅 `.agents/README.md` 与 `重构-重组-改名项目方案/`。

@@ -39,6 +39,10 @@
 - **net10 对齐**：VueJs / BaseTheme.Samples / `Smartent.Build.NodeJs.Tests` 已升至 net10，Orchard 包引用统一 `$(OrchardCoreVersion)`。
 - **Release 门禁**：`dotnet build Smartent.Orchard.sln -c Release` 已通过；VueJs 消费 `.nx` 见 `projects/M4-MSBuild-Targets.md` §M4#11。
 
+## Orchard modules documentation
+
+- Index: [docs/src-projects/README.md](../docs/src-projects/README.md) · [src/Modules/README.md](Modules/README.md)
+
 ## 文档与规范
 
 - 每个迁入项目的 csproj 目录须含 **`Readme.md`（英文）** 与 **`Readme-CN.md`（中文）**（模板见 `docs/templates/PROJECT_README.en.template.md`、`PROJECT_README.cn.template.md`；批量补齐：`scripts/Ensure-BilingualProjectReadmes.py`）。  

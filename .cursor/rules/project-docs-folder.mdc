@@ -1,0 +1,24 @@
+---
+description: src 下非测试项目须有 docs/ 与 Docs-Index（中英）
+globs: src/**/*
+alwaysApply: false
+---
+
+# 项目 docs 目录 | Project docs folder
+
+规范：`docs/standards/project-documentation.md`（`docs/` 分层）  
+脚本：`python scripts/Ensure-ProjectDocsFolders.py`
+
+凡 `src/**` 下**含 `.csproj` 的项目目录**（**排除测试**，见下）**必须**具备：
+
+| 位置 | 文件 |
+|------|------|
+| 项目根 | `Docs-Index.md`、`Docs-Index-CN.md` |
+| `docs/` | `README.md`、`Readme-CN.md` |
+| `docs/` | `QuickStart`、`Usage`、`Configuration`、`Cautions`（EN + CN） |
+
+总索引：`docs/src-projects/README.md`、`Readme-CN.md`。
+
+**排除（无需 docs/）**：`src/Test/**`；`**/*.Tests*`、`**/*.Tests.UI*`、`**/*.Tester*`、`**/*Benchmark*`。
+
+功能/API/配置变更：同步 `Readme.md`、`Readme-CN.md` 与 `docs/` 主题文件。

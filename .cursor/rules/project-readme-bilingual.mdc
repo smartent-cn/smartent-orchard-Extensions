@@ -9,7 +9,9 @@ alwaysApply: false
 模板：`docs/templates/PROJECT_README.template.md`  
 规范：`docs/standards/project-documentation.md`
 
-每个可构建 csproj 目录须有 `Readme.md`，含中英双语：
+每个可构建 csproj 目录须有 `Readme.md` + `Readme-CN.md`（见 `project-documentation.md`）。
+
+`src/**` 非测试项目另须 `docs/` 与 `Docs-Index.md`（见 `project-docs-folder.mdc`）。
 
 1. 功能与边界  
 2. **引用**：`ProjectReference` + 未来 `PackageReference` 示例  
@@ -17,4 +19,4 @@ alwaysApply: false
 4. **升级与扩展**  
 5. 测试命令  
 
-迁入或 API/依赖变更时 **同一 PR 更新 Readme**。
+迁入或 API/依赖变更时 **同一 PR 更新 Readme**，并同步 `docs/` 分主题文件。

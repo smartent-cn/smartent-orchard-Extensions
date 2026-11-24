@@ -1,0 +1,7 @@
+# 注意事项与常见坑
+
+> 上级：[docs/Readme-CN.md](Readme-CN.md)
+
+- **Orchard**：与仓库 `OrchardCoreVersion` / 中央包管理对齐。
+- **扩展点**：公共 API 见源码中文 XML 注释。
+- **定制**：配置节使用 `Smartent_*` / `Smartent_Orchard_*`；本 demo 仓库 **不** 读取遗留 `Lombiq_*` 节。

@@ -8,6 +8,7 @@ This directory is the canonical engineering standards for this repository, kept 
 | [workflow-commits.md](workflow-commits.md) | 测试门禁、提交与重构节奏 | Test-gated commits, refactor cadence |
 | [csharp.md](csharp.md) | C# / .NET 编码与中文注释 | C# style, mandatory Chinese documentation |
 | [project-documentation.md](project-documentation.md) | 项目中英文说明文档结构 | Bilingual per-project README structure |
+| [module-documentation.md](module-documentation.md) | 模块补充说明（同 project-documentation 之 `docs/`） | Orchard module doc notes |
 | [frontend-dependencies.md](frontend-dependencies.md) | 前端与 npm 依赖说明义务 | Frontend & npm dependency documentation |
 
 **模板 | Template**：[../templates/PROJECT_README.template.md](../templates/PROJECT_README.template.md)

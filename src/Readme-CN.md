@@ -17,11 +17,17 @@
 | `Demo/` | 演示 Web、聚合样例 |
 | `Test/` | 测试工具与验收项目 |
 
+## Orchard 模块文档
+
+- 总索引：[docs/src-projects/Readme-CN.md](../docs/src-projects/Readme-CN.md)  
+- 模块树：[Modules/Readme-CN.md](Modules/Readme-CN.md)（AuditTrail → Walkthroughs，各家族含 `docs/`）
+
 ## 项目文档义务
 
-- 每个 **csproj 所在目录** 必须包含：
-  - **`Readme.md`**：英文说明（功能、引用、用法、依赖、测试）
-  - **`Readme-CN.md`**：中文说明（结构同英文版）
+- 每个 **非测试 csproj 所在目录** 必须包含：
+  - **`Readme.md`**、**`Readme-CN.md`**
+  - **`Docs-Index.md`**、**`Docs-Index-CN.md`**
+  - **`docs/`**（QuickStart / Usage / Configuration / Cautions，中英）
 - 两文件文首须互相链接。
 - 批量生成脚手架：`python scripts/Ensure-BilingualProjectReadmes.py`（生成后须人工校对业务细节与前端依赖表）。
 - 规范全文：[docs/standards/project-documentation.md](../docs/standards/project-documentation.md)
