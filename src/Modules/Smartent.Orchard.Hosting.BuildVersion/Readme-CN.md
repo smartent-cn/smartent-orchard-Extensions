@@ -1,81 +1,80 @@
-# Smartent.Orchard.Hosting.BuildVersion (solution)
+<!-- MODULE-DOC-GENERATED -->
+# Smartent.Orchard.Hosting.BuildVersion
 
-> **状态**：培训/demo 单体仓库 · **English**: [Readme.md](Readme.md)  
-> **路径**：`src/Modules/Smartent.Orchard.Hosting.BuildVersion`
+> **English**: [Readme.md](Readme.md)  
+> **PackageId**：`Smartent.Orchard.Hosting.BuildVersion` · **路径**：`src/Modules/Smartent.Orchard.Hosting.BuildVersion`
 
 ## 摘要
 
-本目录为 `Smartent.Orchard.Hosting.BuildVersion` 解决方案根。中文细节见子项目 Readme-CN.md；英文总览见 [Readme.md](Readme.md)。
+Orchard Core module to display the build version (i.e. .NET assembly version or other) on the admin of the Default tenant.
 
-Smartent.Orchard.Hosting.BuildVersion：Smartent Orchard Extensions 组件。Orchard Core module to display the build version (i.e. .NET assembly version or other) on the admin of the Default tenant.
+## 适用场景
 
-## 功能说明
+Smartent demo 仓库中的 Orchard Core 扩展模块。
 
-**实现**
+## 快速开始
 
-- - 包含主模块及 Samples/Tests 子工程。
-- Smartent Orchard Hosting - Build Version Display for Orchard Core：Orchard Core module to display the build version (i.e. .NET assembly version or other) on the admin of the Default tenant.
+1. 在宿主（如 `Smartent.Demo.Web`）中添加：`<ProjectReference Include="src/Modules/Smartent.Orchard.Hosting.BuildVersion/Smartent.Orchard.Hosting.BuildVersion/Smartent.Orchard.Hosting.BuildVersion.csproj" />`。
+2. 构建：`dotnet build src/Modules/Smartent.Orchard.Hosting.BuildVersion/Smartent.Orchard.Hosting.BuildVersion/Smartent.Orchard.Hosting.BuildVersion.csproj`。
+3. 运行站点，在 **配置 → 功能** 中启用 **`Smartent.Orchard.Hosting.BuildVersion`** 及上表依赖。
+4. 需要时从 **工具 → 配方** 执行：`见 Samples 目录`。
+5. Demo 宿主：`dotnet run --project src/Demo/Smartent.Demo.Web/Smartent.Demo.Web.csproj`。
 
-**不实现（边界）**
+## Orchard 功能（Feature）
 
-- - 除非文档说明，不替代 Orchard Core 内置能力。
+| Feature Id | 名称 | 依赖 |
+|------------|------|------|
+| — | — | — |
 
-## 引用方式
+在后台 **配置 → 功能** 中启用（除明确为宿主级模块外，均按**租户**生效）。
 
-### Monorepo（开发）
+## 配置
+
+本包无独立 `appsettings` 节；可选通过 Orchard 设置项或无需配置。
+
+> 配置节仅使用 `Smartent_*` / `Smartent_Orchard_*`；本 demo 仓库 **不** 读取遗留 `Lombiq_*` 节。
+
+## 使用方式（站点/运营）
+
+启用功能后通过 Orchard 后台及模块菜单使用。
+
+## 使用方式（开发）
+
+通过 DI、Handler、Shape 及 Samples 中的 Recipe 扩展。
+
+### 引用
 
 ```xml
-<ProjectReference Include="Smartent.Orchard.Hosting.BuildVersion/Smartent.Orchard.Hosting.BuildVersion.csproj" />
+<ProjectReference Include="src/Modules/Smartent.Orchard.Hosting.BuildVersion/Smartent.Orchard.Hosting.BuildVersion/Smartent.Orchard.Hosting.BuildVersion.csproj" />
 ```
 
-### NuGet（发布后，版本号以实际发布为准）
+### NuGet（发布后）
 
 ```xml
-<PackageReference Include="Smartent.Orchard.Hosting.BuildVersion (solution)" Version="1.0.0" />
+<PackageReference Include="Smartent.Orchard.Hosting.BuildVersion" Version="1.0.0" />
 ```
 
-### Orchard 功能（如适用）
+## 样例与配方（Recipe）
 
-- 宿主中启用：`（见 Manifest / Module.cs）`
-- 相关模块：见「依赖说明」
+- 可选：启用 `Smartent.Orchard.Hosting.BuildVersion.Samples` 并导入其配方。
 
-## 使用方式
+## 注意事项与常见坑
 
-1. 在 Web 应用或模块解决方案中引用本项目。
-2. 启用租户/托管相关功能，并在 `appsettings.json` 配置 `OrchardCore:Smartent_Orchard_Hosting_*`。
-
-## 依赖说明
-
-### .NET / Orchard
-
-| 依赖 | 类型 | 用途 |
-|------|------|------|
-| — | — | 无直接 PackageReference（可能由中央版本管理） |
-
-### 前端（如适用）
-
-规范：[frontend-dependencies](../../docs/standards/frontend-dependencies.md)。仅当本目录存在 `package.json` 时执行前端构建命令。
-
-| npm 包 | 版本 | 用途 | 构建 |
-|--------|------|------|------|
-| | — | — | — | — | | | | |
-
-## 升级与扩展
-
-- **Orchard**：与仓库 `OrchardCoreVersion` / 中央包管理对齐。
-- **扩展点**：公共 API 见源码中文 XML 注释。
-- **定制**：配置节使用 `Smartent_*` / `Smartent_Orchard_*`；本 demo 仓库 **不** 读取遗留 `Lombiq_*` 节。
+- 每租户仅启用必要 Feature。
+- 升级 Orchard Core 前先跑 `*.Tests` / `*.Tests.UI`。
 
 ## 测试
 
 ```powershell
-dotnet build "src/Modules/Smartent.Orchard.Hosting.BuildVersion/Smartent.Orchard.Hosting.BuildVersion/Smartent.Orchard.Hosting.BuildVersion.csproj"
-dotnet test "src/Modules/Smartent.Orchard.Hosting.BuildVersion/Smartent.Orchard.Hosting.BuildVersion/Smartent.Orchard.Hosting.BuildVersion.csproj"
+dotnet build src/Modules/Smartent.Orchard.Hosting.BuildVersion/Smartent.Orchard.Hosting.BuildVersion/Smartent.Orchard.Hosting.BuildVersion.csproj
+dotnet test src/Modules/Smartent.Orchard.Hosting.BuildVersion/*.Tests*.csproj
 ```
 
-子项目各自含 Readme-CN.md。
+## 本目录相关工程
 
-## 来源与许可
+- `Smartent.Orchard.Hosting.BuildVersion` — 主模块
+- `Smartent.Orchard.Hosting.BuildVersion.Tests.UI` — 自动化/UI 测试
 
-- 自 Lombiq OSOCE 谱系迁入；已 Smartent 化包 ID 与命名空间。
-- 许可：MIT（见仓库根 `License.md`）。
+## 来源
+
+Smartent Orchard Extensions 培训/demo 单体仓库；由 Lombiq OSOCE 谱系迁入。许可见仓库根目录 MIT。

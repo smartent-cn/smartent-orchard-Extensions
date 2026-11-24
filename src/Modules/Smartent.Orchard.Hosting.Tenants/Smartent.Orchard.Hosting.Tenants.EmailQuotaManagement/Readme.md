@@ -1,46 +1,71 @@
-# Smartent Orchard Hosting - Tenants Email Quota Management for Orchard Core
-> **中文说明**: [Readme-CN.md](Readme-CN.md)
+# Smartent.Orchard.Hosting.Tenants.EmailQuotaManagement
 
+> **中文说明**: [Readme-CN.md](Readme-CN.md)  
+> **PackageId**: `Smartent.Orchard.Hosting.Tenants.EmailQuotaManagement` · **Path**: `src/Modules/Smartent.Orchard.Hosting.Tenants/Smartent.Orchard.Hosting.Tenants.EmailQuotaManagement`
 
-[![Smartent.Orchard.Hosting.Tenants.EmailQuotaManagement NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.Hosting.Tenants.EmailQuotaManagement?label=Smartent.Orchard.Hosting.Tenants.EmailQuotaManagement)](https://www.nuget.org/packages/Smartent.Orchard.Hosting.Tenants.EmailQuotaManagement/)
+## Summary
 
-## About
+With the help of this module, you can set restrictions regarding maximum email sent per tenant.
 
-With the help of this module, you can set restrictions regarding maximum email sent per tenant per month, if they are using one of the default email providers configured using environment variables or the _appsettings.json_ file.
+## When to use
 
-Do you want to quickly try out this project and see it in action? Check it out in our [Open-Source Orchard Core Extensions](https://github.com/smartent-cn/smartent-orchard-Extensions) full Orchard Core solution and also see our other useful Orchard Core-related open-source projects!
+Tenant/hosting automation package; enable only on environments that need this capability.
 
-## Documentation
+## Quick start
 
-This module currently contains one feature:
+Enable feature `FeatureNames.EmailQuotaManagement` on the host tenant; configure keys under `OrchardCore`.
 
-- `Smartent.Orchard.Hosting.Tenants.EmailQuotaManagement`
+## Orchard features
 
-### `Smartent.Orchard.Hosting.Tenants.EmailQuotaManagement`
+| Feature Id | Name | Depends on |
+|------------|------|------------|
+| `FeatureNames.EmailQuotaManagement` | Smartent Orchard Hosting - Tenants Email Quota Management | Smartent.Orchard.Extensions.Cms.Emails |
 
-With this module, you can specify how much space would you like to limit each tenant's maximum email quota. The default is 1000 per month. You can change this value in the _appsettings.json_ file or with an environment variable. When the quota is reached the email won't be sent and also the following will happen:
+Enable in **Configuration → Features** (per tenant unless the module is host-only).
 
-- An email will be sent to the tenant's users with the Administrator role.
-- A warning message will be shown that the limit has been reached on the admin dashboard.
+## Configuration
 
-Also a warning message is always shown with the current email quota status on the email settings page when the same host is used as the predefined one from the environment variables or from the _appsettings.json_ file.
+No dedicated `appsettings` section in this package; configuration is optional or via Orchard settings.
 
-```json
-"OrchardCore": {
-  "Smartent_Orchard_Hosting_Tenants_EmailQuotaManagement": {
-    "EmailQuotaPerMonth": 42069
-  }
-}
+> Config sections use `Smartent_*` / `Smartent_Orchard_*` only (no legacy `Lombiq_*` in this demo repo).
+
+## Usage (site owners & admins)
+
+Hosting/tenant admin UI varies per package (see source `Startup.cs` and README in solution root).
+
+## Usage (developers)
+
+Reference this csproj from the SaaS/host web app; most packages register tenant management or health endpoints.
+
+### References
+
+```xml
+<ProjectReference Include="src/Modules/Smartent.Orchard.Hosting.Tenants/Smartent.Orchard.Hosting.Tenants.EmailQuotaManagement/Smartent.Orchard.Hosting.Tenants.EmailQuotaManagement.csproj" />
 ```
 
-Tenant based configuration can be defined as the following, for more details read the [Orchard Core documentation](https://docs.orchardcore.net/en/main/docs/reference/core/Configuration/#tenant-postconfiguration).
+### NuGet (when published)
 
-```json
-"OrchardCore": {
-  "TenantName": {
-    "Smartent_Orchard_Hosting_Tenants_EmailQuotaManagement": {
-      "EmailQuotaPerMonth": 42069
-    }
-  }
-}
+```xml
+<PackageReference Include="Smartent.Orchard.Hosting.Tenants.EmailQuotaManagement" Version="1.0.0" />
 ```
+
+## Samples & recipes
+
+- See `Smartent.Orchard.Hosting.Tenants` solution Readme.
+
+## Pitfalls & cautions
+
+- Misconfiguration can lock tenants or block admin login; test in staging.
+- Secrets (storage, AI keys) belong in user secrets or Key Vault, not git.
+
+## Tests
+
+`dotnet test src/Modules/Smartent.Orchard.Hosting.Tenants/Smartent.Orchard.Hosting.Tenants.EmailQuotaManagement/*.Tests*.csproj`
+
+## Related projects in this folder
+
+- Parent: `src/Modules/Smartent.Orchard.Hosting.Tenants/Readme.md`
+
+## Provenance
+
+Smartent Orchard Extensions training/demo monorepo; migrated from Lombiq OSOCE lineage. MIT license at repository root.

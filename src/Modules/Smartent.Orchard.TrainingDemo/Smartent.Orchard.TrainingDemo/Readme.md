@@ -1,95 +1,88 @@
+<!-- MODULE-DOC-GENERATED -->
 # Smartent.Orchard.TrainingDemo
 
-> **Status**: Training/demo monorepo · **中文说明**: [Readme-CN.md](Readme-CN.md)  
-> **Path**: `src/Modules/Smartent.Orchard.TrainingDemo/Smartent.Orchard.TrainingDemo`
+> **中文说明**: [Readme-CN.md](Readme-CN.md)  
+> **PackageId**: `Smartent.Orchard.TrainingDemo` · **Path**: `src/Modules/Smartent.Orchard.TrainingDemo`
 
 ## Summary
 
-Smartent Orchard Training Demo
+Smartent.Orchard.TrainingDemo
 
-## Features
+## When to use
 
-**Implements**
+Orchard Core extension module in the Smartent demo monorepo.
 
-- - Smartent Orchard Training Demo
+## Quick start
 
-**Out of scope**
+1. Add `<ProjectReference Include="src/Modules/Smartent.Orchard.TrainingDemo/Smartent.Orchard.TrainingDemo/Smartent.Orchard.TrainingDemo.csproj" />` to your host (e.g. `Smartent.Demo.Web`).
+2. Build: `dotnet build src/Modules/Smartent.Orchard.TrainingDemo/Smartent.Orchard.TrainingDemo/Smartent.Orchard.TrainingDemo.csproj`.
+3. Run the site, open **Configuration → Features**, enable **`Smartent.Orchard.TrainingDemo`** (and dependencies listed above).
+4. Apply setup recipe if needed: `Smartent.Orchard.TrainingDemo/Recipes/TrainingDemo.Content.Sample.Person.recipe.json` from **Tools → Recipes**.
+5. For demo host: `dotnet run --project src/Demo/Smartent.Demo.Web/Smartent.Demo.Web.csproj`.
 
-- - Does not replace Orchard Core built-in features unless documented.
+## Orchard features
 
-## References
+| Feature Id | Name | Depends on |
+|------------|------|------------|
+| `Smartent.Orchard.TrainingDemo` | Smartent Orchard Training Demo | OrchardCore.Admin, OrchardCore.Apis.GraphQL, OrchardCore.BackgroundTasks, OrchardCore.ContentFields, OrchardCore.Contents, OrchardCore.ContentTypes, OrchardCore.DynamicCache, OrchardCore.HomeRoute, OrchardCore.Layers, OrchardCore.Localization, OrchardCore.Media, OrchardCore.Navigation, OrchardCore.Resources, OrchardCore.Roles, OrchardCore.Themes, OrchardCore.Users, OrchardCore.Workflows |
+| `Smartent.Orchard.TrainingDemo.Middlewares` | Smartent Orchard Training Demo - Middlewares | Smartent.Orchard.TrainingDemo |
 
-### Monorepo (development)
+Enable in **Configuration → Features** (per tenant unless the module is host-only).
+
+## Configuration
+
+Configuration keys (under `OrchardCore`):
+
+- `OrchardCore:Smartent_TrainingDemo`
+
+Use double underscore in environment variables, e.g. `OrchardCore__Smartent_TrainingDemo__...`.
+
+> Config sections use `Smartent_*` / `Smartent_Orchard_*` only (no legacy `Lombiq_*` in this demo repo).
+
+## Usage (site owners & admins)
+
+Use Orchard admin and module-specific menus after enabling features.
+
+## Usage (developers)
+
+Extend via DI, handlers, shapes, and optional recipes in the Samples project.
+
+### References
 
 ```xml
-<ProjectReference Include="../../../Platform/Orchard/Smartent.Orchard.Platform/Smartent.Orchard.Platform.csproj" />
+<ProjectReference Include="src/Modules/Smartent.Orchard.TrainingDemo/Smartent.Orchard.TrainingDemo/Smartent.Orchard.TrainingDemo.csproj" />
 ```
 
-### NuGet (when published; version is indicative)
+### NuGet (when published)
 
 ```xml
 <PackageReference Include="Smartent.Orchard.TrainingDemo" Version="1.0.0" />
 ```
 
-### Orchard features (if applicable)
+## Samples & recipes
 
-- Enable in host: `Smartent.Orchard.TrainingDemo, Smartent.Orchard.TrainingDemo.Middlewares`
-- Related modules: see Dependencies
+- `Smartent.Orchard.TrainingDemo/Recipes/TrainingDemo.Content.Sample.Person.recipe.json`
+- `Smartent.Orchard.TrainingDemo/Recipes/TrainingDemo.Workflows.Sample.recipe.json`
+- `Smartent.Orchard.TrainingDemo/Recipes/TrainingDemo.recipe.json`
 
-## Usage
+## Pitfalls & cautions
 
-1. Reference this project from your web app or module solution.
-2. Add the module to the host (`Program` / `Startup`), enable features in Admin → Configuration → Features, and run Recipes if provided under `Recipes/`.
-
-## Dependencies
-
-### .NET / Orchard
-
-| Dependency | Type | Purpose |
-|------------|------|---------|
-| `Microsoft.Web.LibraryManager.Build` | Package | Version `3.0.114` |
-| `OrchardCore.Users.Abstractions` | Package | Version `$(OrchardCoreVersion)` |
-| `OrchardCore.Workflows.Abstractions` | Package | Version `$(OrchardCoreVersion)` |
-| `OrchardCore.BackgroundTasks` | Package | Version `$(OrchardCoreVersion)` |
-| `OrchardCore.ContentFields` | Package | Version `$(OrchardCoreVersion)` |
-| `OrchardCore.ContentManagement` | Package | Version `$(OrchardCoreVersion)` |
-| `OrchardCore.ContentTypes.Abstractions` | Package | Version `$(OrchardCoreVersion)` |
-| `OrchardCore.Data.Abstractions` | Package | Version `$(OrchardCoreVersion)` |
-| `OrchardCore.DynamicCache` | Package | Version `$(OrchardCoreVersion)` |
-| `OrchardCore.FileStorage.FileSystem` | Package | Version `$(OrchardCoreVersion)` |
-| `OrchardCore.Indexing.Abstractions` | Package | Version `$(OrchardCoreVersion)` |
-| `OrchardCore.Media.Abstractions` | Package | Version `$(OrchardCoreVersion)` |
-| `OrchardCore.Module.Targets` | Package | Version `$(OrchardCoreVersion)` |
-| `OrchardCore.ResourceManagement` | Package | Version `$(OrchardCoreVersion)` |
-| `OrchardCore.DisplayManagement` | Package | Version `$(OrchardCoreVersion)` |
-| `Smartent.Orchard.Platform` | Package | Version `13.0.1-alpha.5.osoe-344` |
-| `MySqlConnector` | Package | Version `2.6.2` |
-| `HtmlSanitizer` | Package | Version `9.2.1039` |
-
-### Frontend (if applicable)
-
-See [frontend-dependencies standard](../../docs/standards/frontend-dependencies.md). Run `pnpm`/`npm` scripts only when this folder has `package.json`.
-
-| npm package | Version | Purpose | Build |
-|-------------|---------|---------|-------|
-| | — | — | — | — | | | | |
-
-## Upgrade & extension
-
-- **Orchard**: Aligns with repository `OrchardCoreVersion` / central package management.
-- **Extension points**: Drivers, handlers, shapes, and `IDataTableDataProvider`-style interfaces (see source).
-- **Customization**: Prefer configuration keys under `Smartent_*` / `Smartent_Orchard_*`; this demo repo does not read legacy `Lombiq_*` sections.
+- Enable only required features per tenant.
+- Test with `*.Tests` / `*.Tests.UI` before upgrading Orchard Core.
 
 ## Tests
 
 ```powershell
-dotnet build "src/Modules/Smartent.Orchard.TrainingDemo/Smartent.Orchard.TrainingDemo/Smartent.Orchard.TrainingDemo.csproj"
-dotnet test "src/Modules/Smartent.Orchard.TrainingDemo/Smartent.Orchard.TrainingDemo/Smartent.Orchard.TrainingDemo.csproj"
+dotnet build src/Modules/Smartent.Orchard.TrainingDemo/Smartent.Orchard.TrainingDemo/Smartent.Orchard.TrainingDemo.csproj
+dotnet test src/Modules/Smartent.Orchard.TrainingDemo/*.Tests*.csproj
 ```
 
-UI tests: filter `*.Tests.UI.csproj` in the solution.
+## Related projects in this folder
 
-## Provenance & license
+- `Smartent.Orchard.TrainingDemo` — main module
+- `Smartent.Orchard.TrainingDemo.Tests` — automated/UI tests
+- `Smartent.Orchard.TrainingDemo.Web` — main module
 
-- Migrated from Lombiq OSOCE lineage; Smartent package IDs and namespaces.
-- License: MIT (see repository root `License.md`).
+## Provenance
+
+Smartent Orchard Extensions training/demo monorepo; migrated from Lombiq OSOCE lineage. MIT license at repository root.

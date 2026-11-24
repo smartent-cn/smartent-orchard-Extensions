@@ -1,93 +1,71 @@
-# Smartent Orchard Hosting - Tenants Features Guard for Orchard Core
-> **中文说明**: [Readme-CN.md](Readme-CN.md)
+# Smartent.Orchard.Hosting.Tenants.FeaturesGuard
 
+> **中文说明**: [Readme-CN.md](Readme-CN.md)  
+> **PackageId**: `Smartent.Orchard.Hosting.Tenants.FeaturesGuard` · **Path**: `src/Modules/Smartent.Orchard.Hosting.Tenants/Smartent.Orchard.Hosting.Tenants.FeaturesGuard`
 
-[![Smartent.Orchard.Hosting.Tenants.FeaturesGuard NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.Hosting.Tenants.FeaturesGuard?label=Smartent.Orchard.Hosting.Tenants.FeaturesGuard)](https://www.nuget.org/packages/Smartent.Orchard.Hosting.Tenants.FeaturesGuard/)
+## Summary
 
-## About
+This module contains the FeaturesGuard feature, which prevents disabling a configurable set of features on tenants.
 
-A module that makes it possible to conditionally enable and conditionally keep enabled, or entirely prevent enabling, configurable sets of features on tenants.
+## When to use
 
-## Documentation
+Tenant/hosting automation package; enable only on environments that need this capability.
 
-### Conditionally enabling features
+## Quick start
 
-- To use this feature, enable it on both the Default and the user tenant.
-- Features that should be conditionally enabled, as well as the features whose status acts as the condition, can be specified either in _appsettings.json_ using `ConditionallyEnabledFeaturesOptions` or in `Program` via the `ConfigureFeaturesGuard()` or `ConfigureFeaturesGuardWithoutOverriding()` extension method.
-Conditionally enabled features need to be provided with a singular or multiple condition features, where the status of the condition features determines whether the corresponding conditional feature is enabled or disabled. Example configuration:
+Enable feature `FeatureNames.FeaturesGuard` on the host tenant; configure keys under `OrchardCore`.
 
-`Program` config example:
+## Orchard features
 
-```c#
-builder.Services
-    .AddOrchardCms(orchardCoreBuilder =>
-        orchardCoreBuilder.ConfigureFeaturesGuard(
-            new Dictionary<string, IEnumerable<string>>
-            {
-                // "Enable this feature and keep it enabled": "If any of these features are enabled",
-                ["OrchardCore.Media.Azure.Storage"] = new[] { "OrchardCore.Media" },
-                ["OrchardCore.Twitter"] = new[] { "Smartent.Orchard.UIKit", "Smartent.Orchard.ChartJs" },
-            }));
+| Feature Id | Name | Depends on |
+|------------|------|------------|
+| `FeatureNames.FeaturesGuard` | Smartent Orchard Hosting - Tenants Features Guard | — |
+
+Enable in **Configuration → Features** (per tenant unless the module is host-only).
+
+## Configuration
+
+No dedicated `appsettings` section in this package; configuration is optional or via Orchard settings.
+
+> Config sections use `Smartent_*` / `Smartent_Orchard_*` only (no legacy `Lombiq_*` in this demo repo).
+
+## Usage (site owners & admins)
+
+Hosting/tenant admin UI varies per package (see source `Startup.cs` and README in solution root).
+
+## Usage (developers)
+
+Reference this csproj from the SaaS/host web app; most packages register tenant management or health endpoints.
+
+### References
+
+```xml
+<ProjectReference Include="src/Modules/Smartent.Orchard.Hosting.Tenants/Smartent.Orchard.Hosting.Tenants.FeaturesGuard/Smartent.Orchard.Hosting.Tenants.FeaturesGuard.csproj" />
 ```
 
-- `ConfigureFeaturesGuardForAzureStorage()` is available to add `Azure Storage` as a conditional feature and `Media` as its condition feature.
-- `ConfigureFeaturesGuardForElasticsearch()` is available to add `Elasticsearch` as a conditional feature and `Indexing` or `Search` as its condition feature.
+### NuGet (when published)
 
-_appsettings.json_ config example:
-
-```json
-{
-  "OrchardCore": {
-    "Smartent_Orchard_Hosting_Tenants_FeaturesGuard": {
-      "ConditionallyEnabledFeaturesOptions": {
-        "ConditionallyEnabledFeatures": {
-          "EnableFeatureIfOtherFeatureIsEnabled": {
-            // "Enable this feature and keep it enabled": "If any of these features are enabled",
-            "OrchardCore.Media.Azure.Storage": "OrchardCore.Media",
-            "OrchardCore.Twitter": "OrchardCore.Media, OrchardCore.Workflows"
-          }
-        }
-      }
-    },
-}
+```xml
+<PackageReference Include="Smartent.Orchard.Hosting.Tenants.FeaturesGuard" Version="1.0.0" />
 ```
 
-Example case 1:
+## Samples & recipes
 
-- Enables `Azure Storage` when `Media` is enabled. Keeps `Azure Storage` enabled as long as `Media` is enabled.
+- See `Smartent.Orchard.Hosting.Tenants` solution Readme.
 
-Example case 2:
+## Pitfalls & cautions
 
-- Enables `Twitter` when `Media` or `Workflows` is enabled. Keeps `Twitter` enabled as long as either `Media` or `Workflows` remains enabled.
+- Misconfiguration can lock tenants or block admin login; test in staging.
+- Secrets (storage, AI keys) belong in user secrets or Key Vault, not git.
 
-### Preventing enabling features
+## Tests
 
-- Preventing enabling certain features on user tenants is possible via recipes in a `FeatureProfiles` step. For more on the Feature Profiles feature, see the [official documentation](https://docs.orchardcore.net/en/latest/docs/reference/modules/Tenants/#feature-profiles). Example configuration:
+`dotnet test src/Modules/Smartent.Orchard.Hosting.Tenants/Smartent.Orchard.Hosting.Tenants.FeaturesGuard/*.Tests*.csproj`
 
-```json
-{
-  "name": "FeatureProfiles",
-  "FeatureProfiles": {
-    "Features Guard": {
-      "FeatureRules": [
-        {
-            "Rule": "Exclude",
-            "Expression": "OrchardCore.Workflows.Session"
-        },
-        {
-            "Rule": "Exclude",
-            "Expression": "OrchardCore.Search.Lucene"
-        },
-        {
-            "Rule": "Exclude",
-            "Expression": "OrchardCore.MiniProfiler"
-        },
-        {
-            "Rule": "Exclude",
-            "Expression": "Smartent.Test.UI.Shortcuts"
-        }
-      ]
-    }
-  }
-}
-```
+## Related projects in this folder
+
+- Parent: `src/Modules/Smartent.Orchard.Hosting.Tenants/Readme.md`
+
+## Provenance
+
+Smartent Orchard Extensions training/demo monorepo; migrated from Lombiq OSOCE lineage. MIT license at repository root.

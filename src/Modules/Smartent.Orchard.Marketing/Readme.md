@@ -1,4 +1,6 @@
 # Smartent Orchard Marketing for Orchard Core
+> **中文说明**: [Readme-CN.md](Readme-CN.md)
+
 
 [![Smartent.Orchard.Marketing NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.Marketing?label=Smartent.Orchard.Marketing)](https://www.nuget.org/packages/Smartent.Orchard.Marketing/)
 [![Smartent.Orchard.Marketing.Pirsch NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.Marketing.Pirsch?label=Smartent.Orchard.Marketing.Pirsch)](https://www.nuget.org/packages/Smartent.Orchard.Marketing.Pirsch/)

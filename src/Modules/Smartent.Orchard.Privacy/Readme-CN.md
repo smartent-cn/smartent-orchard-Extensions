@@ -1,84 +1,92 @@
-# Smartent.Orchard.Privacy (solution)
+<!-- MODULE-DOC-GENERATED -->
+# Smartent.Orchard.Privacy
 
-> **状态**：培训/demo 单体仓库 · **English**: [Readme.md](Readme.md)  
-> **路径**：`src/Modules/Smartent.Orchard.Privacy`
+> **English**: [Readme.md](Readme.md)  
+> **PackageId**：`Smartent.Orchard.Privacy` · **路径**：`src/Modules/Smartent.Orchard.Privacy`
 
 ## 摘要
 
-本目录为 `Smartent.Orchard.Privacy` 解决方案根。中文细节见子项目 Readme-CN.md；英文总览见 [Readme.md](Readme.md)。
+Orchard module containing features related to data protection/privacy and the EU law on it, the General Data Protection Regulation (GDPR).
 
-Smartent.Orchard.Privacy：Smartent Orchard Extensions 组件。Orchard module containing features related to data protection/privacy and the EU law on it, the General Data Protection Regulation (GDPR).
+## 适用场景
 
-## 功能说明
+需要同意横幅、注册勾选框等隐私合规 UI 时使用。
 
-**实现**
+## 快速开始
 
-- - 包含主模块及 Samples/Tests 子工程。
-- Smartent Orchard Privacy for Orchard Core：Orchard module containing features related to data protection/privacy and the EU law on it, the General Data Protection Regulation (GDPR).
+1. 在宿主（如 `Smartent.Demo.Web`）中添加：`<ProjectReference Include="src/Modules/Smartent.Orchard.Privacy/Smartent.Orchard.Privacy/Smartent.Orchard.Privacy.csproj" />`。
+2. 构建：`dotnet build src/Modules/Smartent.Orchard.Privacy/Smartent.Orchard.Privacy/Smartent.Orchard.Privacy.csproj`。
+3. 运行站点，在 **配置 → 功能** 中启用 **`Module`** 及上表依赖。
+4. 需要时从 **工具 → 配方** 执行：`Smartent.Orchard.Privacy.Samples/Recipes/Smartent.Orchard.Privacy.Samples.Content.recipe.json`。
+5. Demo 宿主：`dotnet run --project src/Demo/Smartent.Demo.Web/Smartent.Demo.Web.csproj`。
 
-**不实现（边界）**
+## Orchard 功能（Feature）
 
-- - 除非文档说明，不替代 Orchard Core 内置能力。
+| Feature Id | 名称 | 依赖 |
+|------------|------|------|
+| `Module` | Smartent Orchard Privacy | — |
+| `ConsentBanner` | Smartent Orchard Privacy - Consent banner | OrchardCore.CustomSettings |
+| `RegistrationConsent` | Smartent Orchard Privacy - Registration consent | OrchardCore.CustomSettings, OrchardCore.Users.Registration |
+| `ExternalRegistrationConsent` | Smartent Orchard Privacy - External Registration consent | OrchardCore.Users.ExternalAuthentication |
+| `FormConsent` | Smartent Orchard Privacy - Form consent | OrchardCore.CustomSettings, OrchardCore.Forms |
 
-## 引用方式
+在后台 **配置 → 功能** 中启用（除明确为宿主级模块外，均按**租户**生效）。
 
-### Monorepo（开发）
+## 配置
+
+本包无独立 `appsettings` 节；可选通过 Orchard 设置项或无需配置。
+
+> 配置节仅使用 `Smartent_*` / `Smartent_Orchard_*`；本 demo 仓库 **不** 读取遗留 `Lombiq_*` 节。
+
+## 使用方式（站点/运营）
+
+启用功能后通过 Orchard 后台及模块菜单使用。
+
+## 使用方式（开发）
+
+通过 DI、Handler、Shape 及 Samples 中的 Recipe 扩展。
+
+### 引用
 
 ```xml
-<ProjectReference Include="Smartent.Orchard.Privacy/Smartent.Orchard.Privacy.csproj" />
+<ProjectReference Include="src/Modules/Smartent.Orchard.Privacy/Smartent.Orchard.Privacy/Smartent.Orchard.Privacy.csproj" />
 ```
 
-### NuGet（发布后，版本号以实际发布为准）
+### NuGet（发布后）
 
 ```xml
-<PackageReference Include="Smartent.Orchard.Privacy (solution)" Version="1.0.0" />
+<PackageReference Include="Smartent.Orchard.Privacy" Version="1.0.0" />
 ```
 
-### Orchard 功能（如适用）
+## 样例与配方（Recipe）
 
-- 宿主中启用：`（见 Manifest / Module.cs）`
-- 相关模块：见「依赖说明」
+- `Smartent.Orchard.Privacy.Samples/Recipes/Smartent.Orchard.Privacy.Samples.Content.recipe.json`
+- `Smartent.Orchard.Privacy.Samples/Recipes/Smartent.Orchard.Privacy.Samples.ContentDefinition.recipe.json`
+- `Smartent.Orchard.Privacy.Samples/Recipes/Smartent.Orchard.Privacy.Samples.FeaturesAndSettings.recipe.json`
+- `Smartent.Orchard.Privacy.Samples/Recipes/Smartent.Orchard.Privacy.Samples.WorkflowType.recipe.json`
+- `Smartent.Orchard.Privacy.Samples/Recipes/Smartent.Orchard.Privacy.Samples.recipe.json`
+- `Smartent.Orchard.Privacy/Migrations/Recipes/PrivacyConsentBannerSettings.recipe.json`
+- `Smartent.Orchard.Privacy/Migrations/Recipes/PrivacyConsentCheckboxSettings.recipe.json`
+- `Smartent.Orchard.Privacy/Migrations/Recipes/PrivacyRegistrationConsentSettings.recipe.json`
 
-## 使用方式
+## 注意事项与常见坑
 
-1. 在 Web 应用或模块解决方案中引用本项目。
-2. 将模块加入宿主，在后台「配置 → 功能」启用，并按需执行 `Recipes/` 下的配方。
-
-## 依赖说明
-
-### .NET / Orchard
-
-| 依赖 | 类型 | 用途 |
-|------|------|------|
-| `OrchardCore.CustomSettings` | 包引用 | 版本 `$(OrchardCoreVersion)` |
-| `OrchardCore.Forms` | 包引用 | 版本 `$(OrchardCoreVersion)` |
-| `OrchardCore.Liquid` | 包引用 | 版本 `$(OrchardCoreVersion)` |
-| `OrchardCore.Users` | 包引用 | 版本 `$(OrchardCoreVersion)` |
-
-### 前端（如适用）
-
-规范：[frontend-dependencies](../../docs/standards/frontend-dependencies.md)。仅当本目录存在 `package.json` 时执行前端构建命令。
-
-| npm 包 | 版本 | 用途 | 构建 |
-|--------|------|------|------|
-| | — | — | — | — | | | | |
-
-## 升级与扩展
-
-- **Orchard**：与仓库 `OrchardCoreVersion` / 中央包管理对齐。
-- **扩展点**：Driver/Handler/Shape 及模块内接口（见源码）。
-- **定制**：配置节使用 `Smartent_*` / `Smartent_Orchard_*`；本 demo 仓库 **不** 读取遗留 `Lombiq_*` 节。
+- 法律文案由站点自行负责；模块仅提供机制。
+- Shape 使用 `Smartent_Orchard_Privacy_*`；主题覆盖需同步更新。
 
 ## 测试
 
 ```powershell
-dotnet build "src/Modules/Smartent.Orchard.Privacy/Smartent.Orchard.Privacy/Smartent.Orchard.Privacy.csproj"
-dotnet test "src/Modules/Smartent.Orchard.Privacy/Smartent.Orchard.Privacy/Smartent.Orchard.Privacy.csproj"
+dotnet build src/Modules/Smartent.Orchard.Privacy/Smartent.Orchard.Privacy/Smartent.Orchard.Privacy.csproj
+dotnet test src/Modules/Smartent.Orchard.Privacy/*.Tests*.csproj
 ```
 
-子项目各自含 Readme-CN.md。
+## 本目录相关工程
 
-## 来源与许可
+- `Smartent.Orchard.Privacy` — 主模块
+- `Smartent.Orchard.Privacy.Samples` — 样例与配方
+- `Smartent.Orchard.Privacy.Tests.UI` — 自动化/UI 测试
 
-- 自 Lombiq OSOCE 谱系迁入；已 Smartent 化包 ID 与命名空间。
-- 许可：MIT（见仓库根 `License.md`）。
+## 来源
+
+Smartent Orchard Extensions 培训/demo 单体仓库；由 Lombiq OSOCE 谱系迁入。许可见仓库根目录 MIT。

@@ -1,55 +1,77 @@
-# Smartent Orchard Hosting - Tenants Health Checks for Orchard Core
-> **中文说明**: [Readme-CN.md](Readme-CN.md)
+# Smartent.Orchard.Hosting.Tenants.HealthChecks
 
+> **中文说明**: [Readme-CN.md](Readme-CN.md)  
+> **PackageId**: `Smartent.Orchard.Hosting.Tenants.HealthChecks` · **Path**: `src/Modules/Smartent.Orchard.Hosting.Tenants/Smartent.Orchard.Hosting.Tenants.HealthChecks`
 
-[![Smartent.Orchard.Hosting.Tenants.Smartent.Orchard.Hosting.Tenants.HealthChecks NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.Hosting.Tenants.Smartent.Orchard.Hosting.Tenants.HealthChecks?label=Smartent.Orchard.Hosting.Tenants.Smartent.Orchard.Hosting.Tenants.HealthChecks)](https://www.nuget.org/packages/Smartent.Orchard.Hosting.Tenants.Smartent.Orchard.Hosting.Tenants.HealthChecks/)
+## Summary
 
-## About
+Multi-tenancy related health check improvements.
 
-A module that adds tenant-aware features specific to Orchard Core's [Health Checks module](https://docs.orchardcore.net/en/main/reference/modules/HealthChecks/).
+## When to use
 
-## Usage
+Tenant/hosting automation package; enable only on environments that need this capability.
 
-Some of this module's features depend on being always-enabled. You can easily achieve that using the `EnableTenantHealthChecks` extension method inside the `AddOrchardCms` call of your _Program.cs_ file, like this:
+## Quick start
 
-```csharp
-builder.Services.AddOrchardCms(orchardCoreBuilder => orchardCoreBuilder
-    .EnableTenantHealthChecks()
-);
+Enable feature `HealthChecksFeatureIds.AllTenants` on the host tenant; configure keys under `OrchardCore`.
+
+## Orchard features
+
+| Feature Id | Name | Depends on |
+|------------|------|------------|
+| `HealthChecksFeatureIds.AllTenants` | Smartent Orchard Hosting - Tenants Health Checks - All Tenants | OrchardCore.HealthChecks |
+| `HealthChecksFeatureIds.DefaultTenant` | Smartent Orchard Hosting - Tenants Health Checks - Default Tenant | OrchardCore.HealthChecks |
+| `HealthChecksFeatureIds.Admin` | Smartent Orchard Hosting - Tenants Health Checks - Admin Features | — |
+
+Enable in **Configuration → Features** (per tenant unless the module is host-only).
+
+## Configuration
+
+Configuration keys (under `OrchardCore`):
+
+- `OrchardCore:OrchardCore:Smartent_Orchard_Hosting_Tenants_HealthChecks`
+
+Use double underscore in environment variables, e.g. `OrchardCore__OrchardCore:Smartent_Orchard_Hosting_Tenants_HealthChecks__...`.
+
+> Config sections use `Smartent_*` / `Smartent_Orchard_*` only (no legacy `Lombiq_*` in this demo repo).
+
+## Usage (site owners & admins)
+
+Hosting/tenant admin UI varies per package (see source `Startup.cs` and README in solution root).
+
+## Usage (developers)
+
+Reference this csproj from the SaaS/host web app; most packages register tenant management or health endpoints.
+
+### References
+
+```xml
+<ProjectReference Include="src/Modules/Smartent.Orchard.Hosting.Tenants/Smartent.Orchard.Hosting.Tenants.HealthChecks/Smartent.Orchard.Hosting.Tenants.HealthChecks.csproj" />
 ```
 
-If you want to be able to toggle this feature via configuration, that's also possible. You have to pass the configuration object:
+### NuGet (when published)
 
-```csharp
-builder.Services.AddOrchardCms(orchardCoreBuilder => orchardCoreBuilder
-    .EnableTenantHealthChecks(builder.Configuration)
-);
+```xml
+<PackageReference Include="Smartent.Orchard.Hosting.Tenants.HealthChecks" Version="1.0.0" />
 ```
 
-Then in the _appsettings.json_ file:
+## Samples & recipes
 
-```json
-{
-  "OrchardCore": {
-    "Smartent_Orchard_Hosting_Tenants_HealthChecks": {
-      "IsEnabled": true
-    }
-  }
-}
-```
+- See `Smartent.Orchard.Hosting.Tenants` solution Readme.
 
-Note that the module only works reliably when enabled for the whole application, so it's recommended to use the first option.
+## Pitfalls & cautions
 
-## Documentation
+- Misconfiguration can lock tenants or block admin login; test in staging.
+- Secrets (storage, AI keys) belong in user secrets or Key Vault, not git.
 
-### Admin UI
+## Tests
 
-By going to Admin > Multi-tenancy > Health Checks on the Default tenant, you can see the list of unhealthy tenants.
+`dotnet test src/Modules/Smartent.Orchard.Hosting.Tenants/Smartent.Orchard.Hosting.Tenants.HealthChecks/*.Tests*.csproj`
 
-### Health Check Logging and Propagation
+## Related projects in this folder
 
-If a tenant is detected to be non-healthy, it's logged by the Default tenant. In turn this marks the Default tenant as unhealthy as well.
+- Parent: `src/Modules/Smartent.Orchard.Hosting.Tenants/Readme.md`
 
-### Periodic Self Health Checks
+## Provenance
 
-The `HealthCheckService.CheckHealthAsync` is periodically triggered from a background task.
+Smartent Orchard Extensions training/demo monorepo; migrated from Lombiq OSOCE lineage. MIT license at repository root.

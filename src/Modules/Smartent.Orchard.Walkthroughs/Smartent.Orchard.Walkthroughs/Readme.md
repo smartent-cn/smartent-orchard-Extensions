@@ -1,78 +1,80 @@
+<!-- MODULE-DOC-GENERATED -->
 # Smartent.Orchard.Walkthroughs
 
-> **Status**: Training/demo monorepo · **中文说明**: [Readme-CN.md](Readme-CN.md)  
-> **Path**: `src/Modules/Smartent.Orchard.Walkthroughs/Smartent.Orchard.Walkthroughs`
+> **中文说明**: [Readme-CN.md](Readme-CN.md)  
+> **PackageId**: `Smartent.Orchard.Walkthroughs` · **Path**: `src/Modules/Smartent.Orchard.Walkthroughs`
 
 ## Summary
 
 Orchard Core module to teach you the fundamentals of using the CMS features with step-by-step guides.
 
-## Features
+## When to use
 
-**Implements**
+Orchard Core extension module in the Smartent demo monorepo.
 
-- - Orchard Core module to teach you the fundamentals of using the CMS features with step-by-step guides.
+## Quick start
 
-**Out of scope**
+1. Add `<ProjectReference Include="src/Modules/Smartent.Orchard.Walkthroughs/Smartent.Orchard.Walkthroughs/Smartent.Orchard.Walkthroughs.csproj" />` to your host (e.g. `Smartent.Demo.Web`).
+2. Build: `dotnet build src/Modules/Smartent.Orchard.Walkthroughs/Smartent.Orchard.Walkthroughs/Smartent.Orchard.Walkthroughs.csproj`.
+3. Run the site, open **Configuration → Features**, enable **`Default`** (and dependencies listed above).
+4. Apply setup recipe if needed: `Smartent.Orchard.Walkthroughs/Recipes/Smartent.Orchard.Walkthroughs.Setup.recipe.json` from **Tools → Recipes**.
+5. For demo host: `dotnet run --project src/Demo/Smartent.Demo.Web/Smartent.Demo.Web.csproj`.
 
-- - Does not replace Orchard Core built-in features unless documented.
+## Orchard features
 
-## References
+| Feature Id | Name | Depends on |
+|------------|------|------------|
+| `Default` | Smartent Orchard Walkthroughs | OrchardCore.Contents, OrchardCore.ResourceManagement |
 
-### Monorepo (development)
+Enable in **Configuration → Features** (per tenant unless the module is host-only).
+
+## Configuration
+
+No dedicated `appsettings` section in this package; configuration is optional or via Orchard settings.
+
+> Config sections use `Smartent_*` / `Smartent_Orchard_*` only (no legacy `Lombiq_*` in this demo repo).
+
+## Usage (site owners & admins)
+
+Use Orchard admin and module-specific menus after enabling features.
+
+## Usage (developers)
+
+Extend via DI, handlers, shapes, and optional recipes in the Samples project.
+
+### References
 
 ```xml
 <ProjectReference Include="src/Modules/Smartent.Orchard.Walkthroughs/Smartent.Orchard.Walkthroughs/Smartent.Orchard.Walkthroughs.csproj" />
 ```
 
-### NuGet (when published; version is indicative)
+### NuGet (when published)
 
 ```xml
 <PackageReference Include="Smartent.Orchard.Walkthroughs" Version="1.0.0" />
 ```
 
-### Orchard features (if applicable)
+## Samples & recipes
 
-- Enable in host: `（见 Manifest / Module.cs）`
-- Related modules: see Dependencies
+- `Smartent.Orchard.Walkthroughs/Recipes/Smartent.Orchard.Walkthroughs.Setup.recipe.json`
 
-## Usage
+## Pitfalls & cautions
 
-1. Reference this project from your web app or module solution.
-2. Add the module to the host (`Program` / `Startup`), enable features in Admin → Configuration → Features, and run Recipes if provided under `Recipes/`.
-
-## Dependencies
-
-### .NET / Orchard
-
-| Dependency | Type | Purpose |
-|------------|------|---------|
-| — | — | No direct PackageReference (may use central props) |
-
-### Frontend (if applicable)
-
-See [frontend-dependencies standard](../../docs/standards/frontend-dependencies.md). Run `pnpm`/`npm` scripts only when this folder has `package.json`.
-
-| npm package | Version | Purpose | Build |
-|-------------|---------|---------|-------|
-| | `shepherd.js` | 14.5.1 | dependencies | see package.json scripts | | | | |
-
-## Upgrade & extension
-
-- **Orchard**: Aligns with repository `OrchardCoreVersion` / central package management.
-- **Extension points**: Drivers, handlers, shapes, and `IDataTableDataProvider`-style interfaces (see source).
-- **Customization**: Prefer configuration keys under `Smartent_*` / `Smartent_Orchard_*`; this demo repo does not read legacy `Lombiq_*` sections.
+- Enable only required features per tenant.
+- Test with `*.Tests` / `*.Tests.UI` before upgrading Orchard Core.
 
 ## Tests
 
 ```powershell
-dotnet build "src/Modules/Smartent.Orchard.Walkthroughs/Smartent.Orchard.Walkthroughs/Smartent.Orchard.Walkthroughs.csproj"
-dotnet test "src/Modules/Smartent.Orchard.Walkthroughs/Smartent.Orchard.Walkthroughs/Smartent.Orchard.Walkthroughs.csproj"
+dotnet build src/Modules/Smartent.Orchard.Walkthroughs/Smartent.Orchard.Walkthroughs/Smartent.Orchard.Walkthroughs.csproj
+dotnet test src/Modules/Smartent.Orchard.Walkthroughs/*.Tests*.csproj
 ```
 
-UI tests: filter `*.Tests.UI.csproj` in the solution.
+## Related projects in this folder
 
-## Provenance & license
+- `Smartent.Orchard.Walkthroughs` — main module
+- `Smartent.Orchard.Walkthroughs.Tests.UI` — automated/UI tests
 
-- Migrated from Lombiq OSOCE lineage; Smartent package IDs and namespaces.
-- License: MIT (see repository root `License.md`).
+## Provenance
+
+Smartent Orchard Extensions training/demo monorepo; migrated from Lombiq OSOCE lineage. MIT license at repository root.

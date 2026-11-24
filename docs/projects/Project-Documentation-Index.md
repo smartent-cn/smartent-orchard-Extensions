@@ -18,7 +18,7 @@
 | Platform Orchard | `src/Platform/Orchard/Smartent.Orchard.*/Readme-CN.md` |
 | Build | `src/Build/Smartent.Build.*/Readme-CN.md` |
 | Libraries | `src/Libraries/**/Readme-CN.md` |
-| Modules | `src/Modules/**/Readme-CN.md`（含解决方案根 `Modules/<Name>/Readme-CN.md`） |
+| Modules | [src/Modules/Readme-CN.md](../../src/Modules/Readme-CN.md) 索引；各家族加厚模板见 [module-documentation.md](../standards/module-documentation.md) |
 | Themes | `src/Themes/**/Readme-CN.md` |
 | Test | `src/Test/**/Readme-CN.md` |
 

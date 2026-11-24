@@ -1,41 +1,71 @@
-# Smartent Orchard Hosting - Tenants Media Storage Management for Orchard Core
-> **中文说明**: [Readme-CN.md](Readme-CN.md)
+# Smartent.Orchard.Hosting.Tenants.MediaStorageManagement
 
+> **中文说明**: [Readme-CN.md](Readme-CN.md)  
+> **PackageId**: `Smartent.Orchard.Hosting.Tenants.MediaStorageManagement` · **Path**: `src/Modules/Smartent.Orchard.Hosting.Tenants/Smartent.Orchard.Hosting.Tenants.MediaStorageManagement`
 
-[![Smartent.Orchard.Hosting.Tenants.MediaStorageManagement NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.Hosting.Tenants.MediaStorageManagement?label=Smartent.Orchard.Hosting.Tenants.MediaStorageManagement)](https://www.nuget.org/packages/Smartent.Orchard.Hosting.Tenants.MediaStorageManagement/)
-
-## About
+## Summary
 
 With the help of this module, you can set restrictions regarding maximum media space per tenant.
 
-Do you want to quickly try out this project and see it in action? Check it out in our [Open-Source Orchard Core Extensions](https://github.com/smartent-cn/smartent-orchard-Extensions) full Orchard Core solution and also see our other useful Orchard Core-related open-source projects!
+## When to use
 
-## Documentation
+Tenant/hosting automation package; enable only on environments that need this capability.
 
-This module currently contains one feature:
+## Quick start
 
-- `Smartent.Orchard.Hosting.Tenants.MediaStorageManagement`
+Enable feature `MediaStorageManagement` on the host tenant; configure keys under `OrchardCore`.
 
-### `Smartent.Orchard.Hosting.Tenants.MediaStorageManagement`
+## Orchard features
 
-With this module, you can specify how much space would you like to limit each tenant's storage space. The default is 1GB. If you want to set it to 2GB e.g. you can do it in bytes as an environment variable or in _appsettings.json_ as follows:
+| Feature Id | Name | Depends on |
+|------------|------|------------|
+| `MediaStorageManagement` | Smartent Orchard Hosting - Tenants Media Storage Management Quota Management | OrchardCore.Media, OrchardCore.DisplayManagement, OrchardCore.ResourceManagement |
 
-```json
-"OrchardCore": {
-  "Smartent_Orchard_Hosting_Tenants_MediaStorageManagement": {
-    "MaximumStorageQuotaBytes": 2147483648
-  }  
-}
+Enable in **Configuration → Features** (per tenant unless the module is host-only).
+
+## Configuration
+
+No dedicated `appsettings` section in this package; configuration is optional or via Orchard settings.
+
+> Config sections use `Smartent_*` / `Smartent_Orchard_*` only (no legacy `Lombiq_*` in this demo repo).
+
+## Usage (site owners & admins)
+
+Hosting/tenant admin UI varies per package (see source `Startup.cs` and README in solution root).
+
+## Usage (developers)
+
+Reference this csproj from the SaaS/host web app; most packages register tenant management or health endpoints.
+
+### References
+
+```xml
+<ProjectReference Include="src/Modules/Smartent.Orchard.Hosting.Tenants/Smartent.Orchard.Hosting.Tenants.MediaStorageManagement/Smartent.Orchard.Hosting.Tenants.MediaStorageManagement.csproj" />
 ```
 
-Tenant based configuration can be defined as the following, for more details read the [Orchard Core documentation](https://docs.orchardcore.net/en/main/docs/reference/core/Configuration/#tenant-postconfiguration).
+### NuGet (when published)
 
-```json
-"OrchardCore": {
-  "TenantName": {
-    "Smartent_Orchard_Hosting_Tenants_MediaStorageManagement": {
-      "MaximumStorageQuotaBytes": 2147483648
-    }
-  }
-}
+```xml
+<PackageReference Include="Smartent.Orchard.Hosting.Tenants.MediaStorageManagement" Version="1.0.0" />
 ```
+
+## Samples & recipes
+
+- See `Smartent.Orchard.Hosting.Tenants` solution Readme.
+
+## Pitfalls & cautions
+
+- Misconfiguration can lock tenants or block admin login; test in staging.
+- Secrets (storage, AI keys) belong in user secrets or Key Vault, not git.
+
+## Tests
+
+`dotnet test src/Modules/Smartent.Orchard.Hosting.Tenants/Smartent.Orchard.Hosting.Tenants.MediaStorageManagement/*.Tests*.csproj`
+
+## Related projects in this folder
+
+- Parent: `src/Modules/Smartent.Orchard.Hosting.Tenants/Readme.md`
+
+## Provenance
+
+Smartent Orchard Extensions training/demo monorepo; migrated from Lombiq OSOCE lineage. MIT license at repository root.

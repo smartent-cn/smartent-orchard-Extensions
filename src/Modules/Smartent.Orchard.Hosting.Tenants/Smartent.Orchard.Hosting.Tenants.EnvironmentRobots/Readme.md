@@ -1,34 +1,71 @@
-# Smartent Orchard Hosting - Tenants Environment Robots for Orchard Core
-> **中文说明**: [Readme-CN.md](Readme-CN.md)
+# Smartent.Orchard.Hosting.Tenants.EnvironmentRobots
 
+> **中文说明**: [Readme-CN.md](Readme-CN.md)  
+> **PackageId**: `Smartent.Orchard.Hosting.Tenants.EnvironmentRobots` · **Path**: `src/Modules/Smartent.Orchard.Hosting.Tenants/Smartent.Orchard.Hosting.Tenants.EnvironmentRobots`
 
-[![Smartent.Orchard.Hosting.Tenants.EnvironmentRobots NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.Hosting.Tenants.EnvironmentRobots?label=Smartent.Orchard.Hosting.Tenants.EnvironmentRobots)](https://www.nuget.org/packages/Smartent.Orchard.Hosting.Tenants.EnvironmentRobots/)
+## Summary
 
-## About
+This module contains the EnvironmentRobots feature, which prevents search bots from indexing non-production environments by adding a meta tag and a response header with noindex, nofollow values.
 
-A module that prevents search bots from indexing non-production environments. Watch a demo video of it from the Orchard Community Meeting [here](https://youtu.be/Rp3ao2ZbNRs).
+## When to use
 
-## Documentation
+Tenant/hosting automation package; enable only on environments that need this capability.
 
-This module contains the feature below.
+## Quick start
 
-### `Smartent.Orchard.Hosting.Tenants.EnvironmentRobots`
+Enable feature `FeatureNames.EnvironmentRobots` on the host tenant; configure keys under `OrchardCore`.
 
-The module works by adding a `X-Robots-Tag` header with the value `noindex`, `nofollow` to the HTTP response of non-production apps. This instructs search engines not to index or follow the links on these pages. Additionally, the module also adds a `<meta name="robots" content="noindex, nofollow">` tag to the HTML head of non-production apps for the same purpose.
+## Orchard features
 
-The module determines whether a app is non-production based on the `IsProduction` option in the `EnvironmentRobotsOptions` class. By default, this option is set to `null`, which means the module will use the `IHostEnvironment.IsProduction()` method to check the environment name. However, you can override this option by setting it to `true` or `false` in the `appsettings.json` file under the `Smartent_Orchard_Hosting_Tenants_EnvironmentRobots:EnvironmentRobotsOptions:IsProduction` section as follows:
+| Feature Id | Name | Depends on |
+|------------|------|------------|
+| `FeatureNames.EnvironmentRobots` | Smartent Orchard Hosting - Tenants Environment Robots | — |
 
-```json
-"OrchardCore": {
-  "Smartent_Orchard_Hosting_Tenants_EnvironmentRobots": {
-    "EnvironmentRobotsOptions": {
-      "IsProduction": true
-    }
-  }  
-}
+Enable in **Configuration → Features** (per tenant unless the module is host-only).
+
+## Configuration
+
+No dedicated `appsettings` section in this package; configuration is optional or via Orchard settings.
+
+> Config sections use `Smartent_*` / `Smartent_Orchard_*` only (no legacy `Lombiq_*` in this demo repo).
+
+## Usage (site owners & admins)
+
+Hosting/tenant admin UI varies per package (see source `Startup.cs` and README in solution root).
+
+## Usage (developers)
+
+Reference this csproj from the SaaS/host web app; most packages register tenant management or health endpoints.
+
+### References
+
+```xml
+<ProjectReference Include="src/Modules/Smartent.Orchard.Hosting.Tenants/Smartent.Orchard.Hosting.Tenants.EnvironmentRobots/Smartent.Orchard.Hosting.Tenants.EnvironmentRobots.csproj" />
 ```
 
-To use the module, follow these steps:
+### NuGet (when published)
 
-- Enable the `Smartent.Orchard.Hosting.Tenants.EnvironmentRobots` feature from the admin dashboard.
-- Optionally, configure the `IsProduction` option as described above.
+```xml
+<PackageReference Include="Smartent.Orchard.Hosting.Tenants.EnvironmentRobots" Version="1.0.0" />
+```
+
+## Samples & recipes
+
+- See `Smartent.Orchard.Hosting.Tenants` solution Readme.
+
+## Pitfalls & cautions
+
+- Misconfiguration can lock tenants or block admin login; test in staging.
+- Secrets (storage, AI keys) belong in user secrets or Key Vault, not git.
+
+## Tests
+
+`dotnet test src/Modules/Smartent.Orchard.Hosting.Tenants/Smartent.Orchard.Hosting.Tenants.EnvironmentRobots/*.Tests*.csproj`
+
+## Related projects in this folder
+
+- Parent: `src/Modules/Smartent.Orchard.Hosting.Tenants/Readme.md`
+
+## Provenance
+
+Smartent Orchard Extensions training/demo monorepo; migrated from Lombiq OSOCE lineage. MIT license at repository root.

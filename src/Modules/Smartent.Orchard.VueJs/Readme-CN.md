@@ -1,87 +1,82 @@
-# Smartent.Orchard.VueJs (solution)
+<!-- MODULE-DOC-GENERATED -->
+# Smartent.Orchard.VueJs
 
-> **状态**：培训/demo 单体仓库 · **English**: [Readme.md](Readme.md)  
-> **路径**：`src/Modules/Smartent.Orchard.VueJs`
+> **English**: [Readme.md](Readme.md)  
+> **PackageId**：`Smartent.Orchard.VueJs` · **路径**：`src/Modules/Smartent.Orchard.VueJs`
 
 ## 摘要
 
-本目录为 `Smartent.Orchard.VueJs` 解决方案根。中文细节见子项目 Readme-CN.md；英文总览见 [Readme.md](Readme.md)。
+Smartent.Orchard.VueJs
 
-Smartent.Orchard.VueJs：Smartent Orchard Extensions 组件。Smartent Orchard Vue.js module for Orchard Core
+## 适用场景
 
-## 功能说明
+在 Orchard 页面/Shape 中托管 Vue 3 单文件组件并走统一前端构建时使用。
 
-**实现**
+## 快速开始
 
-- - 包含主模块及 Samples/Tests 子工程。
-- Smartent Orchard Vue.js module for Orchard Core：Smartent Orchard Vue.js module for Orchard Core
+1. 在宿主（如 `Smartent.Demo.Web`）中添加：`<ProjectReference Include="src/Modules/Smartent.Orchard.VueJs/Smartent.Orchard.VueJs/Smartent.Orchard.VueJs.csproj" />`。
+2. 构建：`dotnet build src/Modules/Smartent.Orchard.VueJs/Smartent.Orchard.VueJs/Smartent.Orchard.VueJs.csproj`。
+3. 运行站点，在 **配置 → 功能** 中启用 **`Smartent.Orchard.VueJs`** 及上表依赖。
+4. 需要时从 **工具 → 配方** 执行：`Smartent.Orchard.VueJs.Samples/Recipes/Smartent.Orchard.VueJs.Samples.Content.recipe.json`。
+5. Demo 宿主：`dotnet run --project src/Demo/Smartent.Demo.Web/Smartent.Demo.Web.csproj`。
 
-**不实现（边界）**
+## Orchard 功能（Feature）
 
-- - 除非文档说明，不替代 Orchard Core 内置能力。
+| Feature Id | 名称 | 依赖 |
+|------------|------|------|
+| — | — | — |
 
-## 引用方式
+在后台 **配置 → 功能** 中启用（除明确为宿主级模块外，均按**租户**生效）。
 
-### Monorepo（开发）
+## 配置
+
+本包无独立 `appsettings` 节；可选通过 Orchard 设置项或无需配置。
+
+> 配置节仅使用 `Smartent_*` / `Smartent_Orchard_*`；本 demo 仓库 **不** 读取遗留 `Lombiq_*` 节。
+
+## 使用方式（站点/运营）
+
+启用功能后通过 Orchard 后台及模块菜单使用。
+
+## 使用方式（开发）
+
+使用 `vue-component-app` 标签助手或 `.smartent-vue` 根节点；经 `Smartent.Build.NodeJs` 执行 `pnpm`；npm 包名 `smartent-vuejs`。
+
+### 引用
 
 ```xml
-<ProjectReference Include="Smartent.Orchard.VueJs/Smartent.Orchard.VueJs.csproj" />
+<ProjectReference Include="src/Modules/Smartent.Orchard.VueJs/Smartent.Orchard.VueJs/Smartent.Orchard.VueJs.csproj" />
 ```
 
-### NuGet（发布后，版本号以实际发布为准）
+### NuGet（发布后）
 
 ```xml
-<PackageReference Include="Smartent.Orchard.VueJs (solution)" Version="1.0.0" />
+<PackageReference Include="Smartent.Orchard.VueJs" Version="1.0.0" />
 ```
 
-### Orchard 功能（如适用）
+## 样例与配方（Recipe）
 
-- 宿主中启用：`（见 Manifest / Module.cs）`
-- 相关模块：见「依赖说明」
+- `Smartent.Orchard.VueJs.Samples/Recipes/Smartent.Orchard.VueJs.Samples.Content.recipe.json`
 
-## 使用方式
+## 注意事项与常见坑
 
-1. 在 Web 应用或模块解决方案中引用本项目。
-2. 将模块加入宿主，在后台「配置 → 功能」启用，并按需执行 `Recipes/` 下的配方。
-
-## 依赖说明
-
-### .NET / Orchard
-
-| 依赖 | 类型 | 用途 |
-|------|------|------|
-| `OrchardCore.DisplayManagement` | 包引用 | 版本 `$(OrchardCoreVersion)` |
-| `OrchardCore.Module.Targets` | 包引用 | 版本 `$(OrchardCoreVersion)` |
-| `OrchardCore.ResourceManagement` | 包引用 | 版本 `$(OrchardCoreVersion)` |
-| `Smartent.Orchard.Platform` | 包引用 | 版本 `12.6.1-alpha.7.osoe-925` |
-| `Smartent.Build.NodeJs` | 包引用 | 版本 `3.0.0` |
-| `Smartent.Core.CodeGen.SourceGenerators` | 包引用 | 版本 `12.6.1-alpha.7.osoe-925` |
-| `Smartent.Core.CodeGen.Attributes` | 包引用 | 版本 `12.6.1-alpha.7.osoe-925` |
-
-### 前端（如适用）
-
-规范：[frontend-dependencies](../../docs/standards/frontend-dependencies.md)。仅当本目录存在 `package.json` 时执行前端构建命令。
-
-| npm 包 | 版本 | 用途 | 构建 |
-|--------|------|------|------|
-| | — | — | — | — | | | | |
-
-## 升级与扩展
-
-- **Orchard**：与仓库 `OrchardCoreVersion` / 中央包管理对齐。
-- **扩展点**：Driver/Handler/Shape 及模块内接口（见源码）。
-- **定制**：配置节使用 `Smartent_*` / `Smartent_Orchard_*`；本 demo 仓库 **不** 读取遗留 `Lombiq_*` 节。
+- 修改脚本后需先跑 Node/pnpm 再 `dotnet build`。
+- CSP 可能阻止 Vue 内联初始化；与平台 CSP 模块对齐。
 
 ## 测试
 
 ```powershell
-dotnet build "src/Modules/Smartent.Orchard.VueJs/Smartent.Orchard.VueJs/Smartent.Orchard.VueJs.csproj"
-dotnet test "src/Modules/Smartent.Orchard.VueJs/Smartent.Orchard.VueJs/Smartent.Orchard.VueJs.csproj"
+dotnet build src/Modules/Smartent.Orchard.VueJs/Smartent.Orchard.VueJs/Smartent.Orchard.VueJs.csproj
+dotnet test src/Modules/Smartent.Orchard.VueJs/*.Tests*.csproj
 ```
 
-子项目各自含 Readme-CN.md。
+## 本目录相关工程
 
-## 来源与许可
+- `Smartent.Orchard.VueJs` — 主模块
+- `Smartent.Orchard.VueJs.Resources` — 主模块
+- `Smartent.Orchard.VueJs.Samples` — 样例与配方
+- `Smartent.Orchard.VueJs.Tests.UI` — 自动化/UI 测试
 
-- 自 Lombiq OSOCE 谱系迁入；已 Smartent 化包 ID 与命名空间。
-- 许可：MIT（见仓库根 `License.md`）。
+## 来源
+
+Smartent Orchard Extensions 培训/demo 单体仓库；由 Lombiq OSOCE 谱系迁入。许可见仓库根目录 MIT。

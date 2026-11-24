@@ -1,42 +1,72 @@
-# Smartent Orchard Hosting - Tenants Admin Login for Orchard Core
-> **中文说明**: [Readme-CN.md](Readme-CN.md)
+# Smartent.Orchard.Hosting.Tenants.Admin.Login
 
+> **中文说明**: [Readme-CN.md](Readme-CN.md)  
+> **PackageId**: `Smartent.Orchard.Hosting.Tenants.Admin.Login` · **Path**: `src/Modules/Smartent.Orchard.Hosting.Tenants/Smartent.Orchard.Hosting.Tenants.Admin.Login`
 
-[![Smartent.Orchard.Hosting.Tenants.Admin.Login NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.Hosting.Tenants.Admin.Login?label=Smartent.Orchard.Hosting.Tenants.Admin.Login)](https://www.nuget.org/packages/Smartent.Orchard.Hosting.Tenants.Admin.Login/)
-
-## About
+## Summary
 
 With the help of this module, you can log in from the Default tenant's admin dashboard to any other tenants as an administrator user. This is useful if you manage a lot of customer tenants and don't want to create individual logins of yours for each of them.
 
-## Documentation
+## When to use
 
-This module contains two features:
+Tenant/hosting automation package; enable only on environments that need this capability.
 
-- `Smartent.Orchard.Hosting.Tenants.Admin.Login`
-- `Smartent.Orchard.Hosting.Tenants.Admin.Login.SubTenant`
+## Quick start
 
-### `Smartent.Orchard.Hosting.Tenants.Admin.Login`
+Enable feature `Module` on the host tenant; configure keys under `OrchardCore`.
 
-This feature is only available on the Default tenant. It provides a button on the tenant editor page. After clicking this button, you'll be logged to the selected tenant as an administrator and be redirected to its admin dashboard.
+## Orchard features
 
-![Tenant's editor page with Login as admin user button.](Docs/Attachments/TenantsEditorPageWithLoginAsAdminUserButton.png)
+| Feature Id | Name | Depends on |
+|------------|------|------------|
+| `Module` | Smartent Orchard Hosting - Tenants Admin Login | OrchardCore.Tenants |
+| `SubTenant` | Smartent Orchard Hosting - Tenants Admin Login Sub-tenant | — |
 
-**NOTE:** Login will not be successful if the tenant has no user with the administrator role.
+Enable in **Configuration → Features** (per tenant unless the module is host-only).
 
-The feature also provides a `LoginAsAdmin` permission. Only users who have this permission can see the login button (by default users possessing the Administrator role).
+## Configuration
 
-### `Smartent.Orchard.Hosting.Tenants.Admin.Login.SubTenant`
+No dedicated `appsettings` section in this package; configuration is optional or via Orchard settings.
 
-This feature provides a controller which can authenticate the request from the Default tenant as an administrator user. From the Default tenant, you can log in to only those tenants that have this feature enabled.
+> Config sections use `Smartent_*` / `Smartent_Orchard_*` only (no legacy `Lombiq_*` in this demo repo).
 
-## How to enable the Sub-tenant feature on every tenant
+## Usage (site owners & admins)
 
-In the web project's Startup class in the following way, you can enable `Smartent.Orchard.Hosting.Tenants.Admin.Login.SubTenant` feature on all tenants.
+Hosting/tenant admin UI varies per package (see source `Startup.cs` and README in solution root).
 
-```csharp
-public void ConfigureServices(IServiceCollection services) =>
-    services.AddOrchardCms(
-        builder => builder.AddTenantFeatures(Smartent.Orchard.Hosting.Tenants.Admin.Login.Constants.FeatureNames.SubTenant));
+## Usage (developers)
+
+Reference this csproj from the SaaS/host web app; most packages register tenant management or health endpoints.
+
+### References
+
+```xml
+<ProjectReference Include="src/Modules/Smartent.Orchard.Hosting.Tenants/Smartent.Orchard.Hosting.Tenants.Admin.Login/Smartent.Orchard.Hosting.Tenants.Admin.Login.csproj" />
 ```
 
-**NOTE:** This way the feature will also be enabled on the Default tenant. Therefore, for greater security, the controller does not perform anything on the Default tenant.
+### NuGet (when published)
+
+```xml
+<PackageReference Include="Smartent.Orchard.Hosting.Tenants.Admin.Login" Version="1.0.0" />
+```
+
+## Samples & recipes
+
+- See `Smartent.Orchard.Hosting.Tenants` solution Readme.
+
+## Pitfalls & cautions
+
+- Misconfiguration can lock tenants or block admin login; test in staging.
+- Secrets (storage, AI keys) belong in user secrets or Key Vault, not git.
+
+## Tests
+
+`dotnet test src/Modules/Smartent.Orchard.Hosting.Tenants/Smartent.Orchard.Hosting.Tenants.Admin.Login/*.Tests*.csproj`
+
+## Related projects in this folder
+
+- Parent: `src/Modules/Smartent.Orchard.Hosting.Tenants/Readme.md`
+
+## Provenance
+
+Smartent Orchard Extensions training/demo monorepo; migrated from Lombiq OSOCE lineage. MIT license at repository root.

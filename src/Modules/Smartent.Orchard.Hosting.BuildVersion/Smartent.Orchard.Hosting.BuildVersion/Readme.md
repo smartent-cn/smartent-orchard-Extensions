@@ -1,78 +1,80 @@
+<!-- MODULE-DOC-GENERATED -->
 # Smartent.Orchard.Hosting.BuildVersion
 
-> **Status**: Training/demo monorepo · **中文说明**: [Readme-CN.md](Readme-CN.md)  
-> **Path**: `src/Modules/Smartent.Orchard.Hosting.BuildVersion/Smartent.Orchard.Hosting.BuildVersion`
+> **中文说明**: [Readme-CN.md](Readme-CN.md)  
+> **PackageId**: `Smartent.Orchard.Hosting.BuildVersion` · **Path**: `src/Modules/Smartent.Orchard.Hosting.BuildVersion`
 
 ## Summary
 
 Orchard Core module to display the build version (i.e. .NET assembly version or other) on the admin of the Default tenant.
 
-## Features
+## When to use
 
-**Implements**
+Orchard Core extension module in the Smartent demo monorepo.
 
-- - Orchard Core module to display the build version (i.e. .NET assembly version or other) on the admin of the Default tenant.
+## Quick start
 
-**Out of scope**
+1. Add `<ProjectReference Include="src/Modules/Smartent.Orchard.Hosting.BuildVersion/Smartent.Orchard.Hosting.BuildVersion/Smartent.Orchard.Hosting.BuildVersion.csproj" />` to your host (e.g. `Smartent.Demo.Web`).
+2. Build: `dotnet build src/Modules/Smartent.Orchard.Hosting.BuildVersion/Smartent.Orchard.Hosting.BuildVersion/Smartent.Orchard.Hosting.BuildVersion.csproj`.
+3. Run the site, open **Configuration → Features**, enable **`Smartent.Orchard.Hosting.BuildVersion`** (and dependencies listed above).
+4. Apply setup recipe if needed: `see Samples folder` from **Tools → Recipes**.
+5. For demo host: `dotnet run --project src/Demo/Smartent.Demo.Web/Smartent.Demo.Web.csproj`.
 
-- - Does not replace Orchard Core built-in features unless documented.
+## Orchard features
 
-## References
+| Feature Id | Name | Depends on |
+|------------|------|------------|
+| — | — | — |
 
-### Monorepo (development)
+Enable in **Configuration → Features** (per tenant unless the module is host-only).
+
+## Configuration
+
+No dedicated `appsettings` section in this package; configuration is optional or via Orchard settings.
+
+> Config sections use `Smartent_*` / `Smartent_Orchard_*` only (no legacy `Lombiq_*` in this demo repo).
+
+## Usage (site owners & admins)
+
+Use Orchard admin and module-specific menus after enabling features.
+
+## Usage (developers)
+
+Extend via DI, handlers, shapes, and optional recipes in the Samples project.
+
+### References
 
 ```xml
 <ProjectReference Include="src/Modules/Smartent.Orchard.Hosting.BuildVersion/Smartent.Orchard.Hosting.BuildVersion/Smartent.Orchard.Hosting.BuildVersion.csproj" />
 ```
 
-### NuGet (when published; version is indicative)
+### NuGet (when published)
 
 ```xml
 <PackageReference Include="Smartent.Orchard.Hosting.BuildVersion" Version="1.0.0" />
 ```
 
-### Orchard features (if applicable)
+## Samples & recipes
 
-- Enable in host: `（见 Manifest / Module.cs）`
-- Related modules: see Dependencies
+- Optional: enable `Smartent.Orchard.Hosting.BuildVersion.Samples` and import its recipes.
 
-## Usage
+## Pitfalls & cautions
 
-1. Reference this project from your web app or module solution.
-2. Enable tenant/hosting features and set `OrchardCore:Smartent_Orchard_Hosting_*` sections in `appsettings.json`.
-
-## Dependencies
-
-### .NET / Orchard
-
-| Dependency | Type | Purpose |
-|------------|------|---------|
-| — | — | No direct PackageReference (may use central props) |
-
-### Frontend (if applicable)
-
-See [frontend-dependencies standard](../../docs/standards/frontend-dependencies.md). Run `pnpm`/`npm` scripts only when this folder has `package.json`.
-
-| npm package | Version | Purpose | Build |
-|-------------|---------|---------|-------|
-| | — | — | — | — | | | | |
-
-## Upgrade & extension
-
-- **Orchard**: Aligns with repository `OrchardCoreVersion` / central package management.
-- **Extension points**: Public APIs documented with Chinese XML comments in source.
-- **Customization**: Prefer configuration keys under `Smartent_*` / `Smartent_Orchard_*`; this demo repo does not read legacy `Lombiq_*` sections.
+- Enable only required features per tenant.
+- Test with `*.Tests` / `*.Tests.UI` before upgrading Orchard Core.
 
 ## Tests
 
 ```powershell
-dotnet build "src/Modules/Smartent.Orchard.Hosting.BuildVersion/Smartent.Orchard.Hosting.BuildVersion/Smartent.Orchard.Hosting.BuildVersion.csproj"
-dotnet test "src/Modules/Smartent.Orchard.Hosting.BuildVersion/Smartent.Orchard.Hosting.BuildVersion/Smartent.Orchard.Hosting.BuildVersion.csproj"
+dotnet build src/Modules/Smartent.Orchard.Hosting.BuildVersion/Smartent.Orchard.Hosting.BuildVersion/Smartent.Orchard.Hosting.BuildVersion.csproj
+dotnet test src/Modules/Smartent.Orchard.Hosting.BuildVersion/*.Tests*.csproj
 ```
 
-UI tests: filter `*.Tests.UI.csproj` in the solution.
+## Related projects in this folder
 
-## Provenance & license
+- `Smartent.Orchard.Hosting.BuildVersion` — main module
+- `Smartent.Orchard.Hosting.BuildVersion.Tests.UI` — automated/UI tests
 
-- Migrated from Lombiq OSOCE lineage; Smartent package IDs and namespaces.
-- License: MIT (see repository root `License.md`).
+## Provenance
+
+Smartent Orchard Extensions training/demo monorepo; migrated from Lombiq OSOCE lineage. MIT license at repository root.

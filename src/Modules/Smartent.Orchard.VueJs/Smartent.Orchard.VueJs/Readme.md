@@ -1,192 +1,82 @@
-# Smartent Orchard Vue.js module for Orchard Core
-> **中文说明**: [Readme-CN.md](Readme-CN.md)
+<!-- MODULE-DOC-GENERATED -->
+# Smartent.Orchard.VueJs
 
+> **中文说明**: [Readme-CN.md](Readme-CN.md)  
+> **PackageId**: `Smartent.Orchard.VueJs` · **Path**: `src/Modules/Smartent.Orchard.VueJs`
 
-[![Smartent.Orchard.VueJs NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.VueJs?label=Smartent.Orchard.VueJs)](https://www.nuget.org/packages/Smartent.Orchard.VueJs/) [![Smartent.Orchard.VueJs.Samples NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.VueJs.Samples?label=Smartent.Orchard.VueJs.Samples)](https://www.nuget.org/packages/Smartent.Orchard.VueJs.Samples/) [![Smartent.Orchard.VueJs.Tests.UI NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.VueJs.Tests.UI?label=Smartent.Orchard.VueJs.Tests.UI)](https://www.nuget.org/packages/Smartent.Orchard.VueJs.Tests.UI/)
+## Summary
 
-> [!WARNING]
-> The current latest version of `Smartent.Orchard.VueJs` is deprecated. It will keep working for the foreseeable future, but won't receive any updates besides security fixes. If you want to use our `vue` or `vue-router` JS module resources, use the [`Smartent.Orchard.VueJs.Resources`](Smartent.Orchard.VueJs.Resources/Readme.md) package instead. On why we moved away from Node.js-using builds and how, see [our "Step away from that Node.js" blog post](https://orcharddojo.net/blog/step-away-from-that-node-js).
+Smartent.Orchard.VueJs
 
-## About
+## When to use
 
-[Orchard Core](http://orchardproject.net/) module that contains [Vue.js](https://vuejs.org/) and commonly used Vue.js components to be used in other Vue.js apps as dependencies. Provides extensibility to create Vue.js component templates as Orchard Core shapes making them able to override in themes or modules.
+Host Vue 3 SFC components in Orchard shapes/pages with build pipeline integration.
 
-We at [Smartent](https://gitee.com/smartent/) also used this module for the following projects:
+## Quick start
 
-- The multi-tenant church community management system [Kast](https://www.kast.io/) ([see case study](https://gitee.com/smartent/blog/helping-kast-build-a-multi-tenant-platform-on-orchard-core)).
-- The new [Smartent website](https://gitee.com/smartent/) when migrating it from Orchard 1 to Orchard Core ([see case study](https://gitee.com/smartent/blog/how-we-renewed-and-migrated-lombiq-com-from-orchard-1-to-orchard-core)).
-- The new client portal for [WTW](https://www.wtwco.com/) ([see case study](https://gitee.com/smartent/blog/lombiq-s-journey-with-wtw-s-client-portal)).
+1. Add `<ProjectReference Include="src/Modules/Smartent.Orchard.VueJs/Smartent.Orchard.VueJs/Smartent.Orchard.VueJs.csproj" />` to your host (e.g. `Smartent.Demo.Web`).
+2. Build: `dotnet build src/Modules/Smartent.Orchard.VueJs/Smartent.Orchard.VueJs/Smartent.Orchard.VueJs.csproj`.
+3. Run the site, open **Configuration → Features**, enable **`Smartent.Orchard.VueJs`** (and dependencies listed above).
+4. Apply setup recipe if needed: `Smartent.Orchard.VueJs.Samples/Recipes/Smartent.Orchard.VueJs.Samples.Content.recipe.json` from **Tools → Recipes**.
+5. For demo host: `dotnet run --project src/Demo/Smartent.Demo.Web/Smartent.Demo.Web.csproj`.
 
-If you just want to see the whole thing in action, check out the [Samples project](Smartent.Orchard.VueJs.Samples/Readme.md). Do you want to quickly try it out? Check it out in our [Open-Source Orchard Core Extensions](https://github.com/smartent-cn/smartent-orchard-Extensions) full Orchard Core solution and also see our other useful Orchard Core-related open-source projects!
+## Orchard features
 
-> [!IMPORTANT]
-> Starting version 5.0, this Orchard Core module is using Vue 3 and only supports SFC compilation. Resources are now imported as [JavaScript modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules), so the Vue 3 used by your component is independent from Orchard Core's built-in `vuejs` [resource](https://docs.orchardcore.net/en/main/docs/resources/libraries/) and the two can exist on the same page. If you have an existing project that relies on a discontinued version of Vue.js, check out [our migration instructions below](#migrating-from-vue-2).
+| Feature Id | Name | Depends on |
+|------------|------|------------|
+| — | — | — |
 
-## Prerequisites
+Enable in **Configuration → Features** (per tenant unless the module is host-only).
 
-1. This project relies on [Smartent Node.js Extensions](https://gitee.com/smartent/smartent-orchard-Extensions) please see its prerequisites [here](https://gitee.com/smartent/smartent-orchard-Extensions)
-2. If you are importing this project as a submodule, include the following entries at the beginning and end of your csproj file. If you are using the NuGet package, this is not necessary:
+## Configuration
 
-    ```xml
-    <Project Sdk="Microsoft.NET.Sdk.Razor">
-      <Import Project="..\..\..\..\src\Build\Smartent.Build.NodeJs\Smartent.Build.NodeJs\Smartent.Build.NodeJs.props" />
-      <Import Project="..\Smartent.Orchard.VueJs\Smartent.Orchard.VueJs.props" />
-        
-      <!-- Everything else goes here. -->
-    
-      <Import Project="..\..\..\..\src\Build\Smartent.Build.NodeJs\Smartent.Build.NodeJs\Smartent.Build.NodeJs.targets" />
-      <Import Project="..\Smartent.Orchard.VueJs\Smartent.Orchard.VueJs.targets" />
-    </Project>
-    ```
+No dedicated `appsettings` section in this package; configuration is optional or via Orchard settings.
 
-3. Create a _package.json_ file with the following content:
+> Config sections use `Smartent_*` / `Smartent_Orchard_*` only (no legacy `Lombiq_*` in this demo repo).
 
-    ```json
-    {
-      "private": true,
-      "scripts": {
-        "build": "npm explore nodejs-extensions -- pnpm build && npm explore smartent-vuejs -- pnpm build",
-        "compile": "npm explore nodejs-extensions -- pnpm compile && npm explore smartent-vuejs -- pnpm compile",
-        "clean": "npm explore nodejs-extensions -- pnpm clean && npm explore smartent-vuejs -- pnpm clean",
-        "watch": "npm explore nodejs-extensions -- pnpm watch && npm explore smartent-vuejs -- pnpm watch"
-      }
-    }
-    ```
+## Usage (site owners & admins)
 
-The packages will be automatically installed on build (i.e. `dotnet build`). You can also trigger the installation manually using the `pnpm install` command. Note that since dependencies are delivered as JavaScript modules, you don't have to install the `vue` package in your consuming project as well.
+Use Orchard admin and module-specific menus after enabling features.
 
-### Configuration
+## Usage (developers)
 
-The build script can be configured by placing a JSON file (called _vue-sfc-compiler-pipeline.json_) in the project root. It can contain the same properties you can see in the `defaultOptions` variables in [vue-sfc-compiler-pipeline.js](Smartent.Orchard.VueJs/Assets/scripts/helpers/vue-sfc-compiler-pipeline.js). Any property set in the JSON file overrides the default value as the two objects are merged.
+Use `vue-component-app` tag helper / `.smartent-vue` root; run `pnpm` scripts via `Smartent.Build.NodeJs`. Package name: `smartent-vuejs`.
 
-When configuring the `rollupNodeResolve` option (for [`@rollup/plugin-node-resolve`](https://www.npmjs.com/package/@rollup/plugin-node-resolve)), normally you could only pass in an array of exact matches due to the limitation of the JSON format. Instead, you can use `rollupNodeResolve.resolveOnlyRules` which is an object array in the following format:
+### References
 
-```json
-{
-  "rollupNodeResolve": {
-    "preferBuiltins": true,
-    "browser": true,
-    "mainFields": ["module", "jsnext:main"],
-    "resolveOnlyRules": [
-      {
-        "regex": false,
-        "include": false,
-        "value": "vue"
-      },
-      {
-        "regex": true,
-        " ": false,
-        "value": "^vuetify"
-      }
-    ]
-  },
-  "isProduction": false
-}
+```xml
+<ProjectReference Include="src/Modules/Smartent.Orchard.VueJs/Smartent.Orchard.VueJs/Smartent.Orchard.VueJs.csproj" />
 ```
 
-Here we excluded `vue` and packages starting with `vuetify` (e.g. `vuetify/components`) from the resolution, so they are treated as external. Then you can add `vuetify` using the resource manifest as a script module.
+### NuGet (when published)
 
-## Using Vue.js Single File Components
-
-The module identifies Single File Components in the _Assets/Scripts/VueComponents_ directory and harvests them as shapes. They have a custom _.vue_ file renderer that displays the content of the `<template>` element after applying server-side substitution. Besides that, it's pure Vue, yet you can still make use of shape overriding if needed.
-
-The following types of server-side substitution are available:
-
-- `[[ ... ]]`: Uses `IStringLocalizer` and encodes the result so it's safe to use in HTML.
-- `[[{ ... }]]`: Uses `IHtmlLocalizer` and results in raw HTML just like the `@T["..."]` in cshtml views. You can use this for localizing HTML that may contain formatting or structure.
-- `[[{converter_name} input ]]`: Finds an `IVueTemplateExpressionConverter` implementation to generate the replacement text. This module contains two implementations by default, but you can create your own as well.
-  - `[[{liquid} some Liquid expression ]]`: Uses [Liquid](https://docs.orchardcore.net/en/main/docs/reference/modules/Liquid/), including of the filters registered by Orchard Core.
-  - `[[{markdown} some Markdown expression ]]`: Uses [Markdown](https://docs.orchardcore.net/en/main/docs/reference/modules/Markdown/).
-
-See a demo video of using Vue.js Single File Components [here](https://www.youtube.com/watch?v=L0qjpQ6THZU).
-
-### Writing SFCs
-
-What you need to know to write your own _.vue_ file:
-
-- Your component's script should have a `<template>` and `<script>` element in that order.
-- The script must export the module as an object literal ESM style (`export default { ... }`).
-  - You shouldn't specify the `name` and `template` properties, as these are automatically provided during compilation.
-- If your component has child components, include the _.vue_ extension when importing them.
-
-For example if you have the file _My.Module/Assets/Scripts/VueComponents/my-article.vue_:
-
-```vue
-<template>
-    <article>
-        <header>
-            <h3>{{ title }}</h3>
-        </header>
-        <slot></slot>
-        <footer>{{ formattedDate }}</footer>
-    </article>
-</template>
-
-<script>
-export default {
-    props: [ 'title', 'date' ],
-    computed: {
-        formattedDate(self) {
-            const formatter = new Intl.DateTimeFormat(
-                self.culture,
-                {
-                    year: 'numeric',
-                    month: 'short',
-                    day: 'numeric',
-                });
-
-            return formatter.format(self.date);
-        }
-    }
-};
-</script>
+```xml
+<PackageReference Include="Smartent.Orchard.VueJs" Version="1.0.0" />
 ```
 
-### Using SFCs
+## Samples & recipes
 
-In most cases you'll want to place a full app on a page and initialize it with server-side data. You can achieve this by using the tag helper like this:
+- `Smartent.Orchard.VueJs.Samples/Recipes/Smartent.Orchard.VueJs.Samples.Content.recipe.json`
 
-```razor
-<vue-component-app area="My.Module" name="my-article" model="@new { Title = "Hello World!", Date = DateTime.Now }" plugins="resourceName1, resourceName2" />
+## Pitfalls & cautions
+
+- Requires Node/pnpm for asset build before `dotnet build` when scripts change.
+- CSP may block inline Vue hydration; align with `Smartent.Orchard.Platform` CSP module.
+
+## Tests
+
+```powershell
+dotnet build src/Modules/Smartent.Orchard.VueJs/Smartent.Orchard.VueJs/Smartent.Orchard.VueJs.csproj
+dotnet test src/Modules/Smartent.Orchard.VueJs/*.Tests*.csproj
 ```
 
-This will automatically create a new Vue app that only contains the component identified by the `name` attribute (i.e. _/Assets/Scripts/VueComponents/my-article.vue_). The app gets the data from the `model` attribute which is bound to the component. (By the way if your .vue and .cshtml files are in the same Orchard Core module, then you can even skip the `area` attribute.) The only other consideration is that if your SFC has child components, those have to be declared in the Orchard Core resource manifest options. It would be like `_manifest.DefineSingleFileComponent("my-article").SetDependencies("my-child-component");`. Components that don't have children don't have to be declared this way.
+## Related projects in this folder
 
-The optional `plugins` attribute can contain a comma separated list of resource names. These are `script-module` resources that you can register like `_manifest.DefineScriptModule("resourceName1").SetUrl(...)`. Such modules are expected to `export default` a plugin object that can be dynamically imported and passed to `app.use()` (i.e. `app.use(await import('resourceName1').default)`).
+- `Smartent.Orchard.VueJs` — main module
+- `Smartent.Orchard.VueJs.Resources` — main module
+- `Smartent.Orchard.VueJs.Samples` — samples & recipes
+- `Smartent.Orchard.VueJs.Tests.UI` — automated/UI tests
 
-For more details and a demo of the full feature set check out the samples project!
+## Provenance
 
-### Limitations and Considerations
-
-- No other Razor features including string localizer with arguments.
-- Including a script element in your template will break it. Although you shouldn't do that anyway.
-- As you might expect from Orchard Core, the style element isn't supported either since you will be using themes. If you can think of a use-case that's applicable for OC, please open an issue.
-- Our compiler extracts the `<script>` block from the SFC into a JS module instead of using the official `@vue/compiler-sfc`. The rationale there is that we don't want to compile the template into the script anyway so using the official compiler has limited benefits and significant added complexity over simply extracting the script from the blocks as plain text. The only drawback is that SFC-specific syntax (e.g. `<script setup>`) won't work.
-
-Regarding the first three points: If you need anything more complicated, first reconsider your application design to see if your goals can be achieved in a more Vue.js logic. For example, pass the variables in your main app that hands them down via property binding. If you are certain you need more server side features, either use a _cshtml_ templated app as outlined above or use shape overriding on the `VueComponent-{FileNameInPascalCase}` shape.
-
-## Migrating from Vue 2
-
-Most importantly, if you are not familiar with the breaking changes in Vue 3, please read the [official migration guide](https://v3-migration.vuejs.org/).
-
-Other changes:
-
-- The `Vue.applications` object is no longer available. A similar `window.VueApplications` is created, with a more straight-forward structure that's not grouped by component type, but directly accessible by name (`window.VueApplications[app.$appId] = app`).
-- The model passed to `<vue-component-app>` is now stored in the app's `viewModel` property. This means to access the view-model from JS you have to type `app.viewModel.propertyName` instead of `app.propertyName` as before.
-- The element where the app is mounted with `<vue-component-app>` is now stored in the app's `root` property. This should be used instead of `app.$el`.
-- If you are using the `vue-pagination` component provided by Smartent.Orchard.VueJs, the `page` component property has been renamed to `modelValue`. If you were using it with `v-model` then no changes are necessary.
-
-Also if your app still uses the `<vue-component>` tag helper directly, consider switching to `<vue-component-app>` to reduce future maintenance on your end.
-
-## Dependencies
-
-This module has the following dependencies:
-
-- [Smartent Helpful Libraries for Orchard Core](https://gitee.com/smartent/smartent-orchard-Extensions)
-- [Smartent Node.js Extensions](https://gihub.com/Smartent/NodeJs-Extensions)
-
-## Contributing and support
-
-Bug reports, feature requests, comments, questions, code contributions and love letters are warmly welcome. You can send them to us via GitHub issues and pull requests. Please adhere to our [open-source guidelines](https://gitee.com/smartent/open-source-guidelines) while doing so.
-
-This project is developed by [Smartent](https://gitee.com/smartent/). Commercial-grade support is available through Smartent.
+Smartent Orchard Extensions training/demo monorepo; migrated from Lombiq OSOCE lineage. MIT license at repository root.

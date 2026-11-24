@@ -1,78 +1,83 @@
+<!-- MODULE-DOC-GENERATED -->
 # Smartent.Orchard.EmailClient
 
-> **状态**：培训/demo 单体仓库 · **English**: [Readme.md](Readme.md)  
-> **路径**：`src/Modules/Smartent.Orchard.EmailClient/Smartent.Orchard.EmailClient`
+> **English**: [Readme.md](Readme.md)  
+> **PackageId**：`Smartent.Orchard.EmailClient` · **路径**：`src/Modules/Smartent.Orchard.EmailClient`
 
 ## 摘要
 
-Smartent.Orchard.EmailClient：Smartent Orchard Extensions 组件。With the help of this module, you can do advanced email operations such as downloading them using IMAP.
+With the help of this module, you can do advanced email operations such as downloading them using IMAP.
 
-## 功能说明
+## 适用场景
 
-**实现**
+Smartent demo 仓库中的 Orchard Core 扩展模块。
 
-- - Smartent Orchard Email Client for Orchard Core：With the help of this module, you can do advanced email operations such as downloading them using IMAP.
+## 快速开始
 
-**不实现（边界）**
+1. 在宿主（如 `Smartent.Demo.Web`）中添加：`<ProjectReference Include="src/Modules/Smartent.Orchard.EmailClient/Smartent.Orchard.EmailClient/Smartent.Orchard.EmailClient.csproj" />`。
+2. 构建：`dotnet build src/Modules/Smartent.Orchard.EmailClient/Smartent.Orchard.EmailClient/Smartent.Orchard.EmailClient.csproj`。
+3. 运行站点，在 **配置 → 功能** 中启用 **`Default`** 及上表依赖。
+4. 需要时从 **工具 → 配方** 执行：`Smartent.Orchard.EmailClient.Samples/Recipes/Smartent.Orchard.EmailClient.Samples.recipe.json`。
+5. Demo 宿主：`dotnet run --project src/Demo/Smartent.Demo.Web/Smartent.Demo.Web.csproj`。
 
-- - 除非文档说明，不替代 Orchard Core 内置能力。
+## Orchard 功能（Feature）
 
-## 引用方式
+| Feature Id | 名称 | 依赖 |
+|------------|------|------|
+| `Default` | Smartent Orchard Email Client - Base | — |
+| `Imap` | Smartent Orchard Email Client - IMAP | — |
+| `EmailSync` | Smartent Orchard Email Client - Email Sync | — |
 
-### Monorepo（开发）
+在后台 **配置 → 功能** 中启用（除明确为宿主级模块外，均按**租户**生效）。
+
+## 配置
+
+本包无独立 `appsettings` 节；可选通过 Orchard 设置项或无需配置。
+
+> 配置节仅使用 `Smartent_*` / `Smartent_Orchard_*`；本 demo 仓库 **不** 读取遗留 `Lombiq_*` 节。
+
+## 使用方式（站点/运营）
+
+启用功能后通过 Orchard 后台及模块菜单使用。
+
+## 使用方式（开发）
+
+通过 DI、Handler、Shape 及 Samples 中的 Recipe 扩展。
+
+### 引用
 
 ```xml
 <ProjectReference Include="src/Modules/Smartent.Orchard.EmailClient/Smartent.Orchard.EmailClient/Smartent.Orchard.EmailClient.csproj" />
 ```
 
-### NuGet（发布后，版本号以实际发布为准）
+### NuGet（发布后）
 
 ```xml
 <PackageReference Include="Smartent.Orchard.EmailClient" Version="1.0.0" />
 ```
 
-### Orchard 功能（如适用）
+## 样例与配方（Recipe）
 
-- 宿主中启用：`（见 Manifest / Module.cs）`
-- 相关模块：见「依赖说明」
+- `Smartent.Orchard.EmailClient.Samples/Recipes/Smartent.Orchard.EmailClient.Samples.recipe.json`
 
-## 使用方式
+## 注意事项与常见坑
 
-1. 在 Web 应用或模块解决方案中引用本项目。
-2. 将模块加入宿主，在后台「配置 → 功能」启用，并按需执行 `Recipes/` 下的配方。
-
-## 依赖说明
-
-### .NET / Orchard
-
-| 依赖 | 类型 | 用途 |
-|------|------|------|
-| `MailKit` | 包引用 | 版本 `4.18.2` |
-
-### 前端（如适用）
-
-规范：[frontend-dependencies](../../docs/standards/frontend-dependencies.md)。仅当本目录存在 `package.json` 时执行前端构建命令。
-
-| npm 包 | 版本 | 用途 | 构建 |
-|--------|------|------|------|
-| | — | — | — | — | | | | |
-
-## 升级与扩展
-
-- **Orchard**：与仓库 `OrchardCoreVersion` / 中央包管理对齐。
-- **扩展点**：Driver/Handler/Shape 及模块内接口（见源码）。
-- **定制**：配置节使用 `Smartent_*` / `Smartent_Orchard_*`；本 demo 仓库 **不** 读取遗留 `Lombiq_*` 节。
+- 每租户仅启用必要 Feature。
+- 升级 Orchard Core 前先跑 `*.Tests` / `*.Tests.UI`。
 
 ## 测试
 
 ```powershell
-dotnet build "src/Modules/Smartent.Orchard.EmailClient/Smartent.Orchard.EmailClient/Smartent.Orchard.EmailClient.csproj"
-dotnet test "src/Modules/Smartent.Orchard.EmailClient/Smartent.Orchard.EmailClient/Smartent.Orchard.EmailClient.csproj"
+dotnet build src/Modules/Smartent.Orchard.EmailClient/Smartent.Orchard.EmailClient/Smartent.Orchard.EmailClient.csproj
+dotnet test src/Modules/Smartent.Orchard.EmailClient/*.Tests*.csproj
 ```
 
-UI 测试：在解决方案中筛选 `*.Tests.UI.csproj` 运行。
+## 本目录相关工程
 
-## 来源与许可
+- `Smartent.Orchard.EmailClient` — 主模块
+- `Smartent.Orchard.EmailClient.Samples` — 样例与配方
+- `Smartent.Orchard.EmailClient.Tests.UI` — 自动化/UI 测试
 
-- 自 Lombiq OSOCE 谱系迁入；已 Smartent 化包 ID 与命名空间。
-- 许可：MIT（见仓库根 `License.md`）。
+## 来源
+
+Smartent Orchard Extensions 培训/demo 单体仓库；由 Lombiq OSOCE 谱系迁入。许可见仓库根目录 MIT。

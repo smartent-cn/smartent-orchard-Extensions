@@ -1,78 +1,80 @@
+<!-- MODULE-DOC-GENERATED -->
 # Smartent.Orchard.LoginAsAnybody
 
-> **Status**: Training/demo monorepo · **中文说明**: [Readme-CN.md](Readme-CN.md)  
-> **Path**: `src/Modules/Smartent.Orchard.LoginAsAnybody/Smartent.Orchard.LoginAsAnybody`
+> **中文说明**: [Readme-CN.md](Readme-CN.md)  
+> **PackageId**: `Smartent.Orchard.LoginAsAnybody` · **Path**: `src/Modules/Smartent.Orchard.LoginAsAnybody`
 
 ## Summary
 
 An Orchard Core module that allows administrator users to log in as any user.
 
-## Features
+## When to use
 
-**Implements**
+Development/staging only: impersonate users for support or QA.
 
-- - An Orchard Core module that allows administrator users to log in as any user.
+## Quick start
 
-**Out of scope**
+1. Add `<ProjectReference Include="src/Modules/Smartent.Orchard.LoginAsAnybody/Smartent.Orchard.LoginAsAnybody/Smartent.Orchard.LoginAsAnybody.csproj" />` to your host (e.g. `Smartent.Demo.Web`).
+2. Build: `dotnet build src/Modules/Smartent.Orchard.LoginAsAnybody/Smartent.Orchard.LoginAsAnybody/Smartent.Orchard.LoginAsAnybody.csproj`.
+3. Run the site, open **Configuration → Features**, enable **`LoginAsAnybody`** (and dependencies listed above).
+4. Apply setup recipe if needed: `see Samples folder` from **Tools → Recipes**.
+5. For demo host: `dotnet run --project src/Demo/Smartent.Demo.Web/Smartent.Demo.Web.csproj`.
 
-- - Does not replace Orchard Core built-in features unless documented.
+## Orchard features
 
-## References
+| Feature Id | Name | Depends on |
+|------------|------|------------|
+| `LoginAsAnybody` | Smartent Orchard Login as Anybody | OrchardCore.Users |
 
-### Monorepo (development)
+Enable in **Configuration → Features** (per tenant unless the module is host-only).
+
+## Configuration
+
+No dedicated `appsettings` section in this package; configuration is optional or via Orchard settings.
+
+> Config sections use `Smartent_*` / `Smartent_Orchard_*` only (no legacy `Lombiq_*` in this demo repo).
+
+## Usage (site owners & admins)
+
+Use Orchard admin and module-specific menus after enabling features.
+
+## Usage (developers)
+
+Extend via DI, handlers, shapes, and optional recipes in the Samples project.
+
+### References
 
 ```xml
 <ProjectReference Include="src/Modules/Smartent.Orchard.LoginAsAnybody/Smartent.Orchard.LoginAsAnybody/Smartent.Orchard.LoginAsAnybody.csproj" />
 ```
 
-### NuGet (when published; version is indicative)
+### NuGet (when published)
 
 ```xml
 <PackageReference Include="Smartent.Orchard.LoginAsAnybody" Version="1.0.0" />
 ```
 
-### Orchard features (if applicable)
+## Samples & recipes
 
-- Enable in host: `（见 Manifest / Module.cs）`
-- Related modules: see Dependencies
+- Optional: enable `Smartent.Orchard.LoginAsAnybody.Samples` and import its recipes.
 
-## Usage
+## Pitfalls & cautions
 
-1. Reference this project from your web app or module solution.
-2. Add the module to the host (`Program` / `Startup`), enable features in Admin → Configuration → Features, and run Recipes if provided under `Recipes/`.
-
-## Dependencies
-
-### .NET / Orchard
-
-| Dependency | Type | Purpose |
-|------------|------|---------|
-| `OrchardCore.Users` | Package | Version `$(OrchardCoreVersion)` |
-
-### Frontend (if applicable)
-
-See [frontend-dependencies standard](../../docs/standards/frontend-dependencies.md). Run `pnpm`/`npm` scripts only when this folder has `package.json`.
-
-| npm package | Version | Purpose | Build |
-|-------------|---------|---------|-------|
-| | — | — | — | — | | | | |
-
-## Upgrade & extension
-
-- **Orchard**: Aligns with repository `OrchardCoreVersion` / central package management.
-- **Extension points**: Drivers, handlers, shapes, and `IDataTableDataProvider`-style interfaces (see source).
-- **Customization**: Prefer configuration keys under `Smartent_*` / `Smartent_Orchard_*`; this demo repo does not read legacy `Lombiq_*` sections.
+- **Never enable in production** without strict network and role controls.
+- Audit all impersonation actions.
 
 ## Tests
 
 ```powershell
-dotnet build "src/Modules/Smartent.Orchard.LoginAsAnybody/Smartent.Orchard.LoginAsAnybody/Smartent.Orchard.LoginAsAnybody.csproj"
-dotnet test "src/Modules/Smartent.Orchard.LoginAsAnybody/Smartent.Orchard.LoginAsAnybody/Smartent.Orchard.LoginAsAnybody.csproj"
+dotnet build src/Modules/Smartent.Orchard.LoginAsAnybody/Smartent.Orchard.LoginAsAnybody/Smartent.Orchard.LoginAsAnybody.csproj
+dotnet test src/Modules/Smartent.Orchard.LoginAsAnybody/*.Tests*.csproj
 ```
 
-UI tests: filter `*.Tests.UI.csproj` in the solution.
+## Related projects in this folder
 
-## Provenance & license
+- `Smartent.Orchard.LoginAsAnybody` — main module
+- `Smartent.Orchard.LoginAsAnybody.Tests.UI` — automated/UI tests
 
-- Migrated from Lombiq OSOCE lineage; Smartent package IDs and namespaces.
-- License: MIT (see repository root `License.md`).
+## Provenance
+
+Smartent Orchard Extensions training/demo monorepo; migrated from Lombiq OSOCE lineage. MIT license at repository root.

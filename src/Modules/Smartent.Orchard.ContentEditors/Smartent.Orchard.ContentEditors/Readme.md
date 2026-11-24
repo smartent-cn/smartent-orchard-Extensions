@@ -1,84 +1,81 @@
+<!-- MODULE-DOC-GENERATED -->
 # Smartent.Orchard.ContentEditors
 
-> **Status**: Training/demo monorepo · **中文说明**: [Readme-CN.md](Readme-CN.md)  
-> **Path**: `src/Modules/Smartent.Orchard.ContentEditors/Smartent.Orchard.ContentEditors`
+> **中文说明**: [Readme-CN.md](Readme-CN.md)  
+> **PackageId**: `Smartent.Orchard.ContentEditors` · **Path**: `src/Modules/Smartent.Orchard.ContentEditors`
 
 ## Summary
 
 Module for managing advanced content editing processes based on editor groups and asynchronous operations.
 
-## Features
+## When to use
 
-**Implements**
+Orchard Core extension module in the Smartent demo monorepo.
 
-- - Module for managing advanced content editing processes based on editor groups and asynchronous operations.
+## Quick start
 
-**Out of scope**
+1. Add `<ProjectReference Include="src/Modules/Smartent.Orchard.ContentEditors/Smartent.Orchard.ContentEditors/Smartent.Orchard.ContentEditors.csproj" />` to your host (e.g. `Smartent.Demo.Web`).
+2. Build: `dotnet build src/Modules/Smartent.Orchard.ContentEditors/Smartent.Orchard.ContentEditors/Smartent.Orchard.ContentEditors.csproj`.
+3. Run the site, open **Configuration → Features**, enable **`FeatureIds.AsyncEditor`** (and dependencies listed above).
+4. Apply setup recipe if needed: `see Samples folder` from **Tools → Recipes**.
+5. For demo host: `dotnet run --project src/Demo/Smartent.Demo.Web/Smartent.Demo.Web.csproj`.
 
-- - Does not replace Orchard Core built-in features unless documented.
+## Orchard features
 
-## References
+| Feature Id | Name | Depends on |
+|------------|------|------------|
+| `FeatureIds.AsyncEditor` | Smartent Async Editor | OrchardCore.ContentFields |
 
-### Monorepo (development)
+Enable in **Configuration → Features** (per tenant unless the module is host-only).
+
+## Configuration
+
+No dedicated `appsettings` section in this package; configuration is optional or via Orchard settings.
+
+> Config sections use `Smartent_*` / `Smartent_Orchard_*` only (no legacy `Lombiq_*` in this demo repo).
+
+## Usage (site owners & admins)
+
+Use Orchard admin and module-specific menus after enabling features.
+
+## Usage (developers)
+
+Extend via DI, handlers, shapes, and optional recipes in the Samples project.
+
+### References
 
 ```xml
-<ProjectReference Include="../../Smartent.Orchard.VueJs/Smartent.Orchard.VueJs.Resources/Smartent.Orchard.VueJs.Resources.csproj" />
+<ProjectReference Include="src/Modules/Smartent.Orchard.ContentEditors/Smartent.Orchard.ContentEditors/Smartent.Orchard.ContentEditors.csproj" />
 ```
 
-### NuGet (when published; version is indicative)
+### NuGet (when published)
 
 ```xml
 <PackageReference Include="Smartent.Orchard.ContentEditors" Version="1.0.0" />
 ```
 
-### Orchard features (if applicable)
+## Samples & recipes
 
-- Enable in host: `（见 Manifest / Module.cs）`
-- Related modules: see Dependencies
+- Optional: enable `Smartent.Orchard.ContentEditors.Samples` and import its recipes.
 
-## Usage
+## Pitfalls & cautions
 
-1. Reference this project from your web app or module solution.
-2. Add the module to the host (`Program` / `Startup`), enable features in Admin → Configuration → Features, and run Recipes if provided under `Recipes/`.
-
-## Dependencies
-
-### .NET / Orchard
-
-| Dependency | Type | Purpose |
-|------------|------|---------|
-| `OrchardCore.ContentFields` | Package | Version `$(OrchardCoreVersion)` |
-| `OrchardCore.ContentManagement` | Package | Version `$(OrchardCoreVersion)` |
-| `OrchardCore.ContentTypes.Abstractions` | Package | Version `$(OrchardCoreVersion)` |
-| `OrchardCore.DisplayManagement` | Package | Version `$(OrchardCoreVersion)` |
-| `OrchardCore.Media` | Package | Version `$(OrchardCoreVersion)` |
-| `OrchardCore.ResourceManagement` | Package | Version `$(OrchardCoreVersion)` |
-| `Smartent.Orchard.VueJs.Resources` | Package | Version `10.0.0` |
-
-### Frontend (if applicable)
-
-See [frontend-dependencies standard](../../docs/standards/frontend-dependencies.md). Run `pnpm`/`npm` scripts only when this folder has `package.json`.
-
-| npm package | Version | Purpose | Build |
-|-------------|---------|---------|-------|
-| | `vue-router` | 4.5.1 | dependencies | see package.json scripts | | | | |
-
-## Upgrade & extension
-
-- **Orchard**: Aligns with repository `OrchardCoreVersion` / central package management.
-- **Extension points**: Drivers, handlers, shapes, and `IDataTableDataProvider`-style interfaces (see source).
-- **Customization**: Prefer configuration keys under `Smartent_*` / `Smartent_Orchard_*`; this demo repo does not read legacy `Lombiq_*` sections.
+- Enable only required features per tenant.
+- Test with `*.Tests` / `*.Tests.UI` before upgrading Orchard Core.
 
 ## Tests
 
 ```powershell
-dotnet build "src/Modules/Smartent.Orchard.ContentEditors/Smartent.Orchard.ContentEditors/Smartent.Orchard.ContentEditors.csproj"
-dotnet test "src/Modules/Smartent.Orchard.ContentEditors/Smartent.Orchard.ContentEditors/Smartent.Orchard.ContentEditors.csproj"
+dotnet build src/Modules/Smartent.Orchard.ContentEditors/Smartent.Orchard.ContentEditors/Smartent.Orchard.ContentEditors.csproj
+dotnet test src/Modules/Smartent.Orchard.ContentEditors/*.Tests*.csproj
 ```
 
-UI tests: filter `*.Tests.UI.csproj` in the solution.
+## Related projects in this folder
 
-## Provenance & license
+- `Smartent.Orchard.ContentEditors` — main module
+- `Smartent.Orchard.ContentEditors.Samples` — samples & recipes
+- `Smartent.Orchard.ContentEditors.Tests.UI` — automated/UI tests
 
-- Migrated from Lombiq OSOCE lineage; Smartent package IDs and namespaces.
-- License: MIT (see repository root `License.md`).
+## Provenance
+
+Smartent Orchard Extensions training/demo monorepo; migrated from Lombiq OSOCE lineage. MIT license at repository root.

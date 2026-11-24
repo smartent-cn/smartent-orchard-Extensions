@@ -1,23 +1,79 @@
-# Smartent Orchard Audit Trail Extensions for Orchard Core
-> **中文说明**: [Readme-CN.md](Readme-CN.md)
+<!-- MODULE-DOC-GENERATED -->
+# Smartent.Orchard.AuditTrail
 
+> **中文说明**: [Readme-CN.md](Readme-CN.md)  
+> **PackageId**: `Smartent.Orchard.AuditTrail` · **Path**: `src/Modules/Smartent.Orchard.AuditTrail`
 
-[![Smartent.Orchard.AuditTrail NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.AuditTrail?label=Smartent.Orchard.AuditTrail)](https://www.nuget.org/packages/Smartent.Orchard.AuditTrail/)
+## Summary
 
-## About
+A module with additional features for the Audit Trail module in Orchard Core.
 
-A module with additional features for the [Audit Trail module](https://docs.orchardcore.net/en/latest/docs/reference/modules/AuditTrail/) in Orchard Core.
+## When to use
 
-Do you want to quickly try out this project and see it in action? Check it out in our [Open-Source Orchard Core Extensions](https://github.com/smartent-cn/smartent-orchard-Extensions) full Orchard Core solution and also see our other useful Orchard Core-related open-source projects!
+Use when you need version-style access to content history via Audit Trail events beyond stock OrchardCore.AuditTrail.
 
-## Documentation
+## Quick start
 
-This module currently includes:
+1. Add `<ProjectReference Include="src/Modules/Smartent.Orchard.AuditTrail/Smartent.Orchard.AuditTrail.csproj" />` to your host (e.g. `Smartent.Demo.Web`).
+2. Build: `dotnet build src/Modules/Smartent.Orchard.AuditTrail/Smartent.Orchard.AuditTrail.csproj`.
+3. Run the site, open **Configuration → Features**, enable **`Default`** (and dependencies listed above).
+4. Apply setup recipe if needed: `see Samples folder` from **Tools → Recipes**.
+5. For demo host: `dotnet run --project src/Demo/Smartent.Demo.Web/Smartent.Demo.Web.csproj`.
 
-- `IAuditTrailContentVersionNumberService`: A service for working with previous versions of contents (even if they aren't `Versionable`) using Audit Trail's Content Saved events.
+## Orchard features
 
-## Contributing and support
+| Feature Id | Name | Depends on |
+|------------|------|------------|
+| `Default` | Smartent Orchard Audit Trail Extensions | OrchardCore.Contents, OrchardCore.AuditTrail |
 
-Bug reports, feature requests, comments, questions, code contributions and love letters are warmly welcome. You can send them to us via GitHub issues and pull requests. Please adhere to our [open-source guidelines](https://gitee.com/smartent/open-source-guidelines) while doing so.
+Enable in **Configuration → Features** (per tenant unless the module is host-only).
 
-This project is developed by [Smartent](https://gitee.com/smartent/). Commercial-grade support is available through Smartent.
+## Configuration
+
+No dedicated `appsettings` section in this package; configuration is optional or via Orchard settings.
+
+> Config sections use `Smartent_*` / `Smartent_Orchard_*` only (no legacy `Lombiq_*` in this demo repo).
+
+## Usage (site owners & admins)
+
+No dedicated admin menu; features register services used from code and other modules.
+
+## Usage (developers)
+
+Inject `IAuditTrailContentVersionNumberService` in handlers or services. Requires **OrchardCore.AuditTrail** enabled.
+
+### References
+
+```xml
+<ProjectReference Include="src/Modules/Smartent.Orchard.AuditTrail/Smartent.Orchard.AuditTrail.csproj" />
+```
+
+### NuGet (when published)
+
+```xml
+<PackageReference Include="Smartent.Orchard.AuditTrail" Version="1.0.0" />
+```
+
+## Samples & recipes
+
+- Optional: enable `Smartent.Orchard.AuditTrail.Samples` and import its recipes.
+
+## Pitfalls & cautions
+
+- Depends on Audit Trail event retention; purging audit logs affects history.
+- Not a replacement for **Versionable** content definitions unless you design for it.
+
+## Tests
+
+```powershell
+dotnet build src/Modules/Smartent.Orchard.AuditTrail/Smartent.Orchard.AuditTrail.csproj
+dotnet test src/Modules/Smartent.Orchard.AuditTrail/*.Tests*.csproj
+```
+
+## Related projects in this folder
+
+- `.` — `Smartent.Orchard.AuditTrail`
+
+## Provenance
+
+Smartent Orchard Extensions training/demo monorepo; migrated from Lombiq OSOCE lineage. MIT license at repository root.

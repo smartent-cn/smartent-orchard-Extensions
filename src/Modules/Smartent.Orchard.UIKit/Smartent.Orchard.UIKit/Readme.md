@@ -1,79 +1,83 @@
+<!-- MODULE-DOC-GENERATED -->
 # Smartent.Orchard.UIKit
 
-> **Status**: Training/demo monorepo · **中文说明**: [Readme-CN.md](Readme-CN.md)  
-> **Path**: `src/Modules/Smartent.Orchard.UIKit/Smartent.Orchard.UIKit`
+> **中文说明**: [Readme-CN.md](Readme-CN.md)  
+> **PackageId**: `Smartent.Orchard.UIKit` · **Path**: `src/Modules/Smartent.Orchard.UIKit`
 
 ## Summary
 
 This module contains reusable shapes like text editors, custom-style checkboxes, dropdown editors, and in the future potentially more complex editors.
 
-## Features
+## When to use
 
-**Implements**
+Orchard Core extension module in the Smartent demo monorepo.
 
-- - This module contains reusable shapes like text editors, custom-style checkboxes, dropdown editors, and in the future potentially more complex editors.
+## Quick start
 
-**Out of scope**
+1. Add `<ProjectReference Include="src/Modules/Smartent.Orchard.UIKit/Smartent.Orchard.UIKit/Smartent.Orchard.UIKit.csproj" />` to your host (e.g. `Smartent.Demo.Web`).
+2. Build: `dotnet build src/Modules/Smartent.Orchard.UIKit/Smartent.Orchard.UIKit/Smartent.Orchard.UIKit.csproj`.
+3. Run the site, open **Configuration → Features**, enable **`Base`** (and dependencies listed above).
+4. Apply setup recipe if needed: `Smartent.Orchard.UIKit.Widgets/Recipes/Smartent.Orchard.UIKit.Widgets.Content.recipe.json` from **Tools → Recipes**.
+5. For demo host: `dotnet run --project src/Demo/Smartent.Demo.Web/Smartent.Demo.Web.csproj`.
 
-- - Does not replace Orchard Core built-in features unless documented.
+## Orchard features
 
-## References
+| Feature Id | Name | Depends on |
+|------------|------|------------|
+| `Base` | Smartent Orchard UI Kit | — |
+| `Showcase` | Smartent Orchard UI Kit - Showcase page | Smartent.Orchard.UIKit |
 
-### Monorepo (development)
+Enable in **Configuration → Features** (per tenant unless the module is host-only).
+
+## Configuration
+
+No dedicated `appsettings` section in this package; configuration is optional or via Orchard settings.
+
+> Config sections use `Smartent_*` / `Smartent_Orchard_*` only (no legacy `Lombiq_*` in this demo repo).
+
+## Usage (site owners & admins)
+
+Use Orchard admin and module-specific menus after enabling features.
+
+## Usage (developers)
+
+Extend via DI, handlers, shapes, and optional recipes in the Samples project.
+
+### References
 
 ```xml
-<ProjectReference Include="../../../Test/Smartent.Test.UI/Smartent.Test.UI.AppExtensions/Smartent.Test.UI.AppExtensions.csproj" />
+<ProjectReference Include="src/Modules/Smartent.Orchard.UIKit/Smartent.Orchard.UIKit/Smartent.Orchard.UIKit.csproj" />
 ```
 
-### NuGet (when published; version is indicative)
+### NuGet (when published)
 
 ```xml
 <PackageReference Include="Smartent.Orchard.UIKit" Version="1.0.0" />
 ```
 
-### Orchard features (if applicable)
+## Samples & recipes
 
-- Enable in host: `（见 Manifest / Module.cs）`
-- Related modules: see Dependencies
+- `Smartent.Orchard.UIKit.Widgets/Recipes/Smartent.Orchard.UIKit.Widgets.Content.recipe.json`
 
-## Usage
+## Pitfalls & cautions
 
-1. Reference this project from your web app or module solution.
-2. Add the module to the host (`Program` / `Startup`), enable features in Admin → Configuration → Features, and run Recipes if provided under `Recipes/`.
-
-## Dependencies
-
-### .NET / Orchard
-
-| Dependency | Type | Purpose |
-|------------|------|---------|
-| `Smartent.Test.UI.AppExtensions` | Package | Version `$(PackageVersionSmartentTestsUI) ` |
-| `MySqlConnector` | Package | Version `2.6.2` |
-
-### Frontend (if applicable)
-
-See [frontend-dependencies standard](../../docs/standards/frontend-dependencies.md). Run `pnpm`/`npm` scripts only when this folder has `package.json`.
-
-| npm package | Version | Purpose | Build |
-|-------------|---------|---------|-------|
-| | `slick-carousel` | github:kenwheeler/slick#0bce01e901628d038b3a5f6d0947e14fb0ae6016 | dependencies | see package.json scripts | | | | |
-
-## Upgrade & extension
-
-- **Orchard**: Aligns with repository `OrchardCoreVersion` / central package management.
-- **Extension points**: Drivers, handlers, shapes, and `IDataTableDataProvider`-style interfaces (see source).
-- **Customization**: Prefer configuration keys under `Smartent_*` / `Smartent_Orchard_*`; this demo repo does not read legacy `Lombiq_*` sections.
+- Enable only required features per tenant.
+- Test with `*.Tests` / `*.Tests.UI` before upgrading Orchard Core.
 
 ## Tests
 
 ```powershell
-dotnet build "src/Modules/Smartent.Orchard.UIKit/Smartent.Orchard.UIKit/Smartent.Orchard.UIKit.csproj"
-dotnet test "src/Modules/Smartent.Orchard.UIKit/Smartent.Orchard.UIKit/Smartent.Orchard.UIKit.csproj"
+dotnet build src/Modules/Smartent.Orchard.UIKit/Smartent.Orchard.UIKit/Smartent.Orchard.UIKit.csproj
+dotnet test src/Modules/Smartent.Orchard.UIKit/*.Tests*.csproj
 ```
 
-UI tests: filter `*.Tests.UI.csproj` in the solution.
+## Related projects in this folder
 
-## Provenance & license
+- `Smartent.Orchard.UIKit` — main module
+- `Smartent.Orchard.UIKit.Tests.UI` — automated/UI tests
+- `Smartent.Orchard.UIKit.Widgets` — main module
+- `Smartent.Orchard.UIKit.Widgets.Tests.UI` — automated/UI tests
 
-- Migrated from Lombiq OSOCE lineage; Smartent package IDs and namespaces.
-- License: MIT (see repository root `License.md`).
+## Provenance
+
+Smartent Orchard Extensions training/demo monorepo; migrated from Lombiq OSOCE lineage. MIT license at repository root.

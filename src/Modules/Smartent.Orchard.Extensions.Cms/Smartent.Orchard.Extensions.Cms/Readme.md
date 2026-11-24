@@ -1,90 +1,101 @@
+<!-- MODULE-DOC-GENERATED -->
 # Smartent.Orchard.Extensions.Cms
 
-> **Status**: Training/demo monorepo · **中文说明**: [Readme-CN.md](Readme-CN.md)  
-> **Path**: `src/Modules/Smartent.Orchard.Extensions.Cms/Smartent.Orchard.Extensions.Cms`
+> **中文说明**: [Readme-CN.md](Readme-CN.md)  
+> **PackageId**: `Smartent.Orchard.Extensions.Cms` · **Path**: `src/Modules/Smartent.Orchard.Extensions.Cms`
 
 ## Summary
 
 Orchard Core module containing some handy extensions (e.g. useful content types and widgets). It's also available on all sites of DotNest, the Orchard SaaS.
 
-## Features
+## When to use
 
-**Implements**
+Orchard Core extension module in the Smartent demo monorepo.
 
-- - Orchard Core module containing some handy extensions (e.g. useful content types and widgets). It's also available on all sites of DotNest, the Orchard SaaS.
+## Quick start
 
-**Out of scope**
+1. Add `<ProjectReference Include="src/Modules/Smartent.Orchard.Extensions.Cms/Smartent.Orchard.Extensions.Cms/Smartent.Orchard.Extensions.Cms.csproj" />` to your host (e.g. `Smartent.Demo.Web`).
+2. Build: `dotnet build src/Modules/Smartent.Orchard.Extensions.Cms/Smartent.Orchard.Extensions.Cms/Smartent.Orchard.Extensions.Cms.csproj`.
+3. Run the site, open **Configuration → Features**, enable **`CodeGeneration`** (and dependencies listed above).
+4. Apply setup recipe if needed: `Smartent.Orchard.Extensions.Cms.Tests.UI/Recipes/Smartent.Orchard.Extensions.Cms.Tests.UI.Lucide.Tests.recipe.json` from **Tools → Recipes**.
+5. For demo host: `dotnet run --project src/Demo/Smartent.Demo.Web/Smartent.Demo.Web.csproj`.
 
-- - Does not replace Orchard Core built-in features unless documented.
+## Orchard features
 
-## References
+| Feature Id | Name | Depends on |
+|------------|------|------------|
+| `CodeGeneration` | Smartent Orchard Extensions - Code Generation Helpful Extensions | OrchardCore.Resources |
+| `ContentSets` | Smartent Orchard Extensions - Content Sets | OrchardCore.ContentManagement |
+| `Flows` | Smartent Orchard Extensions - Flows Helpful Extensions | OrchardCore.Flows |
+| `Widgets` | Smartent Orchard Extensions - Helpful Widgets | OrchardCore.Html, OrchardCore.Liquid, OrchardCore.Title |
+| `ContentTypes` | Smartent Orchard Extensions - Helpful Content Types | OrchardCore.Autoroute, OrchardCore.Flows, OrchardCore.Title |
+| `Security` | Smartent Orchard Extensions - Security Helpful Extensions | — |
+| `ShapeTracing` | Smartent Orchard Extensions - Shape Tracing Helpful Extensions | — |
+| `FeatureIds.Shortcodes` | Smartent Orchard Extensions - Shortcode Extensions | — |
+| `Emails` | Smartent Orchard Extensions - Emails | OrchardCore.Email |
+| `TargetBlank` | Smartent Orchard Extensions - Target Blank | — |
+| `SiteTexts` | Smartent Orchard Extensions - Site Texts | OrchardCore.Markdown |
+| `OrchardRecipeMigration` | Smartent Orchard Extensions - Orchard 1 Recipe Migration | OrchardCore.Contents |
+| `ResetPasswordActivity` | Smartent Orchard Extensions - Reset password workflow activity | OrchardCore.Users.ResetPassword, OrchardCore.Workflows |
+| `Trumbowyg` | Smartent Orchard Extensions - Trumbowyg code snippet | — |
+| `TrumbowygBlogPosts` | Smartent Orchard Extensions - Trumbowyg code snippet - Blog Posts | — |
+| `GoogleTag` | Smartent Orchard Extensions - Google Tag | — |
+| `Liquid` | Smartent Orchard Extensions - Liquid Tags | — |
+| `Lucide` | Smartent Orchard Extensions - Lucide | OrchardCore.ContentFields, OrchardCore.Resources |
+| `SimpleIcons` | Smartent Orchard Extensions - Simple Icons | OrchardCore.DisplayManagement |
 
-### Monorepo (development)
+Enable in **Configuration → Features** (per tenant unless the module is host-only).
+
+## Configuration
+
+No dedicated `appsettings` section in this package; configuration is optional or via Orchard settings.
+
+> Config sections use `Smartent_*` / `Smartent_Orchard_*` only (no legacy `Lombiq_*` in this demo repo).
+
+## Usage (site owners & admins)
+
+Use Orchard admin and module-specific menus after enabling features.
+
+## Usage (developers)
+
+Extend via DI, handlers, shapes, and optional recipes in the Samples project.
+
+### References
 
 ```xml
 <ProjectReference Include="src/Modules/Smartent.Orchard.Extensions.Cms/Smartent.Orchard.Extensions.Cms/Smartent.Orchard.Extensions.Cms.csproj" />
 ```
 
-### NuGet (when published; version is indicative)
+### NuGet (when published)
 
 ```xml
 <PackageReference Include="Smartent.Orchard.Extensions.Cms" Version="1.0.0" />
 ```
 
-### Orchard features (if applicable)
+## Samples & recipes
 
-- Enable in host: `（见 Manifest / Module.cs）`
-- Related modules: see Dependencies
+- `Smartent.Orchard.Extensions.Cms.Tests.UI/Recipes/Smartent.Orchard.Extensions.Cms.Tests.UI.Lucide.Tests.recipe.json`
+- `Smartent.Orchard.Extensions.Cms.Tests.UI/Recipes/Smartent.Orchard.Extensions.Cms.Tests.UI.TrumbowygBlogPosts.Tests.recipe.json`
+- `Smartent.Orchard.Extensions.Cms/Recipes/Smartent.Orchard.Extensions.Cms.ContentSets.Sample.recipe.json`
+- `Smartent.Orchard.Extensions.Cms/Recipes/Smartent.Orchard.Extensions.Cms.Liquid.Sample.recipe.json`
 
-## Usage
+## Pitfalls & cautions
 
-1. Reference this project from your web app or module solution.
-2. Add the module to the host (`Program` / `Startup`), enable features in Admin → Configuration → Features, and run Recipes if provided under `Recipes/`.
-
-## Dependencies
-
-### .NET / Orchard
-
-| Dependency | Type | Purpose |
-|------------|------|---------|
-| `OrchardCore.Autoroute` | Package | Version `$(OrchardCoreVersion)` |
-| `OrchardCore.Contents` | Package | Version `$(OrchardCoreVersion)` |
-| `OrchardCore.Flows` | Package | Version `$(OrchardCoreVersion)` |
-| `OrchardCore.Html` | Package | Version `$(OrchardCoreVersion)` |
-| `OrchardCore.Lists` | Package | Version `$(OrchardCoreVersion)` |
-| `OrchardCore.Liquid` | Package | Version `$(OrchardCoreVersion)` |
-| `OrchardCore.Markdown` | Package | Version `$(OrchardCoreVersion)` |
-| `OrchardCore.MetaWeblog.Abstractions` | Package | Version `$(OrchardCoreVersion)` |
-| `OrchardCore.Rules.Abstractions` | Package | Version `$(OrchardCoreVersion)` |
-| `OrchardCore.Workflows` | Package | Version `$(OrchardCoreVersion)` |
-| `Scrutor` | Package | Version `7.0.0` |
-| `HtmlSanitizer` | Package | Version `9.2.1039` |
-
-### Frontend (if applicable)
-
-See [frontend-dependencies standard](../../docs/standards/frontend-dependencies.md). Run `pnpm`/`npm` scripts only when this folder has `package.json`.
-
-| npm package | Version | Purpose | Build |
-|-------------|---------|---------|-------|
-| | `prismjs` | 1.30.0 | dependencies | see package.json scripts |
-| `trumbowyg` | 2.31.0 | dependencies | see package.json scripts | | | | |
-
-## Upgrade & extension
-
-- **Orchard**: Aligns with repository `OrchardCoreVersion` / central package management.
-- **Extension points**: Drivers, handlers, shapes, and `IDataTableDataProvider`-style interfaces (see source).
-- **Customization**: Prefer configuration keys under `Smartent_*` / `Smartent_Orchard_*`; this demo repo does not read legacy `Lombiq_*` sections.
+- Enable only required features per tenant.
+- Test with `*.Tests` / `*.Tests.UI` before upgrading Orchard Core.
 
 ## Tests
 
 ```powershell
-dotnet build "src/Modules/Smartent.Orchard.Extensions.Cms/Smartent.Orchard.Extensions.Cms/Smartent.Orchard.Extensions.Cms.csproj"
-dotnet test "src/Modules/Smartent.Orchard.Extensions.Cms/Smartent.Orchard.Extensions.Cms/Smartent.Orchard.Extensions.Cms.csproj"
+dotnet build src/Modules/Smartent.Orchard.Extensions.Cms/Smartent.Orchard.Extensions.Cms/Smartent.Orchard.Extensions.Cms.csproj
+dotnet test src/Modules/Smartent.Orchard.Extensions.Cms/*.Tests*.csproj
 ```
 
-UI tests: filter `*.Tests.UI.csproj` in the solution.
+## Related projects in this folder
 
-## Provenance & license
+- `Smartent.Orchard.Extensions.Cms` — main module
+- `Smartent.Orchard.Extensions.Cms.Tests.UI` — automated/UI tests
 
-- Migrated from Lombiq OSOCE lineage; Smartent package IDs and namespaces.
-- License: MIT (see repository root `License.md`).
+## Provenance
+
+Smartent Orchard Extensions training/demo monorepo; migrated from Lombiq OSOCE lineage. MIT license at repository root.

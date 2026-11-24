@@ -1,39 +1,71 @@
-# Smartent Orchard Hosting - Idle Tenant Management for Orchard Core
-> **中文说明**: [Readme-CN.md](Readme-CN.md)
+# Smartent.Orchard.Hosting.Tenants.IdleTenantManagement
 
+> **中文说明**: [Readme-CN.md](Readme-CN.md)  
+> **PackageId**: `Smartent.Orchard.Hosting.Tenants.IdleTenantManagement` · **Path**: `src/Modules/Smartent.Orchard.Hosting.Tenants/Smartent.Orchard.Hosting.Tenants.IdleTenantManagement`
 
-## About
+## Summary
 
-With the help of this module, you can ensure that a tenant that didn't receive any requests for a configurable time will shut down. This can be used to free up resources and thus increase site density.
+With the help of this module, you can ensure that any tenant where the feature is enabled will shutdown after a preset time is elapsed. This can be used to free up resources.
 
-## Documentation
+## When to use
 
-This module contains the feature below.
+Tenant/hosting automation package; enable only on environments that need this capability.
 
-### `Smartent.Orchard.Hosting.Tenants.IdleTenantManagement`
+## Quick start
 
-This feature is available on any tenant. The maximum idle time can be set in the appsettings.json.
+Enable feature `ShutDownIdleTenants` on the host tenant; configure keys under `OrchardCore`.
 
-**NOTE:** Any tenant can have its own set of maximum idle time, however by default there is only one global time set.
+## Orchard features
 
-```csharp
-public void ConfigureServices(IServiceCollection services) =>
-    services.AddOrchardCms(
-        builder => builder.AddTenantFeatures(Smartent.Orchard.Hosting.Tenants.IdleTenantManagement.Constants.FeatureNames.ShutDownIdleTenants));
+| Feature Id | Name | Depends on |
+|------------|------|------------|
+| `ShutDownIdleTenants` | Smartent Orchard Hosting - Tenants Idle Tenant Management Shut Down Idle Tenants | — |
+
+Enable in **Configuration → Features** (per tenant unless the module is host-only).
+
+## Configuration
+
+No dedicated `appsettings` section in this package; configuration is optional or via Orchard settings.
+
+> Config sections use `Smartent_*` / `Smartent_Orchard_*` only (no legacy `Lombiq_*` in this demo repo).
+
+## Usage (site owners & admins)
+
+Hosting/tenant admin UI varies per package (see source `Startup.cs` and README in solution root).
+
+## Usage (developers)
+
+Reference this csproj from the SaaS/host web app; most packages register tenant management or health endpoints.
+
+### References
+
+```xml
+<ProjectReference Include="src/Modules/Smartent.Orchard.Hosting.Tenants/Smartent.Orchard.Hosting.Tenants.IdleTenantManagement/Smartent.Orchard.Hosting.Tenants.IdleTenantManagement.csproj" />
 ```
 
-**NOTE:** This way the feature will also be enabled on the Default tenant. You may not want to use this feature on the default tenant, so configure the corresponding `MaxIdleMinutes` as `0`. You can do this in an _appsettings.json_ file like this (see [the docs](https://docs.orchardcore.net/en/latest/docs/reference/core/Configuration/) for more details):
+### NuGet (when published)
 
-```json
-{
-  "OrchardCore": {
-    "Default": {
-      "Smartent_Orchard_Hosting_Tenants_IdleTenantManagement": {
-        "IdleShutdownOptions": {
-          "MaxIdleMinutes": 0
-        }
-      }
-    }
-  }
-}
+```xml
+<PackageReference Include="Smartent.Orchard.Hosting.Tenants.IdleTenantManagement" Version="1.0.0" />
 ```
+
+## Samples & recipes
+
+- See `Smartent.Orchard.Hosting.Tenants` solution Readme.
+
+## Pitfalls & cautions
+
+- Misconfiguration can lock tenants or block admin login; test in staging.
+- Secrets (storage, AI keys) belong in user secrets or Key Vault, not git.
+
+## Tests
+
+`dotnet test src/Modules/Smartent.Orchard.Hosting.Tenants/Smartent.Orchard.Hosting.Tenants.IdleTenantManagement/*.Tests*.csproj`
+
+## Related projects in this folder
+
+- Parent: `src/Modules/Smartent.Orchard.Hosting.Tenants/Readme.md`
+
+## Provenance
+
+Smartent Orchard Extensions training/demo monorepo; migrated from Lombiq OSOCE lineage. MIT license at repository root.

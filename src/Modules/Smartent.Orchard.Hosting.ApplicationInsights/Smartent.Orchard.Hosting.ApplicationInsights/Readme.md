@@ -1,85 +1,80 @@
+<!-- MODULE-DOC-GENERATED -->
 # Smartent.Orchard.Hosting.ApplicationInsights
 
-> **Status**: Training/demo monorepo · **中文说明**: [Readme-CN.md](Readme-CN.md)  
-> **Path**: `src/Modules/Smartent.Orchard.Hosting.ApplicationInsights/Smartent.Orchard.Hosting.ApplicationInsights`
+> **中文说明**: [Readme-CN.md](Readme-CN.md)  
+> **PackageId**: `Smartent.Orchard.Hosting.ApplicationInsights` · **Path**: `src/Modules/Smartent.Orchard.Hosting.ApplicationInsights`
 
 ## Summary
 
 This Orchard Core module enables easy integration of Azure Application Insights telemetry into Orchard. Just install the module, configure the instrumentation key from a configuration source, and collected data will start appearing in the Azure Portal.
 
-## Features
+## When to use
 
-**Implements**
+Orchard Core extension module in the Smartent demo monorepo.
 
-- - This Orchard Core module enables easy integration of Azure Application Insights telemetry into Orchard. Just install the module, configure the instrumentation key from a configuration source, and collected data will start appearing in the Azure Portal.
+## Quick start
 
-**Out of scope**
+1. Add `<ProjectReference Include="src/Modules/Smartent.Orchard.Hosting.ApplicationInsights/Smartent.Orchard.Hosting.ApplicationInsights/Smartent.Orchard.Hosting.ApplicationInsights.csproj" />` to your host (e.g. `Smartent.Demo.Web`).
+2. Build: `dotnet build src/Modules/Smartent.Orchard.Hosting.ApplicationInsights/Smartent.Orchard.Hosting.ApplicationInsights/Smartent.Orchard.Hosting.ApplicationInsights.csproj`.
+3. Run the site, open **Configuration → Features**, enable **`Smartent.Orchard.Hosting.ApplicationInsights`** (and dependencies listed above).
+4. Apply setup recipe if needed: `see Samples folder` from **Tools → Recipes**.
+5. For demo host: `dotnet run --project src/Demo/Smartent.Demo.Web/Smartent.Demo.Web.csproj`.
 
-- - Does not replace Orchard Core built-in features unless documented.
+## Orchard features
 
-## References
+| Feature Id | Name | Depends on |
+|------------|------|------------|
+| — | — | — |
 
-### Monorepo (development)
+Enable in **Configuration → Features** (per tenant unless the module is host-only).
+
+## Configuration
+
+No dedicated `appsettings` section in this package; configuration is optional or via Orchard settings.
+
+> Config sections use `Smartent_*` / `Smartent_Orchard_*` only (no legacy `Lombiq_*` in this demo repo).
+
+## Usage (site owners & admins)
+
+Use Orchard admin and module-specific menus after enabling features.
+
+## Usage (developers)
+
+Extend via DI, handlers, shapes, and optional recipes in the Samples project.
+
+### References
 
 ```xml
 <ProjectReference Include="src/Modules/Smartent.Orchard.Hosting.ApplicationInsights/Smartent.Orchard.Hosting.ApplicationInsights/Smartent.Orchard.Hosting.ApplicationInsights.csproj" />
 ```
 
-### NuGet (when published; version is indicative)
+### NuGet (when published)
 
 ```xml
 <PackageReference Include="Smartent.Orchard.Hosting.ApplicationInsights" Version="1.0.0" />
 ```
 
-### Orchard features (if applicable)
+## Samples & recipes
 
-- Enable in host: `（见 Manifest / Module.cs）`
-- Related modules: see Dependencies
+- Optional: enable `Smartent.Orchard.Hosting.ApplicationInsights.Samples` and import its recipes.
 
-## Usage
+## Pitfalls & cautions
 
-1. Reference this project from your web app or module solution.
-2. Enable tenant/hosting features and set `OrchardCore:Smartent_Orchard_Hosting_*` sections in `appsettings.json`.
-
-## Dependencies
-
-### .NET / Orchard
-
-| Dependency | Type | Purpose |
-|------------|------|---------|
-| `Azure.Identity` | Package | Version `1.21.0` |
-| `Microsoft.ApplicationInsights.AspNetCore` | Package | Version `2.23.0` |
-| `Microsoft.ApplicationInsights.Profiler.AspNetCore` | Package | Version `3.0.2` |
-| `Microsoft.AspNetCore.WebUtilities` | Package | Version `2.3.14` |
-| `MySqlConnector` | Package | Version `2.6.2` |
-| `OrchardCore.Media.Azure` | Package | Version `$(OrchardCoreVersion)` |
-| `OrchardCore.ContentManagement` | Package | Version `$(OrchardCoreVersion)` |
-| `OrchardCore.ContentTypes.Abstractions` | Package | Version `$(OrchardCoreVersion)` |
-
-### Frontend (if applicable)
-
-See [frontend-dependencies standard](../../docs/standards/frontend-dependencies.md). Run `pnpm`/`npm` scripts only when this folder has `package.json`.
-
-| npm package | Version | Purpose | Build |
-|-------------|---------|---------|-------|
-| | — | — | — | — | | | | |
-
-## Upgrade & extension
-
-- **Orchard**: Aligns with repository `OrchardCoreVersion` / central package management.
-- **Extension points**: Public APIs documented with Chinese XML comments in source.
-- **Customization**: Prefer configuration keys under `Smartent_*` / `Smartent_Orchard_*`; this demo repo does not read legacy `Lombiq_*` sections.
+- Enable only required features per tenant.
+- Test with `*.Tests` / `*.Tests.UI` before upgrading Orchard Core.
 
 ## Tests
 
 ```powershell
-dotnet build "src/Modules/Smartent.Orchard.Hosting.ApplicationInsights/Smartent.Orchard.Hosting.ApplicationInsights/Smartent.Orchard.Hosting.ApplicationInsights.csproj"
-dotnet test "src/Modules/Smartent.Orchard.Hosting.ApplicationInsights/Smartent.Orchard.Hosting.ApplicationInsights/Smartent.Orchard.Hosting.ApplicationInsights.csproj"
+dotnet build src/Modules/Smartent.Orchard.Hosting.ApplicationInsights/Smartent.Orchard.Hosting.ApplicationInsights/Smartent.Orchard.Hosting.ApplicationInsights.csproj
+dotnet test src/Modules/Smartent.Orchard.Hosting.ApplicationInsights/*.Tests*.csproj
 ```
 
-UI tests: filter `*.Tests.UI.csproj` in the solution.
+## Related projects in this folder
 
-## Provenance & license
+- `Smartent.Orchard.Hosting.ApplicationInsights` — main module
+- `Smartent.Orchard.Hosting.ApplicationInsights.Tests.UI` — automated/UI tests
 
-- Migrated from Lombiq OSOCE lineage; Smartent package IDs and namespaces.
-- License: MIT (see repository root `License.md`).
+## Provenance
+
+Smartent Orchard Extensions training/demo monorepo; migrated from Lombiq OSOCE lineage. MIT license at repository root.

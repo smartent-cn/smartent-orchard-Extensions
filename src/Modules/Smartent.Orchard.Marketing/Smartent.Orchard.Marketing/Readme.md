@@ -1,40 +1,86 @@
-# Smartent Orchard Marketing for Orchard Core
-> **中文说明**: [Readme-CN.md](Readme-CN.md)
+<!-- MODULE-DOC-GENERATED -->
+# Smartent.Orchard.Marketing
 
+> **中文说明**: [Readme-CN.md](Readme-CN.md)  
+> **PackageId**: `Smartent.Orchard.Marketing` · **Path**: `src/Modules/Smartent.Orchard.Marketing`
 
-[![Smartent.Orchard.Marketing NuGet](https://img.shields.io/nuget/v/Smartent.Orchard.Marketing?label=Smartent.Orchard.Marketing)](https://www.nuget.org/packages/Smartent.Orchard.Marketing/)
+## Summary
 
-## About
+Shared marketing abstractions, short URL hit handling, and client-side tracking composition.
 
-This module contains the shared pieces for the Smartent Orchard Marketing modules.
+## When to use
 
-## Documentation
+Pirsch analytics, URL shortener, and marketing tracking integration.
 
-This module contains the feature below.
+## Quick start
 
-### `Smartent.Orchard.Marketing`
+1. Add `<ProjectReference Include="src/Modules/Smartent.Orchard.Marketing/Smartent.Orchard.Marketing/Smartent.Orchard.Marketing.csproj" />` to your host (e.g. `Smartent.Demo.Web`).
+2. Build: `dotnet build src/Modules/Smartent.Orchard.Marketing/Smartent.Orchard.Marketing/Smartent.Orchard.Marketing.csproj`.
+3. Run the site, open **Configuration → Features**, enable **`FeatureIds.Base`** (and dependencies listed above).
+4. Apply setup recipe if needed: `see Samples folder` from **Tools → Recipes**.
+5. For demo host: `dotnet run --project src/Demo/Smartent.Demo.Web/Smartent.Demo.Web.csproj`.
 
-This feature contains the common abstractions and services used by the other marketing modules.
+## Orchard features
 
-Right now it mainly does two things:
+| Feature Id | Name | Depends on |
+|------------|------|------------|
+| `FeatureIds.Base` | Smartent Orchard Marketing | — |
 
-- It provides a common way to register marketing hits for short URL redirects.
-- It provides a common way to render client-side tracking markup from one or more provider modules.
+Enable in **Configuration → Features** (per tenant unless the module is host-only).
 
-Usually you won't use this module on its own. It is the base for other modules, like the URL shortener and analytics integrations.
+## Configuration
 
-To use the module, follow these steps:
+Configuration keys (under `OrchardCore`):
 
-1. Add the module to your solution.
-2. Enable the `Smartent.Orchard.Marketing` feature if a dependent module doesn't enable it for you.
-3. Add one or more marketing provider modules on top of it.
+- `OrchardCore:Smartent_Marketing`
 
-To implement a marketing provider module like `Smartent.Orchard.Marketing.Pirsch`, follow these steps:
+Use double underscore in environment variables, e.g. `OrchardCore__Smartent_Marketing__...`.
 
-1. Reference `Smartent.Orchard.Marketing` from your provider project.
-2. If you want to register hits for short URL redirects, implement `IShortUrlHitHandler`.
-3. If you want to inject client-side tracking markup, implement `IClientSideTrackingProvider`.
-4. Register your services from your module startup.
-5. Add your own settings, API client, proxy, or other provider-specific logic in your provider module.
-6. If your settings change the rendered client-side tracking markup, use `ClientSideTrackingSiteDisplayDriver<TSettings>` for the settings driver so the shared markup cache is invalidated automatically.
-7. If needed, add your own admin UI, maintenance tasks, and tests the same way as the Pirsch module does.
+> Config sections use `Smartent_*` / `Smartent_Orchard_*` only (no legacy `Lombiq_*` in this demo repo).
+
+## Usage (site owners & admins)
+
+Use Orchard admin and module-specific menus after enabling features.
+
+## Usage (developers)
+
+Configure `OrchardCore:Smartent_Marketing` in `appsettings.json`; submodules: `Smartent.Orchard.Marketing.Pirsch`, `.UrlShortener`.
+
+### References
+
+```xml
+<ProjectReference Include="src/Modules/Smartent.Orchard.Marketing/Smartent.Orchard.Marketing/Smartent.Orchard.Marketing.csproj" />
+```
+
+### NuGet (when published)
+
+```xml
+<PackageReference Include="Smartent.Orchard.Marketing" Version="1.0.0" />
+```
+
+## Samples & recipes
+
+- Optional: enable `Smartent.Orchard.Marketing.Samples` and import its recipes.
+
+## Pitfalls & cautions
+
+- Do not commit Pirsch tokens; use secrets.
+- Short links migrations seed example campaigns only.
+
+## Tests
+
+```powershell
+dotnet build src/Modules/Smartent.Orchard.Marketing/Smartent.Orchard.Marketing/Smartent.Orchard.Marketing.csproj
+dotnet test src/Modules/Smartent.Orchard.Marketing/*.Tests*.csproj
+```
+
+## Related projects in this folder
+
+- `Smartent.Orchard.Marketing` — main module
+- `Smartent.Orchard.Marketing.Pirsch` — main module
+- `Smartent.Orchard.Marketing.Tests.UI` — automated/UI tests
+- `Smartent.Orchard.Marketing.UrlShortener` — main module
+
+## Provenance
+
+Smartent Orchard Extensions training/demo monorepo; migrated from Lombiq OSOCE lineage. MIT license at repository root.
