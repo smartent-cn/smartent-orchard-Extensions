@@ -72,11 +72,16 @@
 
     <TailwindCliVendoredPath
       Condition="'$(TailwindCliVendoredPath)' == ''">$([System.IO.Path]::Combine('$(MSBuildThisFileDirectory)', 'cli', '$(TailwindCliLocalFileName)'))</TailwindCliVendoredPath>
+    <TailwindCliVendoredZipPath
+      Condition="'$(TailwindCliVendoredZipPath)' == ''">$([System.IO.Path]::Combine('$(MSBuildThisFileDirectory)', 'cli', 'tailwindcss-$(TailwindCliOs)-$(TailwindCliArch)-$(TailwindCliVersionNormalized).zip'))</TailwindCliVendoredZipPath>
+    <TailwindCliVendoredCliDirectory
+      Condition="'$(TailwindCliVendoredCliDirectory)' == ''">$([System.IO.Path]::GetDirectoryName('$(TailwindCliVendoredPath)'))</TailwindCliVendoredCliDirectory>
 
     <TailwindCliDownload Condition="Exists('$(TailwindCliVendoredPath)')">false</TailwindCliDownload>
+    <TailwindCliDownload Condition="Exists('$(TailwindCliVendoredZipPath)') AND !Exists('$(TailwindCliVendoredPath)')">false</TailwindCliDownload>
     <TailwindCliDownload Condition="'$(TailwindCliDownload)' == ''">true</TailwindCliDownload>
     <TailwindCliPath
-      Condition="'$(TailwindCliPath)' == '' AND Exists('$(TailwindCliVendoredPath)')">$(TailwindCliVendoredPath)</TailwindCliPath>
+      Condition="'$(TailwindCliPath)' == '' AND (Exists('$(TailwindCliVendoredPath)') OR Exists('$(TailwindCliVendoredZipPath)'))">$(TailwindCliVendoredPath)</TailwindCliPath>
     <TailwindCliPath Condition="'$(TailwindCliPath)' == ''">$([System.IO.Path]::Combine('$(TailwindCliCacheDirectoryPath)', '$(TailwindCliLocalFileName)'))</TailwindCliPath>
     <TailwindCliTempPath Condition="'$(TailwindCliTempPath)' == ''">$(TailwindCliPath).tmp</TailwindCliTempPath>
 

@@ -9,8 +9,8 @@
   <Import Project="..\Smartent.Build.Tailwind\Smartent.Build.Tailwind.props" />
 
   <PropertyGroup>
-    <!-- When vendored CLI is missing and download is disabled, TailwindBuild targets still fall back to checked-in wwwroot/css/site.css. -->
-    <TailwindRunOnBuild Condition="!Exists('$(TailwindCliPath)')">false</TailwindRunOnBuild>
+    <!-- When no vendored zip/exe and download is disabled, use checked-in wwwroot/css/site.css instead of TailwindBuild. -->
+    <TailwindRunOnBuild Condition="!Exists('$(TailwindCliVendoredPath)') AND !Exists('$(TailwindCliVendoredZipPath)')">false</TailwindRunOnBuild>
   </PropertyGroup>
 
   <Import Project="..\Smartent.Build.Tailwind\Smartent.Build.Tailwind.targets" />

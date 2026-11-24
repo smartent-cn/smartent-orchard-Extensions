@@ -200,7 +200,10 @@ node_modules/
 !**/wwwroot/favicon.ico
 !**/wwwroot/.placeholder
 !src/Build/Smartent.Build.Tailwind.Samples/wwwroot/css/site.css
-!src/Build/Smartent.Build.Tailwind/cli/**
+# Tailwind CLI: track versioned zip only; extracted exe stays local (see Smartent.Build.Tailwind/Readme.md).
+src/Build/Smartent.Build.Tailwind/cli/*.exe
+!src/Build/Smartent.Build.Tailwind/cli/*.zip
+/tailwindcss-windows-x64.zip
 
 src/*.Web/Localization
 /.editorconfig

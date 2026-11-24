@@ -34,8 +34,28 @@
   </Target>
 
   <Target
+    Name="TailwindExtractVendoredCli"
+    Condition="Exists('$(TailwindCliVendoredZipPath)') AND !Exists('$(TailwindCliVendoredPath)')">
+    <MakeDir
+      Directories="$(TailwindCliVendoredCliDirectory)"
+      Condition="'$(TailwindCliVendoredCliDirectory)' != '' AND !Exists('$(TailwindCliVendoredCliDirectory)')" />
+    <Message
+      Text="Extracting vendored Tailwind CLI from $(TailwindCliVendoredZipPath)."
+      Importance="high" />
+    <Exec
+      Condition="'$(TailwindCliOs)' == 'windows'"
+      Command="powershell -NoProfile -ExecutionPolicy Bypass -Command &quot;$zip='$(TailwindCliVendoredZipPath)'; $dest='$(TailwindCliVendoredCliDirectory)'; $out='$(TailwindCliVendoredPath)'; Expand-Archive -LiteralPath $zip -DestinationPath $dest -Force; $inner=Join-Path $dest '$(TailwindCliFileName)'; if (Test-Path -LiteralPath $inner) { Move-Item -LiteralPath $inner -Destination $out -Force }&quot;" />
+    <Exec
+      Condition="'$(TailwindCliOs)' != 'windows'"
+      Command="unzip -o -q &quot;$(TailwindCliVendoredZipPath)&quot; -d &quot;$(TailwindCliVendoredCliDirectory)&quot; &amp;&amp; mv -f &quot;$(TailwindCliVendoredCliDirectory)/$(TailwindCliFileName)&quot; &quot;$(TailwindCliVendoredPath)&quot;" />
+    <Error
+      Condition="!Exists('$(TailwindCliVendoredPath)')"
+      Text="Failed to extract Tailwind CLI from $(TailwindCliVendoredZipPath) to $(TailwindCliVendoredPath)." />
+  </Target>
+
+  <Target
     Name="TailwindDownload"
-    DependsOnTargets="TailwindValidate"
+    DependsOnTargets="TailwindValidate;TailwindExtractVendoredCli"
     Condition="Exists('$(TailwindInputPath)')">
     <Error
       Condition="'$(TailwindCliDownload)' != 'true' AND !Exists('$(TailwindCliPath)')"

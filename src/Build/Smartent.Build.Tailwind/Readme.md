@@ -4,7 +4,15 @@
 
 ## About
 
-**中文**：Windows x64 的 Tailwind CLI（v4.3.5）已入库至 `cli/tailwindcss-windows-x64-v4_3_5.exe`，构建时优先使用，无需从 GitHub 下载。
+**中文（离线 CLI 资源）**
+
+| 用途 | 路径 | Git |
+|------|------|-----|
+| 版本化压缩包（约 50MB，便于推送到 GitHub） | `src/Build/Smartent.Build.Tailwind/cli/tailwindcss-windows-x64-v4_3_5.zip` | 跟踪 |
+| 解压后的 Windows x64 CLI（v4.3.5） | 同上 `cli/` 目录下的 `tailwindcss-windows-x64-v4_3_5.exe` | **不跟踪**（`.gitignore`） |
+| 本地手动下载的压缩包（可选） | 仓库根目录 `tailwindcss-windows-x64.zip` | **不跟踪**；复制并改名为上述 `cli/*.zip` 即可入库 |
+
+首次构建时，若存在入库的 `cli/*.zip` 且尚未解压，MSBuild 会自动解压并重命名为 `tailwindcss-{os}-{arch}-v{version}.exe`，随后跳过 GitHub 下载。
 
 Provides automatic Tailwind CSS compilation before building a .NET project. This allows you to keep your Tailwind input
 CSS in source control while generating the final output into _wwwroot_ on build. These operations are optimized by
@@ -32,9 +40,10 @@ directives). By default the CLI is downloaded from GitHub releases. On Windows, 
 Linux/macOS they use `curl`. You can override the download command with `TailwindDownloadCommand` or disable it and point
 `TailwindCliPath` to a pre-downloaded binary.
 
-This repository vendors the Windows x64 CLI at `cli/tailwindcss-windows-x64-v4_3_5.exe` (Tailwind **v4.3.5**). When that
-file is present, MSBuild uses it automatically and skips GitHub download—useful on restricted networks. Add matching
-`cli/tailwindcss-{os}-{arch}-v4_3_5` binaries for other platforms if needed.
+This repository vendors the Windows x64 CLI as **`cli/tailwindcss-windows-x64-v4_3_5.zip`** (Tailwind **v4.3.5**). The
+extracted `.exe` in the same folder is local-only and ignored by Git. When the zip or extracted CLI is available,
+MSBuild uses it and skips GitHub download—useful on restricted networks. Add matching `cli/*.zip` archives for other
+platforms if needed.
 
 ## Useful properties
 
