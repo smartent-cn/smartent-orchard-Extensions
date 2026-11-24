@@ -37,6 +37,6 @@ jobs:
 
 Note that to be able to download the publish profile, and for the workflow to work, you'll need [SCM Basic Auth Publishing Credentials](https://learn.microsoft.com/en-us/azure/app-service/configure-basic-auth-disable?tabs=portal) to be turned **on** for the App Service.
 
-If the app uses the [`Lombiq.Hosting.BuildVersionDisplay` module](https://gitee.com/smartent/smartent-orchard-Extensions) then the workflow plays along with it: The module will display a link to the run.
+If the app uses the [`Smartent.Orchard.Hosting.BuildVersion` module](https://gitee.com/smartent/smartent-orchard-Extensions) then the workflow plays along with it: The module will display a link to the run.
 
 This workflow has an alternate version (_deploy-orchard1-to-azure-app-service.yml_) designed for Orchard 1-based applications.

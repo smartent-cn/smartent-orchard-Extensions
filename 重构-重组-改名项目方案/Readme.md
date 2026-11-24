@@ -1,6 +1,6 @@
 # Smartent 训练演示仓库 — 重构 · 重组 · 改名 项目方案
 
-> 仓库路径：`G:\Smartent-Training-Demo-Modules`（Gitee：`smartent/smartent-orchard-Extensions` · GitHub：`smartent-cn/smartent-orchard-Extensions`）  
+> 仓库路径：`G:\Smartent-Orchard-Extensions`（Gitee：`smartent/smartent-orchard-Extensions` · GitHub：`smartent-cn/smartent-orchard-Extensions`）  
 > 文档版本：1.1  
 > 状态：总体规划；**M1 脚手架见 [第一步-计划.md](第一步-计划.md)**
 
@@ -126,7 +126,7 @@ Smartent.{产品线}.{具体名称}
 ### 4.2 终态目录示意
 
 ```text
-Smartent-Training-Demo-Modules/
+Smartent-Orchard-Extensions/
   build/
     Smartent.Orchard.props
     Smartent.Packaging.props

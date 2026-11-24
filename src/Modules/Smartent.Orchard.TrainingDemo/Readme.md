@@ -26,7 +26,7 @@ The module comes with its own standalone solution and web app. So, to run it, si
 3. Make sure the `Smartent.TrainingDemo.Web` project is the startup project (it should be; not needed for VS Code).
 4. Start the app.
    - In Visual Studio and VS Code, you can do this with <kbd>Ctrl</kbd> + <kbd>F5</kbd>.
-   - From the .NET CLI, run `dotnet run` in the _Lombiq.TrainingDemo.Web_ folder and then open <https://localhost:5001/> in a browser.
+   - From the .NET CLI, run `dotnet run` in the _Smartent.Orchard.TrainingDemo.Web_ folder and then open <https://localhost:5001/> in a browser.
 5. The site will be automatically set up with the "Training Demo" recipe (since we use Orchard Core's [Auto Setup feature](https://docs.orchardcore.net/en/latest/docs/reference/modules/AutoSetup/)). You'll be able to log in with the username "admin" and password "Password1!".
 
 Once the app is running:

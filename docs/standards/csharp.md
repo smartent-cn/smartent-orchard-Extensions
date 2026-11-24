@@ -46,7 +46,7 @@ public static Task<T> GetWithShellScopeAsync<T>(...)
 
 ### 依赖与引用
 
-- 新代码 **禁止** 引用 `Lombiq.HelpfulLibraries` 元包。  
+- 新代码 **禁止** 引用 `Smartent.Orchard.Platform` 元包。  
 - 仅引用实际需要的 `Smartent.*` / `OrchardCore.*` 包（见项目 `Readme.md` 引用一节）。  
 - 不在库项目中引用仅 Web 宿主才需要的 Orchard 包。
 
