@@ -5,13 +5,13 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Smartent.TrainingDemo.Web .NET Core Launch (web)",
+            "name": "Smartent.Orchard.TrainingDemo.Web .NET Core Launch (web)",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/Smartent.TrainingDemo.Web/bin/Debug/net8.0/Smartent.TrainingDemo.Web.dll",
+            "program": "${workspaceFolder}/Smartent.Orchard.TrainingDemo.Web/bin/Debug/net10.0/Smartent.Orchard.TrainingDemo.Web.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/Smartent.TrainingDemo.Web",
+            "cwd": "${workspaceFolder}/Smartent.Orchard.TrainingDemo.Web",
             "stopAtEntry": false,
             "serverReadyAction": {
                 "action": "openExternally",
@@ -23,8 +23,8 @@
             "sourceFileMap": {
                 "/Views": "${workspaceFolder}/Views"
             },
-            "launchSettingsFilePath": "${workspaceFolder}/Smartent.TrainingDemo.Web/Properties/launchSettings.json",
-            "launchSettingsProfile": "Smartent.TrainingDemo.Web"
+            "launchSettingsFilePath": "${workspaceFolder}/Smartent.Orchard.TrainingDemo.Web/Properties/launchSettings.json",
+            "launchSettingsProfile": "Smartent.Orchard.TrainingDemo.Web"
         }
     ]
 }

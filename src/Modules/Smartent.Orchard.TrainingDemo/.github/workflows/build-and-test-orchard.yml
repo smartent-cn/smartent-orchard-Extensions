@@ -13,4 +13,4 @@ jobs:
     uses: Smartent/GitHub-Actions/.github/workflows/build-and-test-orchard-core.yml@dev
     with:
       timeout-minutes: 5
-      dotnet-consolidation-exclude-project-path: Smartent.TrainingDemo.Web/Smartent.TrainingDemo.Web.csproj
+      dotnet-consolidation-exclude-project-path: Smartent.Orchard.TrainingDemo.Web/Smartent.Orchard.TrainingDemo.Web.csproj

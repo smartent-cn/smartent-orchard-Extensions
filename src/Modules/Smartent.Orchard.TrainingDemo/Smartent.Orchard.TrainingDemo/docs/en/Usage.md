@@ -2,7 +2,7 @@
 
 > Index: [README.md](README.md) · Gateway: [../README.md](../README.md)
 
-Configuration section: `OrchardCore:Smartent_TrainingDemo` only (no Lombiq fallback).
+Configuration section: `OrchardCore:Smartent_TrainingDemo` only.
 
 ### References
 

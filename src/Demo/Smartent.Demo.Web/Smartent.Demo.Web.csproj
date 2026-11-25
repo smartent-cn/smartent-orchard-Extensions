@@ -31,6 +31,7 @@
     <ProjectReference Include="..\..\Modules\Smartent.Orchard.Hosting.ApplicationInsights\Smartent.Orchard.Hosting.ApplicationInsights\Smartent.Orchard.Hosting.ApplicationInsights.csproj" />
     <ProjectReference Include="..\..\Modules\Smartent.Orchard.Hosting.BuildVersion\Smartent.Orchard.Hosting.BuildVersion\Smartent.Orchard.Hosting.BuildVersion.csproj" />
     <ProjectReference Include="..\..\Modules\Smartent.Orchard.Hosting.Tenants\Smartent.Orchard.Hosting.Tenants.Admin.Login\Smartent.Orchard.Hosting.Tenants.Admin.Login.csproj" />
+    <ProjectReference Include="..\..\Modules\Smartent.Orchard.Hosting.Tenants\Smartent.Orchard.Hosting.Tenants.Admin.Login.TenantActions\Smartent.Orchard.Hosting.Tenants.Admin.Login.TenantActions.csproj" />
     <ProjectReference Include="..\..\Modules\Smartent.Orchard.Hosting.Tenants\Smartent.Orchard.Hosting.Tenants.EmailQuotaManagement\Smartent.Orchard.Hosting.Tenants.EmailQuotaManagement.csproj" />
     <ProjectReference Include="..\..\Modules\Smartent.Orchard.Hosting.Tenants\Smartent.Orchard.Hosting.Tenants.EnvironmentRobots\Smartent.Orchard.Hosting.Tenants.EnvironmentRobots.csproj" />
     <ProjectReference Include="..\..\Modules\Smartent.Orchard.Hosting.Tenants\Smartent.Orchard.Hosting.Tenants.FeaturesGuard\Smartent.Orchard.Hosting.Tenants.FeaturesGuard.csproj" />

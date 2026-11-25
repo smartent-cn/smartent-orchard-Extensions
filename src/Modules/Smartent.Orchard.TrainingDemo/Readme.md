@@ -25,7 +25,7 @@ The module comes with its own standalone solution and web app. So, to run it, si
 
 1. Clone the latest `dev` branch of this repository or [download the source](https://gitee.com/smartent/smartent-orchard-Extensions)
 2. Open the solution in your favorite IDE, like [Visual Studio](https://visualstudio.microsoft.com/), [Visual Studio Code](https://code.visualstudio.com/) or [Rider](https://www.jetbrains.com/rider/).
-3. Make sure the `Smartent.TrainingDemo.Web` project is the startup project (it should be; not needed for VS Code).
+3. Make sure the `Smartent.Orchard.TrainingDemo.Web` project is the startup project (it should be; not needed for VS Code).
 4. Start the app.
    - In Visual Studio and VS Code, you can do this with <kbd>Ctrl</kbd> + <kbd>F5</kbd>.
    - From the .NET CLI, run `dotnet run` in the _Smartent.Orchard.TrainingDemo.Web_ folder and then open <https://localhost:5001/> in a browser.
@@ -33,11 +33,11 @@ The module comes with its own standalone solution and web app. So, to run it, si
 
 Once the app is running:
 
-- Head over to the **[StartLearningHere.md](Smartent.TrainingDemo/StartLearningHere.md)** file and start exploring all the great things you can do in Orchard Core.
-- If you are brave enough to not follow any guide or you want to start the guide from somewhere else then go to the **[Map.cs](Smartent.TrainingDemo/Map.cs)** file and jump to any class you are interested in. [StartLearningHere.md](Smartent.TrainingDemo/StartLearningHere.md) also has training sections linked so you can go to a broader section.
+- Head over to the **[StartLearningHere.md](Smartent.Orchard.TrainingDemo/StartLearningHere.md)** file and start exploring all the great things you can do in Orchard Core.
+- If you are brave enough to not follow any guide or you want to start the guide from somewhere else then go to the **[Map.cs](Smartent.Orchard.TrainingDemo/Map.cs)** file and jump to any class you are interested in. [StartLearningHere.md](Smartent.Orchard.TrainingDemo/StartLearningHere.md) also has training sections linked so you can go to a broader section.
 - If you'd like to clean out comments from code files so you can just see the essence, then use the [Comment Remover VS extension](https://marketplace.visualstudio.com/items?itemName=MadsKristensen.CommentRemover) to quickly do it.
 - Take a look at the Recipes menu in the Admin screen to load in additional sample content. This is not included by default to reduce clutter.
-- This module uses [Smartent Helpful Libraries for Orchard Core](https://gitee.com/smartent/smartent-orchard-Extensions) to make a few things simpler. But don't worry, we'll explain it.
+- This module uses [Smartent Orchard Platform](https://gitee.com/smartent/smartent-orchard-Extensions) libraries (`Smartent.Orchard.Platform`) to make a few things simpler. But don't worry, we'll explain it.
 
 ## Further resources
 
@@ -45,8 +45,8 @@ Some further reading if you're hungry for more knowledge.
 
 - You can also follow the [Dojo Course 3 tutorial series](https://orcharddojo.net/orchard-training/dojo-course-3-the-full-orchard-core-tutorial) if you like to learn from videos.
 - This module is not about showing you how to create an Orchard Core application from scratch. For that, we recommend you use the `Initialize-OrchardCoreSolution` script from our [Utility Scripts project](https://gitee.com/smartent/smartent-orchard-Extensions)
-- Keep in mind that your best living reference for how to do something in Orchard is [the official repo](https://github.com/OrchardCMS/OrchardCore) and our [Open-Source Orchard Core Extensions](https://github.com/smartent-cn/smartent-orchard-Extensions) (OSOCE) solution. Clone both and keep the solutions open when you’re working on something so you can quickly look up anything. As a bonus, OSOCE also contains all of Smartent's open-source Orchard themes and modules! Check it out for what we've already solved for you.
-- You can also take a look at our [Walkthroughs](https://gitee.com/smartent/smartent-orchard-Extensions) module, for step-by-step walkthroughs, which are guided by pop-up windows right there in the UI. You can also click "Guided walkthrough" button on the [homepage of DotNest, the Orchard Core SaaS](https://dotnest.com/), and you'll get a site set up with the Walkthroughs module, without touching Orchard's setup screen.
+- Keep in mind that your best living reference for how to do something in Orchard is [the official repo](https://github.com/OrchardCMS/OrchardCore) and our [Smartent Orchard Extensions](https://github.com/smartent-cn/smartent-orchard-Extensions) solution. Clone both and keep the solutions open when you’re working on something so you can quickly look up anything.
+- You can also take a look at our [Walkthroughs](https://gitee.com/smartent/smartent-orchard-Extensions) module for step-by-step walkthroughs, guided by pop-up windows in the UI.
 - Be sure to check out the [Orchard Dojo Library for Orchard Core](https://orcharddojo.net/orchard-resources/CoreLibrary/) for a wealth of Orchard Core guidelines, best practices, development utilities (like scripts and snippets), and more as well!
 - This project utilizes several [GitHub Actions](https://docs.github.com/en/actions) workflows, like [Build and Test Orchard Core solution](https://gitee.com/smartent/smartent-orchard-Extensions) to provide CI builds. We recommend using such workflows from our [Smartent GitHub Actions project](https://gitee.com/smartent/smartent-orchard-Extensions) for automation.
 - If you're ready to make a jump to fully automated Quality Assurance beyond unit testing as demonstrated here, check out the following projects:
@@ -64,7 +64,7 @@ Bug reports, feature requests, comments, questions, code contributions and love 
 When adding new tutorials please keep in mind the following:
 
 - Insert tutorial steps into the existing flow, either at the end or between two existing ones. Use "NEXT STATION" comments to indicate the next file the reader should check out.
-- If it's a new training section then indicate as such by an "END OF TRAINING SECTION" comment at the end and add it to the list under [StartLearningHere.md](Smartent.TrainingDemo/StartLearningHere.md).
+- If it's a new training section then indicate as such by an "END OF TRAINING SECTION" comment at the end and add it to the list under [StartLearningHere.md](Smartent.Orchard.TrainingDemo/StartLearningHere.md).
 - Add pointers to its classes/files in _Map.cs_.
 
 This project is developed by [Smartent](https://gitee.com/smartent/). Commercial-grade support is available through Smartent.

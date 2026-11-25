@@ -66,6 +66,7 @@
     <Project Path="src/Modules/Smartent.Orchard.Hosting.ApplicationInsights/Smartent.Orchard.Hosting.ApplicationInsights/Smartent.Orchard.Hosting.ApplicationInsights.csproj" />
     <Project Path="src/Modules/Smartent.Orchard.Hosting.BuildVersion/Smartent.Orchard.Hosting.BuildVersion/Smartent.Orchard.Hosting.BuildVersion.csproj" />
     <Project Path="src/Modules/Smartent.Orchard.Hosting.Tenants/Smartent.Orchard.Hosting.Tenants.Admin.Login/Smartent.Orchard.Hosting.Tenants.Admin.Login.csproj" />
+    <Project Path="src/Modules/Smartent.Orchard.Hosting.Tenants/Smartent.Orchard.Hosting.Tenants.Admin.Login.TenantActions/Smartent.Orchard.Hosting.Tenants.Admin.Login.TenantActions.csproj" />
     <Project Path="src/Modules/Smartent.Orchard.Hosting.Tenants/Smartent.Orchard.Hosting.Tenants.EmailQuotaManagement/Smartent.Orchard.Hosting.Tenants.EmailQuotaManagement.csproj" />
     <Project Path="src/Modules/Smartent.Orchard.Hosting.Tenants/Smartent.Orchard.Hosting.Tenants.EnvironmentRobots/Smartent.Orchard.Hosting.Tenants.EnvironmentRobots.csproj" />
     <Project Path="src/Modules/Smartent.Orchard.Hosting.Tenants/Smartent.Orchard.Hosting.Tenants.FeaturesGuard/Smartent.Orchard.Hosting.Tenants.FeaturesGuard.csproj" />

@@ -40,7 +40,7 @@ This demo is heavily inspired by [Sipke Schoorstra's Orchard Harvest session](ht
 - [Content Field display and editor options](Views/ColorField.Option.cshtml)
 - [Resource management](ResourceManagementOptionsConfiguration.cs)
 - [Permissions and authorization](Controllers/AuthorizationController.cs)
-- [Navigation menus](Controllers/AdminController.cs) ([See here for a similar tutorial about theming with Smartent.BaseTheme.Native.](https://gitee.com/smartent/smartent-orchard-Extensions)
+- [Navigation menus](Controllers/AdminController.cs) ([See here for a similar tutorial about theming with Smartent.Orchard.Theme.Base.Native.](https://gitee.com/smartent/smartent-orchard-Extensions)
 - [Site settings and `IConfiguration`](Controllers/SiteSettingsController.cs)
 - [Utilizing action and result filters](Filters/ShapeInjectionFilter.cs)
 - [Shape tables](Services/ShapeHidingShapeTableProvider.cs)

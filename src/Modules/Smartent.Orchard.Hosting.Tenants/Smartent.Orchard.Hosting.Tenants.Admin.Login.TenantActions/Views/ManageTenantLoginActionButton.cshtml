@@ -1,0 +1,9 @@
+@model ShapeViewModel<ShellSettingsEntry>
+@using Smartent.Orchard.Hosting.Tenants.Admin.Login.TenantActions.Constants
+
+<a asp-action="Prepare"
+   asp-controller="TenantAdminLoginLaunch"
+   asp-route-tenant="@Model.Value.Name"
+   asp-area="@FeatureNames.Module"
+   target="_blank"
+   class="btn btn-success btn-sm log-in-as-admin">@T["Login as admin"]</a>

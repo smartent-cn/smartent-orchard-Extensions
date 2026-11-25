@@ -37,7 +37,7 @@ Configuration keys (under `OrchardCore`):
 
 Use double underscore in environment variables, e.g. `OrchardCore__Smartent_TrainingDemo__...`.
 
-> Config sections use `Smartent_*` / `Smartent_Orchard_*` only (no legacy `Lombiq_*` in this demo repo).
+> Config sections use `Smartent_*` / `Smartent_Orchard_*` only.
 
 ## Usage (site owners & admins)
 
@@ -45,7 +45,7 @@ Use Orchard admin and module-specific menus after enabling features.
 
 ## Usage (developers)
 
-Configuration section: `OrchardCore:Smartent_TrainingDemo` only (no Lombiq fallback).
+Configuration section: `OrchardCore:Smartent_TrainingDemo` only.
 
 ### References
 
@@ -84,4 +84,4 @@ dotnet test src/Modules/Smartent.Orchard.TrainingDemo/*.Tests*.csproj
 
 ## Provenance
 
-Smartent Orchard Extensions training/demo monorepo; migrated from Lombiq OSOCE lineage. MIT license at repository root.
+Smartent Orchard Extensions training/demo monorepo. MIT license at repository root.

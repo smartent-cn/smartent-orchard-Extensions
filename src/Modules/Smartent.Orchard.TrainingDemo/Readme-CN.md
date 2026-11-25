@@ -37,7 +37,7 @@ Orchard Core 培训练习与示例控制器（仅演示）。
 
 环境变量使用双下划线，例如 `OrchardCore__Smartent_TrainingDemo__...`。
 
-> 配置节仅使用 `Smartent_*` / `Smartent_Orchard_*`；本 demo 仓库 **不** 读取遗留 `Lombiq_*` 节。
+> 配置节仅使用 `Smartent_*` / `Smartent_Orchard_*`。
 
 ## 使用方式（站点/运营）
 
@@ -84,4 +84,4 @@ dotnet test src/Modules/Smartent.Orchard.TrainingDemo/*.Tests*.csproj
 
 ## 来源
 
-Smartent Orchard Extensions 培训/demo 单体仓库；由 Lombiq OSOCE 谱系迁入。许可见仓库根目录 MIT。
+Smartent Orchard Extensions 培训/demo 单体仓库。许可见仓库根目录 MIT。

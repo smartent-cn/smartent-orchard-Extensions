@@ -214,3 +214,4 @@ src/*.Web/Localization
 /NDependOut/
 /build.binlog
 /github-gitee-相关信息.md
+/tmp

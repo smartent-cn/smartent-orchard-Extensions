@@ -8,4 +8,4 @@ Configuration keys (under `OrchardCore`):
 
 Use double underscore in environment variables, e.g. `OrchardCore__Smartent_TrainingDemo__...`.
 
-> Config sections use `Smartent_*` / `Smartent_Orchard_*` only (no legacy `Lombiq_*` in this demo repo).
+> Config sections use `Smartent_*` / `Smartent_Orchard_*` only.

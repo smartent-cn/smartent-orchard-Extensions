@@ -8,4 +8,4 @@
 
 环境变量使用双下划线，例如 `OrchardCore__Smartent_TrainingDemo__...`。
 
-> 配置节仅使用 `Smartent_*` / `Smartent_Orchard_*`；本 demo 仓库 **不** 读取遗留 `Lombiq_*` 节。
+> 配置节仅使用 `Smartent_*` / `Smartent_Orchard_*`。

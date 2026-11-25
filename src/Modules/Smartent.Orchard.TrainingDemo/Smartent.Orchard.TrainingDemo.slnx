@@ -13,7 +13,7 @@
     <File Path="Readme.md" />
     <File Path="Reset-Local.ps1" />
   </Folder>
-  <Project Path="Lombiq.TrainingDemo.Tests/Lombiq.TrainingDemo.Tests.csproj" />
-  <Project Path="Lombiq.TrainingDemo.Web/Lombiq.TrainingDemo.Web.csproj" DefaultStartup="true" />
-  <Project Path="Lombiq.TrainingDemo/Lombiq.TrainingDemo.csproj" />
+  <Project Path="Smartent.Orchard.TrainingDemo.Tests/Smartent.Orchard.TrainingDemo.Tests.csproj" />
+  <Project Path="Smartent.Orchard.TrainingDemo.Web/Smartent.Orchard.TrainingDemo.Web.csproj" DefaultStartup="true" />
+  <Project Path="Smartent.Orchard.TrainingDemo/Smartent.Orchard.TrainingDemo.csproj" />
 </Solution>

@@ -4,6 +4,7 @@
     <File Path="NuGet.config" />
   </Folder>
   <Project Path="Smartent.Orchard.Hosting.Tenants.Admin.Login/Smartent.Orchard.Hosting.Tenants.Admin.Login.csproj" />
+  <Project Path="Smartent.Orchard.Hosting.Tenants.Admin.Login.TenantActions/Smartent.Orchard.Hosting.Tenants.Admin.Login.TenantActions.csproj" />
   <Project Path="Smartent.Orchard.Hosting.Tenants.EmailQuotaManagement.Tests.UI/Smartent.Orchard.Hosting.Tenants.EmailQuotaManagement.Tests.UI.csproj" />
   <Project Path="Smartent.Orchard.Hosting.Tenants.EmailQuotaManagement/Smartent.Orchard.Hosting.Tenants.EmailQuotaManagement.csproj" />
   <Project Path="Smartent.Orchard.Hosting.Tenants.EnvironmentRobots.Tests.UI/Smartent.Orchard.Hosting.Tenants.EnvironmentRobots.Tests.UI.csproj" />

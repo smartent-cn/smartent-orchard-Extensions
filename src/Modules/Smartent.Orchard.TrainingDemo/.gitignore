@@ -187,12 +187,12 @@ nuget.exe
 node_modules/
 
 # Exclude Web project wwwroot and add exceptions
-Lombiq.TrainingDemo.Web/wwwroot/*
-!Lombiq.TrainingDemo.Web/wwwroot/favicon.ico
-!Lombiq.TrainingDemo.Web/wwwroot/.placeholder
+Smartent.Orchard.TrainingDemo.Web/wwwroot/*
+!Smartent.Orchard.TrainingDemo.Web/wwwroot/favicon.ico
+!Smartent.Orchard.TrainingDemo.Web/wwwroot/.placeholder
 
 # Exclude vendor libraries
-Lombiq.TrainingDemo/wwwroot/vendors/
+Smartent.Orchard.TrainingDemo/wwwroot/vendors/
 
 *.Web/Localization
 /.editorconfig

@@ -62,7 +62,7 @@ Smartent.Orchard.TrainingDemo.Web：Smartent Orchard Extensions 组件。Smarten
 
 - **Orchard**：与仓库 `OrchardCoreVersion` / 中央包管理对齐。
 - **扩展点**：Driver/Handler/Shape 及模块内接口（见源码）。
-- **定制**：配置节使用 `Smartent_*` / `Smartent_Orchard_*`；本 demo 仓库 **不** 读取遗留 `Lombiq_*` 节。
+- **定制**：配置节使用 `Smartent_*` / `Smartent_Orchard_*`。
 
 ## 测试
 
@@ -75,5 +75,5 @@ UI 测试：在解决方案中筛选 `*.Tests.UI.csproj` 运行。
 
 ## 来源与许可
 
-- 自 Lombiq OSOCE 谱系迁入；已 Smartent 化包 ID 与命名空间。
+- 属 Smartent Orchard Extensions 培训 monorepo；包 ID 与命名空间均为 `Smartent.*`。
 - 许可：MIT（见仓库根 `License.md`）。

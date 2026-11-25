@@ -65,10 +65,8 @@ public sealed class YourFirstOrchardCoreController : Controller
         // ILogger is an ASP.NET Core service that will write something into the specific log files. In Orchard Core
         // NLog is used for logging and the error level is "Error" by default. You can find the error log in the
         // /App_Data/logs/orchard-log-[date].log file. Logging can be configured in the NLog.config file in the web
-        // project (e.g. OrchardCore.Cms.Web). Oh, and one more thing: if you install the Smartent Orchard Visual Studio
-        // Extension it'll provide you a handy Error Log Watcher which lights up if there's a new error! Check it out
-        // here:
-        // https://marketplace.visualstudio.com/items?itemName=LombiqVisualStudioExtension.LombiqOrchardVisualStudioExtension
+        // project (e.g. OrchardCore.Cms.Web). You can also use Visual Studio / Rider tooling or log tailing to watch
+        // orchard-log-* files during development.
         _logger.LogError("You have been notified about some error!");
 
         // INotifier is an Orchard Core service to send messages to the user. This service can be used almost everywhere

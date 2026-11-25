@@ -17,6 +17,7 @@
       "name": "feature",
       "disable": [],
       "enable": [
+        "OrchardCore.AuditTrail",
         "Smartent.Orchard.AuditTrail",
         "Smartent.Orchard.ChartJs",
         "Smartent.Orchard.ContentEditors.Samples",

@@ -1,0 +1,21 @@
+@model Smartent.Orchard.Hosting.Tenants.Admin.Login.TenantActions.ViewModels.TenantAdminLoginLaunchViewModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@T["Login as admin user"]</title>
+</head>
+<body>
+    <form id="tenant-admin-login-forward" method="post" action="@Model.PostUrl">
+        <input type="hidden" name="password" value="@Model.Password" />
+        <p>@T["Signing in to the tenant admin…"]</p>
+        <button type="submit" class="btn btn-primary">@T["Continue to tenant admin"]</button>
+    </form>
+    <script>
+        document.getElementById('tenant-admin-login-forward').requestSubmit();
+    </script>
+</body>
+</html>

@@ -62,7 +62,7 @@ See [frontend-dependencies standard](../../docs/standards/frontend-dependencies.
 
 - **Orchard**: Aligns with repository `OrchardCoreVersion` / central package management.
 - **Extension points**: Drivers, handlers, shapes, and `IDataTableDataProvider`-style interfaces (see source).
-- **Customization**: Prefer configuration keys under `Smartent_*` / `Smartent_Orchard_*`; this demo repo does not read legacy `Lombiq_*` sections.
+- **Customization**: Use configuration keys under `Smartent_*` / `Smartent_Orchard_*` only.
 
 ## Tests
 
@@ -75,5 +75,5 @@ UI tests: filter `*.Tests.UI.csproj` in the solution.
 
 ## Provenance & license
 
-- Migrated from Lombiq OSOCE lineage; Smartent package IDs and namespaces.
+- Part of the Smartent Orchard Extensions monorepo; `Smartent.*` package IDs and namespaces.
 - License: MIT (see repository root `License.md`).

@@ -1,0 +1,31 @@
+<Project>
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>Smartent.Orchard.Hosting.Tenants.Admin.Login.TenantActions</RootNamespace>
+    <AssemblyName>Smartent.Orchard.Hosting.Tenants.Admin.Login.TenantActions</AssemblyName>
+    <PackageId>Smartent.Orchard.Hosting.Tenants.Admin.Login.TenantActions</PackageId>
+    <!-- 无 wwwroot；长 AssemblyName 会使 staticwebassets 的 props 路径超过 Win32 MAX_PATH(260)。 -->
+    <StaticWebAssetsEnabled>false</StaticWebAssetsEnabled>
+  </PropertyGroup>
+
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../Build/Smartent.Build.OrchardCore.Module.Sdk/Sdk/Import.props" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Smartent.Build.OrchardCore.Module.Sdk" Version="2.1.1-alpha.9.osoe-344" />
+
+  <PropertyGroup>
+    <Title>Smartent Orchard Hosting - Tenants Admin Login (tenant list actions)</Title>
+    <CopyrightYear>2026</CopyrightYear>
+    <DescriptionBody>Adds a tenant-list action that launches admin login via the Default shell (proxy), then forwards to the child tenant when SubTenant is enabled.</DescriptionBody>
+    <PackageTags>OrchardCore;Smartent;AspNetCore;Multitenancy;SaaS;Tenants</PackageTags>
+    <RepositoryUrl>https://gitee.com/smartent/smartent-orchard-Extensions</RepositoryUrl>
+    <PackageProjectUrl>https://gitee.com/smartent/smartent-orchard-Extensions</PackageProjectUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Smartent.Orchard.Hosting.Tenants.Admin.Login\Smartent.Orchard.Hosting.Tenants.Admin.Login.csproj" />
+    <ProjectReference Include="../../../Platform/Orchard/Smartent.Orchard.Platform/Smartent.Orchard.Platform.csproj" />
+    <PackageReference Include="OrchardCore.Tenants" Version="$(OrchardCoreVersion)" />
+  </ItemGroup>
+
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../Build/Smartent.Build.OrchardCore.Module.Sdk/Sdk/Import.targets" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.targets" Sdk="Smartent.Build.OrchardCore.Module.Sdk" Version="2.1.1-alpha.9.osoe-344" />
+</Project>

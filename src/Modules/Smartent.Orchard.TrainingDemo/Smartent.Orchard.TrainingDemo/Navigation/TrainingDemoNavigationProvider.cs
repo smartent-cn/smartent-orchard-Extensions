@@ -12,10 +12,10 @@ namespace Smartent.Orchard.TrainingDemo.Navigation;
 // it from custom code. You can retrieve them with INavigationManager.BuildMenuAsync("main", ActionContext). If you
 // use the Smartent.Orchard.Extensions.Cms.Widgets feature, it has a MenuWidget which can accept the MenuItem collection
 // returned by this method call and display a Bootstrap "navbar" wherever you need a menu. Or if you use a theme
-// which extends Smartent.BaseTheme.Core, then it already displays your "main" navigation entries as a MenuWidget on its
+// which extends Smartent.Orchard.Theme.Base.Core, then it already displays your "main" navigation entries as a MenuWidget on its
 // own. Yes, this is basically an ad for our other projects. :)
 //
-// For details on how to use them, see the Smartent.BaseTheme.Samples project:
+// For details on how to use them, see the Smartent.Orchard.Theme.Base.Samples project:
 // https://gitee.com/smartent/smartent-orchard-Extensions
 public class TrainingDemoNavigationProvider : MainMenuNavigationProviderBase
 {
